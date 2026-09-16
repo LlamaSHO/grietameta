@@ -841,17 +841,17 @@ function renderPlans(){
     {
       name:"Gratis", price:"0€", period:"siempre",
       feats:["Tier list completa","Winrate y pickrate de todos los campeones","1 objeto inicial y botas por campeón"],
-      cta:"Tu plan actual", featured:false,
+      cta:"Tu plan actual", featured:false, plan:null,
     },
     {
       name:"Premium", price:"4,99€", period:"/mes",
       feats:["Todo lo del plan Gratis","Build completa con orden de compra","Objetos situacionales por rival","Runas óptimas por matchup","Sin publicidad"],
-      cta:"Empezar prueba de 7 días", featured:true,
+      cta:"Empezar prueba de 7 días", featured:true, plan:"monthly",
     },
     {
       name:"Premium anual", price:"39,99€", period:"/año",
       feats:["Todo lo de Premium","2 meses gratis frente al plan mensual","Alertas de cambios de parche","Acceso anticipado a nuevas herramientas"],
-      cta:"Ahorrar con el plan anual", featured:false,
+      cta:"Ahorrar con el plan anual", featured:false, plan:"yearly",
     },
   ];
   root.innerHTML = plans.map(p=>`
@@ -859,9 +859,36 @@ function renderPlans(){
       <div class="plan-name">${p.name}</div>
       <div class="plan-price">${p.price}<span> ${p.period}</span></div>
       <ul class="plan-feats">${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
-      <button class="${p.featured?'btn-gold':'btn-outline'}" style="${p.featured?'width:100%;':''}">${p.cta}</button>
+      <button class="${p.featured?'btn-gold':'btn-outline'}" style="${p.featured?'width:100%;':''}" ${p.plan?`data-plan="${p.plan}"`:'disabled'}>${p.cta}</button>
     </div>
   `).join("");
+
+  root.querySelectorAll("button[data-plan]").forEach(btn=>{
+    btn.addEventListener("click", ()=> startCheckout(btn.dataset.plan, btn));
+  });
+}
+
+// ------------------------------------------------------------ Stripe checkout --
+async function startCheckout(plan, btn){
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "Redirigiendo a pago seguro…";
+  try{
+    const res = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ plan }),
+    });
+    const data = await res.json();
+    if(!res.ok || !data.url){
+      throw new Error(data.error || "No se pudo iniciar el pago.");
+    }
+    window.location.href = data.url;
+  }catch(err){
+    alert(err.message || "Hubo un problema al conectar con el pago. Inténtalo de nuevo.");
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
 }
 
 // ------------------------------------------------------------------- init --
