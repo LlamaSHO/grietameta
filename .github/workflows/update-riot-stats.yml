@@ -1,0 +1,33 @@
+name: Actualizar estadísticas de Riot
+
+# Se ejecuta cada noche y también se puede lanzar a mano desde la pestaña
+# "Actions" de GitHub ("Run workflow"), por si quieres forzar una actualización.
+on:
+  schedule:
+    - cron: "17 3 * * *" # 03:17 UTC todos los días (fuera de hora punta en EUW)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Descargar y calcular estadísticas reales
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: node scripts/fetch-riot-stats.mjs
+
+      - name: Hacer commit si hay cambios
+        run: |
+          git config user.name "grietameta-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add champion-stats.json
+          if git diff
