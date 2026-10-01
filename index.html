@@ -980,6 +980,49 @@ renderTierList();
 renderGrid();
 renderPlans();
 
+// ------------------------------------------------------ estadísticas reales --
+// champion-stats.json lo genera scripts/fetch-riot-stats.mjs (vía GitHub
+// Actions) a partir de partidas reales de la API de Riot. Si el archivo no
+// existe todavía o falla la carga, la web se queda tal cual con los datos
+// ilustrativos de siempre — nunca se rompe por esto.
+async function loadRealStats(){
+  let data;
+  try{
+    const res = await fetch("/champion-stats.json", { cache: "no-store" });
+    if(!res.ok) return;
+    data = await res.json();
+  }catch(err){
+    return; // sin conexión, archivo ausente, etc. — nos quedamos con la simulación.
+  }
+
+  const real = data && data.champions;
+  if(!real || !Object.keys(real).length) return;
+
+  let matched = 0;
+  CHAMPIONS.forEach(c=>{
+    const r = real[c.id];
+    if(!r) return; // campeón sin suficiente muestra todavía: se queda con el dato ilustrativo
+    matched++;
+    c.winrate = r.winrate;
+    c.pickrate = r.pickrate;
+    c.banrate = r.banrate;
+    c.realStats = true;
+    const score = (c.winrate-46.5)/8.5*0.55 + (c.pickrate/18)*0.25 + (c.banrate/22.5)*0.2;
+    c.tier = tierFromScore(score);
+  });
+
+  const patchTag = document.getElementById("patchTag");
+  if(patchTag){
+    const date = new Date(data.generatedAt).toLocaleDateString("es-ES", { day:"2-digit", month:"short" });
+    patchTag.textContent = `${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
+  }
+
+  renderTierList();
+  renderGrid();
+}
+
+loadRealStats();
+
 // ------------------------------------------------------------ Premium unlock --
 const PREMIUM_EMAIL_KEY = "grietameta_premium_email";
 
