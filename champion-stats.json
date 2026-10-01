@@ -1,782 +1,800 @@
 {
-  "generatedAt": "2026-10-01T07:35:04.219Z",
+  "generatedAt": "2026-10-01T11:35:35.647Z",
   "region": "EUW",
   "queue": "RANKED_SOLO_5x5",
   "totalGamesSample": 350,
   "totalRequestsUsed": 471,
   "champions": {
-    "yone": {
-      "games": 60,
-      "winrate": 40,
-      "pickrate": 1.71,
-      "banrate": 0
-    },
-    "reksai": {
-      "games": 12,
-      "winrate": 58.3,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "anivia": {
-      "games": 12,
-      "winrate": 50,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "draven": {
-      "games": 23,
-      "winrate": 60.9,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "thresh": {
-      "games": 49,
-      "winrate": 42.9,
-      "pickrate": 1.4,
-      "banrate": 0
-    },
-    "jayce": {
-      "games": 40,
-      "winrate": 50,
-      "pickrate": 1.14,
-      "banrate": 0
-    },
-    "chogath": {
-      "games": 38,
-      "winrate": 47.4,
-      "pickrate": 1.09,
-      "banrate": 0
-    },
-    "aurora": {
-      "games": 21,
-      "winrate": 57.1,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "katarina": {
-      "games": 30,
-      "winrate": 50,
-      "pickrate": 0.86,
-      "banrate": 0
-    },
-    "leona": {
-      "games": 29,
-      "winrate": 65.5,
-      "pickrate": 0.83,
-      "banrate": 0
-    },
-    "kaisa": {
-      "games": 49,
-      "winrate": 42.9,
-      "pickrate": 1.4,
-      "banrate": 0
-    },
-    "riven": {
-      "games": 13,
-      "winrate": 61.5,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "sylas": {
-      "games": 71,
-      "winrate": 45.1,
-      "pickrate": 2.03,
-      "banrate": 0
-    },
-    "ekko": {
-      "games": 44,
-      "winrate": 56.8,
-      "pickrate": 1.26,
-      "banrate": 0
-    },
-    "caitlyn": {
-      "games": 37,
-      "winrate": 51.4,
-      "pickrate": 1.06,
-      "banrate": 0
-    },
-    "rell": {
-      "games": 33,
-      "winrate": 63.6,
-      "pickrate": 0.94,
-      "banrate": 0
-    },
-    "darius": {
-      "games": 27,
-      "winrate": 59.3,
-      "pickrate": 0.77,
-      "banrate": 0
-    },
-    "shaco": {
-      "games": 21,
-      "winrate": 71.4,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "jax": {
-      "games": 20,
-      "winrate": 50,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "nidalee": {
-      "games": 17,
-      "winrate": 35.3,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "syndra": {
-      "games": 41,
-      "winrate": 46.3,
-      "pickrate": 1.17,
-      "banrate": 0
-    },
-    "yunara": {
-      "games": 64,
-      "winrate": 51.6,
-      "pickrate": 1.83,
-      "banrate": 0
-    },
-    "lulu": {
-      "games": 60,
-      "winrate": 51.7,
-      "pickrate": 1.71,
-      "banrate": 0
-    },
     "olaf": {
-      "games": 17,
-      "winrate": 52.9,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "briar": {
-      "games": 11,
-      "winrate": 27.3,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "poppy": {
-      "games": 7,
-      "winrate": 85.7,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "trundle": {
-      "games": 8,
-      "winrate": 37.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "fiddlesticks": {
-      "games": 13,
-      "winrate": 23.1,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "alistar": {
-      "games": 26,
-      "winrate": 65.4,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "zed": {
-      "games": 32,
-      "winrate": 50,
-      "pickrate": 0.91,
-      "banrate": 0
-    },
-    "yasuo": {
-      "games": 51,
-      "winrate": 41.2,
-      "pickrate": 1.46,
+      "games": 18,
+      "winrate": 44.4,
+      "pickrate": 0.51,
       "banrate": 0
     },
     "leesin": {
-      "games": 56,
-      "winrate": 53.6,
-      "pickrate": 1.6,
+      "games": 63,
+      "winrate": 49.2,
+      "pickrate": 1.8,
       "banrate": 0
     },
-    "zaahen": {
-      "games": 15,
-      "winrate": 46.7,
-      "pickrate": 0.43,
+    "kassadin": {
+      "games": 18,
+      "winrate": 77.8,
+      "pickrate": 0.51,
       "banrate": 0
     },
-    "lillia": {
+    "cassiopeia": {
+      "games": 14,
+      "winrate": 64.3,
+      "pickrate": 0.4,
+      "banrate": 0
+    },
+    "janna": {
+      "games": 44,
+      "winrate": 50,
+      "pickrate": 1.26,
+      "banrate": 0
+    },
+    "sejuani": {
+      "games": 6,
+      "winrate": 50,
+      "pickrate": 0.17,
+      "banrate": 0
+    },
+    "briar": {
+      "games": 10,
+      "winrate": 40,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "brand": {
+      "games": 8,
+      "winrate": 87.5,
+      "pickrate": 0.23,
+      "banrate": 0
+    },
+    "ashe": {
       "games": 17,
       "winrate": 47.1,
       "pickrate": 0.49,
       "banrate": 0
     },
-    "akshan": {
-      "games": 13,
-      "winrate": 46.2,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "kalista": {
-      "games": 37,
-      "winrate": 48.6,
-      "pickrate": 1.06,
-      "banrate": 0
-    },
-    "braum": {
-      "games": 19,
-      "winrate": 57.9,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "locke": {
-      "games": 38,
-      "winrate": 47.4,
-      "pickrate": 1.09,
-      "banrate": 0
-    },
-    "viego": {
-      "games": 30,
-      "winrate": 56.7,
-      "pickrate": 0.86,
-      "banrate": 0
-    },
-    "swain": {
-      "games": 13,
-      "winrate": 61.5,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "rengar": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "leblanc": {
-      "games": 18,
-      "winrate": 33.3,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "xayah": {
-      "games": 14,
-      "winrate": 64.3,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "blitzcrank": {
-      "games": 18,
-      "winrate": 55.6,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "ornn": {
-      "games": 20,
-      "winrate": 30,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "vi": {
-      "games": 13,
-      "winrate": 38.5,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "ahri": {
-      "games": 45,
-      "winrate": 55.6,
-      "pickrate": 1.29,
-      "banrate": 0
-    },
-    "kogmaw": {
-      "games": 18,
-      "winrate": 50,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "ziggs": {
-      "games": 12,
-      "winrate": 33.3,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "teemo": {
-      "games": 12,
-      "winrate": 41.7,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "naafiri": {
-      "games": 17,
-      "winrate": 35.3,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "twistedfate": {
-      "games": 22,
-      "winrate": 40.9,
-      "pickrate": 0.63,
-      "banrate": 0
-    },
-    "jhin": {
-      "games": 47,
-      "winrate": 44.7,
-      "pickrate": 1.34,
-      "banrate": 0
-    },
-    "janna": {
-      "games": 41,
-      "winrate": 51.2,
-      "pickrate": 1.17,
-      "banrate": 0
-    },
-    "malphite": {
+    "seraphine": {
       "games": 23,
-      "winrate": 56.5,
+      "winrate": 47.8,
       "pickrate": 0.66,
       "banrate": 0
     },
-    "quinn": {
-      "games": 14,
-      "winrate": 57.1,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "veigar": {
-      "games": 19,
-      "winrate": 47.4,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "aurelionsol": {
-      "games": 10,
-      "winrate": 60,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "nami": {
-      "games": 28,
-      "winrate": 46.4,
-      "pickrate": 0.8,
-      "banrate": 0
-    },
-    "elise": {
-      "games": 25,
-      "winrate": 36,
-      "pickrate": 0.71,
-      "banrate": 0
-    },
-    "khazix": {
-      "games": 28,
-      "winrate": 50,
-      "pickrate": 0.8,
-      "banrate": 0
-    },
-    "viktor": {
-      "games": 57,
-      "winrate": 43.9,
-      "pickrate": 1.63,
-      "banrate": 0
-    },
-    "ezreal": {
-      "games": 40,
-      "winrate": 45,
-      "pickrate": 1.14,
-      "banrate": 0
-    },
-    "karma": {
-      "games": 33,
-      "winrate": 51.5,
-      "pickrate": 0.94,
-      "banrate": 0
-    },
-    "zeri": {
-      "games": 36,
-      "winrate": 69.4,
-      "pickrate": 1.03,
-      "banrate": 0
-    },
-    "ambessa": {
-      "games": 22,
-      "winrate": 40.9,
-      "pickrate": 0.63,
-      "banrate": 0
-    },
-    "kled": {
-      "games": 11,
-      "winrate": 90.9,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "hecarim": {
-      "games": 30,
-      "winrate": 73.3,
-      "pickrate": 0.86,
-      "banrate": 0
-    },
-    "sett": {
-      "games": 15,
-      "winrate": 53.3,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "diana": {
-      "games": 15,
-      "winrate": 60,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "galio": {
-      "games": 24,
-      "winrate": 45.8,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "missfortune": {
-      "games": 9,
-      "winrate": 44.4,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "rakan": {
-      "games": 27,
-      "winrate": 40.7,
-      "pickrate": 0.77,
-      "banrate": 0
-    },
-    "irelia": {
-      "games": 30,
-      "winrate": 46.7,
-      "pickrate": 0.86,
-      "banrate": 0
-    },
-    "ashe": {
-      "games": 14,
-      "winrate": 64.3,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "milio": {
-      "games": 26,
-      "winrate": 50,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "sejuani": {
-      "games": 8,
-      "winrate": 12.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "lux": {
-      "games": 19,
-      "winrate": 63.2,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "urgot": {
-      "games": 20,
-      "winrate": 60,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "evelynn": {
-      "games": 6,
-      "winrate": 66.7,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "kassadin": {
-      "games": 16,
-      "winrate": 87.5,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "maokai": {
-      "games": 11,
-      "winrate": 63.6,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "shen": {
-      "games": 20,
-      "winrate": 35,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "wukong": {
-      "games": 27,
-      "winrate": 55.6,
-      "pickrate": 0.77,
-      "banrate": 0
-    },
-    "aphelios": {
-      "games": 24,
-      "winrate": 29.2,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "renekton": {
-      "games": 21,
-      "winrate": 42.9,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "qiyana": {
-      "games": 53,
-      "winrate": 58.5,
-      "pickrate": 1.51,
-      "banrate": 0
-    },
-    "gwen": {
-      "games": 17,
-      "winrate": 35.3,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "aatrox": {
-      "games": 28,
-      "winrate": 39.3,
-      "pickrate": 0.8,
-      "banrate": 0
-    },
-    "drmundo": {
-      "games": 9,
-      "winrate": 44.4,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "sivir": {
-      "games": 16,
-      "winrate": 43.8,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "senna": {
-      "games": 16,
-      "winrate": 25,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "gangplank": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "tristana": {
+    "yone": {
       "games": 48,
-      "winrate": 62.5,
+      "winrate": 58.3,
       "pickrate": 1.37,
       "banrate": 0
     },
-    "cassiopeia": {
-      "games": 21,
-      "winrate": 42.9,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "masteryi": {
-      "games": 15,
-      "winrate": 46.7,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "taric": {
-      "games": 6,
-      "winrate": 50,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "karthus": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "soraka": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "kennen": {
-      "games": 12,
-      "winrate": 41.7,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "graves": {
-      "games": 21,
-      "winrate": 38.1,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "bard": {
-      "games": 30,
-      "winrate": 50,
-      "pickrate": 0.86,
-      "banrate": 0
-    },
-    "pyke": {
-      "games": 17,
-      "winrate": 58.8,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "sion": {
-      "games": 16,
-      "winrate": 56.3,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "skarner": {
-      "games": 13,
-      "winrate": 30.8,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "lucian": {
-      "games": 39,
-      "winrate": 43.6,
-      "pickrate": 1.11,
-      "banrate": 0
-    },
-    "zyra": {
-      "games": 11,
-      "winrate": 54.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "fiora": {
-      "games": 21,
-      "winrate": 47.6,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "jinx": {
-      "games": 33,
-      "winrate": 48.5,
-      "pickrate": 0.94,
-      "banrate": 0
-    },
-    "velkoz": {
-      "games": 17,
-      "winrate": 52.9,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "nautilus": {
-      "games": 40,
-      "winrate": 55,
-      "pickrate": 1.14,
-      "banrate": 0
-    },
-    "talon": {
-      "games": 36,
-      "winrate": 55.6,
-      "pickrate": 1.03,
-      "banrate": 0
-    },
-    "taliyah": {
-      "games": 16,
-      "winrate": 50,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "xerath": {
-      "games": 11,
-      "winrate": 81.8,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "rammus": {
-      "games": 4,
-      "winrate": 25,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "azir": {
-      "games": 5,
-      "winrate": 60,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "gnar": {
-      "games": 16,
-      "winrate": 31.3,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "zoe": {
-      "games": 20,
-      "winrate": 45,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "tryndamere": {
-      "games": 7,
-      "winrate": 57.1,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "yuumi": {
-      "games": 20,
-      "winrate": 50,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "akali": {
-      "games": 32,
-      "winrate": 68.8,
-      "pickrate": 0.91,
-      "banrate": 0
-    },
-    "seraphine": {
-      "games": 15,
-      "winrate": 20,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "twitch": {
-      "games": 13,
-      "winrate": 46.2,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "zac": {
-      "games": 9,
-      "winrate": 66.7,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "ryze": {
-      "games": 10,
-      "winrate": 50,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "kayle": {
+    "shaco": {
       "games": 14,
       "winrate": 35.7,
       "pickrate": 0.4,
       "banrate": 0
     },
-    "ksante": {
-      "games": 13,
-      "winrate": 61.5,
-      "pickrate": 0.37,
+    "lux": {
+      "games": 31,
+      "winrate": 38.7,
+      "pickrate": 0.89,
+      "banrate": 0
+    },
+    "yunara": {
+      "games": 71,
+      "winrate": 60.6,
+      "pickrate": 2.03,
+      "banrate": 0
+    },
+    "bard": {
+      "games": 38,
+      "winrate": 47.4,
+      "pickrate": 1.09,
+      "banrate": 0
+    },
+    "masteryi": {
+      "games": 11,
+      "winrate": 36.4,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "khazix": {
+      "games": 44,
+      "winrate": 54.5,
+      "pickrate": 1.26,
+      "banrate": 0
+    },
+    "syndra": {
+      "games": 42,
+      "winrate": 57.1,
+      "pickrate": 1.2,
+      "banrate": 0
+    },
+    "aphelios": {
+      "games": 39,
+      "winrate": 46.2,
+      "pickrate": 1.11,
+      "banrate": 0
+    },
+    "lulu": {
+      "games": 40,
+      "winrate": 50,
+      "pickrate": 1.14,
+      "banrate": 0
+    },
+    "lucian": {
+      "games": 37,
+      "winrate": 48.6,
+      "pickrate": 1.06,
+      "banrate": 0
+    },
+    "ambessa": {
+      "games": 36,
+      "winrate": 44.4,
+      "pickrate": 1.03,
+      "banrate": 0
+    },
+    "locke": {
+      "games": 37,
+      "winrate": 35.1,
+      "pickrate": 1.06,
+      "banrate": 0
+    },
+    "aurelionsol": {
+      "games": 9,
+      "winrate": 55.6,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "nami": {
+      "games": 37,
+      "winrate": 48.6,
+      "pickrate": 1.06,
+      "banrate": 0
+    },
+    "camille": {
+      "games": 25,
+      "winrate": 40,
+      "pickrate": 0.71,
+      "banrate": 0
+    },
+    "akali": {
+      "games": 38,
+      "winrate": 44.7,
+      "pickrate": 1.09,
+      "banrate": 0
+    },
+    "alistar": {
+      "games": 33,
+      "winrate": 60.6,
+      "pickrate": 0.94,
+      "banrate": 0
+    },
+    "annie": {
+      "games": 6,
+      "winrate": 33.3,
+      "pickrate": 0.17,
+      "banrate": 0
+    },
+    "viktor": {
+      "games": 49,
+      "winrate": 53.1,
+      "pickrate": 1.4,
+      "banrate": 0
+    },
+    "renekton": {
+      "games": 31,
+      "winrate": 61.3,
+      "pickrate": 0.89,
+      "banrate": 0
+    },
+    "naafiri": {
+      "games": 17,
+      "winrate": 70.6,
+      "pickrate": 0.49,
+      "banrate": 0
+    },
+    "jinx": {
+      "games": 32,
+      "winrate": 56.3,
+      "pickrate": 0.91,
+      "banrate": 0
+    },
+    "nidalee": {
+      "games": 26,
+      "winrate": 50,
+      "pickrate": 0.74,
+      "banrate": 0
+    },
+    "kalista": {
+      "games": 41,
+      "winrate": 31.7,
+      "pickrate": 1.17,
+      "banrate": 0
+    },
+    "fiddlesticks": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "neeko": {
+      "games": 7,
+      "winrate": 42.9,
+      "pickrate": 0.2,
+      "banrate": 0
+    },
+    "tristana": {
+      "games": 51,
+      "winrate": 62.7,
+      "pickrate": 1.46,
+      "banrate": 0
+    },
+    "gragas": {
+      "games": 17,
+      "winrate": 52.9,
+      "pickrate": 0.49,
+      "banrate": 0
+    },
+    "qiyana": {
+      "games": 61,
+      "winrate": 57.4,
+      "pickrate": 1.74,
+      "banrate": 0
+    },
+    "katarina": {
+      "games": 25,
+      "winrate": 20,
+      "pickrate": 0.71,
+      "banrate": 0
+    },
+    "amumu": {
+      "games": 5,
+      "winrate": 20,
+      "pickrate": 0.14,
+      "banrate": 0
+    },
+    "sylas": {
+      "games": 54,
+      "winrate": 51.9,
+      "pickrate": 1.54,
+      "banrate": 0
+    },
+    "viego": {
+      "games": 24,
+      "winrate": 66.7,
+      "pickrate": 0.69,
+      "banrate": 0
+    },
+    "braum": {
+      "games": 20,
+      "winrate": 75,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "garen": {
+      "games": 31,
+      "winrate": 45.2,
+      "pickrate": 0.89,
+      "banrate": 0
+    },
+    "jarvaniv": {
+      "games": 28,
+      "winrate": 46.4,
+      "pickrate": 0.8,
+      "banrate": 0
+    },
+    "soraka": {
+      "games": 23,
+      "winrate": 43.5,
+      "pickrate": 0.66,
+      "banrate": 0
+    },
+    "wukong": {
+      "games": 20,
+      "winrate": 60,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "yasuo": {
+      "games": 62,
+      "winrate": 43.5,
+      "pickrate": 1.77,
+      "banrate": 0
+    },
+    "elise": {
+      "games": 29,
+      "winrate": 44.8,
+      "pickrate": 0.83,
+      "banrate": 0
+    },
+    "ahri": {
+      "games": 41,
+      "winrate": 53.7,
+      "pickrate": 1.17,
+      "banrate": 0
+    },
+    "taliyah": {
+      "games": 31,
+      "winrate": 54.8,
+      "pickrate": 0.89,
+      "banrate": 0
+    },
+    "jhin": {
+      "games": 41,
+      "winrate": 46.3,
+      "pickrate": 1.17,
+      "banrate": 0
+    },
+    "milio": {
+      "games": 18,
+      "winrate": 55.6,
+      "pickrate": 0.51,
+      "banrate": 0
+    },
+    "jayce": {
+      "games": 43,
+      "winrate": 46.5,
+      "pickrate": 1.23,
+      "banrate": 0
+    },
+    "lillia": {
+      "games": 20,
+      "winrate": 35,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "thresh": {
+      "games": 42,
+      "winrate": 54.8,
+      "pickrate": 1.2,
+      "banrate": 0
+    },
+    "vayne": {
+      "games": 8,
+      "winrate": 62.5,
+      "pickrate": 0.23,
+      "banrate": 0
+    },
+    "galio": {
+      "games": 19,
+      "winrate": 52.6,
+      "pickrate": 0.54,
+      "banrate": 0
+    },
+    "kaisa": {
+      "games": 39,
+      "winrate": 43.6,
+      "pickrate": 1.11,
+      "banrate": 0
+    },
+    "nautilus": {
+      "games": 45,
+      "winrate": 64.4,
+      "pickrate": 1.29,
+      "banrate": 0
+    },
+    "fizz": {
+      "games": 16,
+      "winrate": 56.3,
+      "pickrate": 0.46,
+      "banrate": 0
+    },
+    "vladimir": {
+      "games": 29,
+      "winrate": 48.3,
+      "pickrate": 0.83,
+      "banrate": 0
+    },
+    "leona": {
+      "games": 26,
+      "winrate": 53.8,
+      "pickrate": 0.74,
+      "banrate": 0
+    },
+    "smolder": {
+      "games": 3,
+      "winrate": 66.7,
+      "pickrate": 0.09,
+      "banrate": 0
+    },
+    "aurora": {
+      "games": 22,
+      "winrate": 63.6,
+      "pickrate": 0.63,
       "banrate": 0
     },
     "kayn": {
+      "games": 16,
+      "winrate": 62.5,
+      "pickrate": 0.46,
+      "banrate": 0
+    },
+    "riven": {
+      "games": 10,
+      "winrate": 60,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "caitlyn": {
+      "games": 42,
+      "winrate": 38.1,
+      "pickrate": 1.2,
+      "banrate": 0
+    },
+    "karma": {
+      "games": 31,
+      "winrate": 32.3,
+      "pickrate": 0.89,
+      "banrate": 0
+    },
+    "akshan": {
+      "games": 13,
+      "winrate": 53.8,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "morgana": {
+      "games": 11,
+      "winrate": 63.6,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "leblanc": {
+      "games": 26,
+      "winrate": 46.2,
+      "pickrate": 0.74,
+      "banrate": 0
+    },
+    "diana": {
+      "games": 14,
+      "winrate": 57.1,
+      "pickrate": 0.4,
+      "banrate": 0
+    },
+    "vex": {
+      "games": 7,
+      "winrate": 100,
+      "pickrate": 0.2,
+      "banrate": 0
+    },
+    "malphite": {
+      "games": 23,
+      "winrate": 52.2,
+      "pickrate": 0.66,
+      "banrate": 0
+    },
+    "sion": {
+      "games": 19,
+      "winrate": 52.6,
+      "pickrate": 0.54,
+      "banrate": 0
+    },
+    "singed": {
+      "games": 10,
+      "winrate": 70,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "udyr": {
+      "games": 4,
+      "winrate": 25,
+      "pickrate": 0.11,
+      "banrate": 0
+    },
+    "irelia": {
+      "games": 25,
+      "winrate": 48,
+      "pickrate": 0.71,
+      "banrate": 0
+    },
+    "draven": {
+      "games": 20,
+      "winrate": 60,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "pyke": {
+      "games": 22,
+      "winrate": 54.5,
+      "pickrate": 0.63,
+      "banrate": 0
+    },
+    "quinn": {
+      "games": 9,
+      "winrate": 66.7,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "nocturne": {
+      "games": 5,
+      "winrate": 40,
+      "pickrate": 0.14,
+      "banrate": 0
+    },
+    "rakan": {
+      "games": 23,
+      "winrate": 47.8,
+      "pickrate": 0.66,
+      "banrate": 0
+    },
+    "tryndamere": {
+      "games": 8,
+      "winrate": 62.5,
+      "pickrate": 0.23,
+      "banrate": 0
+    },
+    "rell": {
+      "games": 32,
+      "winrate": 31.3,
+      "pickrate": 0.91,
+      "banrate": 0
+    },
+    "ksante": {
+      "games": 17,
+      "winrate": 52.9,
+      "pickrate": 0.49,
+      "banrate": 0
+    },
+    "skarner": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "yorick": {
+      "games": 6,
+      "winrate": 16.7,
+      "pickrate": 0.17,
+      "banrate": 0
+    },
+    "talon": {
+      "games": 36,
+      "winrate": 38.9,
+      "pickrate": 1.03,
+      "banrate": 0
+    },
+    "zoe": {
+      "games": 17,
+      "winrate": 76.5,
+      "pickrate": 0.49,
+      "banrate": 0
+    },
+    "samira": {
+      "games": 7,
+      "winrate": 57.1,
+      "pickrate": 0.2,
+      "banrate": 0
+    },
+    "zed": {
+      "games": 46,
+      "winrate": 47.8,
+      "pickrate": 1.31,
+      "banrate": 0
+    },
+    "nasus": {
+      "games": 13,
+      "winrate": 46.2,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "shyvana": {
+      "games": 14,
+      "winrate": 50,
+      "pickrate": 0.4,
+      "banrate": 0
+    },
+    "ezreal": {
+      "games": 45,
+      "winrate": 53.3,
+      "pickrate": 1.29,
+      "banrate": 0
+    },
+    "pantheon": {
+      "games": 20,
+      "winrate": 55,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "graves": {
+      "games": 32,
+      "winrate": 62.5,
+      "pickrate": 0.91,
+      "banrate": 0
+    },
+    "xayah": {
+      "games": 20,
+      "winrate": 70,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "malzahar": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "kogmaw": {
+      "games": 10,
+      "winrate": 20,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "nunuwillump": {
+      "games": 8,
+      "winrate": 37.5,
+      "pickrate": 0.23,
+      "banrate": 0
+    },
+    "senna": {
+      "games": 15,
+      "winrate": 53.3,
+      "pickrate": 0.43,
+      "banrate": 0
+    },
+    "kennen": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "belveth": {
+      "games": 1,
+      "winrate": 100,
+      "pickrate": 0.03,
+      "banrate": 0
+    },
+    "twitch": {
       "games": 15,
       "winrate": 60,
       "pickrate": 0.43,
       "banrate": 0
     },
-    "jarvaniv": {
+    "aatrox": {
+      "games": 24,
+      "winrate": 50,
+      "pickrate": 0.69,
+      "banrate": 0
+    },
+    "zac": {
+      "games": 16,
+      "winrate": 43.8,
+      "pickrate": 0.46,
+      "banrate": 0
+    },
+    "corki": {
+      "games": 7,
+      "winrate": 57.1,
+      "pickrate": 0.2,
+      "banrate": 0
+    },
+    "darius": {
+      "games": 16,
+      "winrate": 62.5,
+      "pickrate": 0.46,
+      "banrate": 0
+    },
+    "ornn": {
+      "games": 13,
+      "winrate": 61.5,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "mordekaiser": {
+      "games": 9,
+      "winrate": 66.7,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "chogath": {
+      "games": 27,
+      "winrate": 59.3,
+      "pickrate": 0.77,
+      "banrate": 0
+    },
+    "twistedfate": {
+      "games": 15,
+      "winrate": 40,
+      "pickrate": 0.43,
+      "banrate": 0
+    },
+    "varus": {
+      "games": 21,
+      "winrate": 38.1,
+      "pickrate": 0.6,
+      "banrate": 0
+    },
+    "zyra": {
+      "games": 10,
+      "winrate": 50,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "veigar": {
+      "games": 24,
+      "winrate": 25,
+      "pickrate": 0.69,
+      "banrate": 0
+    },
+    "ekko": {
+      "games": 29,
+      "winrate": 58.6,
+      "pickrate": 0.83,
+      "banrate": 0
+    },
+    "ziggs": {
+      "games": 10,
+      "winrate": 30,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "orianna": {
+      "games": 14,
+      "winrate": 50,
+      "pickrate": 0.4,
+      "banrate": 0
+    },
+    "zeri": {
       "games": 22,
-      "winrate": 40.9,
+      "winrate": 36.4,
       "pickrate": 0.63,
+      "banrate": 0
+    },
+    "ryze": {
+      "games": 19,
+      "winrate": 57.9,
+      "pickrate": 0.54,
+      "banrate": 0
+    },
+    "zaahen": {
+      "games": 17,
+      "winrate": 41.2,
+      "pickrate": 0.49,
+      "banrate": 0
+    },
+    "tahmkench": {
+      "games": 1,
+      "winrate": 0,
+      "pickrate": 0.03,
+      "banrate": 0
+    },
+    "blitzcrank": {
+      "games": 24,
+      "winrate": 75,
+      "pickrate": 0.69,
+      "banrate": 0
+    },
+    "lissandra": {
+      "games": 11,
+      "winrate": 63.6,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "gnar": {
+      "games": 14,
+      "winrate": 50,
+      "pickrate": 0.4,
+      "banrate": 0
+    },
+    "trundle": {
+      "games": 3,
+      "winrate": 0,
+      "pickrate": 0.09,
+      "banrate": 0
+    },
+    "shen": {
+      "games": 22,
+      "winrate": 59.1,
+      "pickrate": 0.63,
+      "banrate": 0
+    },
+    "missfortune": {
+      "games": 8,
+      "winrate": 37.5,
+      "pickrate": 0.23,
       "banrate": 0
     },
     "zilean": {
@@ -785,262 +803,244 @@
       "pickrate": 0.37,
       "banrate": 0
     },
-    "vayne": {
-      "games": 7,
-      "winrate": 57.1,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "nilah": {
-      "games": 11,
-      "winrate": 63.6,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "camille": {
-      "games": 28,
-      "winrate": 35.7,
-      "pickrate": 0.8,
-      "banrate": 0
-    },
     "hwei": {
+      "games": 13,
+      "winrate": 30.8,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "hecarim": {
+      "games": 23,
+      "winrate": 30.4,
+      "pickrate": 0.66,
+      "banrate": 0
+    },
+    "yuumi": {
+      "games": 12,
+      "winrate": 25,
+      "pickrate": 0.34,
+      "banrate": 0
+    },
+    "teemo": {
+      "games": 9,
+      "winrate": 44.4,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "maokai": {
+      "games": 12,
+      "winrate": 58.3,
+      "pickrate": 0.34,
+      "banrate": 0
+    },
+    "fiora": {
       "games": 23,
       "winrate": 43.5,
       "pickrate": 0.66,
       "banrate": 0
     },
-    "nocturne": {
-      "games": 9,
-      "winrate": 33.3,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "sona": {
-      "games": 17,
-      "winrate": 41.2,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "vladimir": {
-      "games": 26,
-      "winrate": 53.8,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "gragas": {
-      "games": 23,
-      "winrate": 56.5,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "lissandra": {
-      "games": 10,
-      "winrate": 70,
-      "pickrate": 0.29,
+    "swain": {
+      "games": 8,
+      "winrate": 50,
+      "pickrate": 0.23,
       "banrate": 0
     },
     "renataglasc": {
-      "games": 7,
-      "winrate": 28.6,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "yorick": {
-      "games": 6,
-      "winrate": 66.7,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "morgana": {
-      "games": 10,
-      "winrate": 70,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "shyvana": {
-      "games": 13,
-      "winrate": 23.1,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "pantheon": {
-      "games": 24,
-      "winrate": 62.5,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "ivern": {
-      "games": 9,
-      "winrate": 44.4,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "xinzhao": {
       "games": 11,
       "winrate": 36.4,
       "pickrate": 0.31,
       "banrate": 0
     },
-    "orianna": {
-      "games": 14,
-      "winrate": 42.9,
-      "pickrate": 0.4,
+    "anivia": {
+      "games": 12,
+      "winrate": 33.3,
+      "pickrate": 0.34,
       "banrate": 0
     },
-    "malzahar": {
+    "gangplank": {
+      "games": 15,
+      "winrate": 53.3,
+      "pickrate": 0.43,
+      "banrate": 0
+    },
+    "rengar": {
+      "games": 15,
+      "winrate": 46.7,
+      "pickrate": 0.43,
+      "banrate": 0
+    },
+    "evelynn": {
+      "games": 2,
+      "winrate": 50,
+      "pickrate": 0.06,
+      "banrate": 0
+    },
+    "ivern": {
+      "games": 7,
+      "winrate": 71.4,
+      "pickrate": 0.2,
+      "banrate": 0
+    },
+    "reksai": {
+      "games": 9,
+      "winrate": 55.6,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "jax": {
+      "games": 21,
+      "winrate": 42.9,
+      "pickrate": 0.6,
+      "banrate": 0
+    },
+    "vi": {
+      "games": 13,
+      "winrate": 53.8,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "gwen": {
+      "games": 20,
+      "winrate": 40,
+      "pickrate": 0.57,
+      "banrate": 0
+    },
+    "xinzhao": {
+      "games": 9,
+      "winrate": 55.6,
+      "pickrate": 0.26,
+      "banrate": 0
+    },
+    "mel": {
+      "games": 10,
+      "winrate": 30,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "warwick": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "kayle": {
+      "games": 12,
+      "winrate": 41.7,
+      "pickrate": 0.34,
+      "banrate": 0
+    },
+    "volibear": {
+      "games": 11,
+      "winrate": 27.3,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "xerath": {
+      "games": 15,
+      "winrate": 33.3,
+      "pickrate": 0.43,
+      "banrate": 0
+    },
+    "karthus": {
+      "games": 13,
+      "winrate": 69.2,
+      "pickrate": 0.37,
+      "banrate": 0
+    },
+    "sivir": {
+      "games": 10,
+      "winrate": 70,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "urgot": {
+      "games": 10,
+      "winrate": 30,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "velkoz": {
+      "games": 6,
+      "winrate": 50,
+      "pickrate": 0.17,
+      "banrate": 0
+    },
+    "poppy": {
+      "games": 11,
+      "winrate": 54.5,
+      "pickrate": 0.31,
+      "banrate": 0
+    },
+    "rumble": {
+      "games": 10,
+      "winrate": 60,
+      "pickrate": 0.29,
+      "banrate": 0
+    },
+    "illaoi": {
       "games": 5,
       "winrate": 80,
       "pickrate": 0.14,
       "banrate": 0
     },
-    "nunuwillump": {
-      "games": 9,
-      "winrate": 55.6,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "fizz": {
-      "games": 15,
-      "winrate": 46.7,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "volibear": {
-      "games": 4,
-      "winrate": 50,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "amumu": {
-      "games": 6,
-      "winrate": 66.7,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "garen": {
-      "games": 19,
-      "winrate": 63.2,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "samira": {
-      "games": 9,
-      "winrate": 55.6,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "rumble": {
-      "games": 4,
-      "winrate": 25,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "kindred": {
-      "games": 1,
-      "winrate": 100,
-      "pickrate": 0.03,
-      "banrate": 0
-    },
-    "neeko": {
-      "games": 5,
-      "winrate": 60,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "nasus": {
-      "games": 15,
-      "winrate": 46.7,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "mordekaiser": {
-      "games": 4,
-      "winrate": 75,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "belveth": {
+    "kled": {
       "games": 7,
-      "winrate": 28.6,
+      "winrate": 42.9,
       "pickrate": 0.2,
       "banrate": 0
     },
-    "singed": {
-      "games": 8,
-      "winrate": 50,
-      "pickrate": 0.23,
+    "taric": {
+      "games": 3,
+      "winrate": 33.3,
+      "pickrate": 0.09,
       "banrate": 0
     },
-    "mel": {
-      "games": 6,
-      "winrate": 50,
-      "pickrate": 0.17,
+    "sett": {
+      "games": 5,
+      "winrate": 60,
+      "pickrate": 0.14,
       "banrate": 0
     },
-    "varus": {
-      "games": 14,
-      "winrate": 42.9,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "annie": {
-      "games": 4,
-      "winrate": 75,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "corki": {
+    "nilah": {
       "games": 9,
-      "winrate": 44.4,
+      "winrate": 33.3,
       "pickrate": 0.26,
       "banrate": 0
     },
-    "vex": {
-      "games": 5,
-      "winrate": 40,
-      "pickrate": 0.14,
+    "azir": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
       "banrate": 0
     },
-    "brand": {
-      "games": 3,
+    "sona": {
+      "games": 15,
       "winrate": 33.3,
-      "pickrate": 0.09,
+      "pickrate": 0.43,
       "banrate": 0
     },
-    "warwick": {
-      "games": 8,
-      "winrate": 62.5,
-      "pickrate": 0.23,
+    "drmundo": {
+      "games": 7,
+      "winrate": 42.9,
+      "pickrate": 0.2,
       "banrate": 0
     },
-    "tahmkench": {
-      "games": 5,
-      "winrate": 60,
-      "pickrate": 0.14,
+    "kindred": {
+      "games": 2,
+      "winrate": 50,
+      "pickrate": 0.06,
       "banrate": 0
     },
-    "udyr": {
-      "games": 8,
-      "winrate": 62.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "illaoi": {
-      "games": 5,
-      "winrate": 60,
-      "pickrate": 0.14,
+    "rammus": {
+      "games": 1,
+      "winrate": 0,
+      "pickrate": 0.03,
       "banrate": 0
     },
     "heimerdinger": {
-      "games": 6,
-      "winrate": 33.3,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "smolder": {
-      "games": 3,
-      "winrate": 33.3,
-      "pickrate": 0.09,
+      "games": 4,
+      "winrate": 50,
+      "pickrate": 0.11,
       "banrate": 0
     }
   }
