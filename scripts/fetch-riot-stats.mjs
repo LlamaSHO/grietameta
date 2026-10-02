@@ -3,16 +3,22 @@
    GrietaMeta — fetch-riot-stats.mjs
    ============================================================================
    Descarga partidas clasificatorias recientes de jugadores de Elo alto (EUW)
-   usando la API oficial de Riot Games, y calcula winrate / pickrate / banrate
-   reales por campeón. El resultado se guarda en champion-stats.json, en la
-   raíz del repo, que index.html carga para sustituir los datos simulados.
+   usando la API oficial de Riot Games, y calcula por campeón:
+     - winrate / pickrate / banrate
+     - build de objetos real (inicial, botas, núcleo en orden de compra,
+       situacionales), usando el Timeline de cada partida (eventos de compra
+       con marca de tiempo)
+     - runas reales más usadas (keystone + árbol principal + árbol secundario)
+   El resultado se guarda en champion-stats.json, en la raíz del repo, que
+   index.html carga para sustituir los datos simulados.
 
    IMPORTANTE — limitaciones honestas de este enfoque:
    - No es el 100% de las partidas del juego (eso exige una "Production Key"
      aprobada por Riot). Es una MUESTRA de partidas Diamante+ de EUW.
    - Con una clave personal (límite típico: 100 peticiones / 2 min) este
-     script tarda varios minutos. Está pensado para ejecutarse por un cron
-     (GitHub Actions), no en cada visita a la web.
+     script tarda bastante (el Timeline duplica las peticiones por partida).
+     Está pensado para ejecutarse por un cron (GitHub Actions), no en cada
+     visita a la web.
    - Nunca expongas RIOT_API_KEY en el frontend. Este script solo corre en
      GitHub Actions / tu máquina, nunca en el navegador.
 
@@ -48,6 +54,10 @@ const MATCHES_PER_SUMMONER = Number(process.env.MATCHES_PER_SUMMONER || 3);
 const MAX_MATCHES = Number(process.env.MAX_MATCHES || 350);
 const REQUEST_DELAY_MS = Number(process.env.REQUEST_DELAY_MS || 1300);
 const RANKED_SOLO_QUEUE = 420;
+
+// Mismo parche que usa index.html para las imágenes — mantenlos sincronizados.
+const DDRAGON_VERSION = "16.19.1";
+const DDRAGON_LOCALE = "es_ES"; // nombres de objetos/runas en español, como el resto del sitio
 
 // El campo "championName" que devuelve la API de Riot coincide con el id de
 // Data Dragon (p. ej. "Belveth", "Chogath", "MonkeyKing"...), que a su vez es
@@ -153,9 +163,193 @@ async function getMatchIds(puuids) {
   return [...matchIdSet].slice(0, MAX_MATCHES);
 }
 
-async function aggregateStats(matchIds) {
-  console.log(`Analizando ${matchIds.length} partidas únicas…`);
+function getTimeline(matchId) {
+  return riotFetch(`${REGION_HOST}/lol/match/v5/matches/${matchId}/timeline`);
+}
+
+/* ------------------------------------------------------------------------ *
+   Datos estáticos de Data Dragon (objetos y runas) — no cuentan para el
+   límite de peticiones de Riot, son un CDN público aparte.
+ * ------------------------------------------------------------------------ */
+async function loadItemAndRuneData() {
+  console.log("Descargando catálogo de objetos y runas (Data Dragon)…");
+  const [itemRes, runesRes] = await Promise.all([
+    fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/${DDRAGON_LOCALE}/item.json`),
+    fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/${DDRAGON_LOCALE}/runesReforged.json`),
+  ]);
+  const itemJson = await itemRes.json();
+  const runesJson = await runesRes.json();
+
+  // items[id] -> { name, isBoots, isBuildEnd, excluded }
+  // "isBuildEnd": objeto terminado (no se puede mejorar más) — así ignoramos
+  // componentes intermedios (p. ej. "Espada larga") y solo contamos lo que
+  // el jugador llevaba puesto de verdad.
+  const items = {};
+  for (const [id, data] of Object.entries(itemJson.data || {})) {
+    const tags = data.tags || [];
+    const isConsumableOrTrinket = tags.includes("Consumable") || tags.includes("Trinket");
+    const hasFurtherBuild = Array.isArray(data.into) && data.into.length > 0;
+    items[id] = {
+      name: data.name,
+      isBoots: tags.includes("Boots"),
+      isBuildEnd: !hasFurtherBuild && !isConsumableOrTrinket && (data.gold?.total || 0) > 0,
+      excluded: isConsumableOrTrinket,
+    };
+  }
+
+  const runeNames = {}; // perk id -> nombre
+  const treeNames = {}; // árbol id -> nombre
+  for (const tree of runesJson) {
+    treeNames[tree.id] = tree.name;
+    for (const slot of tree.slots || []) {
+      for (const rune of slot.runes || []) {
+        runeNames[rune.id] = rune.name;
+      }
+    }
+  }
+
+  return { items, runeNames, treeNames };
+}
+
+/* ------------------------------------------------------------------------ *
+   Extrae, por participante de una partida, su lista de compras (objeto +
+   marca de tiempo) a partir del Timeline, descontando los ITEM_UNDO
+   (deshacer compra por error de click).
+ * ------------------------------------------------------------------------ */
+function extractPurchases(timeline) {
+  const byParticipant = {};
+  for (const frame of timeline?.info?.frames || []) {
+    for (const ev of frame.events || []) {
+      if (ev.type === "ITEM_PURCHASED") {
+        const list = byParticipant[ev.participantId] || (byParticipant[ev.participantId] = []);
+        list.push({ itemId: String(ev.itemId), timestamp: ev.timestamp });
+      } else if (ev.type === "ITEM_UNDO" && ev.beforeId && !ev.afterId) {
+        // Se deshizo la compra del objeto "beforeId": quitamos la última
+        // compra registrada de ese mismo objeto para este participante.
+        const list = byParticipant[ev.participantId];
+        if (list) {
+          for (let i = list.length - 1; i >= 0; i--) {
+            if (list[i].itemId === String(ev.beforeId)) {
+              list.splice(i, 1);
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+  return byParticipant;
+}
+
+function topEntries(counts, n) {
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, n)
+    .map(([id]) => id);
+}
+
+// Acumula, para un campeón concreto, las compras y runas de una partida.
+function recordBuild(buildStats, siteId, purchases, perks, staticData) {
+  if (!buildStats[siteId]) {
+    buildStats[siteId] = {
+      games: 0,
+      starterCounts: {},
+      bootsCounts: {},
+      itemCounts: {},
+      itemOrderSum: {},
+      runeComboCounts: {},
+    };
+  }
+  const b = buildStats[siteId];
+  b.games++;
+
+  const relevant = purchases
+    .filter((p) => staticData.items[p.itemId] && !staticData.items[p.itemId].excluded)
+    .sort((x, y) => x.timestamp - y.timestamp);
+
+  let coreIndex = 0;
+  for (const p of relevant) {
+    const info = staticData.items[p.itemId];
+    if (!info.isBuildEnd) continue; // solo objetos terminados, no componentes a medias
+
+    if (info.isBoots) {
+      b.bootsCounts[p.itemId] = (b.bootsCounts[p.itemId] || 0) + 1;
+      continue;
+    }
+
+    if (p.timestamp <= 120000) {
+      // Comprado en los primeros 2 minutos: objeto inicial.
+      b.starterCounts[p.itemId] = (b.starterCounts[p.itemId] || 0) + 1;
+    } else {
+      b.itemCounts[p.itemId] = (b.itemCounts[p.itemId] || 0) + 1;
+      b.itemOrderSum[p.itemId] = (b.itemOrderSum[p.itemId] || 0) + coreIndex;
+      coreIndex++;
+    }
+  }
+
+  const primary = perks?.styles?.find((s) => s.description === "primaryStyle");
+  const secondary = perks?.styles?.find((s) => s.description === "subStyle");
+  const keystoneId = primary?.selections?.[0]?.perk;
+  if (keystoneId && primary && secondary) {
+    const comboKey = `${keystoneId}|${primary.style}|${secondary.style}`;
+    b.runeComboCounts[comboKey] = (b.runeComboCounts[comboKey] || 0) + 1;
+  }
+}
+
+// Convierte los contadores acumulados de un campeón en el build final a
+// publicar: inicial, botas, núcleo (en orden real de compra), situacionales
+// y runas más usadas.
+function finalizeBuild(buildStats, siteId, staticData) {
+  const stats = buildStats[siteId];
+  if (!stats || stats.games < 5) return null; // muestra demasiado pequeña para fiarnos
+
+  const itemName = (id) => staticData.items[id]?.name || null;
+
+  const starter = topEntries(stats.starterCounts, 2).map(itemName).filter(Boolean);
+  const [bootsId] = topEntries(stats.bootsCounts, 1);
+  const boots = bootsId ? itemName(bootsId) : null;
+
+  const frequentItems = Object.entries(stats.itemCounts).filter(
+    ([, count]) => count / stats.games >= 0.1 // al menos ~10% de las partidas
+  );
+
+  const coreIds = frequentItems
+    .sort((x, y) => y[1] - x[1])
+    .slice(0, 3)
+    .sort((x, y) => stats.itemOrderSum[x[0]] / x[1] - stats.itemOrderSum[y[0]] / y[1])
+    .map(([id]) => id);
+
+  const situationalIds = frequentItems
+    .filter(([id]) => !coreIds.includes(id))
+    .sort((x, y) => y[1] - x[1])
+    .slice(0, 2)
+    .map(([id]) => id);
+
+  const [topRuneCombo] = Object.entries(stats.runeComboCounts).sort((x, y) => y[1] - x[1]);
+  let runes = null;
+  if (topRuneCombo) {
+    const [keystoneId, primaryTreeId, secondaryTreeId] = topRuneCombo[0].split("|");
+    runes = {
+      keystone: staticData.runeNames[keystoneId] || null,
+      primaryTree: staticData.treeNames[primaryTreeId] || null,
+      secondaryTree: staticData.treeNames[secondaryTreeId] || null,
+    };
+  }
+
+  return {
+    sampleGames: stats.games,
+    starter,
+    boots,
+    core: coreIds.map(itemName).filter(Boolean),
+    situational: situationalIds.map(itemName).filter(Boolean),
+    runes,
+  };
+}
+
+async function aggregateStats(matchIds, staticData) {
+  console.log(`Analizando ${matchIds.length} partidas únicas (con su timeline de compras)…`);
   const stats = {}; // siteId -> { games, wins, bans }
+  const buildStats = {}; // siteId -> acumuladores de objetos/runas
   const bump = (siteId, field, amount = 1) => {
     if (!stats[siteId]) stats[siteId] = { games: 0, wins: 0, bans: 0 };
     stats[siteId][field] += amount;
@@ -163,6 +357,7 @@ async function aggregateStats(matchIds) {
 
   let analyzed = 0;
   let skipped = 0;
+  let timelineFailed = 0;
 
   for (const matchId of matchIds) {
     const match = await riotFetch(`${REGION_HOST}/lol/match/v5/matches/${matchId}`);
@@ -186,35 +381,55 @@ async function aggregateStats(matchIds) {
       }
     }
 
+    // Timeline para objetos/runas (petición extra por partida).
+    const timeline = await getTimeline(matchId);
+    if (timeline?.info?.frames) {
+      const purchasesByParticipant = extractPurchases(timeline);
+      for (const participant of match.info.participants || []) {
+        const siteId = riotChampionNameToSiteId(participant.championName);
+        const purchases = purchasesByParticipant[participant.participantId] || [];
+        recordBuild(buildStats, siteId, purchases, participant.perks, staticData);
+      }
+    } else {
+      timelineFailed++;
+    }
+
     analyzed++;
     if (analyzed % 20 === 0) console.log(`  ${analyzed}/${matchIds.length} partidas procesadas…`);
   }
 
-  console.log(`Partidas analizadas: ${analyzed}, saltadas (no encontradas): ${skipped}`);
-  return { stats, totalGamesSample: analyzed };
+  console.log(`Partidas analizadas: ${analyzed}, saltadas: ${skipped}, sin timeline: ${timelineFailed}`);
+  return { stats, buildStats, totalGamesSample: analyzed };
 }
 
 async function main() {
   const startedAt = Date.now();
+
+  const staticData = await loadItemAndRuneData();
+
   const puuids = await getHighEloPuuids();
   if (!puuids.length) throw new Error("No se obtuvo ningún jugador de Elo alto. Revisa la clave/región.");
 
   const matchIds = await getMatchIds(puuids);
   if (!matchIds.length) throw new Error("No se obtuvo ninguna partida. Revisa la clave/región.");
 
-  const { stats, totalGamesSample } = await aggregateStats(matchIds);
+  const { stats, buildStats, totalGamesSample } = await aggregateStats(matchIds, staticData);
 
   // winrate/pickrate/banrate en % sobre el total de partidas de la muestra.
   // totalSlots = partidas * 10 campeones en juego, para el pickrate.
   const totalSlots = totalGamesSample * 10;
   const champions = {};
+  let withBuild = 0;
   for (const [siteId, s] of Object.entries(stats)) {
     if (s.games === 0) continue;
+    const build = finalizeBuild(buildStats, siteId, staticData);
+    if (build) withBuild++;
     champions[siteId] = {
       games: s.games,
       winrate: +((s.wins / s.games) * 100).toFixed(1),
       pickrate: +((s.games / totalSlots) * 100).toFixed(2),
       banrate: +((s.bans / totalGamesSample) * 100).toFixed(2),
+      build,
     };
   }
 
@@ -230,7 +445,7 @@ async function main() {
   await writeFile(OUTPUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
   const seconds = ((Date.now() - startedAt) / 1000).toFixed(0);
   console.log(`\n✔ Guardado en ${OUTPUT_PATH}`);
-  console.log(`  ${Object.keys(champions).length} campeones con datos, ${totalGamesSample} partidas, ${requestCount} peticiones, ${seconds}s.`);
+  console.log(`  ${Object.keys(champions).length} campeones con datos (${withBuild} con build real), ${totalGamesSample} partidas, ${requestCount} peticiones, ${seconds}s.`);
 }
 
 main().catch((err) => {
