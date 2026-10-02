@@ -1009,6 +1009,25 @@ async function loadRealStats(){
     c.realStats = true;
     const score = (c.winrate-46.5)/8.5*0.55 + (c.pickrate/18)*0.25 + (c.banrate/22.5)*0.2;
     c.tier = tierFromScore(score);
+
+    // El build real solo llega cuando hay suficiente muestra de partidas
+    // (lo decide scripts/fetch-riot-stats.mjs). Si falta algún campo
+    // (p. ej. pocas partidas con timeline válido), se mantiene el dato
+    // ilustrativo de ese campo concreto en vez de dejarlo vacío.
+    const b = r.build;
+    if(b){
+      if(b.starter?.length) c.build.starter = b.starter;
+      if(b.boots) c.build.boots = [b.boots];
+      if(b.core?.length) c.build.core = b.core;
+      if(b.situational?.length) c.build.situational = b.situational;
+      if(b.runes?.keystone && b.runes?.primaryTree){
+        c.runes = {
+          keystone: b.runes.keystone,
+          tree: b.runes.secondaryTree ? `${b.runes.primaryTree} + ${b.runes.secondaryTree}` : b.runes.primaryTree,
+        };
+      }
+      c.buildSampleGames = b.sampleGames;
+    }
   });
 
   const patchTag = document.getElementById("patchTag");
