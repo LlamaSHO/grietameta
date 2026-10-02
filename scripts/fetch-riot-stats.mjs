@@ -6,25 +6,27 @@
    usando la API oficial de Riot Games, y calcula por campeón:
      - winrate / pickrate / banrate
      - build de objetos real (inicial, botas, núcleo en orden de compra,
-       situacionales), usando el Timeline de cada partida (eventos de compra
-       con marca de tiempo)
-     - runas reales más usadas (keystone + árbol principal + árbol secundario)
-   El resultado se guarda en champion-stats.json, en la raíz del repo, que
-   index.html carga para sustituir los datos simulados.
+       situacionales), con el ID de cada objeto (para mostrar su icono)
+     - runas reales más usadas (keystone + árbol principal + árbol secundario),
+       con el icono real de la keystone
 
-   MÍNIMO DE PARTIDAS: un campeón solo se publica si aparece en al menos
-   MIN_GAMES_FOR_STATS partidas de la muestra (y su build, si aparece en al
-   menos MIN_GAMES_FOR_BUILD). Con pocas partidas un winrate no significa nada
-   (4 victorias de 4 = "100%"), así que esos campeones se omiten y la web
-   muestra "sin muestra suficiente" en vez de un número engañoso.
+   ACUMULACIÓN ENTRE EJECUCIONES
+   ------------------------------------------------------------------------
+   Cada ejecución no empieza de cero: carga el estado interno guardado por la
+   ejecución anterior (riot-stats-state.json) y le SUMA las partidas nuevas
+   que encuentra, así la muestra por campeón crece noche a noche dentro del
+   mismo parche. En cuanto detecta que el parche ha cambiado (mirando el
+   "gameVersion" real de las partidas), reinicia el acumulado — mezclar datos
+   de metas distintos daría estadísticas falsas.
+
+   Esto genera DOS archivos:
+     - champion-stats.json      → el público, lo lee index.html
+     - riot-stats-state.json    → el interno, lo necesita la PRÓXIMA ejecución
+       para poder seguir sumando. Debe commitearse igual que el público.
 
    IMPORTANTE — limitaciones honestas de este enfoque:
    - No es el 100% de las partidas del juego (eso exige una "Production Key"
-     aprobada por Riot). Es una MUESTRA de partidas Master+ de EUW.
-   - Con una clave personal (límite típico: 100 peticiones / 2 min) este
-     script tarda bastante (el Timeline duplica las peticiones por partida).
-     Está pensado para ejecutarse por un cron (GitHub Actions), no en cada
-     visita a la web.
+     aprobada por Riot). Es una MUESTRA de partidas Diamante+ de EUW.
    - Nunca expongas RIOT_API_KEY en el frontend. Este script solo corre en
      GitHub Actions / tu máquina, nunca en el navegador.
 
@@ -32,20 +34,19 @@
      RIOT_API_KEY=RGAPI-xxxx node scripts/fetch-riot-stats.mjs
 
    Variables de entorno opcionales (para ajustar coste/duración):
-     SUMMONER_SAMPLE_SIZE   (por defecto 400)  nº de jugadores de los que partimos
+     SUMMONER_SAMPLE_SIZE   (por defecto 120)  nº de jugadores de los que partimos
      MATCHES_PER_SUMMONER   (por defecto 3)    partidas recientes por jugador
-     MAX_MATCHES            (por defecto 1200) tope de partidas únicas a analizar
+     MAX_MATCHES            (por defecto 350)  tope de partidas NUEVAS a analizar esta vez
      REQUEST_DELAY_MS       (por defecto 1300) pausa entre peticiones a Riot
-     MIN_GAMES_FOR_STATS    (por defecto 30)   partidas mínimas para publicar un campeón
-     MIN_GAMES_FOR_BUILD    (por defecto 30)   partidas mínimas para publicar su build
    ============================================================================ */
 
-import { writeFile } from "node:fs/promises";
+import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = path.join(__dirname, "..", "champion-stats.json");
+const STATE_PATH = path.join(__dirname, "..", "riot-stats-state.json");
 
 const RIOT_API_KEY = process.env.RIOT_API_KEY;
 if (!RIOT_API_KEY) {
@@ -57,15 +58,14 @@ if (!RIOT_API_KEY) {
 const PLATFORM_HOST = "https://euw1.api.riotgames.com";
 const REGION_HOST = "https://europe.api.riotgames.com";
 
-const SUMMONER_SAMPLE_SIZE = Number(process.env.SUMMONER_SAMPLE_SIZE || 400);
+const SUMMONER_SAMPLE_SIZE = Number(process.env.SUMMONER_SAMPLE_SIZE || 120);
 const MATCHES_PER_SUMMONER = Number(process.env.MATCHES_PER_SUMMONER || 3);
-const MAX_MATCHES = Number(process.env.MAX_MATCHES || 1200);
+const MAX_MATCHES = Number(process.env.MAX_MATCHES || 350);
 const REQUEST_DELAY_MS = Number(process.env.REQUEST_DELAY_MS || 1300);
-const MIN_GAMES_FOR_STATS = Number(process.env.MIN_GAMES_FOR_STATS || 30);
-const MIN_GAMES_FOR_BUILD = Number(process.env.MIN_GAMES_FOR_BUILD || 30);
 const RANKED_SOLO_QUEUE = 420;
 
-// Mismo parche que usa index.html para las imágenes — mantenlos sincronizados.
+// Mismo parche que usa index.html para las imágenes de campeones/objetos —
+// mantenlos sincronizados.
 const DDRAGON_VERSION = "16.19.1";
 const DDRAGON_LOCALE = "es_ES"; // nombres de objetos/runas en español, como el resto del sitio
 
@@ -178,23 +178,33 @@ function getTimeline(matchId) {
 }
 
 /* ------------------------------------------------------------------------ *
-   Datos estáticos de Data Dragon (objetos, runas y campeones) — no cuentan
-   para el límite de peticiones de Riot, son un CDN público aparte.
+   Estado acumulado entre ejecuciones.
  * ------------------------------------------------------------------------ */
-async function fetchDdragonJson(file) {
-  const url = `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/${DDRAGON_LOCALE}/${file}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Data Dragon ${res.status} al descargar ${url}`);
-  return res.json();
+async function loadPreviousState() {
+  try {
+    const raw = await readFile(STATE_PATH, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null; // primera ejecución, o archivo corrupto/ausente
+  }
 }
 
-async function loadStaticData() {
-  console.log("Descargando catálogo de objetos, runas y campeones (Data Dragon)…");
-  const [itemJson, runesJson, championJson] = await Promise.all([
-    fetchDdragonJson("item.json"),
-    fetchDdragonJson("runesReforged.json"),
-    fetchDdragonJson("champion.json"),
+function emptyState(patch) {
+  return { patch, seenMatchIds: [], totalGamesSample: 0, champions: {}, buildStats: {} };
+}
+
+/* ------------------------------------------------------------------------ *
+   Datos estáticos de Data Dragon (objetos y runas) — no cuentan para el
+   límite de peticiones de Riot, son un CDN público aparte.
+ * ------------------------------------------------------------------------ */
+async function loadItemAndRuneData() {
+  console.log("Descargando catálogo de objetos y runas (Data Dragon)…");
+  const [itemRes, runesRes] = await Promise.all([
+    fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/${DDRAGON_LOCALE}/item.json`),
+    fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/${DDRAGON_LOCALE}/runesReforged.json`),
   ]);
+  const itemJson = await itemRes.json();
+  const runesJson = await runesRes.json();
 
   // items[id] -> { name, isBoots, isBuildEnd, excluded }
   // "isBuildEnd": objeto terminado (no se puede mejorar más) — así ignoramos
@@ -214,26 +224,19 @@ async function loadStaticData() {
   }
 
   const runeNames = {}; // perk id -> nombre
+  const runeIcons = {}; // perk id -> URL completa del icono
   const treeNames = {}; // árbol id -> nombre
   for (const tree of runesJson) {
     treeNames[tree.id] = tree.name;
     for (const slot of tree.slots || []) {
       for (const rune of slot.runes || []) {
         runeNames[rune.id] = rune.name;
+        if (rune.icon) runeIcons[rune.id] = `https://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`;
       }
     }
   }
 
-  // Id numérico del campeón (el que usa Riot en los baneos) -> id de Data
-  // Dragon ("Belveth", "MonkeyKing"...). Un campeón baneado no juega la
-  // partida, así que su nombre NO aparece entre los participantes: hace falta
-  // este mapa para saber a quién corresponde cada baneo.
-  const championKeyToRiotName = {};
-  for (const champ of Object.values(championJson.data || {})) {
-    championKeyToRiotName[String(champ.key)] = champ.id;
-  }
-
-  return { items, runeNames, treeNames, championKeyToRiotName };
+  return { items, runeNames, runeIcons, treeNames };
 }
 
 /* ------------------------------------------------------------------------ *
@@ -323,16 +326,17 @@ function recordBuild(buildStats, siteId, purchases, perks, staticData) {
 
 // Convierte los contadores acumulados de un campeón en el build final a
 // publicar: inicial, botas, núcleo (en orden real de compra), situacionales
-// y runas más usadas. Devuelve null si no hay muestra suficiente.
+// y runas más usadas. Cada objeto lleva id + nombre, para poder pintar su
+// icono real en la web.
 function finalizeBuild(buildStats, siteId, staticData) {
   const stats = buildStats[siteId];
-  if (!stats || stats.games < MIN_GAMES_FOR_BUILD) return null;
+  if (!stats || stats.games < 5) return null; // muestra demasiado pequeña para fiarnos
 
-  const itemName = (id) => staticData.items[id]?.name || null;
+  const toItem = (id) => (staticData.items[id] ? { id, name: staticData.items[id].name } : null);
 
-  const starter = topEntries(stats.starterCounts, 2).map(itemName).filter(Boolean);
+  const starter = topEntries(stats.starterCounts, 2).map(toItem).filter(Boolean);
   const [bootsId] = topEntries(stats.bootsCounts, 1);
-  const boots = bootsId ? itemName(bootsId) : null;
+  const boots = bootsId ? toItem(bootsId) : null;
 
   const frequentItems = Object.entries(stats.itemCounts).filter(
     ([, count]) => count / stats.games >= 0.1 // al menos ~10% de las partidas
@@ -356,6 +360,7 @@ function finalizeBuild(buildStats, siteId, staticData) {
     const [keystoneId, primaryTreeId, secondaryTreeId] = topRuneCombo[0].split("|");
     runes = {
       keystone: staticData.runeNames[keystoneId] || null,
+      keystoneIcon: staticData.runeIcons[keystoneId] || null,
       primaryTree: staticData.treeNames[primaryTreeId] || null,
       secondaryTree: staticData.treeNames[secondaryTreeId] || null,
     };
@@ -365,17 +370,18 @@ function finalizeBuild(buildStats, siteId, staticData) {
     sampleGames: stats.games,
     starter,
     boots,
-    core: coreIds.map(itemName).filter(Boolean),
-    situational: situationalIds.map(itemName).filter(Boolean),
+    core: coreIds.map(toItem).filter(Boolean),
+    situational: situationalIds.map(toItem).filter(Boolean),
     runes,
   };
 }
 
-async function aggregateStats(matchIds, staticData) {
-  console.log(`Analizando ${matchIds.length} partidas únicas (con su timeline de compras)…`);
-  const stats = {}; // siteId -> { games, wins, bans }
-  const buildStats = {}; // siteId -> acumuladores de objetos/runas
-  const patchCounts = {}; // "16.19" -> nº de partidas
+// Procesa las partidas NUEVAS (ya filtradas, sin las que veníamos arrastrando
+// de ejecuciones anteriores) y SUMA sus datos sobre los acumuladores que se
+// le pasan (stats/buildStats), que pueden venir ya con datos de antes.
+async function aggregateStats(newMatchIds, staticData, stats, buildStats) {
+  console.log(`Analizando ${newMatchIds.length} partidas nuevas (con su timeline de compras)…`);
+
   const bump = (siteId, field, amount = 1) => {
     if (!stats[siteId]) stats[siteId] = { games: 0, wins: 0, bans: 0 };
     stats[siteId][field] += amount;
@@ -384,14 +390,11 @@ async function aggregateStats(matchIds, staticData) {
   let analyzed = 0;
   let skipped = 0;
   let timelineFailed = 0;
+  const processedIds = [];
 
-  for (const matchId of matchIds) {
+  for (const matchId of newMatchIds) {
     const match = await riotFetch(`${REGION_HOST}/lol/match/v5/matches/${matchId}`);
     if (!match?.info) { skipped++; continue; }
-
-    // Parche de la partida: "16.19.123.4567" -> "16.19"
-    const patch = String(match.info.gameVersion || "").split(".").slice(0, 2).join(".");
-    if (patch) patchCounts[patch] = (patchCounts[patch] || 0) + 1;
 
     for (const participant of match.info.participants || []) {
       const siteId = riotChampionNameToSiteId(participant.championName);
@@ -401,9 +404,13 @@ async function aggregateStats(matchIds, staticData) {
 
     for (const team of match.info.teams || []) {
       for (const ban of team.bans || []) {
-        if (!ban || ban.championId === -1) continue; // -1 = sin baneo
-        const riotName = staticData.championKeyToRiotName[String(ban.championId)];
-        if (riotName) bump(riotChampionNameToSiteId(riotName), "bans");
+        if (!ban || ban.championId === -1 || !ban.pickTurn) continue;
+        // El id numérico de baneo hay que mapearlo con los participantes de
+        // la propia partida (Riot no da el nombre del campeón baneado
+        // directamente en teams[].bans, solo el championId).
+        const banned = match.info.participants.find((p) => p.championId === ban.championId);
+        const siteId = banned ? riotChampionNameToSiteId(banned.championName) : null;
+        if (siteId) bump(siteId, "bans");
       }
     }
 
@@ -421,45 +428,70 @@ async function aggregateStats(matchIds, staticData) {
     }
 
     analyzed++;
-    if (analyzed % 20 === 0) console.log(`  ${analyzed}/${matchIds.length} partidas procesadas…`);
+    processedIds.push(matchId);
+    if (analyzed % 20 === 0) console.log(`  ${analyzed}/${newMatchIds.length} partidas nuevas procesadas…`);
   }
 
-  console.log(`Partidas analizadas: ${analyzed}, saltadas: ${skipped}, sin timeline: ${timelineFailed}`);
-
-  const [mainPatch] = Object.entries(patchCounts).sort((a, b) => b[1] - a[1]).map(([p]) => p);
-  return { stats, buildStats, totalGamesSample: analyzed, patch: mainPatch || null };
+  console.log(`Partidas nuevas analizadas: ${analyzed}, saltadas: ${skipped}, sin timeline: ${timelineFailed}`);
+  return { analyzed, processedIds };
 }
 
 async function main() {
   const startedAt = Date.now();
 
-  const staticData = await loadStaticData();
+  const staticData = await loadItemAndRuneData();
 
   const puuids = await getHighEloPuuids();
   if (!puuids.length) throw new Error("No se obtuvo ningún jugador de Elo alto. Revisa la clave/región.");
 
-  const matchIds = await getMatchIds(puuids);
-  if (!matchIds.length) throw new Error("No se obtuvo ninguna partida. Revisa la clave/región.");
+  const candidateMatchIds = await getMatchIds(puuids);
+  if (!candidateMatchIds.length) throw new Error("No se obtuvo ninguna partida. Revisa la clave/región.");
 
-  const { stats, buildStats, totalGamesSample, patch } = await aggregateStats(matchIds, staticData);
-  if (!totalGamesSample) throw new Error("No se pudo analizar ninguna partida.");
+  // Miramos el parche real de una partida para decidir si continuamos el
+  // acumulado anterior o si tenemos que empezar de cero (patch nuevo).
+  const sampleMatch = await riotFetch(`${REGION_HOST}/lol/match/v5/matches/${candidateMatchIds[0]}`);
+  const currentPatch = sampleMatch?.info?.gameVersion
+    ? sampleMatch.info.gameVersion.split(".").slice(0, 2).join(".")
+    : null;
 
-  // Solo se publican campeones con muestra suficiente. Pickrate = % de
-  // partidas de la muestra en las que aparece el campeón (la definición
-  // habitual en webs de estadísticas); baneo = % de partidas en las que lo
-  // banean.
+  const previousState = await loadPreviousState();
+  let state;
+  if (!previousState || !currentPatch || previousState.patch !== currentPatch) {
+    console.log(
+      previousState
+        ? `Parche nuevo detectado (${previousState.patch} → ${currentPatch}): reiniciando el acumulado.`
+        : `Sin estado previo: empezando de cero en el parche ${currentPatch}.`
+    );
+    state = emptyState(currentPatch);
+  } else {
+    console.log(`Continuando el acumulado del parche ${currentPatch} (${previousState.seenMatchIds.length} partidas ya contadas).`);
+    state = previousState;
+  }
+
+  const seen = new Set(state.seenMatchIds);
+  const newMatchIds = candidateMatchIds.filter((id) => !seen.has(id));
+  console.log(`${candidateMatchIds.length} partidas candidatas, ${newMatchIds.length} son nuevas de verdad.`);
+
+  const { analyzed, processedIds } = await aggregateStats(newMatchIds, staticData, state.champions, state.buildStats);
+
+  state.seenMatchIds = [...seen, ...processedIds];
+  state.totalGamesSample += analyzed;
+  state.patch = currentPatch;
+
+  // winrate/pickrate/banrate en % sobre el total ACUMULADO de partidas de
+  // este parche. totalSlots = partidas * 10 campeones en juego.
+  const totalSlots = state.totalGamesSample * 10;
   const champions = {};
   let withBuild = 0;
-  let belowThreshold = 0;
-  for (const [siteId, s] of Object.entries(stats)) {
-    if (s.games < MIN_GAMES_FOR_STATS) { belowThreshold++; continue; }
-    const build = finalizeBuild(buildStats, siteId, staticData);
+  for (const [siteId, s] of Object.entries(state.champions)) {
+    if (s.games === 0) continue;
+    const build = finalizeBuild(state.buildStats, siteId, staticData);
     if (build) withBuild++;
     champions[siteId] = {
       games: s.games,
       winrate: +((s.wins / s.games) * 100).toFixed(1),
-      pickrate: +((s.games / totalGamesSample) * 100).toFixed(2),
-      banrate: +((s.bans / totalGamesSample) * 100).toFixed(2),
+      pickrate: totalSlots > 0 ? +((s.games / totalSlots) * 100).toFixed(2) : 0,
+      banrate: state.totalGamesSample > 0 ? +((s.bans / state.totalGamesSample) * 100).toFixed(2) : 0,
       build,
     };
   }
@@ -468,19 +500,22 @@ async function main() {
     generatedAt: new Date().toISOString(),
     region: "EUW",
     queue: "RANKED_SOLO_5x5",
-    patch,
-    totalGamesSample,
-    minGamesForStats: MIN_GAMES_FOR_STATS,
-    minGamesForBuild: MIN_GAMES_FOR_BUILD,
+    patch: currentPatch,
+    totalGamesSample: state.totalGamesSample,
     totalRequestsUsed: requestCount,
     champions,
   };
 
   await writeFile(OUTPUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
+  await writeFile(STATE_PATH, JSON.stringify(state) + "\n", "utf8");
+
   const seconds = ((Date.now() - startedAt) / 1000).toFixed(0);
-  console.log(`\n✔ Guardado en ${OUTPUT_PATH}`);
-  console.log(`  Parche ${patch || "?"} · ${totalGamesSample} partidas · ${requestCount} peticiones · ${seconds}s.`);
-  console.log(`  ${Object.keys(champions).length} campeones publicados (${withBuild} con build real); ${belowThreshold} omitidos por tener menos de ${MIN_GAMES_FOR_STATS} partidas.`);
+  console.log(`\n✔ Guardado en ${OUTPUT_PATH} y ${STATE_PATH}`);
+  console.log(
+    `  ${Object.keys(champions).length} campeones con datos (${withBuild} con build real), ` +
+    `${state.totalGamesSample} partidas acumuladas del parche ${currentPatch} (+${analyzed} hoy), ` +
+    `${requestCount} peticiones, ${seconds}s.`
+  );
 }
 
 main().catch((err) => {
