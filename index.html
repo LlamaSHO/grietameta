@@ -347,7 +347,7 @@ footer a:hover{color:var(--gold);}
 
 <header class="hero">
   <div class="wrap">
-    <div class="patch-tag" id="patchTag">Parche 25.24 · datos ilustrativos</div>
+    <div class="patch-tag" id="patchTag">Datos ilustrativos</div>
     <h1>Sube de división con la <em>build</em> correcta antes que nadie.</h1>
     <p class="lead">Winrate, pickrate y builds de los 165+ campeones de la grieta, ordenados por rol y por parche. Sin ruido, sin foros interminables.</p>
     <div class="search-row">
@@ -679,6 +679,7 @@ const state = {
   role: "Todos",
   query: "",
   isPremium: false, // true = Premium activo = la web se muestra sin anuncios
+  realStats: false, // true cuando champion-stats.json se cargó con datos reales
 };
 
 // ---------------------------------------------------------------- helpers --
@@ -730,7 +731,7 @@ function renderChips(){
 // -------------------------------------------------------------- tier list --
 function renderTierList(){
   const root = document.getElementById("tierListRoot");
-  const pool = CHAMPIONS.filter(c => state.role==="Todos" || c.role===state.role);
+  const pool = CHAMPIONS.filter(c => !c.noData && (state.role==="Todos" || c.role===state.role));
   const order = ["S","A","B","C"];
   document.getElementById("tierMeta").textContent = `${pool.length} campeones · ${state.role}`;
   root.innerHTML = order.map(t=>{
@@ -764,7 +765,7 @@ function renderGrid(){
   const list = CHAMPIONS
     .filter(c => state.role==="Todos" || c.role===state.role)
     .filter(c => !q || normalizeSearch(c.name).includes(q))
-    .sort((a,b)=> b.winrate - a.winrate);
+    .sort((a,b)=> (Number(!!a.noData) - Number(!!b.noData)) || (b.winrate - a.winrate));
 
   document.getElementById("gridCount").textContent = `${list.length} resultados`;
 
@@ -781,18 +782,22 @@ function renderGrid(){
   root.innerHTML = list.map(c=>`
     <div class="champ-card" data-id="${c.id}">
       <div class="art" style="${artStyle(c.cls)}">
-        <span class="badge-tier">${c.tier}</span>
+        <span class="badge-tier">${c.noData ? "–" : c.tier}</span>
         ${monogram(c.name)}
         ${champThumbImg(c)}
       </div>
       <div class="info">
         <div class="name">${c.name}</div>
         <div class="role">${c.role} · ${c.cls}</div>
+        ${c.noData ? `
+        <div class="wr-row"><span class="pr-value">Sin muestra suficiente</span></div>
+        ` : `
         <div class="wr-row">
           <span class="wr-value ${wrClass(c.winrate)}">${c.winrate}%</span>
           <span class="pr-value">${c.pickrate}% pick</span>
         </div>
         <div class="wr-bar"><div class="wr-bar-fill" style="width:${c.winrate}%;"></div></div>
+        `}
       </div>
     </div>
   `).join("");
@@ -815,44 +820,33 @@ function openModal(id){
   const overlay = document.getElementById("modalOverlay");
   const root = document.getElementById("modalRoot");
 
-  const starterBootsBlock = `
-    <div class="build-block">
-      <h4>Objeto inicial</h4>
-      ${buildItemRow(c.build.starter)}
-    </div>
-    <div class="build-block">
-      <h4>Botas</h4>
-      ${buildItemRow(c.build.boots)}
-    </div>
-  `;
+  const buildSection = (title, items) => (items && items.length)
+    ? `<div class="build-block"><h4>${title}</h4>${buildItemRow(items)}</div>`
+    : "";
 
-  // La build completa (objetos clave, situacionales y runas) solo se muestra
-  // cuando viene de partidas reales analizadas; si no, se enseña únicamente
-  // el bloque básico y se avisa de que los datos son ilustrativos.
+  // Solo se muestra una build cuando viene de partidas reales analizadas.
+  // Nunca se enseñan objetos de ejemplo como si fueran una build de verdad.
   const hasRealBuild = Boolean(c.buildSampleGames);
 
   const fullBuildBlock = `
-    ${starterBootsBlock}
-    <div class="build-block">
-      <h4>Objetos clave (orden de compra)</h4>
-      ${buildItemRow(c.build.core)}
-    </div>
-    <div class="build-block">
-      <h4>Objetos situacionales según el rival</h4>
-      ${buildItemRow(c.build.situational)}
-    </div>
+    ${buildSection("Objeto inicial", c.build.starter)}
+    ${buildSection("Botas", c.build.boots)}
+    ${buildSection("Objetos clave (orden de compra)", c.build.core)}
+    ${buildSection("Objetos situacionales según el rival", c.build.situational)}
+    ${c.runes ? `
     <div class="build-block">
       <h4>Runas recomendadas</h4>
       <div class="item-row">
         <div class="item-chip"><div class="item-icon"></div>${c.runes.keystone} · ${c.runes.tree}</div>
       </div>
-    </div>
+    </div>` : ""}
     <div class="build-note">Basado en ${c.buildSampleGames} partidas analizadas.</div>
   `;
 
   const basicBuildBlock = `
-    ${starterBootsBlock}
-    <div class="build-note">Datos ilustrativos: aún no hay suficientes partidas analizadas de este campeón.</div>
+    <div class="build-note">${state.realStats
+      ? "Aún no hay suficientes partidas analizadas de este campeón para mostrar su build."
+      : "Las builds se mostrarán cuando haya datos reales de partidas."}</div>
   `;
 
   // Anuncio dentro del modal: solo para usuarios sin Premium.
@@ -877,10 +871,10 @@ function openModal(id){
       </div>
     </div>
     <div class="modal-stats">
-      <div class="mstat"><div class="label">Winrate</div><div class="value ${wrClass(c.winrate)}">${c.winrate}%</div></div>
-      <div class="mstat"><div class="label">Pickrate</div><div class="value">${c.pickrate}%</div></div>
-      <div class="mstat"><div class="label">Banrate</div><div class="value">${c.banrate}%</div></div>
-      <div class="mstat"><div class="label">Tier</div><div class="value">${c.tier}</div></div>
+      <div class="mstat"><div class="label">Winrate</div><div class="value ${c.noData ? "" : wrClass(c.winrate)}">${c.noData ? "—" : c.winrate + "%"}</div></div>
+      <div class="mstat"><div class="label">Pickrate</div><div class="value">${c.noData ? "—" : c.pickrate + "%"}</div></div>
+      <div class="mstat"><div class="label">Banrate</div><div class="value">${c.noData ? "—" : c.banrate + "%"}</div></div>
+      <div class="mstat"><div class="label">Tier</div><div class="value">${c.noData ? "—" : c.tier}</div></div>
     </div>
     <div class="modal-body">
       ${hasRealBuild ? fullBuildBlock : basicBuildBlock}
@@ -994,11 +988,21 @@ async function loadRealStats(){
   const real = data && data.champions;
   if(!real || !Object.keys(real).length) return;
 
+  state.realStats = true;
+
   let matched = 0;
   CHAMPIONS.forEach(c=>{
     const r = real[c.id];
-    if(!r) return; // campeón sin suficiente muestra todavía: se queda con el dato ilustrativo
+    if(!r){
+      // Sin partidas suficientes: no se muestran números ni builds inventados.
+      c.noData = true;
+      c.build = { starter: [], boots: [], core: [], situational: [] };
+      c.runes = null;
+      c.buildSampleGames = 0;
+      return;
+    }
     matched++;
+    c.noData = false;
     c.winrate = r.winrate;
     c.pickrate = r.pickrate;
     c.banrate = r.banrate;
@@ -1006,30 +1010,30 @@ async function loadRealStats(){
     const score = (c.winrate-46.5)/8.5*0.55 + (c.pickrate/18)*0.25 + (c.banrate/22.5)*0.2;
     c.tier = tierFromScore(score);
 
-    // El build real solo llega cuando hay suficiente muestra de partidas
-    // (lo decide scripts/fetch-riot-stats.mjs). Si falta algún campo
-    // (p. ej. pocas partidas con timeline válido), se mantiene el dato
-    // ilustrativo de ese campo concreto en vez de dejarlo vacío.
+    // La build real solo llega cuando hay suficiente muestra de partidas
+    // (lo decide scripts/fetch-riot-stats.mjs). Aquí solo se usa lo que
+    // viene de partidas reales: nunca se rellena con datos de ejemplo.
     const b = r.build;
-    if(b){
-      if(b.starter?.length) c.build.starter = b.starter;
-      if(b.boots) c.build.boots = [b.boots];
-      if(b.core?.length) c.build.core = b.core;
-      if(b.situational?.length) c.build.situational = b.situational;
-      if(b.runes?.keystone && b.runes?.primaryTree){
-        c.runes = {
+    c.build = {
+      starter: b?.starter || [],
+      boots: b?.boots ? [b.boots] : [],
+      core: b?.core || [],
+      situational: b?.situational || [],
+    };
+    c.runes = (b?.runes?.keystone && b?.runes?.primaryTree)
+      ? {
           keystone: b.runes.keystone,
           tree: b.runes.secondaryTree ? `${b.runes.primaryTree} + ${b.runes.secondaryTree}` : b.runes.primaryTree,
-        };
-      }
-      c.buildSampleGames = b.sampleGames;
-    }
+        }
+      : null;
+    c.buildSampleGames = b ? b.sampleGames : 0;
   });
 
   const patchTag = document.getElementById("patchTag");
   if(patchTag){
     const date = new Date(data.generatedAt).toLocaleDateString("es-ES", { day:"2-digit", month:"short" });
-    patchTag.textContent = `${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
+    const patch = data.patch ? `Parche ${data.patch} · ` : "";
+    patchTag.textContent = `${patch}${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
   }
 
   renderTierList();
