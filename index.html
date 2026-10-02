@@ -156,6 +156,8 @@ button{font-family:inherit;}
   letter-spacing:0.02em;
 }
 .ad-slot.banner{min-height:90px; display:flex; align-items:center; justify-content:center;}
+/* Premium = sin publicidad: se ocultan todos los bloques de anuncio */
+body.is-premium .ad-slot{display:none;}
 
 /* ---------- TIER LIST ---------- */
 .tier-row{display:flex; border:1px solid var(--panel-line); margin-bottom:2px;}
@@ -253,22 +255,13 @@ button{font-family:inherit;}
 .modal-body{padding:24px 28px 30px;}
 .build-block{margin-bottom:22px;}
 .build-block h4{font-size:13.5px; color:var(--gold); font-weight:600; margin-bottom:10px;}
+.build-note{font-size:12px; color:var(--ink-faint); margin-top:4px;}
 .item-row{display:flex; gap:10px; flex-wrap:wrap;}
 .item-chip{
   display:flex; align-items:center; gap:8px;
   background:var(--panel); border:1px solid var(--panel-line); padding:6px 10px 6px 6px; font-size:12.5px;
 }
 .item-icon{width:22px; height:22px; background:var(--gold-soft); flex-shrink:0;}
-.premium-lock{
-  position:relative; padding:24px; text-align:center;
-  border:1px solid var(--panel-line); background:var(--panel);
-}
-.premium-lock.blurred > .fake-content{filter:blur(6px); pointer-events:none; user-select:none;}
-.premium-lock-inner{
-  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:10px; background:rgba(21,26,35,0.78);
-}
-.premium-lock-inner p{font-size:13px; color:var(--ink-dim); max-width:280px;}
 .btn-gold{
   background:var(--gold); color:#1A1305; border:none; font-weight:600; font-size:13.5px;
   padding:10px 20px; cursor:pointer;
@@ -422,8 +415,8 @@ footer a:hover{color:var(--gold);}
     <div class="wrap" style="padding:40px 0 56px;">
       <div class="section-head" style="border:none; padding-bottom:0;">
         <div>
-          <h2>Juega con la información que usan los pros</h2>
-          <p>Desbloquea builds completas por matchup, runas óptimas por enemigo y alertas de cambios de parche antes de que salgan las notas oficiales.</p>
+          <h2>Navega sin anuncios</h2>
+          <p>Con Premium, GrietaMeta se ve sin publicidad y apoyas que la web siga creciendo y actualizándose.</p>
         </div>
       </div>
       <div class="plans" id="plansRoot"></div>
@@ -685,7 +678,7 @@ function champThumbImg(c){
 const state = {
   role: "Todos",
   query: "",
-  isPremium: false, // maqueta: cambia a true para previsualizar la vista sin muro
+  isPremium: false, // true = Premium activo = la web se muestra sin anuncios
 };
 
 // ---------------------------------------------------------------- helpers --
@@ -822,7 +815,7 @@ function openModal(id){
   const overlay = document.getElementById("modalOverlay");
   const root = document.getElementById("modalRoot");
 
-  const freeBuildBlock = `
+  const starterBootsBlock = `
     <div class="build-block">
       <h4>Objeto inicial</h4>
       ${buildItemRow(c.build.starter)}
@@ -833,7 +826,13 @@ function openModal(id){
     </div>
   `;
 
-  const premiumBuildBlock = `
+  // La build completa (objetos clave, situacionales y runas) solo se muestra
+  // cuando viene de partidas reales analizadas; si no, se enseña únicamente
+  // el bloque básico y se avisa de que los datos son ilustrativos.
+  const hasRealBuild = Boolean(c.buildSampleGames);
+
+  const fullBuildBlock = `
+    ${starterBootsBlock}
     <div class="build-block">
       <h4>Objetos clave (orden de compra)</h4>
       ${buildItemRow(c.build.core)}
@@ -848,28 +847,25 @@ function openModal(id){
         <div class="item-chip"><div class="item-icon"></div>${c.runes.keystone} · ${c.runes.tree}</div>
       </div>
     </div>
+    <div class="build-note">Basado en ${c.buildSampleGames} partidas analizadas.</div>
   `;
 
-  const premiumSection = state.isPremium
-    ? premiumBuildBlock
-    : `
-      <div class="premium-lock blurred">
-        <div class="fake-content">${premiumBuildBlock}</div>
-        <div class="premium-lock-inner">
-          <strong style="font-family:'Cinzel',serif; font-size:15px;">Build completa · solo Premium</strong>
-          <p>Desbloquea el orden de objetos, situacionales por rival y runas óptimas de ${c.name} y de los otros 164 campeones.</p>
-          <button class="btn-gold" onclick="document.getElementById('modalOverlay').classList.remove('open'); document.getElementById('premium').scrollIntoView({behavior:'smooth'});">Ver planes Premium</button>
-        </div>
-      </div>
-      <div class="ad-slot banner" style="margin-top:18px;">
-        <ins class="adsbygoogle"
-             style="display:block; width:100%;"
-             data-ad-client="ca-pub-6908736829395141"
-             data-ad-slot="0000000002"
-             data-ad-format="rectangle"
-             data-full-width-responsive="true"></ins>
-      </div>
-    `;
+  const basicBuildBlock = `
+    ${starterBootsBlock}
+    <div class="build-note">Datos ilustrativos: aún no hay suficientes partidas analizadas de este campeón.</div>
+  `;
+
+  // Anuncio dentro del modal: solo para usuarios sin Premium.
+  const modalAd = state.isPremium ? "" : `
+    <div class="ad-slot banner" style="margin-top:18px;">
+      <ins class="adsbygoogle"
+           style="display:block; width:100%;"
+           data-ad-client="ca-pub-6908736829395141"
+           data-ad-slot="0000000002"
+           data-ad-format="rectangle"
+           data-full-width-responsive="true"></ins>
+    </div>
+  `;
 
   root.innerHTML = `
     <div class="modal-top">
@@ -887,8 +883,8 @@ function openModal(id){
       <div class="mstat"><div class="label">Tier</div><div class="value">${c.tier}</div></div>
     </div>
     <div class="modal-body">
-      ${freeBuildBlock}
-      ${premiumSection}
+      ${hasRealBuild ? fullBuildBlock : basicBuildBlock}
+      ${modalAd}
     </div>
   `;
 
@@ -896,7 +892,7 @@ function openModal(id){
   overlay.dataset.currentId = c.id;
   overlay.classList.add("open");
 
-  // El anuncio del muro premium se inyecta de nuevo cada vez (solo si no es premium),
+  // El anuncio del modal se inyecta de nuevo cada vez (solo si no es premium),
   // así que necesita su propia llamada a push().
   if(!state.isPremium) pushAdsenseAds();
 }
@@ -918,17 +914,17 @@ function renderPlans(){
   const plans = [
     {
       name:"Gratis", price:"0€", period:"siempre",
-      feats:["Tier list completa","Winrate y pickrate de todos los campeones","1 objeto inicial y botas por campeón"],
+      feats:["Tier list completa","Winrate y pickrate de todos los campeones","Estadísticas y builds de cada campeón","Con publicidad"],
       cta:"Tu plan actual", featured:false, plan:null,
     },
     {
       name:"Premium", price:"4,99€", period:"/mes",
-      feats:["Todo lo del plan Gratis","Build completa con orden de compra","Objetos situacionales por rival","Runas óptimas por matchup","Sin publicidad"],
+      feats:["Todo lo del plan Gratis","Sin publicidad en toda la web","Apoyas el desarrollo de GrietaMeta"],
       cta:"Empezar prueba de 7 días", featured:true, plan:"monthly",
     },
     {
       name:"Premium anual", price:"39,99€", period:"/año",
-      feats:["Todo lo de Premium","2 meses gratis frente al plan mensual","Alertas de cambios de parche","Acceso anticipado a nuevas herramientas"],
+      feats:["Todo lo de Premium","Sin publicidad todo el año","Ahorras casi 20 € frente al plan mensual"],
       cta:"Ahorrar con el plan anual", featured:false, plan:"yearly",
     },
   ];
@@ -1079,12 +1075,15 @@ function renderUnlockBlock(){
   const root = document.getElementById("unlockBlock");
   if(!root) return;
 
+  // Premium activo = se ocultan todos los bloques de anuncio de la página.
+  document.body.classList.toggle("is-premium", state.isPremium);
+
   if(state.isPremium){
     const email = localStorage.getItem(PREMIUM_EMAIL_KEY) || "";
     root.innerHTML = `
       <div class="unlock-box">
         <span class="premium-badge-chip">✓ Premium activo${email ? " · " + email : ""}</span>
-        <p style="margin-top:12px;">Ya tienes acceso completo a builds, runas y objetos situacionales en todos los campeones.</p>
+        <p style="margin-top:12px;">Ya navegas sin anuncios. ¡Gracias por apoyar GrietaMeta!</p>
         <button class="btn-outline" id="forgetPremiumBtn" style="width:auto; padding:8px 16px;">Cerrar sesión en este navegador</button>
       </div>
     `;
@@ -1092,13 +1091,14 @@ function renderUnlockBlock(){
       localStorage.removeItem(PREMIUM_EMAIL_KEY);
       state.isPremium = false;
       renderUnlockBlock();
+      pushAdsenseAds(); // los anuncios vuelven a verse y se cargan
     });
     return;
   }
 
   root.innerHTML = `
     <div class="unlock-box">
-      <p>¿Ya pagaste Premium? Introduce el email que usaste al suscribirte para desbloquearlo en este navegador.</p>
+      <p>¿Ya pagaste Premium? Introduce el email que usaste al suscribirte para quitar los anuncios en este navegador.</p>
       <div class="unlock-row">
         <input type="email" id="unlockEmailInput" placeholder="tu@email.com">
         <button id="unlockBtn">Desbloquear</button>
@@ -1128,17 +1128,13 @@ function renderUnlockBlock(){
 }
 
 renderUnlockBlock();
-// Si el navegador ya tenía un email guardado de una visita anterior,
-// comprobamos en silencio si sigue siendo premium.
-const savedEmail = localStorage.getItem(PREMIUM_EMAIL_KEY);
-if(savedEmail){
-  checkPremiumEmail(savedEmail, { silent: true });
-}
 
 // ------------------------------------------------------------ AdSense init --
 // Los bloques <ins class="adsbygoogle"> que ya existen al cargar la página
-// (adSlotTop y adSlotMid) se activan una sola vez aquí.
+// (adSlotTop y adSlotMid) se activan una sola vez. Los usuarios Premium
+// nunca cargan anuncios.
 function pushAdsenseAds(){
+  if(state.isPremium) return;
   try{
     document.querySelectorAll("ins.adsbygoogle:not([data-ad-status])").forEach(()=>{
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -1148,10 +1144,21 @@ function pushAdsenseAds(){
     console.warn("AdSense no se pudo inicializar:", e);
   }
 }
-pushAdsenseAds();
+
+// Si el navegador ya tenía un email guardado de una visita anterior,
+// comprobamos primero si sigue siendo premium y SOLO después cargamos
+// anuncios, para no pedírselos a quien ya los ha quitado.
+const savedEmail = localStorage.getItem(PREMIUM_EMAIL_KEY);
+if(savedEmail){
+  document.body.classList.add("is-premium"); // evita que los huecos de anuncio parpadeen mientras se comprueba
+  checkPremiumEmail(savedEmail, { silent: true }).finally(()=>{
+    document.body.classList.toggle("is-premium", state.isPremium);
+    pushAdsenseAds();
+  });
+} else {
+  pushAdsenseAds();
+}
 
 </script>
 </body>
 </html>
-
-
