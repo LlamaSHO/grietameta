@@ -54,6 +54,51 @@ aprobación previa). Es el mismo enfoque que usan la mayoría de sitios de
 estadísticas no oficiales. Los campeones con poca muestra conservan el dato
 ilustrativo hasta que el Action acumule suficientes partidas suyas.
 
+### Builds y runas reales
+
+Además de winrate/pickrate/banrate, el script también calcula por campeón:
+objeto inicial, botas, núcleo en el **orden real de compra** y objetos
+situacionales, usando el *Timeline* de cada partida (eventos de compra con
+marca de tiempo — se descuenta automáticamente si el jugador deshizo una
+compra por error de click). También calcula la combinación de runas
+(keystone + árbol principal + árbol secundario) más usada. Los nombres de
+objetos y runas se piden en español (`es_ES`) a Data Dragon, para encajar
+con el resto del sitio.
+
+Esto añade una petición extra a Riot por cada partida analizada (el
+Timeline es un endpoint aparte), así que el script tarda aproximadamente
+**el doble** que si solo calculara winrate/pickrate/banrate — con los
+valores por defecto, cuenta unos 20-25 minutos en vez de ~11.
+
+Un campeón solo recibe build real si aparece en al menos 5 partidas de la
+muestra; si no, conserva el build ilustrativo de siempre en esa parte
+concreta (puede pasar que tenga winrate real pero build ilustrativo, o
+build real pero falte alguna categoría puntual como "situacionales" si no
+hubo suficientes compras variadas). Los objetos y la runa principal
+muestran su icono real (vía Data Dragon) en cuanto hay dato real; mientras
+tanto se ve la cajita de color de siempre, sin icono.
+
+### Acumulación entre ejecuciones (no se recalcula de cero cada noche)
+
+El script no empieza de cero cada vez: guarda un archivo interno,
+`riot-stats-state.json` (en la raíz del repo, junto a `champion-stats.json`
+— **debe subirse igual que él**, el Action ya lo hace solo), con las
+partidas ya contabilizadas. Cada noche suma las partidas nuevas que
+encuentra a ese acumulado, así la muestra por campeón crece noche a noche
+dentro del mismo parche — cuantas más noches pasen, más fiables son los
+números.
+
+En cuanto el script detecta (mirando el `gameVersion` real de las partidas)
+que ha salido un parche nuevo, reinicia el acumulado automáticamente:
+mezclar partidas de metas distintos daría estadísticas falsas. Así que es
+normal ver que la muestra "se resetea" a un número bajo justo después de
+cada parche, y que vaya subiendo cada noche hasta el siguiente.
+
+Si alguna vez quieres forzar un reinicio manual (por ejemplo, si crees que
+el acumulado se ha corrompido), simplemente borra `riot-stats-state.json`
+del repo y vuelve a lanzar el workflow — empezará de cero sin que tengas
+que tocar nada más.
+
 ## Opción A — Desplegar con la web de Vercel (sin terminal)
 
 1. Sube esta carpeta a un repositorio de GitHub (crea uno nuevo, arrastra
