@@ -1,0 +1,23 @@
+Copyright (c) 2026 LlamaSHO. Todos los derechos reservados.
+
+Este repositorio y su contenido (código fuente, scripts, estructura de
+datos, diseño y textos) son propiedad de su autor. No se concede ningún
+permiso para copiar, redistribuir, modificar, sublicenciar o usar este
+código, en todo o en parte, con fines comerciales o no comerciales, sin
+autorización previa y por escrito del autor.
+
+Queda expresamente prohibido:
+  - Clonar o reproducir este sitio (en su totalidad o en partes sustanciales)
+    en otro dominio o producto.
+  - Reutilizar los scripts de recolección de datos o la lógica de
+    agregación de estadísticas en otro proyecto.
+  - Redistribuir los datos generados (champion-stats.json y derivados) como
+    si fueran propios.
+
+Este aviso no afecta a las marcas, nombres, imágenes ni datos de League of
+Legends, que son propiedad de Riot Games, Inc. y se usan bajo su política
+de contenido de terceros ("Legal Jibber Jabber"). GrietaMeta no está
+afiliado a Riot Games.
+
+Para solicitar permiso de uso, contacta con el autor a través de GitHub
+(@LlamaSHO).
