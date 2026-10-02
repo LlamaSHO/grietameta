@@ -1,1047 +1,4550 @@
 {
-  "generatedAt": "2026-10-01T11:35:35.647Z",
+  "generatedAt": "2026-10-02T07:40:30.361Z",
   "region": "EUW",
   "queue": "RANKED_SOLO_5x5",
   "totalGamesSample": 350,
-  "totalRequestsUsed": 471,
+  "totalRequestsUsed": 822,
   "champions": {
-    "olaf": {
-      "games": 18,
-      "winrate": 44.4,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "leesin": {
-      "games": 63,
-      "winrate": 49.2,
-      "pickrate": 1.8,
-      "banrate": 0
-    },
-    "kassadin": {
-      "games": 18,
-      "winrate": 77.8,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "cassiopeia": {
-      "games": 14,
-      "winrate": 64.3,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "janna": {
-      "games": 44,
-      "winrate": 50,
-      "pickrate": 1.26,
-      "banrate": 0
-    },
-    "sejuani": {
-      "games": 6,
-      "winrate": 50,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "briar": {
-      "games": 10,
-      "winrate": 40,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "brand": {
-      "games": 8,
-      "winrate": 87.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "ashe": {
-      "games": 17,
-      "winrate": 47.1,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "seraphine": {
-      "games": 23,
-      "winrate": 47.8,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
     "yone": {
-      "games": 48,
-      "winrate": 58.3,
-      "pickrate": 1.37,
-      "banrate": 0
+      "games": 56,
+      "winrate": 41.1,
+      "pickrate": 1.6,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 56,
+        "starter": [
+          "Arco de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hoja del rey arruinado",
+          "Arcoescudo inmortal",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Baile de la muerte",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
     },
-    "shaco": {
-      "games": 14,
-      "winrate": 35.7,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "lux": {
-      "games": 31,
-      "winrate": 38.7,
-      "pickrate": 0.89,
-      "banrate": 0
-    },
-    "yunara": {
-      "games": 71,
-      "winrate": 60.6,
-      "pickrate": 2.03,
-      "banrate": 0
-    },
-    "bard": {
-      "games": 38,
-      "winrate": 47.4,
-      "pickrate": 1.09,
-      "banrate": 0
-    },
-    "masteryi": {
-      "games": 11,
-      "winrate": 36.4,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "khazix": {
-      "games": 44,
-      "winrate": 54.5,
-      "pickrate": 1.26,
-      "banrate": 0
-    },
-    "syndra": {
-      "games": 42,
-      "winrate": 57.1,
-      "pickrate": 1.2,
-      "banrate": 0
-    },
-    "aphelios": {
-      "games": 39,
-      "winrate": 46.2,
-      "pickrate": 1.11,
-      "banrate": 0
-    },
-    "lulu": {
-      "games": 40,
+    "karthus": {
+      "games": 18,
       "winrate": 50,
-      "pickrate": 1.14,
-      "banrate": 0
-    },
-    "lucian": {
-      "games": 37,
-      "winrate": 48.6,
-      "pickrate": 1.06,
-      "banrate": 0
-    },
-    "ambessa": {
-      "games": 36,
-      "winrate": 44.4,
-      "pickrate": 1.03,
-      "banrate": 0
-    },
-    "locke": {
-      "games": 37,
-      "winrate": 35.1,
-      "pickrate": 1.06,
-      "banrate": 0
-    },
-    "aurelionsol": {
-      "games": 9,
-      "winrate": 55.6,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "nami": {
-      "games": 37,
-      "winrate": 48.6,
-      "pickrate": 1.06,
-      "banrate": 0
-    },
-    "camille": {
-      "games": 25,
-      "winrate": 40,
-      "pickrate": 0.71,
-      "banrate": 0
-    },
-    "akali": {
-      "games": 38,
-      "winrate": 44.7,
-      "pickrate": 1.09,
-      "banrate": 0
-    },
-    "alistar": {
-      "games": 33,
-      "winrate": 60.6,
-      "pickrate": 0.94,
-      "banrate": 0
-    },
-    "annie": {
-      "games": 6,
-      "winrate": 33.3,
-      "pickrate": 0.17,
-      "banrate": 0
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Anillo de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Bastón del Vacío",
+          "Tormento de Liandry"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
     },
     "viktor": {
-      "games": 49,
-      "winrate": 53.1,
-      "pickrate": 1.4,
-      "banrate": 0
+      "games": 57,
+      "winrate": 50.9,
+      "pickrate": 1.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 57,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Cintomisil hextech",
+          "Perdición del liche"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya",
+          "Llamasombría"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
     },
-    "renekton": {
-      "games": 31,
-      "winrate": 61.3,
-      "pickrate": 0.89,
-      "banrate": 0
-    },
-    "naafiri": {
-      "games": 17,
-      "winrate": 70.6,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "jinx": {
-      "games": 32,
-      "winrate": 56.3,
-      "pickrate": 0.91,
-      "banrate": 0
-    },
-    "nidalee": {
-      "games": 26,
-      "winrate": 50,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "kalista": {
-      "games": 41,
-      "winrate": 31.7,
-      "pickrate": 1.17,
-      "banrate": 0
-    },
-    "fiddlesticks": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "neeko": {
-      "games": 7,
-      "winrate": 42.9,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "tristana": {
-      "games": 51,
-      "winrate": 62.7,
-      "pickrate": 1.46,
-      "banrate": 0
-    },
-    "gragas": {
-      "games": 17,
-      "winrate": 52.9,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "qiyana": {
-      "games": 61,
-      "winrate": 57.4,
-      "pickrate": 1.74,
-      "banrate": 0
-    },
-    "katarina": {
-      "games": 25,
-      "winrate": 20,
-      "pickrate": 0.71,
-      "banrate": 0
-    },
-    "amumu": {
-      "games": 5,
-      "winrate": 20,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "sylas": {
-      "games": 54,
-      "winrate": 51.9,
-      "pickrate": 1.54,
-      "banrate": 0
-    },
-    "viego": {
-      "games": 24,
-      "winrate": 66.7,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "braum": {
-      "games": 20,
-      "winrate": 75,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "garen": {
-      "games": 31,
-      "winrate": 45.2,
-      "pickrate": 0.89,
-      "banrate": 0
-    },
-    "jarvaniv": {
-      "games": 28,
-      "winrate": 46.4,
-      "pickrate": 0.8,
-      "banrate": 0
-    },
-    "soraka": {
-      "games": 23,
-      "winrate": 43.5,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "wukong": {
-      "games": 20,
-      "winrate": 60,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "yasuo": {
-      "games": 62,
-      "winrate": 43.5,
-      "pickrate": 1.77,
-      "banrate": 0
-    },
-    "elise": {
-      "games": 29,
-      "winrate": 44.8,
-      "pickrate": 0.83,
-      "banrate": 0
-    },
-    "ahri": {
-      "games": 41,
-      "winrate": 53.7,
-      "pickrate": 1.17,
-      "banrate": 0
-    },
-    "taliyah": {
-      "games": 31,
-      "winrate": 54.8,
-      "pickrate": 0.89,
-      "banrate": 0
-    },
-    "jhin": {
-      "games": 41,
-      "winrate": 46.3,
-      "pickrate": 1.17,
-      "banrate": 0
-    },
-    "milio": {
-      "games": 18,
-      "winrate": 55.6,
-      "pickrate": 0.51,
-      "banrate": 0
-    },
-    "jayce": {
-      "games": 43,
-      "winrate": 46.5,
-      "pickrate": 1.23,
-      "banrate": 0
-    },
-    "lillia": {
-      "games": 20,
-      "winrate": 35,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "thresh": {
-      "games": 42,
-      "winrate": 54.8,
-      "pickrate": 1.2,
-      "banrate": 0
-    },
-    "vayne": {
-      "games": 8,
-      "winrate": 62.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "galio": {
+    "yuumi": {
       "games": 19,
       "winrate": 52.6,
       "pickrate": 0.54,
-      "banrate": 0
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Incensario ardiente",
+          "Renovación de piedra lunar",
+          "Bendición de Mikael"
+        ],
+        "situational": [
+          "Promesa de caballero",
+          "Robaalmas de Mejai"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
     },
-    "kaisa": {
-      "games": 39,
-      "winrate": 43.6,
-      "pickrate": 1.11,
-      "banrate": 0
-    },
-    "nautilus": {
-      "games": 45,
-      "winrate": 64.4,
-      "pickrate": 1.29,
-      "banrate": 0
-    },
-    "fizz": {
-      "games": 16,
-      "winrate": 56.3,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "vladimir": {
-      "games": 29,
-      "winrate": 48.3,
-      "pickrate": 0.83,
-      "banrate": 0
-    },
-    "leona": {
-      "games": 26,
-      "winrate": 53.8,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "smolder": {
-      "games": 3,
-      "winrate": 66.7,
-      "pickrate": 0.09,
-      "banrate": 0
-    },
-    "aurora": {
-      "games": 22,
-      "winrate": 63.6,
-      "pickrate": 0.63,
-      "banrate": 0
-    },
-    "kayn": {
-      "games": 16,
-      "winrate": 62.5,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "riven": {
-      "games": 10,
-      "winrate": 60,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "caitlyn": {
-      "games": 42,
-      "winrate": 38.1,
-      "pickrate": 1.2,
-      "banrate": 0
-    },
-    "karma": {
-      "games": 31,
-      "winrate": 32.3,
-      "pickrate": 0.89,
-      "banrate": 0
-    },
-    "akshan": {
-      "games": 13,
-      "winrate": 53.8,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "morgana": {
-      "games": 11,
-      "winrate": 63.6,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "leblanc": {
-      "games": 26,
-      "winrate": 46.2,
-      "pickrate": 0.74,
-      "banrate": 0
-    },
-    "diana": {
-      "games": 14,
-      "winrate": 57.1,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "vex": {
-      "games": 7,
-      "winrate": 100,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "malphite": {
-      "games": 23,
-      "winrate": 52.2,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "sion": {
-      "games": 19,
-      "winrate": 52.6,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "singed": {
-      "games": 10,
-      "winrate": 70,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "udyr": {
-      "games": 4,
-      "winrate": 25,
-      "pickrate": 0.11,
-      "banrate": 0
-    },
-    "irelia": {
-      "games": 25,
-      "winrate": 48,
-      "pickrate": 0.71,
-      "banrate": 0
-    },
-    "draven": {
-      "games": 20,
-      "winrate": 60,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "pyke": {
-      "games": 22,
-      "winrate": 54.5,
-      "pickrate": 0.63,
-      "banrate": 0
-    },
-    "quinn": {
-      "games": 9,
-      "winrate": 66.7,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "nocturne": {
-      "games": 5,
-      "winrate": 40,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "rakan": {
-      "games": 23,
-      "winrate": 47.8,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "tryndamere": {
-      "games": 8,
-      "winrate": 62.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "rell": {
-      "games": 32,
-      "winrate": 31.3,
-      "pickrate": 0.91,
-      "banrate": 0
-    },
-    "ksante": {
-      "games": 17,
-      "winrate": 52.9,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "skarner": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "yorick": {
-      "games": 6,
-      "winrate": 16.7,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "talon": {
-      "games": 36,
-      "winrate": 38.9,
-      "pickrate": 1.03,
-      "banrate": 0
-    },
-    "zoe": {
-      "games": 17,
-      "winrate": 76.5,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "samira": {
-      "games": 7,
-      "winrate": 57.1,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "zed": {
-      "games": 46,
-      "winrate": 47.8,
-      "pickrate": 1.31,
-      "banrate": 0
-    },
-    "nasus": {
-      "games": 13,
-      "winrate": 46.2,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "shyvana": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "ezreal": {
-      "games": 45,
-      "winrate": 53.3,
-      "pickrate": 1.29,
-      "banrate": 0
-    },
-    "pantheon": {
-      "games": 20,
-      "winrate": 55,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "graves": {
-      "games": 32,
-      "winrate": 62.5,
-      "pickrate": 0.91,
-      "banrate": 0
-    },
-    "xayah": {
-      "games": 20,
-      "winrate": 70,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "malzahar": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "kogmaw": {
-      "games": 10,
-      "winrate": 20,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "nunuwillump": {
-      "games": 8,
-      "winrate": 37.5,
-      "pickrate": 0.23,
-      "banrate": 0
-    },
-    "senna": {
-      "games": 15,
-      "winrate": 53.3,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "kennen": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "belveth": {
-      "games": 1,
-      "winrate": 100,
-      "pickrate": 0.03,
-      "banrate": 0
-    },
-    "twitch": {
-      "games": 15,
-      "winrate": 60,
-      "pickrate": 0.43,
-      "banrate": 0
+    "fiora": {
+      "games": 27,
+      "winrate": 44.4,
+      "pickrate": 0.77,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 27,
+        "starter": [
+          "Espada de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra voraz",
+          "Hambre insaciable",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Eclipse",
+          "Fuerza de trinidad"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
     },
     "aatrox": {
-      "games": 24,
-      "winrate": 50,
-      "pickrate": 0.69,
-      "banrate": 0
+      "games": 28,
+      "winrate": 60.7,
+      "pickrate": 0.8,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 28,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eclipse",
+          "Firmamento desgarrado",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Espada ciclovoltaica",
+          "Lanza de Shojin"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
     },
-    "zac": {
-      "games": 16,
-      "winrate": 43.8,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "corki": {
-      "games": 7,
-      "winrate": 57.1,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "darius": {
-      "games": 16,
-      "winrate": 62.5,
-      "pickrate": 0.46,
-      "banrate": 0
-    },
-    "ornn": {
-      "games": 13,
-      "winrate": 61.5,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "mordekaiser": {
-      "games": 9,
-      "winrate": 66.7,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "chogath": {
-      "games": 27,
-      "winrate": 59.3,
-      "pickrate": 0.77,
-      "banrate": 0
-    },
-    "twistedfate": {
-      "games": 15,
-      "winrate": 40,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "varus": {
-      "games": 21,
-      "winrate": 38.1,
-      "pickrate": 0.6,
-      "banrate": 0
-    },
-    "zyra": {
-      "games": 10,
-      "winrate": 50,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "veigar": {
-      "games": 24,
-      "winrate": 25,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "ekko": {
-      "games": 29,
-      "winrate": 58.6,
-      "pickrate": 0.83,
-      "banrate": 0
-    },
-    "ziggs": {
-      "games": 10,
-      "winrate": 30,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "orianna": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "zeri": {
-      "games": 22,
-      "winrate": 36.4,
-      "pickrate": 0.63,
-      "banrate": 0
-    },
-    "ryze": {
-      "games": 19,
-      "winrate": 57.9,
-      "pickrate": 0.54,
-      "banrate": 0
-    },
-    "zaahen": {
-      "games": 17,
-      "winrate": 41.2,
-      "pickrate": 0.49,
-      "banrate": 0
-    },
-    "tahmkench": {
-      "games": 1,
-      "winrate": 0,
-      "pickrate": 0.03,
-      "banrate": 0
-    },
-    "blitzcrank": {
-      "games": 24,
-      "winrate": 75,
-      "pickrate": 0.69,
-      "banrate": 0
-    },
-    "lissandra": {
-      "games": 11,
-      "winrate": 63.6,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "gnar": {
-      "games": 14,
-      "winrate": 50,
-      "pickrate": 0.4,
-      "banrate": 0
-    },
-    "trundle": {
-      "games": 3,
-      "winrate": 0,
-      "pickrate": 0.09,
-      "banrate": 0
-    },
-    "shen": {
+    "rengar": {
       "games": 22,
       "winrate": 59.1,
       "pickrate": 0.63,
-      "banrate": 0
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Guja sombría",
+          "Hidra profana",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Filo de la noche",
+          "Colmillo de serpiente"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
     },
-    "missfortune": {
-      "games": 8,
-      "winrate": 37.5,
-      "pickrate": 0.23,
-      "banrate": 0
+    "syndra": {
+      "games": 51,
+      "winrate": 49,
+      "pickrate": 1.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 51,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Impulso cósmico",
+          "Cintomisil hextech"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "zilean": {
-      "games": 13,
-      "winrate": 38.5,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "hwei": {
-      "games": 13,
-      "winrate": 30.8,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "hecarim": {
-      "games": 23,
-      "winrate": 30.4,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "yuumi": {
-      "games": 12,
-      "winrate": 25,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "teemo": {
-      "games": 9,
-      "winrate": 44.4,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "maokai": {
-      "games": 12,
-      "winrate": 58.3,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "fiora": {
-      "games": 23,
-      "winrate": 43.5,
-      "pickrate": 0.66,
-      "banrate": 0
-    },
-    "swain": {
-      "games": 8,
+    "draven": {
+      "games": 26,
       "winrate": 50,
-      "pickrate": 0.23,
-      "banrate": 0
+      "pickrate": 0.74,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 26,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Filo infinito",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Óptica hextech C44",
+          "Sanguinaria"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "renataglasc": {
-      "games": 11,
-      "winrate": 36.4,
-      "pickrate": 0.31,
-      "banrate": 0
+    "senna": {
+      "games": 19,
+      "winrate": 42.1,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cuchilla negra",
+          "Puñal de Statikk",
+          "Cañón de fuego rápido"
+        ],
+        "situational": [
+          "Filo de la noche",
+          "Bailarín espectral"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "anivia": {
-      "games": 12,
-      "winrate": 33.3,
-      "pickrate": 0.34,
-      "banrate": 0
+    "jayce": {
+      "games": 46,
+      "winrate": 60.9,
+      "pickrate": 1.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 46,
+        "starter": [
+          "Espada de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Filo fantasmal de Youmuu",
+          "Espada ciclovoltaica",
+          "Manamune"
+        ],
+        "situational": [
+          "Quiebrabastiones",
+          "Rencor de Serylda"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "gangplank": {
-      "games": 15,
-      "winrate": 53.3,
-      "pickrate": 0.43,
-      "banrate": 0
+    "gragas": {
+      "games": 28,
+      "winrate": 53.6,
+      "pickrate": 0.8,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 28,
+        "starter": [
+          "Anillo de Doran",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Perdición del liche",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Sobrecarga tormentosa",
+          "Impulso cósmico"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "rengar": {
-      "games": 15,
-      "winrate": 46.7,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "evelynn": {
-      "games": 2,
-      "winrate": 50,
-      "pickrate": 0.06,
-      "banrate": 0
-    },
-    "ivern": {
+    "xinzhao": {
       "games": 7,
       "winrate": 71.4,
       "pickrate": 0.2,
-      "banrate": 0
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra titánica",
+          "Cuchilla negra",
+          "Ángel de la guarda"
+        ],
+        "situational": [
+          "Filo infinito",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "reksai": {
-      "games": 9,
-      "winrate": 55.6,
-      "pickrate": 0.26,
-      "banrate": 0
+    "xayah": {
+      "games": 14,
+      "winrate": 35.7,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Flechas de los Yun Tal",
+          "Filofugaz de Navori",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Preferencia",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
     },
-    "jax": {
-      "games": 21,
-      "winrate": 42.9,
-      "pickrate": 0.6,
-      "banrate": 0
+    "soraka": {
+      "games": 8,
+      "winrate": 25,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Renovación de piedra lunar",
+          "Incensario ardiente",
+          "Redención"
+        ],
+        "situational": [
+          "Tejesueños",
+          "Núcleo albar"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
     },
-    "vi": {
-      "games": 13,
-      "winrate": 53.8,
-      "pickrate": 0.37,
-      "banrate": 0
+    "kennen": {
+      "games": 17,
+      "winrate": 52.9,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Espada de Doran",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Llamasombría",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Sobrecarga tormentosa"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
     },
-    "gwen": {
-      "games": 20,
-      "winrate": 40,
-      "pickrate": 0.57,
-      "banrate": 0
-    },
-    "xinzhao": {
-      "games": 9,
-      "winrate": 55.6,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "mel": {
-      "games": 10,
-      "winrate": 30,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "warwick": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "kayle": {
-      "games": 12,
-      "winrate": 41.7,
-      "pickrate": 0.34,
-      "banrate": 0
-    },
-    "volibear": {
-      "games": 11,
-      "winrate": 27.3,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "xerath": {
-      "games": 15,
-      "winrate": 33.3,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "karthus": {
-      "games": 13,
-      "winrate": 69.2,
-      "pickrate": 0.37,
-      "banrate": 0
-    },
-    "sivir": {
-      "games": 10,
-      "winrate": 70,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "urgot": {
-      "games": 10,
-      "winrate": 30,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "velkoz": {
-      "games": 6,
-      "winrate": 50,
-      "pickrate": 0.17,
-      "banrate": 0
-    },
-    "poppy": {
-      "games": 11,
-      "winrate": 54.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "rumble": {
-      "games": 10,
-      "winrate": 60,
-      "pickrate": 0.29,
-      "banrate": 0
-    },
-    "illaoi": {
-      "games": 5,
-      "winrate": 80,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "kled": {
-      "games": 7,
-      "winrate": 42.9,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "taric": {
-      "games": 3,
-      "winrate": 33.3,
-      "pickrate": 0.09,
-      "banrate": 0
-    },
-    "sett": {
-      "games": 5,
-      "winrate": 60,
-      "pickrate": 0.14,
-      "banrate": 0
-    },
-    "nilah": {
-      "games": 9,
-      "winrate": 33.3,
-      "pickrate": 0.26,
-      "banrate": 0
-    },
-    "azir": {
-      "games": 11,
-      "winrate": 45.5,
-      "pickrate": 0.31,
-      "banrate": 0
-    },
-    "sona": {
-      "games": 15,
-      "winrate": 33.3,
-      "pickrate": 0.43,
-      "banrate": 0
-    },
-    "drmundo": {
-      "games": 7,
-      "winrate": 42.9,
-      "pickrate": 0.2,
-      "banrate": 0
-    },
-    "kindred": {
-      "games": 2,
-      "winrate": 50,
-      "pickrate": 0.06,
-      "banrate": 0
-    },
-    "rammus": {
-      "games": 1,
-      "winrate": 0,
-      "pickrate": 0.03,
-      "banrate": 0
-    },
-    "heimerdinger": {
+    "maokai": {
       "games": 4,
       "winrate": 50,
       "pickrate": 0.11,
-      "banrate": 0
+      "banrate": 0,
+      "build": null
+    },
+    "aphelios": {
+      "games": 25,
+      "winrate": 48,
+      "pickrate": 0.71,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 25,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Óptica hextech C44",
+          "Filo infinito",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Navaja de asalto",
+          "Recaudadora"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "elise": {
+      "games": 21,
+      "winrate": 23.8,
+      "pickrate": 0.6,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 21,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Perdición del liche",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Sobrecarga tormentosa",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "mel": {
+      "games": 8,
+      "winrate": 50,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Cintomisil hextech",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Eco de Luden",
+          "Robaalmas de Mejai"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "tristana": {
+      "games": 48,
+      "winrate": 47.9,
+      "pickrate": 1.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 48,
+        "starter": [
+          "Arco de Doran",
+          "Preferencia"
+        ],
+        "boots": null,
+        "core": [
+          "Flechas de los Yun Tal",
+          "Filo infinito",
+          "Filofugaz de Navori"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "rell": {
+      "games": 28,
+      "winrate": 42.9,
+      "pickrate": 0.8,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 28,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Convergencia de Zeke",
+          "Medallón de los Solari de Hierro",
+          "Promesa de caballero"
+        ],
+        "situational": [
+          "Arnés de protoplasma",
+          "Máscara abisal"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "darius": {
+      "games": 23,
+      "winrate": 52.2,
+      "pickrate": 0.66,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 23,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Filo fantasmal de Youmuu",
+          "Cortasendas",
+          "Coraza del muerto"
+        ],
+        "situational": [
+          "Calibrador de Sterak",
+          "Fuerza de la naturaleza"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "khazix": {
+      "games": 37,
+      "winrate": 40.5,
+      "pickrate": 1.06,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 37,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Guja sombría",
+          "Espada ciclovoltaica",
+          "Quiebrabastiones"
+        ],
+        "situational": [
+          "Filo de la noche",
+          "Rencor de Serylda"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "orianna": {
+      "games": 9,
+      "winrate": 66.7,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Cintomisil hextech",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Eco de Luden",
+          "Bastón del arcángel"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "varus": {
+      "games": 13,
+      "winrate": 46.2,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Arco de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Puñal de Statikk",
+          "Hoja de furia de Guinsoo",
+          "El final"
+        ],
+        "situational": [
+          "Jak'Sho el Proteico",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "blitzcrank": {
+      "games": 21,
+      "winrate": 47.6,
+      "pickrate": 0.6,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 21,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Promesa de caballero",
+          "Convergencia de Zeke"
+        ],
+        "situational": [
+          "Corazón de hielo",
+          "Mandato imperial"
+        ],
+        "runes": {
+          "keystone": "Mejora glacial",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "garen": {
+      "games": 22,
+      "winrate": 36.4,
+      "pickrate": 0.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Escudo de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cortasendas",
+          "Filo fantasmal de Youmuu",
+          "Bailarín espectral"
+        ],
+        "situational": [
+          "Coraza del muerto",
+          "Espada ciclovoltaica"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "naafiri": {
+      "games": 12,
+      "winrate": 33.3,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Espada ciclovoltaica",
+          "Cuchilla negra",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Arco axiomático",
+          "Quiebrabastiones"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "lissandra": {
+      "games": 18,
+      "winrate": 55.6,
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Malignidad",
+          "Llamasombría",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Antorcha de fuego negro",
+          "Sombrero mortal de Rabadon"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "sylas": {
+      "games": 51,
+      "winrate": 54.9,
+      "pickrate": 1.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 51,
+        "starter": [
+          "Anillo de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Creagrietas",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Llamasombría",
+          "Robaalmas de Mejai"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "briar": {
+      "games": 7,
+      "winrate": 42.9,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Brote de Brincamontes",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Hidra titánica",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Filo infinito",
+          "Cuchilla negra"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "galio": {
+      "games": 23,
+      "winrate": 52.2,
+      "pickrate": 0.66,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 23,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Mandato imperial",
+          "Promesa de caballero"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya",
+          "Medallón de los Solari de Hierro"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "lucian": {
+      "games": 33,
+      "winrate": 51.5,
+      "pickrate": 0.94,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 33,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Segador de esencia",
+          "Filofugaz de Navori",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "nami": {
+      "games": 39,
+      "winrate": 64.1,
+      "pickrate": 1.11,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 39,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Ecos de Helia",
+          "Bastón de aguas fluidas",
+          "Renovación de piedra lunar"
+        ],
+        "situational": [
+          "Bendición de Mikael",
+          "Redención"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "masteryi": {
+      "games": 25,
+      "winrate": 60,
+      "pickrate": 0.71,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 25,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Verdugo de krakens",
+          "Hoja de furia de Guinsoo",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Baile de la muerte",
+          "Recaudadora"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "lux": {
+      "games": 20,
+      "winrate": 50,
+      "pickrate": 0.57,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 20,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Sobrecarga tormentosa",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Malignidad",
+          "Canción de batalla de Shurelya"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "jinx": {
+      "games": 39,
+      "winrate": 41,
+      "pickrate": 1.11,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 39,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Óptica hextech C44",
+          "Huracán de Runaan",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Preferencia",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "morgana": {
+      "games": 7,
+      "winrate": 57.1,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Reloj de arena de Zhonya",
+          "Cetro de cristal de Rylai",
+          "Canción de batalla de Shurelya"
+        ],
+        "situational": [
+          "Antorcha de fuego negro",
+          "Morellonomicón"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "shen": {
+      "games": 22,
+      "winrate": 50,
+      "pickrate": 0.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Yelmo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra titánica",
+          "Corazón de acero",
+          "Amanecer y anochecer"
+        ],
+        "situational": [
+          "Presagio de Randuin",
+          "Rookern kaénico"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "jarvaniv": {
+      "games": 21,
+      "winrate": 38.1,
+      "pickrate": 0.6,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 21,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra profana",
+          "Espada ciclovoltaica",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Ángel de la guarda",
+          "Cuchilla negra"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "leona": {
+      "games": 27,
+      "winrate": 48.1,
+      "pickrate": 0.77,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 27,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Promesa de caballero",
+          "Arnés de protoplasma"
+        ],
+        "situational": [
+          "Bandlemusa",
+          "Convergencia de Zeke"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "ornn": {
+      "games": 17,
+      "winrate": 70.6,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Escudo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Rookern kaénico",
+          "Desesperanza eterna",
+          "Fulgor vano"
+        ],
+        "situational": [
+          "Corazón de hielo",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "nunuwillump": {
+      "games": 10,
+      "winrate": 50,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Tormento de Liandry",
+          "Cintomisil hextech",
+          "Corazón de hielo"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "seraphine": {
+      "games": 14,
+      "winrate": 71.4,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Ecos de Helia",
+          "Cetro de cristal de Rylai",
+          "Mandato imperial"
+        ],
+        "situational": [
+          "Renovación de piedra lunar",
+          "Antorcha de fuego negro"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "swain": {
+      "games": 14,
+      "winrate": 64.3,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Anillo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cetro de cristal de Rylai",
+          "Malignidad",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Antorcha de fuego negro",
+          "Rostro espiritual"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "hecarim": {
+      "games": 35,
+      "winrate": 62.9,
+      "pickrate": 1,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 35,
+        "starter": [
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Lanza de Shojin",
+          "Baile de la muerte",
+          "Hambre insaciable"
+        ],
+        "situational": [
+          "Cuchilla negra",
+          "Colmillo de serpiente"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "katarina": {
+      "games": 32,
+      "winrate": 62.5,
+      "pickrate": 0.91,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 32,
+        "starter": [
+          "Espada de Doran",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Verdugo de krakens",
+          "Perdición del liche",
+          "Llamasombría"
+        ],
+        "situational": [
+          "El final",
+          "Baile de la muerte"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "zeri": {
+      "games": 35,
+      "winrate": 60,
+      "pickrate": 1,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 35,
+        "starter": [
+          "Arco de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Flechas de los Yun Tal",
+          "Huracán de Runaan",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "sona": {
+      "games": 13,
+      "winrate": 46.2,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Ecos de Helia",
+          "Renovación de piedra lunar",
+          "Bastón del arcángel"
+        ],
+        "situational": [],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "ksante": {
+      "games": 13,
+      "winrate": 69.2,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Yelmo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Guantelete de hielo",
+          "Jak'Sho el Proteico",
+          "Rookern kaénico"
+        ],
+        "situational": [
+          "Convergencia de Zeke",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "kalista": {
+      "games": 32,
+      "winrate": 37.5,
+      "pickrate": 0.91,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 32,
+        "starter": [
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Puñal de Statikk",
+          "Hoja de furia de Guinsoo",
+          "El final"
+        ],
+        "situational": [
+          "Jak'Sho el Proteico",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "thresh": {
+      "games": 60,
+      "winrate": 53.3,
+      "pickrate": 1.71,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 60,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Promesa de caballero",
+          "Convergencia de Zeke"
+        ],
+        "situational": [
+          "Bendición de Mikael"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "akali": {
+      "games": 32,
+      "winrate": 46.9,
+      "pickrate": 0.91,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 32,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Sable-pistola hextech",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Sobrecarga tormentosa"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "chogath": {
+      "games": 40,
+      "winrate": 50,
+      "pickrate": 1.14,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 40,
+        "starter": [
+          "Anillo de Doran",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Corazón de acero",
+          "Cintomisil hextech",
+          "Coraza del muerto"
+        ],
+        "situational": [
+          "Creagrietas",
+          "Fuerza de la naturaleza"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "irelia": {
+      "games": 22,
+      "winrate": 45.5,
+      "pickrate": 0.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Espada de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hoja del rey arruinado",
+          "Rompecascos",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Verdugo de krakens",
+          "Final del ingenio"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "nautilus": {
+      "games": 54,
+      "winrate": 57.4,
+      "pickrate": 1.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 54,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Arnés de protoplasma",
+          "Promesa de caballero"
+        ],
+        "situational": [
+          "Convergencia de Zeke"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "sett": {
+      "games": 9,
+      "winrate": 55.6,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cortasendas",
+          "Sangría del soberano",
+          "Calibrador de Sterak"
+        ],
+        "situational": [
+          "Cuchilla negra",
+          "Corazón de acero"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "ahri": {
+      "games": 46,
+      "winrate": 50,
+      "pickrate": 1.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 46,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": "Botas del lanzahechizos",
+        "core": [
+          "Malignidad",
+          "Antorcha de fuego negro",
+          "Perdición del liche"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Llamasombría"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "yunara": {
+      "games": 76,
+      "winrate": 53.9,
+      "pickrate": 2.17,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 76,
+        "starter": [
+          "Arco de Doran",
+          "Preferencia"
+        ],
+        "boots": null,
+        "core": [
+          "Flechas de los Yun Tal",
+          "Huracán de Runaan",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Preferencia",
+          "Verdugo de krakens"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "lulu": {
+      "games": 55,
+      "winrate": 49.1,
+      "pickrate": 1.57,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 55,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Incensario ardiente",
+          "Canción de batalla de Shurelya",
+          "Bendición de Mikael"
+        ],
+        "situational": [
+          "Renovación de piedra lunar",
+          "Promesa de caballero"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "zac": {
+      "games": 16,
+      "winrate": 37.5,
+      "pickrate": 0.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 16,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Égida de fuego solar",
+          "Rostro espiritual"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "samira": {
+      "games": 13,
+      "winrate": 53.8,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Espada de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Filo infinito",
+          "Arcoescudo inmortal"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Ángel de la guarda"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "bard": {
+      "games": 24,
+      "winrate": 45.8,
+      "pickrate": 0.69,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 24,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Coraza del muerto",
+          "Medallón de los Solari de Hierro",
+          "Convergencia de Zeke"
+        ],
+        "situational": [
+          "Cintomisil hextech",
+          "Bendición de Mikael"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "gnar": {
+      "games": 21,
+      "winrate": 38.1,
+      "pickrate": 0.6,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 21,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Cuchilla negra",
+          "Calibrador de Sterak"
+        ],
+        "situational": [
+          "Presagio de Randuin",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "udyr": {
+      "games": 11,
+      "winrate": 63.6,
+      "pickrate": 0.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 11,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Lanza de Shojin",
+          "Experimento de hexarmadura",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Fauces de Malmortius",
+          "Coraza del muerto"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "zilean": {
+      "games": 24,
+      "winrate": 50,
+      "pickrate": 0.69,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 24,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Canción de batalla de Shurelya",
+          "Medallón de los Solari de Hierro",
+          "Bendición de Mikael"
+        ],
+        "situational": [
+          "Promesa de caballero",
+          "Bandlemusa"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "sion": {
+      "games": 12,
+      "winrate": 50,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Escudo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Hidra titánica",
+          "Desesperanza eterna"
+        ],
+        "situational": [
+          "Rostro espiritual",
+          "Sangría del soberano"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "reksai": {
+      "games": 13,
+      "winrate": 46.2,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra titánica",
+          "Lanza de Shojin",
+          "Ángel de la guarda"
+        ],
+        "situational": [
+          "Calibrador de Sterak",
+          "Baile de la muerte"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "akshan": {
+      "games": 18,
+      "winrate": 44.4,
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Espada de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Filo infinito",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Preferencia",
+          "Cañón de fuego rápido"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "karma": {
+      "games": 30,
+      "winrate": 46.7,
+      "pickrate": 0.86,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 30,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Ecos de Helia",
+          "Renovación de piedra lunar",
+          "Redención"
+        ],
+        "situational": [
+          "Bendición de Mikael",
+          "Malignidad"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "talon": {
+      "games": 45,
+      "winrate": 53.3,
+      "pickrate": 1.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 45,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Guja sombría",
+          "Quiebrabastiones",
+          "Espada ciclovoltaica"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Filo de la noche"
+        ],
+        "runes": {
+          "keystone": "Pies veloces",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "braum": {
+      "games": 26,
+      "winrate": 46.2,
+      "pickrate": 0.74,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 26,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Bandlemusa",
+          "Promesa de caballero"
+        ],
+        "situational": [],
+        "runes": {
+          "keystone": "Protector",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "wukong": {
+      "games": 26,
+      "winrate": 61.5,
+      "pickrate": 0.74,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 26,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Cuchilla negra",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Fauces de Malmortius",
+          "Firmamento desgarrado"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "quinn": {
+      "games": 13,
+      "winrate": 69.2,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra profana",
+          "Recaudadora",
+          "Filo de la noche"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Soberbia"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "kassadin": {
+      "games": 17,
+      "winrate": 47.1,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Vara de las edades",
+          "Bastón del arcángel",
+          "Malignidad"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "yasuo": {
+      "games": 39,
+      "winrate": 48.7,
+      "pickrate": 1.11,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 39,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Arcoescudo inmortal",
+          "Filo infinito",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Navaja de asalto",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "kayn": {
+      "games": 17,
+      "winrate": 58.8,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Espada ciclovoltaica",
+          "Arco axiomático",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Soberbia",
+          "Rencor de Serylda"
+        ],
+        "runes": {
+          "keystone": "Cosecha oscura",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "alistar": {
+      "games": 28,
+      "winrate": 42.9,
+      "pickrate": 0.8,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 28,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Convergencia de Zeke",
+          "Medallón de los Solari de Hierro",
+          "Arnés de protoplasma"
+        ],
+        "situational": [
+          "Promesa de caballero",
+          "Bandlemusa"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "ambessa": {
+      "games": 25,
+      "winrate": 48,
+      "pickrate": 0.71,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 25,
+        "starter": [
+          "Escudo de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eclipse",
+          "Lanza de Shojin",
+          "Hambre insaciable"
+        ],
+        "situational": [
+          "Baile de la muerte",
+          "Espada ciclovoltaica"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "illaoi": {
+      "games": 5,
+      "winrate": 40,
+      "pickrate": 0.14,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 5,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Cuchilla negra",
+          "Calibrador de Sterak"
+        ],
+        "situational": [
+          "Rostro espiritual",
+          "Baile de la muerte"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "jhin": {
+      "games": 48,
+      "winrate": 54.2,
+      "pickrate": 1.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 48,
+        "starter": [
+          "Yelmo de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Soberbia",
+          "Filo infinito",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Recaudadora",
+          "Bailarín espectral"
+        ],
+        "runes": {
+          "keystone": "Pies veloces",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "ashe": {
+      "games": 20,
+      "winrate": 40,
+      "pickrate": 0.57,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 20,
+        "starter": [
+          "Arco de Doran",
+          "Preferencia"
+        ],
+        "boots": null,
+        "core": [
+          "Óptica hextech C44",
+          "Bailarín espectral",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Preferencia",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "kled": {
+      "games": 10,
+      "winrate": 40,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra titánica",
+          "Cuchilla negra",
+          "Rompecascos"
+        ],
+        "situational": [
+          "Sangría del soberano",
+          "Espada ciclovoltaica"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "shaco": {
+      "games": 24,
+      "winrate": 70.8,
+      "pickrate": 0.69,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 24,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Mandato imperial",
+          "Tormento de Liandry"
+        ],
+        "situational": [
+          "Guja sombría",
+          "Espada ciclovoltaica"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "singed": {
+      "games": 16,
+      "winrate": 43.8,
+      "pickrate": 0.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 16,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cetro de cristal de Rylai",
+          "Tormento de Liandry",
+          "Jak'Sho el Proteico"
+        ],
+        "situational": [
+          "Arnés de protoplasma",
+          "Presagio de Randuin"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "ekko": {
+      "games": 44,
+      "winrate": 43.2,
+      "pickrate": 1.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 44,
+        "starter": [
+          "Anillo de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Amanecer y anochecer",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Diente de Nashor",
+          "Anillo de Doran"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "ryze": {
+      "games": 12,
+      "winrate": 33.3,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Vara de las edades",
+          "Bastón del arcángel",
+          "Actualizador"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "vi": {
+      "games": 16,
+      "winrate": 50,
+      "pickrate": 0.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 16,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Cuchilla negra",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Recaudadora"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "qiyana": {
+      "games": 45,
+      "winrate": 37.8,
+      "pickrate": 1.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 45,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Espada ciclovoltaica",
+          "Quiebrabastiones",
+          "Filo de la noche"
+        ],
+        "situational": [
+          "Rencor de Serylda",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Primer golpe",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "sivir": {
+      "games": 18,
+      "winrate": 55.6,
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Arco de Doran",
+          "Preferencia"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Flechas de los Yun Tal",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Filofugaz de Navori",
+          "Recuerdos de lord Dominik"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "leesin": {
+      "games": 39,
+      "winrate": 56.4,
+      "pickrate": 1.11,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 39,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Eclipse",
+          "Cuchilla negra",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Espada ciclovoltaica",
+          "Firmamento desgarrado"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "azir": {
+      "games": 10,
+      "winrate": 30,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Diente de Nashor",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Velo del hada de la muerte",
+          "Cintomisil hextech"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "hwei": {
+      "games": 18,
+      "winrate": 50,
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Anillo de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Tormento de Liandry",
+          "Robaalmas de Mejai"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "shyvana": {
+      "games": 14,
+      "winrate": 35.7,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Lanza de Shojin",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Verdugo de krakens",
+          "Amanecer y anochecer"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "fiddlesticks": {
+      "games": 14,
+      "winrate": 28.6,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Tormento de Liandry",
+          "Reloj de arena de Zhonya",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Cintomisil hextech",
+          "Malignidad"
+        ],
+        "runes": {
+          "keystone": "Cosecha oscura",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "milio": {
+      "games": 19,
+      "winrate": 42.1,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Incensario ardiente",
+          "Ecos de Helia",
+          "Renovación de piedra lunar"
+        ],
+        "situational": [
+          "Bendición de Mikael",
+          "Canción de batalla de Shurelya"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "zed": {
+      "games": 39,
+      "winrate": 46.2,
+      "pickrate": 1.11,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 39,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Espada ciclovoltaica",
+          "Quiebrabastiones",
+          "Colmillo de serpiente"
+        ],
+        "situational": [
+          "Filo de la noche",
+          "Rencor de Serylda"
+        ],
+        "runes": {
+          "keystone": "Primer golpe",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "taric": {
+      "games": 7,
+      "winrate": 42.9,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Bandlemusa",
+          "Llegada del invierno"
+        ],
+        "situational": [
+          "Promesa de caballero",
+          "Incensario ardiente"
+        ],
+        "runes": {
+          "keystone": "Mejora glacial",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "kaisa": {
+      "games": 40,
+      "winrate": 35,
+      "pickrate": 1.14,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 40,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Verdugo de krakens",
+          "Hoja de furia de Guinsoo"
+        ],
+        "situational": [
+          "El final",
+          "Diente de Nashor"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "pantheon": {
+      "games": 19,
+      "winrate": 63.2,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eclipse",
+          "Firmamento desgarrado",
+          "Cuchilla negra"
+        ],
+        "situational": [
+          "Filo fantasmal de Youmuu",
+          "Guja sombría"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "mordekaiser": {
+      "games": 7,
+      "winrate": 28.6,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cetro de cristal de Rylai",
+          "Amanecer y anochecer",
+          "Creagrietas"
+        ],
+        "situational": [
+          "Experimento de hexarmadura",
+          "Cintomisil hextech"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "viego": {
+      "games": 28,
+      "winrate": 60.7,
+      "pickrate": 0.8,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 28,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Verdugo de krakens",
+          "Recaudadora",
+          "Arcoescudo inmortal"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Recordatorio letal"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "nasus": {
+      "games": 12,
+      "winrate": 75,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Escudo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Corazón de hielo",
+          "Rostro espiritual"
+        ],
+        "situational": [
+          "Bandlemusa",
+          "Coraza del muerto"
+        ],
+        "runes": {
+          "keystone": "Pies veloces",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "gangplank": {
+      "games": 26,
+      "winrate": 57.7,
+      "pickrate": 0.74,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 26,
+        "starter": [
+          "Espada de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Segador de esencia",
+          "Recuerdos de lord Dominik",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Arcoescudo inmortal",
+          "Espada ciclovoltaica"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "caitlyn": {
+      "games": 31,
+      "winrate": 58.1,
+      "pickrate": 0.89,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 31,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Óptica hextech C44",
+          "Filo infinito",
+          "Cañón de fuego rápido"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Preferencia"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "renekton": {
+      "games": 19,
+      "winrate": 36.8,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eclipse",
+          "Cuchilla negra",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Lanza de Shojin",
+          "Calibrador de Sterak"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "ziggs": {
+      "games": 12,
+      "winrate": 50,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Bastón del Vacío",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "rakan": {
+      "games": 22,
+      "winrate": 54.5,
+      "pickrate": 0.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Convergencia de Zeke",
+          "Medallón de los Solari de Hierro",
+          "Promesa de caballero"
+        ],
+        "situational": [
+          "Canción de batalla de Shurelya"
+        ],
+        "runes": {
+          "keystone": "Protector",
+          "primaryTree": "Valor",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "yorick": {
+      "games": 17,
+      "winrate": 64.7,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Escudo de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Cuchilla negra",
+          "Lanza de Shojin"
+        ],
+        "situational": [
+          "Tormento de Liandry",
+          "Guantelete de hielo"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "graves": {
+      "games": 22,
+      "winrate": 31.8,
+      "pickrate": 0.63,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 22,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Soberbia",
+          "Recaudadora",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Arcoescudo inmortal"
+        ],
+        "runes": {
+          "keystone": "Pies veloces",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "vayne": {
+      "games": 7,
+      "winrate": 28.6,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Segador de esencia",
+          "Hoja de furia de Guinsoo"
+        ],
+        "situational": [
+          "Dardos rastreademonios",
+          "Óptica hextech C44"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "vladimir": {
+      "games": 19,
+      "winrate": 52.6,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Sobrecarga tormentosa",
+          "Sombrero mortal de Rabadon",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Tormento de Liandry",
+          "Cintomisil hextech"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "zoe": {
+      "games": 17,
+      "winrate": 41.2,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Mandato imperial",
+          "Precisión infalible"
+        ],
+        "situational": [
+          "Sobrecarga tormentosa",
+          "Perdición del liche"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "smolder": {
+      "games": 8,
+      "winrate": 62.5,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Espada de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Segador de esencia",
+          "Cuchilla negra",
+          "Lanza de Shojin"
+        ],
+        "situational": [
+          "Preferencia",
+          "Filo infinito"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "evelynn": {
+      "games": 3,
+      "winrate": 33.3,
+      "pickrate": 0.09,
+      "banrate": 0,
+      "build": null
+    },
+    "lillia": {
+      "games": 18,
+      "winrate": 44.4,
+      "pickrate": 0.51,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 18,
+        "starter": [
+          "Cría de Caminabrisas",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Tormento de Liandry",
+          "Creagrietas",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Cetro de cristal de Rylai"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "leblanc": {
+      "games": 17,
+      "winrate": 58.8,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Sobrecarga tormentosa",
+          "Llamasombría"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Sombrero mortal de Rabadon"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "kogmaw": {
+      "games": 11,
+      "winrate": 45.5,
+      "pickrate": 0.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 11,
+        "starter": [
+          "Arco de Doran",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hoja de furia de Guinsoo",
+          "Sombrero mortal de Rabadon",
+          "El final"
+        ],
+        "situational": [
+          "Preferencia",
+          "Amanecer y anochecer"
+        ],
+        "runes": {
+          "keystone": "Tensión del saqueador de tormentas",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "urgot": {
+      "games": 9,
+      "winrate": 77.8,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Cuchilla negra",
+          "Calibrador de Sterak"
+        ],
+        "situational": [
+          "Sangría del soberano",
+          "Rookern kaénico"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "aurelionsol": {
+      "games": 7,
+      "winrate": 28.6,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cetro de cristal de Rylai",
+          "Tormento de Liandry",
+          "Maldición sanguinolenta"
+        ],
+        "situational": [
+          "Antorcha de fuego negro",
+          "Velo del hada de la muerte"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "taliyah": {
+      "games": 19,
+      "winrate": 36.8,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Anillo de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Cetro de cristal de Rylai",
+          "Tormento de Liandry"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "malphite": {
+      "games": 17,
+      "winrate": 41.2,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [
+          "Anillo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Égida de fuego solar",
+          "Rookern kaénico",
+          "Malla de espinas"
+        ],
+        "situational": [
+          "Corazón de hielo",
+          "Malignidad"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "renataglasc": {
+      "games": 17,
+      "winrate": 52.9,
+      "pickrate": 0.49,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 17,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Medallón de los Solari de Hierro",
+          "Bendición de Mikael",
+          "Promesa de caballero"
+        ],
+        "situational": [
+          "Canción de batalla de Shurelya",
+          "Bandlemusa"
+        ],
+        "runes": {
+          "keystone": "Protector",
+          "primaryTree": "Valor",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "twistedfate": {
+      "games": 23,
+      "winrate": 52.2,
+      "pickrate": 0.66,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 23,
+        "starter": [
+          "Anillo de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Vara de las edades",
+          "Perdición del liche",
+          "Cañón de fuego rápido"
+        ],
+        "situational": [
+          "Cintomisil hextech",
+          "Verdugo de krakens"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "aurora": {
+      "games": 19,
+      "winrate": 52.6,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Sobrecarga tormentosa",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Eco de Luden"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "xerath": {
+      "games": 15,
+      "winrate": 46.7,
+      "pickrate": 0.43,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 15,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Precisión infalible",
+          "Robaalmas de Mejai"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "ezreal": {
+      "games": 25,
+      "winrate": 48,
+      "pickrate": 0.71,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 25,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Manamune",
+          "Hambre insaciable"
+        ],
+        "situational": [
+          "Lanza de Shojin",
+          "Rencor de Serylda"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "nidalee": {
+      "games": 23,
+      "winrate": 65.2,
+      "pickrate": 0.66,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 23,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Perdición del liche",
+          "Llamasombría",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Cintomisil hextech",
+          "Sombrero mortal de Rabadon"
+        ],
+        "runes": {
+          "keystone": "Cosecha oscura",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "trundle": {
+      "games": 8,
+      "winrate": 50,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Yelmo de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Hoja del rey arruinado",
+          "Coraza del muerto"
+        ],
+        "situational": [
+          "Hidra voraz",
+          "Rookern kaénico"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "camille": {
+      "games": 30,
+      "winrate": 50,
+      "pickrate": 0.86,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 30,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Hidra voraz",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Calibrador de Sterak",
+          "Lanza de Shojin"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "riven": {
+      "games": 13,
+      "winrate": 53.8,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Espada de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Arco axiomático",
+          "Hambre insaciable",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Fauces de Malmortius",
+          "Guja sombría"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "locke": {
+      "games": 35,
+      "winrate": 51.4,
+      "pickrate": 1,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 35,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Perdición del liche",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya",
+          "Sobrecarga tormentosa"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "kayle": {
+      "games": 16,
+      "winrate": 75,
+      "pickrate": 0.46,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 16,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Diente de Nashor",
+          "Amanecer y anochecer",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Preferencia",
+          "Llamasombría"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "velkoz": {
+      "games": 14,
+      "winrate": 57.1,
+      "pickrate": 0.4,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 14,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Eco de Luden",
+          "Antorcha de fuego negro",
+          "Precisión infalible"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "janna": {
+      "games": 37,
+      "winrate": 45.9,
+      "pickrate": 1.06,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 37,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Renovación de piedra lunar",
+          "Bendición de Mikael",
+          "Redención"
+        ],
+        "situational": [
+          "Canción de batalla de Shurelya",
+          "Medallón de los Solari de Hierro"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "twitch": {
+      "games": 19,
+      "winrate": 47.4,
+      "pickrate": 0.54,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 19,
+        "starter": [
+          "Arco de Doran",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Flechas de los Yun Tal",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Huracán de Runaan",
+          "Dardos rastreademonios"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "gwen": {
+      "games": 8,
+      "winrate": 25,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Amanecer y anochecer",
+          "Llamasombría",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya",
+          "Diente de Nashor"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "ivern": {
+      "games": 5,
+      "winrate": 40,
+      "pickrate": 0.14,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 5,
+        "starter": [
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Redención",
+          "Renovación de piedra lunar",
+          "Bendición de Mikael"
+        ],
+        "situational": [
+          "Bastón de aguas fluidas",
+          "Núcleo albar"
+        ],
+        "runes": {
+          "keystone": "Invocar a Aery",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "volibear": {
+      "games": 9,
+      "winrate": 22.2,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Preferencia",
+          "Sable-pistola hextech",
+          "Puñal de Statikk"
+        ],
+        "situational": [
+          "Filofugaz de Navori",
+          "Amanecer y anochecer"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "cassiopeia": {
+      "games": 20,
+      "winrate": 45,
+      "pickrate": 0.57,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 20,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Vara de las edades",
+          "Bastón del arcángel",
+          "Cetro de cristal de Rylai"
+        ],
+        "situational": [
+          "Tormento de Liandry",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "poppy": {
+      "games": 11,
+      "winrate": 81.8,
+      "pickrate": 0.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 11,
+        "starter": [
+          "Escudo de Doran",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Coraza del muerto",
+          "Égida de fuego solar",
+          "Llegada del invierno"
+        ],
+        "situational": [
+          "Rostro espiritual",
+          "Medallón de los Solari de Hierro"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "fizz": {
+      "games": 8,
+      "winrate": 37.5,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Perdición del liche",
+          "Reloj de arena de Zhonya",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Llamasombría"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "zyra": {
+      "games": 4,
+      "winrate": 50,
+      "pickrate": 0.11,
+      "banrate": 0,
+      "build": null
+    },
+    "anivia": {
+      "games": 12,
+      "winrate": 58.3,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Anillo de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Vara de las edades",
+          "Malignidad",
+          "Tormento de Liandry"
+        ],
+        "situational": [
+          "Canción de batalla de Shurelya",
+          "Llegada del invierno"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "malzahar": {
+      "games": 10,
+      "winrate": 80,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Antorcha de fuego negro",
+          "Cetro de cristal de Rylai",
+          "Tormento de Liandry"
+        ],
+        "situational": [
+          "Malignidad",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "vex": {
+      "games": 7,
+      "winrate": 57.1,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Sobrecarga tormentosa",
+          "Llamasombría",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Eco de Luden",
+          "Antorcha de fuego negro"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "veigar": {
+      "games": 10,
+      "winrate": 30,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Anillo de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Bastón del arcángel",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Vara de las edades",
+          "Florescencia sepulcral"
+        ],
+        "runes": {
+          "keystone": "Primer golpe",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "pyke": {
+      "games": 11,
+      "winrate": 54.5,
+      "pickrate": 0.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 11,
+        "starter": [],
+        "boots": null,
+        "core": [
+          "Guja sombría",
+          "Filo de la noche",
+          "Filo fantasmal de Youmuu"
+        ],
+        "situational": [],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "corki": {
+      "games": 10,
+      "winrate": 80,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Manamune",
+          "Recaudadora"
+        ],
+        "situational": [
+          "Filo infinito",
+          "Óptica hextech C44"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "olaf": {
+      "games": 15,
+      "winrate": 66.7,
+      "pickrate": 0.43,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 15,
+        "starter": [
+          "Espada de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra voraz",
+          "Experimento de hexarmadura",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Cortasendas",
+          "Dardos rastreademonios"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "drmundo": {
+      "games": 11,
+      "winrate": 36.4,
+      "pickrate": 0.31,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 11,
+        "starter": [
+          "Escudo de Doran",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Armadura de Warmog",
+          "Corazón de acero",
+          "Rostro espiritual"
+        ],
+        "situational": [
+          "Hidra titánica",
+          "Coraza del muerto"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "neeko": {
+      "games": 10,
+      "winrate": 10,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Anillo de Doran",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Corazón de hielo",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya",
+          "Bandlemusa"
+        ],
+        "runes": {
+          "keystone": "Cometa arcano",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "rumble": {
+      "games": 9,
+      "winrate": 77.8,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Anillo de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Cintomisil hextech",
+          "Tormento de Liandry",
+          "Reloj de arena de Zhonya"
+        ],
+        "situational": [
+          "Robaalmas de Mejai",
+          "Creagrietas"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "jax": {
+      "games": 20,
+      "winrate": 50,
+      "pickrate": 0.57,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 20,
+        "starter": [
+          "Espada de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Amanecer y anochecer",
+          "Fuerza de trinidad",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Firmamento desgarrado",
+          "Hoja del rey arruinado"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "tryndamere": {
+      "games": 13,
+      "winrate": 38.5,
+      "pickrate": 0.37,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 13,
+        "starter": [
+          "Arco de Doran",
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Hidra voraz",
+          "Flechas de los Yun Tal",
+          "Recuerdos de lord Dominik"
+        ],
+        "situational": [
+          "Filo infinito",
+          "Bailarín espectral"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "sejuani": {
+      "games": 10,
+      "winrate": 60,
+      "pickrate": 0.29,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 10,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Brote de Brincamontes"
+        ],
+        "boots": null,
+        "core": [
+          "Corazón de acero",
+          "Desesperanza eterna",
+          "Arnés de protoplasma"
+        ],
+        "situational": [
+          "Amanecer y anochecer",
+          "Malla de espinas"
+        ],
+        "runes": {
+          "keystone": "Reverberacción",
+          "primaryTree": "Valor",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "zaahen": {
+      "games": 12,
+      "winrate": 41.7,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Espada de Doran",
+          "Yelmo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Fuerza de trinidad",
+          "Cortasendas",
+          "Baile de la muerte"
+        ],
+        "situational": [
+          "Hambre insaciable",
+          "Firmamento desgarrado"
+        ],
+        "runes": {
+          "keystone": "Lluvia de cuchillas",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "nocturne": {
+      "games": 8,
+      "winrate": 50,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Cortasendas",
+          "Experimento de hexarmadura",
+          "Arco axiomático"
+        ],
+        "situational": [
+          "Espada ciclovoltaica",
+          "Ángel de la guarda"
+        ],
+        "runes": {
+          "keystone": "Compás letal",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "teemo": {
+      "games": 9,
+      "winrate": 33.3,
+      "pickrate": 0.26,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 9,
+        "starter": [
+          "Anillo de Doran",
+          "Arco de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Puñal de Statikk",
+          "Tormento de Liandry",
+          "Malignidad"
+        ],
+        "situational": [
+          "Diente de Nashor",
+          "Sombrero mortal de Rabadon"
+        ],
+        "runes": {
+          "keystone": "Ataque intensificado",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Valor"
+        }
+      }
+    },
+    "diana": {
+      "games": 12,
+      "winrate": 25,
+      "pickrate": 0.34,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 12,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Amanecer y anochecer",
+          "Reloj de arena de Zhonya",
+          "Sombrero mortal de Rabadon"
+        ],
+        "situational": [
+          "Perdición del liche",
+          "Creagrietas"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "amumu": {
+      "games": 7,
+      "winrate": 28.6,
+      "pickrate": 0.2,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 7,
+        "starter": [
+          "Brote de Brincamontes",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Tormento de Liandry",
+          "Égida de fuego solar",
+          "Preferencia"
+        ],
+        "situational": [
+          "Malla de espinas",
+          "Desesperanza eterna"
+        ],
+        "runes": {
+          "keystone": "Conquistador",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Dominación"
+        }
+      }
+    },
+    "skarner": {
+      "games": 8,
+      "winrate": 75,
+      "pickrate": 0.23,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 8,
+        "starter": [
+          "Cachorro de Garra ígnea",
+          "Cría de Caminabrisas"
+        ],
+        "boots": null,
+        "core": [
+          "Corazón de acero",
+          "Desesperanza eterna",
+          "Rostro espiritual"
+        ],
+        "situational": [
+          "Rookern kaénico",
+          "Arnés de protoplasma"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Inspiración"
+        }
+      }
+    },
+    "belveth": {
+      "games": 3,
+      "winrate": 33.3,
+      "pickrate": 0.09,
+      "banrate": 0,
+      "build": null
+    },
+    "rammus": {
+      "games": 4,
+      "winrate": 75,
+      "pickrate": 0.11,
+      "banrate": 0,
+      "build": null
+    },
+    "missfortune": {
+      "games": 6,
+      "winrate": 50,
+      "pickrate": 0.17,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 6,
+        "starter": [
+          "Arco de Doran",
+          "Espada de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Recaudadora",
+          "Recordatorio letal",
+          "Filo infinito"
+        ],
+        "situational": [
+          "Recuerdos de lord Dominik",
+          "Soberbia"
+        ],
+        "runes": {
+          "keystone": "Primer golpe",
+          "primaryTree": "Inspiración",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "kindred": {
+      "games": 4,
+      "winrate": 25,
+      "pickrate": 0.11,
+      "banrate": 0,
+      "build": null
+    },
+    "warwick": {
+      "games": 3,
+      "winrate": 66.7,
+      "pickrate": 0.09,
+      "banrate": 0,
+      "build": null
+    },
+    "brand": {
+      "games": 6,
+      "winrate": 33.3,
+      "pickrate": 0.17,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 6,
+        "starter": [
+          "Anillo de Doran",
+          "Cachorro de Garra ígnea"
+        ],
+        "boots": null,
+        "core": [
+          "Tormento de Liandry",
+          "Cetro de cristal de Rylai",
+          "Antorcha de fuego negro"
+        ],
+        "situational": [
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Toque de muerte ígnea",
+          "primaryTree": "Brujería",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "tahmkench": {
+      "games": 5,
+      "winrate": 20,
+      "pickrate": 0.14,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 5,
+        "starter": [
+          "Escudo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Corazón de acero",
+          "Desesperanza eterna",
+          "Amanecer y anochecer"
+        ],
+        "situational": [
+          "Malla de espinas",
+          "Medallón de los Solari de Hierro"
+        ],
+        "runes": {
+          "keystone": "Garras del inmortal",
+          "primaryTree": "Valor",
+          "secondaryTree": "Precisión"
+        }
+      }
+    },
+    "annie": {
+      "games": 6,
+      "winrate": 66.7,
+      "pickrate": 0.17,
+      "banrate": 0,
+      "build": {
+        "sampleGames": 6,
+        "starter": [
+          "Anillo de Doran"
+        ],
+        "boots": null,
+        "core": [
+          "Malignidad",
+          "Sobrecarga tormentosa",
+          "Robaalmas de Mejai"
+        ],
+        "situational": [
+          "Sombrero mortal de Rabadon",
+          "Reloj de arena de Zhonya"
+        ],
+        "runes": {
+          "keystone": "Electrocutar",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
+        }
+      }
+    },
+    "heimerdinger": {
+      "games": 2,
+      "winrate": 50,
+      "pickrate": 0.06,
+      "banrate": 0,
+      "build": null
     }
   }
 }
