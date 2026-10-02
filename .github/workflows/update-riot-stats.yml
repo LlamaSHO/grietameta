@@ -29,5 +29,5 @@ jobs:
         run: |
           git config user.name "grietameta-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add champion-stats.json
-          git diff --cached --quiet && echo "Sin cambios en champion-stats.json, nada que commitear." || (git commit -m "chore: actualizar estadisticas de Riot" && git push)
+          git add champion-stats.json riot-stats-state.json
+          git diff --cached --quiet && echo "Sin cambios, nada que commitear." || (git commit -m "chore: actualizar estadisticas de Riot" && git push)
