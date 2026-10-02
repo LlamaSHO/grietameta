@@ -258,7 +258,8 @@ button{font-family:inherit;}
   display:flex; align-items:center; gap:8px;
   background:var(--panel); border:1px solid var(--panel-line); padding:6px 10px 6px 6px; font-size:12.5px;
 }
-.item-icon{width:22px; height:22px; background:var(--gold-soft); flex-shrink:0;}
+.item-icon{width:22px; height:22px; background:var(--gold-soft); flex-shrink:0; position:relative; overflow:hidden;}
+.item-icon img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
 .btn-gold{
   background:var(--gold); color:#1A1305; border:none; font-weight:600; font-size:13.5px;
   padding:10px 20px; cursor:pointer;
@@ -800,10 +801,21 @@ function renderGrid(){
 }
 
 // ------------------------------------------------------------------ modal --
+function itemIconUrl(itemId){
+  return `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/item/${itemId}.png`;
+}
+
+// Cada objeto puede venir como texto plano (dato ilustrativo, sin icono real
+// disponible) o como {id, name} (dato real de Riot, con icono de Data Dragon).
 function buildItemRow(items){
-  return `<div class="item-row">${items.map(i=>`
-    <div class="item-chip"><div class="item-icon"></div>${i}</div>
-  `).join("")}</div>`;
+  return `<div class="item-row">${items.map(item=>{
+    const isReal = item && typeof item === "object";
+    const name = isReal ? item.name : item;
+    const icon = isReal
+      ? `<img src="${itemIconUrl(item.id)}" alt="${name}" loading="lazy" onerror="this.remove()">`
+      : "";
+    return `<div class="item-chip"><div class="item-icon">${icon}</div>${name}</div>`;
+  }).join("")}</div>`;
 }
 
 function openModal(id){
@@ -832,7 +844,11 @@ function openModal(id){
     <div class="build-block">
       <h4>Runas recomendadas</h4>
       <div class="item-row">
-        <div class="item-chip"><div class="item-icon"></div>${c.runes.keystone} · ${c.runes.tree}</div>
+        <div class="item-chip"><div class="item-icon">${
+          c.runes.keystoneIcon
+            ? `<img src="${c.runes.keystoneIcon}" alt="${c.runes.keystone}" loading="lazy" onerror="this.remove()">`
+            : ""
+        }</div>${c.runes.keystone} · ${c.runes.tree}</div>
       </div>
     </div>
   `;
@@ -984,6 +1000,7 @@ async function loadRealStats(){
       if(b.runes?.keystone && b.runes?.primaryTree){
         c.runes = {
           keystone: b.runes.keystone,
+          keystoneIcon: b.runes.keystoneIcon || null,
           tree: b.runes.secondaryTree ? `${b.runes.primaryTree} + ${b.runes.secondaryTree}` : b.runes.primaryTree,
         };
       }
@@ -994,7 +1011,9 @@ async function loadRealStats(){
   const patchTag = document.getElementById("patchTag");
   if(patchTag){
     const date = new Date(data.generatedAt).toLocaleDateString("es-ES", { day:"2-digit", month:"short" });
-    patchTag.textContent = `${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
+    const patchLabel = data.patch ? `Parche ${data.patch} · ` : "";
+    const samplePart = data.totalGamesSample ? ` · ${data.totalGamesSample} partidas analizadas` : "";
+    patchTag.textContent = `${patchLabel}${data.region} · datos reales de ${matched} campeones${samplePart} (act. ${date})`;
   }
 
   renderTierList();
