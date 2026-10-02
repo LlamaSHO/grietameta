@@ -156,8 +156,6 @@ button{font-family:inherit;}
   letter-spacing:0.02em;
 }
 .ad-slot.banner{min-height:90px; display:flex; align-items:center; justify-content:center;}
-/* Premium = sin publicidad: se ocultan todos los bloques de anuncio */
-body.is-premium .ad-slot{display:none;}
 
 /* ---------- TIER LIST ---------- */
 .tier-row{display:flex; border:1px solid var(--panel-line); margin-bottom:2px;}
@@ -255,7 +253,6 @@ body.is-premium .ad-slot{display:none;}
 .modal-body{padding:24px 28px 30px;}
 .build-block{margin-bottom:22px;}
 .build-block h4{font-size:13.5px; color:var(--gold); font-weight:600; margin-bottom:10px;}
-.build-note{font-size:12px; color:var(--ink-faint); margin-top:4px;}
 .item-row{display:flex; gap:10px; flex-wrap:wrap;}
 .item-chip{
   display:flex; align-items:center; gap:8px;
@@ -347,7 +344,7 @@ footer a:hover{color:var(--gold);}
 
 <header class="hero">
   <div class="wrap">
-    <div class="patch-tag" id="patchTag">Datos ilustrativos</div>
+    <div class="patch-tag" id="patchTag">Parche 25.24 · datos ilustrativos</div>
     <h1>Sube de división con la <em>build</em> correcta antes que nadie.</h1>
     <p class="lead">Winrate, pickrate y builds de los 165+ campeones de la grieta, ordenados por rol y por parche. Sin ruido, sin foros interminables.</p>
     <div class="search-row">
@@ -380,8 +377,8 @@ footer a:hover{color:var(--gold);}
       <ins class="adsbygoogle"
            style="display:block; width:100%;"
            data-ad-client="ca-pub-6908736829395141"
-           data-ad-slot="0000000000"
-           data-ad-format="horizontal"
+           data-ad-slot="7741286383"
+           data-ad-format="auto"
            data-full-width-responsive="true"></ins>
     </div>
   </div>
@@ -405,8 +402,8 @@ footer a:hover{color:var(--gold);}
       <ins class="adsbygoogle"
            style="display:block; width:100%;"
            data-ad-client="ca-pub-6908736829395141"
-           data-ad-slot="0000000001"
-           data-ad-format="horizontal"
+           data-ad-slot="9688862686"
+           data-ad-format="auto"
            data-full-width-responsive="true"></ins>
     </div>
   </div>
@@ -416,7 +413,7 @@ footer a:hover{color:var(--gold);}
       <div class="section-head" style="border:none; padding-bottom:0;">
         <div>
           <h2>Navega sin anuncios</h2>
-          <p>Con Premium, GrietaMeta se ve sin publicidad y apoyas que la web siga creciendo y actualizándose.</p>
+          <p>Toda la tier list, winrates y builds completas son gratis para todo el mundo. Premium quita la publicidad y añade alertas de cambios de parche antes de que salgan las notas oficiales.</p>
         </div>
       </div>
       <div class="plans" id="plansRoot"></div>
@@ -678,8 +675,7 @@ function champThumbImg(c){
 const state = {
   role: "Todos",
   query: "",
-  isPremium: false, // true = Premium activo = la web se muestra sin anuncios
-  realStats: false, // true cuando champion-stats.json se cargó con datos reales
+  isPremium: false, // maqueta: cambia a true para previsualizar la vista sin muro
 };
 
 // ---------------------------------------------------------------- helpers --
@@ -731,7 +727,7 @@ function renderChips(){
 // -------------------------------------------------------------- tier list --
 function renderTierList(){
   const root = document.getElementById("tierListRoot");
-  const pool = CHAMPIONS.filter(c => !c.noData && (state.role==="Todos" || c.role===state.role));
+  const pool = CHAMPIONS.filter(c => state.role==="Todos" || c.role===state.role);
   const order = ["S","A","B","C"];
   document.getElementById("tierMeta").textContent = `${pool.length} campeones · ${state.role}`;
   root.innerHTML = order.map(t=>{
@@ -765,7 +761,7 @@ function renderGrid(){
   const list = CHAMPIONS
     .filter(c => state.role==="Todos" || c.role===state.role)
     .filter(c => !q || normalizeSearch(c.name).includes(q))
-    .sort((a,b)=> (Number(!!a.noData) - Number(!!b.noData)) || (b.winrate - a.winrate));
+    .sort((a,b)=> b.winrate - a.winrate);
 
   document.getElementById("gridCount").textContent = `${list.length} resultados`;
 
@@ -782,22 +778,18 @@ function renderGrid(){
   root.innerHTML = list.map(c=>`
     <div class="champ-card" data-id="${c.id}">
       <div class="art" style="${artStyle(c.cls)}">
-        <span class="badge-tier">${c.noData ? "–" : c.tier}</span>
+        <span class="badge-tier">${c.tier}</span>
         ${monogram(c.name)}
         ${champThumbImg(c)}
       </div>
       <div class="info">
         <div class="name">${c.name}</div>
         <div class="role">${c.role} · ${c.cls}</div>
-        ${c.noData ? `
-        <div class="wr-row"><span class="pr-value">Sin muestra suficiente</span></div>
-        ` : `
         <div class="wr-row">
           <span class="wr-value ${wrClass(c.winrate)}">${c.winrate}%</span>
           <span class="pr-value">${c.pickrate}% pick</span>
         </div>
         <div class="wr-bar"><div class="wr-bar-fill" style="width:${c.winrate}%;"></div></div>
-        `}
       </div>
     </div>
   `).join("");
@@ -820,44 +812,28 @@ function openModal(id){
   const overlay = document.getElementById("modalOverlay");
   const root = document.getElementById("modalRoot");
 
-  const buildSection = (title, items) => (items && items.length)
-    ? `<div class="build-block"><h4>${title}</h4>${buildItemRow(items)}</div>`
-    : "";
-
-  // Solo se muestra una build cuando viene de partidas reales analizadas.
-  // Nunca se enseñan objetos de ejemplo como si fueran una build de verdad.
-  const hasRealBuild = Boolean(c.buildSampleGames);
-
-  const fullBuildBlock = `
-    ${buildSection("Objeto inicial", c.build.starter)}
-    ${buildSection("Botas", c.build.boots)}
-    ${buildSection("Objetos clave (orden de compra)", c.build.core)}
-    ${buildSection("Objetos situacionales según el rival", c.build.situational)}
-    ${c.runes ? `
+  const freeBuildBlock = `
+    <div class="build-block">
+      <h4>Objeto inicial</h4>
+      ${buildItemRow(c.build.starter)}
+    </div>
+    <div class="build-block">
+      <h4>Botas</h4>
+      ${buildItemRow(c.build.boots)}
+    </div>
+    <div class="build-block">
+      <h4>Objetos clave (orden de compra)</h4>
+      ${buildItemRow(c.build.core)}
+    </div>
+    <div class="build-block">
+      <h4>Objetos situacionales según el rival</h4>
+      ${buildItemRow(c.build.situational)}
+    </div>
     <div class="build-block">
       <h4>Runas recomendadas</h4>
       <div class="item-row">
         <div class="item-chip"><div class="item-icon"></div>${c.runes.keystone} · ${c.runes.tree}</div>
       </div>
-    </div>` : ""}
-    <div class="build-note">Basado en ${c.buildSampleGames} partidas analizadas.</div>
-  `;
-
-  const basicBuildBlock = `
-    <div class="build-note">${state.realStats
-      ? "Aún no hay suficientes partidas analizadas de este campeón para mostrar su build."
-      : "Las builds se mostrarán cuando haya datos reales de partidas."}</div>
-  `;
-
-  // Anuncio dentro del modal: solo para usuarios sin Premium.
-  const modalAd = state.isPremium ? "" : `
-    <div class="ad-slot banner" style="margin-top:18px;">
-      <ins class="adsbygoogle"
-           style="display:block; width:100%;"
-           data-ad-client="ca-pub-6908736829395141"
-           data-ad-slot="0000000002"
-           data-ad-format="rectangle"
-           data-full-width-responsive="true"></ins>
     </div>
   `;
 
@@ -871,24 +847,19 @@ function openModal(id){
       </div>
     </div>
     <div class="modal-stats">
-      <div class="mstat"><div class="label">Winrate</div><div class="value ${c.noData ? "" : wrClass(c.winrate)}">${c.noData ? "—" : c.winrate + "%"}</div></div>
-      <div class="mstat"><div class="label">Pickrate</div><div class="value">${c.noData ? "—" : c.pickrate + "%"}</div></div>
-      <div class="mstat"><div class="label">Banrate</div><div class="value">${c.noData ? "—" : c.banrate + "%"}</div></div>
-      <div class="mstat"><div class="label">Tier</div><div class="value">${c.noData ? "—" : c.tier}</div></div>
+      <div class="mstat"><div class="label">Winrate</div><div class="value ${wrClass(c.winrate)}">${c.winrate}%</div></div>
+      <div class="mstat"><div class="label">Pickrate</div><div class="value">${c.pickrate}%</div></div>
+      <div class="mstat"><div class="label">Banrate</div><div class="value">${c.banrate}%</div></div>
+      <div class="mstat"><div class="label">Tier</div><div class="value">${c.tier}</div></div>
     </div>
     <div class="modal-body">
-      ${hasRealBuild ? fullBuildBlock : basicBuildBlock}
-      ${modalAd}
+      ${freeBuildBlock}
     </div>
   `;
 
   document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
   overlay.dataset.currentId = c.id;
   overlay.classList.add("open");
-
-  // El anuncio del modal se inyecta de nuevo cada vez (solo si no es premium),
-  // así que necesita su propia llamada a push().
-  if(!state.isPremium) pushAdsenseAds();
 }
 
 function closeModal(){
@@ -908,17 +879,17 @@ function renderPlans(){
   const plans = [
     {
       name:"Gratis", price:"0€", period:"siempre",
-      feats:["Tier list completa","Winrate y pickrate de todos los campeones","Estadísticas y builds de cada campeón","Con publicidad"],
+      feats:["Tier list completa","Winrate, pickrate y banrate reales","Build completa: inicial, botas, núcleo y runas","Con publicidad"],
       cta:"Tu plan actual", featured:false, plan:null,
     },
     {
       name:"Premium", price:"4,99€", period:"/mes",
-      feats:["Todo lo del plan Gratis","Sin publicidad en toda la web","Apoyas el desarrollo de GrietaMeta"],
+      feats:["Todo lo del plan Gratis","Sin publicidad","Alertas de cambios de parche","Acceso anticipado a nuevas herramientas"],
       cta:"Empezar prueba de 7 días", featured:true, plan:"monthly",
     },
     {
       name:"Premium anual", price:"39,99€", period:"/año",
-      feats:["Todo lo de Premium","Sin publicidad todo el año","Ahorras casi 20 € frente al plan mensual"],
+      feats:["Todo lo de Premium","2 meses gratis frente al plan mensual","Apoyas directamente el mantenimiento del sitio"],
       cta:"Ahorrar con el plan anual", featured:false, plan:"yearly",
     },
   ];
@@ -988,21 +959,11 @@ async function loadRealStats(){
   const real = data && data.champions;
   if(!real || !Object.keys(real).length) return;
 
-  state.realStats = true;
-
   let matched = 0;
   CHAMPIONS.forEach(c=>{
     const r = real[c.id];
-    if(!r){
-      // Sin partidas suficientes: no se muestran números ni builds inventados.
-      c.noData = true;
-      c.build = { starter: [], boots: [], core: [], situational: [] };
-      c.runes = null;
-      c.buildSampleGames = 0;
-      return;
-    }
+    if(!r) return; // campeón sin suficiente muestra todavía: se queda con el dato ilustrativo
     matched++;
-    c.noData = false;
     c.winrate = r.winrate;
     c.pickrate = r.pickrate;
     c.banrate = r.banrate;
@@ -1010,30 +971,30 @@ async function loadRealStats(){
     const score = (c.winrate-46.5)/8.5*0.55 + (c.pickrate/18)*0.25 + (c.banrate/22.5)*0.2;
     c.tier = tierFromScore(score);
 
-    // La build real solo llega cuando hay suficiente muestra de partidas
-    // (lo decide scripts/fetch-riot-stats.mjs). Aquí solo se usa lo que
-    // viene de partidas reales: nunca se rellena con datos de ejemplo.
+    // El build real solo llega cuando hay suficiente muestra de partidas
+    // (lo decide scripts/fetch-riot-stats.mjs). Si falta algún campo
+    // (p. ej. pocas partidas con timeline válido), se mantiene el dato
+    // ilustrativo de ese campo concreto en vez de dejarlo vacío.
     const b = r.build;
-    c.build = {
-      starter: b?.starter || [],
-      boots: b?.boots ? [b.boots] : [],
-      core: b?.core || [],
-      situational: b?.situational || [],
-    };
-    c.runes = (b?.runes?.keystone && b?.runes?.primaryTree)
-      ? {
+    if(b){
+      if(b.starter?.length) c.build.starter = b.starter;
+      if(b.boots) c.build.boots = [b.boots];
+      if(b.core?.length) c.build.core = b.core;
+      if(b.situational?.length) c.build.situational = b.situational;
+      if(b.runes?.keystone && b.runes?.primaryTree){
+        c.runes = {
           keystone: b.runes.keystone,
           tree: b.runes.secondaryTree ? `${b.runes.primaryTree} + ${b.runes.secondaryTree}` : b.runes.primaryTree,
-        }
-      : null;
-    c.buildSampleGames = b ? b.sampleGames : 0;
+        };
+      }
+      c.buildSampleGames = b.sampleGames;
+    }
   });
 
   const patchTag = document.getElementById("patchTag");
   if(patchTag){
     const date = new Date(data.generatedAt).toLocaleDateString("es-ES", { day:"2-digit", month:"short" });
-    const patch = data.patch ? `Parche ${data.patch} · ` : "";
-    patchTag.textContent = `${patch}${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
+    patchTag.textContent = `${data.region} · datos reales de ${matched} campeones (muestra del ${date})`;
   }
 
   renderTierList();
@@ -1058,6 +1019,7 @@ async function checkPremiumEmail(email, { silent } = {}){
       state.isPremium = true;
       localStorage.setItem(PREMIUM_EMAIL_KEY, email);
       renderUnlockBlock();
+      updateAdSlotsVisibility();
       return true;
     } else {
       if(!silent && statusEl){
@@ -1079,15 +1041,12 @@ function renderUnlockBlock(){
   const root = document.getElementById("unlockBlock");
   if(!root) return;
 
-  // Premium activo = se ocultan todos los bloques de anuncio de la página.
-  document.body.classList.toggle("is-premium", state.isPremium);
-
   if(state.isPremium){
     const email = localStorage.getItem(PREMIUM_EMAIL_KEY) || "";
     root.innerHTML = `
       <div class="unlock-box">
         <span class="premium-badge-chip">✓ Premium activo${email ? " · " + email : ""}</span>
-        <p style="margin-top:12px;">Ya navegas sin anuncios. ¡Gracias por apoyar GrietaMeta!</p>
+        <p style="margin-top:12px;">Navegas sin publicidad en todo el sitio. ¡Gracias por apoyar GrietaMeta!</p>
         <button class="btn-outline" id="forgetPremiumBtn" style="width:auto; padding:8px 16px;">Cerrar sesión en este navegador</button>
       </div>
     `;
@@ -1095,14 +1054,14 @@ function renderUnlockBlock(){
       localStorage.removeItem(PREMIUM_EMAIL_KEY);
       state.isPremium = false;
       renderUnlockBlock();
-      pushAdsenseAds(); // los anuncios vuelven a verse y se cargan
+      updateAdSlotsVisibility();
     });
     return;
   }
 
   root.innerHTML = `
     <div class="unlock-box">
-      <p>¿Ya pagaste Premium? Introduce el email que usaste al suscribirte para quitar los anuncios en este navegador.</p>
+      <p>¿Ya pagaste Premium? Introduce el email que usaste al suscribirte para desbloquearlo en este navegador.</p>
       <div class="unlock-row">
         <input type="email" id="unlockEmailInput" placeholder="tu@email.com">
         <button id="unlockBtn">Desbloquear</button>
@@ -1132,11 +1091,17 @@ function renderUnlockBlock(){
 }
 
 renderUnlockBlock();
+// Si el navegador ya tenía un email guardado de una visita anterior,
+// comprobamos en silencio si sigue siendo premium.
+const savedEmail = localStorage.getItem(PREMIUM_EMAIL_KEY);
+if(savedEmail){
+  checkPremiumEmail(savedEmail, { silent: true });
+}
 
 // ------------------------------------------------------------ AdSense init --
 // Los bloques <ins class="adsbygoogle"> que ya existen al cargar la página
-// (adSlotTop y adSlotMid) se activan una sola vez. Los usuarios Premium
-// nunca cargan anuncios.
+// (adSlotTop y adSlotMid) se activan una sola vez aquí. Quien es Premium no
+// ve publicidad: se ocultan sus huecos y no se activan sus anuncios.
 function pushAdsenseAds(){
   if(state.isPremium) return;
   try{
@@ -1149,20 +1114,17 @@ function pushAdsenseAds(){
   }
 }
 
-// Si el navegador ya tenía un email guardado de una visita anterior,
-// comprobamos primero si sigue siendo premium y SOLO después cargamos
-// anuncios, para no pedírselos a quien ya los ha quitado.
-const savedEmail = localStorage.getItem(PREMIUM_EMAIL_KEY);
-if(savedEmail){
-  document.body.classList.add("is-premium"); // evita que los huecos de anuncio parpadeen mientras se comprueba
-  checkPremiumEmail(savedEmail, { silent: true }).finally(()=>{
-    document.body.classList.toggle("is-premium", state.isPremium);
-    pushAdsenseAds();
+function updateAdSlotsVisibility(){
+  document.querySelectorAll(".ad-slot").forEach(el=>{
+    el.style.display = state.isPremium ? "none" : "";
   });
-} else {
-  pushAdsenseAds();
 }
+
+updateAdSlotsVisibility();
+pushAdsenseAds();
 
 </script>
 </body>
 </html>
+
+
