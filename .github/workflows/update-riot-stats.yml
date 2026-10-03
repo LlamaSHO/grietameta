@@ -27,7 +27,7 @@ jobs:
 
       - name: Hacer commit si hay cambios
         run: |
-          git config user.name "grietameta-bot"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "LlamaSHO"
+          git config user.email "241094598+LlamaSHO@users.noreply.github.com"
           git add champion-stats.json riot-stats-state.json
-          git diff --cached --quiet && echo "Sin cambios, nada que commitear." || (git commit -m "chore: actualizar estadisticas de Riot" && git push)
+          git diff --cached --quiet && echo "Sin cambios, nada que commitear." || (git commit -m "chore: actualizar estadisticas de Riot" && git pull --rebase origin main && git push)
