@@ -214,11 +214,16 @@ async function loadItemAndRuneData() {
   for (const [id, data] of Object.entries(itemJson.data || {})) {
     const tags = data.tags || [];
     const isConsumableOrTrinket = tags.includes("Consumable") || tags.includes("Trinket");
+    const isBoots = tags.includes("Boots");
     const hasFurtherBuild = Array.isArray(data.into) && data.into.length > 0;
+    // Las botas de nivel 2 (p. ej. Botas de Berserker) ahora "se siguen
+    // construyendo" hacia su versión de nivel 3 (p. ej. Gunmetal Greaves),
+    // así que no son un callejón sin salida como el resto de objetos — pero
+    // siguen siendo la compra de botas que queremos contar igualmente.
     items[id] = {
       name: data.name,
-      isBoots: tags.includes("Boots"),
-      isBuildEnd: !hasFurtherBuild && !isConsumableOrTrinket && (data.gold?.total || 0) > 0,
+      isBoots,
+      isBuildEnd: isBoots || (!hasFurtherBuild && !isConsumableOrTrinket && (data.gold?.total || 0) > 0),
       excluded: isConsumableOrTrinket,
     };
   }
