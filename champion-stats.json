@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-10-05T10:43:49.796Z",
+  "generatedAt": "2026-10-06T10:35:38.010Z",
   "region": "EUW",
   "queue": "RANKED_SOLO_5x5",
   "patch": "16.19",
-  "totalGamesSample": 2005,
-  "totalRequestsUsed": 796,
+  "totalGamesSample": 2347,
+  "totalRequestsUsed": 806,
   "champions": {
     "olaf": {
-      "games": 77,
-      "winrate": 50.6,
-      "pickrate": 0.38,
+      "games": 96,
+      "winrate": 50,
+      "pickrate": 0.41,
       "banrate": 0,
       "build": {
-        "sampleGames": 77,
+        "sampleGames": 96,
         "starter": [
           {
             "id": "1055",
@@ -60,12 +60,12 @@
       }
     },
     "xinzhao": {
-      "games": 57,
-      "winrate": 42.1,
-      "pickrate": 0.28,
+      "games": 68,
+      "winrate": 42.6,
+      "pickrate": 0.29,
       "banrate": 0,
       "build": {
-        "sampleGames": 57,
+        "sampleGames": 68,
         "starter": [
           {
             "id": "1101",
@@ -77,8 +77,8 @@
           }
         ],
         "boots": {
-          "id": "3111",
-          "name": "Botas de mercurio"
+          "id": "3047",
+          "name": "Botas blindadas"
         },
         "core": [
           {
@@ -98,10 +98,6 @@
           {
             "id": "3156",
             "name": "Fauces de Malmortius"
-          },
-          {
-            "id": "6610",
-            "name": "Firmamento desgarrado"
           }
         ],
         "runes": {
@@ -113,12 +109,12 @@
       }
     },
     "zilean": {
-      "games": 112,
-      "winrate": 50.9,
-      "pickrate": 0.56,
+      "games": 125,
+      "winrate": 51.2,
+      "pickrate": 0.53,
       "banrate": 0,
       "build": {
-        "sampleGames": 112,
+        "sampleGames": 125,
         "starter": [
           {
             "id": "1056",
@@ -149,8 +145,8 @@
             "name": "Bandlemusa"
           },
           {
-            "id": "3222",
-            "name": "Bendición de Mikael"
+            "id": "4005",
+            "name": "Mandato imperial"
           }
         ],
         "runes": {
@@ -162,12 +158,12 @@
       }
     },
     "viktor": {
-      "games": 246,
-      "winrate": 52,
-      "pickrate": 1.23,
+      "games": 285,
+      "winrate": 52.3,
+      "pickrate": 1.21,
       "banrate": 0,
       "build": {
-        "sampleGames": 246,
+        "sampleGames": 285,
         "starter": [
           {
             "id": "1056",
@@ -194,12 +190,12 @@
         ],
         "situational": [
           {
-            "id": "3100",
-            "name": "Perdición del liche"
-          },
-          {
             "id": "3089",
             "name": "Sombrero mortal de Rabadon"
+          },
+          {
+            "id": "3100",
+            "name": "Perdición del liche"
           }
         ],
         "runes": {
@@ -211,12 +207,12 @@
       }
     },
     "pyke": {
-      "games": 105,
-      "winrate": 45.7,
-      "pickrate": 0.52,
+      "games": 129,
+      "winrate": 41.9,
+      "pickrate": 0.55,
       "banrate": 0,
       "build": {
-        "sampleGames": 105,
+        "sampleGames": 129,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -251,12 +247,12 @@
       }
     },
     "ambessa": {
-      "games": 180,
-      "winrate": 42.2,
-      "pickrate": 0.9,
+      "games": 198,
+      "winrate": 41.9,
+      "pickrate": 0.84,
       "banrate": 0,
       "build": {
-        "sampleGames": 180,
+        "sampleGames": 198,
         "starter": [
           {
             "id": "1055",
@@ -299,17 +295,17 @@
           "keystone": "Conquistador",
           "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png",
           "primaryTree": "Precisión",
-          "secondaryTree": "Valor"
+          "secondaryTree": "Inspiración"
         }
       }
     },
     "leesin": {
-      "games": 249,
-      "winrate": 51.8,
-      "pickrate": 1.24,
+      "games": 284,
+      "winrate": 50,
+      "pickrate": 1.21,
       "banrate": 0,
       "build": {
-        "sampleGames": 249,
+        "sampleGames": 284,
         "starter": [
           {
             "id": "1101",
@@ -357,12 +353,12 @@
       }
     },
     "ahri": {
-      "games": 216,
-      "winrate": 49.5,
-      "pickrate": 1.08,
+      "games": 255,
+      "winrate": 49.8,
+      "pickrate": 1.09,
       "banrate": 0,
       "build": {
-        "sampleGames": 216,
+        "sampleGames": 255,
         "starter": [
           {
             "id": "1056",
@@ -406,12 +402,12 @@
       }
     },
     "caitlyn": {
-      "games": 192,
-      "winrate": 47.4,
-      "pickrate": 0.96,
+      "games": 224,
+      "winrate": 49.1,
+      "pickrate": 0.95,
       "banrate": 0,
       "build": {
-        "sampleGames": 192,
+        "sampleGames": 224,
         "starter": [
           {
             "id": "1086",
@@ -446,8 +442,8 @@
             "name": "Cañón de fuego rápido"
           },
           {
-            "id": "1083",
-            "name": "Preferencia"
+            "id": "6676",
+            "name": "Recaudadora"
           }
         ],
         "runes": {
@@ -459,12 +455,12 @@
       }
     },
     "lux": {
-      "games": 139,
-      "winrate": 56.1,
-      "pickrate": 0.69,
+      "games": 159,
+      "winrate": 56.6,
+      "pickrate": 0.68,
       "banrate": 0,
       "build": {
-        "sampleGames": 139,
+        "sampleGames": 159,
         "starter": [
           {
             "id": "1056",
@@ -512,12 +508,12 @@
       }
     },
     "fiora": {
-      "games": 126,
-      "winrate": 45.2,
-      "pickrate": 0.63,
+      "games": 140,
+      "winrate": 44.3,
+      "pickrate": 0.6,
       "banrate": 0,
       "build": {
-        "sampleGames": 126,
+        "sampleGames": 140,
         "starter": [
           {
             "id": "1055",
@@ -565,12 +561,12 @@
       }
     },
     "fiddlesticks": {
-      "games": 58,
-      "winrate": 46.6,
-      "pickrate": 0.29,
+      "games": 70,
+      "winrate": 48.6,
+      "pickrate": 0.3,
       "banrate": 0,
       "build": {
-        "sampleGames": 58,
+        "sampleGames": 70,
         "starter": [
           {
             "id": "1102",
@@ -618,12 +614,12 @@
       }
     },
     "nasus": {
-      "games": 82,
-      "winrate": 50,
+      "games": 96,
+      "winrate": 53.1,
       "pickrate": 0.41,
       "banrate": 0,
       "build": {
-        "sampleGames": 82,
+        "sampleGames": 96,
         "starter": [
           {
             "id": "1054",
@@ -671,12 +667,12 @@
       }
     },
     "singed": {
-      "games": 69,
-      "winrate": 42,
-      "pickrate": 0.34,
+      "games": 84,
+      "winrate": 42.9,
+      "pickrate": 0.36,
       "banrate": 0,
       "build": {
-        "sampleGames": 69,
+        "sampleGames": 84,
         "starter": [
           {
             "id": "1056",
@@ -709,10 +705,6 @@
           {
             "id": "3742",
             "name": "Coraza del muerto"
-          },
-          {
-            "id": "3152",
-            "name": "Cintomisil hextech"
           }
         ],
         "runes": {
@@ -724,12 +716,12 @@
       }
     },
     "nautilus": {
-      "games": 252,
-      "winrate": 48,
-      "pickrate": 1.26,
+      "games": 299,
+      "winrate": 47.2,
+      "pickrate": 1.27,
       "banrate": 0,
       "build": {
-        "sampleGames": 252,
+        "sampleGames": 299,
         "starter": [
           {
             "id": "1103",
@@ -773,20 +765,20 @@
       }
     },
     "zaahen": {
-      "games": 89,
-      "winrate": 39.3,
+      "games": 103,
+      "winrate": 40.8,
       "pickrate": 0.44,
       "banrate": 0,
       "build": {
-        "sampleGames": 89,
+        "sampleGames": 103,
         "starter": [
           {
             "id": "1055",
             "name": "Espada de Doran"
           },
           {
-            "id": "1120",
-            "name": "Yelmo de Doran"
+            "id": "1054",
+            "name": "Escudo de Doran"
           }
         ],
         "boots": {
@@ -826,12 +818,12 @@
       }
     },
     "rengar": {
-      "games": 98,
-      "winrate": 45.9,
-      "pickrate": 0.49,
+      "games": 110,
+      "winrate": 48.2,
+      "pickrate": 0.47,
       "banrate": 0,
       "build": {
-        "sampleGames": 98,
+        "sampleGames": 110,
         "starter": [
           {
             "id": "1102",
@@ -879,12 +871,12 @@
       }
     },
     "garen": {
-      "games": 133,
+      "games": 153,
       "winrate": 54.9,
-      "pickrate": 0.66,
+      "pickrate": 0.65,
       "banrate": 0,
       "build": {
-        "sampleGames": 133,
+        "sampleGames": 153,
         "starter": [
           {
             "id": "1054",
@@ -919,25 +911,25 @@
             "name": "Recordatorio letal"
           },
           {
-            "id": "3742",
-            "name": "Coraza del muerto"
+            "id": "6699",
+            "name": "Espada ciclovoltaica"
           }
         ],
         "runes": {
-          "keystone": "Tensión del saqueador de tormentas",
-          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/PhaseRush/StormraidersSurgeRuneIcon2.png",
-          "primaryTree": "Brujería",
-          "secondaryTree": "Valor"
+          "keystone": "Conquistador",
+          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png",
+          "primaryTree": "Precisión",
+          "secondaryTree": "Brujería"
         }
       }
     },
     "ziggs": {
-      "games": 51,
-      "winrate": 54.9,
-      "pickrate": 0.25,
+      "games": 60,
+      "winrate": 53.3,
+      "pickrate": 0.26,
       "banrate": 0,
       "build": {
-        "sampleGames": 51,
+        "sampleGames": 60,
         "starter": [
           {
             "id": "1056",
@@ -981,12 +973,12 @@
       }
     },
     "malphite": {
-      "games": 138,
-      "winrate": 52.9,
-      "pickrate": 0.69,
+      "games": 170,
+      "winrate": 53.5,
+      "pickrate": 0.72,
       "banrate": 0,
       "build": {
-        "sampleGames": 138,
+        "sampleGames": 170,
         "starter": [
           {
             "id": "1056",
@@ -1034,12 +1026,12 @@
       }
     },
     "qiyana": {
-      "games": 298,
-      "winrate": 53.4,
+      "games": 350,
+      "winrate": 52.9,
       "pickrate": 1.49,
       "banrate": 0,
       "build": {
-        "sampleGames": 298,
+        "sampleGames": 350,
         "starter": [
           {
             "id": "1102",
@@ -1087,12 +1079,12 @@
       }
     },
     "cassiopeia": {
-      "games": 84,
-      "winrate": 54.8,
-      "pickrate": 0.42,
+      "games": 97,
+      "winrate": 51.5,
+      "pickrate": 0.41,
       "banrate": 0,
       "build": {
-        "sampleGames": 84,
+        "sampleGames": 97,
         "starter": [
           {
             "id": "1056",
@@ -1136,12 +1128,12 @@
       }
     },
     "yunara": {
-      "games": 454,
-      "winrate": 52.4,
-      "pickrate": 2.26,
+      "games": 542,
+      "winrate": 52.6,
+      "pickrate": 2.31,
       "banrate": 0,
       "build": {
-        "sampleGames": 454,
+        "sampleGames": 542,
         "starter": [
           {
             "id": "1086",
@@ -1189,12 +1181,12 @@
       }
     },
     "lulu": {
-      "games": 326,
-      "winrate": 53.4,
-      "pickrate": 1.63,
+      "games": 380,
+      "winrate": 52.9,
+      "pickrate": 1.62,
       "banrate": 0,
       "build": {
-        "sampleGames": 326,
+        "sampleGames": 380,
         "starter": [
           {
             "id": "1056",
@@ -1238,12 +1230,12 @@
       }
     },
     "aatrox": {
-      "games": 119,
-      "winrate": 47.1,
-      "pickrate": 0.59,
+      "games": 141,
+      "winrate": 46.8,
+      "pickrate": 0.6,
       "banrate": 0,
       "build": {
-        "sampleGames": 119,
+        "sampleGames": 141,
         "starter": [
           {
             "id": "1055",
@@ -1291,12 +1283,12 @@
       }
     },
     "locke": {
-      "games": 265,
-      "winrate": 52.1,
+      "games": 309,
+      "winrate": 52.4,
       "pickrate": 1.32,
       "banrate": 0,
       "build": {
-        "sampleGames": 265,
+        "sampleGames": 309,
         "starter": [
           {
             "id": "1056",
@@ -1331,8 +1323,8 @@
             "name": "Reloj de arena de Zhonya"
           },
           {
-            "id": "4646",
-            "name": "Sobrecarga tormentosa"
+            "id": "3041",
+            "name": "Robaalmas de Mejai"
           }
         ],
         "runes": {
@@ -1344,12 +1336,12 @@
       }
     },
     "yone": {
-      "games": 339,
-      "winrate": 51.3,
-      "pickrate": 1.69,
+      "games": 380,
+      "winrate": 50.5,
+      "pickrate": 1.62,
       "banrate": 0,
       "build": {
-        "sampleGames": 339,
+        "sampleGames": 380,
         "starter": [
           {
             "id": "1086",
@@ -1384,8 +1376,8 @@
             "name": "Baile de la muerte"
           },
           {
-            "id": "3036",
-            "name": "Recuerdos de lord Dominik"
+            "id": "3095",
+            "name": "Navaja de asalto"
           }
         ],
         "runes": {
@@ -1397,12 +1389,12 @@
       }
     },
     "sylas": {
-      "games": 354,
-      "winrate": 44.9,
-      "pickrate": 1.77,
+      "games": 413,
+      "winrate": 46.2,
+      "pickrate": 1.76,
       "banrate": 0,
       "build": {
-        "sampleGames": 354,
+        "sampleGames": 413,
         "starter": [
           {
             "id": "1056",
@@ -1450,12 +1442,12 @@
       }
     },
     "gwen": {
-      "games": 85,
-      "winrate": 51.8,
-      "pickrate": 0.42,
+      "games": 104,
+      "winrate": 51,
+      "pickrate": 0.44,
       "banrate": 0,
       "build": {
-        "sampleGames": 85,
+        "sampleGames": 104,
         "starter": [
           {
             "id": "1056",
@@ -1486,12 +1478,12 @@
         ],
         "situational": [
           {
-            "id": "3115",
-            "name": "Diente de Nashor"
-          },
-          {
             "id": "3135",
             "name": "Bastón del Vacío"
+          },
+          {
+            "id": "3115",
+            "name": "Diente de Nashor"
           }
         ],
         "runes": {
@@ -1503,12 +1495,12 @@
       }
     },
     "tristana": {
-      "games": 313,
+      "games": 369,
       "winrate": 53.7,
-      "pickrate": 1.56,
+      "pickrate": 1.57,
       "banrate": 0,
       "build": {
-        "sampleGames": 313,
+        "sampleGames": 369,
         "starter": [
           {
             "id": "1086",
@@ -1556,12 +1548,12 @@
       }
     },
     "yuumi": {
-      "games": 89,
-      "winrate": 36,
-      "pickrate": 0.44,
+      "games": 102,
+      "winrate": 39.2,
+      "pickrate": 0.43,
       "banrate": 0,
       "build": {
-        "sampleGames": 89,
+        "sampleGames": 102,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -1600,12 +1592,12 @@
       }
     },
     "jax": {
-      "games": 115,
-      "winrate": 55.7,
-      "pickrate": 0.57,
+      "games": 131,
+      "winrate": 56.5,
+      "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 115,
+        "sampleGames": 131,
         "starter": [
           {
             "id": "1054",
@@ -1653,12 +1645,12 @@
       }
     },
     "graves": {
-      "games": 149,
-      "winrate": 51,
-      "pickrate": 0.74,
+      "games": 178,
+      "winrate": 50,
+      "pickrate": 0.76,
       "banrate": 0,
       "build": {
-        "sampleGames": 149,
+        "sampleGames": 178,
         "starter": [
           {
             "id": "1101",
@@ -1706,12 +1698,12 @@
       }
     },
     "malzahar": {
-      "games": 57,
-      "winrate": 47.4,
-      "pickrate": 0.28,
+      "games": 64,
+      "winrate": 48.4,
+      "pickrate": 0.27,
       "banrate": 0,
       "build": {
-        "sampleGames": 57,
+        "sampleGames": 64,
         "starter": [
           {
             "id": "1056",
@@ -1719,8 +1711,8 @@
           }
         ],
         "boots": {
-          "id": "1001",
-          "name": "Botas"
+          "id": "3020",
+          "name": "Botas de hechicero"
         },
         "core": [
           {
@@ -1728,12 +1720,12 @@
             "name": "Antorcha de fuego negro"
           },
           {
-            "id": "3116",
-            "name": "Cetro de cristal de Rylai"
-          },
-          {
             "id": "6653",
             "name": "Tormento de Liandry"
+          },
+          {
+            "id": "3116",
+            "name": "Cetro de cristal de Rylai"
           }
         ],
         "situational": [
@@ -1755,12 +1747,12 @@
       }
     },
     "hwei": {
-      "games": 116,
-      "winrate": 50.9,
-      "pickrate": 0.58,
+      "games": 127,
+      "winrate": 50.4,
+      "pickrate": 0.54,
       "banrate": 0,
       "build": {
-        "sampleGames": 116,
+        "sampleGames": 127,
         "starter": [
           {
             "id": "1056",
@@ -1777,18 +1769,18 @@
             "name": "Antorcha de fuego negro"
           },
           {
-            "id": "4645",
-            "name": "Llamasombría"
+            "id": "6653",
+            "name": "Tormento de Liandry"
           },
           {
-            "id": "3089",
-            "name": "Sombrero mortal de Rabadon"
+            "id": "4645",
+            "name": "Llamasombría"
           }
         ],
         "situational": [
           {
-            "id": "6653",
-            "name": "Tormento de Liandry"
+            "id": "3089",
+            "name": "Sombrero mortal de Rabadon"
           },
           {
             "id": "4628",
@@ -1804,12 +1796,12 @@
       }
     },
     "nidalee": {
-      "games": 106,
-      "winrate": 58.5,
+      "games": 125,
+      "winrate": 59.2,
       "pickrate": 0.53,
       "banrate": 0,
       "build": {
-        "sampleGames": 106,
+        "sampleGames": 125,
         "starter": [
           {
             "id": "1101",
@@ -1857,12 +1849,12 @@
       }
     },
     "jhin": {
-      "games": 292,
-      "winrate": 51.4,
-      "pickrate": 1.46,
+      "games": 351,
+      "winrate": 53.6,
+      "pickrate": 1.5,
       "banrate": 0,
       "build": {
-        "sampleGames": 292,
+        "sampleGames": 351,
         "starter": [
           {
             "id": "1120",
@@ -1910,12 +1902,12 @@
       }
     },
     "wukong": {
-      "games": 147,
-      "winrate": 49.7,
-      "pickrate": 0.73,
+      "games": 170,
+      "winrate": 49.4,
+      "pickrate": 0.72,
       "banrate": 0,
       "build": {
-        "sampleGames": 147,
+        "sampleGames": 170,
         "starter": [
           {
             "id": "1101",
@@ -1963,12 +1955,12 @@
       }
     },
     "chogath": {
-      "games": 215,
-      "winrate": 52.1,
-      "pickrate": 1.07,
+      "games": 247,
+      "winrate": 52.6,
+      "pickrate": 1.05,
       "banrate": 0,
       "build": {
-        "sampleGames": 215,
+        "sampleGames": 247,
         "starter": [
           {
             "id": "1056",
@@ -2016,12 +2008,12 @@
       }
     },
     "vayne": {
-      "games": 45,
-      "winrate": 51.1,
-      "pickrate": 0.22,
+      "games": 54,
+      "winrate": 51.9,
+      "pickrate": 0.23,
       "banrate": 0,
       "build": {
-        "sampleGames": 45,
+        "sampleGames": 54,
         "starter": [
           {
             "id": "1086",
@@ -2038,8 +2030,8 @@
         },
         "core": [
           {
-            "id": "3078",
-            "name": "Fuerza de trinidad"
+            "id": "3508",
+            "name": "Segador de esencia"
           },
           {
             "id": "3124",
@@ -2052,8 +2044,8 @@
         ],
         "situational": [
           {
-            "id": "1083",
-            "name": "Preferencia"
+            "id": "3078",
+            "name": "Fuerza de trinidad"
           },
           {
             "id": "3153",
@@ -2069,12 +2061,12 @@
       }
     },
     "camille": {
-      "games": 215,
-      "winrate": 50.7,
-      "pickrate": 1.07,
+      "games": 248,
+      "winrate": 50,
+      "pickrate": 1.06,
       "banrate": 0,
       "build": {
-        "sampleGames": 215,
+        "sampleGames": 248,
         "starter": [
           {
             "id": "1055",
@@ -2122,12 +2114,12 @@
       }
     },
     "elise": {
-      "games": 148,
-      "winrate": 50.7,
-      "pickrate": 0.74,
+      "games": 178,
+      "winrate": 48.3,
+      "pickrate": 0.76,
       "banrate": 0,
       "build": {
-        "sampleGames": 148,
+        "sampleGames": 178,
         "starter": [
           {
             "id": "1101",
@@ -2175,20 +2167,20 @@
       }
     },
     "jinx": {
-      "games": 203,
-      "winrate": 46.8,
-      "pickrate": 1.01,
+      "games": 242,
+      "winrate": 46.7,
+      "pickrate": 1.03,
       "banrate": 0,
       "build": {
-        "sampleGames": 203,
+        "sampleGames": 242,
         "starter": [
           {
             "id": "1086",
             "name": "Arco de Doran"
           },
           {
-            "id": "1055",
-            "name": "Espada de Doran"
+            "id": "1083",
+            "name": "Preferencia"
           }
         ],
         "boots": {
@@ -2211,12 +2203,12 @@
         ],
         "situational": [
           {
-            "id": "1083",
-            "name": "Preferencia"
-          },
-          {
             "id": "3036",
             "name": "Recuerdos de lord Dominik"
+          },
+          {
+            "id": "1083",
+            "name": "Preferencia"
           }
         ],
         "runes": {
@@ -2228,20 +2220,20 @@
       }
     },
     "warwick": {
-      "games": 39,
-      "winrate": 59,
-      "pickrate": 0.19,
+      "games": 52,
+      "winrate": 51.9,
+      "pickrate": 0.22,
       "banrate": 0,
       "build": {
-        "sampleGames": 39,
+        "sampleGames": 52,
         "starter": [
           {
             "id": "1102",
             "name": "Cría de Caminabrisas"
           },
           {
-            "id": "1055",
-            "name": "Espada de Doran"
+            "id": "1086",
+            "name": "Arco de Doran"
           }
         ],
         "boots": {
@@ -2281,12 +2273,12 @@
       }
     },
     "leblanc": {
-      "games": 120,
-      "winrate": 53.3,
-      "pickrate": 0.6,
+      "games": 142,
+      "winrate": 51.4,
+      "pickrate": 0.61,
       "banrate": 0,
       "build": {
-        "sampleGames": 120,
+        "sampleGames": 142,
         "starter": [
           {
             "id": "1056",
@@ -2334,12 +2326,12 @@
       }
     },
     "mel": {
-      "games": 40,
-      "winrate": 47.5,
+      "games": 48,
+      "winrate": 50,
       "pickrate": 0.2,
       "banrate": 0,
       "build": {
-        "sampleGames": 40,
+        "sampleGames": 48,
         "starter": [
           {
             "id": "1056",
@@ -2370,8 +2362,8 @@
             "name": "Sombrero mortal de Rabadon"
           },
           {
-            "id": "3041",
-            "name": "Robaalmas de Mejai"
+            "id": "3152",
+            "name": "Cintomisil hextech"
           }
         ],
         "runes": {
@@ -2383,12 +2375,12 @@
       }
     },
     "pantheon": {
-      "games": 121,
-      "winrate": 38.8,
-      "pickrate": 0.6,
+      "games": 139,
+      "winrate": 38.1,
+      "pickrate": 0.59,
       "banrate": 0,
       "build": {
-        "sampleGames": 121,
+        "sampleGames": 139,
         "starter": [
           {
             "id": "1055",
@@ -2436,12 +2428,12 @@
       }
     },
     "yorick": {
-      "games": 41,
-      "winrate": 51.2,
+      "games": 48,
+      "winrate": 45.8,
       "pickrate": 0.2,
       "banrate": 0,
       "build": {
-        "sampleGames": 41,
+        "sampleGames": 48,
         "starter": [
           {
             "id": "1054",
@@ -2489,12 +2481,12 @@
       }
     },
     "ekko": {
-      "games": 210,
-      "winrate": 50,
-      "pickrate": 1.05,
+      "games": 241,
+      "winrate": 50.2,
+      "pickrate": 1.03,
       "banrate": 0,
       "build": {
-        "sampleGames": 210,
+        "sampleGames": 241,
         "starter": [
           {
             "id": "1056",
@@ -2542,12 +2534,12 @@
       }
     },
     "syndra": {
-      "games": 283,
-      "winrate": 52.7,
-      "pickrate": 1.41,
+      "games": 335,
+      "winrate": 52.2,
+      "pickrate": 1.43,
       "banrate": 0,
       "build": {
-        "sampleGames": 283,
+        "sampleGames": 335,
         "starter": [
           {
             "id": "1056",
@@ -2591,12 +2583,12 @@
       }
     },
     "yasuo": {
-      "games": 294,
-      "winrate": 46.6,
-      "pickrate": 1.47,
+      "games": 332,
+      "winrate": 47.3,
+      "pickrate": 1.41,
       "banrate": 0,
       "build": {
-        "sampleGames": 294,
+        "sampleGames": 332,
         "starter": [
           {
             "id": "1086",
@@ -2644,12 +2636,12 @@
       }
     },
     "rakan": {
-      "games": 113,
-      "winrate": 49.6,
+      "games": 131,
+      "winrate": 51.1,
       "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 113,
+        "sampleGames": 131,
         "starter": [
           {
             "id": "1056",
@@ -2684,12 +2676,12 @@
       }
     },
     "irelia": {
-      "games": 148,
-      "winrate": 53.4,
-      "pickrate": 0.74,
+      "games": 181,
+      "winrate": 53,
+      "pickrate": 0.77,
       "banrate": 0,
       "build": {
-        "sampleGames": 148,
+        "sampleGames": 181,
         "starter": [
           {
             "id": "1055",
@@ -2737,12 +2729,12 @@
       }
     },
     "kassadin": {
-      "games": 94,
-      "winrate": 47.9,
-      "pickrate": 0.47,
+      "games": 115,
+      "winrate": 48.7,
+      "pickrate": 0.49,
       "banrate": 0,
       "build": {
-        "sampleGames": 94,
+        "sampleGames": 115,
         "starter": [
           {
             "id": "1056",
@@ -2790,12 +2782,12 @@
       }
     },
     "corki": {
-      "games": 70,
-      "winrate": 45.7,
-      "pickrate": 0.35,
+      "games": 80,
+      "winrate": 47.5,
+      "pickrate": 0.34,
       "banrate": 0,
       "build": {
-        "sampleGames": 70,
+        "sampleGames": 80,
         "starter": [
           {
             "id": "1086",
@@ -2826,12 +2818,12 @@
         ],
         "situational": [
           {
-            "id": "3508",
-            "name": "Segador de esencia"
-          },
-          {
             "id": "3036",
             "name": "Recuerdos de lord Dominik"
+          },
+          {
+            "id": "3508",
+            "name": "Segador de esencia"
           }
         ],
         "runes": {
@@ -2843,12 +2835,12 @@
       }
     },
     "nami": {
-      "games": 190,
-      "winrate": 43.2,
-      "pickrate": 0.95,
+      "games": 221,
+      "winrate": 41.6,
+      "pickrate": 0.94,
       "banrate": 0,
       "build": {
-        "sampleGames": 190,
+        "sampleGames": 221,
         "starter": [
           {
             "id": "1056",
@@ -2892,12 +2884,12 @@
       }
     },
     "renekton": {
-      "games": 140,
-      "winrate": 51.4,
-      "pickrate": 0.7,
+      "games": 157,
+      "winrate": 52.2,
+      "pickrate": 0.67,
       "banrate": 0,
       "build": {
-        "sampleGames": 140,
+        "sampleGames": 157,
         "starter": [
           {
             "id": "1055",
@@ -2945,12 +2937,12 @@
       }
     },
     "riven": {
-      "games": 81,
-      "winrate": 54.3,
-      "pickrate": 0.4,
+      "games": 102,
+      "winrate": 52,
+      "pickrate": 0.43,
       "banrate": 0,
       "build": {
-        "sampleGames": 81,
+        "sampleGames": 102,
         "starter": [
           {
             "id": "1055",
@@ -2998,12 +2990,12 @@
       }
     },
     "gragas": {
-      "games": 116,
-      "winrate": 53.4,
-      "pickrate": 0.58,
+      "games": 132,
+      "winrate": 54.5,
+      "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 116,
+        "sampleGames": 132,
         "starter": [
           {
             "id": "1056",
@@ -3034,12 +3026,12 @@
         ],
         "situational": [
           {
-            "id": "6655",
-            "name": "Eco de Luden"
-          },
-          {
             "id": "4646",
             "name": "Sobrecarga tormentosa"
+          },
+          {
+            "id": "6655",
+            "name": "Eco de Luden"
           }
         ],
         "runes": {
@@ -3051,12 +3043,12 @@
       }
     },
     "volibear": {
-      "games": 65,
-      "winrate": 49.2,
-      "pickrate": 0.32,
+      "games": 70,
+      "winrate": 50,
+      "pickrate": 0.3,
       "banrate": 0,
       "build": {
-        "sampleGames": 65,
+        "sampleGames": 70,
         "starter": [
           {
             "id": "1056",
@@ -3081,14 +3073,14 @@
             "name": "Puñal de Statikk"
           },
           {
-            "id": "6675",
-            "name": "Filofugaz de Navori"
+            "id": "3065",
+            "name": "Rostro espiritual"
           }
         ],
         "situational": [
           {
-            "id": "3065",
-            "name": "Rostro espiritual"
+            "id": "6675",
+            "name": "Filofugaz de Navori"
           },
           {
             "id": "3146",
@@ -3104,20 +3096,20 @@
       }
     },
     "gnar": {
-      "games": 93,
-      "winrate": 53.8,
-      "pickrate": 0.46,
+      "games": 113,
+      "winrate": 48.7,
+      "pickrate": 0.48,
       "banrate": 0,
       "build": {
-        "sampleGames": 93,
+        "sampleGames": 113,
         "starter": [
           {
             "id": "1055",
             "name": "Espada de Doran"
           },
           {
-            "id": "1086",
-            "name": "Arco de Doran"
+            "id": "1120",
+            "name": "Yelmo de Doran"
           }
         ],
         "boots": {
@@ -3157,12 +3149,12 @@
       }
     },
     "khazix": {
-      "games": 218,
-      "winrate": 49.1,
-      "pickrate": 1.09,
+      "games": 252,
+      "winrate": 50.4,
+      "pickrate": 1.07,
       "banrate": 0,
       "build": {
-        "sampleGames": 218,
+        "sampleGames": 252,
         "starter": [
           {
             "id": "1101",
@@ -3210,12 +3202,12 @@
       }
     },
     "velkoz": {
-      "games": 94,
-      "winrate": 53.2,
-      "pickrate": 0.47,
+      "games": 105,
+      "winrate": 53.3,
+      "pickrate": 0.45,
       "banrate": 0,
       "build": {
-        "sampleGames": 94,
+        "sampleGames": 105,
         "starter": [
           {
             "id": "1056",
@@ -3259,12 +3251,12 @@
       }
     },
     "lucian": {
-      "games": 171,
-      "winrate": 48,
-      "pickrate": 0.85,
+      "games": 191,
+      "winrate": 48.2,
+      "pickrate": 0.81,
       "banrate": 0,
       "build": {
-        "sampleGames": 171,
+        "sampleGames": 191,
         "starter": [
           {
             "id": "1086",
@@ -3312,12 +3304,12 @@
       }
     },
     "milio": {
-      "games": 99,
-      "winrate": 49.5,
-      "pickrate": 0.49,
+      "games": 125,
+      "winrate": 50.4,
+      "pickrate": 0.53,
       "banrate": 0,
       "build": {
-        "sampleGames": 99,
+        "sampleGames": 125,
         "starter": [],
         "boots": {
           "id": "3158",
@@ -3356,12 +3348,12 @@
       }
     },
     "gangplank": {
-      "games": 102,
-      "winrate": 52,
-      "pickrate": 0.51,
+      "games": 117,
+      "winrate": 50.4,
+      "pickrate": 0.5,
       "banrate": 0,
       "build": {
-        "sampleGames": 102,
+        "sampleGames": 117,
         "starter": [
           {
             "id": "1055",
@@ -3382,8 +3374,8 @@
             "name": "Segador de esencia"
           },
           {
-            "id": "6673",
-            "name": "Arcoescudo inmortal"
+            "id": "3036",
+            "name": "Recuerdos de lord Dominik"
           },
           {
             "id": "3031",
@@ -3392,8 +3384,8 @@
         ],
         "situational": [
           {
-            "id": "3036",
-            "name": "Recuerdos de lord Dominik"
+            "id": "6673",
+            "name": "Arcoescudo inmortal"
           },
           {
             "id": "6676",
@@ -3409,12 +3401,12 @@
       }
     },
     "vladimir": {
-      "games": 161,
-      "winrate": 53.4,
+      "games": 187,
+      "winrate": 53.5,
       "pickrate": 0.8,
       "banrate": 0,
       "build": {
-        "sampleGames": 161,
+        "sampleGames": 187,
         "starter": [
           {
             "id": "1056",
@@ -3445,12 +3437,12 @@
         ],
         "situational": [
           {
-            "id": "3152",
-            "name": "Cintomisil hextech"
+            "id": "3135",
+            "name": "Bastón del Vacío"
           },
           {
-            "id": "6653",
-            "name": "Tormento de Liandry"
+            "id": "3152",
+            "name": "Cintomisil hextech"
           }
         ],
         "runes": {
@@ -3462,12 +3454,12 @@
       }
     },
     "karma": {
-      "games": 184,
-      "winrate": 49.5,
-      "pickrate": 0.92,
+      "games": 213,
+      "winrate": 50.2,
+      "pickrate": 0.91,
       "banrate": 0,
       "build": {
-        "sampleGames": 184,
+        "sampleGames": 213,
         "starter": [
           {
             "id": "1056",
@@ -3511,12 +3503,12 @@
       }
     },
     "kled": {
-      "games": 45,
-      "winrate": 53.3,
-      "pickrate": 0.22,
+      "games": 56,
+      "winrate": 53.6,
+      "pickrate": 0.24,
       "banrate": 0,
       "build": {
-        "sampleGames": 45,
+        "sampleGames": 56,
         "starter": [
           {
             "id": "1055",
@@ -3564,12 +3556,12 @@
       }
     },
     "aurelionsol": {
-      "games": 67,
-      "winrate": 47.8,
-      "pickrate": 0.33,
+      "games": 75,
+      "winrate": 45.3,
+      "pickrate": 0.32,
       "banrate": 0,
       "build": {
-        "sampleGames": 67,
+        "sampleGames": 75,
         "starter": [
           {
             "id": "1056",
@@ -3617,12 +3609,12 @@
       }
     },
     "kalista": {
-      "games": 147,
-      "winrate": 47.6,
-      "pickrate": 0.73,
+      "games": 177,
+      "winrate": 47.5,
+      "pickrate": 0.75,
       "banrate": 0,
       "build": {
-        "sampleGames": 147,
+        "sampleGames": 177,
         "starter": [
           {
             "id": "1086",
@@ -3657,8 +3649,8 @@
             "name": "Jak'Sho el Proteico"
           },
           {
-            "id": "3091",
-            "name": "Final del ingenio"
+            "id": "3143",
+            "name": "Presagio de Randuin"
           }
         ],
         "runes": {
@@ -3670,12 +3662,12 @@
       }
     },
     "talon": {
-      "games": 200,
-      "winrate": 53,
-      "pickrate": 1,
+      "games": 243,
+      "winrate": 53.5,
+      "pickrate": 1.04,
       "banrate": 0,
       "build": {
-        "sampleGames": 200,
+        "sampleGames": 243,
         "starter": [
           {
             "id": "1102",
@@ -3706,12 +3698,12 @@
         ],
         "situational": [
           {
-            "id": "3814",
-            "name": "Filo de la noche"
-          },
-          {
             "id": "3036",
             "name": "Recuerdos de lord Dominik"
+          },
+          {
+            "id": "3814",
+            "name": "Filo de la noche"
           }
         ],
         "runes": {
@@ -3723,12 +3715,12 @@
       }
     },
     "zed": {
-      "games": 220,
-      "winrate": 48.6,
+      "games": 258,
+      "winrate": 46.5,
       "pickrate": 1.1,
       "banrate": 0,
       "build": {
-        "sampleGames": 220,
+        "sampleGames": 258,
         "starter": [
           {
             "id": "1055",
@@ -3776,12 +3768,12 @@
       }
     },
     "draven": {
-      "games": 128,
-      "winrate": 46.1,
-      "pickrate": 0.64,
+      "games": 152,
+      "winrate": 43.4,
+      "pickrate": 0.65,
       "banrate": 0,
       "build": {
-        "sampleGames": 128,
+        "sampleGames": 152,
         "starter": [
           {
             "id": "1086",
@@ -3829,12 +3821,12 @@
       }
     },
     "jarvaniv": {
-      "games": 138,
-      "winrate": 48.6,
-      "pickrate": 0.69,
+      "games": 155,
+      "winrate": 48.4,
+      "pickrate": 0.66,
       "banrate": 0,
       "build": {
-        "sampleGames": 138,
+        "sampleGames": 155,
         "starter": [
           {
             "id": "1101",
@@ -3855,22 +3847,22 @@
             "name": "Hidra profana"
           },
           {
-            "id": "6610",
-            "name": "Firmamento desgarrado"
-          },
-          {
             "id": "3071",
             "name": "Cuchilla negra"
+          },
+          {
+            "id": "6333",
+            "name": "Baile de la muerte"
           }
         ],
         "situational": [
           {
-            "id": "6333",
-            "name": "Baile de la muerte"
-          },
-          {
             "id": "6699",
             "name": "Espada ciclovoltaica"
+          },
+          {
+            "id": "6610",
+            "name": "Firmamento desgarrado"
           }
         ],
         "runes": {
@@ -3882,12 +3874,12 @@
       }
     },
     "fizz": {
-      "games": 74,
-      "winrate": 47.3,
-      "pickrate": 0.37,
+      "games": 82,
+      "winrate": 46.3,
+      "pickrate": 0.35,
       "banrate": 0,
       "build": {
-        "sampleGames": 74,
+        "sampleGames": 82,
         "starter": [
           {
             "id": "1056",
@@ -3935,12 +3927,12 @@
       }
     },
     "ezreal": {
-      "games": 192,
-      "winrate": 43.2,
-      "pickrate": 0.96,
+      "games": 241,
+      "winrate": 43.6,
+      "pickrate": 1.03,
       "banrate": 0,
       "build": {
-        "sampleGames": 192,
+        "sampleGames": 241,
         "starter": [
           {
             "id": "1086",
@@ -3988,12 +3980,12 @@
       }
     },
     "galio": {
-      "games": 114,
-      "winrate": 41.2,
-      "pickrate": 0.57,
+      "games": 132,
+      "winrate": 43.2,
+      "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 114,
+        "sampleGames": 132,
         "starter": [
           {
             "id": "1056",
@@ -4041,12 +4033,12 @@
       }
     },
     "neeko": {
-      "games": 50,
-      "winrate": 42,
-      "pickrate": 0.25,
+      "games": 62,
+      "winrate": 43.5,
+      "pickrate": 0.26,
       "banrate": 0,
       "build": {
-        "sampleGames": 50,
+        "sampleGames": 62,
         "starter": [
           {
             "id": "1056",
@@ -4058,8 +4050,8 @@
           }
         ],
         "boots": {
-          "id": "3158",
-          "name": "Botas jonias de la lucidez"
+          "id": "1001",
+          "name": "Botas"
         },
         "core": [
           {
@@ -4094,12 +4086,12 @@
       }
     },
     "sion": {
-      "games": 67,
-      "winrate": 38.8,
-      "pickrate": 0.33,
+      "games": 88,
+      "winrate": 35.2,
+      "pickrate": 0.37,
       "banrate": 0,
       "build": {
-        "sampleGames": 67,
+        "sampleGames": 88,
         "starter": [
           {
             "id": "1120",
@@ -4134,8 +4126,8 @@
             "name": "Corazón de acero"
           },
           {
-            "id": "1083",
-            "name": "Preferencia"
+            "id": "3068",
+            "name": "Égida de fuego solar"
           }
         ],
         "runes": {
@@ -4147,12 +4139,12 @@
       }
     },
     "braum": {
-      "games": 153,
-      "winrate": 50.3,
-      "pickrate": 0.76,
+      "games": 180,
+      "winrate": 52.8,
+      "pickrate": 0.77,
       "banrate": 0,
       "build": {
-        "sampleGames": 153,
+        "sampleGames": 180,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -4182,12 +4174,12 @@
       }
     },
     "samira": {
-      "games": 43,
-      "winrate": 58.1,
-      "pickrate": 0.21,
+      "games": 46,
+      "winrate": 54.3,
+      "pickrate": 0.2,
       "banrate": 0,
       "build": {
-        "sampleGames": 43,
+        "sampleGames": 46,
         "starter": [
           {
             "id": "1055",
@@ -4235,12 +4227,12 @@
       }
     },
     "lissandra": {
-      "games": 102,
-      "winrate": 52,
-      "pickrate": 0.51,
+      "games": 117,
+      "winrate": 48.7,
+      "pickrate": 0.5,
       "banrate": 0,
       "build": {
-        "sampleGames": 102,
+        "sampleGames": 117,
         "starter": [
           {
             "id": "1056",
@@ -4284,12 +4276,12 @@
       }
     },
     "viego": {
-      "games": 151,
-      "winrate": 50.3,
-      "pickrate": 0.75,
+      "games": 170,
+      "winrate": 52.9,
+      "pickrate": 0.72,
       "banrate": 0,
       "build": {
-        "sampleGames": 151,
+        "sampleGames": 170,
         "starter": [
           {
             "id": "1103",
@@ -4324,8 +4316,8 @@
             "name": "Recuerdos de lord Dominik"
           },
           {
-            "id": "6697",
-            "name": "Soberbia"
+            "id": "3031",
+            "name": "Filo infinito"
           }
         ],
         "runes": {
@@ -4337,12 +4329,12 @@
       }
     },
     "aphelios": {
-      "games": 142,
-      "winrate": 52.1,
-      "pickrate": 0.71,
+      "games": 170,
+      "winrate": 51.8,
+      "pickrate": 0.72,
       "banrate": 0,
       "build": {
-        "sampleGames": 142,
+        "sampleGames": 170,
         "starter": [
           {
             "id": "1086",
@@ -4390,12 +4382,12 @@
       }
     },
     "kayn": {
-      "games": 105,
-      "winrate": 49.5,
-      "pickrate": 0.52,
+      "games": 117,
+      "winrate": 50.4,
+      "pickrate": 0.5,
       "banrate": 0,
       "build": {
-        "sampleGames": 105,
+        "sampleGames": 117,
         "starter": [
           {
             "id": "1102",
@@ -4443,12 +4435,12 @@
       }
     },
     "janna": {
-      "games": 257,
+      "games": 289,
       "winrate": 56.4,
-      "pickrate": 1.28,
+      "pickrate": 1.23,
       "banrate": 0,
       "build": {
-        "sampleGames": 257,
+        "sampleGames": 289,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -4487,12 +4479,12 @@
       }
     },
     "darius": {
-      "games": 122,
-      "winrate": 55.7,
+      "games": 143,
+      "winrate": 54.5,
       "pickrate": 0.61,
       "banrate": 0,
       "build": {
-        "sampleGames": 122,
+        "sampleGames": 143,
         "starter": [
           {
             "id": "1055",
@@ -4523,12 +4515,12 @@
         ],
         "situational": [
           {
-            "id": "6631",
-            "name": "Cortasendas"
-          },
-          {
             "id": "4401",
             "name": "Fuerza de la naturaleza"
+          },
+          {
+            "id": "6333",
+            "name": "Baile de la muerte"
           }
         ],
         "runes": {
@@ -4540,12 +4532,12 @@
       }
     },
     "taliyah": {
-      "games": 96,
-      "winrate": 49,
-      "pickrate": 0.48,
+      "games": 120,
+      "winrate": 51.7,
+      "pickrate": 0.51,
       "banrate": 0,
       "build": {
-        "sampleGames": 96,
+        "sampleGames": 120,
         "starter": [
           {
             "id": "1056",
@@ -4585,20 +4577,20 @@
           }
         ],
         "runes": {
-          "keystone": "Cosecha oscura",
-          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/DarkHarvest/DarkHarvest.png",
-          "primaryTree": "Dominación",
+          "keystone": "Tensión del saqueador de tormentas",
+          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Sorcery/PhaseRush/StormraidersSurgeRuneIcon2.png",
+          "primaryTree": "Brujería",
           "secondaryTree": "Precisión"
         }
       }
     },
     "sona": {
-      "games": 79,
-      "winrate": 40.5,
-      "pickrate": 0.39,
+      "games": 93,
+      "winrate": 43,
+      "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 79,
+        "sampleGames": 93,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -4637,12 +4629,12 @@
       }
     },
     "rell": {
-      "games": 169,
-      "winrate": 50.3,
-      "pickrate": 0.84,
+      "games": 201,
+      "winrate": 50.7,
+      "pickrate": 0.86,
       "banrate": 0,
       "build": {
-        "sampleGames": 169,
+        "sampleGames": 201,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -4677,12 +4669,12 @@
       }
     },
     "akali": {
-      "games": 156,
-      "winrate": 49.4,
-      "pickrate": 0.78,
+      "games": 177,
+      "winrate": 49.7,
+      "pickrate": 0.75,
       "banrate": 0,
       "build": {
-        "sampleGames": 156,
+        "sampleGames": 177,
         "starter": [
           {
             "id": "1056",
@@ -4730,12 +4722,12 @@
       }
     },
     "zeri": {
-      "games": 160,
-      "winrate": 49.4,
+      "games": 188,
+      "winrate": 50.5,
       "pickrate": 0.8,
       "banrate": 0,
       "build": {
-        "sampleGames": 160,
+        "sampleGames": 188,
         "starter": [
           {
             "id": "1086",
@@ -4783,12 +4775,12 @@
       }
     },
     "bard": {
-      "games": 146,
-      "winrate": 52.7,
-      "pickrate": 0.73,
+      "games": 184,
+      "winrate": 50,
+      "pickrate": 0.78,
       "banrate": 0,
       "build": {
-        "sampleGames": 146,
+        "sampleGames": 184,
         "starter": [],
         "boots": {
           "id": "3009",
@@ -4827,12 +4819,12 @@
       }
     },
     "hecarim": {
-      "games": 162,
-      "winrate": 53.7,
-      "pickrate": 0.81,
+      "games": 206,
+      "winrate": 53.4,
+      "pickrate": 0.88,
       "banrate": 0,
       "build": {
-        "sampleGames": 162,
+        "sampleGames": 206,
         "starter": [
           {
             "id": "1102",
@@ -4880,12 +4872,12 @@
       }
     },
     "alistar": {
-      "games": 161,
-      "winrate": 53.4,
-      "pickrate": 0.8,
+      "games": 186,
+      "winrate": 50.5,
+      "pickrate": 0.79,
       "banrate": 0,
       "build": {
-        "sampleGames": 161,
+        "sampleGames": 186,
         "starter": [
           {
             "id": "1054",
@@ -4925,16 +4917,20 @@
       }
     },
     "heimerdinger": {
-      "games": 27,
-      "winrate": 44.4,
-      "pickrate": 0.13,
+      "games": 34,
+      "winrate": 38.2,
+      "pickrate": 0.14,
       "banrate": 0,
       "build": {
-        "sampleGames": 27,
+        "sampleGames": 34,
         "starter": [
           {
             "id": "1056",
             "name": "Anillo de Doran"
+          },
+          {
+            "id": "1101",
+            "name": "Cachorro de Garra ígnea"
           }
         ],
         "boots": {
@@ -4974,12 +4970,12 @@
       }
     },
     "lillia": {
-      "games": 82,
-      "winrate": 54.9,
-      "pickrate": 0.41,
+      "games": 103,
+      "winrate": 55.3,
+      "pickrate": 0.44,
       "banrate": 0,
       "build": {
-        "sampleGames": 82,
+        "sampleGames": 103,
         "starter": [
           {
             "id": "1103",
@@ -5014,8 +5010,8 @@
             "name": "Cetro de cristal de Rylai"
           },
           {
-            "id": "3041",
-            "name": "Robaalmas de Mejai"
+            "id": "8010",
+            "name": "Maldición sanguinolenta"
           }
         ],
         "runes": {
@@ -5027,12 +5023,12 @@
       }
     },
     "soraka": {
-      "games": 103,
-      "winrate": 54.4,
+      "games": 120,
+      "winrate": 55.8,
       "pickrate": 0.51,
       "banrate": 0,
       "build": {
-        "sampleGames": 103,
+        "sampleGames": 120,
         "starter": [
           {
             "id": "1056",
@@ -5076,12 +5072,12 @@
       }
     },
     "thresh": {
-      "games": 272,
-      "winrate": 45.2,
+      "games": 320,
+      "winrate": 45.6,
       "pickrate": 1.36,
       "banrate": 0,
       "build": {
-        "sampleGames": 272,
+        "sampleGames": 320,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -5116,12 +5112,12 @@
       }
     },
     "ornn": {
-      "games": 84,
-      "winrate": 53.6,
-      "pickrate": 0.42,
+      "games": 94,
+      "winrate": 53.2,
+      "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 84,
+        "sampleGames": 94,
         "starter": [
           {
             "id": "1054",
@@ -5169,12 +5165,12 @@
       }
     },
     "trundle": {
-      "games": 34,
-      "winrate": 44.1,
-      "pickrate": 0.17,
+      "games": 35,
+      "winrate": 42.9,
+      "pickrate": 0.15,
       "banrate": 0,
       "build": {
-        "sampleGames": 34,
+        "sampleGames": 35,
         "starter": [
           {
             "id": "1055",
@@ -5199,18 +5195,18 @@
             "name": "Hidra voraz"
           },
           {
-            "id": "3181",
-            "name": "Rompecascos"
+            "id": "3153",
+            "name": "Hoja del rey arruinado"
           }
         ],
         "situational": [
           {
-            "id": "3742",
-            "name": "Coraza del muerto"
+            "id": "3181",
+            "name": "Rompecascos"
           },
           {
-            "id": "3153",
-            "name": "Hoja del rey arruinado"
+            "id": "3742",
+            "name": "Coraza del muerto"
           }
         ],
         "runes": {
@@ -5222,12 +5218,12 @@
       }
     },
     "teemo": {
-      "games": 45,
-      "winrate": 53.3,
-      "pickrate": 0.22,
+      "games": 54,
+      "winrate": 53.7,
+      "pickrate": 0.23,
       "banrate": 0,
       "build": {
-        "sampleGames": 45,
+        "sampleGames": 54,
         "starter": [
           {
             "id": "1056",
@@ -5275,12 +5271,12 @@
       }
     },
     "nunuwillump": {
-      "games": 56,
-      "winrate": 50,
-      "pickrate": 0.28,
+      "games": 64,
+      "winrate": 45.3,
+      "pickrate": 0.27,
       "banrate": 0,
       "build": {
-        "sampleGames": 56,
+        "sampleGames": 64,
         "starter": [
           {
             "id": "1102",
@@ -5328,20 +5324,20 @@
       }
     },
     "sivir": {
-      "games": 76,
-      "winrate": 44.7,
-      "pickrate": 0.38,
+      "games": 87,
+      "winrate": 46,
+      "pickrate": 0.37,
       "banrate": 0,
       "build": {
-        "sampleGames": 76,
+        "sampleGames": 87,
         "starter": [
           {
             "id": "1086",
             "name": "Arco de Doran"
           },
           {
-            "id": "1083",
-            "name": "Preferencia"
+            "id": "1055",
+            "name": "Espada de Doran"
           }
         ],
         "boots": {
@@ -5381,12 +5377,12 @@
       }
     },
     "belveth": {
-      "games": 34,
-      "winrate": 41.2,
+      "games": 40,
+      "winrate": 40,
       "pickrate": 0.17,
       "banrate": 0,
       "build": {
-        "sampleGames": 34,
+        "sampleGames": 40,
         "starter": [
           {
             "id": "1102",
@@ -5434,12 +5430,12 @@
       }
     },
     "shyvana": {
-      "games": 77,
-      "winrate": 46.8,
-      "pickrate": 0.38,
+      "games": 99,
+      "winrate": 40.4,
+      "pickrate": 0.42,
       "banrate": 0,
       "build": {
-        "sampleGames": 77,
+        "sampleGames": 99,
         "starter": [
           {
             "id": "1101",
@@ -5487,12 +5483,12 @@
       }
     },
     "rumble": {
-      "games": 56,
-      "winrate": 50,
+      "games": 65,
+      "winrate": 53.8,
       "pickrate": 0.28,
       "banrate": 0,
       "build": {
-        "sampleGames": 56,
+        "sampleGames": 65,
         "starter": [
           {
             "id": "1056",
@@ -5523,12 +5519,12 @@
         ],
         "situational": [
           {
-            "id": "3152",
-            "name": "Cintomisil hextech"
-          },
-          {
             "id": "8010",
             "name": "Maldición sanguinolenta"
+          },
+          {
+            "id": "3152",
+            "name": "Cintomisil hextech"
           }
         ],
         "runes": {
@@ -5540,12 +5536,12 @@
       }
     },
     "reksai": {
-      "games": 65,
-      "winrate": 63.1,
+      "games": 74,
+      "winrate": 60.8,
       "pickrate": 0.32,
       "banrate": 0,
       "build": {
-        "sampleGames": 65,
+        "sampleGames": 74,
         "starter": [
           {
             "id": "1101",
@@ -5593,12 +5589,12 @@
       }
     },
     "vi": {
-      "games": 60,
-      "winrate": 46.7,
-      "pickrate": 0.3,
+      "games": 69,
+      "winrate": 44.9,
+      "pickrate": 0.29,
       "banrate": 0,
       "build": {
-        "sampleGames": 60,
+        "sampleGames": 69,
         "starter": [
           {
             "id": "1102",
@@ -5646,12 +5642,12 @@
       }
     },
     "orianna": {
-      "games": 80,
-      "winrate": 57.5,
-      "pickrate": 0.4,
+      "games": 91,
+      "winrate": 57.1,
+      "pickrate": 0.39,
       "banrate": 0,
       "build": {
-        "sampleGames": 80,
+        "sampleGames": 91,
         "starter": [
           {
             "id": "1056",
@@ -5672,8 +5668,8 @@
             "name": "Cintomisil hextech"
           },
           {
-            "id": "3157",
-            "name": "Reloj de arena de Zhonya"
+            "id": "4645",
+            "name": "Llamasombría"
           }
         ],
         "situational": [
@@ -5682,8 +5678,8 @@
             "name": "Eco de Luden"
           },
           {
-            "id": "3089",
-            "name": "Sombrero mortal de Rabadon"
+            "id": "3157",
+            "name": "Reloj de arena de Zhonya"
           }
         ],
         "runes": {
@@ -5695,12 +5691,12 @@
       }
     },
     "swain": {
-      "games": 64,
+      "games": 73,
       "winrate": 43.8,
-      "pickrate": 0.32,
+      "pickrate": 0.31,
       "banrate": 0,
       "build": {
-        "sampleGames": 64,
+        "sampleGames": 73,
         "starter": [
           {
             "id": "1056",
@@ -5735,25 +5731,25 @@
             "name": "Corazón de hielo"
           },
           {
-            "id": "3118",
-            "name": "Malignidad"
+            "id": "2503",
+            "name": "Antorcha de fuego negro"
           }
         ],
         "runes": {
           "keystone": "Conquistador",
           "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Conqueror/Conqueror.png",
           "primaryTree": "Precisión",
-          "secondaryTree": "Valor"
+          "secondaryTree": "Brujería"
         }
       }
     },
     "zyra": {
-      "games": 70,
-      "winrate": 57.1,
+      "games": 83,
+      "winrate": 56.6,
       "pickrate": 0.35,
       "banrate": 0,
       "build": {
-        "sampleGames": 70,
+        "sampleGames": 83,
         "starter": [
           {
             "id": "1101",
@@ -5801,12 +5797,12 @@
       }
     },
     "veigar": {
-      "games": 88,
-      "winrate": 55.7,
+      "games": 104,
+      "winrate": 53.8,
       "pickrate": 0.44,
       "banrate": 0,
       "build": {
-        "sampleGames": 88,
+        "sampleGames": 104,
         "starter": [
           {
             "id": "1056",
@@ -5818,13 +5814,13 @@
           }
         ],
         "boots": {
-          "id": "3020",
-          "name": "Botas de hechicero"
+          "id": "1001",
+          "name": "Botas"
         },
         "core": [
           {
-            "id": "6655",
-            "name": "Eco de Luden"
+            "id": "6657",
+            "name": "Vara de las edades"
           },
           {
             "id": "3003",
@@ -5837,8 +5833,8 @@
         ],
         "situational": [
           {
-            "id": "6657",
-            "name": "Vara de las edades"
+            "id": "6655",
+            "name": "Eco de Luden"
           },
           {
             "id": "3137",
@@ -5854,12 +5850,12 @@
       }
     },
     "rammus": {
-      "games": 24,
-      "winrate": 45.8,
+      "games": 27,
+      "winrate": 48.1,
       "pickrate": 0.12,
       "banrate": 0,
       "build": {
-        "sampleGames": 24,
+        "sampleGames": 27,
         "starter": [
           {
             "id": "1102",
@@ -5894,8 +5890,8 @@
             "name": "Fulgor vano"
           },
           {
-            "id": "2525",
-            "name": "Arnés de protoplasma"
+            "id": "2504",
+            "name": "Rookern kaénico"
           }
         ],
         "runes": {
@@ -5907,12 +5903,12 @@
       }
     },
     "ksante": {
-      "games": 92,
-      "winrate": 51.1,
-      "pickrate": 0.46,
+      "games": 114,
+      "winrate": 53.5,
+      "pickrate": 0.49,
       "banrate": 0,
       "build": {
-        "sampleGames": 92,
+        "sampleGames": 114,
         "starter": [
           {
             "id": "1120",
@@ -5947,25 +5943,25 @@
             "name": "Presagio de Randuin"
           },
           {
-            "id": "2502",
-            "name": "Desesperanza eterna"
+            "id": "3050",
+            "name": "Convergencia de Zeke"
           }
         ],
         "runes": {
           "keystone": "Garras del inmortal",
           "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
           "primaryTree": "Valor",
-          "secondaryTree": "Inspiración"
+          "secondaryTree": "Precisión"
         }
       }
     },
     "morgana": {
-      "games": 48,
-      "winrate": 35.4,
-      "pickrate": 0.24,
+      "games": 62,
+      "winrate": 40.3,
+      "pickrate": 0.26,
       "banrate": 0,
       "build": {
-        "sampleGames": 48,
+        "sampleGames": 62,
         "starter": [
           {
             "id": "1101",
@@ -5986,8 +5982,8 @@
             "name": "Antorcha de fuego negro"
           },
           {
-            "id": "4005",
-            "name": "Mandato imperial"
+            "id": "6653",
+            "name": "Tormento de Liandry"
           },
           {
             "id": "3157",
@@ -5996,8 +5992,8 @@
         ],
         "situational": [
           {
-            "id": "6653",
-            "name": "Tormento de Liandry"
+            "id": "4005",
+            "name": "Mandato imperial"
           },
           {
             "id": "3116",
@@ -6013,12 +6009,12 @@
       }
     },
     "smolder": {
-      "games": 38,
-      "winrate": 52.6,
-      "pickrate": 0.19,
+      "games": 41,
+      "winrate": 56.1,
+      "pickrate": 0.17,
       "banrate": 0,
       "build": {
-        "sampleGames": 38,
+        "sampleGames": 41,
         "starter": [
           {
             "id": "1055",
@@ -6066,12 +6062,12 @@
       }
     },
     "naafiri": {
-      "games": 82,
-      "winrate": 45.1,
-      "pickrate": 0.41,
+      "games": 94,
+      "winrate": 44.7,
+      "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 82,
+        "sampleGames": 94,
         "starter": [
           {
             "id": "1101",
@@ -6119,12 +6115,12 @@
       }
     },
     "kaisa": {
-      "games": 272,
-      "winrate": 49.3,
-      "pickrate": 1.36,
+      "games": 325,
+      "winrate": 47.7,
+      "pickrate": 1.38,
       "banrate": 0,
       "build": {
-        "sampleGames": 272,
+        "sampleGames": 325,
         "starter": [
           {
             "id": "1086",
@@ -6172,12 +6168,12 @@
       }
     },
     "kayle": {
-      "games": 76,
-      "winrate": 48.7,
-      "pickrate": 0.38,
+      "games": 93,
+      "winrate": 48.4,
+      "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 76,
+        "sampleGames": 93,
         "starter": [
           {
             "id": "1055",
@@ -6225,12 +6221,12 @@
       }
     },
     "zoe": {
-      "games": 100,
-      "winrate": 57,
-      "pickrate": 0.5,
+      "games": 129,
+      "winrate": 58.9,
+      "pickrate": 0.55,
       "banrate": 0,
       "build": {
-        "sampleGames": 100,
+        "sampleGames": 129,
         "starter": [
           {
             "id": "1056",
@@ -6247,8 +6243,8 @@
             "name": "Eco de Luden"
           },
           {
-            "id": "4005",
-            "name": "Mandato imperial"
+            "id": "3100",
+            "name": "Perdición del liche"
           },
           {
             "id": "4628",
@@ -6257,8 +6253,8 @@
         ],
         "situational": [
           {
-            "id": "3100",
-            "name": "Perdición del liche"
+            "id": "4005",
+            "name": "Mandato imperial"
           },
           {
             "id": "4645",
@@ -6274,20 +6270,20 @@
       }
     },
     "poppy": {
-      "games": 71,
-      "winrate": 63.4,
+      "games": 83,
+      "winrate": 65.1,
       "pickrate": 0.35,
       "banrate": 0,
       "build": {
-        "sampleGames": 71,
+        "sampleGames": 83,
         "starter": [
-          {
-            "id": "1054",
-            "name": "Escudo de Doran"
-          },
           {
             "id": "1120",
             "name": "Yelmo de Doran"
+          },
+          {
+            "id": "1054",
+            "name": "Escudo de Doran"
           }
         ],
         "boots": {
@@ -6327,12 +6323,12 @@
       }
     },
     "ashe": {
-      "games": 96,
-      "winrate": 57.3,
-      "pickrate": 0.48,
+      "games": 110,
+      "winrate": 58.2,
+      "pickrate": 0.47,
       "banrate": 0,
       "build": {
-        "sampleGames": 96,
+        "sampleGames": 110,
         "starter": [
           {
             "id": "1086",
@@ -6367,8 +6363,8 @@
             "name": "Preferencia"
           },
           {
-            "id": "3032",
-            "name": "Flechas de los Yun Tal"
+            "id": "3085",
+            "name": "Huracán de Runaan"
           }
         ],
         "runes": {
@@ -6380,12 +6376,12 @@
       }
     },
     "seraphine": {
-      "games": 112,
-      "winrate": 54.5,
+      "games": 132,
+      "winrate": 53.8,
       "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 112,
+        "sampleGames": 132,
         "starter": [
           {
             "id": "1056",
@@ -6416,8 +6412,8 @@
             "name": "Renovación de piedra lunar"
           },
           {
-            "id": "3003",
-            "name": "Bastón del arcángel"
+            "id": "2503",
+            "name": "Antorcha de fuego negro"
           }
         ],
         "runes": {
@@ -6429,12 +6425,12 @@
       }
     },
     "kogmaw": {
-      "games": 79,
-      "winrate": 58.2,
-      "pickrate": 0.39,
+      "games": 95,
+      "winrate": 60,
+      "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 79,
+        "sampleGames": 95,
         "starter": [
           {
             "id": "1056",
@@ -6469,8 +6465,8 @@
             "name": "Sombrero mortal de Rabadon"
           },
           {
-            "id": "3085",
-            "name": "Huracán de Runaan"
+            "id": "3302",
+            "name": "El final"
           }
         ],
         "runes": {
@@ -6482,12 +6478,12 @@
       }
     },
     "drmundo": {
-      "games": 70,
-      "winrate": 60,
-      "pickrate": 0.35,
+      "games": 87,
+      "winrate": 56.3,
+      "pickrate": 0.37,
       "banrate": 0,
       "build": {
-        "sampleGames": 70,
+        "sampleGames": 87,
         "starter": [
           {
             "id": "1054",
@@ -6535,12 +6531,12 @@
       }
     },
     "masteryi": {
-      "games": 66,
-      "winrate": 37.9,
-      "pickrate": 0.33,
+      "games": 74,
+      "winrate": 37.8,
+      "pickrate": 0.32,
       "banrate": 0,
       "build": {
-        "sampleGames": 66,
+        "sampleGames": 74,
         "starter": [
           {
             "id": "1102",
@@ -6561,22 +6557,22 @@
             "name": "Verdugo de krakens"
           },
           {
-            "id": "3124",
-            "name": "Hoja de furia de Guinsoo"
-          },
-          {
             "id": "6676",
             "name": "Recaudadora"
+          },
+          {
+            "id": "3036",
+            "name": "Recuerdos de lord Dominik"
           }
         ],
         "situational": [
           {
-            "id": "3036",
-            "name": "Recuerdos de lord Dominik"
+            "id": "3124",
+            "name": "Hoja de furia de Guinsoo"
           },
           {
-            "id": "3031",
-            "name": "Filo infinito"
+            "id": "3153",
+            "name": "Hoja del rey arruinado"
           }
         ],
         "runes": {
@@ -6588,12 +6584,12 @@
       }
     },
     "xerath": {
-      "games": 69,
-      "winrate": 43.5,
-      "pickrate": 0.34,
+      "games": 83,
+      "winrate": 48.2,
+      "pickrate": 0.35,
       "banrate": 0,
       "build": {
-        "sampleGames": 69,
+        "sampleGames": 83,
         "starter": [
           {
             "id": "1056",
@@ -6624,8 +6620,8 @@
             "name": "Precisión infalible"
           },
           {
-            "id": "3135",
-            "name": "Bastón del Vacío"
+            "id": "4646",
+            "name": "Sobrecarga tormentosa"
           }
         ],
         "runes": {
@@ -6637,12 +6633,12 @@
       }
     },
     "jayce": {
-      "games": 210,
-      "winrate": 48.6,
-      "pickrate": 1.05,
+      "games": 245,
+      "winrate": 49,
+      "pickrate": 1.04,
       "banrate": 0,
       "build": {
-        "sampleGames": 210,
+        "sampleGames": 245,
         "starter": [
           {
             "id": "1055",
@@ -6673,12 +6669,12 @@
         ],
         "situational": [
           {
-            "id": "6695",
-            "name": "Colmillo de serpiente"
-          },
-          {
             "id": "2520",
             "name": "Quiebrabastiones"
+          },
+          {
+            "id": "6695",
+            "name": "Colmillo de serpiente"
           }
         ],
         "runes": {
@@ -6690,12 +6686,12 @@
       }
     },
     "renataglasc": {
-      "games": 52,
-      "winrate": 55.8,
+      "games": 60,
+      "winrate": 53.3,
       "pickrate": 0.26,
       "banrate": 0,
       "build": {
-        "sampleGames": 52,
+        "sampleGames": 60,
         "starter": [],
         "boots": {
           "id": "3158",
@@ -6734,12 +6730,12 @@
       }
     },
     "shen": {
-      "games": 107,
-      "winrate": 41.1,
-      "pickrate": 0.53,
+      "games": 123,
+      "winrate": 45.5,
+      "pickrate": 0.52,
       "banrate": 0,
       "build": {
-        "sampleGames": 107,
+        "sampleGames": 123,
         "starter": [
           {
             "id": "1054",
@@ -6787,12 +6783,12 @@
       }
     },
     "katarina": {
-      "games": 162,
-      "winrate": 51.2,
-      "pickrate": 0.81,
+      "games": 183,
+      "winrate": 51.4,
+      "pickrate": 0.78,
       "banrate": 0,
       "build": {
-        "sampleGames": 162,
+        "sampleGames": 183,
         "starter": [
           {
             "id": "1055",
@@ -6840,12 +6836,12 @@
       }
     },
     "ryze": {
-      "games": 92,
-      "winrate": 47.8,
-      "pickrate": 0.46,
+      "games": 110,
+      "winrate": 46.4,
+      "pickrate": 0.47,
       "banrate": 0,
       "build": {
-        "sampleGames": 92,
+        "sampleGames": 110,
         "starter": [
           {
             "id": "1056",
@@ -6885,12 +6881,12 @@
       }
     },
     "missfortune": {
-      "games": 36,
-      "winrate": 36.1,
-      "pickrate": 0.18,
+      "games": 40,
+      "winrate": 37.5,
+      "pickrate": 0.17,
       "banrate": 0,
       "build": {
-        "sampleGames": 36,
+        "sampleGames": 40,
         "starter": [
           {
             "id": "1086",
@@ -6938,12 +6934,12 @@
       }
     },
     "mordekaiser": {
-      "games": 46,
-      "winrate": 47.8,
-      "pickrate": 0.23,
+      "games": 52,
+      "winrate": 48.1,
+      "pickrate": 0.22,
       "banrate": 0,
       "build": {
-        "sampleGames": 46,
+        "sampleGames": 52,
         "starter": [
           {
             "id": "1056",
@@ -6991,12 +6987,12 @@
       }
     },
     "diana": {
-      "games": 94,
-      "winrate": 43.6,
-      "pickrate": 0.47,
+      "games": 116,
+      "winrate": 40.5,
+      "pickrate": 0.49,
       "banrate": 0,
       "build": {
-        "sampleGames": 94,
+        "sampleGames": 116,
         "starter": [
           {
             "id": "1056",
@@ -7027,12 +7023,12 @@
         ],
         "situational": [
           {
-            "id": "4646",
-            "name": "Sobrecarga tormentosa"
-          },
-          {
             "id": "4633",
             "name": "Creagrietas"
+          },
+          {
+            "id": "4646",
+            "name": "Sobrecarga tormentosa"
           }
         ],
         "runes": {
@@ -7044,12 +7040,12 @@
       }
     },
     "twitch": {
-      "games": 120,
-      "winrate": 50,
-      "pickrate": 0.6,
+      "games": 131,
+      "winrate": 50.4,
+      "pickrate": 0.56,
       "banrate": 0,
       "build": {
-        "sampleGames": 120,
+        "sampleGames": 131,
         "starter": [
           {
             "id": "1086",
@@ -7097,12 +7093,12 @@
       }
     },
     "akshan": {
-      "games": 82,
-      "winrate": 41.5,
-      "pickrate": 0.41,
+      "games": 99,
+      "winrate": 44.4,
+      "pickrate": 0.42,
       "banrate": 0,
       "build": {
-        "sampleGames": 82,
+        "sampleGames": 99,
         "starter": [
           {
             "id": "1055",
@@ -7150,12 +7146,12 @@
       }
     },
     "amumu": {
-      "games": 27,
-      "winrate": 37,
-      "pickrate": 0.13,
+      "games": 34,
+      "winrate": 41.2,
+      "pickrate": 0.14,
       "banrate": 0,
       "build": {
-        "sampleGames": 27,
+        "sampleGames": 34,
         "starter": [
           {
             "id": "1103",
@@ -7180,14 +7176,14 @@
             "name": "Convergencia de Zeke"
           },
           {
-            "id": "3190",
-            "name": "Medallón de los Solari de Hierro"
+            "id": "8020",
+            "name": "Máscara abisal"
           }
         ],
         "situational": [
           {
-            "id": "8020",
-            "name": "Máscara abisal"
+            "id": "3190",
+            "name": "Medallón de los Solari de Hierro"
           },
           {
             "id": "4005",
@@ -7203,12 +7199,12 @@
       }
     },
     "karthus": {
-      "games": 98,
-      "winrate": 49,
-      "pickrate": 0.49,
+      "games": 106,
+      "winrate": 50,
+      "pickrate": 0.45,
       "banrate": 0,
       "build": {
-        "sampleGames": 98,
+        "sampleGames": 106,
         "starter": [
           {
             "id": "1056",
@@ -7243,8 +7239,8 @@
             "name": "Tormento de Liandry"
           },
           {
-            "id": "3135",
-            "name": "Bastón del Vacío"
+            "id": "3157",
+            "name": "Reloj de arena de Zhonya"
           }
         ],
         "runes": {
@@ -7256,12 +7252,12 @@
       }
     },
     "maokai": {
-      "games": 53,
+      "games": 57,
       "winrate": 50.9,
-      "pickrate": 0.26,
+      "pickrate": 0.24,
       "banrate": 0,
       "build": {
-        "sampleGames": 53,
+        "sampleGames": 57,
         "starter": [
           {
             "id": "1101",
@@ -7309,12 +7305,12 @@
       }
     },
     "urgot": {
-      "games": 77,
-      "winrate": 50.6,
-      "pickrate": 0.38,
+      "games": 82,
+      "winrate": 52.4,
+      "pickrate": 0.35,
       "banrate": 0,
       "build": {
-        "sampleGames": 77,
+        "sampleGames": 82,
         "starter": [
           {
             "id": "1055",
@@ -7362,12 +7358,12 @@
       }
     },
     "senna": {
-      "games": 98,
-      "winrate": 42.9,
+      "games": 114,
+      "winrate": 47.4,
       "pickrate": 0.49,
       "banrate": 0,
       "build": {
-        "sampleGames": 98,
+        "sampleGames": 114,
         "starter": [
           {
             "id": "1120",
@@ -7400,10 +7396,6 @@
           {
             "id": "3031",
             "name": "Filo infinito"
-          },
-          {
-            "id": "2523",
-            "name": "Óptica hextech C44"
           }
         ],
         "runes": {
@@ -7415,12 +7407,12 @@
       }
     },
     "sett": {
-      "games": 44,
-      "winrate": 34.1,
-      "pickrate": 0.22,
+      "games": 57,
+      "winrate": 36.8,
+      "pickrate": 0.24,
       "banrate": 0,
       "build": {
-        "sampleGames": 44,
+        "sampleGames": 57,
         "starter": [
           {
             "id": "1055",
@@ -7468,12 +7460,12 @@
       }
     },
     "zac": {
-      "games": 72,
-      "winrate": 51.4,
+      "games": 85,
+      "winrate": 52.9,
       "pickrate": 0.36,
       "banrate": 0,
       "build": {
-        "sampleGames": 72,
+        "sampleGames": 85,
         "starter": [
           {
             "id": "1101",
@@ -7521,12 +7513,12 @@
       }
     },
     "azir": {
-      "games": 51,
-      "winrate": 43.1,
+      "games": 58,
+      "winrate": 39.7,
       "pickrate": 0.25,
       "banrate": 0,
       "build": {
-        "sampleGames": 51,
+        "sampleGames": 58,
         "starter": [
           {
             "id": "1056",
@@ -7574,12 +7566,12 @@
       }
     },
     "varus": {
-      "games": 102,
-      "winrate": 49,
+      "games": 119,
+      "winrate": 49.6,
       "pickrate": 0.51,
       "banrate": 0,
       "build": {
-        "sampleGames": 102,
+        "sampleGames": 119,
         "starter": [
           {
             "id": "1086",
@@ -7627,12 +7619,12 @@
       }
     },
     "brand": {
-      "games": 27,
-      "winrate": 48.1,
-      "pickrate": 0.13,
+      "games": 32,
+      "winrate": 43.8,
+      "pickrate": 0.14,
       "banrate": 0,
       "build": {
-        "sampleGames": 27,
+        "sampleGames": 32,
         "starter": [
           {
             "id": "1056",
@@ -7667,8 +7659,8 @@
             "name": "Reloj de arena de Zhonya"
           },
           {
-            "id": "3165",
-            "name": "Morellonomicón"
+            "id": "4645",
+            "name": "Llamasombría"
           }
         ],
         "runes": {
@@ -7680,12 +7672,12 @@
       }
     },
     "xayah": {
-      "games": 92,
-      "winrate": 55.4,
+      "games": 108,
+      "winrate": 53.7,
       "pickrate": 0.46,
       "banrate": 0,
       "build": {
-        "sampleGames": 92,
+        "sampleGames": 108,
         "starter": [
           {
             "id": "1086",
@@ -7697,8 +7689,8 @@
           }
         ],
         "boots": {
-          "id": "1001",
-          "name": "Botas"
+          "id": "3006",
+          "name": "Grebas de berserker"
         },
         "core": [
           {
@@ -7733,12 +7725,12 @@
       }
     },
     "blitzcrank": {
-      "games": 157,
-      "winrate": 56.1,
+      "games": 183,
+      "winrate": 55.7,
       "pickrate": 0.78,
       "banrate": 0,
       "build": {
-        "sampleGames": 157,
+        "sampleGames": 183,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -7777,12 +7769,12 @@
       }
     },
     "anivia": {
-      "games": 97,
-      "winrate": 50.5,
-      "pickrate": 0.48,
+      "games": 106,
+      "winrate": 50,
+      "pickrate": 0.45,
       "banrate": 0,
       "build": {
-        "sampleGames": 97,
+        "sampleGames": 106,
         "starter": [
           {
             "id": "1056",
@@ -7809,12 +7801,12 @@
         ],
         "situational": [
           {
-            "id": "6653",
-            "name": "Tormento de Liandry"
-          },
-          {
             "id": "3003",
             "name": "Bastón del arcángel"
+          },
+          {
+            "id": "6653",
+            "name": "Tormento de Liandry"
           }
         ],
         "runes": {
@@ -7826,12 +7818,12 @@
       }
     },
     "twistedfate": {
-      "games": 117,
-      "winrate": 58.1,
+      "games": 137,
+      "winrate": 56.9,
       "pickrate": 0.58,
       "banrate": 0,
       "build": {
-        "sampleGames": 117,
+        "sampleGames": 137,
         "starter": [
           {
             "id": "1056",
@@ -7866,8 +7858,8 @@
             "name": "Cintomisil hextech"
           },
           {
-            "id": "6672",
-            "name": "Verdugo de krakens"
+            "id": "2065",
+            "name": "Canción de batalla de Shurelya"
           }
         ],
         "runes": {
@@ -7879,12 +7871,12 @@
       }
     },
     "kindred": {
-      "games": 25,
-      "winrate": 52,
+      "games": 29,
+      "winrate": 48.3,
       "pickrate": 0.12,
       "banrate": 0,
       "build": {
-        "sampleGames": 25,
+        "sampleGames": 29,
         "starter": [
           {
             "id": "1101",
@@ -7905,8 +7897,8 @@
             "name": "Fuerza de trinidad"
           },
           {
-            "id": "6676",
-            "name": "Recaudadora"
+            "id": "2523",
+            "name": "Óptica hextech C44"
           },
           {
             "id": "3031",
@@ -7915,8 +7907,8 @@
         ],
         "situational": [
           {
-            "id": "2523",
-            "name": "Óptica hextech C44"
+            "id": "6676",
+            "name": "Recaudadora"
           },
           {
             "id": "3033",
@@ -7932,12 +7924,12 @@
       }
     },
     "skarner": {
-      "games": 53,
-      "winrate": 52.8,
-      "pickrate": 0.26,
+      "games": 69,
+      "winrate": 50.7,
+      "pickrate": 0.29,
       "banrate": 0,
       "build": {
-        "sampleGames": 53,
+        "sampleGames": 69,
         "starter": [
           {
             "id": "1101",
@@ -7985,12 +7977,12 @@
       }
     },
     "evelynn": {
-      "games": 36,
-      "winrate": 55.6,
-      "pickrate": 0.18,
+      "games": 39,
+      "winrate": 56.4,
+      "pickrate": 0.17,
       "banrate": 0,
       "build": {
-        "sampleGames": 36,
+        "sampleGames": 39,
         "starter": [
           {
             "id": "1102",
@@ -8038,12 +8030,12 @@
       }
     },
     "taric": {
-      "games": 28,
-      "winrate": 46.4,
-      "pickrate": 0.14,
+      "games": 29,
+      "winrate": 44.8,
+      "pickrate": 0.12,
       "banrate": 0,
       "build": {
-        "sampleGames": 28,
+        "sampleGames": 29,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -8082,12 +8074,12 @@
       }
     },
     "nilah": {
-      "games": 15,
-      "winrate": 33.3,
-      "pickrate": 0.07,
+      "games": 19,
+      "winrate": 36.8,
+      "pickrate": 0.08,
       "banrate": 0,
       "build": {
-        "sampleGames": 15,
+        "sampleGames": 19,
         "starter": [
           {
             "id": "1086",
@@ -8135,12 +8127,12 @@
       }
     },
     "nocturne": {
-      "games": 41,
-      "winrate": 65.9,
+      "games": 47,
+      "winrate": 66,
       "pickrate": 0.2,
       "banrate": 0,
       "build": {
-        "sampleGames": 41,
+        "sampleGames": 47,
         "starter": [
           {
             "id": "1101",
@@ -8175,8 +8167,8 @@
             "name": "Ángel de la guarda"
           },
           {
-            "id": "6699",
-            "name": "Espada ciclovoltaica"
+            "id": "6333",
+            "name": "Baile de la muerte"
           }
         ],
         "runes": {
@@ -8188,12 +8180,12 @@
       }
     },
     "illaoi": {
-      "games": 32,
-      "winrate": 46.9,
-      "pickrate": 0.16,
+      "games": 43,
+      "winrate": 51.2,
+      "pickrate": 0.18,
       "banrate": 0,
       "build": {
-        "sampleGames": 32,
+        "sampleGames": 43,
         "starter": [
           {
             "id": "1055",
@@ -8214,8 +8206,8 @@
             "name": "Cuchilla negra"
           },
           {
-            "id": "6610",
-            "name": "Firmamento desgarrado"
+            "id": "6662",
+            "name": "Guantelete de hielo"
           },
           {
             "id": "3053",
@@ -8224,8 +8216,8 @@
         ],
         "situational": [
           {
-            "id": "6662",
-            "name": "Guantelete de hielo"
+            "id": "3065",
+            "name": "Rostro espiritual"
           },
           {
             "id": "6333",
@@ -8241,12 +8233,12 @@
       }
     },
     "aurora": {
-      "games": 133,
-      "winrate": 42.9,
+      "games": 155,
+      "winrate": 43.9,
       "pickrate": 0.66,
       "banrate": 0,
       "build": {
-        "sampleGames": 133,
+        "sampleGames": 155,
         "starter": [
           {
             "id": "1056",
@@ -8294,12 +8286,12 @@
       }
     },
     "tryndamere": {
-      "games": 80,
-      "winrate": 57.5,
+      "games": 95,
+      "winrate": 52.6,
       "pickrate": 0.4,
       "banrate": 0,
       "build": {
-        "sampleGames": 80,
+        "sampleGames": 95,
         "starter": [
           {
             "id": "1086",
@@ -8311,8 +8303,8 @@
           }
         ],
         "boots": {
-          "id": "3006",
-          "name": "Grebas de berserker"
+          "id": "1001",
+          "name": "Botas"
         },
         "core": [
           {
@@ -8347,12 +8339,12 @@
       }
     },
     "annie": {
-      "games": 37,
-      "winrate": 45.9,
-      "pickrate": 0.18,
+      "games": 47,
+      "winrate": 48.9,
+      "pickrate": 0.2,
       "banrate": 0,
       "build": {
-        "sampleGames": 37,
+        "sampleGames": 47,
         "starter": [
           {
             "id": "1056",
@@ -8373,18 +8365,18 @@
             "name": "Cintomisil hextech"
           },
           {
-            "id": "4645",
-            "name": "Llamasombría"
+            "id": "3089",
+            "name": "Sombrero mortal de Rabadon"
           }
         ],
         "situational": [
           {
-            "id": "4646",
-            "name": "Sobrecarga tormentosa"
+            "id": "4645",
+            "name": "Llamasombría"
           },
           {
-            "id": "3089",
-            "name": "Sombrero mortal de Rabadon"
+            "id": "4646",
+            "name": "Sobrecarga tormentosa"
           }
         ],
         "runes": {
@@ -8396,12 +8388,12 @@
       }
     },
     "briar": {
-      "games": 54,
-      "winrate": 35.2,
-      "pickrate": 0.27,
+      "games": 58,
+      "winrate": 36.2,
+      "pickrate": 0.25,
       "banrate": 0,
       "build": {
-        "sampleGames": 54,
+        "sampleGames": 58,
         "starter": [
           {
             "id": "1103",
@@ -8449,12 +8441,12 @@
       }
     },
     "kennen": {
-      "games": 61,
-      "winrate": 59,
-      "pickrate": 0.3,
+      "games": 73,
+      "winrate": 57.5,
+      "pickrate": 0.31,
       "banrate": 0,
       "build": {
-        "sampleGames": 61,
+        "sampleGames": 73,
         "starter": [
           {
             "id": "1055",
@@ -8466,8 +8458,8 @@
           }
         ],
         "boots": {
-          "id": "1001",
-          "name": "Botas"
+          "id": "3020",
+          "name": "Botas de hechicero"
         },
         "core": [
           {
@@ -8502,12 +8494,12 @@
       }
     },
     "tahmkench": {
-      "games": 38,
-      "winrate": 55.3,
-      "pickrate": 0.19,
+      "games": 43,
+      "winrate": 53.5,
+      "pickrate": 0.18,
       "banrate": 0,
       "build": {
-        "sampleGames": 38,
+        "sampleGames": 43,
         "starter": [
           {
             "id": "1054",
@@ -8528,39 +8520,39 @@
             "name": "Corazón de acero"
           },
           {
-            "id": "2510",
-            "name": "Amanecer y anochecer"
-          },
-          {
             "id": "3190",
             "name": "Medallón de los Solari de Hierro"
+          },
+          {
+            "id": "2510",
+            "name": "Amanecer y anochecer"
           }
         ],
         "situational": [
           {
-            "id": "3065",
-            "name": "Rostro espiritual"
-          },
-          {
             "id": "2525",
             "name": "Arnés de protoplasma"
+          },
+          {
+            "id": "3065",
+            "name": "Rostro espiritual"
           }
         ],
         "runes": {
           "keystone": "Garras del inmortal",
           "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
           "primaryTree": "Valor",
-          "secondaryTree": "Inspiración"
+          "secondaryTree": "Precisión"
         }
       }
     },
     "quinn": {
-      "games": 77,
-      "winrate": 37.7,
+      "games": 90,
+      "winrate": 42.2,
       "pickrate": 0.38,
       "banrate": 0,
       "build": {
-        "sampleGames": 77,
+        "sampleGames": 90,
         "starter": [
           {
             "id": "1101",
@@ -8600,20 +8592,20 @@
           }
         ],
         "runes": {
-          "keystone": "Primer golpe",
-          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png",
-          "primaryTree": "Inspiración",
-          "secondaryTree": "Precisión"
+          "keystone": "Electrocutar",
+          "keystoneIcon": "https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/Electrocute/Electrocute.png",
+          "primaryTree": "Dominación",
+          "secondaryTree": "Brujería"
         }
       }
     },
     "shaco": {
-      "games": 111,
-      "winrate": 46.8,
-      "pickrate": 0.55,
+      "games": 134,
+      "winrate": 48.5,
+      "pickrate": 0.57,
       "banrate": 0,
       "build": {
-        "sampleGames": 111,
+        "sampleGames": 134,
         "starter": [
           {
             "id": "1102",
@@ -8661,12 +8653,12 @@
       }
     },
     "ivern": {
-      "games": 50,
-      "winrate": 58,
+      "games": 59,
+      "winrate": 61,
       "pickrate": 0.25,
       "banrate": 0,
       "build": {
-        "sampleGames": 50,
+        "sampleGames": 59,
         "starter": [
           {
             "id": "1102",
@@ -8714,12 +8706,12 @@
       }
     },
     "sejuani": {
-      "games": 34,
-      "winrate": 52.9,
-      "pickrate": 0.17,
+      "games": 43,
+      "winrate": 53.5,
+      "pickrate": 0.18,
       "banrate": 0,
       "build": {
-        "sampleGames": 34,
+        "sampleGames": 43,
         "starter": [
           {
             "id": "1103",
@@ -8767,12 +8759,12 @@
       }
     },
     "vex": {
-      "games": 52,
-      "winrate": 44.2,
-      "pickrate": 0.26,
+      "games": 59,
+      "winrate": 44.1,
+      "pickrate": 0.25,
       "banrate": 0,
       "build": {
-        "sampleGames": 52,
+        "sampleGames": 59,
         "starter": [
           {
             "id": "1056",
@@ -8816,12 +8808,12 @@
       }
     },
     "leona": {
-      "games": 136,
-      "winrate": 57.4,
-      "pickrate": 0.68,
+      "games": 156,
+      "winrate": 57.7,
+      "pickrate": 0.66,
       "banrate": 0,
       "build": {
-        "sampleGames": 136,
+        "sampleGames": 156,
         "starter": [],
         "boots": {
           "id": "1001",
@@ -8860,12 +8852,12 @@
       }
     },
     "udyr": {
-      "games": 40,
-      "winrate": 47.5,
-      "pickrate": 0.2,
+      "games": 41,
+      "winrate": 48.8,
+      "pickrate": 0.17,
       "banrate": 0,
       "build": {
-        "sampleGames": 40,
+        "sampleGames": 41,
         "starter": [
           {
             "id": "1102",
@@ -8882,12 +8874,12 @@
         },
         "core": [
           {
-            "id": "6653",
-            "name": "Tormento de Liandry"
+            "id": "3161",
+            "name": "Lanza de Shojin"
           },
           {
-            "id": "3742",
-            "name": "Coraza del muerto"
+            "id": "6653",
+            "name": "Tormento de Liandry"
           },
           {
             "id": "6333",
@@ -8896,8 +8888,8 @@
         ],
         "situational": [
           {
-            "id": "3161",
-            "name": "Lanza de Shojin"
+            "id": "3742",
+            "name": "Coraza del muerto"
           },
           {
             "id": "4633",
