@@ -13,6 +13,10 @@ permissions:
 jobs:
   refresh-stats:
     runs-on: ubuntu-latest
+    # Con el volumen "máximo" (~4.800 partidas/ejecución) esto puede tardar
+    # 3-4 horas. El límite por defecto de GitHub Actions es 360 min (6h),
+    # así que sobra margen, pero lo dejamos explícito para que quede claro.
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -23,11 +27,17 @@ jobs:
       - name: Descargar y calcular estadísticas reales
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+          # Volumen "máximo": 8 rangos × 150 jugadores × 4 partidas = hasta
+          # 4.800 partidas nuevas por ejecución (antes: 1.200).
+          SUMMONERS_PER_BUCKET: "150"
+          MATCHES_PER_SUMMONER: "4"
+          MAX_MATCHES: "4800"
         run: node scripts/fetch-riot-stats.mjs
 
       - name: Hacer commit si hay cambios
         run: |
           git config user.name "LlamaSHO"
           git config user.email "241094598+LlamaSHO@users.noreply.github.com"
-          git add champion-stats.json riot-stats-state.json
+          git rm --ignore-unmatch --quiet riot-stats-state.json
+          git add champion-stats.json data/raw-stats.json.gz
           git diff --cached --quiet && echo "Sin cambios, nada que commitear." || (git commit -m "chore: actualizar estadisticas de Riot" && git pull --rebase origin main && git push)
