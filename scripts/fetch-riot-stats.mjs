@@ -20,10 +20,10 @@
    asigna al rango del jugador por el que se encontró, porque el
    emparejamiento pone a gente de nivel parecido en la misma partida.
    Resultado publicado:
-     - champions : estadísticas de TODOS los rangos juntos (+ builds). Es lo
-                   que ya lee index.html.
-     - ranks     : estadísticas por grupo de rango (winrate/pickrate/banrate),
-                   por si más adelante quieres un filtro por rango en la web.
+     - champions : estadísticas de TODOS los rangos juntos (+ build). Es lo
+                   que index.html usa por defecto.
+     - ranks     : estadísticas por grupo de rango (winrate/pickrate/banrate
+                   + build PROPIO de ese rango), para el selector de rango.
    Ojo: "todos los rangos" aquí significa los 8 grupos con el MISMO peso. No
    es el reparto real de jugadores (hay muchos más en Oro que en Master).
 
@@ -36,14 +36,19 @@
      - Los datos se separan por parche: un parche nuevo empieza de cero, y
        mientras no reúna MIN_MATCHES_NEW_PATCH partidas se sigue publicando el
        parche anterior. Solo se conservan los dos parches más recientes.
-     - Si el archivo acumulado es de una versión anterior (solo Master+) se
-       descarta y se empieza de cero, para que la muestra quede equilibrada.
+     - Si el archivo acumulado es de una versión anterior se descarta y se
+       empieza de cero, para que la muestra quede equilibrada.
 
    MÍNIMO DE PARTIDAS: un campeón solo se publica si aparece en al menos
    MIN_GAMES_FOR_STATS partidas (y su build, si aparece en al menos
-   MIN_GAMES_FOR_BUILD). Con pocas partidas un winrate no significa nada
-   (4 victorias de 4 = "100%"), así que esos campeones se omiten y la web
-   muestra "sin muestra suficiente" en vez de un número engañoso.
+   MIN_GAMES_FOR_BUILD) — tanto en el agregado de "todos los rangos" como,
+   por separado, dentro de cada rango. Con pocas partidas un winrate no
+   significa nada (4 victorias de 4 = "100%"), así que esos casos se omiten
+   y la web muestra "sin muestra suficiente" en vez de un número engañoso.
+   Las builds por rango necesitan su PROPIO mínimo dentro de ESE rango (no
+   vale con que el campeón tenga muestra en el agregado), así que tardan más
+   en aparecer para campeones poco jugados en un rango concreto — mientras
+   tanto, index.html usa como respaldo la build de "todos los rangos".
 
    IMPORTANTE — limitaciones honestas de este enfoque:
    - No es el 100% de las partidas del juego (eso exige una "Production Key"
@@ -185,8 +190,14 @@ async function riotFetch(url) {
      patches: {
        "16.19": {
          matches: 1234,                                   // total, todos los rangos
-         buckets: { GOLD: { matches, stats: {siteId: {games,wins,bans}} }, … },
-         builds:  { siteId: {…acumuladores de objetos/runas…} }   // todos los rangos juntos
+         buckets: {
+           GOLD: {
+             matches,
+             stats: {siteId: {games,wins,bans}},
+             builds: {siteId: {…acumuladores de objetos/runas de ESTE rango…}}
+           }, …
+         },
+         builds:  { siteId: {…acumuladores de objetos/runas de TODOS los rangos…} }
        }
      },
      processedMatchIds: ["EUW1_123…", …]
@@ -204,7 +215,7 @@ async function loadState() {
       state.processedMatchIds = state.processedMatchIds || [];
       return state;
     }
-    console.warn("⚠ El archivo acumulado es de una versión anterior (solo Master+): se descarta y se empieza de cero para que la muestra quede equilibrada entre rangos.");
+    console.warn("⚠ El archivo acumulado es de una versión anterior: se descarta y se empieza de cero para que la muestra quede equilibrada entre rangos.");
   } catch (err) {
     if (err.code !== "ENOENT") {
       console.warn(`⚠ No se pudo leer el archivo acumulado (${err.message}): se empieza de cero.`);
@@ -404,21 +415,27 @@ async function loadStaticData() {
     const tags = data.tags || [];
     const isConsumableOrTrinket = tags.includes("Consumable") || tags.includes("Trinket");
     const hasFurtherBuild = Array.isArray(data.into) && data.into.length > 0;
+    const isBoots = tags.includes("Boots");
     items[id] = {
       name: data.name,
-      isBoots: tags.includes("Boots"),
-      isBuildEnd: !hasFurtherBuild && !isConsumableOrTrinket && (data.gold?.total || 0) > 0,
+      isBoots,
+      // Las botas de nivel 2 ahora "se siguen construyendo" hacia su versión
+      // de nivel 3, así que no son un callejón sin salida como el resto de
+      // objetos — pero siguen siendo la compra de botas que queremos contar.
+      isBuildEnd: isBoots || (!hasFurtherBuild && !isConsumableOrTrinket && (data.gold?.total || 0) > 0),
       excluded: isConsumableOrTrinket,
     };
   }
 
   const runeNames = {}; // perk id -> nombre
+  const runeIcons = {}; // perk id -> URL completa del icono
   const treeNames = {}; // árbol id -> nombre
   for (const tree of runesJson) {
     treeNames[tree.id] = tree.name;
     for (const slot of tree.slots || []) {
       for (const rune of slot.runes || []) {
         runeNames[rune.id] = rune.name;
+        if (rune.icon) runeIcons[rune.id] = `https://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`;
       }
     }
   }
@@ -432,7 +449,7 @@ async function loadStaticData() {
     championKeyToRiotName[String(champ.key)] = champ.id;
   }
 
-  return { items, runeNames, treeNames, championKeyToRiotName };
+  return { items, runeNames, runeIcons, treeNames, championKeyToRiotName };
 }
 
 /* ------------------------------------------------------------------------ *
@@ -522,16 +539,18 @@ function recordBuild(buildStats, siteId, purchases, perks, staticData) {
 
 // Convierte los contadores acumulados de un campeón en el build final a
 // publicar: inicial, botas, núcleo (en orden real de compra), situacionales
-// y runas más usadas. Devuelve null si no hay muestra suficiente.
+// y runas más usadas (con id + icono real). Devuelve null si no hay muestra
+// suficiente DENTRO de ese conjunto de contadores concreto (puede ser el
+// agregado de todos los rangos, o el de un rango en particular).
 function finalizeBuild(buildStats, siteId, staticData) {
   const stats = buildStats[siteId];
   if (!stats || stats.games < MIN_GAMES_FOR_BUILD) return null;
 
-  const itemName = (id) => staticData.items[id]?.name || null;
+  const toItem = (id) => (staticData.items[id] ? { id, name: staticData.items[id].name } : null);
 
-  const starter = topEntries(stats.starterCounts, 2).map(itemName).filter(Boolean);
+  const starter = topEntries(stats.starterCounts, 2).map(toItem).filter(Boolean);
   const [bootsId] = topEntries(stats.bootsCounts, 1);
-  const boots = bootsId ? itemName(bootsId) : null;
+  const boots = bootsId ? toItem(bootsId) : null;
 
   const frequentItems = Object.entries(stats.itemCounts).filter(
     ([, count]) => count / stats.games >= 0.1 // al menos ~10% de las partidas
@@ -555,6 +574,7 @@ function finalizeBuild(buildStats, siteId, staticData) {
     const [keystoneId, primaryTreeId, secondaryTreeId] = topRuneCombo[0].split("|");
     runes = {
       keystone: staticData.runeNames[keystoneId] || null,
+      keystoneIcon: staticData.runeIcons[keystoneId] || null,
       primaryTree: staticData.treeNames[primaryTreeId] || null,
       secondaryTree: staticData.treeNames[secondaryTreeId] || null,
     };
@@ -564,8 +584,8 @@ function finalizeBuild(buildStats, siteId, staticData) {
     sampleGames: stats.games,
     starter,
     boots,
-    core: coreIds.map(itemName).filter(Boolean),
-    situational: situationalIds.map(itemName).filter(Boolean),
+    core: coreIds.map(toItem).filter(Boolean),
+    situational: situationalIds.map(toItem).filter(Boolean),
     runes,
   };
 }
@@ -595,7 +615,10 @@ async function accumulateMatches(matches, state, knownIds, staticData) {
       const patchData =
         state.patches[patch] || (state.patches[patch] = { matches: 0, buckets: {}, builds: {} });
       const bucketData =
-        patchData.buckets[bucket] || (patchData.buckets[bucket] = { matches: 0, stats: {} });
+        patchData.buckets[bucket] || (patchData.buckets[bucket] = { matches: 0, stats: {}, builds: {} });
+      // Estados guardados antes de que existieran las builds por rango no
+      // tienen este campo: se crea aquí y se empieza a acumular desde hoy.
+      if (!bucketData.builds) bucketData.builds = {};
       const bump = (siteId, field) => {
         const s = bucketData.stats[siteId] || (bucketData.stats[siteId] = { games: 0, wins: 0, bans: 0 });
         s[field]++;
@@ -623,7 +646,12 @@ async function accumulateMatches(matches, state, knownIds, staticData) {
         for (const participant of match.info.participants || []) {
           const siteId = riotChampionNameToSiteId(participant.championName);
           const purchases = purchasesByParticipant[participant.participantId] || [];
+          // Se acumula dos veces: en el agregado de "todos los rangos" del
+          // parche (patchData.builds) y, por separado, dentro del rango de
+          // este jugador (bucketData.builds) — así luego se puede publicar
+          // tanto la build general como la específica de cada rango.
           recordBuild(patchData.builds, siteId, purchases, participant.perks, staticData);
+          recordBuild(bucketData.builds, siteId, purchases, participant.perks, staticData);
         }
       } else {
         timelineFailed++;
@@ -706,7 +734,10 @@ async function main() {
     champions[siteId] = { ...championEntry(s, patchData.matches), build };
   }
 
-  // Estadísticas por grupo de rango (sin builds, para que el archivo pese poco).
+  // Estadísticas por grupo de rango, CON build propio de ese rango (puede
+  // venir null si ese campeón no llega al mínimo de partidas dentro de este
+  // rango en concreto — index.html usa entonces el build de "todos los
+  // rangos" como respaldo).
   const ranks = {};
   for (const bucket of RANK_BUCKETS) {
     const bd = patchData.buckets[bucket];
@@ -714,7 +745,8 @@ async function main() {
     const champs = {};
     for (const [siteId, s] of Object.entries(bd.stats)) {
       if (s.games < MIN_GAMES_FOR_STATS) continue;
-      champs[siteId] = championEntry(s, bd.matches);
+      const build = finalizeBuild(bd.builds || {}, siteId, staticData);
+      champs[siteId] = { ...championEntry(s, bd.matches), build };
     }
     ranks[bucket] = { matches: bd.matches, champions: champs };
   }
