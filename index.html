@@ -1129,7 +1129,9 @@ async function loadRealStats(){
     const b = r.build;
     c.build = {
       starter: b?.starter || [],
-      boots: b?.boots ? [b.boots] : [],
+      // Las botas básicas (id 1001, 300 de oro) no son "las botas del campeón":
+      // si vienen en datos antiguos se ocultan hasta que haya datos de las mejoradas.
+      boots: (b?.boots && Number(b.boots.id) !== 1001) ? [b.boots] : [],
       core: b?.core || [],
       situational: b?.situational || [],
     };
