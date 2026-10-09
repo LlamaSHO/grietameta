@@ -553,12 +553,16 @@ function recordBuild(buildStats, siteId, purchases, perks, staticData) {
   let coreIndex = 0;
   for (const p of relevant) {
     const info = staticData.items[p.itemId];
-    if (!info.isBuildEnd) continue; // solo objetos terminados, no componentes a medias
 
+    // Botas: se deciden aquí, ANTES de mirar si el objeto está "terminado".
+    // Solo cuentan las botas mejoradas (las básicas de 300 de oro se ignoran);
+    // así no depende de cómo marque Data Dragon las mejoras de las botas.
     if (info.isBoots) {
       if (!info.isBasicBoots) b.bootsCounts[p.itemId] = (b.bootsCounts[p.itemId] || 0) + 1;
       continue;
     }
+
+    if (!info.isBuildEnd) continue; // solo objetos terminados, no componentes a medias
 
     if (p.timestamp <= 120000) {
       // Comprado en los primeros 2 minutos: objeto inicial.
