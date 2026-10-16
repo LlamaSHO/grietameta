@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grieta Meta — Builds, tier list y winrates</title>
+<title>League of Legends — Builds, tier list y winrates | GrietaMeta</title>
 <link rel="icon" type="image/png" href="/favicon.png?v=1">
 <link rel="apple-touch-icon" href="/favicon.png?v=1">
+<link rel="stylesheet" href="/assets/games-nav.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -342,11 +343,17 @@ body.is-premium .ad-slot{display:none;}
 
 <nav class="nav">
   <div class="wrap">
-    <div class="brand">
+    <a class="brand" href="/" style="text-decoration:none;flex-shrink:0;">
       <div class="brand-mark"></div>
       <div class="brand-name">GRIETA<span>META</span></div>
+    </a>
+    <div class="game-search" data-request-mail="ekainarlla@gmail.com">
+      <svg class="gs-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Busca un juego…" autocomplete="off" aria-label="Buscar juego" role="combobox" aria-autocomplete="list" aria-expanded="false">
+      <ul class="game-results" role="listbox" hidden></ul>
     </div>
     <div class="nav-links">
+      <a href="/">Juegos</a>
       <a href="#tierlist">Tier list</a>
       <a href="#campeones">Campeones</a>
       <a href="#premium">Premium</a>
@@ -453,9 +460,9 @@ body.is-premium .ad-slot{display:none;}
         </div>
         <div class="foot-col">
           <h5>Legal</h5>
-          <a href="privacidad.html">Privacidad</a>
+          <a href="/privacidad.html">Privacidad</a>
           <a href="#">Términos</a>
-          <a href="publicidad.html">Publicidad</a>
+          <a href="/publicidad.html">Publicidad</a>
         </div>
       </div>
     </div>
@@ -1301,5 +1308,6 @@ if(savedEmail){
 }
 
 </script>
+<script src="/assets/games-nav.js" defer></script>
 </body>
 </html>

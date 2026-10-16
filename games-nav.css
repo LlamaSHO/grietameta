@@ -1,0 +1,37 @@
+/* GrietaMeta — buscador de juegos (usa las variables de color de cada página) */
+.game-search{position:relative; flex:1; min-width:0; max-width:420px; margin:0 24px;}
+.game-search input{
+  width:100%; background:var(--panel,#151A23); border:1px solid var(--panel-line,#262D3A);
+  color:var(--ink,#E9E6DC); font-size:14px; font-family:inherit;
+  padding:10px 14px 10px 38px; outline:none;
+}
+.game-search input::placeholder{color:var(--ink-faint,#5D6673);}
+.game-search input:focus{border-color:var(--gold-soft,#9C7A44);}
+.game-search .gs-icon{position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:.55; pointer-events:none;}
+.game-results{
+  position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:60;
+  list-style:none; margin:0; padding:6px;
+  background:var(--bg-raised,#10141C); border:1px solid var(--panel-line,#262D3A);
+  box-shadow:0 12px 32px rgba(0,0,0,.45); max-height:340px; overflow-y:auto;
+  text-align:left;
+}
+.game-results[hidden]{display:none;}
+.game-results li a{
+  display:flex; flex-direction:column; align-items:flex-start; gap:2px;
+  padding:10px 12px; text-decoration:none; color:var(--ink,#E9E6DC);
+}
+.game-results li.is-active a, .game-results li a:hover{background:var(--panel,#151A23);}
+.g-name{font-weight:600; font-size:14px;}
+.g-tag{font-size:12px; color:var(--ink-dim,#97A0AC);}
+.g-badge{
+  margin-top:3px; font-size:10.5px; letter-spacing:.03em; color:var(--teal,#14C3B8);
+  border:1px solid var(--teal-dim,#0C766F); padding:1px 7px;
+}
+.game-results .g-empty{padding:12px; font-size:13px; color:var(--ink-dim,#97A0AC);}
+.game-results .g-empty a{color:var(--gold,#C8963E);}
+.game-search.big{max-width:640px; margin:0 auto;}
+.game-search.big input{font-size:16px; padding:16px 18px 16px 46px;}
+.game-search.big .gs-icon{left:16px;}
+@media (max-width:640px){
+  .game-search{margin:0 10px; max-width:none;}
+}
