@@ -1,5 +1,5 @@
 /* GrietaMeta — buscador de juegos.
-   Lee /assets/games.json y, al escribir, sugiere juegos; al elegir uno (clic o
+   Lee /games.json y, al escribir, sugiere juegos; al elegir uno (clic o
    Enter) lleva a su página. Para añadir un juego basta con añadirlo a games.json. */
 (function () {
   "use strict";
@@ -19,7 +19,7 @@
   var gamesPromise = null;
   function loadGames() {
     if (!gamesPromise) {
-      gamesPromise = fetch("/assets/games.json")
+      gamesPromise = fetch("/games.json")
         .then(function (r) { return r.ok ? r.json() : { games: [] }; })
         .then(function (d) { return d.games || []; })
         .catch(function () { return []; });
@@ -80,9 +80,14 @@
       list.innerHTML = items.map(function (g, i) {
         return '<li role="option" class="' + (i === active ? "is-active" : "") +
           '" aria-selected="' + (i === active) + '"><a href="' + esc(g.url) + '">' +
-          '<span class="g-name">' + esc(g.name) + "</span>" +
-          '<span class="g-tag">' + esc(g.tagline || "") + "</span>" +
-          (g.status === "building" ? '<span class="g-badge">En construcción</span>' : "") +
+          '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) + "</span>" +
+          '<span class="g-body">' +
+            '<span class="g-name">' + esc(g.name) + "</span>" +
+            '<span class="g-tag">' + esc(g.tagline || "") + "</span>" +
+          "</span>" +
+          (g.status === "building"
+            ? '<span class="g-badge g-soon">En construcción</span>'
+            : '<span class="g-badge g-live">Disponible</span>') +
           "</a></li>";
       }).join("");
     }

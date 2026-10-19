@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juegos | GrietaMeta</title>
+<link rel="icon" type="image/png" href="/favicon.png?v=1">
+<link rel="apple-touch-icon" href="/favicon.png?v=1">
+<link rel="stylesheet" href="/games-nav.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0D12; --bg-raised:#10141C; --panel:#151A23; --panel-line:#262D3A;
+  --gold:#C8963E; --gold-soft:#9C7A44; --teal:#14C3B8; --teal-dim:#0C766F;
+  --ink:#E9E6DC; --ink-dim:#97A0AC; --ink-faint:#5D6673;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; line-height:1.5;}
+h1,h2,h3{font-family:'Cinzel', serif; letter-spacing:0.01em; margin:0; color:var(--ink);}
+a{color:inherit;}
+.wrap{max-width:1240px; margin:0 auto; padding:0 28px;}
+
+/* nav (igual que el resto del sitio) */
+.nav{position:sticky; top:0; z-index:40; background:rgba(10,13,18,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--panel-line);}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between; height:68px;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand-mark{width:30px; height:30px; background:linear-gradient(135deg, var(--gold), var(--teal)); clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);}
+.brand-name{font-family:'Cinzel',serif; font-size:19px; font-weight:600; letter-spacing:0.02em;}
+.brand-name span{color:var(--gold);}
+.nav-links{display:flex; gap:28px; align-items:center;}
+.nav-links a{font-size:14.5px; color:var(--ink-dim); text-decoration:none; padding:6px 0; border-bottom:2px solid transparent; transition:color .15s ease, border-color .15s ease;}
+.nav-links a:hover{color:var(--ink); border-color:var(--gold-soft);}
+.nav-links a.is-current{color:var(--ink); border-color:var(--gold);}
+
+/* cabecera */
+.hub-hero{padding:84px 0 56px; text-align:center; background:radial-gradient(900px 340px at 50% 0%, rgba(200,150,62,.10), transparent 70%);}
+.hub-hero h1{font-size:46px; line-height:1.15; text-transform:uppercase;}
+.hub-hero h1 em{font-style:normal; color:var(--gold);}
+.hub-hero .lead{max-width:560px; margin:18px auto 34px; color:var(--ink-dim); font-size:17px;}
+
+/* tarjetas */
+.games-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px; padding:8px 0 80px;}
+.game-card{
+  display:flex; align-items:center; gap:18px; padding:22px;
+  background:var(--panel); border:1px solid var(--panel-line); text-decoration:none;
+  transition:border-color .15s ease, transform .15s ease, background .15s ease;
+}
+.game-card:hover{border-color:var(--gold-soft); transform:translateY(-2px); background:#171D28;}
+.game-card .g-ico{flex:0 0 56px; height:56px; font-size:15px;}
+.game-card .g-body{gap:4px;}
+.game-card h3{font-size:18px;}
+.game-card p{margin:0; font-size:13.5px; color:var(--ink-dim);}
+.games-note{text-align:center; color:var(--ink-faint); font-size:13.5px; padding-bottom:60px;}
+.games-note a{color:var(--gold); text-decoration:none;}
+
+footer{padding:40px 0 60px; color:var(--ink-faint); font-size:12.5px; line-height:1.7; border-top:1px solid var(--panel-line);}
+footer a{color:var(--ink-dim); text-decoration:none;}
+footer a:hover{color:var(--gold);}
+
+@media (max-width:640px){
+  .hub-hero{padding:56px 0 40px;}
+  .hub-hero h1{font-size:30px;}
+  .nav-links{gap:18px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <div class="brand-mark"></div>
+      <div class="brand-name">GRIETA<span>META</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="/juegos" class="is-current">Juegos</a>
+      <a href="/">League of Legends</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hub-hero">
+  <div class="wrap">
+    <h1>Elige tu <em>juego</em></h1>
+    <p class="lead">Builds, tier lists y guías con datos reales. Escoge un juego o búscalo por nombre; si todavía no lo tenemos, pídelo.</p>
+    <div class="game-search big" data-request-mail="ekainarlla@gmail.com">
+      <svg class="gs-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Busca un juego…" autocomplete="off" aria-label="Buscar juego" role="combobox" aria-autocomplete="list" aria-expanded="false">
+      <kbd class="gs-kbd" aria-hidden="true">/</kbd>
+      <ul class="game-results" role="listbox" hidden></ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="games-grid" id="gamesGrid">
+    <noscript><a class="game-card" href="/"><div class="g-body"><h3>League of Legends</h3><p>Tier list, winrates y builds de todos los campeones</p></div></a></noscript>
+  </div>
+  <p class="games-note">¿Echas de menos algún juego? Escríbelo en el buscador de arriba y te diremos cómo pedirlo.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
+    <div>GrietaMeta es un sitio de fans, no está afiliado a los estudios de los juegos mencionados. Las marcas pertenecen a sus propietarios. · <a href="/privacidad.html">Privacidad</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
+  var grid = document.getElementById("gamesGrid");
+  fetch("/games.json")
+    .then(function (r) { return r.ok ? r.json() : { games: [] }; })
+    .then(function (d) {
+      var games = d.games || [];
+      if (!games.length) return;
+      grid.innerHTML = games.map(function (g) {
+        return '<a class="game-card" href="' + esc(g.url) + '">' +
+          '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) + "</span>" +
+          '<span class="g-body"><h3>' + esc(g.name) + "</h3><p>" + esc(g.tagline || "") + "</p></span>" +
+          (g.status === "building"
+            ? '<span class="g-badge g-soon">En construcción</span>'
+            : '<span class="g-badge g-live">Disponible</span>') +
+          "</a>";
+      }).join("");
+    })
+    .catch(function () {});
+})();
+</script>
+<script src="/games-nav.js" defer></script>
+</body>
+</html>

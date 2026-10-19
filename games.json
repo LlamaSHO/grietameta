@@ -4,7 +4,7 @@
       "slug": "lol",
       "name": "League of Legends",
       "short": "LoL",
-      "url": "/lol/",
+      "url": "/",
       "aliases": ["lol", "league", "league of legends", "grieta", "grieta de los invocadores", "summoners rift", "riot"],
       "tagline": "Tier list, winrates y builds de todos los campeones",
       "status": "live"
@@ -13,7 +13,7 @@
       "slug": "arc-raiders",
       "name": "ARC Raiders",
       "short": "ARC",
-      "url": "/arc-raiders/",
+      "url": "/arc-raiders",
       "aliases": ["arc", "raiders", "arc raiders", "embark", "extraccion"],
       "tagline": "Objetos, guías y equipamientos",
       "status": "building"
