@@ -303,7 +303,7 @@ const DATA = {
   }
 };
 const KEYS = ["semillas","misiones","armaduras","conjuntos"];
-const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/img/zora.jpg" */
+const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/img/zora.jpg" (en Armaduras usa el nombre entre paréntesis, ej. IMG["Royal Guard"]) */
 const state = { cat: "semillas", q: "" };
 
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -341,8 +341,17 @@ function render(){
   document.getElementById("secCount").textContent = items.length + (items.length === 1 ? " resultado" : " resultados");
   const root = document.getElementById("root");
   if(!items.length){ root.innerHTML = `<div class="empty-state">No hay resultados para esa búsqueda. Prueba con otra palabra.</div>`; return; }
+  const badge = t => {
+    const key = (t.match(/\(([^)]+)\)/) || [0, t])[1];
+    const mono = key.replace(/[^A-Za-z' ]/g,"").split(" ").filter(Boolean).slice(0,2).map(w => w[0]).join("").toUpperCase();
+    const src = IMG[key] || IMG[t];
+    return `<div class="badge" style="--h:42">${mono}${src ? `<img src="${esc(src)}" alt="" loading="lazy" onerror="this.remove()">` : ""}</div>`;
+  };
   root.innerHTML = `<div class="grid">` + items.map(i =>
-    `<div class="card"><h3>${esc(i[0])}</h3><span class="tag">${esc(i[1])}</span><p>${esc(i[2])}</p>` +
+    `<div class="card">` +
+    (state.cat === "armaduras" && /^Defensa/.test(i[1])
+      ? `<div class="set-top">${badge(i[0])}<div><h3>${esc(i[0])}</h3><span class="tag" style="margin:4px 0 0">${esc(i[1])}</span></div></div><p style="margin-top:12px">${esc(i[2])}</p>`
+      : `<h3>${esc(i[0])}</h3><span class="tag">${esc(i[1])}</span><p>${esc(i[2])}</p>`) +
     (i[4] ? `<a class="more" href="${esc(i[4])}" target="_blank" rel="noopener noreferrer">Abrir mapa</a>` : "") +
     `<div class="alt">${esc(i[3])}</div></div>`
   ).join("") + `</div>`;
