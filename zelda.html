@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zelda: Tears of the Kingdom · Guía | ZeldaMeta</title>
+<meta name="description" content="Guía de Zelda: Tears of the Kingdom en español: semillas kolog, misiones principales y secundarias y armaduras con más defensa.">
+<meta property="og:title" content="Zelda: Tears of the Kingdom | ZeldaMeta">
+<meta property="og:description" content="Semillas kolog, misiones y armaduras con más defensa.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0D12">
+<link rel="icon" type="image/png" href="/favicon.png?v=1">
+<link rel="apple-touch-icon" href="/favicon.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0D12; --bg-raised:#10141C; --panel:#151A23; --panel-line:#262D3A;
+  --gold:#C8963E; --gold-soft:#9C7A44; --teal:#14C3B8; --teal-dim:#0C766F;
+  --ink:#E9E6DC; --ink-dim:#97A0AC; --ink-faint:#5D6673;
+  --s-tier:#E7B84B; --a-tier:#6FC0E0; --b-tier:#8C97A8; --c-tier:#6B7280;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; line-height:1.5;}
+h1,h2,h3{font-family:'Cinzel',serif; letter-spacing:.01em; margin:0; color:var(--ink);}
+a{color:inherit;}
+button{font-family:inherit;}
+.wrap{max-width:1240px; margin:0 auto; padding:0 28px;}
+
+.nav{position:sticky; top:0; z-index:40; background:rgba(10,13,18,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--panel-line);}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between; height:68px;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand-mark{width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--teal)); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);}
+.brand-name{font-family:'Cinzel',serif; font-size:19px; font-weight:600; letter-spacing:.02em;}
+.brand-name span{color:var(--gold);}
+.nav-links{display:flex; gap:28px; align-items:center;}
+.nav-links a{font-size:14.5px; color:var(--ink-dim); text-decoration:none; padding:6px 0; border-bottom:2px solid transparent; transition:color .15s ease,border-color .15s ease;}
+.nav-links a:hover{color:var(--ink); border-color:var(--gold-soft);}
+.nav-links a.is-current{color:var(--ink); border-color:var(--gold);}
+
+.hero{padding:64px 0 40px; border-bottom:1px solid var(--panel-line);
+  background:radial-gradient(ellipse 900px 420px at 78% -10%,rgba(20,195,184,.10),transparent 60%),radial-gradient(ellipse 700px 380px at 5% 0%,rgba(200,150,62,.08),transparent 60%);}
+.patch-tag{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--teal); border:1px solid var(--teal-dim); padding:5px 12px; margin-bottom:22px; background:rgba(20,195,184,.06);}
+.patch-tag::before{content:""; width:6px; height:6px; background:var(--teal); border-radius:50%;}
+.hero h1{font-size:46px; font-weight:600; line-height:1.15; max-width:760px;}
+.hero h1 em{font-style:normal; color:var(--gold);}
+.hero p.lead{color:var(--ink-dim); font-size:17px; max-width:600px; margin-top:16px;}
+
+.section{padding:48px 0 72px;}
+.section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:22px; gap:20px; flex-wrap:wrap; border-bottom:1px solid var(--panel-line); padding-bottom:16px;}
+.section-head h2{font-size:26px; font-weight:600;}
+.section-head p{color:var(--ink-dim); font-size:14.5px; margin:6px 0 0; max-width:560px;}
+.section-sub{color:var(--ink-faint); font-size:13px;}
+
+.search-box{position:relative; max-width:460px; margin-bottom:16px;}
+.search-box input{width:100%; background:var(--panel); border:1px solid var(--panel-line); color:var(--ink); font-size:15px; padding:14px 16px 14px 42px; outline:none;}
+.search-box input:focus{border-color:var(--gold-soft);}
+.search-box svg{position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.55;}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
+.chip{border:1px solid var(--panel-line); background:var(--bg-raised); color:var(--ink-dim); font-size:13.5px; padding:8px 15px; cursor:pointer; transition:.15s ease;}
+.chip:hover{color:var(--ink); border-color:var(--gold-soft);}
+.chip.active{background:var(--gold); border-color:var(--gold); color:#1A1305; font-weight:600;}
+.chip:focus-visible,.search-box input:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+
+
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;}
+.card{background:var(--panel); border:1px solid var(--panel-line); padding:18px 20px; transition:border-color .15s ease;}
+.card:hover{border-color:var(--gold-soft);}
+.card h3{font-size:17px;}
+.card .tag{display:inline-block; font-size:11.5px; color:var(--teal); border:1px solid var(--teal-dim); padding:2px 8px; margin:8px 0 10px;}
+.card p{margin:0; font-size:13.5px; color:var(--ink-dim);}
+.card a.more{display:inline-block; margin-top:12px; font-size:13px; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-soft);}
+.card a.more:hover{color:#DBA84F;}
+.card .alt{font-size:11.5px; color:var(--ink-faint); margin-top:10px;}
+.empty-state{padding:60px 20px; text-align:center; color:var(--ink-faint); border:1px dashed var(--panel-line);}
+.note{font-size:12.5px; color:var(--ink-faint); margin-top:22px;}
+
+footer{padding:40px 0 60px; color:var(--ink-faint); font-size:12.5px; line-height:1.7; border-top:1px solid var(--panel-line);}
+footer a{color:var(--ink-dim); text-decoration:none;}
+footer a:hover{color:var(--gold);}
+
+@media (max-width:640px){
+  .hero h1{font-size:30px;}
+  .nav-links{gap:16px;}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><div class="brand-mark"></div><div class="brand-name">ZELDA<span>META</span></div></a>
+    <div class="nav-links">
+      <a href="#" data-k="semillas">Semillas kolog</a>
+      <a href="#" data-k="misiones">Misiones</a>
+      <a href="#" data-k="armaduras">Armaduras</a>
+      <a href="/">← Volver al inicio</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="patch-tag">Guía en español · versión 1.2.1 del juego</div>
+    <h1>No te dejes nada en <em>Hyrule</em>.</h1>
+    <p class="lead">Semillas kolog, misiones principales y secundarias, y las armaduras con más defensa de Tears of the Kingdom.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="secTitle">Semillas kolog</h2>
+        <p id="secDesc"></p>
+      </div>
+      <div class="section-sub" id="secCount"></div>
+    </div>
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="q" placeholder="Busca en la guía (ej. Hestu, santuarios, defensa)" aria-label="Buscar">
+    </div>
+    <div class="chips" id="chips" role="tablist"></div>
+    <div id="root"></div>
+    <p class="note">Guía no oficial con datos de la versión 1.2.1 contrastados con guías de la comunidad. Los nombres en inglés van entre paréntesis para que los encuentres en el juego aunque lo tengas en otro idioma.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="margin-bottom:6px;">© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
+    <div>ZeldaMeta es un sitio de fans y no está afiliado a Nintendo. The Legend of Zelda y Tears of the Kingdom son marcas de Nintendo. Todo el contenido es texto e iconos propios, sin material oficial. · <a href="/privacidad.html">Privacidad</a></div>
+  </div>
+</footer>
+
+<script>
+/* Datos de ZeldaMeta. Cada entrada: [título, etiqueta, descripción, nota, enlace opcional].
+   Para añadir una, copia una línea y cambia los textos. */
+const DATA = {
+  semillas: {
+    title: "Semillas kolog",
+    desc: "Cuántas hay, para qué sirven y cómo encontrarlas. Para las coordenadas exactas usa un mapa interactivo.",
+    items: [
+      ["1.000 semillas","Cifras","Hay 1.000 semillas kolog repartidas por unas 900 ubicaciones. En algunas ubicaciones consigues dos semillas.","Total del juego"],
+      ["421 para el inventario máximo","Mejoras","Para ampliar todos los inventarios necesitas 421 semillas: 153 para armas, 160 para escudos y 108 para arcos.","153 + 160 + 108"],
+      ["Regalo de Hestu","Recompensa","Al reunir las 1.000 semillas, Hestu te da un recuerdo especial. Las mejoras de inventario se hacen con él.","Hestu's Gift"],
+      ["Kolog que piden un amigo","Doble semilla","Unos 100 kolog te dan dos semillas si les llevas a su amigo, que está en otro punto cercano. Suele hacer falta una balsa o un recorrido corto.","~100 ubicaciones","https://www.gamerguides.com/the-legend-of-zelda-tears-of-the-kingdom/checklists/korok-seed-x2-locations"],
+      ["Brillos, piedras y hojas","Cómo encontrarlas","Muchas semillas salen al examinar un brillo en el suelo, en la copa de un árbol o bajo hojas secas, o al mover una piedra que está fuera de sitio.","Pistas visuales"],
+      ["Mapa interactivo","Ubicaciones","Mapa de Hyrule con todos los marcadores de semillas kolog, filtros y capas. Útil para ver qué te falta por zona.","Enlace externo","https://mapgenie.io/zelda-tears-of-the-kingdom/maps/hyrule"],
+      ["Otros coleccionables","Cifras","El juego tiene 152 santuarios y unas 120 raíces de luz en las Profundidades, además de las semillas.","152 + ~120"]
+    ]
+  },
+  misiones: {
+    title: "Misiones",
+    desc: "El hilo principal en orden y las misiones secundarias más grandes. Sin spoilers del final.",
+    items: [
+      ["Crisis at Hyrule Castle","Principal","El prólogo. Empiezas en el castillo con Zelda y todo se tuerce. De aquí pasas a las islas del cielo.","Principal 1"],
+      ["Regional Phenomena","Principal","Con el mapa abierto, investigas los fenómenos extraños en las regiones habitadas de Hyrule.","Principal 2"],
+      ["Wind Temple (Tulin, Rito)","Principal","Templo de la región Rito. Te enfrentas a la amenaza del viento con la ayuda de Tulin.","Templo del viento"],
+      ["Water Temple (Sidon, Zora)","Principal","Templo de la región Zora. Aquí te acompaña Sidon.","Templo del agua"],
+      ["Fire Temple (Yunobo, Goron)","Principal","Templo de la región Goron. Te acompaña Yunobo.","Templo del fuego"],
+      ["Lightning Temple (Riju, Gerudo)","Principal","Templo de la región Gerudo. Te acompaña Riju.","Templo del rayo"],
+      ["Spirit Temple (Mineru)","Principal","Templo ligado a Mineru y a su construcción. Es una de las partes más importantes de la historia.","Templo del espíritu"],
+      ["Final: Ganondorf","Principal","El último tramo de la historia lleva al enfrentamiento con Ganondorf. Hazlo con la mejor armadura y comida que tengas.","Último tramo"],
+      ["Tarrey Town","Secundaria","Cadena larga de misiones para reconstruir un pueblo con ayuda de varios personajes. Desbloquea tiendas y habitantes.","Cadena larga"],
+      ["Santuarios y raíces de luz","Secundaria","Los 152 santuarios te dan orbes de luz para vida y vigor. Las raíces de luz ayudan a explorar las Profundidades.","Exploración"]
+    ]
+  },
+  armaduras: {
+    title: "Armaduras",
+    desc: "Las armaduras con más defensa al máximo nivel. Las mejoras se hacen con las Grandes Hadas, hasta cuatro niveles.",
+    items: [
+      ["Aspecto del Héroe Antiguo (Ancient Hero's Aspect)","Defensa 84","La pieza con más defensa del juego. Es la recompensa final por completar los 152 santuarios. Defensa por nivel: 24, 36, 54 y 84.","Pieza única, nivel máximo"],
+      ["Set de la Guardia Real (Royal Guard)","Defensa 72","Tres piezas de 24 de defensa cada una al máximo, 72 en total. Se consigue dentro del castillo de Hyrule: gorro, uniforme y botas.","Set completo (3 × 24)"],
+      ["Cuero de campeón (Champion's Leathers)","Defensa 32","Pieza muy sólida y fácil de encontrar. Alcanza 32 de defensa al máximo.","Pieza única, nivel máximo"],
+      ["Túnica de los recuerdos (Tunic of Memories)","Defensa 28","Recompensa por descubrir todas las estatuas de Barganier. Tiene mucha menos defensa que el cuero de campeón: 28 al máximo.","Pieza única, nivel máximo"],
+      ["Bárbaro (Barbarian) y Deidad feroz (Fierce Deity)","Ataque","No son las de más defensa, pero destacan por su bonificación de ataque y las usan muchos jugadores en la fase final.","Bonificación de ataque"],
+      ["Cómo funcionan los sets","Consejo","El bonus de set se activa al llevar piezas del mismo set mejoradas al nivel 2. Algunos sets, como el oscuro, lo activan sin mejorar.","Mejoras con Grandes Hadas"]
+    ]
+  }
+};
+const KEYS = ["semillas","misiones","armaduras"];
+const state = { cat: "semillas", q: "" };
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");
+
+function renderChips(){
+  const root = document.getElementById("chips");
+  root.innerHTML = KEYS.map(k => `<button class="chip ${state.cat===k?"active":""}" role="tab" aria-selected="${state.cat===k}" data-k="${k}">${DATA[k].title}</button>`).join("");
+  root.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { state.cat = b.dataset.k; render(); }));
+}
+
+function render(){
+  const cat = DATA[state.cat];
+  const q = norm(state.q.trim());
+  document.getElementById("secTitle").textContent = cat.title;
+  document.getElementById("secDesc").textContent = cat.desc;
+  renderChips();
+  const items = cat.items.filter(i => !q || norm(i.slice(0,4).join(" ")).includes(q));
+  document.getElementById("secCount").textContent = items.length + (items.length === 1 ? " resultado" : " resultados");
+  const root = document.getElementById("root");
+  if(!items.length){ root.innerHTML = `<div class="empty-state">No hay resultados para esa búsqueda. Prueba con otra palabra.</div>`; return; }
+  root.innerHTML = `<div class="grid">` + items.map(i =>
+    `<div class="card"><h3>${esc(i[0])}</h3><span class="tag">${esc(i[1])}</span><p>${esc(i[2])}</p>` +
+    (i[4] ? `<a class="more" href="${esc(i[4])}" target="_blank" rel="noopener noreferrer">Abrir mapa</a>` : "") +
+    `<div class="alt">${esc(i[3])}</div></div>`
+  ).join("") + `</div>`;
+}
+
+document.querySelectorAll(".nav-links a[data-k]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault(); state.cat = a.dataset.k; render(); window.scrollTo({top:0, behavior:"smooth"});
+}));
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+render();
+</script>
+</body>
+</html>
