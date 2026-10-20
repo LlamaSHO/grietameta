@@ -76,6 +76,15 @@ button{font-family:inherit;}
 .empty-state{padding:60px 20px; text-align:center; color:var(--ink-faint); border:1px dashed var(--panel-line);}
 .note{font-size:12.5px; color:var(--ink-faint); margin-top:22px;}
 
+.badge{width:46px; height:46px; flex:0 0 46px; display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-weight:700; font-size:15px; color:#0A0D12; background:linear-gradient(150deg,hsl(var(--h) 55% 62%),hsl(var(--h) 45% 38%)); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); overflow:hidden; position:relative;}
+.badge img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.set-top{display:flex; gap:14px; align-items:center;}
+.set-top h3{font-size:16px;}
+.mats{list-style:none; margin:12px 0 0; padding:0; font-size:12.5px; color:var(--ink-dim);}
+.mats li{padding:6px 0; border-top:1px solid var(--panel-line);}
+.mats b{color:var(--gold); font-weight:600; margin-right:6px;}
+.mats .none{color:var(--ink-faint);}
+.grid.sets{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));}
 footer{padding:40px 0 60px; color:var(--ink-faint); font-size:12.5px; line-height:1.7; border-top:1px solid var(--panel-line);}
 footer a{color:var(--ink-dim); text-decoration:none;}
 footer a:hover{color:var(--gold);}
@@ -96,6 +105,7 @@ footer a:hover{color:var(--gold);}
       <a href="#" data-k="semillas">Semillas kolog</a>
       <a href="#" data-k="misiones">Misiones</a>
       <a href="#" data-k="armaduras">Armaduras</a>
+      <a href="#" data-k="conjuntos">Conjuntos</a>
       <a href="/">← Volver al inicio</a>
     </div>
   </div>
@@ -124,7 +134,7 @@ footer a:hover{color:var(--gold);}
     </div>
     <div class="chips" id="chips" role="tablist"></div>
     <div id="root"></div>
-    <p class="note">Guía no oficial con datos de la versión 1.2.1 contrastados con guías de la comunidad. Los nombres en inglés van entre paréntesis para que los encuentres en el juego aunque lo tengas en otro idioma.</p>
+    <p class="note">Guía no oficial. Los materiales se muestran con su nombre en inglés y recogen los tres primeros niveles de mejora; algunas piezas, como el Aspecto del Héroe Antiguo, tienen un nivel más. Datos de la versión 1.2.1 contrastados con varias guías. En las armaduras, las guías no siempre coinciden en una pieza concreta; usa estas cifras como referencia. Los nombres en inglés van entre paréntesis para que los encuentres en el juego aunque lo tengas en otro idioma.</p>
   </div>
 </main>
 
@@ -153,35 +163,147 @@ const DATA = {
     ]
   },
   misiones: {
-    title: "Misiones",
-    desc: "El hilo principal en orden y las misiones secundarias más grandes. Sin spoilers del final.",
-    items: [
-      ["Crisis at Hyrule Castle","Principal","El prólogo. Empiezas en el castillo con Zelda y todo se tuerce. De aquí pasas a las islas del cielo.","Principal 1"],
-      ["Regional Phenomena","Principal","Con el mapa abierto, investigas los fenómenos extraños en las regiones habitadas de Hyrule.","Principal 2"],
-      ["Wind Temple (Tulin, Rito)","Principal","Templo de la región Rito. Te enfrentas a la amenaza del viento con la ayuda de Tulin.","Templo del viento"],
-      ["Water Temple (Sidon, Zora)","Principal","Templo de la región Zora. Aquí te acompaña Sidon.","Templo del agua"],
-      ["Fire Temple (Yunobo, Goron)","Principal","Templo de la región Goron. Te acompaña Yunobo.","Templo del fuego"],
-      ["Lightning Temple (Riju, Gerudo)","Principal","Templo de la región Gerudo. Te acompaña Riju.","Templo del rayo"],
-      ["Spirit Temple (Mineru)","Principal","Templo ligado a Mineru y a su construcción. Es una de las partes más importantes de la historia.","Templo del espíritu"],
-      ["Final: Ganondorf","Principal","El último tramo de la historia lleva al enfrentamiento con Ganondorf. Hazlo con la mejor armadura y comida que tengas.","Último tramo"],
-      ["Tarrey Town","Secundaria","Cadena larga de misiones para reconstruir un pueblo con ayuda de varios personajes. Desbloquea tiendas y habitantes.","Cadena larga"],
-      ["Santuarios y raíces de luz","Secundaria","Los 152 santuarios te dan orbes de luz para vida y vigor. Las raíces de luz ayudan a explorar las Profundidades.","Exploración"]
+    "title": "Misiones",
+    "desc": "El hilo principal en orden y cómo funcionan las secundarias. Sin spoilers del final.",
+    "items": [
+      [
+        "23 misiones principales",
+        "Cifras",
+        "La historia se compone de 23 misiones principales. Muchas pueden hacerse en el orden que quieras, salvo las que se abren tras los cuatro templos.",
+        "Principales"
+      ],
+      [
+        "The Closed Door",
+        "Principal 1",
+        "Empieza en la Gran Isla del Cielo, donde Rauru te guía tras el prólogo. Es la primera misión de verdad.",
+        "Isla del Cielo"
+      ],
+      [
+        "To the Kingdom of Hyrule",
+        "Principal 2",
+        "Bajas de las islas del cielo al reino. Termina con tu llegada a Lookout Landing.",
+        "Del Templo del Tiempo a Lookout Landing"
+      ],
+      [
+        "Crisis at Hyrule Castle",
+        "Principal 3",
+        "Purah te la da en Lookout Landing. Al escanear la primera Torre Cielovista se abre Regional Phenomena.",
+        "Lookout Landing"
+      ],
+      [
+        "Regional Phenomena",
+        "Principal 4",
+        "Investigas los fenómenos de cuatro regiones. Cada una trae su misión y su templo: Tulin (Rito), Yunobo (Goron), Sidon (Zora) y Riju (Gerudo). El orden es libre, pero muchos empiezan por Tulin porque su poder ayuda.",
+        "4 regiones"
+      ],
+      [
+        "Después de los cuatro templos",
+        "Principal 5",
+        "Se abren Hyrule Castle y las misiones Find the Fifth Sage, Impa and the Geoglyphs y The Dragon's Tears.",
+        "Fase final"
+      ],
+      [
+        "Destroy Ganondorf",
+        "Principal final",
+        "La da Purah en Lookout Landing. Ganondorf no está en el castillo, sino en la zona de abajo, Hyrule Castle Chasm. Ve preparado.",
+        "Último tramo"
+      ],
+      [
+        "Misiones de las Profundidades",
+        "Principal",
+        "A Mystery in the Depths y Camera Work in the Depths, ambas con Josha. La segunda desbloquea el Compendio.",
+        "Lookout Landing"
+      ],
+      [
+        "60 aventuras secundarias",
+        "Cifras",
+        "Son misiones largas con personajes clave. Dan mejoras del Purah Pad, ampliaciones de inventario y mejoras de ropa. Serenade to a Great Fairy abre el acceso a todas las Grandes Hadas.",
+        "Side adventures"
+      ],
+      [
+        "139 misiones secundarias",
+        "Cifras",
+        "Son más cortas, no aparecen marcadas en el mapa y ninguna se pierde. Muchas necesitan avanzar en la historia, así que conviene dejarlas para después.",
+        "Side quests"
+      ],
+      [
+        "Tarrey Town",
+        "Secundaria",
+        "Allí empiezan varias aventuras largas: las cinco de A Monstrous Collection (I a V) y Mattison's Independence.",
+        "Aventuras largas"
+      ]
     ]
   },
+  conjuntos: {"title":"Conjuntos","kind":"sets","desc":"Todos los conjuntos con los materiales de cada mejora en la Gran Hada. El coste es por pieza y por nivel.","sets":[{"n":"Hylian","t":"Normal","b":"Solo defensa","m":["5× Bokoblin Horn","5× Blue Bokoblin Horn, 3× Bokoblin Fang","20× Amber, 3× Bokoblin Guts, 5× Black Bokoblin Horn"]},{"n":"Armor of the Wild","t":"Normal","b":"Bonus de ataque","m":["10× Acorn, 2× Farosh's Scale","5× Courser Bee Honey, 2× Farosh's Claw","3× Energetic Rhino Beetle, 2× Shard of Farosh's Fang, 5× Shard of Farosh's Spike"]},{"n":"Soldier's","t":"Normal","b":"Solo defensa","m":["5× Chuchu Jelly, 3× Bokoblin Guts","5× Keese Eyeball, 3× Moblin Guts","30× Flint, 3× Lizalfos Tail, 3× Hinox Guts"]},{"n":"Awakening","t":"Normal","b":"Bonus de ataque","m":["10× Luminous Stone, 1× Star Fragment","15× Luminous Stone, 1× Star Fragment","20× Luminous Stone, 1× Star Fragment"]},{"n":"Champion's Leathers","t":"Normal","b":"Pieza suelta","m":["3× Silent Princess, 2× Light Dragon's Scale","3× Silent Princess, 2× Light Dragon's Talon, 10× Sundelion","5× Silent Princess, 2× Shard of Light Dragon's Fang, 15× Sundelion"]},{"n":"Tunic of Memories","t":"Normal","b":"Pieza suelta","m":["3× Silent Princess, 1× Light Dragon's Scale","3× Silent Princess, 1× Light Dragon's Talon, 2× Farosh's Horn","5× Silent Princess, 1× Shard of Light Dragon's Fang, 2× Naydra's Horn"]},{"n":"Royal Guard","t":"Normal","b":"Solo defensa","m":["3× Bokoblin Guts, 3× Boss Bokoblin Horn","3× Blue Boss Bokoblin Horn, 3× Bokoblin Fang","3× Black Boss Bokoblin Horn, 3× Hinox Guts"]},{"n":"Time","t":"Normal","b":"Aspecto clásico","m":["10× Amber, 1× Star Fragment","20× Amber, 1× Star Fragment","30× Amber, 1× Star Fragment"]},{"n":"Wind","t":"Normal","b":"Aspecto clásico","m":["5× Opal, 1× Star Fragment","10× Opal, 1× Star Fragment","15× Opal, 1× Star Fragment"]},{"n":"Twilight","t":"Normal","b":"Aspecto clásico","m":["1× Topaz, 1× Star Fragment","4× Topaz, 1× Star Fragment","6× Topaz, 1× Star Fragment"]},{"n":"Sky","t":"Normal","b":"Aspecto clásico","m":["1× Sapphire, 1× Star Fragment","4× Sapphire, 1× Star Fragment","6× Sapphire, 1× Star Fragment"]},{"n":"Archaic","t":"Normal","b":"Solo aspecto","m":[]},{"n":"Desert Voe","t":"Elemento","b":"Resistencia al calor","m":["3× White Chuchu Jelly","5× White Chuchu Jelly, 3× Cool Safflina","5× Chillshroom, 5× Ice Keese Wing, 3× Ice-Breath Lizalfos Tail"]},{"n":"Snowquill","t":"Elemento","b":"Resistencia al frío","m":["3× Red Chuchu Jelly","5× Red Chuchu Jelly, 3× Warm Safflina","5× Sunshroom, 5× Fire Keese Wing, 3× Fire-Breath Lizalfos Tail"]},{"n":"Flamebreaker","t":"Elemento","b":"Guardia de llamas","m":["3× Moblin Horn","5× Moblin Fang, 5× Fireproof Lizard","5× Blue Moblin Horn, 15× Flint, 3× Smotherwing Butterfly"]},{"n":"Rubber","t":"Elemento","b":"Resistencia a la electricidad","m":["3× Yellow Chuchu Jelly, 1× Electric Lizalfos Horn","8× Yellow Chuchu Jelly, 5× Voltfruit","5× Zapshroom, 5× Electric Lizalfos Tail, 8× Electric Safflina"]},{"n":"Froggy","t":"Elemento","b":"Antideslizante","m":["3× Sticky Lizard","5× Sticky Lizard, 5× Horriblin Horn","5× Blue Horriblin Horn, 5× Sticky Frog"]},{"n":"Depths","t":"Elemento","b":"Resistencia a la malicia","m":["3× Deep Firefly","5× Dark Clump, 3× Frox Fang","20× Zonaite, 3× Frox Fingernail, 3× Obsidian Frox Fang"]},{"n":"Ruby Circlet","t":"Elemento","b":"Resistencia al frío","m":["2× Ruby, 3× Flint","4× Ruby, 5× Flint","6× Ruby, 1× Star Fragment"]},{"n":"Sapphire Circlet","t":"Elemento","b":"Resistencia al calor","m":["2× Sapphire, 3× Flint","4× Sapphire, 5× Flint","6× Sapphire, 1× Star Fragment"]},{"n":"Topaz Earrings","t":"Elemento","b":"Resistencia a la electricidad","m":["2× Topaz, 3× Flint","4× Topaz, 5× Flint","6× Topaz, 1× Star Fragment"]},{"n":"Cah Medoh Divine Helm","t":"Elemento","b":"Resistencia al frío","m":["1× Sapphire, 5× Zonaite","4× Sapphire, 10× Zonaite","6× Sapphire, 5× Zonaite, 5× Dazzlefruit"]},{"n":"Vah Rudania Divine Helm","t":"Elemento","b":"Guardia de llamas","m":["5× Zonaite, 1× Ruby","10× Zonaite, 4× Ruby","6× Ruby, 5× Large Zonaite, 5× Dazzlefruit"]},{"n":"Vah Naboris Divine Helm","t":"Elemento","b":"Resistencia a la electricidad","m":["1× Topaz, 5× Zonaite","4× Topaz, 10× Zonaite","6× Topaz, 5× Large Zonaite, 5× Dazzlefruit"]},{"n":"Vah Ruta Divine Helm","t":"Habilidad","b":"Velocidad al nadar","m":["5× Zonaite, 5× Opal","10× Zonaite, 5× Opal","15× Opal, 5× Large Zonaite, 5× Dazzlefruit"]},{"n":"Lightning Helm","t":"Elemento","b":"A prueba de rayos","m":[]},{"n":"Island Lobster Shirt","t":"Elemento","b":"Resistencia al calor","m":[]},{"n":"Midna's Helmet","t":"Elemento","b":"Resistencia a la malicia","m":[]},{"n":"Zant's Helmet","t":"Elemento","b":"Anticongelación","m":[]},{"n":"Zora","t":"Habilidad","b":"Velocidad al nadar","m":["3× Lizalfos Horn","5× Hyrule Bass, 5× Lizalfos Talon","3× Hearty Bass, 3× Lizalfos Tail, 5× Blue Lizalfos Horn"]},{"n":"Stealth","t":"Habilidad","b":"Sigilo","m":["3× Blue Nightshade","5× Sunset Firefly, 5× Blue Nightshade","8× Silent Shroom, 5× Sneaky River Snail"]},{"n":"Climbing","t":"Habilidad","b":"Velocidad al trepar","m":["3× Keese Wing, 3× Rushroom","5× Electric Keese Wing, 5× Hightail Lizard","10× Hot-Footed Frog, 8× Keese Wing"]},{"n":"Diamond Circlet","t":"Habilidad","b":"Bonus de ataque","m":["2× Diamond, 3× Flint","3× Diamond, 5× Flint","5× Diamond, 1× Star Fragment"]},{"n":"Opal Earrings","t":"Habilidad","b":"Velocidad al nadar","m":["6× Opal, 5× Flint","12× Opal, 10× Flint","18× Opal, 15× Flint"]},{"n":"Barbarian","t":"Habilidad","b":"Bonus de ataque","m":["3× Mighty Thistle","5× Razorshroom, 2× Lynel Saber Horn, 2× Lynel Mace Horn","3× Blue-Maned Lynel Saber Horn, 3× Blue-Maned Lynel Mace Horn, 3× Razorclaw"]},{"n":"Sand Boots","t":"Habilidad","b":"Velocidad en la arena","m":["3× Hightail Lizard","20× Gibdo Bone, 5× Swift Carrot","5× Gibdo Guts, 10× Rushroom, 5× Molduga Fin"]},{"n":"Snow Boots","t":"Habilidad","b":"Velocidad en la nieve","m":["3× Hightail Lizard","5× Octorok Tentacle, 5× Swift Carrot","5× Octo Balloon, 20× Rushroom"]},{"n":"Glide","t":"Habilidad","b":"Movilidad en caída libre","m":["3× Keese Wing","5× Aerocuda Wing, 6× Aerocuda Eyeball","6× Aerocuda Wing, 8× Aerocuda Eyeball"]},{"n":"Ember","t":"Habilidad","b":"Ataque con calor","m":["3× Fire Fruit","5× Fire-Breath Lizalfos Horn, 5× Summerwing Butterfly","5× Fire Like Stone, 5× Warm Darner, 5× Large Zonai Charge"]},{"n":"Charged","t":"Habilidad","b":"Ataque en tormentas","m":["3× Shock Fruit","3× Thunderwing Butterfly, 5× Electric Lizalfos Horn","5× Shock Like Stone, 5× Electric Darner, 3× Zonai Charge"]},{"n":"Frostbite","t":"Habilidad","b":"Ataque con frío","m":["3× Ice Fruit","5× Ice-Breath Lizalfos Horn, 5× Winterwing Butterfly","5× Ice Like Stone, 5× Cold Darner, 5× Large Zonai Charge"]},{"n":"Zonaite","t":"Habilidad","b":"Energía Zonai","m":["5× Soldier Construct Horn","5× Soldier Construct II Horn, 5× Zonaite, 5× Captain Construct I Horn","5× Large Zonaite, 5× Captain Construct II Horn, 5× Soldier Construct III Horn"]},{"n":"Yiga","t":"Habilidad","b":"Sigilo","m":["2× Octorok Eyeball","3× Puffshroom, 3× Fire-Breath Lizalfos Tail","5× Ice-Breath Lizalfos Tail, 5× Keese Eyeball"]},{"n":"Sheik's Mask","t":"Habilidad","b":"Sigilo","m":["1× Silent Princess","2× Silent Princess, 2× Star Fragment","4× Silent Princess, 3× Star Fragment"]},{"n":"Fierce Deity","t":"Habilidad","b":"Bonus de ataque","m":["5× Hinox Toenail, 1× Dinraal's Scale","5× Hinox Tooth, 1× Dinraal's Scale","2× Hinox Guts, 1× Shard of Dinraal's Fang"]},{"n":"Hero","t":"Habilidad","b":"Bonus de ataque","m":["1× Ruby, 1× Star Fragment","4× Ruby, 1× Star Fragment","6× Ruby, 1× Star Fragment"]},{"n":"Miner's","t":"Habilidad","b":"Brillo","m":["10× Brightbloom Seed","20× Brightbloom Seed, 5× Brightcap","15× Giant Brightbloom Seed, 10× Deep Firefly, 5× Glowing Cave Fish"]},{"n":"Mystic","t":"Habilidad","b":"Más rupias","m":[]},{"n":"Phantom","t":"Habilidad","b":"Bonus de ataque","m":[]},{"n":"Evil Spirit","t":"Habilidad","b":"Sigilo","m":[]},{"n":"Dark","t":"Habilidad","b":"Velocidad de noche","m":[]},{"n":"Tingle's","t":"Habilidad","b":"Velocidad de noche","m":[]},{"n":"Ravio's Hood","t":"Habilidad","b":"Trepa lateral más rápida","m":[]},{"n":"Radiant","t":"Enemigos","b":"Los Staal no te atacan","m":["10× Luminous Stone, 1× Bokoblin Guts","15× Luminous Stone, 2× Moblin Guts","20× Luminous Stone, 3× Horriblin Guts, 10× Gibdo Bone"]},{"n":"Máscaras de enemigos (Bokoblin, Moblin, Lizalfos, Lynel, Horriblin)","t":"Enemigos","b":"Ese enemigo no te ataca","m":[]},{"n":"Majora's Mask","t":"Enemigos","b":"Menos detección","m":[]},{"n":"Korok Mask","t":"Enemigos","b":"Vibra cerca de un kolog","m":[]}]},
   armaduras: {
-    title: "Armaduras",
-    desc: "Las armaduras con más defensa al máximo nivel. Las mejoras se hacen con las Grandes Hadas, hasta cuatro niveles.",
-    items: [
-      ["Aspecto del Héroe Antiguo (Ancient Hero's Aspect)","Defensa 84","La pieza con más defensa del juego. Es la recompensa final por completar los 152 santuarios. Defensa por nivel: 24, 36, 54 y 84.","Pieza única, nivel máximo"],
-      ["Set de la Guardia Real (Royal Guard)","Defensa 72","Tres piezas de 24 de defensa cada una al máximo, 72 en total. Se consigue dentro del castillo de Hyrule: gorro, uniforme y botas.","Set completo (3 × 24)"],
-      ["Cuero de campeón (Champion's Leathers)","Defensa 32","Pieza muy sólida y fácil de encontrar. Alcanza 32 de defensa al máximo.","Pieza única, nivel máximo"],
-      ["Túnica de los recuerdos (Tunic of Memories)","Defensa 28","Recompensa por descubrir todas las estatuas de Barganier. Tiene mucha menos defensa que el cuero de campeón: 28 al máximo.","Pieza única, nivel máximo"],
-      ["Bárbaro (Barbarian) y Deidad feroz (Fierce Deity)","Ataque","No son las de más defensa, pero destacan por su bonificación de ataque y las usan muchos jugadores en la fase final.","Bonificación de ataque"],
-      ["Cómo funcionan los sets","Consejo","El bonus de set se activa al llevar piezas del mismo set mejoradas al nivel 2. Algunos sets, como el oscuro, lo activan sin mejorar.","Mejoras con Grandes Hadas"]
+    "title": "Armaduras",
+    "desc": "Defensa al máximo nivel, de mayor a menor. Se indica si la cifra es del set completo o de una pieza.",
+    "items": [
+      [
+        "Aspecto del Héroe Antiguo (Ancient Hero's Aspect)",
+        "Defensa 84",
+        "Recompensa final por completar los 152 santuarios. Defensa por nivel con el set: 24, 36, 54 y 84. Mejora el rayo de la Espada Maestra.",
+        "Set completo"
+      ],
+      [
+        "Set de soldado (Soldier's Armor)",
+        "Defensa 84",
+        "28 por pieza al máximo. No tiene bonus de set, pero es de lo más defensivo del juego.",
+        "Set completo (3 × 28)"
+      ],
+      [
+        "Set Zonaite (Zonaite Armor)",
+        "Defensa 84",
+        "28 por pieza al máximo. Reduce el gasto de energía de los aparatos Zonai, ideal si construyes mucho.",
+        "Set completo (3 × 28)"
+      ],
+      [
+        "Armadura de lo Salvaje (Armor of the Wild)",
+        "Defensa 84",
+        "El aspecto clásico de Link, con bonus de ataque. Según las guías llega a 84 con todo mejorado.",
+        "Set completo"
+      ],
+      [
+        "Guardia Real (Royal Guard)",
+        "Defensa 72",
+        "Tres piezas de 24 cada una al máximo. Se consigue dentro del castillo de Hyrule.",
+        "Set completo (3 × 24)"
+      ],
+      [
+        "Bárbaro, Deidad feroz y Despertar (Barbarian, Fierce Deity, Awakening)",
+        "Defensa 60",
+        "Tres piezas de 20 cada una al máximo. Su fuerte es la bonificación de ataque, no la defensa.",
+        "Set completo (3 × 20)"
+      ],
+      [
+        "Set de escarcha (Frostbite)",
+        "Defensa 48",
+        "16 por pieza al máximo. Aumenta el daño con frío y es de las mejores para zonas heladas.",
+        "Set completo (3 × 16)"
+      ],
+      [
+        "Cuero de campeón (Champion's Leathers)",
+        "Defensa 32",
+        "La pieza suelta con más defensa de las que hemos contrastado. Muy fácil de encontrar.",
+        "Pieza única"
+      ],
+      [
+        "Túnica de los recuerdos (Tunic of Memories)",
+        "Defensa 28",
+        "Recompensa por encontrar todas las estatuas de Barganier. Sube de 4 a 28 con las mejoras.",
+        "Pieza única"
+      ],
+      [
+        "Cómo funcionan las mejoras",
+        "Consejo",
+        "Las Grandes Hadas mejoran las piezas por niveles. El bonus de set se activa con piezas del mismo set mejoradas al nivel 2. Algunos sets, como el oscuro, lo activan sin mejorar.",
+        "Grandes Hadas"
+      ]
     ]
   }
 };
-const KEYS = ["semillas","misiones","armaduras"];
+const KEYS = ["semillas","misiones","armaduras","conjuntos"];
+const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/img/zora.jpg" */
 const state = { cat: "semillas", q: "" };
 
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -199,6 +321,22 @@ function render(){
   document.getElementById("secTitle").textContent = cat.title;
   document.getElementById("secDesc").textContent = cat.desc;
   renderChips();
+  if(cat.kind === "sets"){
+    const sets = cat.sets.filter(x => !q || norm([x.n,x.t,x.b].join(" ")).includes(q));
+    document.getElementById("secCount").textContent = sets.length + (sets.length === 1 ? " conjunto" : " conjuntos");
+    const root0 = document.getElementById("root");
+    if(!sets.length){ root0.innerHTML = `<div class="empty-state">No hay resultados para esa búsqueda. Prueba con otra palabra.</div>`; return; }
+    const HUE = {Normal:42, Elemento:200, Habilidad:170, Enemigos:340};
+    root0.innerHTML = `<div class="grid sets">` + sets.map(x => {
+      const mono = x.n.replace(/[^A-Za-z' ]/g,"").split(" ").filter(Boolean).slice(0,2).map(w => w[0]).join("").toUpperCase();
+      const img = IMG[x.n] ? `<img src="${esc(IMG[x.n])}" alt="" loading="lazy" onerror="this.remove()">` : "";
+      const mats = x.m.length
+        ? x.m.map((m,i) => `<li><b>Nivel ${i+1}</b>${esc(m)}</li>`).join("")
+        : `<li class="none">No se puede mejorar</li>`;
+      return `<div class="card"><div class="set-top"><div class="badge" style="--h:${HUE[x.t]||42}">${mono}${img}</div><div><h3>${esc(x.n)}</h3><span class="tag" style="margin:4px 0 0">${esc(x.b)}</span></div></div><ul class="mats">${mats}</ul><div class="alt">${esc(x.t)}</div></div>`;
+    }).join("") + `</div>`;
+    return;
+  }
   const items = cat.items.filter(i => !q || norm(i.slice(0,4).join(" ")).includes(q));
   document.getElementById("secCount").textContent = items.length + (items.length === 1 ? " resultado" : " resultados");
   const root = document.getElementById("root");
