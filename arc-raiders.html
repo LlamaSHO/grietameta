@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ARC Raiders · Objetos | GrietaMeta</title>
+<title>ARC Raiders · Objetos | ArcMeta</title>
 <meta name="description" content="Base de datos de objetos de ARC Raiders: busca por nombre, filtra por rareza y consulta estadísticas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
 </head>
 <body>
 <header class="nav"><div class="nav-in">
-  <a class="brand" href="/"><span class="hex"></span>GrietaMeta</a>
+  <a class="brand" href="/"><span class="hex"></span>ArcMeta</a>
   <a class="back" href="/">← Volver al inicio</a>
 </div></header>
 
@@ -79,7 +79,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     <input id="q" class="search" type="search" placeholder="Buscar objeto (ej. Ferro)…" aria-label="Buscar objeto" autocomplete="off">
   </div>
   <div class="chips" id="rarities" role="group" aria-label="Filtrar por rareza"></div>
-  <div class="chips" id="types" role="group" aria-label="Filtrar por tipo"></div>
+  <div class="chips" id="types" role="group" aria-label="Filtrar por categoría"></div>
 
   <div class="count" id="count" aria-live="polite"></div>
   <div id="grid" class="grid"></div>
@@ -113,7 +113,20 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   var RARITY_COLORS = {common:'--r-common',uncommon:'--r-uncommon',rare:'--r-rare',epic:'--r-epic',legendary:'--r-legendary'};
   var RARITY_ES = {common:'Común',uncommon:'Poco común',rare:'Raro',epic:'Épico',legendary:'Legendario'};
 
-  var state = {items:[], page:0, hasNext:false, total:0, search:'', rarity:'', type:'', loading:false, seq:0};
+  // Categorías amplias: agrupan los tipos de objeto de MetaForge (item_type) en pocas familias.
+  var GROUPS = {
+    'Armas': ['Weapon'],
+    'Consumibles': ['Quick Use'],
+    'Materiales y botín': ['Recyclable','Refined Material','Topside Material','Nature','Trinket'],
+    'Planos e investigación': ['Blueprint','Design','Research'],
+    'Cosméticos y hogar': ['Outfits','Furniture']
+  };
+  var GROUP_ORDER = ['Armas','Consumibles','Materiales y botín','Planos e investigación','Cosméticos y hogar','Otros'];
+  var TYPE_TO_GROUP = {};
+  Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(t){ TYPE_TO_GROUP[t]=g; }); });
+  function groupOf(t){ return TYPE_TO_GROUP[t] || 'Otros'; }
+
+  var state = {items:[], page:0, hasNext:false, total:0, search:'', rarity:'', group:'', loading:false, seq:0};
   var $ = function(id){return document.getElementById(id);};
   var grid=$('grid'), more=$('more'), statusEl=$('status'), countEl=$('count');
   var lastFocus=null;
@@ -160,7 +173,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   function visible(){
     return state.items.filter(function(it){
       if(state.rarity && rarityKey(it.rarity)!==state.rarity) return false;
-      if(state.type && it.item_type!==state.type) return false;
+      if(state.group && groupOf(it.item_type)!==state.group) return false;
       return true;
     });
   }
@@ -169,7 +182,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     var rs={}, ts={};
     state.items.forEach(function(it){
       if(it.rarity) rs[rarityKey(it.rarity)]=1;
-      if(it.item_type) ts[it.item_type]=1;
+      ts[groupOf(it.item_type)]=1;
     });
     function build(container, values, current, labelFn, onPick){
       container.textContent='';
@@ -185,12 +198,11 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
       });
     }
     var order=['common','uncommon','rare','epic','legendary'];
-    var rList=Object.keys(rs).sort(function(a,b){
-      var ia=order.indexOf(a), ib=order.indexOf(b);
-      return (ia<0?99:ia)-(ib<0?99:ib);
-    });
+    // Solo las cinco rarezas conocidas; valores raros de la API no generan chip.
+    var rList=order.filter(function(r){ return rs[r]; });
     build($('rarities'), rList, state.rarity, rarityLabel, function(v){ state.rarity=v; render(); });
-    build($('types'), Object.keys(ts).sort(), state.type, function(v){return v;}, function(v){ state.type=v; render(); });
+    var gList=GROUP_ORDER.filter(function(g){ return ts[g]; });
+    build($('types'), gList, state.group, function(v){return v;}, function(v){ state.group=v; render(); });
   }
 
   function render(){
@@ -212,7 +224,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     });
     grid.appendChild(frag);
 
-    var filtering = state.rarity || state.type;
+    var filtering = state.rarity || state.group;
     countEl.textContent = state.total
       ? (filtering ? list.length + ' de ' + state.items.length + ' cargados' : state.items.length + ' de ' + fmt(state.total) + ' objetos')
       : '';
@@ -301,7 +313,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     clearTimeout(timer);
     timer=setTimeout(function(){
       if(v===state.search) return;
-      state.search=v; state.rarity=''; state.type='';
+      state.search=v; state.rarity=''; state.group='';
       state.loading=false; // permite lanzar una nueva búsqueda aunque haya otra en curso
       load(true);
     },350);
