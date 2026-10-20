@@ -154,7 +154,7 @@ footer p{margin:0 0 8px}
   <p id="foot-data"></p>
   <p>
     Datos del <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener">Proyecto de datos ARC</a>
-    (licencia MIT, <a href="/data/LICENSE-arcraiders-data.txt">texto de la licencia</a>) y de la comunidad de
+    (licencia MIT, <a href="/lote0-pagina-y-datos/data/LICENSE-arcraiders-data.txt">texto de la licencia</a>) y de la comunidad de
     <a href="https://arctracker.io" target="_blank" rel="noopener">ARC Tracker</a>.
     El contenido del juego pertenece a Embark Studios AB y sus licenciantes. ArcMeta no está afiliado ni respaldado por Embark Studios.
   </p>
@@ -164,8 +164,14 @@ footer p{margin:0 0 8px}
 (function(){
   'use strict';
   var PER_PAGE = 48;
-  var DATA_URL = '/data/arc-items.json';
-  var IMG_DIR = '/arc-img/';
+  // Rutas tal como están subidas al repositorio (las imágenes están repartidas en 7 carpetas «lote»).
+  var DATA_URL = '/lote0-pagina-y-datos/data/arc-items.json';
+  var LOTE_STARTS = ['burletta_ii.webp','exodus_modules.webp','hullcracker_iv.webp','oil.webp','ruined_handcuffs.webp','tactical_mk1.webp'];
+  function imgUrl(id){
+    var f=id+'.webp', n=1;
+    for(var i=0;i<LOTE_STARTS.length;i++){ if(f>=LOTE_STARTS[i]) n=i+2; }
+    return '/lote'+n+'-imagenes/arc-img/'+encodeURIComponent(f);
+  }
 
   var TYPE_ES = {
     'Assault Rifle':'Rifle de asalto','SMG':'Subfusil','Pistol':'Pistola','Battle Rifle':'Rifle de batalla','Shotgun':'Escopeta',
@@ -227,7 +233,7 @@ footer p{margin:0 0 8px}
     var letter=(item.name||'?').charAt(0).toUpperCase();
     if(item.hasImage){
       var img=document.createElement('img');
-      img.src=IMG_DIR+encodeURIComponent(item.id)+'.webp'; img.alt=''; img.loading='lazy'; img.decoding='async';
+      img.src=imgUrl(item.id); img.alt=''; img.loading='lazy'; img.decoding='async';
       img.onerror=function(){ img.remove(); art.textContent=letter; };
       art.appendChild(img);
     } else {
