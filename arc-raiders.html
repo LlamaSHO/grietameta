@@ -167,8 +167,12 @@ footer p{margin:0 0 8px}
   // Rutas tal como están subidas al repositorio (las imágenes están repartidas en 7 carpetas «lote»).
   var DATA_URL = '/lote0-pagina-y-datos/data/arc-items.json';
   var LOTE_STARTS = ['burletta_ii.webp','exodus_modules.webp','hullcracker_iv.webp','oil.webp','ruined_handcuffs.webp','tactical_mk1.webp'];
+  // Imágenes que se subieron aparte, en la carpeta /arc-img-extra/.
+  var EXTRA = {};
+  ["binoculars","blaze_grenade","blaze_grenade_blueprint","blaze_grenade_trap","bloated_tuna_can","blue_gate_cellar_key","blue_gate_communication_tower_key","blue_gate_confiscation_room_key","blue_gate_village_key","blue_light_stick","blue_light_stick_blueprint","bobcat_blueprint","bobcat_i","bobcat_ii","bobcat_iii","bobcat_iv","bombardier_cell","breathtaking_snow_globe","broken_flashlight","broken_guidance_system","broken_handheld_radio","broken_taser","buried_city_hospital_key","buried_city_jkv_employee_access_card","buried_city_residential_master_key","buried_city_town_hall_key","burletta_blueprint","burletta_i","dam_control_tower_key","dam_controlled_access_zone_key","dam_staff_room_key","dam_surveillance_key","dam_testing_annex_key","damaged_hornet_driver","damaged_rocketeer_driver","damaged_snitch_scanner","damaged_tick_pod","damaged_wasp_driver","dart_board","deadline","deadline_blueprint","defibrillator","defibrillator_blueprint","deflated_football","degraded_arc_rubber","diving_goggles","dockmasters_detector","dodgers_note","dog_collar","dolabra","dolabra_blueprint","doodly_duck","door_blocker","dried_out_arc_resin","duct_tape","durable_cloth","dusty_film_reel","electrical_components","empty_wine_bottle","energy_clip","equalizer","equalizer_blueprint","espresso_machine_parts","esr_analyzer"].forEach(function(k){ EXTRA[k]=1; });
   function imgUrl(id){
     var f=id+'.webp', n=1;
+    if(EXTRA[id]===1) return '/arc-img-extra/'+encodeURIComponent(f);
     for(var i=0;i<LOTE_STARTS.length;i++){ if(f>=LOTE_STARTS[i]) n=i+2; }
     return '/lote'+n+'-imagenes/arc-img/'+encodeURIComponent(f);
   }
