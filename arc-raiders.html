@@ -27,6 +27,10 @@ a{color:var(--teal)}
 .hex{width:26px;height:26px;background:linear-gradient(135deg,var(--gold),var(--teal));clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%)}
 .nav a.back{color:var(--ink-dim);text-decoration:none;font-size:14px;border-bottom:2px solid transparent;padding-bottom:2px}
 .nav a.back:hover{border-bottom-color:var(--gold);color:var(--ink)}
+.links{display:flex;align-items:center;gap:18px}
+.links a{color:var(--ink-dim);text-decoration:none;font-size:14px;border-bottom:2px solid transparent;padding-bottom:2px}
+.links a:hover{border-bottom-color:var(--gold);color:var(--ink)}
+.links a.on{color:var(--ink);border-bottom-color:var(--gold)}
 main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
 h1{font-family:'Cinzel',serif;font-size:clamp(26px,4vw,38px);margin:0 0 6px}
 .sub{color:var(--ink-dim);margin:0 0 24px}
@@ -96,7 +100,11 @@ footer p{margin:0 0 8px}
 <body>
 <header class="nav"><div class="nav-in">
   <a class="brand" href="/"><span class="hex"></span><span>Arc<span class="m">Meta</span></span></a>
-  <a class="back" href="/">← Volver al inicio</a>
+  <nav class="links" aria-label="Secciones de ArcMeta">
+    <a href="/arc-raiders" class="on" aria-current="page">Objetos</a>
+    <a href="/arc-misiones">Misiones</a>
+    <a href="/">← Volver al inicio</a>
+  </nav>
 </div></header>
 
 <main>
