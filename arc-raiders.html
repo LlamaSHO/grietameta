@@ -11,7 +11,7 @@
 <style>
 :root{
   --bg:#0A0D12; --panel:#151A23; --line:#252C38;
-  --gold:#C8963E; --gold-soft:#8a6a2e; --teal:#14C3B8;
+  --gold:#C8963E; --gold-soft:#8a6a2e; --teal:#14C3B8; --blue:#3B9BF0;
   --ink:#E9E6DC; --ink-dim:#97A0AC;
   --r-common:#9aa3ad; --r-uncommon:#4fbf6b; --r-rare:#3b9bf0; --r-epic:#b865e8; --r-legendary:#e8a93c;
 }
@@ -22,6 +22,7 @@ a{color:var(--teal)}
 .nav{position:sticky;top:0;z-index:40;background:rgba(10,13,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.04em}
+.brand .m{color:var(--blue)}
 .hex{width:26px;height:26px;background:linear-gradient(135deg,var(--gold),var(--teal));clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%)}
 .nav a.back{color:var(--ink-dim);text-decoration:none;font-size:14px;border-bottom:2px solid transparent;padding-bottom:2px}
 .nav a.back:hover{border-bottom-color:var(--gold);color:var(--ink)}
@@ -67,7 +68,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
 </head>
 <body>
 <header class="nav"><div class="nav-in">
-  <a class="brand" href="/"><span class="hex"></span>ArcMeta</a>
+  <a class="brand" href="/"><span class="hex"></span><span>Arc<span class="m">Meta</span></span></a>
   <a class="back" href="/">← Volver al inicio</a>
 </div></header>
 
@@ -109,7 +110,21 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
 <script>
 (function(){
   'use strict';
-  var PAGE_SIZE = 48;
+  var PAGE_SIZE = 100;
+
+  // Traducciones de las etiquetas que da la API en inglés (nombres y descripciones de objetos vienen en inglés).
+  var TYPE_ES = {
+    'Weapon':'Arma','Quick Use':'Consumible','Recyclable':'Reciclable','Refined Material':'Material refinado',
+    'Topside Material':'Material de superficie','Nature':'Naturaleza','Trinket':'Baratija','Blueprint':'Plano',
+    'Design':'Diseño','Research':'Investigación','Outfits':'Atuendo','Furniture':'Mobiliario'
+  };
+  var STAT_ES = {
+    weight:'Peso', stackSize:'Tamaño de pila', range:'Alcance', damage:'Daño', fireRate:'Cadencia de disparo',
+    magazineSize:'Capacidad del cargador', reloadTime:'Tiempo de recarga', durability:'Durabilidad',
+    reducedRecoilRecoveryTime:'Recuperación del retroceso', shieldCompatibility:'Compatibilidad de escudo',
+    healing:'Curación', armor:'Armadura', health:'Salud'
+  };
+  function typeEs(t){ return TYPE_ES[t] || t || ''; }
   var RARITY_COLORS = {common:'--r-common',uncommon:'--r-uncommon',rare:'--r-rare',epic:'--r-epic',legendary:'--r-legendary'};
   var RARITY_ES = {common:'Común',uncommon:'Poco común',rare:'Raro',epic:'Épico',legendary:'Legendario'};
 
@@ -126,7 +141,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(t){ TYPE_TO_GROUP[t]=g; }); });
   function groupOf(t){ return TYPE_TO_GROUP[t] || 'Otros'; }
 
-  var state = {items:[], page:0, hasNext:false, total:0, search:'', rarity:'', group:'', loading:false, seq:0};
+  var state = {items:[], page:0, hasNext:false, total:0, search:'', rarity:'', group:'', loading:false, failed:false, seq:0};
   var $ = function(id){return document.getElementById(id);};
   var grid=$('grid'), more=$('more'), statusEl=$('status'), countEl=$('count');
   var lastFocus=null;
@@ -225,19 +240,28 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     grid.appendChild(frag);
 
     var filtering = state.rarity || state.group;
-    countEl.textContent = state.total
-      ? (filtering ? list.length + ' de ' + state.items.length + ' cargados' : state.items.length + ' de ' + fmt(state.total) + ' objetos')
-      : '';
-    more.hidden = !state.hasNext;
+    if(!state.total) countEl.textContent = '';
+    else if(filtering) countEl.textContent = list.length + (list.length===1 ? ' objeto' : ' objetos') + (state.hasNext && !state.failed ? ' · cargando el resto…' : '');
+    else countEl.textContent = state.items.length + ' de ' + fmt(state.total) + ' objetos';
+
+    // Con un filtro activo se carga solo el resto de páginas, así que el botón solo hace falta sin filtro o tras un error.
+    more.hidden = !state.hasNext || (filtering && !state.failed);
     more.disabled = state.loading;
-    if(!state.loading && !state.items.length && !statusEl.classList.contains('err')) setStatus('No se encontraron objetos.');
-    else if(!state.loading && !list.length && state.items.length) setStatus('Ningún objeto cargado coincide con el filtro. Pulsa «Cargar más» o cambia el filtro.');
-    else if(!statusEl.classList.contains('err') || state.items.length) { if(!state.loading) setStatus(''); }
+    more.textContent = state.failed ? 'Reintentar' : 'Cargar más';
+
+    if(state.failed){ /* se mantiene el mensaje de error */ }
+    else if(state.loading || (filtering && state.hasNext)) setStatus('Cargando…');
+    else if(!state.items.length) setStatus('No se encontraron objetos.');
+    else if(!list.length) setStatus('Ningún objeto coincide con ese filtro.');
+    else setStatus('');
+
+    if(filtering && state.hasNext && !state.loading && !state.failed) load(false);
   }
 
   function load(reset){
     if(state.loading) return;
     if(reset){ state.items=[]; state.page=0; state.hasNext=false; state.total=0; grid.textContent=''; }
+    state.failed=false;
     state.loading=true;
     var mySeq=++state.seq;
     more.disabled=true;
@@ -261,8 +285,9 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
       .catch(function(){
         if(mySeq!==state.seq) return;
         state.loading=false;
-        setStatus('No se pudieron cargar los objetos. Inténtalo de nuevo en unos minutos.', true);
+        state.failed=true;
         render();
+        setStatus('No se pudieron cargar los objetos. Inténtalo de nuevo en unos minutos.', true);
       });
   }
 
@@ -272,7 +297,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     var meta=$('m-meta'); meta.textContent='';
     var r=el('span','rar',rarityLabel(it.rarity)); r.style.setProperty('--rc', rarityVar(it.rarity));
     meta.appendChild(r);
-    meta.appendChild(el('span',null,it.item_type||''));
+    meta.appendChild(el('span',null,typeEs(it.item_type)));
     var art=$('m-art'); var fresh=makeArt(it,'art');
     art.replaceWith(fresh); fresh.id='m-art';
     $('m-desc').textContent=it.description||'';
@@ -292,8 +317,8 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
       Object.keys(sb).forEach(function(k){
         var v=sb[k];
         if(v===null || v===undefined || v==='' || v===0) return;
-        if(typeof v==='object') return;
-        row(prettyKey(k), typeof v==='number'?fmt(v):String(v));
+        if(typeof v==='object' || k==='value') return; // 'value' ya se muestra arriba como Valor
+        row(STAT_ES[k] || prettyKey(k), typeof v==='number'?fmt(v):String(v));
       });
     }
     $('modal').classList.add('open');
@@ -318,7 +343,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
       load(true);
     },350);
   });
-  more.onclick=function(){ load(false); };
+  more.onclick=function(){ state.failed=false; load(false); };
 
   load(true);
 })();
