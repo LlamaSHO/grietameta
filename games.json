@@ -17,6 +17,15 @@
       "aliases": ["arc", "raiders", "arc raiders", "embark", "extraccion"],
       "tagline": "Objetos, guías y equipamientos",
       "status": "building"
+    },
+    {
+      "slug": "zelda-totk",
+      "name": "Zelda: Tears of the Kingdom",
+      "short": "TotK",
+      "url": "/zelda",
+      "aliases": ["zelda", "totk", "tears of the kingdom", "tears", "botw", "hyrule", "link", "nintendo", "zeldameta", "kolog", "korok", "semillas kolog"],
+      "tagline": "Semillas kolog, misiones y armaduras con más defensa",
+      "status": "building"
     }
   ]
 }
