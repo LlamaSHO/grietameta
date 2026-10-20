@@ -37,7 +37,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(26px,4vw,38px);margin:0 0 6px}
 .chip:hover{border-color:var(--gold-soft);color:var(--ink)}
 .chip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
 .count{color:var(--ink-dim);font-size:13px;margin:12px 0 16px;min-height:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;scroll-margin-top:84px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:transform .15s,border-color .15s}
 .card:hover,.card:focus-visible{border-color:var(--gold-soft);transform:translateY(-2px);outline:none}
 .art{aspect-ratio:1;display:grid;place-items:center;background:#0e131b;border-radius:4px;margin-bottom:10px;border-bottom:3px solid var(--rc,var(--r-common))}
@@ -45,11 +45,20 @@ h1{font-family:'Cinzel',serif;font-size:clamp(26px,4vw,38px);margin:0 0 6px}
 .name{font-weight:600;font-size:14px;margin:0 0 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--ink-dim)}
 .rar{color:var(--rc,var(--r-common));font-weight:600}
-.more{display:block;margin:28px auto 0;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 28px;font:inherit;font-weight:600;cursor:pointer;border-radius:3px}
+.pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:28px 0 0}
+.pager[hidden]{display:none}
+.pbtn{background:transparent;border:1px solid var(--line);color:var(--ink);padding:9px 16px;font:inherit;font-size:14px;cursor:pointer;border-radius:3px}
+.pbtn:hover:not([disabled]){border-color:var(--gold);color:var(--gold)}
+.pbtn[disabled]{opacity:.4;cursor:default}
+.psel{display:flex;align-items:center;gap:8px;color:var(--ink-dim);font-size:14px}
+.psel select{background:var(--panel);border:1px solid var(--gold-soft);color:var(--ink);padding:8px 10px;font:inherit;font-size:14px;border-radius:3px;cursor:pointer}
+.psel select:focus{outline:none;border-color:var(--gold)}
+.more{display:block;margin:20px auto 0;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 28px;font:inherit;font-weight:600;cursor:pointer;border-radius:3px}
+.more[hidden]{display:none}
 .more:hover{background:var(--gold);color:#0A0D12}
-.more[disabled]{opacity:.5;cursor:default}
 .status{text-align:center;color:var(--ink-dim);padding:48px 0}
-.status.err{color:#e0735c}
+.status[hidden]{display:none}
+.status.err{color:#e0735c;padding:24px 0 0}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
 .modal.open{display:flex}
 .sheet{background:var(--panel);border:1px solid var(--gold-soft);border-radius:8px;max-width:520px;width:100%;max-height:88vh;overflow:auto;padding:24px;position:relative}
@@ -85,7 +94,17 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   <div class="count" id="count" aria-live="polite"></div>
   <div id="grid" class="grid"></div>
   <div id="status" class="status" hidden></div>
-  <button id="more" class="more" hidden>Cargar más</button>
+
+  <nav id="pager" class="pager" aria-label="Paginación" hidden>
+    <button id="prev" class="pbtn" type="button">‹ Anterior</button>
+    <label class="psel">Página
+      <select id="pageSel" aria-label="Elegir página"></select>
+      <span id="pageTotal"></span>
+    </label>
+    <button id="next" class="pbtn" type="button">Siguiente ›</button>
+  </nav>
+
+  <button id="more" class="more" type="button" hidden>Reintentar</button>
 </main>
 
 <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-name">
@@ -110,7 +129,8 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
 <script>
 (function(){
   'use strict';
-  var PAGE_SIZE = 100;
+  var API_PAGE_SIZE = 100;  // objetos que se piden a la API por petición
+  var PER_PAGE = 48;        // objetos que se muestran por página en pantalla
 
   // Traducciones de las etiquetas que da la API en inglés (nombres y descripciones de objetos vienen en inglés).
   var TYPE_ES = {
@@ -125,6 +145,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     healing:'Curación', armor:'Armadura', health:'Salud'
   };
   function typeEs(t){ return TYPE_ES[t] || t || ''; }
+
   var RARITY_COLORS = {common:'--r-common',uncommon:'--r-uncommon',rare:'--r-rare',epic:'--r-epic',legendary:'--r-legendary'};
   var RARITY_ES = {common:'Común',uncommon:'Poco común',rare:'Raro',epic:'Épico',legendary:'Legendario'};
 
@@ -141,9 +162,10 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(t){ TYPE_TO_GROUP[t]=g; }); });
   function groupOf(t){ return TYPE_TO_GROUP[t] || 'Otros'; }
 
-  var state = {items:[], page:0, hasNext:false, total:0, search:'', rarity:'', group:'', loading:false, failed:false, seq:0};
+  var state = {items:[], apiPage:0, hasNext:false, total:0, search:'', rarity:'', group:'', pageNo:1, loading:false, failed:false, seq:0};
   var $ = function(id){return document.getElementById(id);};
   var grid=$('grid'), more=$('more'), statusEl=$('status'), countEl=$('count');
+  var pager=$('pager'), pageSel=$('pageSel'), prevBtn=$('prev'), nextBtn=$('next');
   var lastFocus=null;
 
   function el(tag, cls, text){
@@ -215,17 +237,40 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     var order=['common','uncommon','rare','epic','legendary'];
     // Solo las cinco rarezas conocidas; valores raros de la API no generan chip.
     var rList=order.filter(function(r){ return rs[r]; });
-    build($('rarities'), rList, state.rarity, rarityLabel, function(v){ state.rarity=v; render(); });
+    build($('rarities'), rList, state.rarity, rarityLabel, function(v){ state.rarity=v; state.pageNo=1; render(); });
     var gList=GROUP_ORDER.filter(function(g){ return ts[g]; });
-    build($('types'), gList, state.group, function(v){return v;}, function(v){ state.group=v; render(); });
+    build($('types'), gList, state.group, function(v){return v;}, function(v){ state.group=v; state.pageNo=1; render(); });
+  }
+
+  function renderPager(pages){
+    // Sin paginación si todo cabe en una sola página (p. ej. una categoría con 3 objetos).
+    pager.hidden = pages <= 1;
+    if(pages <= 1) return;
+    pageSel.textContent='';
+    for(var i=1;i<=pages;i++){
+      var o=document.createElement('option');
+      o.value=String(i); o.textContent=String(i);
+      if(i===state.pageNo) o.selected=true;
+      pageSel.appendChild(o);
+    }
+    pageSel.value=String(state.pageNo);
+    $('pageTotal').textContent='de '+pages;
+    prevBtn.disabled = state.pageNo<=1;
+    nextBtn.disabled = state.pageNo>=pages;
   }
 
   function render(){
     renderChips();
     var list=visible();
+    var pages=Math.max(1, Math.ceil(list.length/PER_PAGE));
+    if(state.pageNo>pages) state.pageNo=pages;
+    if(state.pageNo<1) state.pageNo=1;
+    var start=(state.pageNo-1)*PER_PAGE;
+    var slice=list.slice(start, start+PER_PAGE);
+
     grid.textContent='';
     var frag=document.createDocumentFragment();
-    list.forEach(function(it){
+    slice.forEach(function(it){
       var b=el('button','card'); b.type='button';
       b.appendChild(makeArt(it));
       b.appendChild(el('p','name',it.name||it.id));
@@ -239,34 +284,38 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
     });
     grid.appendChild(frag);
 
-    var filtering = state.rarity || state.group;
-    if(!state.total) countEl.textContent = '';
-    else if(filtering) countEl.textContent = list.length + (list.length===1 ? ' objeto' : ' objetos') + (state.hasNext && !state.failed ? ' · cargando el resto…' : '');
-    else countEl.textContent = state.items.length + ' de ' + fmt(state.total) + ' objetos';
+    var loadingMore = state.hasNext && !state.failed;
+    var filtering = !!(state.rarity || state.group);
+    if(!state.total && !state.items.length) countEl.textContent='';
+    else {
+      var n = filtering || loadingMore ? list.length : state.total;
+      countEl.textContent = fmt(n) + (n===1 ? ' objeto' : ' objetos') + (loadingMore ? ' · cargando el resto…' : '');
+    }
 
-    // Con un filtro activo se carga solo el resto de páginas, así que el botón solo hace falta sin filtro o tras un error.
-    more.hidden = !state.hasNext || (filtering && !state.failed);
-    more.disabled = state.loading;
-    more.textContent = state.failed ? 'Reintentar' : 'Cargar más';
+    renderPager(pages);
+    more.hidden = !state.failed;
 
     if(state.failed){ /* se mantiene el mensaje de error */ }
-    else if(state.loading || (filtering && state.hasNext)) setStatus('Cargando…');
-    else if(!state.items.length) setStatus('No se encontraron objetos.');
-    else if(!list.length) setStatus('Ningún objeto coincide con ese filtro.');
+    else if(!state.items.length) setStatus(state.loading ? 'Cargando…' : 'No se encontraron objetos.');
+    else if(!list.length) setStatus(loadingMore ? 'Buscando…' : 'Ningún objeto coincide con ese filtro.');
     else setStatus('');
-
-    if(filtering && state.hasNext && !state.loading && !state.failed) load(false);
   }
 
+  function goToPage(n){
+    state.pageNo=n;
+    render();
+    grid.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // Carga las páginas de la API una a una en segundo plano; la paginación en pantalla es local.
   function load(reset){
     if(state.loading) return;
-    if(reset){ state.items=[]; state.page=0; state.hasNext=false; state.total=0; grid.textContent=''; }
+    if(reset){ state.items=[]; state.apiPage=0; state.hasNext=false; state.total=0; state.pageNo=1; grid.textContent=''; }
     state.failed=false;
     state.loading=true;
     var mySeq=++state.seq;
-    more.disabled=true;
-    setStatus('Cargando…');
-    var url='/api/arc-items?page='+(state.page+1)+'&limit='+PAGE_SIZE+(state.search?'&search='+encodeURIComponent(state.search):'');
+    if(!state.items.length) setStatus('Cargando…');
+    var url='/api/arc-items?page='+(state.apiPage+1)+'&limit='+API_PAGE_SIZE+(state.search?'&search='+encodeURIComponent(state.search):'');
     fetch(url,{headers:{Accept:'application/json'}})
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
       .then(function(json){
@@ -274,20 +323,20 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
         var data=Array.isArray(json.data)?json.data:[];
         var p=json.pagination||{};
         var seen={}; state.items.forEach(function(i){seen[i.id]=1;});
-        data.forEach(function(i){ if(i && i.id && !seen[i.id]) state.items.push(i); });
-        state.page=p.page||state.page+1;
+        data.forEach(function(i){ if(i && i.id && !seen[i.id]){ seen[i.id]=1; state.items.push(i); } });
+        state.apiPage=p.page||state.apiPage+1;
         state.hasNext=!!p.hasNextPage;
         state.total=typeof p.total==='number'?p.total:state.items.length;
         state.loading=false;
-        setStatus('');
         render();
+        if(state.hasNext) load(false);
       })
       .catch(function(){
         if(mySeq!==state.seq) return;
         state.loading=false;
         state.failed=true;
         render();
-        setStatus('No se pudieron cargar los objetos. Inténtalo de nuevo en unos minutos.', true);
+        setStatus('No se pudieron cargar todos los objetos. Inténtalo de nuevo en unos minutos.', true);
       });
   }
 
@@ -332,6 +381,10 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
   $('modal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && $('modal').classList.contains('open')) closeModal(); });
 
+  pageSel.addEventListener('change',function(){ goToPage(parseInt(pageSel.value,10)||1); });
+  prevBtn.onclick=function(){ goToPage(state.pageNo-1); };
+  nextBtn.onclick=function(){ goToPage(state.pageNo+1); };
+
   var timer=null;
   $('q').addEventListener('input',function(){
     var v=this.value.trim();
@@ -343,7 +396,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);f
       load(true);
     },350);
   });
-  more.onclick=function(){ state.failed=false; load(false); };
+  more.onclick=function(){ state.failed=false; load(!state.items.length); };
 
   load(true);
 })();
