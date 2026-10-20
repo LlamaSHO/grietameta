@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARC Raiders · Objetos | ArcMeta</title>
+<meta name="description" content="Objetos de ARC Raiders en español: qué vender, reciclar, guardar o usar, con valores, reciclaje y recetas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0D12; --panel:#151A23; --line:#252C38;
+  --gold:#C8963E; --gold-soft:#8a6a2e; --teal:#14C3B8; --blue:#3B9BF0; --green:#4fbf6b;
+  --ink:#E9E6DC; --ink-dim:#97A0AC;
+  --r-common:#9aa3ad; --r-uncommon:#4fbf6b; --r-rare:#3b9bf0; --r-epic:#b865e8; --r-legendary:#e8a93c;
+  --a-vender:#C8963E; --a-reciclar:#4fbf6b; --a-guardar:#3B9BF0; --a-usar:#14C3B8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums;line-height:1.5}
+a{color:var(--teal)}
+.nav{position:sticky;top:0;z-index:40;background:rgba(10,13,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.04em}
+.brand .m{color:var(--blue)}
+.hex{width:26px;height:26px;background:linear-gradient(135deg,var(--gold),var(--teal));clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%)}
+.nav a.back{color:var(--ink-dim);text-decoration:none;font-size:14px;border-bottom:2px solid transparent;padding-bottom:2px}
+.nav a.back:hover{border-bottom-color:var(--gold);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+h1{font-family:'Cinzel',serif;font-size:clamp(26px,4vw,38px);margin:0 0 6px}
+.sub{color:var(--ink-dim);margin:0 0 24px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px}
+.search{flex:1 1 260px;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:11px 14px;font:inherit;border-radius:4px}
+.search:focus{outline:none;border-color:var(--gold)}
+.filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.filter-label{color:var(--ink-dim);font-size:12px;text-transform:uppercase;letter-spacing:.06em;min-width:92px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);padding:6px 12px;font:inherit;font-size:13px;border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--gold-soft);color:var(--ink)}
+.chip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.chip.act[aria-pressed="true"]{border-color:var(--ac);color:var(--ac)}
+.chip.act::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ac);margin-right:7px}
+details.how{margin:10px 0 0;color:var(--ink-dim);font-size:13px}
+details.how summary{cursor:pointer;color:var(--ink-dim)}
+details.how summary:hover{color:var(--ink)}
+details.how ul{margin:8px 0 0;padding-left:20px}
+details.how li{margin:4px 0}
+.count{color:var(--ink-dim);font-size:13px;margin:14px 0 16px;min-height:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;scroll-margin-top:84px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:transform .15s,border-color .15s}
+.card:hover,.card:focus-visible{border-color:var(--gold-soft);transform:translateY(-2px);outline:none}
+.art{aspect-ratio:1;display:grid;place-items:center;background:#0e131b;border-radius:4px;margin-bottom:10px;border-bottom:3px solid var(--rc,var(--r-common));font-size:34px;color:var(--ink-dim)}
+.art img{max-width:78%;max-height:78%;object-fit:contain}
+.name{font-weight:600;font-size:14px;margin:0 0 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--ink-dim)}
+.rar{color:var(--rc,var(--r-common));font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:2px 9px;border:1px solid var(--ac);color:var(--ac);border-radius:999px;font-size:12px;font-weight:600}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ac)}
+.pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:28px 0 0}
+.pager[hidden]{display:none}
+.pbtn{background:transparent;border:1px solid var(--line);color:var(--ink);padding:9px 16px;font:inherit;font-size:14px;cursor:pointer;border-radius:3px}
+.pbtn:hover:not([disabled]){border-color:var(--gold);color:var(--gold)}
+.pbtn[disabled]{opacity:.4;cursor:default}
+.psel{display:flex;align-items:center;gap:8px;color:var(--ink-dim);font-size:14px}
+.psel select{background:var(--panel);border:1px solid var(--gold-soft);color:var(--ink);padding:8px 10px;font:inherit;font-size:14px;border-radius:3px;cursor:pointer}
+.psel select:focus{outline:none;border-color:var(--gold)}
+.more{display:block;margin:20px auto 0;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 28px;font:inherit;font-weight:600;cursor:pointer;border-radius:3px}
+.more[hidden]{display:none}
+.more:hover{background:var(--gold);color:#0A0D12}
+.status{text-align:center;color:var(--ink-dim);padding:48px 0}
+.status[hidden]{display:none}
+.status.err{color:#e0735c;padding:24px 0 0}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+.modal.open{display:flex}
+.sheet{background:var(--panel);border:1px solid var(--gold-soft);border-radius:8px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:24px;position:relative}
+.sheet h2{font-family:'Cinzel',serif;margin:0 0 4px;padding-right:32px}
+.close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--ink-dim);font-size:26px;cursor:pointer;line-height:1}
+.close:hover{color:var(--ink)}
+.sheet .art{max-width:140px;margin:14px 0}
+.sheet p{color:var(--ink-dim);margin:8px 0}
+.rec{border:1px solid var(--ac);border-left-width:4px;border-radius:4px;padding:10px 14px;margin:6px 0 12px;background:rgba(255,255,255,.02)}
+.rec strong{color:var(--ac);font-size:16px}
+.rec p{margin:4px 0 0;color:var(--ink)}
+.sheet h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin:18px 0 6px}
+.sheet ul{margin:0;padding-left:20px;color:var(--ink)}
+.sheet li{margin:3px 0}
+table.stats{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+table.stats td{padding:6px 0;border-top:1px solid var(--line)}
+table.stats td:last-child{text-align:right;font-weight:600}
+footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--ink-dim);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+footer p{margin:0 0 8px}
+@media (max-width:640px){main{padding-top:24px}.filter-label{min-width:100%}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-in">
+  <a class="brand" href="/"><span class="hex"></span><span>Arc<span class="m">Meta</span></span></a>
+  <a class="back" href="/">← Volver al inicio</a>
+</div></header>
+
+<main>
+  <h1>ARC Raiders · Objetos</h1>
+  <p class="sub">Busca un objeto y mira si te conviene venderlo, reciclarlo, guardarlo o usarlo.</p>
+
+  <div class="controls">
+    <input id="q" class="search" type="search" placeholder="Buscar objeto (ej. Acelerador)…" aria-label="Buscar objeto" autocomplete="off">
+  </div>
+  <div class="filter-row"><span class="filter-label">Qué hacer</span><div class="chips" id="actions" role="group" aria-label="Filtrar por recomendación"></div></div>
+  <div class="filter-row"><span class="filter-label">Rareza</span><div class="chips" id="rarities" role="group" aria-label="Filtrar por rareza"></div></div>
+  <div class="filter-row"><span class="filter-label">Categoría</span><div class="chips" id="types" role="group" aria-label="Filtrar por categoría"></div></div>
+
+  <details class="how">
+    <summary>¿Cómo se calcula la recomendación?</summary>
+    <ul>
+      <li><strong>Guardar:</strong> lo pide el taller, un proyecto activo o una misión (o es un objeto de misión).</li>
+      <li><strong>Usar:</strong> armas, mejoras, aumentos, escudos, munición, consumibles, planos y llaves.</li>
+      <li><strong>Reciclar:</strong> al reciclarlo obtienes materiales que te piden el taller, un proyecto o una misión.</li>
+      <li><strong>Vender:</strong> el resto. Se vende por su valor y reciclarlo no te da nada que necesites.</li>
+    </ul>
+    <p>Es una guía orientativa calculada por ArcMeta a partir de los datos del juego, no una información oficial. Si ya completaste una mejora o una misión, puede que no necesites guardar ese objeto.</p>
+  </details>
+
+  <div class="count" id="count" aria-live="polite"></div>
+  <div id="grid" class="grid"></div>
+  <div id="status" class="status" hidden></div>
+
+  <nav id="pager" class="pager" aria-label="Paginación" hidden>
+    <button id="prev" class="pbtn" type="button">‹ Anterior</button>
+    <label class="psel">Página
+      <select id="pageSel" aria-label="Elegir página"></select>
+      <span id="pageTotal"></span>
+    </label>
+    <button id="next" class="pbtn" type="button">Siguiente ›</button>
+  </nav>
+
+  <button id="more" class="more" type="button" hidden>Reintentar</button>
+</main>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-name">
+  <div class="sheet">
+    <button class="close" id="m-close" aria-label="Cerrar">×</button>
+    <h2 id="m-name"></h2>
+    <div class="meta" id="m-meta"></div>
+    <div class="art" id="m-art"></div>
+    <div class="rec" id="m-rec"></div>
+    <p id="m-desc"></p>
+    <table class="stats" id="m-stats"></table>
+    <div id="m-sections"></div>
+  </div>
+</div>
+
+<footer>
+  <p id="foot-data"></p>
+  <p>
+    Datos del <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener">Proyecto de datos ARC</a>
+    (licencia MIT, <a href="/data/LICENSE-arcraiders-data.txt">texto de la licencia</a>) y de la comunidad de
+    <a href="https://arctracker.io" target="_blank" rel="noopener">ARC Tracker</a>.
+    El contenido del juego pertenece a Embark Studios AB y sus licenciantes. ArcMeta no está afiliado ni respaldado por Embark Studios.
+  </p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var PER_PAGE = 48;
+  var DATA_URL = '/data/arc-items.json';
+  var IMG_DIR = '/arc-img/';
+
+  var TYPE_ES = {
+    'Assault Rifle':'Rifle de asalto','SMG':'Subfusil','Pistol':'Pistola','Battle Rifle':'Rifle de batalla','Shotgun':'Escopeta',
+    'LMG':'Ametralladora ligera','Sniper Rifle':'Rifle de francotirador','Hand Cannon':'Cañón de mano',
+    'Quick Use':'Uso rápido','Augment':'Aumento','Shield':'Escudo','Ammunition':'Munición','Modification':'Modificación',
+    'Refined Material':'Material refinado','Basic Material':'Material básico','Topside Material':'Material de la superficie','Nature':'Naturaleza',
+    'Recyclable':'Reciclable','Trinket':'Baratija','Special':'Especial','Misc':'Varios','Blueprint':'Plano','Key':'Llave'
+  };
+  function typeEs(t){ return TYPE_ES[t] || t || ''; }
+
+  // Categorías amplias: agrupan los tipos de objeto en pocas familias.
+  var GROUPS = {
+    'Armas': ['Assault Rifle','SMG','Pistol','Battle Rifle','Shotgun','LMG','Sniper Rifle','Hand Cannon'],
+    'Equipo y consumibles': ['Quick Use','Augment','Shield','Ammunition','Modification'],
+    'Materiales': ['Refined Material','Basic Material','Topside Material','Nature'],
+    'Botín': ['Recyclable','Trinket','Special','Misc'],
+    'Planos y llaves': ['Blueprint','Key']
+  };
+  var GROUP_ORDER = ['Armas','Equipo y consumibles','Materiales','Botín','Planos y llaves','Otros'];
+  var TYPE_TO_GROUP = {};
+  Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(t){ TYPE_TO_GROUP[t]=g; }); });
+  function groupOf(t){ return TYPE_TO_GROUP[t] || 'Otros'; }
+
+  var RARITY_COLORS = {common:'--r-common',uncommon:'--r-uncommon',rare:'--r-rare',epic:'--r-epic',legendary:'--r-legendary'};
+  var RARITY_ES = {common:'Común',uncommon:'Poco común',rare:'Raro',epic:'Épico',legendary:'Legendario'};
+  var RARITY_ORDER = ['common','uncommon','rare','epic','legendary'];
+  var ACTIONS = ['Vender','Reciclar','Guardar','Usar'];
+  var ACTION_COLORS = {Vender:'--a-vender',Reciclar:'--a-reciclar',Guardar:'--a-guardar',Usar:'--a-usar'};
+
+  var state = {items:[], meta:null, search:'', action:'', rarity:'', group:'', pageNo:1, loading:true, failed:false};
+  var $ = function(id){return document.getElementById(id);};
+  var grid=$('grid'), more=$('more'), statusEl=$('status'), countEl=$('count');
+  var pager=$('pager'), pageSel=$('pageSel'), prevBtn=$('prev'), nextBtn=$('next');
+  var lastFocus=null;
+
+  function el(tag, cls, text){
+    var n=document.createElement(tag);
+    if(cls) n.className=cls;
+    if(text!==undefined && text!==null) n.textContent=text;
+    return n;
+  }
+  function norm(s){ return (s||'').toString().normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); }
+  function rarityKey(r){ return (r||'').toString().toLowerCase(); }
+  function rarityVar(r){ return 'var(' + (RARITY_COLORS[rarityKey(r)]||'--r-common') + ')'; }
+  function rarityLabel(r){ return RARITY_ES[rarityKey(r)] || r || '—'; }
+  function actionVar(a){ return 'var(' + (ACTION_COLORS[a]||'--ink-dim') + ')'; }
+  function fmt(n){ return typeof n==='number' ? n.toLocaleString('es-ES') : '—'; }
+
+  function setStatus(msg, isErr){
+    if(!msg){ statusEl.hidden=true; return; }
+    statusEl.hidden=false;
+    statusEl.textContent=msg;
+    statusEl.className='status'+(isErr?' err':'');
+  }
+
+  function makeArt(item, cls){
+    var art=el('div', cls||'art');
+    art.style.setProperty('--rc', rarityVar(item.rarity));
+    var letter=(item.name||'?').charAt(0).toUpperCase();
+    if(item.hasImage){
+      var img=document.createElement('img');
+      img.src=IMG_DIR+encodeURIComponent(item.id)+'.webp'; img.alt=''; img.loading='lazy'; img.decoding='async';
+      img.onerror=function(){ img.remove(); art.textContent=letter; };
+      art.appendChild(img);
+    } else {
+      art.textContent=letter;
+    }
+    return art;
+  }
+
+  function visible(){
+    var q=norm(state.search);
+    return state.items.filter(function(it){
+      if(state.action && it.action!==state.action) return false;
+      if(state.rarity && rarityKey(it.rarity)!==state.rarity) return false;
+      if(state.group && groupOf(it.type)!==state.group) return false;
+      if(q && it._n.indexOf(q)===-1) return false;
+      return true;
+    });
+  }
+
+  function buildChips(container, values, current, labelFn, onPick, extraCls, colorFn){
+    container.textContent='';
+    var all=el('button','chip','Todos'); all.type='button';
+    all.setAttribute('aria-pressed', current===''?'true':'false');
+    all.onclick=function(){ onPick(''); };
+    container.appendChild(all);
+    values.forEach(function(v){
+      var b=el('button','chip'+(extraCls?' '+extraCls:''),labelFn(v)); b.type='button';
+      if(colorFn) b.style.setProperty('--ac', colorFn(v));
+      b.setAttribute('aria-pressed', current===v?'true':'false');
+      b.onclick=function(){ onPick(current===v?'':v); };
+      container.appendChild(b);
+    });
+  }
+
+  function renderChips(){
+    var rs={}, ts={};
+    state.items.forEach(function(it){
+      if(it.rarity) rs[rarityKey(it.rarity)]=1;
+      ts[groupOf(it.type)]=1;
+    });
+    function reset(){ state.pageNo=1; render(); }
+    buildChips($('actions'), ACTIONS, state.action, function(v){return v;}, function(v){ state.action=v; reset(); }, 'act', actionVar);
+    buildChips($('rarities'), RARITY_ORDER.filter(function(r){ return rs[r]; }), state.rarity, rarityLabel, function(v){ state.rarity=v; reset(); });
+    buildChips($('types'), GROUP_ORDER.filter(function(g){ return ts[g]; }), state.group, function(v){return v;}, function(v){ state.group=v; reset(); });
+  }
+
+  function renderPager(pages){
+    // Sin paginación si todo cabe en una sola página.
+    pager.hidden = pages <= 1;
+    if(pages <= 1) return;
+    pageSel.textContent='';
+    for(var i=1;i<=pages;i++){
+      var o=document.createElement('option');
+      o.value=String(i); o.textContent=String(i);
+      if(i===state.pageNo) o.selected=true;
+      pageSel.appendChild(o);
+    }
+    pageSel.value=String(state.pageNo);
+    $('pageTotal').textContent='de '+pages;
+    prevBtn.disabled = state.pageNo<=1;
+    nextBtn.disabled = state.pageNo>=pages;
+  }
+
+  function render(){
+    renderChips();
+    var list=visible();
+    var pages=Math.max(1, Math.ceil(list.length/PER_PAGE));
+    if(state.pageNo>pages) state.pageNo=pages;
+    if(state.pageNo<1) state.pageNo=1;
+    var start=(state.pageNo-1)*PER_PAGE;
+    var slice=list.slice(start, start+PER_PAGE);
+
+    grid.textContent='';
+    var frag=document.createDocumentFragment();
+    slice.forEach(function(it){
+      var b=el('button','card'); b.type='button';
+      b.appendChild(makeArt(it));
+      b.appendChild(el('p','name',it.name));
+      var meta=el('div','meta');
+      var r=el('span','rar',rarityLabel(it.rarity)); r.style.setProperty('--rc', rarityVar(it.rarity));
+      meta.appendChild(r);
+      meta.appendChild(el('span',null, fmt(it.value)));
+      b.appendChild(meta);
+      var badge=el('span','badge',it.action); badge.style.setProperty('--ac', actionVar(it.action));
+      b.appendChild(badge);
+      b.onclick=function(){ openModal(it, b); };
+      frag.appendChild(b);
+    });
+    grid.appendChild(frag);
+
+    if(state.items.length) countEl.textContent = fmt(list.length) + (list.length===1 ? ' objeto' : ' objetos');
+    else countEl.textContent = '';
+
+    renderPager(pages);
+    more.hidden = !state.failed;
+
+    if(state.failed){ /* se mantiene el mensaje de error */ }
+    else if(state.loading) setStatus('Cargando…');
+    else if(!list.length) setStatus('Ningún objeto coincide con la búsqueda o los filtros.');
+    else setStatus('');
+  }
+
+  function goToPage(n){
+    state.pageNo=n;
+    render();
+    grid.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function load(){
+    state.loading=true; state.failed=false;
+    setStatus('Cargando…');
+    fetch(DATA_URL,{headers:{Accept:'application/json'}})
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(json){
+        var items=Array.isArray(json.items)?json.items:[];
+        items.forEach(function(it){ it._n = norm(it.name); });
+        state.items=items; state.meta=json.meta||null;
+        state.loading=false;
+        renderFooter();
+        render();
+      })
+      .catch(function(){
+        state.loading=false; state.failed=true;
+        render();
+        setStatus('No se pudieron cargar los objetos. Inténtalo de nuevo en unos minutos.', true);
+      });
+  }
+
+  function renderFooter(){
+    var m=state.meta; if(!m || !m.sourceDate) return;
+    var d=new Date(m.sourceDate+'T00:00:00');
+    var txt=isNaN(d) ? m.sourceDate : d.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
+    $('foot-data').textContent='Datos del juego actualizados hasta el '+txt+'. Los cambios posteriores pueden no estar reflejados.';
+  }
+
+  function section(parent, title, rows){
+    if(!rows || !rows.length) return;
+    parent.appendChild(el('h3',null,title));
+    var ul=document.createElement('ul');
+    rows.forEach(function(t){ ul.appendChild(el('li',null,t)); });
+    parent.appendChild(ul);
+  }
+  function mats(list){
+    return (list||[]).map(function(m){ return m.name+' ×'+m.qty; });
+  }
+
+  function openModal(it, trigger){
+    lastFocus=trigger;
+    $('m-name').textContent=it.name;
+    var meta=$('m-meta'); meta.textContent='';
+    var r=el('span','rar',rarityLabel(it.rarity)); r.style.setProperty('--rc', rarityVar(it.rarity));
+    meta.appendChild(r);
+    meta.appendChild(el('span',null,typeEs(it.type)));
+    var art=$('m-art'); var fresh=makeArt(it,'art');
+    art.replaceWith(fresh); fresh.id='m-art';
+
+    var rec=$('m-rec'); rec.textContent='';
+    rec.style.setProperty('--ac', actionVar(it.action));
+    rec.appendChild(el('strong',null,it.action));
+    rec.appendChild(el('p',null,it.reason));
+
+    $('m-desc').textContent=it.description||'';
+
+    var tbl=$('m-stats'); tbl.textContent='';
+    function row(k,v){
+      var tr=document.createElement('tr');
+      tr.appendChild(el('td',null,k)); tr.appendChild(el('td',null,v));
+      tbl.appendChild(tr);
+    }
+    row('Valor de venta', fmt(it.value));
+    if(it.recycleValue) row('Valor de lo que da al reciclar', fmt(it.recycleValue));
+    if(typeof it.weightKg==='number') row('Peso', it.weightKg.toLocaleString('es-ES')+' kg');
+    if(typeof it.stackSize==='number') row('Pila máxima', fmt(it.stackSize));
+    (it.effects||[]).forEach(function(e){ row(e[0], e[1]); });
+
+    var sec=$('m-sections'); sec.textContent='';
+    section(sec,'Necesario para',(it.neededFor||[]).map(function(n){
+      return (n.kind+': '+n.name+(n.label?' '+n.label:'')+' (×'+n.qty+')');
+    }));
+    section(sec,'Se recicla en',mats(it.recyclesInto));
+    section(sec,'Se desguaza en',mats(it.salvagesInto));
+    if(it.recipe){
+      var title='Se fabrica con'+(it.recipe.bench?' ('+it.recipe.bench+(it.recipe.level?' nivel '+it.recipe.level:'')+')':'');
+      section(sec,title,mats(it.recipe.materials));
+    }
+
+    $('modal').classList.add('open');
+    $('m-close').focus();
+  }
+  function closeModal(){
+    $('modal').classList.remove('open');
+    if(lastFocus) lastFocus.focus();
+  }
+  $('m-close').onclick=closeModal;
+  $('modal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && $('modal').classList.contains('open')) closeModal(); });
+
+  pageSel.addEventListener('change',function(){ goToPage(parseInt(pageSel.value,10)||1); });
+  prevBtn.onclick=function(){ goToPage(state.pageNo-1); };
+  nextBtn.onclick=function(){ goToPage(state.pageNo+1); };
+
+  var timer=null;
+  $('q').addEventListener('input',function(){
+    var v=this.value;
+    clearTimeout(timer);
+    timer=setTimeout(function(){
+      if(v===state.search) return;
+      state.search=v; state.pageNo=1; render();
+    },150);
+  });
+  more.onclick=function(){ load(); };
+
+  load();
+})();
+</script>
+</body>
+</html>
