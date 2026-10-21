@@ -299,6 +299,7 @@ for qid, q in quests.items():
         'name': es(q['name']),
         'trader': q.get('trader') or '',
         'maps': [MAP_NAMES.get(m, m) for m in (q.get('map') or [])],
+        'mapIds': list(q.get('map') or []),
         'description': es(q.get('description')).replace('\r\n', '\n'),
         'objectives': [es(o) for o in (q.get('objectives') or []) if es(o)],
         'xp': q.get('xp') or 0,
@@ -319,7 +320,59 @@ qids = {x['id'] for x in quest_out}
 for x in quest_out:
     assert set(x['prev']) <= qids and set(x['next']) <= qids, x['id']
 
+# --- Mapas --------------------------------------------------------------------------
+# Imágenes en arc-maps/<id>.webp. Se usan los mapas con nombres de zona (carpeta «legacy» y los de Stella Montis).
+# Riven Tides solo existe como mapa base sin nombres: se monta uniendo las teselas de images/maps/riven-tides/v2/high/2.
+MAP_VIEWS = {
+    'dam_battlegrounds': [('dam_battlegrounds', '', 'legacy/dam_battlegrounds.png', True)],
+    'buried_city': [('buried_city', '', 'legacy/buried_city.png', True)],
+    'the_spaceport': [('the_spaceport', '', 'legacy/the_spaceport.png', True)],
+    'the_blue_gate': [('the_blue_gate', '', 'legacy/the_blue_gate.png', True)],
+    'stella_montis': [('stella_montis_upper', 'Planta superior', 'stella_montis_upper.png', True),
+                      ('stella_montis_lower', 'Planta inferior', 'stella_montis_lower.png', True)],
+    'riven_tides': [('riven_tides', '', 'riven-tides/v2/high/2', False)],
+}
+MAP_MAX_SIDE = 3000
+Image.MAX_IMAGE_PIXELS = None  # los mapas originales son muy grandes
+
+
+def load_map_image(src):
+    path = os.path.join(REPO, 'images', 'maps', src)
+    if os.path.isdir(path):  # pirámide de teselas: carpeta/X/Y.webp, de 512 px
+        tiles, w, h = {}, 0, 0
+        for xd in os.listdir(path):
+            for fn in os.listdir(os.path.join(path, xd)):
+                im = Image.open(os.path.join(path, xd, fn)).convert('RGB')
+                x, y = int(xd), int(os.path.splitext(fn)[0])
+                tiles[(x, y)] = im
+                w, h = max(w, x * 512 + im.width), max(h, y * 512 + im.height)
+        canvas = Image.new('RGB', (w, h))
+        for (x, y), im in tiles.items():
+            canvas.paste(im, (x * 512, y * 512))
+        return canvas
+    return Image.open(path).convert('RGB')
+
+
+map_dir = os.path.join(OUT, 'arc-maps')
+os.makedirs(map_dir, exist_ok=True)
+map_registry = []
+for mid, views in MAP_VIEWS.items():
+    out_views = []
+    for view_id, label, src, zones in views:
+        im = load_map_image(src)
+        im.thumbnail((MAP_MAX_SIDE, MAP_MAX_SIDE), Image.LANCZOS)
+        im.save(os.path.join(map_dir, view_id + '.webp'), 'WEBP', quality=74, method=5)
+        out_views.append({'file': view_id, 'label': label, 'zoneNames': zones, 'width': im.width, 'height': im.height})
+    map_registry.append({'id': mid, 'name': MAP_NAMES[mid], 'views': out_views})
+
+# Todo mapa citado por una misión debe tener imagen.
+known_maps = {m['id'] for m in map_registry}
+for x in quest_out:
+    for mid in x['mapIds']:
+        assert mid in known_maps, f"mapa sin imagen: {mid} (misión {x['id']})"
+
 qmeta = dict(meta, count=len(quest_out))
 with open(os.path.join(OUT, 'data', 'arc-quests.json'), 'w', encoding='utf-8') as f:
-    json.dump({'meta': qmeta, 'quests': quest_out}, f, ensure_ascii=False, separators=(',', ':'))
+    json.dump({'meta': qmeta, 'maps': map_registry, 'quests': quest_out}, f, ensure_ascii=False, separators=(',', ':'))
 print('Misiones:', len(quest_out), '| profundidad máxima:', max(depth.values()))
+print('Mapas:', sum(len(m['views']) for m in map_registry), 'imágenes en arc-maps/')
