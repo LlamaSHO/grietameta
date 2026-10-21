@@ -313,7 +313,8 @@ const KEYS = ["semillas","misiones","santuarios","armaduras","conjuntos"];
 /* Mapa de fondo: pon aquí la ruta de TU imagen del mapa completo de Hyrule (por ejemplo "/img/hyrule.jpg").
    MAP_BOUNDS son las coordenadas del juego que cubre la imagen. Si los puntos salen desplazados, ajusta estos cuatro números. */
 const MAP_IMG = "/img/hyrule.jpg"; /* si el archivo no existe, se muestra la rejilla */
-const MAP_BOUNDS = { x0: -5000, x1: 5000, y0: -4000, y1: 4000 };
+const MAP_BOUNDS = { x0: -5868, x1: 5593, y0: -4766, y1: 5353 };
+const MAP_H = 8830; /* alto del mapa en el mismo sistema (10000 de ancho) para respetar las proporciones de la imagen */
 const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/img/zora.jpg" (en Armaduras usa el nombre entre paréntesis, ej. IMG["Royal Guard"]) */
 const state = { cat: "semillas", q: "" };
 
@@ -339,6 +340,7 @@ function render(){
       if(ns && ew) return ns + ew;
       return ns ? (y > 0 ? "Norte" : "Sur") : ew ? (x > 0 ? "Este" : "Oeste") : "Centro";
     };
+    const mapUrl = r => "https://gamertw.com/en/zelda/totk/map?x=" + (255.857 + 0.042599 * r.x).toFixed(2) + "&y=" + (-255.939 + 0.042543 * r.y).toFixed(2) + "&z=3&l=" + (r.k === "Cielo" ? "sky" : "surface");
     const all = [...cat.surf.map(r => [r,"Superficie"]), ...cat.sky.map(r => [r,"Cielo"])].map(([r,k],i) => {
       const p = r.split(" "), x = +p[1], y = +p[2], z = +p[3];
       return {n:i+1, name:p[0]+" Shrine", x, y, z, k, zn: k === "Cielo" ? "Cielo" : zone(x,y)};
@@ -349,16 +351,17 @@ function render(){
     if(!rows.length){ r0.innerHTML = `<div class="empty-state">No hay resultados para esa búsqueda. Prueba con otra palabra.</div>`; return; }
     const dots = all.map(r => {
       const on = rows.includes(r), sky = r.k === "Cielo";
-      return `<circle data-n="${esc(r.name.replace(" Shrine",""))}" cx="${(r.x - MAP_BOUNDS.x0) / (MAP_BOUNDS.x1 - MAP_BOUNDS.x0) * 10000}" cy="${(MAP_BOUNDS.y1 - r.y) / (MAP_BOUNDS.y1 - MAP_BOUNDS.y0) * 8000}" r="${on ? 60 : 30}" fill="${sky ? "#C8963E" : "#14C3B8"}" opacity="${on ? 0.95 : 0.15}" stroke="#0A0D12" stroke-width="14"><title>${esc(r.name)} · x ${r.x} · y ${r.y} · altitud ${r.z}</title></circle>`;
+      return `<circle data-n="${esc(r.name.replace(" Shrine",""))}" cx="${(r.x - MAP_BOUNDS.x0) / (MAP_BOUNDS.x1 - MAP_BOUNDS.x0) * 10000}" cy="${(MAP_BOUNDS.y1 - r.y) / (MAP_BOUNDS.y1 - MAP_BOUNDS.y0) * MAP_H}" r="${on ? 60 : 30}" fill="${sky ? "#C8963E" : "#14C3B8"}" opacity="${on ? 0.95 : 0.15}" stroke="#0A0D12" stroke-width="14"><title>${esc(r.name)} · x ${r.x} · y ${r.y} · altitud ${r.z}</title></circle>`;
     }).join("");
     let grid = "";
-    for(let gx = -4000; gx <= 4000; gx += 2000) grid += `<line x1="${gx + 5000}" y1="0" x2="${gx + 5000}" y2="8000" stroke="#262D3A" stroke-width="${gx === 0 ? 14 : 6}"/>`;
-    for(let gy = -3000; gy <= 3000; gy += 2000) grid += `<line x1="0" y1="${4000 - gy}" x2="10000" y2="${4000 - gy}" stroke="#262D3A" stroke-width="${gy === -1000 || gy === 1000 ? 6 : 6}"/>`;
+    const gxp = v => (v - MAP_BOUNDS.x0) / (MAP_BOUNDS.x1 - MAP_BOUNDS.x0) * 10000, gyp = v => (MAP_BOUNDS.y1 - v) / (MAP_BOUNDS.y1 - MAP_BOUNDS.y0) * MAP_H;
+    for(let gx = -4000; gx <= 4000; gx += 2000) grid += `<line x1="${gxp(gx)}" y1="0" x2="${gxp(gx)}" y2="${MAP_H}" stroke="#262D3A" stroke-width="${gx === 0 ? 14 : 6}"/>`;
+    for(let gy = -4000; gy <= 4000; gy += 2000) grid += `<line x1="0" y1="${gyp(gy)}" x2="10000" y2="${gyp(gy)}" stroke="#262D3A" stroke-width="${gy === 0 ? 14 : 6}"/>`;
     const lab = (t,x,y) => `<text x="${x}" y="${y}" fill="#5D6673" font-size="240" font-family="IBM Plex Sans,sans-serif" text-anchor="middle">${t}</text>`;
-    const mapHtml = `<div class="mapbox"><svg viewBox="0 0 10000 8000" role="img" aria-label="Mapa de los santuarios">${grid}${MAP_IMG ? `<image href="${esc(MAP_IMG)}" x="0" y="0" width="10000" height="8000" preserveAspectRatio="none" onerror="this.remove()"/>` : ""}${lab("N",5000,300)}${lab("S",5000,7900)}${lab("O",250,4080)}${lab("E",9750,4080)}${dots}</svg></div><div class="legend"><span><i style="background:#14C3B8"></i>Superficie</span><span><i style="background:#C8963E"></i>Cielo (las coordenadas x e y no incluyen la altura)</span><span>Toca un punto para ver su ficha</span></div>`;
+    const mapHtml = `<div class="mapbox"><svg viewBox="0 0 10000 ${MAP_H}" role="img" aria-label="Mapa de los santuarios">${grid}${MAP_IMG ? `<image href="${esc(MAP_IMG)}" x="0" y="0" width="10000" height="${MAP_H}" preserveAspectRatio="none" onerror="this.remove()"/>` : ""}${MAP_IMG ? "" : lab("N",5000,300) + lab("S",5000,MAP_H - 100) + lab("O",250,MAP_H / 2) + lab("E",9750,MAP_H / 2)}${dots}</svg></div><div class="legend"><span><i style="background:#14C3B8"></i>Superficie</span><span><i style="background:#C8963E"></i>Cielo (las coordenadas x e y no incluyen la altura)</span><span>Toca un punto para ver su ficha</span></div>`;
     r0.innerHTML = mapHtml + `<div class="grid sets">` + rows.map(r =>
-      `<div class="card"><h3>${esc(r.name)}</h3><span class="tag">${r.k} · ${r.zn}</span><p>x ${r.x} · y ${r.y} · altitud ${r.z}</p></div>`
-    ).join("") + `</div><p class="note">Coordenadas del mapa del juego (x: oeste a este, y: sur a norte). Según la guía pueden variar unos pocos puntos, sobre todo la altitud. La zona es una referencia aproximada calculada a partir de x e y. Si no hay imagen de fondo, el mapa es un esquema de coordenadas sin relieve.</p>`;
+      `<div class="card"><h3>${esc(r.name)}</h3><span class="tag">${r.k} · ${r.zn}</span><p>x ${r.x} · y ${r.y} · altitud ${r.z}</p><a class="more" href="${mapUrl(r)}" target="_blank" rel="noopener noreferrer">Ver en mapa con terreno</a></div>`
+    ).join("") + `</div><p class="note">Coordenadas del mapa del juego (x: oeste a este, y: sur a norte). Según la guía pueden variar unos pocos puntos, sobre todo la altitud. La zona es una referencia aproximada calculada a partir de x e y. Si no hay imagen de fondo, el mapa es un esquema de coordenadas sin relieve. El enlace «Ver en mapa con terreno» abre un mapa externo centrado en ese punto.</p>`;
     r0.querySelectorAll("circle[data-n]").forEach(c => c.addEventListener("click", () => { state.q = c.dataset.n; document.getElementById("q").value = c.dataset.n; render(); }));
     return;
   }
