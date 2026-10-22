@@ -5,7 +5,15 @@
       "name": "League of Legends",
       "short": "LoL",
       "url": "/",
-      "aliases": ["lol", "league", "league of legends", "grieta", "grieta de los invocadores", "summoners rift", "riot"],
+      "aliases": [
+        "lol",
+        "league",
+        "league of legends",
+        "grieta",
+        "grieta de los invocadores",
+        "summoners rift",
+        "riot"
+      ],
       "tagline": "Tier list, winrates y builds de todos los campeones",
       "status": "live"
     },
@@ -14,17 +22,38 @@
       "name": "ARC Raiders",
       "short": "ARC",
       "url": "/arc-raiders",
-      "aliases": ["arc", "raiders", "arc raiders", "embark", "extraccion"],
-      "tagline": "Objetos, misiones, enemigos y mapas",
-      "status": "live"
+      "aliases": [
+        "arc",
+        "raiders",
+        "arc raiders",
+        "embark",
+        "extraccion"
+      ],
+      "tagline": "Objetos, guías y equipamientos",
+      "status": "building"
     },
     {
       "slug": "zelda-totk",
       "name": "Zelda: Tears of the Kingdom",
       "short": "TotK",
       "url": "/zelda",
-      "aliases": ["zelda", "totk", "tears of the kingdom", "tears", "botw", "hyrule", "link", "nintendo", "zeldameta", "kolog", "korok", "semillas kolog"],
-      "tagline": "Semillas kolog, misiones y armaduras con más defensa",
+      "aliases": [
+        "zelda",
+        "totk",
+        "tears of the kingdom",
+        "tears",
+        "botw",
+        "hyrule",
+        "link",
+        "nintendo",
+        "zeldameta",
+        "santuarios",
+        "shrines",
+        "kolog",
+        "korok",
+        "semillas kolog"
+      ],
+      "tagline": "Mapa de semillas kolog y santuarios, misiones y armaduras",
       "status": "building"
     }
   ]
