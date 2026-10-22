@@ -15,8 +15,8 @@
       "short": "ARC",
       "url": "/arc-raiders",
       "aliases": ["arc", "raiders", "arc raiders", "embark", "extraccion"],
-      "tagline": "Objetos, guías y equipamientos",
-      "status": "building"
+      "tagline": "Objetos, misiones, enemigos y mapas",
+      "status": "live"
     },
     {
       "slug": "zelda-totk",

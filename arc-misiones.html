@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/games-nav.css">
 <style>
 :root{
   --bg:#0A0D12; --panel:#151A23; --line:#252C38;
@@ -138,11 +139,18 @@ footer p{margin:0 0 8px}
   .qrow{flex-wrap:wrap}.qhead{flex:1 1 60%}
   .qbody{padding-left:16px}
 }
+@media (max-width:980px){.nav-in{flex-wrap:wrap;gap:8px 12px}.nav-in .game-search{order:3;flex:1 1 100%;max-width:none;margin:0}}
 </style>
 </head>
 <body>
 <header class="nav"><div class="nav-in">
   <a class="brand" href="/"><span class="hex"></span><span>Arc<span class="m">Meta</span></span></a>
+  <div class="game-search" data-request-mail="ekainarlla@gmail.com">
+    <svg class="gs-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" placeholder="Busca un juego…" autocomplete="off" aria-label="Buscar juego" role="combobox" aria-autocomplete="list" aria-expanded="false">
+    <kbd class="gs-kbd" aria-hidden="true">/</kbd>
+    <ul class="game-results" role="listbox" hidden></ul>
+  </div>
   <nav class="links" aria-label="Secciones de ArcMeta">
     <a href="/arc-raiders">Objetos</a>
     <a href="/arc-misiones" class="on" aria-current="page">Misiones</a>
@@ -720,5 +728,6 @@ footer p{margin:0 0 8px}
   load();
 })();
 </script>
+<script src="/games-nav.js" defer></script>
 </body>
 </html>
