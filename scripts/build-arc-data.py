@@ -376,3 +376,155 @@ with open(os.path.join(OUT, 'data', 'arc-quests.json'), 'w', encoding='utf-8') a
     json.dump({'meta': qmeta, 'maps': map_registry, 'quests': quest_out}, f, ensure_ascii=False, separators=(',', ':'))
 print('Misiones:', len(quest_out), '| profundidad máxima:', max(depth.values()))
 print('Mapas:', sum(len(m['views']) for m in map_registry), 'imágenes en arc-maps/')
+
+
+# --- Enemigos -----------------------------------------------------------------------
+# Crea data/arc-enemies.json y arc-bots/*.webp para la página de enemigos.
+# Los datos de origen NO traen vida, daño por bala ni blindaje de cada ARC. Por eso las armas y
+# balas recomendadas son una heurística: se compara la "Penetración de armadura ARC" de cada arma
+# con el blindaje estimado del enemigo (según su nivel de amenaza) y se prefiere la munición barata.
+import re
+
+BOT_ES = {
+    'arc_bastion': ('Asalto pesado', 'Máquinas enormes con forma de cangrejo: lentas pero devastadoras. Destrozan escudos y hacen un daño enorme con sus ataques pesados.',
+                    'Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.', 3),
+    'arc_bombardier': ('Artillería pesada', 'Enorme unidad de artillería diseñada para bombardear a larga distancia. Muy blindada y con un poder explosivo devastador.',
+                       'Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.', 3),
+    'arc_fireball': ('Denegación de zona', 'Pequeño ARC blindado que rueda y escupe fuego. Abre su panel frontal cerca de los Raiders para quemarlos, dejando a la vista su núcleo blando.',
+                     'Su núcleo queda expuesto cuando usa el lanzallamas.', 2),
+    'arc_hornet': ('Dron medio', 'Dron de clase media con rotores blindados. Dispara proyectiles rápidos y precisos tras un breve aviso con láser rojo. Pensado para destrozar escudos y armaduras ligeras.',
+                   'Propulsores traseros sin blindaje.', 0),
+    'arc_leaper': ('Máquina de asedio', 'Enorme máquina de asedio con forma de araña, muy blindada y capaz de dar saltos imposibles para alcanzar posiciones elevadas.',
+                   'El fuego es lo más eficaz. También puedes dispararle al ojo.', 3),
+    'arc_matriarch': ('Jefe', 'Una imponente máquina ARC que hace que la Reina parezca amable. Aparece con una condición de mapa concreta.',
+                      'Núcleo central brillante, que queda expuesto cuando ataca. También son vulnerables las articulaciones de las patas y las zonas rojas de la corona.', 4),
+    'arc_pop': ('Explosivo', 'Pequeño ARC explosivo que detona al acercarte. Hay que eliminarlo rápido para evitar el daño en área.',
+                'Simplemente dispárale.', 0),
+    'arc_rocketeer': ('Artillería voladora', 'Formidable ARC volador que domina el espacio aéreo con potentes cohetes y daño en área devastador. Diseñado para saturar zonas de explosiones.',
+                      'Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.', 3),
+    'arc_sentinel': ('Torreta francotiradora', 'Torretas estáticas pero letales que se sitúan en puntos elevados. Escanean objetivos con precisión a larga distancia y te fijan desde lejos.',
+                     'El bidón amarillo sin blindaje será tu objetivo principal.', 2),
+    'arc_shredder': ('Denegación de zona', 'El Shredder aparece en Stella Montis y pone a prueba a los Raiders en encuentros a corta distancia.',
+                     'Su punto débil principal es la «barra-ojo» de la cabeza. También puedes disparar al núcleo naranja que se ve entre sus placas.', 2),
+    'arc_snitch': ('Dron explorador', 'Dron explorador rápido y sin blindaje con tres rotores. Es frágil, pero funciona como alarma aérea: avisa a refuerzos cuando ve a Raiders.',
+                   'Propulsores o placa inferior.', 0),
+    'arc_spotter': ('Dron explorador', 'Drones de apoyo voladores del Bombardier. Apuntan con un láser a cualquier Raider a la vista para que el Bombardier dispare con precisión. Si destruyes los dos, reaparece otra pareja. Si el Bombardier cae, huyen.',
+                    'Propulsores sin blindaje.', 0),
+    'arc_surveyor': ('Reconocimiento', 'El más grande de los ARC rodantes. Se detiene cada cierto tiempo para transmitir señales. Rara vez ataca: suele huir de los Raiders. Se rompe en muchos trozos al recibir daño.',
+                     'Expone su núcleo de energía cuando dispara su rayo azul al cielo.', 0),
+    'arc_the_queen': ('Jefe', 'Una máquina colosal desplegada durante los eventos de la Cosechadora. Es el Goliat de las fuerzas ARC, con una durabilidad increíble y un arsenal letal. Requiere coordinación de todo el escuadrón.',
+                      'Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.', 4),
+    'arc_tick': ('Depredador de emboscada', 'Pequeños robots con forma de araña que saltan sobre los jugadores y se agarran a su cabeza. Rápidos y desorientadores, castigan a los Raiders descuidados.',
+                 'Simplemente dispárale. También cae de un golpe cuerpo a cuerpo.', 0),
+    'arc_turret': ('Sistema de defensa', 'Pequeña torreta sin blindaje para defensa a corta distancia. Se monta en paredes interiores, detecta movimiento y dispara en ráfaga al ver Raiders.',
+                   'Sin blindaje: con dispararle basta.', 0),
+    'arc_wasp': ('Dron volador', 'Robots voladores con potentes ametralladoras. Actúan en enjambres, son rápidos, ágiles e implacables. Su zumbido y chirrido son la primera señal de aviso.',
+                 'Propulsores sin blindaje.', 0),
+}
+THREAT_ES = {'Low': 'Baja', 'Moderate': 'Moderada', 'High': 'Alta', 'Critical': 'Crítica', 'Extreme': 'Extrema'}
+ARMOR_LABEL = {0: 'Sin blindaje o ligero', 2: 'Blindaje medio', 3: 'Blindaje pesado', 4: 'Blindaje extremo'}
+ARMOR_NOTE = {
+    0: 'Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.',
+    2: 'Necesitas al menos penetración «Moderada». Con armas de penetración baja pierdes mucho daño en el blindaje.',
+    3: 'Necesitas penetración «Fuerte» o mejor. Las armas de munición ligera casi no hacen nada contra el blindaje.',
+    4: 'Lo mejor es la penetración «Muy fuerte» o «Fuerte» y mucha munición. Apunta solo a los puntos débiles.',
+}
+PEN_RANK = {'Very Weak': 0, 'Weak': 1, 'Moderate': 2, 'Strong': 3, 'Very Strong': 4}
+PEN_ES = {'Very Weak': 'Muy baja', 'Weak': 'Baja', 'Moderate': 'Moderada', 'Strong': 'Fuerte', 'Very Strong': 'Muy fuerte'}
+AMMO_ID = {'Light Ammo': 'light_ammo', 'Medium Ammo': 'medium_ammo', 'Heavy Ammo': 'heavy_ammo',
+           'Shotgun Ammo': 'shotgun_ammo', 'Energy Clip': 'energy_clip'}
+WTYPE_ES = {'Assault Rifle': 'Fusil de asalto', 'SMG': 'Subfusil', 'Pistol': 'Pistola', 'Battle Rifle': 'Fusil de combate',
+            'Shotgun': 'Escopeta', 'LMG': 'Ametralladora ligera', 'Sniper Rifle': 'Fusil de francotirador', 'Hand Cannon': 'Cañón de mano'}
+RARITY_ORDER = {'Common': 0, 'Uncommon': 1, 'Rare': 2, 'Epic': 3, 'Legendary': 4}
+
+by_id = {r['id']: r for r in result}
+
+
+def effect(it, prefix):
+    for label, val in it['effects']:
+        if label.lower().startswith(prefix):
+            return val
+    return None
+
+
+fam = {}
+for r in result:
+    if r['type'] in WEAPONS:
+        fam.setdefault(re.sub(r'_(i|ii|iii|iv)$', '', r['id']), []).append(r)
+weapons = []
+for key, tiers in fam.items():
+    tiers.sort(key=lambda t: t['id'])
+    pen = next((effect(t, 'penetraci') for t in tiers if effect(t, 'penetraci')), None)
+    ammo = next((effect(t, 'tipo de muni') for t in tiers if effect(t, 'tipo de muni')), None)
+    if pen not in PEN_RANK or ammo not in AMMO_ID:
+        continue  # sin datos fiables (Canto, Dolabra): no se recomiendan
+    icon = next((t['id'] for t in tiers if t['hasImage']), None)
+    first = tiers[0]
+    name = re.sub(r'\s+(I|II|III|IV)$', '', first['name'])
+    weapons.append({'id': key, 'name': name, 'type': WTYPE_ES[first['type']], 'pen': pen, 'penEs': PEN_ES[pen],
+                    'ammoId': AMMO_ID[ammo], 'rarity': first['rarity'], 'icon': icon,
+                    'ammoValue': by_id[AMMO_ID[ammo]]['value']})
+assert len(weapons) >= 15
+for w in weapons:
+    assert w['ammoId'] in by_id
+
+
+def pick_weapons(need):
+    cand = [w for w in weapons if PEN_RANK[w['pen']] >= min(need, 3)]
+    if need == 0:
+        # Sin blindaje: lo más barato de usar y fácil de conseguir.
+        cand.sort(key=lambda w: (w['ammoValue'], RARITY_ORDER[w['rarity']], w['name']))
+    else:
+        # Con blindaje: penetración lo más ajustada posible a la necesaria (sin pasarse: un arma
+        # legendaria contra un dron medio es un derroche), luego munición barata y fácil de conseguir.
+        target = need
+        cand.sort(key=lambda w: (abs(PEN_RANK[w['pen']] - target), w['ammoValue'], RARITY_ORDER[w['rarity']], w['name']))
+    return cand[:5]
+
+
+bot_src = json.load(open(os.path.join(REPO, 'bots.json'), encoding='utf-8'))
+bot_dir = os.path.join(OUT, 'arc-bots')
+os.makedirs(bot_dir, exist_ok=True)
+enemies = []
+for b in bot_src:
+    bid = b['id']
+    if bid not in BOT_ES:
+        continue
+    typ, desc, weak, need = BOT_ES[bid]
+    src = os.path.join(REPO, 'images', 'bots', bid + '.png')
+    has_img = os.path.isfile(src)
+    if has_img:
+        with Image.open(src) as im:
+            im = im.convert('RGB')
+            im.thumbnail((640, 640), Image.LANCZOS)
+            im.save(os.path.join(bot_dir, bid + '.webp'), 'WEBP', quality=78, method=5)
+    drops = []
+    for did in b['drops']:
+        assert did in by_id, f'drop desconocido {did} en {bid}'
+        d = by_id[did]
+        drops.append({'id': did, 'name': d['name'], 'rarity': d['rarity'], 'value': d['value'],
+                      'action': d['action'], 'hasImage': d['hasImage']})
+    ws = pick_weapons(need)
+    ammo_ids = []
+    for w in ws:
+        if w['ammoId'] not in ammo_ids:
+            ammo_ids.append(w['ammoId'])
+    ammo = [{'id': a, 'name': by_id[a]['name'], 'value': by_id[a]['value'], 'hasImage': by_id[a]['hasImage']} for a in ammo_ids]
+    maps = []
+    for m in b['maps']:
+        n = MAP_NAMES.get(m) or MAP_NAMES.get(re.sub(r'_(lower|upper)$', '', m))
+        assert n, f'mapa sin nombre {m}'
+        if n not in maps:
+            maps.append(n)
+    enemies.append({
+        'id': bid, 'name': b['name'].title() if b['name'].isupper() else b['name'], 'type': typ,
+        'threat': b['threat'], 'threatEs': THREAT_ES[b['threat']], 'description': desc, 'weakness': weak,
+        'maps': maps, 'destroyXp': b['destroyXp'], 'lootXp': b['lootXp'], 'hasImage': has_img,
+        'armor': ARMOR_LABEL[need], 'armorNote': ARMOR_NOTE[need],
+        'weapons': [{k: w[k] for k in ('id', 'name', 'type', 'penEs', 'ammoId', 'rarity', 'icon')} for w in ws],
+        'ammo': ammo, 'drops': drops,
+    })
+assert len(enemies) == len(BOT_ES) == 17
+with open(os.path.join(OUT, 'data', 'arc-enemies.json'), 'w', encoding='utf-8') as f:
+    json.dump({'meta': dict(meta, count=len(enemies)), 'enemies': enemies}, f, ensure_ascii=False, separators=(',', ':'))
+print('Enemigos:', len(enemies), '| armas candidatas:', len(weapons))
