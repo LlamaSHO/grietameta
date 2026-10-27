@@ -15,7 +15,8 @@
         "riot"
       ],
       "tagline": "Tier list, winrates y builds de todos los campeones",
-      "status": "live"
+      "status": "live",
+      "icon": "/img/games/lol.png"
     },
     {
       "slug": "arc-raiders",
@@ -29,8 +30,9 @@
         "embark",
         "extraccion"
       ],
-      "tagline": "Objetos, guías y equipamientos",
-      "status": "building"
+      "tagline": "Objetos, misiones, enemigos y mapas",
+      "status": "live",
+      "icon": "/img/games/arc-raiders.png"
     },
     {
       "slug": "zelda-totk",
@@ -54,7 +56,8 @@
         "semillas kolog"
       ],
       "tagline": "Mapa de semillas kolog y santuarios, misiones y armaduras",
-      "status": "building"
+      "status": "building",
+      "icon": "/img/games/zelda-totk.png"
     }
   ]
 }

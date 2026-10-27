@@ -16,6 +16,13 @@
     });
   }
 
+  // Hexágono con el logo del juego (g.icon). Si la imagen no existe, se ven las siglas.
+  function iconHtml(g) {
+    return '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) +
+      (g.icon ? '<img src="' + esc(g.icon) + '" alt="" loading="lazy" onerror="this.remove()">' : "") +
+      "</span>";
+  }
+
   var gamesPromise = null;
   function loadGames() {
     if (!gamesPromise) {
@@ -80,7 +87,7 @@
       list.innerHTML = items.map(function (g, i) {
         return '<li role="option" class="' + (i === active ? "is-active" : "") +
           '" aria-selected="' + (i === active) + '"><a href="' + esc(g.url) + '">' +
-          '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) + "</span>" +
+          iconHtml(g) +
           '<span class="g-body">' +
             '<span class="g-name">' + esc(g.name) + "</span>" +
             '<span class="g-tag">' + esc(g.tagline || "") + "</span>" +

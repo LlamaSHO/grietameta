@@ -123,7 +123,8 @@ footer a:hover{color:var(--gold);}
       if (!games.length) return;
       grid.innerHTML = games.map(function (g) {
         return '<a class="game-card" href="' + esc(g.url) + '">' +
-          '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) + "</span>" +
+          '<span class="g-ico" aria-hidden="true">' + esc(g.short || String(g.name).slice(0, 3)) +
+          (g.icon ? '<img src="' + esc(g.icon) + '" alt="" loading="lazy" onerror="this.remove()">' : "") + "</span>" +
           '<span class="g-body"><h3>' + esc(g.name) + "</h3><p>" + esc(g.tagline || "") + "</p></span>" +
           (g.status === "building"
             ? '<span class="g-badge g-soon">En construcción</span>'

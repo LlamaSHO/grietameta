@@ -13,6 +13,7 @@
 <link rel="apple-touch-icon" href="/favicon.png?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/games-nav.css">
 <style>
 :root{
   --bg:#0A0D12; --bg-raised:#10141C; --panel:#151A23; --panel-line:#262D3A;
@@ -103,6 +104,7 @@ footer a:hover{color:var(--gold);}
   .brand-name{font-size:16px;}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{transition:none!important;}}
+@media (max-width:980px){.nav .wrap{height:auto; flex-wrap:wrap; gap:8px 12px; padding-top:10px; padding-bottom:10px;} .nav .game-search{order:3; flex:1 1 100%; max-width:none; margin:0;}}
 </style>
 </head>
 <body>
@@ -110,6 +112,12 @@ footer a:hover{color:var(--gold);}
 <nav class="nav">
   <div class="wrap">
     <a class="brand" href="/"><div class="brand-mark"></div><div class="brand-name">ZELDA<span>META</span></div></a>
+  <div class="game-search" data-request-mail="ekainarlla@gmail.com">
+    <svg class="gs-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" placeholder="Busca un juego…" autocomplete="off" aria-label="Buscar juego" role="combobox" aria-autocomplete="list" aria-expanded="false">
+    <kbd class="gs-kbd" aria-hidden="true">/</kbd>
+    <ul class="game-results" role="listbox" hidden></ul>
+  </div>
     <div class="nav-links">
       <a href="#semillas">Semillas</a>
       <a href="#santuarios">Santuarios</a>
@@ -440,5 +448,6 @@ buildSections();
 renderChips();
 renderAll();
 </script>
+<script src="/games-nav.js" defer></script>
 </body>
 </html>
