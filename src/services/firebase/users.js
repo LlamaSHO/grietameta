@@ -4,7 +4,7 @@
    users/{uid} = {
      email, displayName,
      role: "user" | "admin",
-     premium: false,
+     "is-premium": [...],         // suscripciones activas; lo escribe el servidor (Stripe)
      favoriteGames: [],           // slugs de public/data/games.json
      createdAt, updatedAt         // marcas de tiempo del servidor
    } */
@@ -21,7 +21,6 @@ export async function createUserProfile(user, extra = {}) {
     email: user.email,
     displayName: extra.displayName || user.displayName || "",
     role: "user",
-    premium: false,
     favoriteGames: [],
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
@@ -33,7 +32,7 @@ export async function getUserProfile(uid) {
   return snap.exists() ? { id: snap.id, ...snap.data() } : null;
 }
 
-// Solo campos que el propio usuario puede cambiar (las reglas impiden tocar role y premium).
+// Solo campos que el propio usuario puede cambiar (las reglas impiden tocar role e is-premium).
 export async function updateUserProfile(uid, { displayName, favoriteGames }) {
   const changes = { updatedAt: serverTimestamp() };
   if (displayName !== undefined) changes.displayName = displayName;

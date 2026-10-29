@@ -1,15 +1,5 @@
 <template>
   <div ref="root" class="view-arc-items">
-    <header class="nav"><div class="nav-in">
-      <a class="brand" href="/"><span class="hex"></span><span>Arc<span class="m">Meta</span></span></a>
-      <GameSearch />
-      <nav class="links" aria-label="Secciones de ArcMeta">
-        <a href="/arc-raiders" class="on" aria-current="page">Objetos</a>
-        <a href="/arc-misiones">Misiones</a>
-        <a href="/arc-enemigos">Enemigos</a>
-        <a href="/">← Volver al inicio</a>
-      </nav>
-    </div></header>
 
     <main>
       <h1>ARC Raiders · Objetos</h1>
@@ -62,7 +52,7 @@
       </div>
     </div>
 
-    <footer>
+    <aside class="credits">
       <p id="foot-data"></p>
       <p>
         Datos del <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener">Proyecto de datos ARC</a>
@@ -70,12 +60,11 @@
         <a href="https://arctracker.io" target="_blank" rel="noopener">ARC Tracker</a>.
         El contenido del juego pertenece a Embark Studios AB y sus licenciantes. ArcMeta no está afiliado ni respaldado por Embark Studios.
       </p>
-    </footer>
+    </aside>
   </div>
 </template>
 
 <script setup>
-import GameSearch from "@/components/GameSearch.vue";
 import { ref } from "vue";
 import { usePageScript } from "@/composables/usePageScript";
 import { init } from "@/scripts/arc-items";

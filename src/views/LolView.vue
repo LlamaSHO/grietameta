@@ -1,21 +1,5 @@
 <template>
   <div ref="root" class="view-lol">
-    <nav class="nav">
-      <div class="wrap">
-        <a class="brand" href="/" style="text-decoration:none;flex-shrink:0;">
-          <div class="brand-mark"></div>
-          <div class="brand-name">GRIETA<span>META</span></div>
-        </a>
-        <GameSearch />
-        <div class="nav-links">
-          <a href="/">Juegos</a>
-          <a href="#tierlist">Tier list</a>
-          <a href="#campeones">Campeones</a>
-          <a href="#premium">Premium</a>
-        </div>
-        <button class="nav-cta" @click="scrollToPremium">Hazte Premium</button>
-      </div>
-    </nav>
 
     <header class="hero">
       <div class="wrap">
@@ -99,31 +83,6 @@
       </section>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="foot-top">
-          <div style="max-width:360px;">
-            <div class="brand-name" style="margin-bottom:10px;">GRIETA<span>META</span></div>
-            <p>GrietaMeta no está afiliado a Riot Games. League of Legends y Riot Games son marcas registradas o marcas comerciales de Riot Games, Inc. GrietaMeta se avala en los "Legal Jibber Jabber" de Riot Games con contenido creado bajo la política de terceros.</p>
-          </div>
-          <div class="foot-cols">
-            <div class="foot-col">
-              <h5>Producto</h5>
-              <a href="#tierlist">Tier list</a>
-              <a href="#campeones">Campeones</a>
-              <a href="#premium">Premium</a>
-            </div>
-            <div class="foot-col">
-              <h5>Legal</h5>
-              <a href="/privacidad">Privacidad</a>
-              <a href="#">Términos</a>
-              <a href="/publicidad">Publicidad</a>
-            </div>
-          </div>
-        </div>
-        <div>© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
-      </div>
-    </footer>
 
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal" id="modalRoot"></div>
@@ -132,7 +91,6 @@
 </template>
 
 <script setup>
-import GameSearch from "@/components/GameSearch.vue";
 import { ref } from "vue";
 import { usePageScript } from "@/composables/usePageScript";
 import { init } from "@/scripts/lol";
@@ -140,8 +98,4 @@ import "@/assets/styles/views/lol.css";
 
 const root = ref(null);
 usePageScript(root, init);
-
-function scrollToPremium() {
-  document.getElementById("premium")?.scrollIntoView({ behavior: "smooth" });
-}
 </script>

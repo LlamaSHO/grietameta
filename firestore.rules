@@ -6,19 +6,20 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // Perfil de usuario: cada uno solo lee y escribe el suyo.
-    // "role" y "premium" no los puede cambiar el propio usuario: los
-    // gestionará el servidor (por ejemplo, el webhook de Stripe).
+    // "role" e "is-premium" no los puede poner ni cambiar el propio usuario:
+    // los gestionará el servidor (por ejemplo, el webhook de Stripe).
     match /users/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;
 
       allow create: if request.auth != null
         && request.auth.uid == uid
         && request.resource.data.role == "user"
-        && request.resource.data.premium == false;
+        && !("is-premium" in request.resource.data)
+        && !("premium" in request.resource.data);
 
       allow update: if request.auth != null
         && request.auth.uid == uid
-        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "premium", "email", "createdAt"]);
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "is-premium", "premium", "email", "createdAt"]);
 
       allow delete: if false;
     }

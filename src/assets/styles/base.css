@@ -2,11 +2,32 @@
 
 :root {
   --bg: #0A0D12;
+  --bg-raised: #10141C;
+  --panel: #151A23;
+  --panel-line: #262D3A;
+  --gold: #C8963E;
+  --gold-soft: #9C7A44;
+  --teal: #14C3B8;
   --ink: #E9E6DC;
+  --ink-dim: #97A0AC;
+  --ink-faint: #5D6673;
+
+  /* Alto del nav fijo (barra principal + barra del juego). Las anclas
+     (#tierlist, #semillas…) se desplazan teniendo esto en cuenta. */
+  --nav-h: 64px;
+  --subnav-h: 46px;
+}
+
+/* En móvil el buscador baja a una segunda fila del nav. */
+@media (max-width: 860px) {
+  :root {
+    --nav-h: 164px;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--subnav-h) + 16px);
 }
 
 body {
@@ -20,9 +41,4 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* La raíz de cada vista hace de <body> de su página. */
-[class^="view-"] {
-  min-height: 100vh;
 }

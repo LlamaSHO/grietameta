@@ -1,18 +1,5 @@
 <template>
   <div ref="root" class="view-zelda">
-    <nav class="nav">
-      <div class="wrap">
-        <a class="brand" href="/"><div class="brand-mark"></div><div class="brand-name">ZELDA<span>META</span></div></a>
-        <div class="nav-links">
-          <a href="#semillas">Semillas</a>
-          <a href="#santuarios">Santuarios</a>
-          <a href="#misiones">Misiones</a>
-          <a href="#armaduras">Armaduras</a>
-          <a href="#conjuntos">Conjuntos</a>
-          <a href="/">← Volver al inicio</a>
-        </div>
-      </div>
-    </nav>
 
     <header class="hero">
       <div class="wrap">
@@ -34,12 +21,6 @@
       </div>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div style="margin-bottom:6px;">© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
-        <div>ZeldaMeta es un sitio de fans y no está afiliado a Nintendo. The Legend of Zelda y Tears of the Kingdom son marcas de Nintendo. Todo el contenido es texto e iconos propios, sin material oficial. · <a href="/privacidad">Privacidad</a></div>
-      </div>
-    </footer>
   </div>
 </template>
 

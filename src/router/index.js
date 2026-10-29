@@ -12,13 +12,14 @@ const routes = [
     path: "/lol",
     name: "lol",
     component: () => import("@/views/LolView.vue"),
-    meta: { title: "League of Legends — Builds, tier list y winrates | GrietaMeta" },
+    meta: { game: "lol", title: "League of Legends — Builds, tier list y winrates | GrietaMeta" },
   },
   {
     path: "/arc-raiders",
     name: "arc-items",
     component: () => import("@/views/arc-raiders/ArcItemsView.vue"),
     meta: {
+      game: "arc-raiders",
       title: "ARC Raiders · Objetos | ArcMeta",
       description: "Objetos de ARC Raiders en español: qué vender, reciclar, guardar o usar, con valores, reciclaje y recetas.",
     },
@@ -28,6 +29,7 @@ const routes = [
     name: "arc-quests",
     component: () => import("@/views/arc-raiders/ArcQuestsView.vue"),
     meta: {
+      game: "arc-raiders",
       title: "ARC Raiders · Misiones | ArcMeta",
       description: "Seguimiento de misiones de ARC Raiders en español: marca las que completas, mira cuáles tienes disponibles y qué objetos debes guardar.",
     },
@@ -37,6 +39,7 @@ const routes = [
     name: "arc-enemies",
     component: () => import("@/views/arc-raiders/ArcEnemiesView.vue"),
     meta: {
+      game: "arc-raiders",
       title: "ARC Raiders · Enemigos | ArcMeta",
       description: "Todos los enemigos ARC de ARC Raiders en español: puntos débiles, qué sueltan y las mejores armas y balas para cada uno.",
     },
@@ -46,8 +49,24 @@ const routes = [
     name: "zelda",
     component: () => import("@/views/ZeldaView.vue"),
     meta: {
+      game: "zelda-totk",
       title: "Zelda: Tears of the Kingdom · Guía | ZeldaMeta",
       description: "Guía de Zelda: Tears of the Kingdom en español: mapa de semillas kolog y santuarios, misiones principales y secundarias y armaduras con más defensa.",
+    },
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/LoginView.vue"),
+    meta: { title: "Iniciar sesión | GrietaMeta" },
+  },
+  {
+    path: "/contacto",
+    name: "contact",
+    component: () => import("@/views/ContactView.vue"),
+    meta: {
+      title: "Contacto | GrietaMeta",
+      description: "Escríbenos si falta algo, necesitas ayuda o quieres que añadamos un juego a GrietaMeta.",
     },
   },
   {
@@ -74,6 +93,7 @@ const routes = [
 
   // Direcciones antiguas (antes de pasar a Vue).
   { path: "/juegos", redirect: "/" },
+  { path: "/registro", redirect: { name: "login", query: { modo: "registro" } } },
   { path: "/index.html", redirect: (to) => ({ path: "/lol", hash: to.hash }) },
   { path: "/privacidad.html", redirect: "/privacidad" },
   { path: "/publicidad.html", redirect: "/publicidad" },
@@ -92,7 +112,11 @@ const router = createRouter({
   routes,
   scrollBehavior(to, _from, saved) {
     if (saved) return saved;
-    if (to.hash) return { el: to.hash, behavior: "smooth" };
+    // El nav es fijo: se deja su alto de margen (scroll-padding-top de base.css).
+    if (to.hash) {
+      const navOffset = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop, 10) || 0;
+      return { el: to.hash, top: navOffset, behavior: "smooth" };
+    }
     return { top: 0 };
   },
 });

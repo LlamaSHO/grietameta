@@ -1,19 +1,5 @@
 <template>
   <div ref="root" class="view-privacy">
-    <nav class="nav">
-      <div class="wrap">
-        <div class="brand">
-          <div class="brand-mark"></div>
-          <div class="brand-name">GRIETA<span>META</span></div>
-        </div>
-        <div class="nav-links">
-          <a href="/lol#tierlist">Tier list</a>
-          <a href="/lol#campeones">Campeones</a>
-          <a href="/lol#premium">Premium</a>
-        </div>
-        <button class="nav-cta" @click="$router.push('/lol#premium')">Hazte Premium</button>
-      </div>
-    </nav>
 
     <main class="legal-wrap">
       <h1>Política de privacidad</h1>
@@ -64,31 +50,6 @@
       <p>Si tienes preguntas sobre esta política, escríbenos a <a href="mailto:ekainarlla@gmail.com">ekainarlla@gmail.com</a>.</p>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="foot-top">
-          <div style="max-width:360px;">
-            <div class="brand-name" style="margin-bottom:10px;">GRIETA<span>META</span></div>
-            <p>GrietaMeta no está afiliado a Riot Games. League of Legends y Riot Games son marcas registradas o marcas comerciales de Riot Games, Inc.</p>
-          </div>
-          <div class="foot-cols">
-            <div class="foot-col">
-              <h5>Producto</h5>
-              <a href="/lol#tierlist">Tier list</a>
-              <a href="/lol#campeones">Campeones</a>
-              <a href="/lol#premium">Premium</a>
-            </div>
-            <div class="foot-col">
-              <h5>Legal</h5>
-              <a href="/privacidad">Privacidad</a>
-              <a href="#">Términos</a>
-              <a href="#">Publicidad</a>
-            </div>
-          </div>
-        </div>
-        <div>© 2026 GrietaMeta. Datos de ejemplo con fines de demostración.</div>
-      </div>
-    </footer>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       "slug": "lol",
       "name": "League of Legends",
       "short": "LoL",
-      "url": "/",
+      "url": "/lol",
       "aliases": [
         "lol",
         "league",
@@ -16,7 +16,7 @@
       ],
       "tagline": "Tier list, winrates y builds de todos los campeones",
       "status": "live",
-      "icon": "/img/games/lol.png"
+      "icon": "/images/games/lol.png"
     },
     {
       "slug": "arc-raiders",
@@ -32,7 +32,7 @@
       ],
       "tagline": "Objetos, misiones, enemigos y mapas",
       "status": "live",
-      "icon": "/img/games/arc-raiders.png"
+      "icon": "/images/games/arc-raiders.png"
     },
     {
       "slug": "zelda-totk",
@@ -57,7 +57,7 @@
       ],
       "tagline": "Mapa de semillas kolog y santuarios, misiones y armaduras",
       "status": "building",
-      "icon": "/img/games/zelda-totk.png"
+      "icon": "/images/games/zelda-totk.png"
     }
   ]
 }

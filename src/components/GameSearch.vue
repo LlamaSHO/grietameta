@@ -15,7 +15,7 @@
       @focus="show"
       @keydown="onKeydown"
     >
-    <kbd class="gs-kbd" aria-hidden="true">/</kbd>
+    <kbd v-if="shortcut" class="gs-kbd" aria-hidden="true">/</kbd>
     <ul v-show="open" class="game-results" role="listbox">
       <li v-if="!items.length" class="g-empty">
         No tenemos «{{ query.trim() }}» todavía.
@@ -52,6 +52,8 @@ import { fetchGames, matchGames } from "@/services/games";
 const props = defineProps({
   big: { type: Boolean, default: false },
   requestMail: { type: String, default: "ekainarlla@gmail.com" },
+  // Atajo "/" para enfocarlo. Solo uno por página (el del nav).
+  shortcut: { type: Boolean, default: true },
 });
 
 const router = useRouter();
@@ -101,6 +103,7 @@ function onDocumentClick(e) {
 
 // Atajo: pulsar "/" fuera de un campo de texto lleva el cursor al buscador.
 function onDocumentKeydown(e) {
+  if (!props.shortcut) return;
   const tag = document.activeElement?.tagName || "";
   if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) {
     e.preventDefault();

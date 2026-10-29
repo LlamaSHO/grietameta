@@ -9,12 +9,12 @@ const IMG_SKY = "/images/zelda/mapa-cielo.jpg";
 
 export function init({ root, signal }) {
   const KEYS = ["semillas","santuarios","misiones","armaduras","conjuntos"];
-  /* Mapa de fondo: pon aquí la ruta de TU imagen del mapa completo de Hyrule (por ejemplo "/img/hyrule.jpg").
+  /* Mapa de fondo: pon aquí la ruta de TU imagen del mapa completo de Hyrule (por ejemplo "/images/zelda/mapa-superficie.jpg").
      MAP_BOUNDS son las coordenadas del juego que cubre la imagen. Si los puntos salen desplazados, ajusta estos cuatro números. */
   const MAP_IMG = IMG_SURFACE;
   const MAP_BOUNDS = { x0: -5868, x1: 5593, y0: -4766, y1: 5353 };
   const MAP_H = 8830; /* alto del mapa en el mismo sistema (10000 de ancho) para respetar las proporciones de la imagen */
-  const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/img/zora.jpg" (en Armaduras usa el nombre entre paréntesis, ej. IMG["Royal Guard"]) */
+  const IMG = {}; /* Imágenes propias: IMG["Zora"] = "/images/zelda/zora.jpg" (en Armaduras usa el nombre entre paréntesis, ej. IMG["Royal Guard"]) */
   const state = { cat: "santuarios", q: "", layer: "superficie", seedLayer: "superficie", qf: "todas" };
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));

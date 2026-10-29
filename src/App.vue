@@ -1,13 +1,25 @@
 <template>
-  <div @click="onLinkClick">
-    <RouterView />
+  <div class="app-shell" @click="onLinkClick">
+    <SiteNav :game-slug="gameSlug" />
+    <main class="app-main">
+      <RouterView />
+    </main>
+    <SiteFooter :game-slug="gameSlug" />
   </div>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import SiteNav from "@/components/nav/SiteNav.vue";
+import SiteFooter from "@/components/SiteFooter.vue";
 
+const route = useRoute();
 const router = useRouter();
+
+// Juego de la página actual (meta.game en el router): decide la barra del
+// juego en el nav y el aviso legal del footer.
+const gameSlug = computed(() => route.meta.game || null);
 
 // Las vistas migradas generan HTML con <a href="/..."> normales. Este
 // manejador convierte esos clics en navegación del router (sin recargar la
@@ -25,3 +37,14 @@ function onLinkClick(e) {
   router.push(url.pathname + url.search + url.hash);
 }
 </script>
+
+<style scoped>
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-main {
+  flex: 1;
+}
+</style>

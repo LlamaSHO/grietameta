@@ -75,7 +75,7 @@ button{font-family:inherit;}
 .mapbox circle{cursor:pointer; transition:opacity .15s ease;}
 .legend{display:flex; gap:18px; flex-wrap:wrap; font-size:12.5px; color:var(--ink-dim); margin-bottom:18px;}
 .legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle;}
-.guide-sec{margin-bottom:64px; scroll-margin-top:90px;}
+.guide-sec{margin-bottom:64px; scroll-margin-top:0;}
 .guide-sec[hidden]{display:none;}
 .chips a.chip{text-decoration:none;}
 .grid.sets{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));}

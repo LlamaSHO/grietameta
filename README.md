@@ -25,7 +25,7 @@ npm run preview   # sirve dist/ para probar el build
 ├── index.html                 # entrada de Vite (fuentes, AdSense, <div id="app">)
 ├── src/
 │   ├── main.js                # arranca Vue + router
-│   ├── App.vue                # <RouterView> y navegación sin recargar
+│   ├── App.vue                # nav + <RouterView> + footer, navegación sin recargar
 │   ├── router/index.js        # rutas, títulos y redirecciones de URLs antiguas
 │   ├── views/                 # una vista por página
 │   │   ├── HomeView.vue       #   /             portada: elige tu juego
@@ -33,8 +33,12 @@ npm run preview   # sirve dist/ para probar el build
 │   │   ├── arc-raiders/       #   /arc-raiders, /arc-misiones, /arc-enemigos
 │   │   ├── ZeldaView.vue      #   /zelda
 │   │   ├── legal/             #   /privacidad, /publicidad
+│   │   ├── LoginView.vue      #   /login        iniciar sesión, crear cuenta, recuperar contraseña
+│   │   ├── ContactView.vue    #   /contacto
 │   │   └── CheckoutSuccessView.vue  # /exito (vuelta de Stripe)
-│   ├── components/            # piezas reutilizables (buscador de juegos…)
+│   ├── components/            # piezas reutilizables
+│   │   ├── nav/               #   nav central (SiteNav) + cuenta + nav de cada juego (games/)
+│   │   └── SiteFooter.vue     #   footer común con contacto
 │   ├── composables/           # lógica Vue reutilizable
 │   ├── scripts/               # lógica de cada vista migrada desde los HTML antiguos
 │   ├── services/              # todo lo que se consume de fuera
@@ -70,8 +74,18 @@ poco a poco:
   `document`/`window` deben registrarse con `{ signal }` para limpiarse al
   salir de la vista.
 
-La portada (`HomeView`) y el buscador de juegos (`GameSearch`) ya son
-componentes Vue completos y sirven de modelo para las demás.
+La portada, el login, el contacto, el nav y el footer ya son componentes Vue
+completos y sirven de modelo para las demás.
+
+### Nav y footer
+
+`App.vue` pinta en todas las páginas el nav central
+(`components/nav/SiteNav.vue`: logo · buscador de juegos · Premium y cuenta) y
+el footer (`components/SiteFooter.vue`). Cada ruta indica su juego en
+`meta.game`; con eso el nav añade debajo la barra de ese juego
+(`components/nav/games/`) y el footer pone su aviso legal. Para un juego
+nuevo: crea su componente en `components/nav/games/`, regístralo en
+`games/index.js` y pon `meta.game` en sus rutas.
 
 Para añadir un juego basta con añadirlo a `public/data/games.json` (y crear
 su vista y su ruta en `src/router/index.js`).
@@ -96,8 +110,13 @@ Stripe con Vercel KV que estaban sueltas en la raíz y no se llegaron a usar
   `resetPassword`, `onUserChange`.
 - `src/services/firebase/users.js`: perfil en Firestore, colección `users`
   (un documento por usuario, con el mismo id que su cuenta).
+- `src/composables/useAuth.js`: estado de sesión compartido (usuario, perfil,
+  `isPremium`). Firebase se carga en segundo plano.
+- **Premium:** un usuario es premium si su perfil tiene `is-premium` con al
+  menos un elemento (da igual cuál). Si el campo no existe o la lista está
+  vacía, no lo es (`src/services/userStatus.js`).
 - `firestore.rules`: cada usuario solo lee y edita su perfil y no puede
-  cambiarse `role` ni `premium`. Se publican con
+  ponerse ni cambiarse `role` ni `is-premium`. Se publican con
   `firebase deploy --only firestore:rules`.
 
 Usuarios de prueba: `npm run seed:users` crea varias cuentas (Auth +
