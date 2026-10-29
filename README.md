@@ -1,152 +1,183 @@
 # GrietaMeta
 
-Sitio estático (un único `index.html` autocontenido: HTML + CSS + JS) con
-tier list, builds y winrates de campeones de League of Legends. Preparado
-para desplegarse en Vercel sin build ni dependencias.
+Web de guías y estadísticas de videojuegos (League of Legends, ARC Raiders y
+Zelda: Tears of the Kingdom), hecha con **Vue 3 + Vite + Vue Router** y
+desplegada en Vercel. Los usuarios irán en **Firebase** (Authentication +
+Cloud Firestore).
+
+## Puesta en marcha
+
+Antes de nada, copia `.env.example` como `.env` y rellena la configuración de
+Firebase (Consola de Firebase → Configuración del proyecto → Tus apps). El
+`.env` no se sube al repositorio. En Vercel, las mismas variables
+`VITE_FIREBASE_*` van en **Settings → Environment Variables**.
+
+```bash
+npm install
+npm run dev       # servidor de desarrollo en http://localhost:5173
+npm run build     # genera la web en dist/
+npm run preview   # sirve dist/ para probar el build
+```
 
 ## Estructura
 
 ```
-grietameta-vercel/
-├── index.html     # el sitio completo
-├── vercel.json     # configuración de despliegue (headers, URLs limpias)
-└── README.md
+├── index.html                 # entrada de Vite (fuentes, AdSense, <div id="app">)
+├── src/
+│   ├── main.js                # arranca Vue + router
+│   ├── App.vue                # <RouterView> y navegación sin recargar
+│   ├── router/index.js        # rutas, títulos y redirecciones de URLs antiguas
+│   ├── views/                 # una vista por página
+│   │   ├── HomeView.vue       #   /             portada: elige tu juego
+│   │   ├── LolView.vue        #   /lol          League of Legends
+│   │   ├── arc-raiders/       #   /arc-raiders, /arc-misiones, /arc-enemigos
+│   │   ├── ZeldaView.vue      #   /zelda
+│   │   ├── legal/             #   /privacidad, /publicidad
+│   │   └── CheckoutSuccessView.vue  # /exito (vuelta de Stripe)
+│   ├── components/            # piezas reutilizables (buscador de juegos…)
+│   ├── composables/           # lógica Vue reutilizable
+│   ├── scripts/               # lógica de cada vista migrada desde los HTML antiguos
+│   ├── services/              # todo lo que se consume de fuera
+│   │   ├── firebase/          #   app, auth (usuarios) y users (perfiles en Firestore)
+│   │   ├── riotStats.js       #   estadísticas de LoL + Data Dragon
+│   │   ├── arcRaiders.js      #   datos e imágenes de ARC Raiders
+│   │   ├── games.js           #   catálogo de juegos
+│   │   └── premium.js         #   Stripe, vía las funciones de /api
+│   ├── data/                  # datos que van dentro del código (guía de Zelda)
+│   └── assets/styles/         # CSS global y uno por vista (styles/views/)
+├── public/                    # se sirve tal cual
+│   ├── data/                  # JSON (games.json, champion-stats.json, arc-raiders/)
+│   └── images/                # games/, arc-raiders/{items,bots,maps}/, zelda/
+├── api/                       # funciones serverless de Vercel (ver abajo)
+├── tools/                     # scripts de mantenimiento (Riot, ARC, Firebase)
+├── data/raw-stats.json.gz     # estado interno del Action de Riot (no se sirve)
+├── firebase.json, firestore.rules, .firebaserc
+└── vercel.json
 ```
 
-No hay proceso de build para el sitio: es HTML estático puro, así que Vercel
-lo sirve directamente. El `package.json` solo existe para las funciones
-serverless de `/api` y para el script de estadísticas de Riot.
+### Cómo están hechas las vistas
+
+Las páginas venían de HTML sueltos con todo dentro. En la migración cada una
+se ha separado en tres piezas que se pueden ir convirtiendo a Vue "de verdad"
+poco a poco:
+
+- **Plantilla** en `src/views/…View.vue`.
+- **Estilos** en `src/assets/styles/views/<vista>.css`. `postcss.config.js`
+  los encierra solos en `.view-<vista>` (la clase raíz de la vista), para que
+  los estilos de una página no afecten a otra.
+- **Lógica** en `src/scripts/<vista>.js`, una función `init({ root, signal })`
+  que se ejecuta al montar la vista (`usePageScript`). Los listeners de
+  `document`/`window` deben registrarse con `{ signal }` para limpiarse al
+  salir de la vista.
+
+La portada (`HomeView`) y el buscador de juegos (`GameSearch`) ya son
+componentes Vue completos y sirven de modelo para las demás.
+
+Para añadir un juego basta con añadirlo a `public/data/games.json` (y crear
+su vista y su ruta en `src/router/index.js`).
+
+### `services/` y `api/`
+
+`src/services/` es lo que la web consume de fuera: Firebase, los JSON de
+datos, Data Dragon de Riot y las funciones de `/api`.
+
+`api/` son las **funciones serverless de Vercel** (proxy de MetaForge para
+ARC Raiders y Stripe). Tienen que llamarse `api/` porque es la carpeta que
+Vercel convierte en funciones; guardan las claves secretas, así que no pueden
+ir en el navegador. En `docs/borradores-premium-kv/` quedan las versiones de
+Stripe con Vercel KV que estaban sueltas en la raíz y no se llegaron a usar
+(probablemente se sustituyan por Firestore).
+
+## Usuarios con Firebase
+
+- `src/services/firebase/app.js`: conexión con Firebase; lee la configuración
+  de las variables `VITE_FIREBASE_*` del `.env`.
+- `src/services/firebase/auth.js`: `register`, `login`, `logout`,
+  `resetPassword`, `onUserChange`.
+- `src/services/firebase/users.js`: perfil en Firestore, colección `users`
+  (un documento por usuario, con el mismo id que su cuenta).
+- `firestore.rules`: cada usuario solo lee y edita su perfil y no puede
+  cambiarse `role` ni `premium`. Se publican con
+  `firebase deploy --only firestore:rules`.
+
+Usuarios de prueba: `npm run seed:users` crea varias cuentas (Auth +
+perfil). Las credenciales se guardan en `tools/seed/test-users.local.json`,
+que no se sube al repositorio.
 
 ## Estadísticas reales de Riot Games
 
-`index.html` intenta cargar `champion-stats.json` al entrar. Si existe, usa
-esos winrate/pickrate/banrate reales (calculados a partir de partidas de
-Elo alto de EUW); si no existe, se queda con los datos ilustrativos de
-siempre. **La web nunca se rompe por esto.**
+La vista de LoL intenta cargar `/data/champion-stats.json` al entrar. Si
+existe, usa esos winrate/pickrate/banrate reales; si no existe, se queda con
+los datos ilustrativos de siempre. **La web nunca se rompe por esto.**
 
-`champion-stats.json` lo genera y actualiza solo el GitHub Action
-`.github/workflows/update-riot-stats.yml`, cada noche, ejecutando
-`scripts/fetch-riot-stats.mjs`. Para activarlo:
+`public/data/champion-stats.json` lo genera y actualiza solo el GitHub
+Action `.github/workflows/update-riot-stats.yml` (cada 6 horas), ejecutando
+`tools/fetch-riot-stats.mjs`. Para activarlo:
 
 1. Consigue una clave en <https://developer.riotgames.com> (inicia sesión
-   con tu cuenta de Riot). La clave de "Development API Key" de la propia
-   página caduca cada 24h — vale para probar en local, pero para que el
-   GitHub Action funcione solo hace falta pegarla una vez como secreto (ver
-   paso 2); si quieres que no haga falta tocarla nunca, puedes solicitar una
-   **Personal API Key** desde "REGISTER PRODUCT" en el mismo panel (no
-   caduca, aprobación normalmente rápida).
+   con tu cuenta de Riot). La "Development API Key" caduca cada 24h; para no
+   tener que tocarla nunca, solicita una **Personal API Key** desde
+   "REGISTER PRODUCT" en el mismo panel.
 2. En GitHub: **Settings → Secrets and variables → Actions → New repository
    secret**, nombre `RIOT_API_KEY`, pega tu clave.
-3. Listo. El Action corre solo cada noche (cron `17 3 * * *`, hora UTC) y
-   hace commit de `champion-stats.json` si hay cambios. Vercel redespliega
-   automáticamente con cada commit.
+3. Listo. El Action hace commit de `public/data/champion-stats.json` y
+   `data/raw-stats.json.gz` si hay cambios, y Vercel redespliega solo.
 4. Para forzar una ejecución manual: pestaña **Actions** del repo →
    "Actualizar estadísticas de Riot" → **Run workflow**.
-5. Para probarlo en tu máquina antes de automatizarlo:
+5. Para probarlo en tu máquina:
    ```
-   RIOT_API_KEY=RGAPI-tu-clave node scripts/fetch-riot-stats.mjs
+   RIOT_API_KEY=RGAPI-tu-clave npm run stats:riot
    ```
 
 **Qué son realmente estos datos:** una muestra de partidas clasificatorias
-de jugadores Challenger/Grandmaster/Master de EUW, no el 100% de las
-partidas del juego (eso requeriría una "Production Key" de Riot, con
-aprobación previa). Es el mismo enfoque que usan la mayoría de sitios de
-estadísticas no oficiales. Los campeones con poca muestra conservan el dato
-ilustrativo hasta que el Action acumule suficientes partidas suyas.
+de EUW, no el 100% de las partidas del juego (eso requeriría una
+"Production Key" de Riot). Es el mismo enfoque que usan la mayoría de sitios
+de estadísticas no oficiales. Los campeones con poca muestra conservan el
+dato ilustrativo hasta que el Action acumule suficientes partidas suyas.
 
 ### Builds y runas reales
 
-Además de winrate/pickrate/banrate, el script también calcula por campeón:
-objeto inicial, botas, núcleo en el **orden real de compra** y objetos
-situacionales, usando el *Timeline* de cada partida (eventos de compra con
-marca de tiempo — se descuenta automáticamente si el jugador deshizo una
-compra por error de click). También calcula la combinación de runas
-(keystone + árbol principal + árbol secundario) más usada. Los nombres de
-objetos y runas se piden en español (`es_ES`) a Data Dragon, para encajar
-con el resto del sitio.
-
-Esto añade una petición extra a Riot por cada partida analizada (el
-Timeline es un endpoint aparte), así que el script tarda aproximadamente
-**el doble** que si solo calculara winrate/pickrate/banrate — con los
-valores por defecto, cuenta unos 20-25 minutos en vez de ~11.
+Además de winrate/pickrate/banrate, el script calcula por campeón: objeto
+inicial, botas, núcleo en el **orden real de compra** y objetos
+situacionales, usando el *Timeline* de cada partida (se descuenta si el
+jugador deshizo una compra). También calcula la combinación de runas más
+usada. Los nombres se piden en español (`es_ES`) a Data Dragon.
 
 Un campeón solo recibe build real si aparece en al menos 5 partidas de la
-muestra; si no, conserva el build ilustrativo de siempre en esa parte
-concreta (puede pasar que tenga winrate real pero build ilustrativo, o
-build real pero falte alguna categoría puntual como "situacionales" si no
-hubo suficientes compras variadas). Los objetos y la runa principal
-muestran su icono real (vía Data Dragon) en cuanto hay dato real; mientras
-tanto se ve la cajita de color de siempre, sin icono.
+muestra; si no, conserva el build ilustrativo en esa parte concreta.
 
-### Acumulación entre ejecuciones (no se recalcula de cero cada noche)
+### Acumulación entre ejecuciones
 
-El script no empieza de cero cada vez: guarda un archivo interno,
-`riot-stats-state.json` (en la raíz del repo, junto a `champion-stats.json`
-— **debe subirse igual que él**, el Action ya lo hace solo), con las
-partidas ya contabilizadas. Cada noche suma las partidas nuevas que
-encuentra a ese acumulado, así la muestra por campeón crece noche a noche
-dentro del mismo parche — cuantas más noches pasen, más fiables son los
-números.
+El script no empieza de cero cada vez: guarda sus contadores en
+`data/raw-stats.json.gz` (el Action lo sube junto a `champion-stats.json`)
+y en cada ejecución suma las partidas nuevas. Cuando detecta un parche nuevo
+(por el `gameVersion` de las partidas) reinicia el acumulado, porque mezclar
+metas distintos daría estadísticas falsas.
 
-En cuanto el script detecta (mirando el `gameVersion` real de las partidas)
-que ha salido un parche nuevo, reinicia el acumulado automáticamente:
-mezclar partidas de metas distintos daría estadísticas falsas. Así que es
-normal ver que la muestra "se resetea" a un número bajo justo después de
-cada parche, y que vaya subiendo cada noche hasta el siguiente.
+Para forzar un reinicio manual, borra `data/raw-stats.json.gz` del repo y
+vuelve a lanzar el workflow.
 
-Si alguna vez quieres forzar un reinicio manual (por ejemplo, si crees que
-el acumulado se ha corrompido), simplemente borra `riot-stats-state.json`
-del repo y vuelve a lanzar el workflow — empezará de cero sin que tengas
-que tocar nada más.
+## Datos de ARC Raiders
 
-## Opción A — Desplegar con la web de Vercel (sin terminal)
+`tools/build-arc-data.py` regenera `public/data/arc-raiders/*.json` y las
+imágenes de `public/images/arc-raiders/` a partir del
+[Proyecto de datos ARC](https://github.com/RaidTheory/arcraiders-data)
+(licencia MIT). Instrucciones dentro del propio script.
 
-1. Sube esta carpeta a un repositorio de GitHub (crea uno nuevo, arrastra
-   estos 3 archivos y haz commit).
-2. Entra en https://vercel.com y accede con tu cuenta de GitHub.
-3. Pulsa **Add New → Project**, elige el repositorio que acabas de crear.
-4. Framework Preset: **Other** (o "Static"). No hace falta tocar el Build
-   Command ni el Output Directory — déjalos vacíos.
-5. Pulsa **Deploy**. En menos de un minuto tendrás una URL tipo
-   `grietameta.vercel.app`.
+## Despliegue en Vercel
 
-## Opción B — Desplegar con la CLI de Vercel (más rápido)
+`vercel.json` ya indica que es un proyecto Vite (`npm run build`, salida en
+`dist/`), redirige las URLs antiguas (`/juegos`, `/index.html`,
+`/privacidad.html`…) y envía el resto de rutas a la SPA.
 
-```bash
-npm install -g vercel
-cd grietameta-vercel
-vercel login
-vercel        # despliegue de prueba (preview)
-vercel --prod # despliegue definitivo a producción
-```
+- **Con GitHub:** cada `git push` a la rama principal redespliega solo.
+- **Con la CLI:** `npm install -g vercel`, `vercel` (preview) y
+  `vercel --prod` (producción).
 
-La CLI detecta que es un sitio estático automáticamente; no pide más
-configuración.
+Para un dominio propio: **Settings → Domains → Add** en el panel del
+proyecto en Vercel.
 
-## Conectar un dominio propio
+## AdSense
 
-En el panel del proyecto en Vercel: **Settings → Domains → Add**, escribe
-tu dominio (ej. `grietameta.com`) y sigue las instrucciones para apuntar
-los DNS (Vercel te da los registros A / CNAME exactos). Esto es lo que
-necesitarás como "dominio real" para que Google AdSense apruebe el sitio.
-
-## Antes de pedir la revisión de AdSense
-
-- [ ] Sustituir `ca-pub-0000000000000000` (5 apariciones en `index.html`)
-      por tu Publisher ID real de AdSense.
-- [ ] Sustituir los `data-ad-slot` (`0000000000`, `0000000001`,
-      `0000000002`) por los IDs de tus bloques de anuncio reales.
-- [ ] Tener el dominio ya desplegado y accesible públicamente (no vale
-      una URL de preview que caduque).
-- [ ] Añadir una página de política de privacidad (AdSense la exige).
-
-## Actualizar el sitio tras el primer despliegue
-
-Cualquier cambio en `index.html` se publica solo con:
-
-```bash
-vercel --prod
-```
-
-o, si lo conectaste a GitHub, simplemente haciendo `git push` — Vercel
-vuelve a desplegar automáticamente en cada commit a la rama principal.
+El script de AdSense se carga una vez en `index.html` para todo el sitio.
+Los bloques de anuncio están en `src/views/LolView.vue` (`data-ad-slot`).

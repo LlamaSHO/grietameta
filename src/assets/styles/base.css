@@ -1,0 +1,28 @@
+/* Estilos globales mínimos. Cada vista trae los suyos en styles/views/. */
+
+:root {
+  --bg: #0A0D12;
+  --ink: #E9E6DC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* La raíz de cada vista hace de <body> de su página. */
+[class^="view-"] {
+  min-height: 100vh;
+}

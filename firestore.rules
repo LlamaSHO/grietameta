@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// Reglas de Cloud Firestore para GrietaMeta.
+// Se publican con: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Perfil de usuario: cada uno solo lee y escribe el suyo.
+    // "role" y "premium" no los puede cambiar el propio usuario: los
+    // gestionará el servidor (por ejemplo, el webhook de Stripe).
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.role == "user"
+        && request.resource.data.premium == false;
+
+      allow update: if request.auth != null
+        && request.auth.uid == uid
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "premium", "email", "createdAt"]);
+
+      allow delete: if false;
+    }
+
+    // Todo lo demás, cerrado hasta que se añada.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

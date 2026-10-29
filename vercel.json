@@ -1,6 +1,19 @@
 {
-  "cleanUrls": true,
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/juegos", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/lol", "permanent": true },
+    { "source": "/privacidad.html", "destination": "/privacidad", "permanent": true },
+    { "source": "/publicidad.html", "destination": "/publicidad", "permanent": true },
+    { "source": "/exito.html", "destination": "/exito", "permanent": true },
+    { "source": "/champion-stats.json", "destination": "/data/champion-stats.json", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/((?!api/|assets/|data/|images/).*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

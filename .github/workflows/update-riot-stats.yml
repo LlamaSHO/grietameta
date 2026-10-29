@@ -42,7 +42,7 @@ jobs:
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
           RUN_BUDGET_MINUTES: ${{ inputs.budget_minutes || '300' }}
-        run: node scripts/fetch-riot-stats.mjs
+        run: node tools/fetch-riot-stats.mjs
 
       # Copia de seguridad: si algo fallase al publicar, el trabajo de horas
       # no se pierde; se puede descargar desde la página de la ejecución.
@@ -52,7 +52,7 @@ jobs:
         with:
           name: stats-backup
           path: |
-            champion-stats.json
+            public/data/champion-stats.json
             data/raw-stats.json.gz
           if-no-files-found: ignore
           retention-days: 14
@@ -65,16 +65,16 @@ jobs:
           git config user.name "LlamaSHO"
           git config user.email "241094598+LlamaSHO@users.noreply.github.com"
           mkdir -p /tmp/stats-out/data
-          cp champion-stats.json /tmp/stats-out/champion-stats.json
+          cp public/data/champion-stats.json /tmp/stats-out/champion-stats.json
           cp data/raw-stats.json.gz /tmp/stats-out/data/raw-stats.json.gz
           for intento in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
-            mkdir -p data
-            cp /tmp/stats-out/champion-stats.json champion-stats.json
+            mkdir -p data public/data
+            cp /tmp/stats-out/champion-stats.json public/data/champion-stats.json
             cp /tmp/stats-out/data/raw-stats.json.gz data/raw-stats.json.gz
             git rm --ignore-unmatch --quiet riot-stats-state.json
-            git add champion-stats.json data/raw-stats.json.gz
+            git add public/data/champion-stats.json data/raw-stats.json.gz
             if git diff --cached --quiet; then
               echo "Sin cambios, nada que publicar."
               exit 0

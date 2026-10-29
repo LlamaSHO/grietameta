@@ -49,8 +49,8 @@ export default async function handler(req, res) {
       subscription_data: {
         trial_period_days: plan === "yearly" ? undefined : 7,
       },
-      success_url: `${siteUrl}/exito.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/index.html#premium`,
+      success_url: `${siteUrl}/exito?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/lol#premium`,
       allow_promotion_codes: true,
     });
 

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vercel/
+.env
+.env.local
+.env.*.local
+
+# Cuentas de prueba de Firebase (contraseñas): las genera tools/seed-firebase-users.mjs
+tools/seed/*.local.json
+
+# Firebase CLI
+.firebase/
+firebase-debug.log
+firestore-debug.log

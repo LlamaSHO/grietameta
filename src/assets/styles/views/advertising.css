@@ -1,0 +1,18 @@
+/* Estilos de la vista legal/AdvertisingView. Se aplican solo dentro de .view-advertising (ver postcss.config.js). */
+
+:root { --fondo: #12121a; --texto: #e8e8ee; --suave: #a9a9b8; --acento: #ff6a00; --borde: #2c2c3a; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+    }
+    main { max-width: 70ch; margin: 0 auto; padding: 48px 20px 80px; }
+    a { color: var(--acento); }
+    a:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+    h1 { font-size: 2rem; line-height: 1.2; margin: 24px 0 8px; }
+    h2 { font-size: 1.25rem; margin: 40px 0 8px; padding-top: 24px; border-top: 1px solid var(--borde); }
+    p, li { color: var(--texto); }
+    .fecha { color: var(--suave); margin: 0 0 24px; }
