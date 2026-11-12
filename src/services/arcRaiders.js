@@ -21,3 +21,5 @@ export const fetchArcEnemies = () => getJson(`${DATA_DIR}/enemies.json`);
 export const arcItemImageUrl = (id) => `${IMG_DIR}/items/${encodeURIComponent(id + ".webp")}`;
 export const arcBotImageUrl = (id) => `${IMG_DIR}/bots/${encodeURIComponent(id + ".webp")}`;
 export const arcMapImageUrl = (file) => `${IMG_DIR}/maps/${encodeURIComponent(file + ".webp")}`;
+// Miniatura de 480 px (~40 KB) para tarjetas, pestañas y menús; el mapa entero pesa 0,3–1,4 MB.
+export const arcMapThumbUrl = (file) => `${IMG_DIR}/maps/thumbs/${encodeURIComponent(file + ".jpg")}`;

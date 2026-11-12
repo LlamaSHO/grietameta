@@ -1,31 +1,75 @@
-/* Estilos globales mínimos. Cada vista trae los suyos en styles/views/. */
+/* Estilos globales: tokens del rediseño (models/README.md, «Estilo por juego»).
+   Las vistas antiguas traen los suyos en styles/views/ y no dependen de estos. */
 
 :root {
-  --bg: #0A0D12;
-  --bg-raised: #10141C;
-  --panel: #151A23;
-  --panel-line: #262D3A;
-  --gold: #C8963E;
-  --gold-soft: #9C7A44;
-  --teal: #14C3B8;
-  --ink: #E9E6DC;
-  --ink-dim: #97A0AC;
-  --ink-faint: #5D6673;
+  /* Fondo y texto */
+  --bg: #07090D;
+  --bg-raised: #0B0E14;
+  --panel: #0F131B;
+  --panel-2: #141922;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --ink: #ECE9E1;
+  --ink-dim: #A6AEB9;
+  --ink-mute: #8F98A5;
+  --ink-faint: #7C8592;
+
+  /* Marca GM (tricolor) */
+  --gm-gold: #F3C878;
+  --gm-orange: #FF6A3D;
+  --gm-teal: #4FE0B6;
+  --gold: #D4A04A;
+  --gold-hi: #E2B566;
+  --gm-green: #6BFF4A; /* verde original del logo */
+
+  /* Estados */
+  --ok: #4FA97A;
+  --err: #E06B60;
+
+  /* Tipografías */
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --font-brand: "Chakra Petch", system-ui, sans-serif;
+  --font-arc: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-zelda: "Cinzel", serif;
+
+  /* Acento de la zona (lo cambia data-zone en .app-shell) */
+  --accent: var(--gold);
+  --accent-hi: var(--gold-hi);
 
   /* Alto del nav fijo (barra principal + barra del juego). Las anclas
      (#tierlist, #semillas…) se desplazan teniendo esto en cuenta. */
-  --nav-h: 64px;
-  --subnav-h: 46px;
+  --nav-h: 72px;
+  --subnav-h: 48px;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Acento por juego */
+[data-zone="lol"] {
+  --accent: #F3C878;
+  --accent-hi: #D9B56E;
+}
+[data-zone="arc"] {
+  --accent: #F28A1E;
+  --accent-hi: #F5C02A;
+}
+[data-zone="zelda"] {
+  --accent: #4FE0B6;
+  --accent-hi: #F1E7C8;
 }
 
 /* En móvil el buscador baja a una segunda fila del nav. */
 @media (max-width: 860px) {
   :root {
-    --nav-h: 164px;
+    --nav-h: 128px;
   }
 }
 
 html {
+  /* Hueco fijo para la barra de scroll: al bloquear el scroll (fichas,
+     diálogos) la página no salta de lado. */
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-h) + var(--subnav-h) + 16px);
 }
@@ -34,11 +78,62 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Utilidades compartidas */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+@media (max-width: 860px) {
+  .wrap {
+    padding: 0 16px;
+  }
+}
+
+/* Animaciones comunes */
+@keyframes gm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes gm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Sin movimiento si el sistema lo pide (como el diseño: sin animaciones;
+   todo queda en su estado final, visible desde el primer momento). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,286 @@
+/* Piezas comunes de Premium, Mi Premium, Mi cuenta y Pago completado
+   (models/paginas/{Premium,MiPremium,PremiumExito}.dc.html).
+   Todo lleva el prefijo .pm- para no chocar con los estilos de otras vistas. */
+
+.pm-page {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+.pm-disp {
+  font-family: var(--font-display);
+}
+.pm-num {
+  font-family: var(--font-brand);
+}
+.pm-page a:not([class]) {
+  color: var(--gold);
+}
+.pm-page a:not([class]):hover {
+  color: #E8B865;
+}
+
+/* Brillos de fondo */
+.pm-glow {
+  position: absolute;
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(95px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: pm-drift 16s ease-in-out infinite alternate;
+}
+@keyframes pm-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(60px, 30px, 0) scale(1.15); }
+}
+@keyframes pm-shine {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  60%, 100% { transform: translateX(320%) skewX(-20deg); }
+}
+@keyframes pm-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- botones ---------- */
+.pm-btn-gold {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #E8B865, #C8913A);
+  color: #17120A;
+  font: 600 15.5px/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 34px -14px rgba(212, 160, 74, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+.pm-btn-gold.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: pm-shine 3.6s ease-in-out infinite;
+}
+.pm-btn-gold:hover {
+  color: #17120A;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -14px rgba(212, 160, 74, 1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.pm-btn-gold svg {
+  transition: transform 0.3s;
+}
+.pm-btn-gold:hover svg {
+  transform: translateX(4px);
+}
+.pm-btn-gold:disabled,
+.pm-btn-gold[aria-busy="true"] {
+  opacity: 0.7;
+  cursor: progress;
+  transform: none;
+}
+
+.pm-btn-out {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: none;
+  color: var(--ink);
+  font: 600 15px/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pm-btn-out:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.pm-btn-out.static {
+  cursor: default;
+  color: var(--ink-dim);
+}
+.pm-btn-out.static:hover {
+  background: none;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Botón pequeño (Mi Premium, Mi cuenta) */
+.pm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  font: 600 14.5px/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.pm-btn:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+.pm-btn.gold {
+  border: none;
+  background: linear-gradient(180deg, #E8B865, #C8913A);
+  color: #17120A;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.pm-btn.gold:hover {
+  color: #17120A;
+  background: linear-gradient(180deg, #F0C574, #D29C45);
+}
+.pm-btn.danger {
+  border-color: rgba(255, 106, 61, 0.35);
+  color: #FFB59C;
+  background: none;
+}
+.pm-btn.danger:hover {
+  background: rgba(255, 106, 61, 0.08);
+  border-color: rgba(255, 106, 61, 0.6);
+  color: #FFC8B4;
+}
+.pm-btn:disabled,
+.pm-btn[aria-busy="true"] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------- avisos (errores, ok, info) ---------- */
+.pm-notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 106, 61, 0.3);
+  background: rgba(255, 106, 61, 0.07);
+  color: #F1CDBF;
+  font-size: 13.5px;
+  line-height: 1.45;
+  text-align: left;
+  animation: pm-fade 0.3s ease both;
+}
+.pm-notice svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.pm-notice.ok {
+  border-color: rgba(79, 224, 182, 0.35);
+  background: rgba(79, 224, 182, 0.07);
+  color: #BFF1E1;
+}
+.pm-notice.info {
+  border-color: rgba(59, 201, 232, 0.3);
+  background: rgba(59, 201, 232, 0.06);
+  color: #C5E9F3;
+}
+
+/* Etiqueta para datos de ejemplo (aún no salen del perfil real) */
+.pm-demo {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+  color: var(--ink-mute);
+  font: 600 10.5px/1.4 var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.pm-kicker {
+  font-family: var(--font-brand);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Etiqueta "Premium" */
+.pm-tagp {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid var(--gold);
+  color: var(--gm-gold);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- cajas de las páginas de cuenta ---------- */
+.pm-box {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+.pm-sec {
+  padding: 26px;
+  animation: gm-rise 0.7s 0.15s var(--ease-out) both;
+}
+.pm-sec-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pm-sec-h h2,
+.pm-sec-h h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.pm-sec-h p {
+  margin: 4px 0 0;
+  color: var(--ink-dim);
+  font-size: 14.5px;
+}
+.pm-sec-h a:not([class]) {
+  font-size: 14.5px;
+}
+@media (max-width: 560px) {
+  .pm-sec {
+    padding: 20px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-glow,
+  .pm-btn-gold.shine::after {
+    animation: none;
+  }
+}

@@ -1,46 +1,43 @@
 <template>
-  <footer class="site-footer">
+  <!-- Footer común. Diseño: .foot de models/paginas/Main.dc.html. -->
+  <footer class="foot">
     <div class="wrap">
-      <div class="top">
-        <div class="about">
-          <RouterLink class="brand-name" to="/">GRIETA<span>META</span></RouterLink>
+      <div class="foot-top">
+        <div class="foot-about">
+          <RouterLink class="brand" to="/" aria-label="GrietaMeta, inicio">
+            <GmMark :size="26" />
+            <span class="gm-brand-name">GRIETA<span>META</span></span>
+          </RouterLink>
           <p>{{ notice }}</p>
         </div>
 
-        <div class="cols">
-          <div class="col">
-            <h5>Juegos</h5>
+        <div class="foot-cols">
+          <nav class="foot-col" aria-label="Juegos">
+            <h4>Juegos</h4>
             <RouterLink v-for="g in games" :key="g.slug" :to="g.url">{{ g.name }}</RouterLink>
-          </div>
-          <div class="col">
-            <h5>Ayuda</h5>
+          </nav>
+          <nav class="foot-col" aria-label="Ayuda">
+            <h4>Ayuda</h4>
             <RouterLink to="/contacto">Contáctanos</RouterLink>
             <RouterLink :to="{ path: '/contacto', query: { motivo: 'juego' } }">Pedir un juego</RouterLink>
             <RouterLink :to="{ path: '/contacto', query: { motivo: 'error' } }">Avisar de un error</RouterLink>
-          </div>
-          <div class="col">
-            <h5>Legal</h5>
+          </nav>
+          <nav class="foot-col" aria-label="Legal">
+            <h4>Legal</h4>
             <RouterLink to="/privacidad">Privacidad</RouterLink>
             <RouterLink to="/publicidad">Publicidad</RouterLink>
-          </div>
+          </nav>
         </div>
       </div>
 
-      <div class="contact">
-        <div>
-          <strong>¿Echas algo en falta?</strong>
-          <span>Si falta un dato, necesitas algo o quieres que añadamos un juego, escríbenos.</span>
-        </div>
-        <RouterLink class="btn-contact" to="/contacto">Contáctanos</RouterLink>
-      </div>
-
-      <div class="bottom">© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
+      <div class="foot-bottom">© 2026 GrietaMeta. Todos los derechos reservados. Prohibida su reproducción total o parcial sin permiso.</div>
     </div>
   </footer>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
+import GmMark from "@/components/brand/GmMark.vue";
 import { fetchGames } from "@/services/games";
 
 const props = defineProps({ gameSlug: { type: String, default: null } });
@@ -59,109 +56,71 @@ fetchGames().then((g) => (games.value = g));
 </script>
 
 <style scoped>
-.site-footer {
-  border-top: 1px solid var(--panel-line);
+.foot {
+  margin-top: 72px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 48px 0 40px;
+  font-size: 13.5px;
+  color: var(--ink-mute);
   background: var(--bg);
-  color: var(--ink-faint);
-  font-size: 13px;
-  line-height: 1.7;
-  padding: 44px 0 48px;
 }
-.wrap {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 28px;
-}
-a {
-  color: var(--ink-dim);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--gold);
-}
-
-.top {
+.foot-top {
   display: flex;
   justify-content: space-between;
   gap: 40px;
   flex-wrap: wrap;
 }
-.about {
-  max-width: 380px;
+.foot-about {
+  max-width: 400px;
 }
-.brand-name {
-  font-family: "Cinzel", serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--ink);
+.foot-about p {
+  margin: 12px 0 0;
+  line-height: 1.7;
 }
-.brand-name span {
-  color: var(--gold);
-}
-.about p {
-  margin: 10px 0 0;
-}
-
-.cols {
-  display: flex;
-  gap: 56px;
-  flex-wrap: wrap;
-}
-.col {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.col h5 {
-  margin: 0 0 6px;
-  font-size: 11.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-}
-
-.contact {
-  display: flex;
+.brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 32px 0 24px;
-  padding: 18px 22px;
-  background: var(--panel);
-  border: 1px solid var(--panel-line);
-  border-left: 3px solid var(--gold);
+  gap: 11px;
+  color: var(--ink);
+  text-decoration: none;
 }
-.contact div {
+.foot-cols {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.foot-col {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
-.contact strong {
-  color: var(--ink);
-  font-size: 14.5px;
-}
-.btn-contact {
-  padding: 9px 18px;
-  border: 1px solid var(--gold-soft);
-  color: var(--ink);
-  font-weight: 600;
-  white-space: nowrap;
-}
-.btn-contact:hover {
-  background: rgba(200, 150, 62, 0.1);
-  color: var(--ink);
-}
-
-.bottom {
+.foot-col h4 {
+  margin: 0 0 6px;
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.foot-col a {
+  color: #A0A8B4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.foot-col a:hover {
+  color: var(--gold-hi);
+}
+.foot-bottom {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12.5px;
+  color: var(--ink-faint);
 }
 
-@media (max-width: 640px) {
-  .wrap {
-    padding: 0 16px;
-  }
-  .cols {
-    gap: 32px;
+@media (max-width: 860px) {
+  .foot-cols {
+    gap: 36px;
   }
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
-  <div class="app-shell" @click="onLinkClick">
+  <div class="app-shell" :data-zone="zone" @click="onLinkClick">
     <SiteNav :game-slug="gameSlug" />
     <main class="app-main">
       <RouterView />
     </main>
     <SiteFooter :game-slug="gameSlug" />
+    <MobileTabBar />
   </div>
 </template>
 
@@ -13,13 +14,16 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import SiteNav from "@/components/nav/SiteNav.vue";
 import SiteFooter from "@/components/SiteFooter.vue";
+import MobileTabBar from "@/components/nav/MobileTabBar.vue";
+import { GAME_NAVS } from "@/components/nav/games";
 
 const route = useRoute();
 const router = useRouter();
 
 // Juego de la página actual (meta.game en el router): decide la barra del
-// juego en el nav y el aviso legal del footer.
+// juego en el nav, el aviso legal del footer y el acento de color (zona).
 const gameSlug = computed(() => route.meta.game || null);
+const zone = computed(() => GAME_NAVS[gameSlug.value]?.zone || "home");
 
 // Las vistas migradas generan HTML con <a href="/..."> normales. Este
 // manejador convierte esos clics en navegación del router (sin recargar la
@@ -43,6 +47,7 @@ function onLinkClick(e) {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: clip;
 }
 .app-main {
   flex: 1;

@@ -11,7 +11,7 @@
        con marca de tiempo)
      - runas reales más usadas (keystone + árbol principal + árbol secundario)
    El resultado se guarda en public/data/champion-stats.json, que
-   la vista de LoL (src/scripts/lol.js) carga para sustituir los datos simulados.
+   la sección de LoL (src/composables/useLolData.js) carga para sustituir los datos simulados.
 
    CÓMO SE ANALIZAN "LA MAYOR CANTIDAD DE PARTIDAS POSIBLE"
    El límite no es el script sino la API de Riot (con clave de desarrollo,

@@ -1,0 +1,277 @@
+/* Nav central (components/nav/SiteNav.vue) y barras de cada juego
+   (components/nav/games/*). Va aparte, sin "scoped", para que las barras de
+   los juegos usen las mismas clases: .slink, .dd, .mega, .mc.
+   Diseño: nav y .sub de models/paginas/{Main,Lol,Arc,Zelda}.dc.html. */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 9, 13, 0.78);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ---- barra principal ---- */
+.site-nav .bar-in {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 520px) 1fr;
+  align-items: center;
+  gap: 24px;
+  height: 72px;
+}
+.site-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  justify-self: start;
+}
+.site-nav .brand:hover {
+  color: var(--ink);
+}
+.site-nav .brand-name,
+.gm-brand-name {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+}
+.site-nav .brand-name span,
+.gm-brand-name span {
+  color: var(--gm-gold);
+}
+.site-nav .search-slot {
+  min-width: 0;
+}
+
+/* ---- barra del juego ---- */
+.site-nav .sub {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(13, 16, 23, 0.6);
+}
+.site-nav .sub-in {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--subnav-h);
+}
+.site-nav .gchip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-right: 16px;
+  margin-right: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.site-nav .gchip img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.site-nav .slink {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--subnav-h);
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: #A0A8B4;
+  text-decoration: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.site-nav .slink:hover,
+.site-nav .slink.on {
+  color: var(--ink);
+}
+.site-nav .slink.on::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sub-underline, var(--accent));
+}
+
+/* Desplegables (mega-menús) */
+.site-nav .dd {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--subnav-h);
+}
+.site-nav .dd > .slink svg {
+  transition: transform 0.25s;
+}
+.site-nav .dd:hover > .slink,
+.site-nav .dd:focus-within > .slink {
+  color: var(--ink);
+}
+.site-nav .dd:hover > .slink svg,
+.site-nav .dd:focus-within > .slink svg {
+  transform: rotate(180deg);
+}
+.site-nav .mega {
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  z-index: 60;
+  width: 640px;
+  max-width: calc(100vw - 32px);
+  padding: 18px;
+  border-radius: 18px;
+  background: #0F131B;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.25s var(--ease-out), visibility 0.2s;
+}
+.site-nav .dd:hover .mega,
+.site-nav .dd:focus-within .mega {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.site-nav.menus-closed .dd .mega {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+.site-nav .mega-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.site-nav .mega-h b {
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+.site-nav .mega-f {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+.site-nav .mega-f a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Variantes por juego (data-zone en .app-shell) */
+[data-zone="lol"] .site-nav {
+  --sub-underline: linear-gradient(90deg, #C8AA6E, #0AC8B9);
+}
+[data-zone="arc"] .site-nav .sub {
+  border-top-color: rgba(242, 235, 221, 0.06);
+  background: rgba(20, 18, 25, 0.75);
+}
+[data-zone="arc"] .site-nav .gchip {
+  border-right-color: rgba(242, 235, 221, 0.1);
+  color: #F2EBDD;
+  font-family: var(--font-arc);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+[data-zone="arc"] .site-nav .gchip img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+[data-zone="arc"] .site-nav .slink {
+  color: #ABA49A;
+}
+[data-zone="arc"] .site-nav .slink:hover,
+[data-zone="arc"] .site-nav .slink.on {
+  color: #F2EBDD;
+}
+[data-zone="arc"] .site-nav .slink.on::after {
+  height: 3px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #E5372B 0 20%, #F28A1E 20% 40%, #F5C02A 40% 60%, #2FB45A 60% 80%, #3BC9E8 80%);
+}
+[data-zone="zelda"] .site-nav .sub {
+  border-top-color: rgba(127, 235, 203, 0.07);
+  background: rgba(8, 22, 20, 0.7);
+}
+[data-zone="zelda"] .site-nav .gchip {
+  border-right-color: rgba(127, 235, 203, 0.14);
+  color: #E6EEEA;
+  font-family: var(--font-zelda);
+  font-weight: 700;
+}
+[data-zone="zelda"] .site-nav .gchip img {
+  width: 40px;
+  height: 30px;
+}
+[data-zone="zelda"] .site-nav .slink {
+  color: #A4B9B2;
+}
+[data-zone="zelda"] .site-nav .slink:hover,
+[data-zone="zelda"] .site-nav .slink.on {
+  color: #E6EEEA;
+}
+[data-zone="zelda"] .site-nav .slink.on::after {
+  background: #4FE0B6;
+  box-shadow: 0 0 12px rgba(79, 224, 182, 0.8);
+}
+
+@media (max-width: 860px) {
+  .site-nav .bar-in {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 64px auto;
+    height: auto;
+    row-gap: 0;
+    padding-bottom: 12px;
+  }
+  .site-nav .search-slot {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  /* En móvil la barra del juego se desliza en horizontal y los mega-menús
+     no caben: se navega con los enlaces. En escritorio no hay overflow,
+     para que los mega-menús no se recorten. */
+  .site-nav .sub-in {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .site-nav .sub-in::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav .mega {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .site-nav .brand-name {
+    display: none;
+  }
+}

@@ -39,6 +39,26 @@ async function refreshProfile() {
   state.profile = state.user ? await users.getUserProfile(state.user.uid) : null;
 }
 
+// Tras entrar, leer el perfil es secundario: si falla (red, reglas), la
+// sesión ya está iniciada y no debe mostrarse como un error de acceso.
+const refreshProfileQuietly = () =>
+  refreshProfile().catch((err) => console.warn("No se pudo leer el perfil del usuario:", err));
+
+// Resuelve cuando ya se sabe si hay sesión (lo usa el router para las rutas
+// con meta.requiresAuth). Devuelve true si hay usuario.
+export function whenAuthReady() {
+  start().catch(() => {});
+  if (state.ready) return Promise.resolve(!!state.user);
+  return new Promise((resolve) => {
+    const timer = setInterval(() => {
+      if (state.ready) {
+        clearInterval(timer);
+        resolve(!!state.user);
+      }
+    }, 30);
+  });
+}
+
 export function useAuth() {
   start().catch(() => {});
 
@@ -53,17 +73,25 @@ export function useAuth() {
     isLoggedIn,
     isPremium,
     displayName,
+    refreshProfile,
     async login(email, password) {
       const { auth } = await start();
       await auth.login(email, password);
-      await refreshProfile();
+      await refreshProfileQuietly();
     },
     async register(data) {
       const { auth } = await start();
       const user = await auth.register(data);
       // onUserChange salta antes de que exista el perfil: se vuelve a leer.
       state.user = { uid: user.uid, email: user.email, displayName: data.displayName || user.displayName };
-      await refreshProfile();
+      await refreshProfileQuietly();
+    },
+    async loginWithGoogle() {
+      const { auth } = await start();
+      const user = await auth.loginWithGoogle();
+      // Igual que en register: el perfil puede crearse después de que salte onUserChange.
+      state.user = { uid: user.uid, email: user.email, displayName: user.displayName };
+      await refreshProfileQuietly();
     },
     async logout() {
       const { auth } = await start();

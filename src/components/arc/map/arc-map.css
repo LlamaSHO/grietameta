@@ -1,0 +1,89 @@
+/* ARC Raiders · visor de mapas: paleta y clases compartidas por los
+   componentes de src/components/arc/map (diseño: models/paginas/ArcMapa.dc.html).
+   Todo va bajo .arcmap para no afectar al resto del sitio. */
+
+.arcmap {
+  --am-bg: #0b0a0e;
+  --am-board: #100e14;
+  --am-side: #121016;
+  --am-panel: #141219;
+  --am-card: #17151d;
+  --am-card-sel: #1d1a23;
+  --am-ink: #f2ebdd;
+  --am-ink-2: #e2dbce;
+  --am-dim: #c8c1b6;
+  --am-mute: #aba49a;
+  --am-faint: #9a938a;
+  --am-line: rgba(242, 235, 221, 0.1);
+  --am-line-soft: rgba(242, 235, 221, 0.07);
+  --am-glass: rgba(16, 14, 20, 0.9);
+  --am-yellow: #f5c02a;
+  --am-heat: #ff5c30;
+  --am-stripe: linear-gradient(90deg, #e5372b 0 20%, #f28a1e 20% 40%, #f5c02a 40% 60%, #2fb45a 60% 80%, #3bc9e8 80%);
+
+  color: var(--am-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.arcmap .cond {
+  font-family: var(--font-arc);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.arcmap .num {
+  font-family: var(--font-brand);
+  font-weight: 600;
+}
+.arcmap a {
+  color: var(--am-yellow);
+}
+.arcmap a:hover {
+  color: #ffd45a;
+}
+
+/* Color de cada comerciante */
+.arcmap .c-y { --tc: #f5c02a; }
+.arcmap .c-c { --tc: #3bc9e8; }
+.arcmap .c-r { --tc: #ff6b5b; }
+.arcmap .c-o { --tc: #f28a1e; }
+.arcmap .c-g { --tc: #5fd18a; }
+
+/* Nivel de amenaza */
+.arcmap .thr {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+.arcmap .thr::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.arcmap .t-ext { color: #ff6b5b; background: rgba(229, 55, 43, 0.16); }
+.arcmap .t-cri { color: #ffa24a; background: rgba(242, 138, 30, 0.16); }
+.arcmap .t-alt { color: #f5c02a; background: rgba(245, 192, 42, 0.14); }
+.arcmap .t-mod { color: #7fd9a0; background: rgba(47, 180, 90, 0.14); }
+.arcmap .t-baj { color: #7fd6f0; background: rgba(59, 201, 232, 0.14); }
+
+@keyframes am-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

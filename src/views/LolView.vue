@@ -1,101 +1,255 @@
 <template>
-  <div ref="root" class="view-lol">
+  <!-- Hub de League of Legends (/lol). Diseño: models/paginas/Lol.dc.html.
+       Anclas que usa la barra de LoL: #tierlist, #destacado, #campeones, #premium. -->
+  <div ref="root" class="lol-page lol-hub">
+    <LolHeader :patch="patch" :ready="ready" />
 
-    <header class="hero">
+    <!-- Ancla de #tierlist: va fuera de la barra de filtros porque esta es
+         sticky (si el ancla fuera la barra, al pulsar «Tier list» desde abajo
+         la página no se movería). -->
+    <span id="tierlist" class="tl-anchor" aria-hidden="true"></span>
+
+    <!-- Filtros (fijos al bajar en escritorio) -->
+    <div ref="filtersEl" class="filters">
       <div class="wrap">
-        <div class="patch-tag" id="patchTag">Datos ilustrativos</div>
-        <h1>Sube de división con la <em>build</em> correcta antes que nadie.</h1>
-        <p class="lead">Winrate, pickrate y builds de los 165+ campeones de la grieta, ordenados por rol y por parche. Sin ruido, sin foros interminables.</p>
-      </div>
-    </header>
-
-    <main>
-      <section class="section" id="tierlist">
-        <div class="wrap">
-          <div class="section-head">
-            <div>
-              <h2>Tier list del parche</h2>
-              <p>Clasificación por impacto real en su rol: combinación de winrate, pickrate y facilidad de ejecución.</p>
-            </div>
-            <div class="section-sub" id="tierMeta"></div>
+        <div class="fbar">
+          <RoleFilter v-model="filters.role" />
+          <span class="fsep" aria-hidden="true"></span>
+          <RankDropdown v-model="filters.rank" :has-data="rankHasData" />
+          <RegionDropdown />
+          <span class="tag" title="Parche analizado">{{ patch.label }}</span>
+          <div class="fsearch">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+            <label class="sr-only" for="q-champ">Buscar campeón</label>
+            <input id="q-champ" v-model="filters.q" type="search" placeholder="Busca un campeón (Ahri, Vayne, K'Sante…)" autocomplete="off">
           </div>
-          <div id="tierListRoot"></div>
-        </div>
-      </section>
-
-      <div class="wrap">
-        <!-- AdSense: sustituye data-ad-slot por el ID de tu bloque de anuncio -->
-        <div class="ad-slot banner" id="adSlotTop">
-          <ins class="adsbygoogle"
-               style="display:block; width:100%;"
-               data-ad-client="ca-pub-6908736829395141"
-               data-ad-slot="7741286383"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
         </div>
       </div>
-
-      <section class="section" id="campeones">
-        <div class="wrap">
-          <div class="section-head">
-            <div>
-              <h2>Todos los campeones</h2>
-              <p>Filtra por rol o busca por nombre. Toca una carta para ver su build completa, runas y matchups.</p>
-            </div>
-            <div class="section-sub" id="gridCount"></div>
-          </div>
-          <div class="search-row" style="margin-bottom:14px;">
-            <div class="search-box">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" class="search-input" placeholder="Busca un campeón (ej. Ahri, Vayne, K'Sante)">
-            </div>
-          </div>
-          <div class="rank-chips" id="rankChips" hidden></div>
-          <div class="rank-note" id="rankNote" hidden></div>
-          <div class="role-chips" style="margin-bottom:22px;"></div>
-          <div class="champ-grid" id="champGrid"></div>
-        </div>
-      </section>
-
-      <div class="wrap">
-        <!-- AdSense: sustituye data-ad-slot por el ID de tu bloque de anuncio -->
-        <div class="ad-slot banner" id="adSlotMid">
-          <ins class="adsbygoogle"
-               style="display:block; width:100%;"
-               data-ad-client="ca-pub-6908736829395141"
-               data-ad-slot="9688862686"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      </div>
-
-      <section class="section premium-section" id="premium">
-        <div class="wrap" style="padding:40px 0 56px;">
-          <div class="section-head" style="border:none; padding-bottom:0;">
-            <div>
-              <h2>Navega sin anuncios</h2>
-              <p>Toda la tier list, winrates y builds completas son gratis para todo el mundo. Premium quita la publicidad y añade alertas de cambios de parche antes de que salgan las notas oficiales.</p>
-            </div>
-          </div>
-          <div class="plans" id="plansRoot"></div>
-          <div id="unlockBlock" style="margin-top:32px; max-width:480px;"></div>
-        </div>
-      </section>
-    </main>
-
-
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal" id="modalRoot"></div>
     </div>
+
+    <div class="wrap layout hub-layout">
+      <div class="main">
+        <LolTierList
+          :entries="tierRows"
+          :role="filters.role"
+          :total="champions.length"
+          :meta="metaLine"
+          :note="rankNote"
+          :loading="!ready"
+        />
+        <PatchSpotlight :spot="ready ? spotlight : null" />
+        <ChampionGrid :items="gridItems" :role-label="roleLabel" :loading="!ready" />
+      </div>
+
+      <aside class="aside" aria-label="Resumen y destacados">
+        <PatchSummary :patch="patch" />
+        <template v-if="ready">
+          <BestByRole :entries="entries" :rank-label="rankLabel" />
+          <MostBanned :entries="entries" :rank-label="rankLabel" />
+        </template>
+        <GamesByRank v-if="patch.real" v-model="filters.rank" :matches="rankMatches" />
+        <PremiumMini />
+        <AdSlot ad-slot="7741286383" />
+      </aside>
+    </div>
+
+    <div class="wrap hub-ad">
+      <AdSlot ad-slot="9688862686" variant="banner" />
+    </div>
+
+    <LolPremium />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { usePageScript } from "@/composables/usePageScript";
-import { init } from "@/scripts/lol";
-import "@/assets/styles/views/lol.css";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { useLolData } from "@/composables/useLolData";
+import { fmtInt, normalizeSearch } from "@/services/lol/format";
+import LolHeader from "@/components/lol/LolHeader.vue";
+import RoleFilter from "@/components/lol/RoleFilter.vue";
+import RankDropdown from "@/components/lol/RankDropdown.vue";
+import RegionDropdown from "@/components/lol/RegionDropdown.vue";
+import LolTierList from "@/components/lol/LolTierList.vue";
+import PatchSpotlight from "@/components/lol/PatchSpotlight.vue";
+import ChampionGrid from "@/components/lol/ChampionGrid.vue";
+import PatchSummary from "@/components/lol/PatchSummary.vue";
+import BestByRole from "@/components/lol/BestByRole.vue";
+import MostBanned from "@/components/lol/MostBanned.vue";
+import GamesByRank from "@/components/lol/GamesByRank.vue";
+import PremiumMini from "@/components/lol/PremiumMini.vue";
+import AdSlot from "@/components/lol/AdSlot.vue";
+import LolPremium from "@/components/lol/LolPremium.vue";
+import "@/components/lol/lol.css";
 
+const route = useRoute();
+const { state, filters, champions, patch, spotlight, rankInfo, rankEntries, rankMatches, rankHasData } = useLolData();
+
+const ready = computed(() => state.status === "ready");
+
+// Entradas del rango elegido (todas las líneas), ordenadas por tier.
+const entries = computed(() => (ready.value ? rankEntries(filters.rank) : []));
+
+const query = computed(() => normalizeSearch(filters.q.trim()));
+const matchesQuery = (c) => !query.value || normalizeSearch(c.name).includes(query.value);
+const inRole = (c) => filters.role === "Todos" || c.role === filters.role;
+
+const tierRows = computed(() => entries.value.filter((e) => inRole(e.c) && matchesQuery(e.c)));
+
+// Rejilla: primero los que tienen datos en el rango (por tier), luego el resto.
+const gridItems = computed(() => {
+  const withData = tierRows.value.map((e) => ({ c: e.c, tier: e.tier, tc: e.tc }));
+  const seen = new Set(withData.map((g) => g.c.id));
+  const rest = champions.value
+    .filter((c) => !seen.has(c.id) && inRole(c) && matchesQuery(c))
+    .sort((a, b) => a.name.localeCompare(b.name, "es"))
+    .map((c) => ({ c, tier: null, tc: null }));
+  return [...withData, ...rest];
+});
+
+const current = computed(() => rankInfo(filters.rank));
+const roleLabel = computed(() => (filters.role === "Todos" ? "Todos los roles" : filters.role));
+const rankLabel = computed(() => (filters.rank === "ALL" ? "Todos los rangos" : current.value.label));
+const metaLine = computed(() => `${roleLabel.value} · ${filters.rank === "ALL" ? "todos los rangos" : current.value.label}`);
+const rankNote = computed(() => {
+  if (filters.rank === "ALL" || !patch.value.real) return "";
+  return `${current.value.label}: ${fmtInt(rankMatches(filters.rank))} partidas analizadas en este rango. Las builds son de todos los rangos juntos.`;
+});
+
+// Alto de la barra de filtros cuando va fija (sticky). Las anclas #destacado,
+// #campeones y #premium (.lol-anchor en lol.css) se adelantan ese alto para
+// que el bloque no quede tapado por la barra.
 const root = ref(null);
-usePageScript(root, init);
+const filtersEl = ref(null);
+let ro = null;
+function updateStickyHeight() {
+  const f = filtersEl.value;
+  if (!f || !root.value) return;
+  const h = getComputedStyle(f).position === "sticky" ? f.offsetHeight : 0;
+  root.value.style.setProperty("--lol-sticky-h", `${h}px`);
+}
+onMounted(() => {
+  updateStickyHeight();
+  if (typeof ResizeObserver !== "undefined" && filtersEl.value) {
+    ro = new ResizeObserver(updateStickyHeight);
+    ro.observe(filtersEl.value);
+  }
+});
+
+// Elemento del ancla de la URL. Se busca por id: un hash raro (#1abc, #a%20b)
+// no hace fallar a querySelector.
+function hashTarget() {
+  if (!route.hash) return null;
+  try {
+    return document.getElementById(decodeURIComponent(route.hash.slice(1)));
+  } catch {
+    return null;
+  }
+}
+
+// Al entrar con un ancla (#campeones…) los datos aún no están: cuando llegan,
+// la página crece y se vuelve a bajar al ancla. Justo después aún cambian
+// algunas alturas (fuentes, huecos de anuncio vacíos), así que se recoloca un
+// par de veces más, salvo que el usuario ya haya movido la página.
+const USER_EVENTS = ["wheel", "touchstart", "keydown", "pointerdown"];
+let settleTimers = [];
+function stopSettle() {
+  settleTimers.forEach(clearTimeout);
+  settleTimers = [];
+  USER_EVENTS.forEach((ev) => window.removeEventListener(ev, stopSettle));
+}
+watch(ready, async (v) => {
+  if (!v || !route.hash) return;
+  await nextTick();
+  updateStickyHeight();
+  const go = () => hashTarget()?.scrollIntoView({ behavior: "instant" });
+  go();
+  stopSettle();
+  settleTimers = [500, 1500].map((ms, i, all) =>
+    setTimeout(() => {
+      go();
+      if (i === all.length - 1) stopSettle();
+    }, ms)
+  );
+  USER_EVENTS.forEach((ev) => window.addEventListener(ev, stopSettle, { passive: true }));
+});
+
+onBeforeUnmount(() => {
+  ro?.disconnect();
+  stopSettle();
+});
 </script>
+
+<style scoped>
+.filters {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--subnav-h));
+  z-index: 40;
+  padding: 14px 0;
+  background: linear-gradient(180deg, var(--bg) 70%, rgba(7, 9, 13, 0));
+}
+.fbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px;
+  border-radius: 16px;
+  background: #0D1017;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.fsep { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.08); }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  color: #A0A8B4;
+}
+.fsearch {
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 180px;
+  flex: 1 1 220px;
+  max-width: 300px;
+}
+.fsearch svg { position: absolute; left: 12px; color: #8A93A0; pointer-events: none; }
+.fsearch input {
+  width: 100%;
+  height: 40px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  padding: 0 12px 0 36px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.fsearch input::placeholder { color: var(--ink-faint); }
+.fsearch input:focus { border-color: rgba(226, 181, 102, 0.55); }
+.tl-anchor { display: block; height: 0; }
+.hub-layout { padding-bottom: 32px; }
+.hub-ad { padding-bottom: 40px; }
+/* Sin anuncio (Premium o AdSense sin nada que servir) no queda el hueco. */
+.hub-ad:empty,
+.hub-ad:has(ins[data-ad-status="unfilled"]) { display: none; }
+
+@media (max-width: 860px) {
+  .filters { position: static; }
+  .fsep { display: none; }
+  .fsearch { margin-left: 0; flex: 1 1 100%; min-width: 0; max-width: none; }
+}
+@media (max-width: 560px) {
+  .fbar { gap: 8px; }
+  .filters { padding: 12px 0; }
+}
+</style>

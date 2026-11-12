@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import { whenAuthReady } from "@/composables/useAuth";
 
 const routes = [
   {
@@ -15,44 +16,88 @@ const routes = [
     meta: { game: "lol", title: "League of Legends — Builds, tier list y winrates | GrietaMeta" },
   },
   {
+    path: "/lol/campeon/:id",
+    name: "lol-champion",
+    component: () => import("@/views/lol/LolChampionView.vue"),
+    meta: { game: "lol", title: "Campeón — League of Legends | GrietaMeta" },
+  },
+  // ---- ARC Raiders: hub y secciones bajo /arc-raiders ----
+  {
     path: "/arc-raiders",
+    name: "arc",
+    component: () => import("@/views/arc-raiders/ArcHubView.vue"),
+    meta: {
+      game: "arc-raiders",
+      title: "ARC Raiders · Guía | GrietaMeta",
+      description: "Guía de ARC Raiders en español: mapas con misiones y enemigos, qué hacer con cada objeto, misiones por comerciante y puntos débiles de los ARC.",
+    },
+  },
+  {
+    path: "/arc-raiders/objetos",
     name: "arc-items",
     component: () => import("@/views/arc-raiders/ArcItemsView.vue"),
     meta: {
       game: "arc-raiders",
-      title: "ARC Raiders · Objetos | ArcMeta",
+      title: "ARC Raiders · Objetos | GrietaMeta",
       description: "Objetos de ARC Raiders en español: qué vender, reciclar, guardar o usar, con valores, reciclaje y recetas.",
     },
   },
   {
-    path: "/arc-misiones",
+    path: "/arc-raiders/misiones",
     name: "arc-quests",
     component: () => import("@/views/arc-raiders/ArcQuestsView.vue"),
     meta: {
       game: "arc-raiders",
-      title: "ARC Raiders · Misiones | ArcMeta",
+      title: "ARC Raiders · Misiones | GrietaMeta",
       description: "Seguimiento de misiones de ARC Raiders en español: marca las que completas, mira cuáles tienes disponibles y qué objetos debes guardar.",
     },
   },
   {
-    path: "/arc-enemigos",
+    path: "/arc-raiders/enemigos",
     name: "arc-enemies",
     component: () => import("@/views/arc-raiders/ArcEnemiesView.vue"),
     meta: {
       game: "arc-raiders",
-      title: "ARC Raiders · Enemigos | ArcMeta",
+      title: "ARC Raiders · Enemigos | GrietaMeta",
       description: "Todos los enemigos ARC de ARC Raiders en español: puntos débiles, qué sueltan y las mejores armas y balas para cada uno.",
     },
   },
   {
+    // Sin :mapa se abre el primer mapa.
+    path: "/arc-raiders/mapas/:mapa?",
+    name: "arc-map",
+    component: () => import("@/views/arc-raiders/ArcMapView.vue"),
+    meta: {
+      game: "arc-raiders",
+      title: "ARC Raiders · Mapas | GrietaMeta",
+      description: "Mapas de ARC Raiders con las misiones y las zonas de cada enemigo.",
+    },
+  },
+
+  // ---- Zelda: hub (mapa + información) y guías ----
+  {
     path: "/zelda",
     name: "zelda",
     component: () => import("@/views/ZeldaView.vue"),
+    // Direcciones antiguas: /zelda#semillas, #santuarios… son ahora guías propias.
+    beforeEnter: (to) => {
+      const guia = to.hash.slice(1);
+      if (["santuarios", "semillas", "misiones", "armaduras", "conjuntos"].includes(guia)) {
+        return { name: "zelda-guide", params: { guia }, replace: true };
+      }
+      return true;
+    },
     meta: {
       game: "zelda-totk",
-      title: "Zelda: Tears of the Kingdom · Guía | ZeldaMeta",
+      title: "Zelda: Tears of the Kingdom · Guía | GrietaMeta",
       description: "Guía de Zelda: Tears of the Kingdom en español: mapa de semillas kolog y santuarios, misiones principales y secundarias y armaduras con más defensa.",
     },
+  },
+  {
+    path: "/zelda/:guia(santuarios|semillas|misiones|armaduras|conjuntos)",
+    name: "zelda-guide",
+    component: () => import("@/views/zelda/ZeldaGuideView.vue"),
+    meta: { game: "zelda-totk", title: "Zelda: Tears of the Kingdom · Guía | GrietaMeta" },
   },
   {
     path: "/login",
@@ -68,6 +113,27 @@ const routes = [
       title: "Contacto | GrietaMeta",
       description: "Escríbenos si falta algo, necesitas ayuda o quieres que añadamos un juego a GrietaMeta.",
     },
+  },
+  {
+    path: "/premium",
+    name: "premium",
+    component: () => import("@/views/premium/PremiumView.vue"),
+    meta: {
+      title: "Premium | GrietaMeta",
+      description: "GrietaMeta Premium: navega sin anuncios y recibe las alertas de parche antes que nadie.",
+    },
+  },
+  {
+    path: "/cuenta",
+    name: "account",
+    component: () => import("@/views/account/AccountView.vue"),
+    meta: { title: "Mi cuenta | GrietaMeta", requiresAuth: true },
+  },
+  {
+    path: "/cuenta/premium",
+    name: "account-premium",
+    component: () => import("@/views/account/AccountPremiumView.vue"),
+    meta: { title: "Mi Premium | GrietaMeta", requiresAuth: true },
   },
   {
     path: "/privacidad",
@@ -93,6 +159,8 @@ const routes = [
 
   // Direcciones antiguas (antes de pasar a Vue).
   { path: "/juegos", redirect: "/" },
+  { path: "/arc-misiones", redirect: { name: "arc-quests" } },
+  { path: "/arc-enemigos", redirect: { name: "arc-enemies" } },
   { path: "/registro", redirect: { name: "login", query: { modo: "registro" } } },
   { path: "/index.html", redirect: (to) => ({ path: "/lol", hash: to.hash }) },
   { path: "/privacidad.html", redirect: "/privacidad" },
@@ -110,15 +178,26 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, _from, saved) {
+  scrollBehavior(to, from, saved) {
     if (saved) return saved;
     // El nav es fijo: se deja su alto de margen (scroll-padding-top de base.css).
     if (to.hash) {
       const navOffset = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop, 10) || 0;
       return { el: to.hash, top: navOffset, behavior: "smooth" };
     }
-    return { top: 0 };
+    // Misma página y solo cambia la query (filtros, ficha abierta, misión
+    // elegida en el mapa…): no se mueve el scroll.
+    if (to.path === from.path) return false;
+    // Al cambiar de página se aparece arriba del todo, sin animar el scroll.
+    return { top: 0, behavior: "instant" };
   },
+});
+
+// Rutas de usuario: sin sesión se va a /login y luego se vuelve aquí.
+router.beforeEach(async (to) => {
+  if (!to.meta.requiresAuth) return true;
+  const loggedIn = await whenAuthReady();
+  return loggedIn ? true : { name: "login", query: { redirect: to.fullPath } };
 });
 
 const DEFAULT_DESCRIPTION = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";

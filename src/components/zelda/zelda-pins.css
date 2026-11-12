@@ -1,0 +1,198 @@
+/* Iconos del mapa de Zelda (MapPin.vue, MapLegend.vue y la lista de
+   categorías): círculo de color + glifo con máscara (iconos propios en
+   public/images/zelda/iconos). Diseño: .pin / .m / .tip de Zelda.dc.html.
+
+   En el mapa van dentro de PanZoomMap: se colocan con left/top en % y se
+   contra-escalan con --pz-s, que aquí se afina por nivel de zoom (.zl0….zl4). */
+
+.zpin {
+  --pc: #4FE0B6;
+  --ic: url(/images/zelda/iconos/santuario.svg);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #04130F;
+  background: var(--pc);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 2;
+  font: inherit;
+  color: inherit;
+}
+.zpin::after {
+  content: "";
+  width: 62%;
+  height: 62%;
+  background: #04211A;
+  -webkit-mask: var(--ic) center / contain no-repeat;
+  mask: var(--ic) center / contain no-repeat;
+}
+.zpin.p-sh { --pc: #4FE0B6; --ic: url(/images/zelda/iconos/santuario.svg); }
+.zpin.p-sh.sky { --pc: #E9CF7E; }
+.zpin.p-tw { --pc: #A78BFA; --ic: url(/images/zelda/iconos/torre.svg); }
+.zpin.p-cv { --pc: #E8A15A; --ic: url(/images/zelda/iconos/cueva.svg); }
+.zpin.p-sd {
+  --pc: #B5E86E;
+  --ic: url(/images/zelda/iconos/semilla.svg);
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.zpin.p-sd2 {
+  --pc: #F1E7C8;
+  --ic: url(/images/zelda/iconos/semilla.svg);
+  width: 18px;
+  height: 18px;
+  border-width: 1.5px;
+  z-index: 1;
+}
+.zpin.done { --pc: #F1E7C8; --ic: url(/images/zelda/iconos/hecho.svg); }
+
+/* En el mapa */
+.zpin.m {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(var(--pz-s, 1));
+  transition: transform 0.7s var(--ease-out);
+}
+.pz-in.drag .zpin.m {
+  transition: none;
+}
+.zpin.m:hover {
+  z-index: 6;
+  filter: brightness(1.15);
+}
+.zpin.m:hover,
+.zpin.m:focus-visible {
+  z-index: 8;
+}
+.zpin.m:focus-visible {
+  outline: 2px solid #F1E7C8;
+  outline-offset: 2px;
+}
+.zpin.m.sel {
+  z-index: 7;
+  border-color: #F1E7C8;
+  animation: zh-pulse 1.6s infinite;
+}
+
+/* Círculo de destino de los kologs con amigo */
+.zpin-fr {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px dashed #F1E7C8;
+  background: rgba(5, 12, 11, 0.5);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(var(--pz-s, 1));
+  transition: transform 0.7s var(--ease-out);
+}
+.pz-in.drag .zpin-fr {
+  transition: none;
+}
+
+/* Tamaño por nivel de zoom */
+.zl0 .zpin.m, .zl0 .zpin-fr { --pz-s: 0.85; }
+.zl1 .zpin.m, .zl1 .zpin-fr { --pz-s: 0.65; }
+.zl2 .zpin.m, .zl2 .zpin-fr { --pz-s: 0.45; }
+.zl3 .zpin.m, .zl3 .zpin-fr { --pz-s: 0.32; }
+.zl4 .zpin.m, .zl4 .zpin-fr { --pz-s: 0.24; }
+.zl0 .zpin.m.p-sd, .zl0 .zpin.m.p-sd2 { --pz-s: 0.6; }
+.zl1 .zpin.m.p-sd, .zl1 .zpin.m.p-sd2 { --pz-s: 0.5; }
+
+/* Tarjeta al pasar el ratón */
+.zpin-tip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  min-width: 180px;
+  max-width: 240px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: rgba(6, 18, 16, 0.96);
+  border: 1px solid rgba(127, 235, 203, 0.28);
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.8);
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
+  z-index: 9;
+}
+.zpin-tip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  transform: rotate(45deg);
+  background: rgba(6, 18, 16, 0.96);
+  border-right: 1px solid rgba(127, 235, 203, 0.28);
+  border-bottom: 1px solid rgba(127, 235, 203, 0.28);
+}
+.zpin-tip b {
+  display: block;
+  font: 600 13px/1.25 var(--font-body);
+  color: #E6EEEA;
+}
+.zpin-tip small {
+  display: block;
+  margin-top: 3px;
+  font: 500 11.5px/1.3 var(--font-body);
+  color: #93AAA3;
+}
+.zpin-tip em {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font: 600 11px/1.4 var(--font-body);
+  font-style: normal;
+  background: rgba(127, 235, 203, 0.1);
+  color: #7FEBCB;
+}
+.zpin-tip em.ok {
+  background: rgba(241, 231, 200, 0.14);
+  color: #F1E7C8;
+}
+.zpin.m:hover .zpin-tip,
+.zpin.m:focus-visible .zpin-tip {
+  display: block;
+  animation: zh-fade 0.18s ease-out both;
+}
+
+/* Versión fija para la leyenda y la lista de categorías */
+.zpin.lg {
+  position: static;
+  width: 20px;
+  height: 20px;
+  transform: none;
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+  animation: none;
+  flex-shrink: 0;
+}
+.zpin.lg.p-sd {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 860px) {
+  .zl0 .zpin.m, .zl0 .zpin-fr { --pz-s: 0.55; }
+  .zl1 .zpin.m, .zl1 .zpin-fr { --pz-s: 0.45; }
+  .zl0 .zpin.m.p-sd, .zl0 .zpin.m.p-sd2 { --pz-s: 0.36; }
+  .zl1 .zpin.m.p-sd, .zl1 .zpin.m.p-sd2 { --pz-s: 0.3; }
+  /* El visor es pequeño: al acercar, iconos algo menores para que no se tapen. */
+  .zl2 .zpin.m, .zl2 .zpin-fr { --pz-s: 0.3; }
+  .zl3 .zpin.m, .zl3 .zpin-fr { --pz-s: 0.22; }
+  .zl4 .zpin.m, .zl4 .zpin-fr { --pz-s: 0.17; }
+}

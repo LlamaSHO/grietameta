@@ -1,0 +1,280 @@
+/* Estilos comunes de la zona de League of Legends (hub /lol, ficha de
+   campeón y mega-menú de la barra de LoL). Diseño: models/paginas/Lol.dc.html
+   y LolCampeon.dc.html. Todo va bajo .lol-page (o .lol-mega en el nav) para no
+   chocar con otras vistas; lo propio de cada bloque está en su componente. */
+
+@keyframes lol-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes lol-kb {
+  from { transform: scale(1.08) translateX(0); }
+  to { transform: scale(1.16) translateX(-2%); }
+}
+@keyframes lol-shine {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0 0; }
+}
+@keyframes lol-ping {
+  0% { box-shadow: 0 0 0 0 currentColor; }
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@keyframes lol-pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.lol-page {
+  position: relative;
+  color: var(--ink);
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.lol-page a { color: var(--gold-hi); }
+.lol-page a:hover { color: var(--accent); }
+.lol-page .disp { font-family: var(--font-display); }
+
+/* Iconos oficiales de posición (máscara: toman el color del texto) */
+:is(.lol-page, .lol-mega) .pi {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+:is(.lol-page, .lol-mega) .pi-all { -webkit-mask-image: url(/images/lol/posiciones/fill.png); mask-image: url(/images/lol/posiciones/fill.png); }
+:is(.lol-page, .lol-mega) .pi-top { -webkit-mask-image: url(/images/lol/posiciones/top.png); mask-image: url(/images/lol/posiciones/top.png); }
+:is(.lol-page, .lol-mega) .pi-jungle { -webkit-mask-image: url(/images/lol/posiciones/jungle.png); mask-image: url(/images/lol/posiciones/jungle.png); }
+:is(.lol-page, .lol-mega) .pi-mid { -webkit-mask-image: url(/images/lol/posiciones/middle.png); mask-image: url(/images/lol/posiciones/middle.png); }
+:is(.lol-page, .lol-mega) .pi-bot { -webkit-mask-image: url(/images/lol/posiciones/bottom.png); mask-image: url(/images/lol/posiciones/bottom.png); }
+:is(.lol-page, .lol-mega) .pi-sup { -webkit-mask-image: url(/images/lol/posiciones/utility.png); mask-image: url(/images/lol/posiciones/utility.png); }
+
+/* Anclas (#destacado, #campeones, #premium). Van dentro de un bloque con
+   position: relative y se adelantan el alto de la barra de filtros fija
+   (--lol-sticky-h, lo calcula LolView) para que el bloque no quede debajo. */
+.lol-page .lol-anchor {
+  position: absolute;
+  top: calc(-1 * var(--lol-sticky-h, 0px));
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Tarjetas */
+.lol-page .card {
+  border-radius: 18px;
+  background: #0D1017;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.lol-page .card-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 14px;
+}
+.lol-page .card-h h2,
+.lol-page .card-h h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.lol-page .card-h .meta {
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-align: right;
+}
+.lol-page .note {
+  margin: 0 20px 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(10, 200, 185, 0.07);
+  border: 1px solid rgba(10, 200, 185, 0.2);
+  font-size: 13px;
+  color: #9EE9E0;
+}
+
+/* Maquetación en dos columnas (contenido + lateral) */
+.lol-page .layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.lol-page .main {
+  flex: 999 1 640px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.lol-page .aside {
+  flex: 1 1 300px;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Insignias de tier */
+.lol-page .tier {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  font-family: var(--font-display);
+  border: 1px solid;
+}
+.lol-page .t-sp {
+  color: #1B1204;
+  border-color: transparent;
+  background: linear-gradient(110deg, #FFD27A 0%, #F2A93B 40%, #FFE7AE 50%, #F2A93B 60%, #FFD27A 100%);
+  background-size: 250% 100%;
+  animation: lol-shine 3.5s ease-in-out infinite;
+  box-shadow: 0 0 18px -4px rgba(242, 169, 59, 0.8);
+}
+.lol-page .t-s { color: #F5B64A; background: rgba(245, 182, 74, 0.12); border-color: rgba(245, 182, 74, 0.4); }
+.lol-page .t-a { color: #5FD6C8; background: rgba(95, 214, 200, 0.1); border-color: rgba(95, 214, 200, 0.35); }
+.lol-page .t-b { color: #8DB3EE; background: rgba(141, 179, 238, 0.1); border-color: rgba(141, 179, 238, 0.32); }
+.lol-page .t-c { color: #A6AEB9; background: rgba(166, 174, 185, 0.08); border-color: rgba(166, 174, 185, 0.25); }
+.lol-page .t-d { color: #EE8A7A; background: rgba(238, 138, 122, 0.08); border-color: rgba(238, 138, 122, 0.3); }
+.lol-page .t-none { color: #7C8592; background: transparent; border-color: rgba(255, 255, 255, 0.12); }
+
+/* Winrate con barra */
+.lol-page .wr { display: flex; align-items: center; gap: 10px; }
+.lol-page .wr b { font-weight: 600; font-size: 14px; min-width: 52px; }
+.lol-page .wr.hi b { color: #62D99C; }
+.lol-page .wr.lo b { color: #F08A7A; }
+.lol-page .bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  max-width: 110px;
+}
+.lol-page .bar i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: #A6AEB9;
+  transition: width 0.6s var(--ease-out);
+}
+.lol-page .wr.hi .bar i { background: linear-gradient(90deg, #2FA36C, #62D99C); }
+.lol-page .wr.lo .bar i { background: linear-gradient(90deg, #B4554A, #F08A7A); }
+.lol-page .num { font-size: 14px; color: #C6CBD2; }
+
+/* Lista lateral de campeones (Mejores por rol, Otros de la línea) */
+.lol-page .w-list { display: flex; flex-direction: column; padding: 0 12px 12px; }
+.lol-page .wl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.lol-page .wl:hover { background: rgba(255, 255, 255, 0.04); color: var(--ink); }
+.lol-page .wl img { width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
+.lol-page .wl .tx { flex: 1; min-width: 0; }
+.lol-page .wl .tx b { display: block; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lol-page .wl .tx span { font-size: 12px; color: var(--ink-mute); }
+.lol-page .wl .rv { font-size: 13.5px; font-weight: 600; color: #C6CBD2; min-width: 48px; text-align: right; }
+.lol-page .wl .rv.hi { color: #62D99C; }
+.lol-page .wl .rv.lo { color: #F08A7A; }
+
+/* Botones */
+.lol-page .btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(180deg, #E0AE58, #C8913A);
+  color: #17120A;
+  font: inherit;
+  font-weight: 700;
+  font-size: 14.5px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.lol-page .btn-gold:hover { color: #17120A; filter: brightness(1.06); }
+.lol-page .btn-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.lol-page .btn-soft:hover { color: var(--ink); background: rgba(255, 255, 255, 0.09); border-color: rgba(226, 181, 102, 0.4); }
+
+.lol-page .kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+.lol-page .kicker::before {
+  content: "";
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold-hi);
+}
+
+/* Estado de carga */
+.lol-page .loading {
+  padding: 28px 20px;
+  color: var(--ink-mute);
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  /* En móvil la nota de la cabecera de cada tarjeta baja debajo del título. */
+  .lol-page .card-h { flex-wrap: wrap; row-gap: 2px; padding: 16px 16px 12px; }
+  .lol-page .card-h .meta { text-align: left; }
+  .lol-page .note { margin: 0 14px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lol-page *,
+  .lol-page *::before,
+  .lol-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

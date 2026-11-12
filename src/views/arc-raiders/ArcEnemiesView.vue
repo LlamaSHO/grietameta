@@ -1,17 +1,35 @@
 <template>
-  <div ref="root" class="view-arc-enemies">
+  <!-- Enemigos ARC (/arc-raiders/enemigos). Sin diseño propio: sigue el
+       estilo del hub (components/arc). Buscador, filtros por amenaza y mapa,
+       tarjetas y ficha de cada ARC. Admite ?ver=<id> para abrir su ficha. -->
+  <div class="view-arc-enemies arc-ui">
+    <ArcListHeader
+      crumb="Enemigos"
+      title="Enemigos ARC"
+      accent="Dónde disparar"
+      lead="Todos los ARC del juego: dónde aparecen, su punto débil, qué sueltan y con qué armas y balas conviene enfrentarlos."
+      img="/images/arc-raiders/bots/arc_bastion.webp"
+    >
+      <template v-if="data.status === 'ready'">
+        <span class="pill"><b>{{ enemies.length }}</b>tipos de ARC</span>
+        <span v-for="t in threatCounts" :key="t.value" class="pill"><span class="thr" :class="t.cls">{{ t.label }}</span><b>{{ t.count }}</b></span>
+      </template>
+    </ArcListHeader>
 
-    <main>
-      <h1>ARC Raiders · Enemigos</h1>
-      <p class="sub">Todos los ARC del juego: dónde aparecen, su punto débil, qué sueltan y con qué armas y balas conviene enfrentarlos.</p>
-
-      <div class="controls">
-        <input id="search" class="search" type="search" placeholder="Buscar enemigo…" aria-label="Buscar enemigo" autocomplete="off">
+    <div class="wrap body">
+      <div class="tools">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+          <label class="sr-only" for="arc-enemies-q">Buscar enemigo</label>
+          <input id="arc-enemies-q" v-model="search" type="search" placeholder="Buscar enemigo o botín…" autocomplete="off">
+        </div>
+        <div class="filters">
+          <ArcFilterRow v-model="f.threat" label="Amenaza" :options="threatOptions" />
+          <ArcFilterRow v-model="f.map" label="Mapa" :options="mapOptions" />
+        </div>
       </div>
-      <div class="filter-row"><span class="filter-label">Amenaza</span><div id="threats" class="chips" role="group" aria-label="Filtrar por amenaza"></div></div>
-      <div class="filter-row"><span class="filter-label">Mapa</span><div id="maps" class="chips" role="group" aria-label="Filtrar por mapa"></div></div>
 
-      <details class="panel">
+      <details class="panel how">
         <summary>¿Cómo se calculan las armas y balas recomendadas?</summary>
         <div class="in">
           <p>Los datos disponibles no incluyen la vida ni el blindaje exacto de cada ARC, así que la recomendación es <b>orientativa</b>.</p>
@@ -20,33 +38,120 @@
         </div>
       </details>
 
-      <div id="count" class="count" aria-live="polite"></div>
-      <div id="status" class="status">Cargando enemigos…</div>
-      <div id="grid" class="grid"></div>
-    </main>
+      <div class="count" aria-live="polite">
+        <template v-if="data.status === 'ready'">{{ list.length }} de {{ enemies.length }} enemigos</template>
+      </div>
 
-    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
-      <div class="sheet" id="sheet"></div>
+      <div v-if="list.length" class="grid">
+        <button v-for="e in list" :key="e.id" type="button" class="card" :aria-label="`${e.name}, amenaza ${e.threatEs || threatLabel(e.threat)}`" @click="open(e)">
+          <span class="pic">
+            <img v-if="e.hasImage && !failed[e.id]" :src="arcBotImageUrl(e.id)" alt="" loading="lazy" decoding="async" @error="failed[e.id] = true">
+            <span v-else class="ph" aria-hidden="true">{{ e.name.charAt(0) }}</span>
+            <span class="thr" :class="threatClass(e.threat)">{{ e.threatEs || threatLabel(e.threat) }}</span>
+          </span>
+          <span class="bd">
+            <span class="nm cond">{{ e.name }}</span>
+            <span class="ty">{{ e.type }}</span>
+            <span v-if="e.weakness" class="wk"><b>Punto débil:</b> {{ e.weakness }}</span>
+            <span class="mini">{{ e.drops.length }} botines · {{ e.maps.length }} {{ e.maps.length === 1 ? "mapa" : "mapas" }}</span>
+          </span>
+        </button>
+      </div>
+
+      <p v-if="data.status === 'loading'" class="status">Cargando enemigos…</p>
+      <p v-else-if="data.status === 'error'" class="status err">
+        No se pudieron cargar los enemigos. Inténtalo de nuevo en unos segundos.
+        <button type="button" class="btn-s" @click="data.reload()">Reintentar</button>
+      </p>
+      <p v-else-if="!list.length" class="status">Ningún enemigo coincide con los filtros.</p>
     </div>
 
-    <aside class="credits">
-      <p id="foot-data"></p>
-      <p>
-        Datos del <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener">Proyecto de datos ARC</a>
-        (licencia MIT, <a href="/data/arc-raiders/LICENSE-arcraiders-data.txt">texto de la licencia</a>) y de la comunidad de
-        <a href="https://arctracker.io" target="_blank" rel="noopener">ARC Tracker</a>.
-        El contenido del juego pertenece a Embark Studios AB y sus licenciantes. ArcMeta no está afiliado ni respaldado por Embark Studios.
-      </p>
-    </aside>
+    <ArcDialog :open="!!current" labelledby="arc-enemy-title" wide @close="close">
+      <ArcEnemySheet v-if="current" :enemy="current" title-id="arc-enemy-title" />
+    </ArcDialog>
+
+    <ArcCredits :note="dataNote" arc-tracker />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { usePageScript } from "@/composables/usePageScript";
-import { init } from "@/scripts/arc-enemies";
+import { computed, reactive, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import ArcListHeader from "@/components/arc/lists/ArcListHeader.vue";
+import ArcFilterRow from "@/components/arc/lists/ArcFilterRow.vue";
+import ArcDialog from "@/components/arc/lists/ArcDialog.vue";
+import ArcEnemySheet from "@/components/arc/lists/ArcEnemySheet.vue";
+import ArcCredits from "@/components/arc/hub/ArcCredits.vue";
+import { loadArcEnemies, useArcJson } from "@/components/arc/hub/arcData";
+import { arcBotImageUrl } from "@/services/arcRaiders";
+import { THREAT_ORDER, fmtDate, norm, threatClass, threatLabel } from "@/components/arc/lists/arcLabels";
+import "@/components/arc/hub/arc-ui.css";
 import "@/assets/styles/views/arc-enemies.css";
 
-const root = ref(null);
-usePageScript(root, init);
+const route = useRoute();
+const router = useRouter();
+const data = useArcJson(loadArcEnemies);
+const enemies = computed(() =>
+  (data.data?.enemies || []).map((e) => ({ ...e, maps: e.maps || [], drops: e.drops || [], weapons: e.weapons || [], ammo: e.ammo || [] }))
+);
+const failed = reactive({});
+
+// ---- Filtros ----
+const search = ref("");
+const f = reactive({ threat: "", map: "" });
+const list = computed(() => {
+  const q = norm(search.value.trim());
+  return enemies.value.filter((e) => {
+    if (f.threat && e.threat !== f.threat) return false;
+    if (f.map && !e.maps.includes(f.map)) return false;
+    if (q) {
+      const hay = norm(`${e.name} ${e.type} ${e.drops.map((d) => d.name).join(" ")}`);
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+});
+const threatCounts = computed(() =>
+  THREAT_ORDER.slice()
+    .reverse()
+    .map((t) => ({ value: t, label: threatLabel(t), cls: threatClass(t), count: enemies.value.filter((e) => e.threat === t).length }))
+    .filter((t) => t.count)
+);
+const threatOptions = computed(() =>
+  THREAT_ORDER.map((t) => ({ value: t, label: threatLabel(t), count: enemies.value.filter((e) => e.threat === t).length })).filter((o) => o.count)
+);
+const mapOptions = computed(() => {
+  const n = {};
+  enemies.value.forEach((e) => e.maps.forEach((m) => (n[m] = (n[m] || 0) + 1)));
+  return Object.keys(n)
+    .sort()
+    .map((m) => ({ value: m, label: m, count: n[m] }));
+});
+
+// ---- Ficha (también desde ?ver=<id>, p. ej. desde el hub) ----
+const current = ref(null);
+function open(e) {
+  current.value = e;
+}
+// Al cerrar se quita ?ver de la URL. Con router.replace (no history) para que
+// el router sepa la ruta real y un enlace a la misma ficha la vuelva a abrir;
+// el scroll se conserva porque solo cambia la query.
+function close() {
+  current.value = null;
+  if (route.query.ver) router.replace({ name: "arc-enemies", query: { ...route.query, ver: undefined } });
+}
+watch(
+  [enemies, () => route.query.ver],
+  ([list, id]) => {
+    if (!id || !list.length) return;
+    const e = list.find((x) => x.id === id);
+    if (e) current.value = e;
+  },
+  { immediate: true }
+);
+
+const dataNote = computed(() => {
+  const d = data.data?.meta?.sourceDate;
+  return d ? `Datos del juego actualizados hasta el ${fmtDate(d)}. Las armas y balas recomendadas son orientativas.` : "";
+});
 </script>

@@ -29,25 +29,32 @@ npm run preview   # sirve dist/ para probar el build
 │   ├── router/index.js        # rutas, títulos y redirecciones de URLs antiguas
 │   ├── views/                 # una vista por página
 │   │   ├── HomeView.vue       #   /             portada: elige tu juego
-│   │   ├── LolView.vue        #   /lol          League of Legends
-│   │   ├── arc-raiders/       #   /arc-raiders, /arc-misiones, /arc-enemigos
-│   │   ├── ZeldaView.vue      #   /zelda
+│   │   ├── LolView.vue        #   /lol          League of Legends (hub)
+│   │   ├── lol/               #   /lol/campeon/:id  ficha de campeón
+│   │   ├── arc-raiders/       #   /arc-raiders (hub), /arc-raiders/{objetos,misiones,enemigos},
+│   │   │                      #   /arc-raiders/mapas/:mapa
+│   │   ├── ZeldaView.vue      #   /zelda        hub con mapa interactivo e información
+│   │   ├── zelda/             #   /zelda/{santuarios,semillas,misiones,armaduras,conjuntos}
+│   │   ├── premium/, account/ #   /premium, /cuenta, /cuenta/premium
 │   │   ├── legal/             #   /privacidad, /publicidad
 │   │   ├── LoginView.vue      #   /login        iniciar sesión, crear cuenta, recuperar contraseña
 │   │   ├── ContactView.vue    #   /contacto
 │   │   └── CheckoutSuccessView.vue  # /exito (vuelta de Stripe)
-│   ├── components/            # piezas reutilizables
+│   ├── components/            # piezas reutilizables (una carpeta por zona: home, lol, arc, zelda…)
 │   │   ├── nav/               #   nav central (SiteNav) + cuenta + nav de cada juego (games/)
-│   │   └── SiteFooter.vue     #   footer común con contacto
-│   ├── composables/           # lógica Vue reutilizable
-│   ├── scripts/               # lógica de cada vista migrada desde los HTML antiguos
+│   │   ├── maps/PanZoomMap.vue #  visor de mapas con arrastre y zoom (Zelda y ARC)
+│   │   ├── brand/GmMark.vue   #   marca GM (mini y animada)
+│   │   └── SiteFooter.vue     #   footer común
+│   ├── composables/           # lógica Vue reutilizable (sesión, datos de LoL, progreso de Zelda)
 │   ├── services/              # todo lo que se consume de fuera
-│   │   ├── firebase/          #   app, auth (usuarios) y users (perfiles en Firestore)
-│   │   ├── riotStats.js       #   estadísticas de LoL + Data Dragon
+│   │   ├── firebase/          #   app, auth (usuarios), users (perfiles) y progreso de Zelda
+│   │   ├── riotStats.js, lol/ #   estadísticas de LoL + Data Dragon
 │   │   ├── arcRaiders.js      #   datos e imágenes de ARC Raiders
+│   │   ├── arcMaps.js         #   puntos de misión y zonas de enemigos por mapa
 │   │   ├── games.js           #   catálogo de juegos
+│   │   ├── contact.js         #   formulario de contacto (api/contact)
 │   │   └── premium.js         #   Stripe, vía las funciones de /api
-│   ├── data/                  # datos que van dentro del código (guía de Zelda)
+│   ├── data/                  # datos que van dentro del código (Zelda: guía y mapa)
 │   └── assets/styles/         # CSS global y uno por vista (styles/views/)
 ├── public/                    # se sirve tal cual
 │   ├── data/                  # JSON (games.json, champion-stats.json, arc-raiders/)
@@ -61,21 +68,12 @@ npm run preview   # sirve dist/ para probar el build
 
 ### Cómo están hechas las vistas
 
-Las páginas venían de HTML sueltos con todo dentro. En la migración cada una
-se ha separado en tres piezas que se pueden ir convirtiendo a Vue "de verdad"
-poco a poco:
-
-- **Plantilla** en `src/views/…View.vue`.
-- **Estilos** en `src/assets/styles/views/<vista>.css`. `postcss.config.js`
-  los encierra solos en `.view-<vista>` (la clase raíz de la vista), para que
-  los estilos de una página no afecten a otra.
-- **Lógica** en `src/scripts/<vista>.js`, una función `init({ root, signal })`
-  que se ejecuta al montar la vista (`usePageScript`). Los listeners de
-  `document`/`window` deben registrarse con `{ signal }` para limpiarse al
-  salir de la vista.
-
-La portada, el login, el contacto, el nav y el footer ya son componentes Vue
-completos y sirven de modelo para las demás.
+Todas las páginas son componentes Vue con el diseño de `models/` (ver
+`docs/plan-rediseno.md`). Cada vista se apoya en componentes de su zona en
+`src/components/<zona>/` con sus estilos en `<style scoped>`. Los pocos CSS
+que quedan en `src/assets/styles/views/<vista>.css` (listas de ARC) se
+encierran solos en `.view-<vista>` gracias a `postcss.config.js`, para que no
+afecten a otras páginas.
 
 ### Nav y footer
 

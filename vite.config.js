@@ -9,4 +9,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  // `vite preview` detrás de un túnel temporal (localhost.run) para ver la
+  // web desde el móvil: solo se aceptan esos dominios además de localhost.
+  preview: {
+    allowedHosts: [".lhr.life", ".localhost.run"],
+  },
 });

@@ -5,21 +5,86 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // ---- Validaciones de los campos que escribe el propio usuario ----
+
+    // Avisos por juego (Mi Premium): mapa con lol / arc / zelda, todos booleanos.
+    function validAlerts(m) {
+      return m is map
+        && m.keys().hasOnly(["lol", "arc", "zelda"])
+        && (!("lol" in m) || m.lol is bool)
+        && (!("arc" in m) || m.arc is bool)
+        && (!("zelda" in m) || m.zelda is bool);
+    }
+
+    // Canal de los avisos: mapa con email / browser, booleanos.
+    function validAlertChannels(m) {
+      return m is map
+        && m.keys().hasOnly(["email", "browser"])
+        && (!("email" in m) || m.email is bool)
+        && (!("browser" in m) || m.browser is bool);
+    }
+
+    // Si el documento resultante trae alerts / alertChannels, deben ser válidos.
+    function validPreferences(data) {
+      return (!("alerts" in data) || validAlerts(data.alerts))
+        && (!("alertChannels" in data) || validAlertChannels(data.alertChannels));
+    }
+
+    // Nombre visible: texto de hasta 100 caracteres (la web pide 2–40; el
+    // margen es para nombres largos que vengan de Google al crear la cuenta).
+    function validName(data) {
+      return !("displayName" in data)
+        || (data.displayName is string && data.displayName.size() <= 100);
+    }
+
+    // Juegos favoritos: lista de slugs, como mucho 20.
+    function validFavorites(data) {
+      return !("favoriteGames" in data)
+        || (data.favoriteGames is list && data.favoriteGames.size() <= 20);
+    }
+
+    // Progreso del mapa de Zelda (services/firebase/zeldaProgress.js):
+    // { v: número, done: [claves] } con 1.500 claves como mucho.
+    function validZeldaProgress(data) {
+      return !("zeldaProgress" in data)
+        || (data.zeldaProgress is map
+            && data.zeldaProgress.keys().hasOnly(["v", "done"])
+            && data.zeldaProgress.v is int
+            && data.zeldaProgress.done is list
+            && data.zeldaProgress.done.size() <= 1500);
+    }
+
     // Perfil de usuario: cada uno solo lee y escribe el suyo.
-    // "role" e "is-premium" no los puede poner ni cambiar el propio usuario:
-    // los gestionará el servidor (por ejemplo, el webhook de Stripe).
+    // "role", "is-premium" y "premium" no los puede poner ni cambiar el propio
+    // usuario: los gestiona el servidor (por ejemplo, el webhook de Stripe).
+    // Lista blanca: al crear solo los campos de createUserProfile y al editar
+    // solo los de updateUserProfile (services/firebase/users.js). Así no se
+    // cuela ningún campo nuevo que algún día pueda dar permisos.
     match /users/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;
 
       allow create: if request.auth != null
         && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly([
+             "email", "displayName", "role", "favoriteGames",
+             "alerts", "alertChannels", "createdAt", "updatedAt"])
         && request.resource.data.role == "user"
-        && !("is-premium" in request.resource.data)
-        && !("premium" in request.resource.data);
+        && validName(request.resource.data)
+        && validFavorites(request.resource.data)
+        && validPreferences(request.resource.data);
 
       allow update: if request.auth != null
         && request.auth.uid == uid
-        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "is-premium", "premium", "email", "createdAt"]);
+        && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(["displayName", "favoriteGames", "alerts", "alertChannels", "zeldaProgress", "updatedAt"])
+        // Solo se valida lo que cambia: un dato antiguo raro no bloquea el resto.
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(["displayName"])
+            || validName(request.resource.data))
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(["favoriteGames"])
+            || validFavorites(request.resource.data))
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(["zeldaProgress"])
+            || validZeldaProgress(request.resource.data))
+        && validPreferences(request.resource.data);
 
       allow delete: if false;
     }

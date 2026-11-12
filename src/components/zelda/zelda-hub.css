@@ -1,0 +1,94 @@
+/* Hub de Zelda (/zelda): base de la página y piezas comunes a sus secciones.
+   Diseño: models/paginas/Zelda.dc.html. Clases con prefijo zh- para no
+   chocar con otras vistas; lo propio de cada bloque va en su componente. */
+
+.zh {
+  position: relative;
+  background: #050C0B;
+  color: #E6EEEA;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  overflow-x: clip;
+}
+.zh a {
+  color: #7FEBCB;
+}
+.zh a:hover {
+  color: #A8F5DE;
+}
+.zh-serif {
+  font-family: var(--font-zelda);
+}
+
+/* Antetítulo con raya: «Mapas», «Información»… */
+.zh-kick {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7FEBCB;
+}
+.zh-kick::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: #7FEBCB;
+}
+
+/* Secciones */
+.zh-sec {
+  padding: 52px 0 0;
+}
+.zh-sec-h {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.zh-sec-h p {
+  margin: 6px 0 0;
+  color: #A9BDB6;
+  max-width: 620px;
+}
+.zh-h2 {
+  margin: 8px 0 0;
+  font-family: var(--font-zelda);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+@keyframes zh-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes zh-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes zh-spinr {
+  to { transform: rotate(-360deg); }
+}
+@keyframes zh-drift {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+@keyframes zh-pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes zh-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(79, 224, 182, 0.7); }
+  70% { box-shadow: 0 0 0 14px rgba(79, 224, 182, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 224, 182, 0); }
+}
+@keyframes zh-fade {
+  from { opacity: 0; transform: translate(-50%, 4px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

@@ -16,19 +16,89 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://grietameta.vercel.app/arc-misiones</loc>
+    <loc>https://grietameta.vercel.app/arc-raiders/objetos</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://grietameta.vercel.app/arc-enemigos</loc>
+    <loc>https://grietameta.vercel.app/arc-raiders/misiones</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/enemigos</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/dam_battlegrounds</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/buried_city</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/the_spaceport</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/the_blue_gate</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/stella_montis</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/arc-raiders/mapas/riven_tides</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://grietameta.vercel.app/zelda</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/zelda/santuarios</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/zelda/semillas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/zelda/misiones</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/zelda/armaduras</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/zelda/conjuntos</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/premium</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://grietameta.vercel.app/contacto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://grietameta.vercel.app/privacidad</loc>

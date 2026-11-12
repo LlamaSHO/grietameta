@@ -16,7 +16,7 @@
       ],
       "tagline": "Tier list, winrates y builds de todos los campeones",
       "status": "live",
-      "icon": "/images/games/lol.png"
+      "icon": "/images/games/logo-lol.png"
     },
     {
       "slug": "arc-raiders",
@@ -32,7 +32,7 @@
       ],
       "tagline": "Objetos, misiones, enemigos y mapas",
       "status": "live",
-      "icon": "/images/games/arc-raiders.png"
+      "icon": "/images/games/logo-arc.png"
     },
     {
       "slug": "zelda-totk",
@@ -57,7 +57,7 @@
       ],
       "tagline": "Mapa de semillas kolog y santuarios, misiones y armaduras",
       "status": "building",
-      "icon": "/images/games/zelda-totk.png"
+      "icon": "/images/games/logo-zelda.png"
     }
   ]
 }

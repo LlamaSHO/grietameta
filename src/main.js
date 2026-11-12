@@ -4,5 +4,6 @@ import router from "./router";
 
 import "./assets/styles/base.css";
 import "./assets/styles/games-nav.css";
+import "./assets/styles/nav.css";
 
 createApp(App).use(router).mount("#app");

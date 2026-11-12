@@ -1,99 +1,229 @@
-/* GrietaMeta — buscador de juegos (usa las variables de color de cada página) */
+/* GrietaMeta — buscador de juegos (components/GameSearch.vue).
+   Diseño: .search de models/paginas/Main.dc.html. */
 
-.game-search{position:relative; flex:1; min-width:0; max-width:420px; margin:0 24px;}
-
-.game-search input{
-  -webkit-appearance:none; appearance:none;
-  width:100%; height:42px;
-  background:linear-gradient(180deg, rgba(21,26,35,.92), rgba(14,18,25,.92));
-  border:1px solid var(--panel-line,#262D3A); border-radius:0;
-  color:var(--ink,#E9E6DC); font-size:14px; font-family:inherit; letter-spacing:.01em;
-  padding:0 46px 0 42px; outline:none;
-  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+.game-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
 }
-.game-search input::placeholder{color:var(--ink-faint,#5D6673);}
+
+.game-search input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink, #ECE9E1);
+  font: inherit;
+  font-size: 14px;
+  padding: 0 44px 0 42px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.game-search input::placeholder {
+  color: #7C8592;
+}
 .game-search input::-webkit-search-cancel-button,
-.game-search input::-webkit-search-decoration{-webkit-appearance:none; display:none;}
-.game-search input:hover{border-color:#343D4D;}
-.game-search input:focus{
-  border-color:var(--gold-soft,#9C7A44);
-  background:#0E1219;
-  box-shadow:0 0 0 3px rgba(200,150,62,.14), 0 10px 28px rgba(0,0,0,.4);
+.game-search input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+.game-search input:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.game-search input:focus {
+  border-color: rgba(212, 160, 74, 0.6);
+  background: rgba(10, 13, 19, 0.9);
+  box-shadow: 0 0 0 4px rgba(212, 160, 74, 0.14);
 }
 
-.game-search .gs-icon{
-  position:absolute; left:14px; top:50%; transform:translateY(-50%);
-  color:var(--ink-dim,#97A0AC); opacity:.8; pointer-events:none;
-  transition:color .18s ease, opacity .18s ease;
+.game-search .gs-icon {
+  position: absolute;
+  left: 15px;
+  color: #8A93A0;
+  pointer-events: none;
+  transition: color 0.2s;
 }
-.game-search:focus-within .gs-icon{color:var(--gold,#C8963E); opacity:1;}
+.game-search:focus-within .gs-icon {
+  color: #D4A04A;
+}
 
 /* Atajo "/" (se oculta al enfocar el campo y en pantallas táctiles) */
-.game-search .gs-kbd{
-  position:absolute; right:10px; top:50%; transform:translateY(-50%);
-  font:600 11px/1 'IBM Plex Sans', sans-serif; color:var(--ink-faint,#5D6673);
-  border:1px solid var(--panel-line,#262D3A); background:rgba(255,255,255,.025);
-  padding:4px 7px; pointer-events:none; transition:opacity .15s ease;
+.game-search .gs-kbd {
+  position: absolute;
+  right: 10px;
+  font: 600 11px/1 "IBM Plex Sans", sans-serif;
+  color: #8A93A0;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  transition: opacity 0.15s;
 }
-.game-search:focus-within .gs-kbd{opacity:0;}
+.game-search:focus-within .gs-kbd {
+  opacity: 0;
+}
 
 /* ---------- desplegable ---------- */
-.game-results{
-  position:absolute; left:0; right:0; top:calc(100% + 8px); z-index:60;
-  list-style:none; margin:0; padding:6px;
-  background:linear-gradient(180deg, #121722, #0D1119);
-  border:1px solid var(--panel-line,#262D3A); border-top:2px solid var(--gold-soft,#9C7A44);
-  box-shadow:0 18px 44px rgba(0,0,0,.55);
-  max-height:360px; overflow-y:auto; text-align:left;
-  animation:gs-pop .14s ease-out;
+.game-results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 60;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: #0F131B;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.95);
+  max-height: 360px;
+  overflow-y: auto;
+  text-align: left;
+  animation: gs-pop 0.16s ease-out;
 }
-@keyframes gs-pop{from{opacity:0; transform:translateY(-4px);} to{opacity:1; transform:none;}}
-.game-results[hidden]{display:none;}
-
-.game-results li a{
-  display:flex; align-items:center; gap:12px;
-  padding:10px 12px; text-decoration:none; color:var(--ink,#E9E6DC);
-  border-left:2px solid transparent;
-  transition:background .12s ease, border-color .12s ease;
+@keyframes gs-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.game-results li.is-active a, .game-results li a:hover{
-  background:rgba(200,150,62,.08); border-left-color:var(--gold,#C8963E);
+.game-results[hidden] {
+  display: none;
 }
 
-/* icono hexagonal con las siglas del juego (misma forma que el logo) */
-.g-ico{
-  flex:0 0 38px; height:38px; display:flex; align-items:center; justify-content:center;
-  font-family:'Cinzel', serif; font-weight:700; font-size:12px; letter-spacing:.02em; color:#1A1305;
-  background:linear-gradient(135deg, var(--gold,#C8963E), var(--teal,#14C3B8));
-  clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+.game-results li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink, #ECE9E1);
+  transition: background 0.12s;
 }
-.g-ico{position:relative;}
-.g-ico img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
-.g-body{display:flex; flex-direction:column; min-width:0; flex:1; gap:1px;}
-.g-name{font-family:'Cinzel', serif; font-weight:600; font-size:14.5px; letter-spacing:.01em;}
-.g-tag{font-size:12px; color:var(--ink-dim,#97A0AC); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-
-.g-badge{
-  flex-shrink:0; font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
-  padding:3px 8px; border:1px solid currentColor; line-height:1.2;
+.game-results li.is-active a,
+.game-results li a:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
-.g-badge.g-live{color:var(--teal,#14C3B8);}
-.g-badge.g-soon{color:var(--gold,#C8963E);}
 
-.game-results .g-empty{padding:14px 12px; font-size:13px; color:var(--ink-dim,#97A0AC);}
-.game-results .g-empty a{color:var(--gold,#C8963E);}
-
-/* variante grande (página de juegos) */
-.game-search.big{max-width:640px; margin:0 auto;}
-.game-search.big input{height:58px; font-size:16px; padding:0 54px 0 52px;}
-.game-search.big .gs-icon{left:18px;}
-.game-search.big .gs-kbd{right:16px;}
-
-@media (max-width:640px){
-  .game-search{margin:0 10px; max-width:none;}
-  .game-search .gs-kbd{display:none;}
-  .game-search input{padding-right:14px;}
+/* Logo del juego (components/GameIcon.vue) */
+.g-ico {
+  position: relative;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-brand, sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim, #A6AEB9);
+  overflow: hidden;
 }
-@media (hover:none){
-  .game-search .gs-kbd{display:none;}
+.g-ico img {
+  position: absolute;
+  inset: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  object-fit: contain;
+  display: block;
+}
+.g-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 1px;
+}
+.g-name {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.g-tag {
+  font-size: 12.5px;
+  color: var(--ink-dim, #A6AEB9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.g-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 9, 13, 0.6);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.g-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.g-badge.g-live {
+  color: #5FE6DA;
+}
+.g-badge.g-soon {
+  color: #F2C36B;
+}
+
+.game-results .g-empty {
+  padding: 14px 12px;
+  font-size: 13px;
+  color: var(--ink-dim, #A6AEB9);
+}
+.game-results .g-empty a {
+  color: #E2B566;
+}
+
+/* Variante grande (hero de la portada) */
+.game-search.big {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.game-search.big input {
+  height: 64px;
+  border-radius: 18px;
+  font-size: 16px;
+  padding: 0 24px 0 56px;
+  background: rgba(13, 17, 24, 0.78);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-search.big .gs-icon {
+  left: 21px;
+}
+.game-search.big .gs-kbd {
+  right: 16px;
+}
+
+@media (max-width: 860px), (hover: none) {
+  .game-search .gs-kbd {
+    display: none;
+  }
 }

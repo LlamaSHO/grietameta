@@ -9,6 +9,8 @@
     { "source": "/privacidad.html", "destination": "/privacidad", "permanent": true },
     { "source": "/publicidad.html", "destination": "/publicidad", "permanent": true },
     { "source": "/exito.html", "destination": "/exito", "permanent": true },
+    { "source": "/arc-misiones", "destination": "/arc-raiders/misiones", "permanent": true },
+    { "source": "/arc-enemigos", "destination": "/arc-raiders/enemigos", "permanent": true },
     { "source": "/champion-stats.json", "destination": "/data/champion-stats.json", "permanent": true }
   ],
   "rewrites": [
