@@ -1,0 +1,51 @@
+{
+ "_como_se_usa": "x_px = lng*k + tx ; y_px = lat*k + ty (sobre la imagen indicada). En porcentaje: x% = x_px/ancho*100, y% = y_px/alto*100. lat/lng son los de la API de MetaForge (/api/game-map-data?mapID=<metaforgeMapID>&tableID=arc_map_data).",
+ "_calibrado": "Con 6-8 ascensores, trampillas y respiraderos que aparecen en ambas fuentes; error medio 2-6 px sobre 3000 px. Riven Tides y la planta inferior de Stella Montis quedan sin calibrar.",
+ "mapas": {
+  "dam_battlegrounds": {
+   "metaforgeMapID": "dam",
+   "imagen": "/images/arc-raiders/maps/dam_battlegrounds.webp",
+   "ancho": 3000,
+   "alto": 2739,
+   "k": 0.587802,
+   "tx": -722.86,
+   "ty": -215.57
+  },
+  "buried_city": {
+   "metaforgeMapID": "buried-city",
+   "imagen": "/images/arc-raiders/maps/buried_city.webp",
+   "ancho": 3000,
+   "alto": 3000,
+   "k": 0.451369,
+   "tx": -1715.79,
+   "ty": -671.53
+  },
+  "the_spaceport": {
+   "metaforgeMapID": "spaceport",
+   "imagen": "/images/arc-raiders/maps/the_spaceport.webp",
+   "ancho": 3000,
+   "alto": 3000,
+   "k": 0.745314,
+   "tx": -1390.14,
+   "ty": -423.29
+  },
+  "the_blue_gate": {
+   "metaforgeMapID": "blue-gate",
+   "imagen": "/images/arc-raiders/maps/the_blue_gate.webp",
+   "ancho": 3000,
+   "alto": 2250,
+   "k": 0.360226,
+   "tx": -1105.07,
+   "ty": -714.25
+  },
+  "stella_montis_upper": {
+   "metaforgeMapID": "stella-montis",
+   "imagen": "/images/arc-raiders/maps/stella_montis_upper.webp",
+   "ancho": 3000,
+   "alto": 2250,
+   "k": 0.783708,
+   "tx": -2023.36,
+   "ty": -1045.58
+  }
+ }
+}

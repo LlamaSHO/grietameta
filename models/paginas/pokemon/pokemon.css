@@ -1,0 +1,224 @@
+/* Diseños de Pokémon — estilos comunes.
+   Usa los tokens de la web (src/assets/styles/base.css) y añade la zona
+   «pokemon» (rojo Pokédex + amarillo) y la subzona «kanto» (pantalla de
+   Game Boy). Cortes: 860, 640 y 560 px, como el resto de diseños. */
+
+:root {
+  --bg: #07090D;
+  --bg-raised: #0B0E14;
+  --panel: #0F131B;
+  --panel-2: #141922;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --ink: #ECE9E1;
+  --ink-dim: #A6AEB9;
+  --ink-mute: #8F98A5;
+  --gm-gold: #F3C878;
+  --gm-orange: #FF6A3D;
+  --gm-teal: #4FE0B6;
+  --ok: #4FA97A;
+  --err: #E06B60;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --font-brand: "Chakra Petch", system-ui, sans-serif;
+  --font-pixel: "Pixelify Sans", "Chakra Petch", monospace;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Zona Pokémon */
+  --accent: #FF5A4E;
+  --accent-hi: #FFD35C;
+  --accent-ink: #1A0806;
+  --accent-soft: rgba(255, 90, 78, 0.12);
+
+  /* Pantalla de Game Boy (subzona Kanto) */
+  --gb-0: #0F2A12;
+  --gb-1: #2E5A2A;
+  --gb-2: #8BAC0F;
+  --gb-3: #C4D96A;
+
+  --nav-h: 64px;
+  --sub-h: 48px;
+}
+
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--sub-h) + 16px);
+  scrollbar-gutter: stable;
+  scrollbar-color: #2A303B var(--bg);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--accent-ink); }
+a { color: inherit; }
+img, svg { display: block; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; border-radius: 6px; }
+.num { font-variant-numeric: tabular-nums; }
+.wrap { width: min(1240px, 100% - 48px); margin-inline: auto; }
+/* Los hijos de una rejilla pueden encoger: las zonas con scroll propio
+   (tabla de tipos, índice de la guía…) no ensanchan la página. */
+.guide > *, .layout > *, .two > *, .meta > *, .dex > *, .inside > * { min-width: 0; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- Nav de la web ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--nav-h);
+  display: flex; align-items: center; gap: 22px;
+  padding: 0 24px;
+  background: rgba(7, 9, 13, 0.86);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 17px var(--font-brand); letter-spacing: 0.02em; }
+.brand img { width: 26px; height: 30px; }
+.games { display: flex; gap: 4px; margin: 0 auto; }
+.games a {
+  padding: 8px 14px; border-radius: 999px; text-decoration: none;
+  color: var(--ink-dim); font-size: 14px; font-weight: 500; white-space: nowrap;
+}
+@media (max-width: 1120px) { .games a:nth-child(5) { display: none; } }
+@media (max-width: 1000px) { .search { width: 170px; } .search span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
+.games a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.04); }
+.games a.on { color: var(--accent-ink); background: var(--accent); font-weight: 600; }
+.search {
+  display: flex; align-items: center; gap: 8px;
+  width: 220px; height: 38px; padding: 0 12px;
+  border: 1px solid var(--line-strong); border-radius: 10px;
+  color: var(--ink-mute); font-size: 13px;
+}
+.search kbd { margin-left: auto; font: 11px var(--font-body); border: 1px solid var(--line-strong); border-radius: 5px; padding: 1px 6px; }
+.acct { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); color: var(--ink-dim); }
+
+/* ---------- Barra del juego ---------- */
+.sub {
+  position: sticky; top: var(--nav-h); z-index: 30;
+  height: var(--sub-h);
+  display: flex; align-items: center; gap: 4px;
+  padding: 0 24px;
+  background: #0A0C11;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto; scrollbar-width: none;
+}
+.sub .logo { display: flex; align-items: center; gap: 8px; margin-right: 14px; font: 700 15px var(--font-display); white-space: nowrap; text-decoration: none; }
+.sub .logo svg { color: var(--accent); }
+.slink {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 12px; border-radius: 9px;
+  text-decoration: none; white-space: nowrap;
+  color: var(--ink-dim); font-size: 14px;
+}
+.slink:hover { color: var(--ink); background: rgba(255, 255, 255, 0.04); }
+.slink.on { color: var(--ink); background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
+.slink .soon { font-size: 10px; letter-spacing: 0.04em; color: var(--ink-mute); border: 1px solid var(--line-strong); padding: 0 5px; border-radius: 4px; }
+.gen-pick {
+  margin-left: auto; flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 32px; padding: 0 10px 0 6px; border-radius: 9px;
+  border: 1px solid var(--line-strong); background: var(--panel);
+  font-size: 13px; cursor: pointer;
+}
+.gen-pick b { font: 600 12px var(--font-pixel); background: var(--gb-2); color: var(--gb-0); padding: 2px 6px; border-radius: 5px; }
+
+/* ---------- Piezas comunes ---------- */
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(36px, 5.4vw, 68px); letter-spacing: -0.035em; font-weight: 700; }
+h2 { font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -0.02em; font-weight: 650; }
+h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.lead { color: var(--ink-dim); font-size: 17px; max-width: 60ch; margin: 14px 0 0; }
+.muted { color: var(--ink-mute); }
+section { padding-block: 56px; }
+.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.sec-head p { margin: 6px 0 0; color: var(--ink-mute); max-width: 62ch; }
+.more { color: var(--accent-hi); text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap; }
+.more:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 42px; padding: 0 18px; border-radius: 11px;
+  border: 1px solid var(--line-strong); background: var(--panel);
+  text-decoration: none; font-weight: 600; font-size: 14px; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease-out);
+}
+.btn:hover { border-color: rgba(255, 255, 255, 0.28); }
+.btn:active { transform: translateY(1px); }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.pri:hover { background: #FF7064; }
+
+.type {
+  --t: #888;
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px;
+  border-radius: 6px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em;
+  color: #fff; background: color-mix(in oklab, var(--t) 62%, #000);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--t) 80%, #fff 0%);
+  white-space: nowrap;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
+  border-radius: 999px; border: 1px solid var(--line-strong); background: transparent;
+  font-size: 13px; color: var(--ink-dim); cursor: pointer; white-space: nowrap;
+}
+.chip:hover { color: var(--ink); border-color: rgba(255, 255, 255, 0.28); }
+.chip[aria-pressed="true"] { color: var(--ink); background: var(--accent-soft); border-color: var(--accent); }
+.tag { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line-strong); color: var(--ink-mute); white-space: nowrap; }
+.tag.red { color: #FF8A80; border-color: rgba(255, 90, 78, 0.45); }
+.tag.blue { color: #8DB6FF; border-color: rgba(79, 146, 240, 0.5); }
+.tag.yel { color: var(--accent-hi); border-color: rgba(255, 211, 92, 0.45); }
+
+/* Hueco del sprite: mientras no se decida qué imágenes usar (PK12). */
+.sprite {
+  position: relative; display: grid; place-items: center;
+  aspect-ratio: 1; border-radius: 14px;
+  background: radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.05), transparent 65%), var(--panel-2);
+  color: rgba(255, 255, 255, 0.16);
+}
+.sprite svg { width: 46%; height: 46%; }
+
+/* Pantalla de Game Boy */
+.lcd {
+  background: var(--gb-2);
+  color: var(--gb-0);
+  border-radius: 10px;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 3px #6E8A0C;
+  font-family: var(--font-pixel);
+  background-image: linear-gradient(rgba(15, 42, 18, 0.06) 1px, transparent 1px);
+  background-size: 100% 3px;
+}
+
+/* Aviso: no es una tarjeta con borde de color, es una línea de texto con icono. */
+.note { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-dim); font-size: 14px; }
+.note svg { flex-shrink: 0; margin-top: 2px; color: var(--accent-hi); }
+
+/* ---------- Pie y barra de móvil ---------- */
+.foot { border-top: 1px solid var(--line); padding: 28px 24px 96px; color: var(--ink-mute); font-size: 13px; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+.foot a { color: var(--ink-dim); text-decoration: none; }
+.tabbar { display: none; }
+
+@media (max-width: 860px) {
+  .games, .search kbd { display: none; }
+  .search { width: auto; flex: 1; margin-left: auto; }
+  .nav { gap: 12px; padding: 0 16px; }
+  .sub { padding: 0 16px; }
+  .wrap { width: calc(100% - 32px); }
+  section { padding-block: 40px; }
+  .tabbar {
+    position: fixed; inset: auto 0 0; z-index: 50;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    height: 64px; padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(9, 11, 15, 0.94); backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line);
+  }
+  .tabbar a { display: grid; place-items: center; gap: 2px; align-content: center; text-decoration: none; font-size: 11px; color: var(--ink-mute); }
+  .tabbar a.on { color: var(--accent); }
+}
+@media (max-width: 560px) {
+  .brand span { display: none; }
+  .sec-head { flex-direction: column; align-items: flex-start; }
+}

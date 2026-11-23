@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanto · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  /* En Kanto manda la pantalla de Game Boy */
+  body { --accent: #9BBC0F; --accent-hi: #C4D96A; --accent-ink: #0F2A12; --accent-soft: rgba(155, 188, 15, 0.12); }
+  .k-hero { background: radial-gradient(900px 380px at 80% -10%, rgba(139, 172, 15, 0.16), transparent 70%); border-bottom: 1px solid var(--line); }
+  .k-hero .wrap { padding-block: 56px 36px; display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: end; }
+  .k-hero h1 { font-family: var(--font-pixel); font-weight: 600; letter-spacing: 0; font-size: clamp(56px, 8vw, 104px); color: var(--gb-3); }
+  .versions { display: flex; gap: 8px; margin-top: 26px; }
+  .ver { height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line-strong); background: transparent; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+  .ver i { width: 10px; height: 10px; border-radius: 50%; }
+  .ver[aria-pressed="true"] { background: var(--panel-2); border-color: rgba(255, 255, 255, 0.3); }
+  .diff { margin-top: 16px; color: var(--ink-dim); max-width: 60ch; min-height: 3.2em; }
+
+  .status { padding: 18px 20px; font-size: 15px; }
+  .status div { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 2px dashed rgba(15, 42, 18, 0.25); }
+  .status div:last-child { border: 0; }
+  .status small { display: block; margin-top: 10px; font-size: 12px; color: var(--gb-0); }
+
+  /* La ruta: gimnasios en orden */
+  .route { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); gap: 0; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; }
+  .stop { position: relative; padding: 0 18px 0 0; }
+  .stop::before { content: ""; position: absolute; top: 15px; left: 30px; right: 0; height: 2px; background: repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 12px); }
+  .stop:last-child::before { display: none; }
+  .badge { position: relative; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 600 13px var(--font-pixel); border: 2px solid var(--line-strong); background: var(--bg); color: var(--ink-mute); }
+  .stop.done .badge { background: var(--gb-2); border-color: var(--gb-2); color: var(--gb-0); }
+  .stop.next .badge { border-color: var(--gb-2); color: var(--gb-3); box-shadow: 0 0 0 4px rgba(139, 172, 15, 0.18); }
+  .stop h3 { margin-top: 14px; font-size: 17px; }
+  .stop p { margin: 2px 0 8px; color: var(--ink-mute); font-size: 13px; }
+  .stop .ace { font-size: 13px; color: var(--ink-dim); margin-top: 8px; }
+  .stop.league .badge { border-style: dashed; }
+
+  /* Qué hay en Kanto */
+  .inside { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: stretch; }
+  .mapteaser { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: #0B120C; text-decoration: none; min-height: 320px; }
+  .mapteaser svg { width: 100%; height: 100%; }
+  .mapteaser .lbl { position: absolute; left: 18px; bottom: 16px; right: 18px; display: flex; justify-content: space-between; align-items: end; }
+  .mapteaser .lbl b { font: 650 22px var(--font-display); }
+  .mapteaser:hover .btn { border-color: var(--gb-2); }
+  .links { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .links a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .links a:hover h3 { color: var(--gb-3); }
+  .links p { margin: 3px 0 0; color: var(--ink-mute); font-size: 14px; }
+  .links svg { flex-shrink: 0; color: var(--ink-mute); }
+
+  /* Exclusivos */
+  .excl { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .excl h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .excl h3 i { width: 12px; height: 12px; border-radius: 50%; }
+  .excl ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .excl li { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .excl li .no { font: 500 13px var(--font-pixel); color: var(--ink-mute); width: 40px; }
+  .excl li b { font-weight: 500; flex: 1; }
+
+  @media (max-width: 860px) {
+    .k-hero .wrap, .inside { grid-template-columns: 1fr; }
+    .mapteaser { min-height: 240px; }
+  }
+  @media (max-width: 560px) {
+    .excl { grid-template-columns: 1fr; }
+    .versions { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body data-page="kanto">
+<main>
+  <div class="k-hero">
+    <div class="wrap">
+      <div>
+        <h1>KANTO</h1>
+        <p class="lead">Primera generación: Pokémon Rojo, Azul y Amarillo. 151 Pokémon, ocho gimnasios y el Alto Mando en la Meseta Añil.</p>
+        <div class="versions" role="group" aria-label="Versión">
+          <button class="ver" data-v="rojo" aria-pressed="true"><i style="background:#E5483B"></i>Rojo</button>
+          <button class="ver" data-v="azul" aria-pressed="false"><i style="background:#4F7FE8"></i>Azul</button>
+          <button class="ver" data-v="amarillo" aria-pressed="false"><i style="background:#F2CC3A"></i>Amarillo</button>
+        </div>
+        <p class="diff" id="diff"></p>
+      </div>
+      <div class="lcd status" aria-label="Tu progreso">
+        <div><span>POKéDEX</span><span class="num">012/151</span></div>
+        <div><span>MEDALLAS</span><span class="num">2/8</span></div>
+        <div><span>MT Y MO</span><span class="num">09/55</span></div>
+        <div><span>LEGENDARIOS</span><span class="num">0/5</span></div>
+        <small>Se guarda en este navegador. Inicia sesión para llevarlo a tu cuenta.</small>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="sec-head"><div><h2>La ruta</h2><p>Los gimnasios en el orden en que te los encuentras, con el Pokémon más fuerte de cada líder.</p></div><a class="more" href="guia-kanto.html">Guía paso a paso</a></div>
+    <div class="route" id="route"></div>
+  </section>
+
+  <section class="wrap inside">
+    <a class="mapteaser" href="mapa-kanto.html" aria-label="Abrir el mapa de Kanto">
+      <svg viewBox="0 0 1000 720" aria-hidden="true">
+        <g stroke="#2E5A2A" stroke-width="10" stroke-linecap="round" fill="none">
+          <path d="M180 560V170h150l190-20v180l240 0V190M180 420h0M380 330h140v140l-90 150M760 330v290H430M180 560v120h140l110-60M180 170 60 250V120"/>
+        </g>
+        <g fill="#8BAC0F">
+          <circle cx="180" cy="560" r="14"/><circle cx="180" cy="420" r="14"/><circle cx="180" cy="170" r="14"/><circle cx="520" cy="150" r="14"/>
+          <circle cx="520" cy="330" r="14"/><circle cx="380" cy="330" r="14"/><circle cx="760" cy="330" r="14"/><circle cx="520" cy="470" r="14"/>
+          <circle cx="430" cy="620" r="14"/><circle cx="180" cy="680" r="14"/><circle cx="60" cy="120" r="14"/>
+        </g>
+      </svg>
+      <div class="lbl"><b>Mapa de Kanto</b><span class="btn">Abrir mapa</span></div>
+    </a>
+    <div class="links">
+      <a href="pokedex.html"><div><h3>Pokédex de Kanto</h3><p>Los 151, en qué versión sale cada uno y dónde capturarlo.</p></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="guia-kanto.html"><div><h3>Guía de la historia</h3><p>De Pueblo Paleta al Alto Mando, con equipo recomendado en cada tramo.</p></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="guia-kanto.html#cien"><div><h3>Checklist del 100 %</h3><p>Pokédex completa, MT y MO, objetos ocultos y legendarios.</p></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="competitivo.html"><div><h3>Competitivo de Gen I</h3><p>El meta de Rojo, Azul y Amarillo: Tauros, Snorlax, Chansey…</p></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head"><div><h2>Exclusivos de cada versión</h2><p>Para completar la Pokédex hay que intercambiar entre Rojo y Azul. Mew solo se conseguía en eventos.</p></div></div>
+    <div class="excl">
+      <div><h3><i style="background:#E5483B"></i>Solo en Rojo</h3><ul id="red"></ul></div>
+      <div><h3><i style="background:#4F7FE8"></i>Solo en Azul</h3><ul id="blue"></ul></div>
+    </div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const DIFF = {
+    rojo: "Empiezas eligiendo entre Bulbasaur, Charmander y Squirtle. Tiene 11 Pokémon que no salen en Azul, como Ekans, Growlithe y Scyther.",
+    azul: "Mismo mapa e historia que Rojo, con sus propios 11 exclusivos: Sandshrew, Vulpix, Meowth, Bellsprout, Magmar, Pinsir…",
+    amarillo: "Pikachu es tu inicial y te sigue por el mapa. Bulbasaur, Charmander y Squirtle te los regalan, y no aparecen Ekans, Koffing ni Meowth.",
+  };
+  const diff = document.getElementById("diff");
+  document.querySelectorAll(".ver").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".ver").forEach((x) => x.setAttribute("aria-pressed", x === b));
+    diff.textContent = DIFF[b.dataset.v];
+  }));
+  diff.textContent = DIFF.rojo;
+
+  const route = PK.GYMS.map((g, i) => `
+    <div class="stop ${i < 2 ? "done" : i === 2 ? "next" : ""}">
+      <span class="badge">${i + 1}</span>
+      <h3>${g.leader}</h3>
+      <p>${g.city} · ${g.medal}</p>
+      ${typeChip(g.type)}
+      <div class="ace">${g.ace} <span class="muted num">Nv. ${g.lvl}</span></div>
+    </div>`).join("") + `
+    <div class="stop league"><span class="badge">AM</span><h3>Alto Mando</h3><p>Meseta Añil</p><span class="type" style="--t:#7FD6E0">Hielo</span> <span class="type" style="--t:#D2533E">Lucha</span><div class="ace">Lorelei, Bruno, Agatha y Lance</div></div>
+    <div class="stop league"><span class="badge">C</span><h3>Campeón</h3><p>Meseta Añil</p><span class="tag">Tu rival</span><div class="ace">Su equipo depende de tu inicial</div></div>`;
+  document.getElementById("route").innerHTML = route;
+
+  const row = (id) => { const p = PK.DEX[id - 1]; return `<li><span class="no">${dexNo(id)}</span><b>${p.name}</b>${p.types.map(typeChip).join(" ")}</li>`; };
+  document.getElementById("red").innerHTML = PK.DEX.filter((p) => p.ver === "rojo").map((p) => row(p.id)).join("");
+  document.getElementById("blue").innerHTML = PK.DEX.filter((p) => p.ver === "azul").map((p) => row(p.id)).join("");
+</script>
+</body>
+</html>

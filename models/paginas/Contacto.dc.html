@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>GrietaMeta · Contacto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#07090D}
+a{color:#D4A04A}a:hover{color:#E8B865}
+
+.gm{position:relative;background:#07090D;color:#ECE9E1;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow:clip;isolation:isolate;-webkit-font-smoothing:antialiased}
+.gm *,.gm *::before,.gm *::after{box-sizing:border-box}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disp{font-family:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(60px,30px,0) scale(1.15)}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fly{0%{transform:translate(-6px,6px) rotate(0)}50%{transform:translate(6px,-6px) rotate(-6deg)}100%{transform:translate(-6px,6px) rotate(0)}}
+@keyframes trail{0%{stroke-dashoffset:60}100%{stroke-dashoffset:0}}
+@keyframes bob{0%,100%{transform:translate3d(0,0,0) rotate(var(--r0))}50%{transform:translate3d(0,-14px,0) rotate(var(--r1))}}
+@keyframes launch{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(160px,-120px) rotate(-18deg);opacity:0}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+
+.glow{position:absolute;z-index:-1;width:520px;height:520px;border-radius:50%;filter:blur(100px);opacity:.3;animation:drift 16s ease-in-out infinite alternate}
+.glow.g1{top:-200px;left:10%;background:#B9832F}
+.glow.g2{top:120px;right:-120px;background:#0F8F88;animation-duration:19s;animation-direction:alternate-reverse}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#ECE9E1}
+.brand:hover{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',system-ui,sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.nav-links{display:flex;gap:6px}
+.nl{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 12px;border-radius:10px;color:#C6CBD2;text-decoration:none;font-size:14px;font-weight:500}
+.nl img{width:20px;height:20px;object-fit:contain}
+.nl:hover{color:#ECE9E1;background:rgba(255,255,255,.05)}
+.btn-ghost{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:11px;border:1px solid rgba(255,255,255,.12);color:#ECE9E1;font-weight:500;font-size:14px;text-decoration:none}
+.btn-ghost:hover{color:#ECE9E1;background:rgba(255,255,255,.06)}
+
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter;stroke-miterlimit:8}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.55);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.55);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.5);--f:#08221C}
+
+/* ---------- cabecera ---------- */
+.head{position:relative;padding:56px 0 36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.plane{position:relative;width:92px;height:92px;flex-shrink:0;display:grid;place-items:center;border-radius:28px;background:linear-gradient(160deg,rgba(212,160,74,.2),rgba(79,224,182,.08));border:1px solid rgba(232,184,101,.35);color:#F3C878}
+.plane svg.p{animation:fly 3.6s ease-in-out infinite}
+.plane svg.t{position:absolute;left:-30px;bottom:6px;color:rgba(232,184,101,.45)}
+.plane svg.t path{stroke-dasharray:6 6;animation:trail 1.2s linear infinite}
+.head h1{margin:0;font-size:clamp(40px,5.4vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.head h1 span{color:#E2B566}
+.head p{margin:10px 0 0;max-width:620px;color:#A6AEB9;font-size:17px}
+.deco{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.fl{position:absolute;width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);animation:bob var(--t,7s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.fl img{width:30px;height:30px;object-fit:contain}
+.d1{top:30px;right:22%;color:#E2B566;--t:7s;--r0:-8deg;--r1:-2deg}
+.d2{top:110px;right:6%;--t:8.4s;--dl:-2s;--r0:6deg;--r1:-4deg}
+.d3{top:20px;right:2%;color:#4FE0B6;--t:6.4s;--dl:-1s;--r0:0deg;--r1:10deg}
+.d4{top:150px;right:19%;--t:9s;--dl:-3s;--r0:-6deg;--r1:6deg}
+
+/* ---------- layout ---------- */
+.grid{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.card{flex:999 1 600px;min-width:0;border-radius:26px;border:1px solid rgba(255,255,255,.09);background:rgba(13,16,22,.85);box-shadow:0 40px 100px -50px rgba(0,0,0,.9);padding:30px;animation:rise .8s .08s cubic-bezier(.2,.8,.2,1) both}
+.side{flex:1 1 300px;display:flex;flex-direction:column;gap:16px;animation:rise .8s .16s cubic-bezier(.2,.8,.2,1) both}
+
+.legend{margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#C6CBD2}
+.reasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 26px;padding:0;border:none}
+.rs{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:118px;padding:14px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025);color:#ECE9E1;text-align:left;font:inherit;cursor:pointer;transition:border-color .25s,background .25s,transform .25s}
+.rs:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
+.rs .ri{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.06);color:#C6CBD2;transition:background .25s,color .25s}
+.rs b{font-size:14px;font-weight:600;line-height:1.2}
+.rs small{font-size:12px;color:#8F98A5;line-height:1.35}
+.rs.on{border-color:rgba(232,184,101,.7);background:rgba(212,160,74,.08)}
+.rs.on .ri{background:linear-gradient(180deg,#E8B865,#C8913A);color:#17120A}
+.rs.on::after{content:"";position:absolute;top:12px;right:12px;width:9px;height:9px;border-radius:50%;background:#F3C878;box-shadow:0 0 0 4px rgba(243,200,120,.18)}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form{display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:#D6D3CB;animation:fade .35s ease both}
+.field small{font-weight:400;color:#8F98A5}
+.inp{position:relative;display:flex;align-items:center}
+.inp > svg{position:absolute;left:15px;color:#8A93A0;pointer-events:none}
+.inp input,.field textarea{width:100%;border-radius:13px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.035);color:#ECE9E1;font:400 15px/1.5 'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.inp input{height:50px;padding:0 14px 0 44px}
+.field textarea{min-height:170px;padding:14px;resize:vertical}
+.inp input::placeholder,.field textarea::placeholder{color:#7C8592}
+.inp input:focus,.field textarea:focus{border-color:rgba(212,160,74,.65);background:rgba(10,13,19,.9);box-shadow:0 0 0 4px rgba(212,160,74,.14)}
+.inp:focus-within > svg{color:#E2B566}
+.count{align-self:flex-end;font-size:12px;font-weight:500;color:#8F98A5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px 0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:none;color:#C6CBD2;font:500 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.chip img{width:24px;height:24px;object-fit:contain}
+.chip.gen{padding-left:14px}
+.chip:hover{border-color:rgba(255,255,255,.26);color:#ECE9E1}
+.chip.on{border-color:rgba(232,184,101,.65);background:rgba(212,160,74,.1);color:#F3C878}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:#C6CBD2;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:#D4A04A}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;font-size:13.5px;background:rgba(255,106,61,.09);border:1px solid rgba(255,106,61,.35);color:#FFB59C;animation:fade .3s ease both}
+.actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
+.send{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:none;border-radius:14px;background:linear-gradient(180deg,#E8B865,#C8913A);color:#17120A;font:600 15.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;box-shadow:0 14px 34px -14px rgba(212,160,74,.9),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s}
+.send:hover{transform:translateY(-2px)}
+.send svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.send:hover svg{transform:translate(4px,-4px) rotate(-8deg)}
+.send.busy svg{animation:launch .9s ease-in infinite}
+.send[disabled]{opacity:.75;cursor:default;transform:none}
+.hint{font-size:13px;color:#8F98A5}
+
+/* enviado */
+.sent{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 10px;animation:fade .4s ease both}
+.okc{width:88px;height:88px;border-radius:50%;display:grid;place-items:center;background:rgba(79,224,182,.12);border:1px solid rgba(79,224,182,.45);color:#7FEBCB;animation:pop .6s cubic-bezier(.2,.8,.2,1) both}
+.sent h2{margin:20px 0 0;font-size:32px;font-weight:800;letter-spacing:-.03em}
+.sent p{margin:8px 0 0;max-width:460px;color:#A6AEB9;font-size:15.5px}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(255,255,255,.14);background:none;color:#ECE9E1;font:600 14.5px/1 'IBM Plex Sans',sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{color:#ECE9E1;background:rgba(255,255,255,.05)}
+
+/* lateral */
+.sc{padding:22px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
+.sc h3{margin:0;display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700}
+.sc h3 svg{color:#D4A04A}
+.sc p{margin:8px 0 0;color:#A6AEB9;font-size:14px}
+.sc ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:#C6CBD2;font-size:14px}
+.sc li{display:flex;gap:10px}
+.sc li::before{content:"";flex-shrink:0;width:6px;height:6px;margin-top:8px;transform:rotate(45deg);background:#4FE0B6}
+.mail{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(212,160,74,.08);border:1px solid rgba(212,160,74,.3);font-weight:600;font-size:14px;text-decoration:none;word-break:break-all}
+.quick{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.ql{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);color:#ECE9E1;text-decoration:none;font-size:14px;font-weight:500;background:none;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s}
+.ql:hover{color:#ECE9E1;border-color:rgba(212,160,74,.45);background:rgba(212,160,74,.05)}
+.ql svg{color:#8F98A5}
+
+.foot{margin-top:80px;border-top:1px solid rgba(255,255,255,.07);padding:32px 0;font-size:13.5px;color:#8F98A5}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot .brand-name{color:#ECE9E1}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{color:#A0A8B4;text-decoration:none}
+.foot-links a:hover{color:#E2B566}
+
+@media (max-width:1100px){
+  .reasons{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-links{display:none}
+  .head{padding:34px 0 24px;gap:18px}
+  .plane{width:70px;height:70px;border-radius:22px}
+  .deco{display:none}
+  .card{padding:20px}
+  .reasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rs{min-height:0}
+  .rs:last-child{grid-column:1 / -1}
+  .two{grid-template-columns:1fr}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gm *,.gm *::before,.gm *::after{animation:none !important;transition:none !important}
+}
+.gm.still *,.gm.still *::before,.gm.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+</style>
+</helmet>
+
+<div class="gm {{motionClass}}">
+  <div class="glow g1" aria-hidden="true"></div>
+  <div class="glow g2" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <nav class="nav-links" aria-label="Juegos">
+        <a class="nl" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">League of Legends</a>
+        <a class="nl" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC Raiders</a>
+        <a class="nl" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda TotK</a>
+      </nav>
+      <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="head">
+      <div class="deco" aria-hidden="true">
+        <span class="fl d1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg></span>
+        <span class="fl d2"><img src="../assets/games/logo-lol.png" alt=""></span>
+        <span class="fl d3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+        <span class="fl d4"><img src="../assets/games/logo-zelda.png" alt=""></span>
+      </div>
+      <div class="plane" aria-hidden="true">
+        <svg class="t" width="44" height="24" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 20 C 14 18, 26 12, 42 4"></path></svg>
+        <svg class="p" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>
+      </div>
+      <div>
+        <h1 class="disp">Escríbenos, <span>te leemos</span></h1>
+        <p>¿Falta algo, ves un error o quieres que añadamos un juego? Cuéntanoslo y te respondemos por email.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card" aria-label="Formulario de contacto">
+        <sc-if value="{{isSent}}" hint-placeholder-val="{{ false }}">
+          <div data-pane class="sent" role="status">
+            <div class="okc"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg></div>
+            <h2 class="disp">¡Mensaje enviado!</h2>
+            <p>Lo hemos recibido con el asunto «{{subject}}». Te contestaremos a tu email en cuanto podamos.</p>
+            <div class="row">
+              <button type="button" class="btn" onClick="{{again}}">Enviar otro mensaje</button>
+              <a class="btn" href="Main.dc.html">Volver a la portada</a>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+          <form class="form" novalidate="novalidate">
+            <div>
+              <p class="legend" id="lg-motivo">¿Sobre qué nos escribes?</p>
+              <div class="reasons" role="radiogroup" aria-labelledby="lg-motivo">
+                <sc-for list="{{reasons}}" as="r" hint-placeholder-count="5">
+                  <button type="button" class="rs {{r.cls}}" role="radio" aria-checked="{{r.checked}}" onClick="{{r.pick}}">
+                    <span class="ri" aria-hidden="true">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{r.icon}}"></path></svg>
+                    </span>
+                    <b>{{r.label}}</b>
+                    <small>{{r.hint}}</small>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+
+            <div class="two">
+              <label class="field" for="c-name">Nombre
+                <span class="inp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                  <input id="c-name" type="text" autocomplete="name" placeholder="Cómo te llamas">
+                </span>
+              </label>
+              <label class="field" for="c-mail">Tu email
+                <span class="inp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>
+                  <input id="c-mail" type="email" autocomplete="email" placeholder="Para poder responderte">
+                </span>
+              </label>
+            </div>
+
+            <sc-if value="{{isGame}}" hint-placeholder-val="{{ false }}">
+              <label class="field" for="c-game">¿Qué juego quieres ver en GrietaMeta?
+                <span class="inp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="12" rx="4"></rect><line x1="7" y1="11" x2="7" y2="15"></line><line x1="5" y1="13" x2="9" y2="13"></line><circle cx="16" cy="12" r="1"></circle><circle cx="18" cy="14" r="1"></circle></svg>
+                  <input id="c-game" type="text" placeholder="Ej. Valorant, Elden Ring…">
+                </span>
+              </label>
+            </sc-if>
+
+            <sc-if value="{{askWhere}}" hint-placeholder-val="{{ true }}">
+              <div class="field">
+                <span id="lg-donde">¿De qué juego se trata? <small>(opcional)</small></span>
+                <div class="chips" role="radiogroup" aria-labelledby="lg-donde">
+                  <sc-for list="{{games}}" as="g" hint-placeholder-count="4">
+                    <button type="button" class="chip {{g.cls}}" role="radio" aria-checked="{{g.checked}}" onClick="{{g.pick}}">
+                      <sc-if value="{{g.hasImg}}" hint-placeholder-val="{{ true }}"><img src="{{g.img}}" alt=""></sc-if>
+                      {{g.label}}
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <label class="field" for="c-msg">Mensaje
+              <textarea id="c-msg" rows="7" maxlength="2000" placeholder="{{placeholder}}" onInput="{{onMsg}}"></textarea>
+              <span class="count" aria-live="polite">{{countTxt}}</span>
+            </label>
+
+            <label class="check" for="c-copy"><input id="c-copy" type="checkbox" > Enviarme una copia a mi email</label>
+
+            <sc-if value="{{isError}}" hint-placeholder-val="{{ false }}">
+              <div class="alert" role="alert">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="7.5" x2="12" y2="13"></line><line x1="12" y1="16.5" x2="12" y2="16.6"></line></svg>
+                No hemos podido enviar el mensaje. Revisa tu conexión e inténtalo de nuevo.
+              </div>
+            </sc-if>
+
+            <div class="actions">
+              <button type="button" class="send {{busyCls}}" disabled="{{busy}}" onClick="{{send}}">
+                {{sendTxt}}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>
+              </button>
+              <span class="hint">Solo usamos tu email para responderte.</span>
+            </div>
+          </form>
+        </sc-if>
+      </section>
+
+      <aside class="side">
+        <div class="sc">
+          <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>Email directo</h3>
+          <p>Si lo prefieres, escríbenos desde tu correo:</p>
+          <a class="mail" href="mailto:ekainarlla@gmail.com">ekainarlla@gmail.com</a>
+        </div>
+        <div class="sc">
+          <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17.01"></line></svg>Qué nos ayuda</h3>
+          <ul>
+            <li>En qué página y juego estabas.</li>
+            <li>Qué esperabas ver y qué viste.</li>
+            <li>Si es un dato, de dónde lo has sacado.</li>
+          </ul>
+        </div>
+        <div class="sc">
+          <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>Atajos</h3>
+          <div class="quick">
+            <button type="button" class="ql" onClick="{{qGame}}">Pedir un juego nuevo<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
+            <button type="button" class="ql" onClick="{{qError}}">Avisar de un error<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
+            <a class="ql" href="Premium.dc.html">Dudas sobre Premium<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <nav class="foot-links" aria-label="Enlaces del pie">
+        <a href="Contacto.dc.html">Contáctanos</a>
+        <a href="https://grietameta.vercel.app/privacidad">Privacidad</a>
+        <a href="https://grietameta.vercel.app/publicidad">Publicidad</a>
+      </nav>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb on" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"motivo":{"editor":"enum","options":["falta","juego","error","ayuda","otro"],"default":"falta"},"estado":{"editor":"enum","options":["normal","enviando","error","enviado"],"default":"normal"},"$preview":{"width":1440,"height":1280}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const P = this.props || {};
+    const R = [
+      { id: 'falta', label: 'Falta algo', hint: 'Un dato, un campeón, una misión…', ph: 'Cuéntanos qué echas en falta y dónde.', icon: 'M12 5v14M5 12h14' },
+      { id: 'juego', label: 'Añadir un juego', hint: 'Quieres verlo en GrietaMeta', ph: '¿Qué te gustaría encontrar de ese juego?', icon: 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.4 1.8L9 15h6l1.6 1.8A3 3 0 0 0 22 15l-.7-6.4A4 4 0 0 0 17.3 5z' },
+      { id: 'error', label: 'Hay un error', hint: 'Algo no funciona o está mal', ph: '¿Qué ha pasado? ¿En qué página?', icon: 'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z' },
+      { id: 'ayuda', label: 'Necesito ayuda', hint: 'Con tu cuenta o con Premium', ph: 'Explícanos en qué te podemos ayudar.', icon: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01' },
+      { id: 'otro', label: 'Otra cosa', hint: 'Sugerencias, colaboraciones…', ph: 'Escribe tu mensaje.', icon: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' }
+    ];
+    const reason = S.reason || P.motivo || 'falta';
+    const cur = R.find((r) => r.id === reason) || R[0];
+    const estado = S.estado || P.estado || 'normal';
+    const game = S.game || '';
+    const G = [
+      { id: 'lol', label: 'League of Legends', img: '../assets/games/logo-lol.png' },
+      { id: 'arc', label: 'ARC Raiders', img: '../assets/games/logo-arc.png' },
+      { id: 'zelda', label: 'Zelda TotK', img: '../assets/games/logo-zelda.png' },
+      { id: 'web', label: 'La web en general', img: '' }
+    ];
+    const len = S.len || 0;
+    const busy = estado === 'enviando';
+    const gameName = (G.find((g) => g.id === game) || {}).label;
+    return {
+      motionClass: (P.animaciones ?? true) ? '' : 'still',
+      reasons: R.map((r) => ({
+        label: r.label, hint: r.hint, icon: r.icon,
+        cls: r.id === reason ? 'on' : '', checked: r.id === reason ? 'true' : 'false',
+        pick: () => this.setState({ reason: r.id, estado: 'normal' })
+      })),
+      isGame: reason === 'juego',
+      askWhere: reason !== 'juego',
+      games: G.map((g) => ({
+        label: g.label, img: g.img, hasImg: !!g.img,
+        cls: (g.id === game ? 'on' : '') + (g.img ? '' : ' gen'), checked: g.id === game ? 'true' : 'false',
+        pick: () => this.setState({ game: g.id === game ? '' : g.id })
+      })),
+      placeholder: cur.ph,
+      onMsg: (e) => this.setState({ len: ((e && e.target && e.target.value) || '').length }),
+      countTxt: len + ' / 2000',
+      isError: estado === 'error',
+      isSent: estado === 'enviado', notSent: estado !== 'enviado',
+      busy: busy, busyCls: busy ? 'busy' : '',
+      sendTxt: busy ? 'Enviando…' : 'Enviar mensaje',
+      subject: '[GrietaMeta] ' + cur.label + (gameName && reason !== 'juego' ? ' · ' + gameName : ''),
+      send: () => this.setState({ estado: 'enviado' }),
+      again: () => this.setState({ estado: 'normal', len: 0 }),
+      qGame: () => this.setState({ reason: 'juego', estado: 'normal' }),
+      qError: () => this.setState({ reason: 'error', estado: 'normal' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ARC Raiders · Inicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0B0A0E}
+a{color:#F5C02A}a:hover{color:#FFD45A}
+.ap{position:relative;background:#0B0A0E;color:#F2EBDD;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.ap *,.ap *::before,.ap *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cond{font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes slide{from{background-position:0 0}to{background-position:120px 0}}
+@keyframes scan{0%{top:-10%}100%{top:110%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.stripes{height:6px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,14,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(242,235,221,.08)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#F2EBDD;justify-self:start}
+.brand:hover{color:#F2EBDD}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#9A938A;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(242,235,221,.1);background:rgba(242,235,221,.04);color:#F2EBDD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#857E75}
+.search input:focus{border-color:rgba(245,192,42,.6);box-shadow:0 0 0 4px rgba(245,192,42,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#9A938A;padding:5px 8px;border-radius:6px;border:1px solid rgba(242,235,221,.12)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(242,235,221,.14);color:#F2EBDD;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#F2EBDD;background:rgba(242,235,221,.06)}
+
+/* submenú ARC */
+.sub{border-top:1px solid rgba(242,235,221,.06);background:rgba(20,18,25,.75)}
+.sub-in{display:flex;align-items:center;gap:4px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(242,235,221,.1);color:#F2EBDD;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+.gchip img{width:28px;height:28px;border-radius:50%}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 12px;color:#ABA49A;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover,.slink.on{color:#F2EBDD}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#F2EBDD}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:12px;border-radius:16px;background:#15131A;border:1px solid rgba(242,235,221,.1);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:600px}
+.mo{display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:12px;text-decoration:none;color:#F2EBDD;transition:background .2s}
+.mo:hover{background:rgba(242,235,221,.05);color:#F2EBDD}
+.mo .th{height:70px;border-radius:9px;overflow:hidden;border:1px solid rgba(242,235,221,.1)}
+.mo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mo:hover .th img{transform:scale(1.1)}
+.mo b{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.mo span{font-size:11.5px;color:#9A938A}
+.mm-f{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;padding:10px 6px 2px;border-top:1px solid rgba(242,235,221,.08);font-size:13px;color:#9A938A}
+.mm-f a{font-weight:600;text-decoration:none}
+.gl{display:flex;flex-direction:column;gap:2px;width:320px}
+.gi{display:flex;flex-direction:column;padding:10px 12px;border-radius:10px;text-decoration:none;color:#F2EBDD;transition:background .2s}
+.gi:hover{background:rgba(242,235,221,.05);color:#F2EBDD}
+.gi b{font-size:14px}
+.gi span{font-size:12px;color:#9A938A}
+
+/* hero */
+.hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(242,235,221,.06)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(700px 420px at 78% 40%,rgba(242,138,30,.13),transparent 70%),radial-gradient(500px 300px at 0% 0%,rgba(59,201,232,.07),transparent 70%)}
+.hero-in{display:flex;align-items:center;gap:48px;flex-wrap:wrap;padding:56px 0 48px}
+.htx{flex:1 1 480px;max-width:600px;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#F5C02A}
+.kick i{display:block;width:26px;height:6px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+.h1{margin:14px 0 0;font-size:clamp(46px,6vw,82px);font-weight:800;line-height:.92}
+.h1 span{display:block;color:#F5C02A}
+.lead{margin:20px 0 0;color:#B8B1A6;font-size:17px;max-width:540px;text-wrap:pretty}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-y{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:12px;background:#F5C02A;color:#141007;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 34px -14px rgba(245,192,42,.8);transition:transform .2s}
+.btn-y:hover{color:#141007;transform:translateY(-2px)}
+.btn-c{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:12px;border:1px solid rgba(242,235,221,.25);color:#F2EBDD;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+.btn-c:hover{color:#F2EBDD;background:rgba(242,235,221,.06)}
+.shot{position:relative;flex:1 1 520px;max-width:640px;aspect-ratio:16/10;animation:rise .8s .15s cubic-bezier(.2,.8,.2,1) both}
+.shot .rays{position:absolute;right:-60px;top:-40px;width:280px;height:120%;transform:skewX(-24deg);background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%);opacity:.85;z-index:-1}
+.shot .frame{position:absolute;inset:0;border-radius:18px;overflow:hidden;border:1px solid rgba(242,235,221,.14);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
+.shot img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
+.shot .scan{position:absolute;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,rgba(242,138,30,.16),transparent);animation:scan 4s linear infinite}
+.shot .hud{position:absolute;inset:14px;pointer-events:none}
+.shot .hud i{position:absolute;width:22px;height:22px;border:0 solid #F5C02A}
+.shot .hud i:nth-child(1){top:0;left:0;border-top-width:2px;border-left-width:2px}
+.shot .hud i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
+.shot .hud i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.shot .hud i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+.shot .tagx{position:absolute;left:24px;bottom:22px;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(11,10,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(242,235,221,.12)}
+.shot .tagx b{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;line-height:1}
+.shot .tagx span{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#C8C1B6}
+.thr{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.thr::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 1.4s infinite}
+.t-ext{color:#FF6B5B;background:rgba(229,55,43,.16)}
+.t-cri{color:#FFA24A;background:rgba(242,138,30,.16)}
+.t-alt{color:#F5C02A;background:rgba(245,192,42,.14)}
+.t-mod{color:#7FD9A0;background:rgba(47,180,90,.14)}
+.t-baj{color:#7FD6F0;background:rgba(59,201,232,.14)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));border-top:1px solid rgba(242,235,221,.06)}
+.kpi{display:flex;align-items:baseline;gap:12px;padding:20px 28px;border-right:1px solid rgba(242,235,221,.06)}
+.kpi:last-child{border-right:0}
+.kpi b{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:800;line-height:1;color:#F2EBDD}
+.kpi span{font-size:14px;color:#ABA49A}
+
+/* secciones */
+.sec{padding:56px 0 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
+.h2{margin:8px 0 0;font-size:clamp(34px,3.6vw,48px);font-weight:800;line-height:1}
+.sec-h p{margin:6px 0 0;color:#B8B1A6;max-width:620px}
+.more{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;text-decoration:none}
+
+/* mapas */
+.maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:16px}
+.mc{position:relative;display:block;height:270px;border-radius:18px;overflow:hidden;isolation:isolate;border:1px solid rgba(242,235,221,.1);text-decoration:none;color:#F2EBDD;transition:border-color .3s,transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.mc:hover{color:#F2EBDD;transform:translateY(-4px);border-color:rgba(245,192,42,.6);box-shadow:0 30px 60px -30px rgba(242,138,30,.6)}
+.mc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.8) brightness(.75);transform:scale(1.15);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.mc:hover img{transform:scale(1.32);filter:saturate(1) brightness(.95)}
+.mc::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,10,14,.2),rgba(11,10,14,.15) 40%,rgba(11,10,14,.95))}
+.mc .sl{position:absolute;left:0;right:0;height:60px;top:-30%;background:linear-gradient(180deg,transparent,rgba(59,201,232,.14),transparent);opacity:0}
+.mc:hover .sl{opacity:1;animation:scan 2.4s linear infinite}
+.mc .chips{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:7px;background:rgba(11,10,14,.75);border:1px solid rgba(242,235,221,.14);font-size:12px;font-weight:600;color:#E2DBCE;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mc .bot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.mc h3{margin:0;font-size:34px;font-weight:800;line-height:.95}
+.mc p{margin:6px 0 0;font-size:13.5px;color:#C8C1B6}
+.mc .go{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border-radius:50%;background:rgba(242,235,221,.1);border:1px solid rgba(242,235,221,.2);transition:background .3s,color .3s,transform .4s}
+.mc:hover .go{background:#F5C02A;color:#141007;transform:rotate(-45deg)}
+.mc .bar{position:absolute;left:0;right:0;bottom:0;height:4px;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+.mc:hover .bar{transform:scaleX(1)}
+
+/* objetos */
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:14px}
+.act{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:18px;background:#141219;border:1px solid rgba(242,235,221,.08);border-top:3px solid var(--ac)}
+.a-g{--ac:#2FB45A}.a-c{--ac:#3BC9E8}.a-y{--ac:#F5C02A}.a-o{--ac:#F28A1E}
+.c-y{--tc:#F5C02A}.c-c{--tc:#3BC9E8}.c-r{--tc:#E5372B}.c-o{--tc:#F28A1E}.c-g{--tc:#2FB45A}
+.act-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.act-h b{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;text-transform:uppercase;color:var(--ac);line-height:1}
+.act-h span{font-size:13px;color:#ABA49A}
+.act p{margin:0;font-size:13.5px;color:#B8B1A6}
+.it{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;background:rgba(242,235,221,.03);transition:background .2s}
+.it:hover{background:rgba(242,235,221,.06)}
+.it .ic{width:46px;height:46px;flex-shrink:0;border-radius:10px;padding:4px;border:1px solid var(--rc);background:radial-gradient(circle at 50% 30%,var(--rb),#100E14 75%)}
+.it .ic img{width:100%;height:100%;object-fit:contain}
+.it .tx{flex:1;min-width:0}
+.it .tx b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it .tx span{font-size:12px;color:var(--rt)}
+.it .v{font-size:13px;font-weight:600;color:#E2DBCE}
+.r-leg{--rc:rgba(245,192,42,.6);--rb:rgba(245,192,42,.35);--rt:#F5C02A}
+.r-epi{--rc:rgba(196,120,255,.55);--rb:rgba(196,120,255,.32);--rt:#D3A2FF}
+.r-rar{--rc:rgba(59,201,232,.55);--rb:rgba(59,201,232,.3);--rt:#7FD6F0}
+.how{margin-top:16px;padding:20px 22px;border-radius:18px;background:#141219;border:1px solid rgba(242,235,221,.08)}
+.how-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.how-h h3{margin:0;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+.how-n{font-size:14px;color:#ABA49A}
+.how-n b{font-family:'Barlow Condensed',sans-serif;font-size:24px;color:#F5C02A;margin-right:4px}
+.how-l{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.how-l li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(242,235,221,.03);border-left:3px solid var(--ac);font-size:13.5px;color:#C9C2B6;line-height:1.45}
+.how-l b{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;text-transform:uppercase;color:var(--ac)}
+.how-f{margin:14px 0 0;font-size:13px;color:#9A938A}
+.isearch{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px;padding:14px;border-radius:16px;background:#141219;border:1px solid rgba(242,235,221,.08)}
+.isearch .search{flex:1 1 320px}
+
+/* comerciantes */
+.traders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
+.tr{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:16px;background:#141219;border:1px solid rgba(242,235,221,.08);text-decoration:none;color:#F2EBDD;transition:border-color .2s,transform .2s}
+.tr:hover{color:#F2EBDD;border-color:rgba(245,192,42,.45);transform:translateY(-2px)}
+.tr .tt{display:flex;align-items:center;gap:12px}
+.tr .av{position:relative;flex-shrink:0;width:58px;height:58px;border-radius:16px;overflow:hidden;background:var(--tc);padding:2px}
+.tr .av img{display:block;width:100%;height:100%;object-fit:cover;border-radius:14px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.tr:hover .av img{transform:scale(1.08)}
+.tr .role{display:block;margin-top:3px;font-size:12px;color:#9A938A}
+.tr b{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;line-height:1}
+.tr span{font-size:13px;color:#ABA49A}
+.tr .pb{height:6px;border-radius:6px;background:rgba(242,235,221,.08);overflow:hidden}
+.tr .pb i{display:block;height:100%;background:var(--tc)}
+
+/* enemigos */
+.foes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px}
+.foe{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#141219;border:1px solid rgba(242,235,221,.08);transition:border-color .3s,transform .3s}
+.foe:hover{border-color:rgba(242,138,30,.5);transform:translateY(-3px)}
+.foe .im{position:relative;height:150px;overflow:hidden}
+.foe .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.foe:hover .im img{transform:scale(1.08)}
+.foe .im .thr{position:absolute;top:12px;left:12px}
+.foe .bd{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px}
+.foe h3{margin:0;font-size:26px;font-weight:800;line-height:1}
+.foe .ty{font-size:13px;color:#ABA49A}
+.foe .wk{margin-top:4px;padding:10px 12px;border-radius:10px;background:rgba(245,192,42,.06);border:1px solid rgba(245,192,42,.18);font-size:13px;color:#E2DBCE}
+.foe .wk b{color:#F5C02A;font-weight:600}
+
+.foot{margin-top:72px;border-top:1px solid rgba(242,235,221,.08);padding:32px 0 36px;font-size:13px;color:#9A938A}
+.foot p{margin:10px 0 0;max-width:680px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu{display:none}
+  .kpi{border-right:0;border-bottom:1px solid rgba(242,235,221,.06)}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .ap *,.ap *::before,.ap *::after{animation:none !important;transition:none !important}
+}
+.ap.still *,.ap.still *::before,.ap.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:640px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi{padding:14px 16px;border-right:1px solid rgba(242,235,221,.06)}
+  .maps{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .mc{height:170px;border-radius:14px}
+  .mc h3{font-size:22px}
+  .mc p,.mc .go,.mc .chips{display:none}
+  .mc .bot{left:12px;right:12px;bottom:12px}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+</style>
+</helmet>
+
+<div class="ap {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de ARC Raiders">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC Raiders</a>
+        <a class="slink on" href="Arc.dc.html">Inicio</a>
+        <div class="dd">
+          <a class="slink" href="ArcMapa.dc.html" aria-haspopup="true">Mapas
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="mm">
+              <sc-for list="{{maps}}" as="m" hint-placeholder-count="6">
+                <a class="mo" href="ArcMapa.dc.html"><span class="th"><img src="{{m.img}}" alt=""></span><b>{{m.n}}</b><span>{{m.meta}}</span></a>
+              </sc-for>
+              <div class="mm-f"><span>Mapas con misiones y enemigos de cada zona</span><a href="ArcMapa.dc.html">Todos los mapas →</a></div>
+            </div>
+          </div>
+        </div>
+        <a class="slink" href="#objetos">Objetos y reciclaje</a>
+        <a class="slink" href="#misiones">Misiones</a>
+        <a class="slink" href="#arc">Enemigos</a>
+        <div class="dd">
+          <a class="slink" href="#objetos" aria-haspopup="true">Guías
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="gl">
+              <a class="gi" href="#objetos"><b>Qué guardar, reciclar o vender</b><span>Decide qué hacer con cada objeto al volver</span></a>
+              <a class="gi" href="#misiones"><b>Misiones por comerciante</b><span>Shani, Celeste, Tian Wen, Apollo y Lance</span></a>
+              <a class="gi" href="#arc"><b>Puntos débiles de cada ARC</b><span>Dónde disparar y qué blindaje tienen</span></a>
+              <a class="gi" href="ArcMapa.dc.html"><b>Guía por mapas</b><span>Misiones y enemigos de cada zona</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="htx">
+        <span class="kick"><i></i>ARC Raiders · Guía en español</span>
+        <h1 class="h1 cond">Sube a la superficie<span>y vuelve con botín</span></h1>
+        <p class="lead">Mapas, objetos, misiones y enemigos con datos reales: qué reciclar, qué guardar y en qué mapa está cada misión.</p>
+        <div class="ctas">
+          <a class="btn-y" href="ArcMapa.dc.html">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+            Ver los mapas
+          </a>
+          <a class="btn-c" href="#objetos">¿Qué hago con este objeto?</a>
+        </div>
+      </div>
+      <div class="shot">
+        <span class="rays" aria-hidden="true"></span>
+        <div class="frame">
+          <img src="/images/arc-raiders/bots/arc_the_queen.webp" alt="The Queen, jefe ARC">
+          <span class="scan" aria-hidden="true"></span>
+          <span class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <div class="tagx">
+            <b>The Queen</b>
+            <span><span class="thr t-ext">Extrema</span>Jefe · Presa, Puerto espacial, Puerta azul</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stripes" aria-hidden="true"></div>
+    <div class="wrap kpis">
+      <div class="kpi"><b>6</b><span>mapas</span></div>
+      <div class="kpi"><b>581</b><span>objetos</span></div>
+      <div class="kpi"><b>100</b><span>misiones</span></div>
+      <div class="kpi"><b>17</b><span>tipos de ARC</span></div>
+    </div>
+  </section>
+
+  <!-- MAPAS -->
+  <section class="sec" id="mapas">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick"><i></i>Mapas</span>
+          <h2 class="h2 cond">Elige tu zona</h2>
+          <p>Cada mapa tiene su página con el mapa a pantalla completa, sus misiones y los ARC que te vas a encontrar.</p>
+        </div>
+        <a class="more" href="ArcMapa.dc.html">Todos los mapas →</a>
+      </div>
+      <div class="maps">
+        <sc-for list="{{maps}}" as="m" hint-placeholder-count="6">
+          <a class="mc" href="ArcMapa.dc.html">
+            <img src="{{m.img}}" alt="">
+            <span class="sl" aria-hidden="true"></span>
+            <span class="chips"><span class="chip">{{m.q}} misiones</span><span class="chip">{{m.e}}</span></span>
+            <span class="bot">
+              <span><h3 class="cond">{{m.n}}</h3><p>{{m.sub}}</p></span>
+              <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+            </span>
+            <span class="bar" aria-hidden="true"></span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJETOS -->
+  <section class="sec" id="objetos">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick"><i></i>Objetos y reciclaje</span>
+          <h2 class="h2 cond">¿Qué hago con esto?</h2>
+          <p>Para cada uno de los 581 objetos te decimos si guardarlo, reciclarlo, venderlo o usarlo, y por qué.</p>
+        </div>
+        <a class="more" href="https://grietameta.vercel.app/arc-raiders">Ver todos los objetos →</a>
+      </div>
+      <div class="acts">
+        <div class="act a-g">
+          <div class="act-h"><b>Guardar</b><span>101 objetos</span></div>
+          <p>Te lo piden en misiones, mejoras de estaciones o proyectos.</p>
+          <div class="it r-leg"><span class="ic"><img src="/images/arc-raiders/items/queen_reactor.webp" alt=""></span><span class="tx"><b>Reactor de reina</b><span>Legendario</span></span><span class="v">11.000</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/magnetron.webp" alt=""></span><span class="tx"><b>Magnetrón</b><span>Épico</span></span><span class="v">6.000</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/power_rod.webp" alt=""></span><span class="tx"><b>Varilla de energía</b><span>Épico</span></span><span class="v">5.000</span></div>
+        </div>
+        <div class="act a-c">
+          <div class="act-h"><b>Reciclar</b><span>98 objetos</span></div>
+          <p>Sus materiales te sirven y valen más que venderlo entero.</p>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/vaporizer_regulator.webp" alt=""></span><span class="tx"><b>Vaporizer Regulator</b><span>Épico</span></span><span class="v">6.000</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/turbine_compressor.webp" alt=""></span><span class="tx"><b>Compresor de turbina</b><span>Épico</span></span><span class="v">5.000</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/spectrum_analyzer.webp" alt=""></span><span class="tx"><b>Analizador de espectro</b><span>Épico</span></span><span class="v">3.500</span></div>
+        </div>
+        <div class="act a-y">
+          <div class="act-h"><b>Vender</b><span>62 objetos</span></div>
+          <p>No se puede reciclar o sus materiales no te los piden.</p>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/lances_mixtape_5th_edition.webp" alt=""></span><span class="tx"><b>Mixtape de Lance (5ª edición)</b><span>Épico</span></span><span class="v">10.000</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/familiar_duck.webp" alt=""></span><span class="tx"><b>Pato Familiar</b><span>Épico</span></span><span class="v">7.000</span></div>
+          <div class="it r-rar"><span class="ic"><img src="/images/arc-raiders/items/music_box.webp" alt=""></span><span class="tx"><b>Caja de música</b><span>Raro</span></span><span class="v">5.000</span></div>
+        </div>
+        <div class="act a-o">
+          <div class="act-h"><b>Usar</b><span>320 objetos</span></div>
+          <p>Armas, equipo y consumibles: equípalo, mejóralo o úsalo.</p>
+          <div class="it r-leg"><span class="ic"><img src="/images/arc-raiders/items/equalizer.webp" alt=""></span><span class="tx"><b>Ecualizador</b><span>Legendario · ametralladora</span></span><span class="v">27.500</span></div>
+          <div class="it r-leg"><span class="ic"><img src="/images/arc-raiders/items/jupiter.webp" alt=""></span><span class="tx"><b>Júpiter</b><span>Legendario · francotirador</span></span><span class="v">27.500</span></div>
+          <div class="it r-epi"><span class="ic"><img src="/images/arc-raiders/items/tempest_iv.webp" alt=""></span><span class="tx"><b>Tempestad IV</b><span>Épico · fusil de asalto</span></span><span class="v">27.000</span></div>
+        </div>
+      </div>
+      <div class="how">
+        <div class="how-h">
+          <h3>¿Cómo se calcula la recomendación?</h3>
+          <span class="how-n"><b>581</b>objetos</span>
+        </div>
+        <ul class="how-l">
+          <li class="a-g"><b>Guardar</b>Lo pide el taller, un proyecto activo o una misión (o es un objeto de misión).</li>
+          <li class="a-o"><b>Usar</b>Armas, mejoras, aumentos, escudos, munición, consumibles, planos y llaves.</li>
+          <li class="a-c"><b>Reciclar</b>Al reciclarlo obtienes materiales que te piden el taller, un proyecto o una misión.</li>
+          <li class="a-y"><b>Vender</b>El resto. Se vende por su valor y reciclarlo no te da nada que necesites.</li>
+        </ul>
+        <p class="how-f">Es una guía orientativa calculada por GrietaMeta a partir de los datos del juego, no una información oficial. Si ya completaste una mejora o una misión, puede que no necesites guardar ese objeto.</p>
+      </div>
+      <div class="isearch">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <label class="sr" for="q-item">Buscar objeto</label>
+          <input id="q-item" type="search" placeholder="Busca un objeto (Ferro, cables, reactor…)" autocomplete="off">
+        </div>
+        <a class="btn-y" href="https://grietameta.vercel.app/arc-raiders" style="height: 44px; font-size: 17px">Buscar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISIONES -->
+  <section class="sec" id="misiones">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick"><i></i>Misiones</span>
+          <h2 class="h2 cond">Misiones por comerciante</h2>
+          <p>100 misiones con sus objetivos y recompensas. 84 transcurren en un mapa concreto: las tienes también dentro de cada mapa.</p>
+        </div>
+        <a class="more" href="https://grietameta.vercel.app/arc-misiones">Ver todas las misiones →</a>
+      </div>
+      <div class="traders">
+        <sc-for list="{{traders}}" as="t" hint-placeholder-count="5">
+          <a class="tr {{t.c}}" href="https://grietameta.vercel.app/arc-misiones">
+            <span class="tt">
+              <span class="av"><img src="{{t.img}}" alt=""></span>
+              <span><b>{{t.n}}</b><span class="role">{{t.role}} · {{t.q}} misiones</span></span>
+            </span>
+            <span class="pb"><i style="width: {{t.w}}"></i></span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENEMIGOS -->
+  <section class="sec" id="arc">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick"><i></i>Enemigos</span>
+          <h2 class="h2 cond">Los ARC más peligrosos</h2>
+          <p>Amenaza, blindaje y dónde disparar. Los 17 tipos de ARC están en la página de enemigos.</p>
+        </div>
+        <a class="more" href="https://grietameta.vercel.app/arc-enemigos">Ver los 17 ARC →</a>
+      </div>
+      <div class="foes">
+        <sc-for list="{{foes}}" as="f" hint-placeholder-count="6">
+          <article class="foe">
+            <div class="im"><img src="{{f.img}}" alt=""><span class="thr {{f.tc}}">{{f.t}}</span></div>
+            <div class="bd">
+              <h3 class="cond">{{f.n}}</h3>
+              <span class="ty">{{f.ty}} · {{f.maps}}</span>
+              <div class="wk"><b>Punto débil:</b> {{f.wk}}</div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>El contenido de ARC Raiders pertenece a Embark Studios AB y sus licenciantes. GrietaMeta no está afiliado ni respaldado por Embark Studios. Datos de objetos, misiones y enemigos: RaidTheory/arcraiders-data (licencia MIT) y MetaForge.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb on" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const motion = this.props.animaciones ?? true;
+    const maps = [
+      { n: 'Dam Battlegrounds', img: '/images/arc-raiders/maps/dam_battlegrounds.webp', q: 31, e: '16 tipos de ARC', sub: 'Presa, pantanos y la Matriarca' },
+      { n: 'Buried City', img: '/images/arc-raiders/maps/buried_city.webp', q: 31, e: '14 tipos de ARC', sub: 'Casco antiguo, farmacias y aparcamientos' },
+      { n: 'Spaceport', img: '/images/arc-raiders/maps/the_spaceport.webp', q: 27, e: '15 tipos de ARC', sub: 'Torres de lanzamiento y túneles' },
+      { n: 'Blue Gate', img: '/images/arc-raiders/maps/the_blue_gate.webp', q: 20, e: '15 tipos de ARC', sub: 'Autopista derrumbada y claro desolado' },
+      { n: 'Stella Montis', img: '/images/arc-raiders/maps/stella_montis_upper.webp', q: 9, e: '6 tipos de ARC', sub: 'Dos plantas · instalaciones de investigación' },
+      { n: 'Riven Tides', img: '/images/arc-raiders/maps/riven_tides.webp', q: 3, e: 'Sin datos de ARC', sub: 'Hotel, rompeolas y puerto' }
+    ].map((m) => ({ ...m, meta: m.q + ' misiones · ' + m.e }));
+    const TR = [
+      ['Shani', 33, 'c-y', '../assets/arc/comerciantes/shani.webp', 'Seguridad'],
+      ['Celeste', 25, 'c-c', '../assets/arc/comerciantes/celeste.webp', 'Primera Ola'],
+      ['Tian Wen', 18, 'c-r', '../assets/arc/comerciantes/tian-wen.webp', 'Armería'],
+      ['Apollo', 15, 'c-o', '../assets/arc/comerciantes/apollo.webp', 'Granadas y artilugios'],
+      ['Lance', 9, 'c-g', '../assets/arc/comerciantes/lance.webp', 'Clínica']
+    ];
+    const traders = TR.map((t) => ({ n: t[0], q: t[1], c: t[2], img: t[3], role: t[4], w: (t[1] / 33 * 100).toFixed(0) + '%' }));
+    const TC = { Extrema: 't-ext', 'Crítica': 't-cri', Alta: 't-alt', Moderada: 't-mod', Baja: 't-baj' };
+    const foes = [
+      ['The Queen', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_the_queen.webp', '3 mapas', 'Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.'],
+      ['Matriarch', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_matriarch.webp', 'Dam Battlegrounds', 'Núcleo central brillante, que queda expuesto cuando ataca.'],
+      ['Bastion', 'Asalto pesado', 'Crítica', '/images/arc-raiders/bots/arc_bastion.webp', '5 mapas', 'Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.'],
+      ['Bombardier', 'Artillería pesada', 'Crítica', '/images/arc-raiders/bots/arc_bombardier.webp', '4 mapas', 'Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.'],
+      ['Leaper', 'Máquina de asedio', 'Crítica', '/images/arc-raiders/bots/arc_leaper.webp', '4 mapas', 'El fuego es lo más eficaz. También puedes dispararle al ojo.'],
+      ['Rocketeer', 'Artillería voladora', 'Crítica', '/images/arc-raiders/bots/arc_rocketeer.webp', '4 mapas', 'Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.']
+    ].map((f) => ({ n: f[0], ty: f[1], t: f[2], tc: TC[f[2]], img: f[3], maps: f[4], wk: f[5] }));
+    return { motionClass: motion ? '' : 'still', maps, traders, foes };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Propuesta D, logotipo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05070A}
+a{color:#F3C878}a:hover{color:#FFD995}
+.root{position:relative;width:620px;height:760px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:64px;background:#05070A;color:#ECE9E1;font-family:'IBM Plex Sans',system-ui,sans-serif;overflow:hidden;isolation:isolate}
+.root::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 40% at 50% 40%,rgba(243,200,120,.08),transparent 70%)}
+.stack{display:flex;flex-direction:column;align-items:center;gap:6px}
+.w1,.w2{font-family:'Unbounded',sans-serif;font-weight:800;font-size:66px;line-height:1;letter-spacing:-.02em}
+.w1{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.w2{letter-spacing:.2em;margin-right:-.2em;background:linear-gradient(100deg,#F3C878 0%,#F3C878 40%,#FFF4D6 50%,#F3C878 60%,#F3C878 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) both,shine 4.5s 1.2s ease-in-out infinite}
+.rift{position:relative;width:360px;height:26px}
+.rift svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rift .blur{filter:blur(6px);opacity:.9;animation:pulse 3s ease-in-out infinite}
+.rift polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.rift .thin polyline{stroke-width:3;stroke-dasharray:420;animation:draw 1.2s .4s cubic-bezier(.6,0,.2,1) both}
+.rift .blur polyline{stroke-width:9}
+.k1{stroke:#F3C878}.k2{stroke:#FF6A3D}.k3{stroke:#4FE0B6}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes shine{0%,100%{background-position:100% 0}50%{background-position:0% 0}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes draw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
+.tag{font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#8F98A5;margin-top:14px}
+.row{display:flex;align-items:center;gap:26px}
+.inline{display:flex;align-items:center;gap:10px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.01em}
+.inline .m{color:#F3C878}
+.inline svg{width:14px;height:34px;overflow:visible}
+.app{position:relative;width:92px;height:92px;border-radius:24px;background:#0E1219;border:1px solid rgba(255,255,255,.09);overflow:hidden;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.app:hover{transform:rotate(-6deg) scale(1.06)}
+.app .g,.app .mm{position:absolute;font-family:'Unbounded',sans-serif;font-weight:800;font-size:34px;line-height:1}
+.app .g{left:14px;top:12px}
+.app .mm{right:10px;bottom:12px;color:#F3C878}
+.app svg{position:absolute;inset:0;width:100%;height:100%}
+</style>
+</helmet>
+
+<div class="root">
+  <div class="stack" role="img" aria-label="Logotipo GRIETA META con una grieta de luz entre las dos palabras">
+    <div class="w1">GRIETA</div>
+    <div class="rift" aria-hidden="true">
+      <svg class="blur" viewBox="0 0 360 26">
+        <polyline class="k1" points="0,13 40,9 70,17 110,6 120,10"></polyline>
+        <polyline class="k2" points="120,10 150,15 190,8 230,18 240,14"></polyline>
+        <polyline class="k3" points="240,14 270,7 310,14 360,11"></polyline>
+      </svg>
+      <svg class="thin" viewBox="0 0 360 26">
+        <polyline class="k1" points="0,13 40,9 70,17 110,6 120,10"></polyline>
+        <polyline class="k2" points="120,10 150,15 190,8 230,18 240,14"></polyline>
+        <polyline class="k3" points="240,14 270,7 310,14 360,11"></polyline>
+      </svg>
+    </div>
+    <div class="w2">META</div>
+    <div class="tag">Builds · Tier lists · Guías</div>
+  </div>
+
+  <div class="row">
+    <div class="inline">
+      <span>GRIETA</span>
+      <svg viewBox="0 0 14 34" aria-hidden="true">
+        <polyline points="9,1 4,12 10,18 3,33" fill="none" stroke="#FF6A3D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      </svg>
+      <span class="m">META</span>
+    </div>
+    <div class="app" aria-hidden="true">
+      <span class="g">G</span>
+      <span class="mm">M</span>
+      <svg viewBox="0 0 92 92">
+        <polyline points="70,6 52,36 60,46 22,86" fill="none" stroke="#FF6A3D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        <polyline points="70,6 52,36" fill="none" stroke="#F3C878" stroke-width="3" stroke-linecap="round"></polyline>
+        <polyline points="60,46 22,86" fill="none" stroke="#4FE0B6" stroke-width="3" stroke-linecap="round"></polyline>
+      </svg>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":620,"height":760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noticias de League of Legends · GrietaMeta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+
+@view-transition{navigation:auto}
+:root{color-scheme:dark}
+html,body{margin:0;background:#07090D}
+.builds{--bg:#07090D;--panel:#0D1017;--raised:#141922;--line:#282D35;--muted:#A3ACBA;--gold:#F3C878;--green:#75DDA9;color:#ECE9E1;background:var(--bg);font:15px/1.45 'IBM Plex Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+.builds *{box-sizing:border-box}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:clamp(16px,2.5vw,32px)}
+.builds :is(h1,h2,h3,p,ol){margin:0}
+.builds :is(h1,h2,h3,.item-title strong){font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.builds :is(button,input,select){font:inherit}
+.builds button,.builds select{cursor:pointer}
+.builds a{color:inherit;text-decoration:none}
+.builds :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.builds ::selection{background:#705730;color:white}
+.builds sc-for,.builds sc-if{display:contents}
+.topbar{background:#0B0E14;border-bottom:1px solid var(--line)}
+.nav-in,.brand,.game,.topbar nav{display:flex;align-items:center}
+.nav-in{min-height:62px;gap:24px}
+.brand{font:700 19px 'Chakra Petch',sans-serif;letter-spacing:.06em}
+.brand img{width:32px;height:34px;object-fit:contain;margin-right:7px}
+.brand span{color:var(--gold)}
+.game{border-left:1px solid var(--line);padding-left:24px;gap:8px;font-weight:600}
+.game img{width:23px;height:25px;object-fit:contain}
+.topbar nav{align-self:stretch;margin-left:auto;gap:24px}
+.topbar nav a{position:relative;display:grid;align-items:center;font-size:14px;color:var(--muted)}
+.topbar nav a[aria-current],.topbar nav a:hover{color:#F4EDE0}
+.topbar nav a[aria-current]::after{content:"";position:absolute;inset:auto 0 0;height:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+.mast{position:relative;isolation:isolate;border-bottom:1px solid #292A29;background:#10151A;overflow:hidden}
+.mast-in{padding-block:24px 28px}
+.crumb,.scope{display:flex;gap:10px;align-items:center;font-size:12px;color:#B9BFCA}
+.crumb a:hover{text-decoration:underline}
+.mast h1{margin-top:12px;font-size:clamp(36px,4vw,52px);letter-spacing:-.04em;line-height:1.07}
+.mast em{font-style:normal;color:#E2B566}
+.mast p{max-width:53ch;margin-top:8px;color:#C1C7CF}
+.scope{margin-top:18px;flex-wrap:wrap;gap:8px 14px;font-size:12px}
+.mast{background:repeating-linear-gradient(128deg,transparent 0 70px,#d9b56e0a 71px,transparent 72px 100px),radial-gradient(ellipse at 85% 115%,#463924,transparent 58%),#101419}
+.mast .patch{color:var(--gold);font-weight:700}.mast-in{padding-block:24px 30px}
+.b-work{padding-block:28px 60px}.section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 14px;margin-bottom:12px}
+.section-head h2{font-size:clamp(21px,2.3vw,30px);letter-spacing:-.035em}.section-head p,.muted,.role-name{color:var(--muted);font-size:13px}
+.podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:32px}
+.riser{--tint:#ccb07a;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:60px 1fr;gap:15px;align-items:center;padding:18px;border:1px solid color-mix(in srgb,var(--tint) 35%,#20242b);border-radius:15px;background:linear-gradient(112deg,color-mix(in srgb,var(--tint) 14%,#11151b),#10151b 86%)}
+.riser::after{content:"";position:absolute;z-index:-1;width:100px;height:160%;right:0;top:-30%;transform:skew(-18deg);border-inline:1px solid #ffffff0c;background:linear-gradient(90deg,transparent,#ffffff06)}
+.riser:hover,.build-row:hover{border-color:var(--gold);background-color:#202029}.riser strong{display:block;font:700 22px 'Bricolage Grotesque',sans-serif}.riser small{color:#c9c6c2;font-size:12px}.riser .trend{display:block;color:var(--green);font:700 18px 'Chakra Petch',sans-serif}
+.portrait,.keystone{display:inline-block;flex:none;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%;background-repeat:no-repeat;width:44px;height:44px;border-radius:10px;box-shadow:inset 0 0 0 1px #ffffff25}
+.riser .portrait{width:60px;height:60px;border:1px solid var(--tint);border-radius:15px}
+.controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:12px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}
+.controls label,.mob-label{display:grid;gap:5px;color:var(--muted);font-size:12px;font-weight:600}.controls :is(input,select),.empty button{min-width:0;width:100%;height:42px;padding-inline:11px;color:#f2efeb;background:#191e26;border:1px solid #383e49;border-radius:8px;font:500 14px 'IBM Plex Sans',sans-serif;color-scheme:dark}
+.build-list{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.build-row,.column-head{display:grid;grid-template-columns:minmax(138px,1.35fr) minmax(132px,1.1fr) minmax(46px,.5fr) minmax(120px,1fr) minmax(62px,.6fr) minmax(64px,.6fr) 16px;align-items:center;gap:12px;padding:11px 18px}
+.column-head{color:#b1bac6;background:#181d24;font-size:12px;font-weight:600}.build-row{border-top:1px solid var(--line);transition:background .18s}.build-row:focus-visible{outline-offset:-3px}
+.identity,.core,.rune{display:flex;align-items:center;gap:10px}.identity strong{font-family:'Bricolage Grotesque',sans-serif;font-size:17px}.role-name{display:block}.core{gap:4px}
+.slot{display:inline-flex;align-items:center;gap:4px}.slot+.slot::before{content:"›";color:#858d99}.gear{display:block;width:34px;height:34px;border:1px solid #514b40;border-radius:6px}
+.keystone{width:30px;height:30px;border-radius:50%;background-image:url(../assets/lol/iconos.webp);background-size:1000% 700%}.rune{gap:6px;font-size:13px;color:#d1d4d8}
+.win,.games{font:600 18px 'Chakra Petch',sans-serif}.win{color:var(--green)}.to-file{color:var(--gold);font-size:19px}.mob-label{display:none}
+.empty{text-align:center;padding:24px}.empty p{color:var(--muted);margin:4px 0 12px}.empty button{width:auto;cursor:pointer}
+@media(max-width:900px){.riser{padding:12px;grid-template-columns:44px 1fr;gap:9px}.riser .portrait{width:44px;height:44px}.riser strong{font-size:19px}.build-row,.column-head{padding-inline:12px;gap:8px;grid-template-columns:minmax(116px,1.2fr) 124px 36px minmax(98px,1fr) 61px 58px 12px}.gear{width:31px;height:31px}}
+@media(max-width:680px){.nav-in{gap:12px;min-height:54px}.game{display:none}.topbar nav{gap:12px}.topbar nav a{font-size:12px}.brand{font-size:14px}.brand img{width:22px;margin-right:4px}
+.podium{grid-template-columns:1fr;gap:6px;margin-bottom:24px}.riser{grid-template-columns:44px 1fr auto}.riser .trend{font-size:17px}.riser-info{display:contents}.riser-info>span{grid-column:2}.riser-info .trend{grid-column:3;grid-row:1}
+.controls{grid-template-columns:1fr 1fr;gap:10px;padding:10px}.column-head{display:none}.build-list{border:0;background:transparent;display:grid;gap:9px}.build-row{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) 64px;grid-template-areas:"identity identity win" "core boots games" "rune rune link";align-items:start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.identity{grid-area:identity}.core-cell{grid-area:core}.boot-cell{grid-area:boots}.rune{grid-area:rune}.win{grid-area:win}.games{grid-area:games}.to-file{grid-area:link;justify-self:end}.mob-label{display:block;margin-bottom:4px;font:500 11px 'IBM Plex Sans',sans-serif}.win,.games{text-align:right}.gear{width:30px;height:30px}.keystone{width:23px;height:23px}.riser .trend{align-self:center}.mast-in{padding-block:18px}.b-work{padding-block:20px 36px}}
+.mast .criterion{color:var(--gold);font-size:13px;font-weight:600}
+.build-name{display:block;color:#e2dfd8;font-size:12px;font-weight:600}.build-name:not(:empty){margin-bottom:4px}
+.sample-note{grid-column:2/-2;color:var(--muted);font-size:14px}
+@media(max-width:680px){.build-row:has(.sample-note){grid-template-areas:"identity identity link" "note note note"}.sample-note{grid-area:note}}
+@media(prefers-reduced-motion:reduce){.builds *{transition:none!important;animation:none!important}}
+
+.mast::after{content:"";position:absolute;z-index:-1;inset:8% 9% 0 auto;aspect-ratio:1;background:url(../assets/games/logo-lol.png) center/contain no-repeat;opacity:.23;transform:rotate(-8deg)}
+.riser{grid-template-columns:auto minmax(0,1fr) auto}.riser-core{display:flex;gap:3px}.riser-core .gear{width:28px;height:28px}
+.use{display:block;color:#aeb6c0;font:500 11px 'IBM Plex Sans',sans-serif}
+@media(min-width:681px) and (max-width:1000px){.riser-core{grid-column:1/-1}.riser{grid-template-columns:auto 1fr}}
+@media(max-width:680px){.riser-info{display:block}.riser .trend{font-size:14px}.mast::after{opacity:.08}.riser-core .gear{width:28px;height:28px}}
+@media(max-width:420px){.topbar nav{gap:9px}.nav-in{gap:6px}.topbar nav a{white-space:nowrap}.brand{letter-spacing:0}.brand img{width:20px}}
+
+/* === Cabecera común de LoL (copiada de Lol.dc.html) === */
+/* ---- marca GM mini ---- */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.8);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1;justify-self:start}
+.brand:hover{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8A93A0;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:#ECE9E1;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7C8592}
+.search input:focus{border-color:rgba(226,181,102,.6);box-shadow:0 0 0 4px rgba(226,181,102,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8A93A0;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.1)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(255,255,255,.12);color:#ECE9E1;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#ECE9E1;background:rgba(255,255,255,.06)}
+.sub{border-top:1px solid rgba(255,255,255,.05);background:rgba(13,16,23,.6)}
+.sub-in{display:flex;align-items:center;gap:6px;height:48px}
+.gchip{display:flex;align-items:center;gap:9px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(255,255,255,.08);color:#ECE9E1;text-decoration:none;font-weight:600;font-size:14px;flex-shrink:0}
+.gchip img{width:24px;height:24px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;height:48px;padding:0 12px;color:#A0A8B4;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover{color:#ECE9E1}
+.slink.on{color:#ECE9E1}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+/* submenú Campeones */
+.dd{position:relative;display:flex;align-items:center;height:48px}
+.dd>.slink{gap:6px}
+.dd>.slink svg{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#ECE9E1}
+.dd:hover>.slink svg,.dd:focus-within>.slink svg{transform:rotate(180deg)}
+.mega{position:absolute;top:100%;left:-12px;z-index:60;width:640px;padding:18px;border-radius:18px;background:#0F131B;border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .mega,.dd:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mega-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.mega-h b{font-family:'Bricolage Grotesque',sans-serif;font-size:17px}
+.mega-roles{display:flex;gap:6px}
+.mega-roles span.r{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.04);color:#A0A8B4}
+.mega-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.mc{display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 2px;border-radius:10px;text-decoration:none;color:#C6CBD2;font-size:11.5px;transition:background .2s}
+.mc:hover{background:rgba(255,255,255,.06);color:#ECE9E1}
+.mc img{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.1);transition:transform .2s}
+.mc:hover img{transform:scale(1.08)}
+.mc span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mega-f{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8F98A5}
+.mega-f a{color:#F3C878;text-decoration:none;font-weight:600}
+/* iconos oficiales de posición (máscara: toman el color del texto) */
+.pi{display:inline-block;width:18px;height:18px;flex-shrink:0;background:currentColor;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.pi-top{-webkit-mask-image:url(../assets/lol/posiciones/top.png);mask-image:url(../assets/lol/posiciones/top.png)}
+.pi-jungle{-webkit-mask-image:url(../assets/lol/posiciones/jungle.png);mask-image:url(../assets/lol/posiciones/jungle.png)}
+.pi-mid{-webkit-mask-image:url(../assets/lol/posiciones/middle.png);mask-image:url(../assets/lol/posiciones/middle.png)}
+.pi-bot{-webkit-mask-image:url(../assets/lol/posiciones/bottom.png);mask-image:url(../assets/lol/posiciones/bottom.png)}
+.pi-sup{-webkit-mask-image:url(../assets/lol/posiciones/utility.png);mask-image:url(../assets/lol/posiciones/utility.png)}
+.ddb .chev{color:#8A93A0;transition:transform .2s}
+.ddb.on .chev{transform:rotate(180deg)}
+.lane .pi{width:20px;height:20px}
+.sel .chev{position:absolute;right:12px;color:#8A93A0;pointer-events:none}
+@media (max-width:860px){
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .mega{display:none}}
+@media (max-width:480px){
+  .brand-name{display:none}}
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.lf-portrait{display:block;flex:none;width:42px;height:42px;border-radius:11px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%;overflow:hidden}
+.lf-tier .lf-portrait img{display:block;width:100%;height:100%}
+@media(max-width:680px){
+ .lf-portrait{width:36px;height:36px}}
+.menu-champ{position:absolute;inset:0 0 0 auto;width:96px;z-index:-2;background:url(../assets/lol/campeones.webp) 7.6923% 0/1400% 1300% no-repeat;opacity:.65}
+.mc .lf-portrait{width:44px;height:44px;border-radius:10px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%}
+.spot-top .lf-portrait{width:72px;height:72px;border:2px solid #BA9755;border-radius:18px}
+.gc .lf-portrait{width:52px;height:52px}
+.wl .lf-portrait{width:38px;height:38px}
+.ban .lf-portrait{width:32px;height:32px}
+
+/* === Noticias === */
+.news-wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start;padding-block:22px 56px}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.cats button,.lgs button{min-height:40px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:#cfd3da;font:600 13.5px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.cats button[aria-pressed="true"]{border-color:var(--gold);color:#120d04;background:var(--gold)}
+.lgs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 18px}
+.lgs button{min-height:34px;padding:4px 12px;font-size:12.5px}
+.lgs button[aria-pressed="true"]{border-color:#5fc4b8;color:#bff3ea;background:rgba(95,196,184,.12)}
+.nsec{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:18px}
+.nsec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.nsec-h h2{margin:0;font:700 24px 'Bricolage Grotesque',sans-serif}
+.nsec-h span{color:var(--muted);font-size:12.5px}
+.tag-demo{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;border:1px dashed rgba(243,200,120,.6);color:var(--gold);font-size:11px;font-weight:600;margin-left:6px}
+.mkt{width:100%;border-collapse:collapse;font-size:14px}
+.mkt th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 10px 8px}
+.mkt td{padding:10px;border-top:1px solid var(--line);vertical-align:middle}
+.mkt tr[data-entry]:hover td{background:rgba(255,255,255,.025)}
+.pl b{display:block}.pl small{color:var(--muted)}
+.pos{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:22px;border-radius:6px;background:var(--raised);color:#d9dde4;font-size:11px;font-weight:700;letter-spacing:.04em;margin-right:8px}
+.mv{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tm{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.tm i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;font-style:normal;font-size:10px;font-weight:800;color:#fff;background:linear-gradient(160deg,var(--c1),var(--c2))}
+.mv svg{color:var(--muted)}
+.st{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700}
+.st.of{background:rgba(117,221,169,.14);color:#8ff0bd}
+.st.ac{background:rgba(243,200,120,.14);color:var(--gold)}
+.st.ru{background:rgba(158,140,255,.14);color:#c8bdff}
+.conf{display:inline-flex;gap:2px;margin-left:4px}
+.conf i{width:6px;height:10px;border-radius:2px;background:#3a4150}
+.conf i.on{background:currentColor}
+.src{color:var(--muted);font-size:12.5px}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.nc{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:14px;background:var(--raised);border:1px solid var(--line);color:inherit;text-decoration:none;transition:transform .2s ease,border-color .2s ease}
+.nc:hover{transform:translateY(-3px);border-color:var(--gold);color:inherit}
+.nc .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.nc .lg{padding:2px 8px;border-radius:6px;background:#1d2530;color:#bff3ea;font-weight:700;font-size:11px}
+.nc b{font:700 17px/1.3 'Bricolage Grotesque',sans-serif}
+.nc p{margin:0;color:#c9ccd2;font-size:13.5px}
+.nc .thumb{height:120px;border-radius:10px;background:linear-gradient(135deg,rgba(243,200,120,.18),rgba(95,196,184,.12)),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 10px,transparent 10px 20px);display:grid;place-items:center;color:var(--muted);font-size:12px;border:1px dashed var(--line)}
+.devl{display:grid;gap:10px}
+.dv{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px;border-radius:14px;background:var(--raised);border:1px solid var(--line);color:inherit;text-decoration:none}
+.dv:hover{border-color:var(--gold);color:inherit}
+.dv .thumb{height:68px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#1b2230,#2a1f12);color:var(--gold);border:1px dashed var(--line)}
+.dv .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.dv b{display:block;font-size:15px}
+.dv small{color:var(--muted)}
+.dv .ty{font-size:12px;color:var(--muted);white-space:nowrap}
+.side .nsec h3{margin:0 0 10px;font:700 18px 'Bricolage Grotesque',sans-serif}
+.fmt{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.fmt li{padding:10px 12px;border-radius:12px;background:var(--raised);border:1px solid var(--line);font-size:13.5px}
+.fmt li b{display:block;color:var(--gold);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.srcs{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px}
+.srcs a{color:var(--gold)}
+.note{color:var(--muted);font-size:12.5px;margin:10px 0 0}
+.empty{padding:16px;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+@media (max-width:1000px){.news-wrap{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.ncards{grid-template-columns:minmax(0,1fr)}.mkt thead{display:none}.mkt tr{display:grid;grid-template-columns:1fr auto;gap:6px;padding:10px 0;border-top:1px solid var(--line)}.mkt td{border:0;padding:0 4px}.mkt td.mvc{grid-column:1 / -1}.dv{grid-template-columns:72px minmax(0,1fr)}.dv .ty{display:none}.dv .thumb{height:56px}}
+
+/* === Transición de página de LoL: barrido dorado === */
+.gm-wipe{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;overflow:hidden}
+.gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
+.gm-wipe b{position:absolute;inset:0;background:#07090D}
+</style>
+</helmet>
+<div class="gm-wipe" aria-hidden="true"><b></b><i></i></div>
+  
+<div class="builds {{motionClass}}">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><span class="bg menu-champ" aria-hidden="true"></span><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="../assets/games/logo-arc.png" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="../assets/games/logo-zelda.png" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de League of Legends">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Lol.dc.html#tierlist"><img src="../assets/games/logo-lol.png" alt="">League of Legends</a>
+        <a class="slink" href="Lol.dc.html#tierlist">Tier list</a>
+        <div class="dd">
+          <a class="slink" href="LolCampeon.dc.html" aria-haspopup="true">Campeones
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="mega">
+            <div class="mega-h">
+              <b>Campeones</b>
+              <div class="mega-roles" aria-hidden="true">
+                <span class="r"><span class="pi pi-top"></span></span>
+                <span class="r"><span class="pi pi-jungle"></span></span>
+                <span class="r"><span class="pi pi-mid"></span></span>
+                <span class="r"><span class="pi pi-bot"></span></span>
+                <span class="r"><span class="pi pi-sup"></span></span>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <sc-for list="{{megaNav}}" as="m" hint-placeholder-count="24">
+                <a class="mc" href="LolCampeon.dc.html"><i class="lf-portrait" style="{{m.portrait}}" aria-hidden="true"></i><span>{{m.n}}</span></a>
+              </sc-for>
+            </div>
+            <div class="mega-f"><span>Build, runas y estadísticas por rango de cada campeón</span><a href="LolBuilds.dc.html">Builds</a><a href="Lol.dc.html#campeones">Ver campeones →</a></div>
+          </div>
+        </div>
+        <a class="slink" href="LolBuilds.dc.html">Builds</a>
+        <a class="slink" href="LolEsports.dc.html">eSports <span class="nw">Mundial</span></a>
+        <a class="slink on" href="LolNoticias.dc.html" aria-current="page">Noticias</a>
+        <a class="slink" href="Premium.dc.html">Premium</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <header class="mast"><div class="wrap mast-in">
+      <div class="crumb"><a href="Lol.dc.html">League of Legends</a><span aria-hidden="true">/</span> Noticias</div>
+      <h1>Noticias de <em>League of Legends</em></h1>
+      <p class="lede">Mercado de fichajes, rumores, cambios de formato y lo que cuenta Riot sobre el juego, en un solo sitio.</p>
+      <p class="criterion">Fuentes: Sheep Esports y la sección «Desarrollo» de Riot · Datos de ejemplo</p>
+    </div></header>
+    <div class="wrap news-wrap">
+      <div class="news-main">
+        <div class="cats" role="group" aria-label="Tipo de noticia">
+          <sc-for list="{{cats}}" as="c" hint-placeholder-count="4"><button type="button" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.n}}</button></sc-for>
+        </div>
+        <div class="lgs" role="group" aria-label="Liga">
+          <sc-for list="{{lgs}}" as="l" hint-placeholder-count="6"><button type="button" aria-pressed="{{l.on}}" onClick="{{l.pick}}">{{l.n}}</button></sc-for>
+        </div>
+
+        <sc-if value="{{showMkt}}" hint-placeholder-val="{{ true }}">
+          <section class="nsec" aria-labelledby="mkt-h" data-sec>
+            <div class="nsec-h"><h2 id="mkt-h">Mercado y rumores</h2><span>{{mktCount}} <span class="tag-demo">Datos de ejemplo</span></span></div>
+            <sc-if value="{{mktEmpty}}" hint-placeholder-val="{{ false }}"><p class="empty">No hay movimientos de ejemplo para esta liga.</p></sc-if>
+            <sc-if value="{{mktAny}}" hint-placeholder-val="{{ true }}">
+            <table class="mkt">
+              <thead><tr><th>Jugador</th><th>Movimiento</th><th>Estado</th><th>Fecha</th></tr></thead>
+              <tbody>
+                <sc-for list="{{mkt}}" as="m" hint-placeholder-count="6">
+                  <tr data-entry="{{m.key}}">
+                    <td class="pl"><span class="pos">{{m.pos}}</span><b style="display:inline">{{m.n}}</b><small style="display:block">{{m.lg}}</small></td>
+                    <td class="mvc"><span class="mv"><span class="tm"><i style="{{m.from.style}}" aria-hidden="true">{{m.from.code}}</i>{{m.from.name}}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="tm"><i style="{{m.to.style}}" aria-hidden="true">{{m.to.code}}</i>{{m.to.name}}</span></span></td>
+                    <td><span class="st {{m.sc}}">{{m.st}}<span class="conf" aria-label="Fiabilidad {{m.conf}} de 3"><i class="{{m.c1}}"></i><i class="{{m.c2}}"></i><i class="{{m.c3}}"></i></span></span></td>
+                    <td class="src">{{m.date}}<br>{{m.src}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+            </sc-if>
+            <p class="note">«Oficial»: anunciado por el club. «Acuerdo»: varias fuentes lo dan por cerrado. «Rumor»: una sola fuente; las barras indican lo fiable que es.</p>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{showEsp}}" hint-placeholder-val="{{ true }}">
+          <section class="nsec" aria-labelledby="esp-h" data-sec>
+            <div class="nsec-h"><h2 id="esp-h">Esports</h2><span>Resúmenes con enlace a la fuente <span class="tag-demo">Datos de ejemplo</span></span></div>
+            <div class="ncards">
+              <sc-for list="{{esp}}" as="a" hint-placeholder-count="4">
+                <a class="nc" href="{{a.url}}" data-entry="{{a.key}}">
+                  <span class="thumb">Imagen de la noticia</span>
+                  <span class="meta"><span class="lg">{{a.lg}}</span>{{a.kind}} · {{a.date}} · {{a.src}}</span>
+                  <b>{{a.t}}</b><p>{{a.s}}</p>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{showDev}}" hint-placeholder-val="{{ true }}">
+          <section class="nsec" aria-labelledby="dev-h" data-sec>
+            <div class="nsec-h"><h2 id="dev-h">Desarrollo de Riot</h2><span>Notas y vídeos de los desarrolladores <span class="tag-demo">Datos de ejemplo</span></span></div>
+            <div class="devl">
+              <sc-for list="{{dev}}" as="d" hint-placeholder-count="4">
+                <a class="dv" href="https://www.leagueoflegends.com/es-es/news/dev/" data-entry="{{d.key}}">
+                  <span class="thumb" aria-hidden="true">{{d.icon}}</span>
+                  <span><span class="k">Desarrollo · {{d.date}}</span><b>{{d.t}}</b><small>{{d.s}}</small></span>
+                  <span class="ty">{{d.ty}}</span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+        </sc-if>
+      </div>
+
+      <aside class="side" aria-label="Más información">
+        <section class="nsec" data-sec>
+          <h3>Formato de la temporada 2027</h3>
+          <ul class="fmt">
+            <li><b>Calendario</b>Tres splits regionales y dos torneos internacionales (First Stand y MSI) antes del Mundial.</li>
+            <li><b>Fearless draft</b>Se mantiene en todas las series al mejor de 3 y de 5.</li>
+            <li><b>Plazas internacionales</b>Reparto por rendimiento en la temporada anterior.</li>
+          </ul>
+          <p class="note">Resumen de ejemplo: cuando se conecte la fuente, aquí saldrán los cambios de formato confirmados.</p>
+        </section>
+        <section class="nsec" data-sec>
+          <h3>Fuentes</h3>
+          <ul class="srcs">
+            <li><a href="https://www.sheepesports.com">Sheep Esports</a>: fichajes, rumores, entrevistas y formatos.</li>
+            <li><a href="https://www.leagueoflegends.com/es-es/news/dev/">Riot Games · Desarrollo</a>: notas y vídeos de los desarrolladores.</li>
+            <li><a href="https://lolesports.com/es-ES/">LoL Esports</a>: calendario y resultados oficiales.</li>
+          </ul>
+          <p class="note">Solo se muestra el titular y un resumen propio, siempre con enlace a la fuente original.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  // Entrada de página propia de LoL: una hoja dorada barre la pantalla y el contenido sube detrás.
+  entradaPagina(enabled) {
+    if (this.entradaHecha || !enabled || typeof window === 'undefined') return;
+    this.entradaHecha = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        const w = document.querySelector('.gm-wipe');
+        if (!w || document.querySelector('.still')) return;
+        const blade = w.querySelector('i'), veil = w.querySelector('b');
+        w.style.opacity = '1';
+        lib.animate(veil, { opacity: [1, 0], duration: 520, delay: 160, ease: 'outQuad' });
+        lib.animate(blade, { left: ['-40%', '120%'], duration: 760, ease: 'inOutCubic', onComplete: () => { w.style.opacity = '0'; } });
+        const body = document.querySelectorAll('main, .layout, .wrap > .hero, .stats');
+        if (body.length) lib.animate(body, { opacity: [0, 1], y: [14, 0], duration: 560, delay: 200, ease: 'outQuart' });
+      });
+    });
+  }
+
+  // Aparición de cada parte de la página al entrar en pantalla (anime.js). Una sola vez por bloque.
+  revelarSecciones(selector, enabled) {
+    if (!enabled || typeof window === 'undefined' || !window.IntersectionObserver) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        this.revealSeen ??= new WeakSet();
+        this.revealObs ??= new IntersectionObserver((entries) => {
+          const vis = entries.filter((e) => e.isIntersecting).map((e) => e.target);
+          vis.forEach((n) => this.revealObs.unobserve(n));
+          if (!vis.length || document.querySelector('.still')) return;
+          lib.animate(vis, { opacity: [0, 1], y: [28, 0], scale: [0.985, 1], duration: 620, delay: lib.stagger(90), ease: 'outQuart' });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        document.querySelectorAll(selector).forEach((n) => {
+          if (this.revealSeen.has(n)) return;
+          this.revealSeen.add(n);
+          const r = n.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92) return; // lo que ya se ve al cargar no se esconde
+          n.style.opacity = '0';
+          this.revealObs.observe(n);
+        });
+      });
+    });
+  }
+
+  // Los valores finales también se leen con movimiento reducido o sin conexión al CDN.
+  prepareMotion(rootSelector, entrySelector, enabled) {
+    if (!enabled || typeof window === 'undefined' || !window.IntersectionObserver) return;
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (preference.matches) return;
+    this.motionLibrary ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.motionLibrary.then(lib => {
+      if (!lib || preference.matches) return;
+      requestAnimationFrame(() => {
+        const root = document.querySelector(rootSelector);
+        if (!root || root.closest('.still')) return;
+        if (!this.entryObserver) {
+          this.seenEntries = new WeakMap();
+          this.entryObserver = new IntersectionObserver(entries => {
+            const visible = entries.filter(entry => entry.isIntersecting).map(entry => entry.target);
+            visible.forEach(node => this.entryObserver.unobserve(node));
+            if (!visible.length || preference.matches || root.closest('.still')) return;
+            lib.animate(visible, { opacity: [.65, 1], y: [7, 0], duration: 260, delay: lib.stagger(24), ease: 'outCubic' });
+            visible.forEach(node => {
+              const number = node.querySelector('[data-count]');
+              if (!number) return;
+              const target = Number(number.dataset.count);
+              const progress = { value: 0 };
+              lib.animate(progress, { value: target, duration: 410, ease: 'outCubic',
+                onUpdate: () => {
+                  if (number.isConnected && Number(number.dataset.count) === target)
+                    number.textContent = progress.value.toFixed(1).replace('.', ',') + ' %';
+                }
+              });
+            });
+          });
+        }
+        root.querySelectorAll(entrySelector).forEach(node => {
+          const key = node.dataset.entry;
+          if (this.seenEntries.get(node) !== key) {
+            this.seenEntries.set(node, key);
+            this.entryObserver.observe(node);
+          }
+        });
+      });
+    });
+  }
+  // Transición al cambiar de pestaña (tipo de noticia o liga).
+  animarFiltro(key, enabled) {
+    if (!enabled || typeof window === 'undefined' || this.filtroKey === key) return;
+    const first = this.filtroKey === undefined;
+    this.filtroKey = key;
+    if (first || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib || this.filtroKey !== key) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const secs = document.querySelectorAll('.news-main [data-sec]');
+        if (secs.length) lib.animate(secs, { opacity: [0, 1], x: [24, 0], duration: 420, delay: lib.stagger(70), ease: 'outQuart' });
+        const items = document.querySelectorAll('.news-main [data-entry]');
+        if (items.length) lib.animate(items, { opacity: [0, 1], y: [10, 0], duration: 360, delay: lib.stagger(30, { start: 120 }), ease: 'outCubic' });
+      }));
+    });
+  }
+
+  renderVals() {
+    this.entradaPagina((this.props && this.props.animaciones) ?? true);
+    const S = this.state || {};
+    const cat = S.cat || 'todo';
+    const lg = S.lg || 'Todas';
+    const motion = (this.props && this.props.animaciones) ?? true;
+    this.revelarSecciones('.news-main [data-sec], .side [data-sec]', motion);
+    this.animarFiltro(cat + '|' + lg, motion);
+    const megaNav = [{"n": "Aatrox", "portrait": "background-position:0.000% 0.000%"}, {"n": "Ahri", "portrait": "background-position:7.692% 0.000%"}, {"n": "Akali", "portrait": "background-position:15.385% 0.000%"}, {"n": "Alistar", "portrait": "background-position:30.769% 0.000%"}, {"n": "Ashe", "portrait": "background-position:76.923% 0.000%"}, {"n": "Caitlyn", "portrait": "background-position:46.154% 8.333%"}, {"n": "Darius", "portrait": "background-position:84.615% 8.333%"}, {"n": "Diana", "portrait": "background-position:92.308% 8.333%"}, {"n": "Ezreal", "portrait": "background-position:30.769% 16.667%"}, {"n": "Fiora", "portrait": "background-position:46.154% 16.667%"}, {"n": "Garen", "portrait": "background-position:76.923% 16.667%"}, {"n": "Jinx", "portrait": "background-position:92.308% 25.000%"}, {"n": "Kai'Sa", "portrait": "background-position:0.000% 33.333%"}, {"n": "Katarina", "portrait": "background-position:38.462% 33.333%"}, {"n": "Lee Sin", "portrait": "background-position:0.000% 41.667%"}, {"n": "Leona", "portrait": "background-position:7.692% 41.667%"}, {"n": "Lux", "portrait": "background-position:53.846% 41.667%"}, {"n": "Malphite", "portrait": "background-position:61.538% 41.667%"}, {"n": "Nautilus", "portrait": "background-position:53.846% 50.000%"}, {"n": "Shen", "portrait": "background-position:69.231% 66.667%"}, {"n": "Thresh", "portrait": "background-position:92.308% 75.000%"}, {"n": "Viego", "portrait": "background-position:92.308% 83.333%"}, {"n": "Yasuo", "portrait": "background-position:46.154% 91.667%"}, {"n": "Yone", "portrait": "background-position:53.846% 91.667%"}];
+    const T = {
+      G2: ['G2 Esports', '#E8E8E8', '#5b5b5b'], FNC: ['Fnatic', '#FF6B1A', '#7a2c00'], KC: ['Karmine Corp', '#3B7BFF', '#0f2a66'],
+      MKOI: ['Movistar KOI', '#7B5CFF', '#2a1a66'], T1: ['T1', '#E2324A', '#6b0f1d'], GEN: ['Gen.G', '#C9A23B', '#5b4612'],
+      HLE: ['Hanwha Life', '#FF8A1E', '#6b3300'], BLG: ['Bilibili Gaming', '#2FA8E6', '#0d3f5f'], TES: ['Top Esports', '#E0412B', '#5f1308'],
+      FLY: ['FlyQuest', '#2FBF71', '#0d4f2c'], C9: ['Cloud9', '#3FA9F5', '#0d3a5f'], SIN: ['Sin equipo', '#5E6673', '#2a2f38']
+    };
+    const team = (c) => ({ code: c === 'SIN' ? '—' : c, name: T[c][0], style: '--c1:' + T[c][1] + ';--c2:' + T[c][2] });
+    // Nicks inventados: son datos de ejemplo y no deben atribuir fichajes a jugadores reales.
+    const MKT = [
+      ['Kairo', 'MID', 'LEC', 'FNC', 'KC', 'of', 3, '20 nov', 'Club'],
+      ['Velin', 'JGL', 'LEC', 'SIN', 'G2', 'ac', 3, '19 nov', 'Sheep Esports'],
+      ['Hwarang', 'ADC', 'LCK', 'HLE', 'GEN', 'ac', 2, '18 nov', 'Sheep Esports'],
+      ['Doryu', 'TOP', 'LCK', 'T1', 'SIN', 'of', 3, '17 nov', 'Club'],
+      ['Lumen', 'SUP', 'LEC', 'MKOI', 'FNC', 'ru', 1, '16 nov', 'Sheep Esports'],
+      ['Xiaofeng', 'MID', 'LPL', 'TES', 'BLG', 'ru', 2, '15 nov', 'Sheep Esports'],
+      ['Rook', 'JGL', 'LTA', 'C9', 'FLY', 'ac', 2, '14 nov', 'Sheep Esports']
+    ];
+    const ST = { of: 'Oficial', ac: 'Acuerdo', ru: 'Rumor' };
+    const mktAll = MKT.map((m, i) => ({ key: 'm' + i, n: m[0], pos: m[1], lg: m[2], from: team(m[3]), to: team(m[4]), sc: m[5], st: ST[m[5]], conf: m[6],
+      c1: m[6] >= 1 ? 'on' : '', c2: m[6] >= 2 ? 'on' : '', c3: m[6] >= 3 ? 'on' : '', date: m[7], src: m[8] }));
+    const mkt = mktAll.filter((m) => lg === 'Todas' || m.lg === lg);
+    const ESP = [
+      ['LEC', 'Formato', 'La LEC confirma el calendario de 2027 con tres splits', 'Las fechas de inicio y el formato de cada split, y cómo se reparten las plazas para el MSI.', '21 nov'],
+      ['LCK', 'Entrevista', 'Hablamos con el entrenador campeón del Mundial', 'Qué cambió en la preparación de la final y qué espera de la nueva temporada.', '20 nov'],
+      ['LPL', 'Mercado', 'Los equipos de la LPL cierran sus plantillas antes de Navidad', 'Resumen de los movimientos más importantes de la semana en China.', '18 nov'],
+      ['LTA', 'Liga', 'La LTA estrena cambios en su fase regular', 'Menos semanas, más series al mejor de 3 y un play-in nuevo.', '15 nov']
+    ];
+    const esp = ESP.filter((e) => lg === 'Todas' || e[0] === lg).map((e, i) => ({ key: 'e' + i, lg: e[0], kind: e[1], t: e[2], s: e[3], date: e[4], src: 'Sheep Esports', url: 'https://www.sheepesports.com' }));
+    const DEV = [
+      ['Actualización de desarrollo: plan para la temporada 2027', 'Objetivos de equilibrio, objetos y modos de juego para el año que viene.', '16 nov', 'Vídeo', '▶'],
+      ['Resumen de la actualización de desarrollo', 'Lo más importante del vídeo, por escrito y en cinco minutos.', '16 nov', 'Artículo', '¶'],
+      ['Cambios en la jungla para la pretemporada', 'Por qué cambian los campamentos y qué buscan con la nueva ruta.', '4 nov', 'Artículo', '¶'],
+      ['Novedades del cliente y de la tienda', 'Mejoras de rendimiento y cómo funcionará el nuevo sistema de recompensas.', '22 oct', 'Vídeo', '▶']
+    ];
+    const dev = DEV.map((d, i) => ({ key: 'd' + i, t: d[0], s: d[1], date: d[2], ty: d[3], icon: d[4] }));
+    const CATS = [['todo', 'Todo'], ['mercado', 'Mercado y rumores'], ['esports', 'Esports'], ['dev', 'Desarrollo de Riot']];
+    const LGS = ['Todas', 'LEC', 'LCK', 'LPL', 'LTA'];
+    return {
+      megaNav, motionClass: motion ? '' : 'still',
+      cats: CATS.map((c) => ({ n: c[1], on: String(cat === c[0]), pick: () => this.setState({ cat: c[0] }) })),
+      lgs: LGS.map((l) => ({ n: l === 'Todas' ? 'Todas las ligas' : l, on: String(lg === l), pick: () => this.setState({ lg: l }) })),
+      showMkt: cat === 'todo' || cat === 'mercado', showEsp: cat === 'todo' || cat === 'esports', showDev: cat === 'todo' || cat === 'dev',
+      mkt, mktAny: mkt.length > 0, mktEmpty: mkt.length === 0, mktCount: mkt.length + (mkt.length === 1 ? ' movimiento' : ' movimientos'),
+      esp, dev
+    };
+  }
+}
+</script>
+</body>
+</html>

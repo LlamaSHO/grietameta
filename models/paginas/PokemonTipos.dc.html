@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>GrietaMeta · Tabla de tipos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=Fredoka:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+
+body{margin:0;background:#07090D}
+.pk{position:relative;background:#07090D;color:#EEF1F6;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.pk *,.pk *::before,.pk *::after{box-sizing:border-box}
+.pk a{color:#FFCB3D}
+.pk button{font:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fd{font-family:'Fredoka','Bricolage Grotesque',system-ui,sans-serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r0,0deg))}50%{transform:translateY(-12px) rotate(var(--r1,0deg))}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--pc,rgba(255,203,61,.6))}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes slide{from{background-position:0 0}to{background-position:-1792px 0}}
+
+/* marca GM */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter;stroke-miterlimit:8}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,11,16,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1}
+.pk a.brand{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8E97A5;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#EEF1F6;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7C8696}
+.search input:focus{border-color:rgba(255,203,61,.6);box-shadow:0 0 0 4px rgba(255,203,61,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8E97A5;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.pk a.btn-prem,.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.pk a.btn-ghost,.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(255,255,255,.14);color:#EEF1F6;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+
+/* sub-barra Pokémon */
+.sub{position:relative;border-top:1px solid rgba(255,255,255,.05);background:rgba(16,19,28,.8)}
+.sub::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%);opacity:.85}
+.sub-in{display:flex;align-items:center;gap:2px;height:52px}
+.pk a.gchip,.gchip{display:flex;align-items:center;gap:8px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(255,255,255,.1);color:#FFF;text-decoration:none;font:700 19px/1 'Fredoka',sans-serif;letter-spacing:.01em;flex-shrink:0}
+.gchip .spr{width:34px;height:34px;margin:-4px -2px -4px -6px}
+.gchip em{font-style:normal;background:linear-gradient(90deg,#FFCB3D,#FF7A59);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pk a.slink,.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:52px;padding:0 12px;color:#A7B0BE;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.pk a.slink:hover,.slink.on{color:#FFF}
+.pk a.slink.on{color:#FFF}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:3px;background:linear-gradient(90deg,#FFCB3D,#FF7A59,#FF5AA5,#5B8CFF)}
+.dd{position:relative;display:flex;align-items:center;height:52px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#FFF}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:12px;border-radius:18px;background:#0F131C;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.rm{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;width:820px}
+.pk a.ro,.ro{position:relative;display:flex;flex-direction:column;gap:2px;padding:10px 10px 10px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#FFF;min-height:112px;background:linear-gradient(160deg,var(--c1),var(--c2));transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.ro::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,10,16,.1),rgba(8,10,16,.82))}
+.ro .art{position:absolute;right:2px;top:4px;width:70px;height:70px;z-index:-1;opacity:.95;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.ro:hover{transform:translateY(-2px);box-shadow:0 14px 26px -14px var(--c1)}
+.ro:hover .art{transform:translateY(-4px) scale(1.12)}
+.ro small{font:700 10.5px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.ro b{margin-top:auto;font:700 19px/1 'Fredoka',sans-serif}
+.ro span{font-size:11px;color:rgba(255,255,255,.78);line-height:1.25}
+.ro.off{cursor:default}
+.ro.off::after{content:"Próximamente";position:absolute;top:8px;left:8px;padding:2px 7px;border-radius:999px;background:rgba(8,10,16,.6);font:700 9.5px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#FFE08A}
+.rm-f{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;padding:10px 4px 2px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8E97A5}
+.rm-f a{font-weight:600;text-decoration:none}
+.gl{display:flex;flex-direction:column;gap:2px;width:330px}
+.pk a.gi,.gi{display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:12px;text-decoration:none;color:#EEF1F6;transition:background .2s}
+.gi:hover{background:rgba(255,255,255,.05)}
+.gi .g1s{width:56px;height:56px;margin:-6px -4px;flex-shrink:0;border-radius:10px;background-color:rgba(255,255,255,.05)}
+.gi b{display:block;font-size:14px}
+.gi span{display:block;font-size:12px;color:#8E97A5}
+
+/* sprites (hojas) */
+.spr{display:block;background-image:url(../assets/pokemon/sprites-front.png);background-size:3200% 3300%;background-repeat:no-repeat}
+.art{display:block;background-image:url(../assets/pokemon/artwork.webp);background-size:1500% 1500%;background-repeat:no-repeat}
+.g1s{display:block;background-image:url(../assets/pokemon/sprites-gen1.png);background-size:1600% 1000%;background-repeat:no-repeat;image-rendering:pixelated}
+
+/* tipos */
+.t-normal{--tc:#A8A77A;--tx:#1B1A12;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7.5' fill='none' stroke='%23000' stroke-width='3.4'/%3E%3C/svg%3E")}
+.t-fighting{--tc:#D3425F;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5l2.4 5.6 5.7-2.4-2.1 5.8L23.5 12l-5.5 1.5 2.1 5.8-5.7-2.4L12 22.5l-2.4-5.6-5.7 2.4 2.1-5.8L.5 12l5.5-1.5L3.9 4.7l5.7 2.4z'/%3E%3C/svg%3E")}
+.t-flying{--tc:#8FA8DD;--tx:#10172A;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 15c5-.5 9-4 11-11 1.6 4.4.8 8.4-1.4 10.6 3.3-1.4 6.8-1.6 10.4-.2-3.2 2.4-6.6 3.6-10.2 3.6 2.3.8 4.2 2.2 5.4 4.2-4.6.5-8.8-.6-11.4-2.8C4.4 19.4 3 19.4 2 19z'/%3E%3C/svg%3E")}
+.t-poison{--tc:#B567CE;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='9' cy='14.5' r='6.5'/%3E%3Ccircle cx='17.5' cy='7' r='3.6'/%3E%3Ccircle cx='19' cy='16.8' r='2.4'/%3E%3C/svg%3E")}
+.t-ground{--tc:#D97845;--tx:#1F1206;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1.5 17.5l6.5-9 4.3 5.6 3.2-4.4 7 7.8z'/%3E%3Crect x='1.5' y='19' width='21' height='3' rx='1.5'/%3E%3C/svg%3E")}
+.t-rock{--tc:#C5B78C;--tx:#1D1A10;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M7.5 2.5h9l5 7.5-4.5 11.5h-9L2.5 10.5zM8.5 5l-3 5.5 3.2 8.5h1.6L8 10.6 10.4 5z'/%3E%3C/svg%3E")}
+.t-bug{--tc:#91C12F;--tx:#141B05;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='14.5' rx='6.2' ry='7.2'/%3E%3Cpath d='M8.6 7.2L6 2.5M15.4 7.2L18 2.5M5.8 12H2M18.2 12H22M6 17.5l-3.2 2M18 17.5l3.2 2' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.t-ghost{--tc:#5269AD;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5l-2.5-2.2-2.5 2.2-2.5-2.2-2.5 2.2-2.5-2.2zM9.5 9a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zm5 0a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6z'/%3E%3C/svg%3E")}
+.t-steel{--tc:#5A8EA2;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 1.5l9.1 5.25v10.5L12 22.5l-9.1-5.25V6.75zM12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6z'/%3E%3C/svg%3E")}
+.t-fire{--tc:#FF9D55;--tx:#2A1300;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.5 1.5c.8 4.4 6.5 6.6 6.5 13a7 7 0 0 1-14 0c0-3.4 1.9-5.7 3.4-6.9 0 2.2.9 3.6 2.2 3.9-.6-4.1.1-7.2 1.9-10z'/%3E%3C/svg%3E")}
+.t-water{--tc:#4D90D5;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5s7.5 8.4 7.5 13.6a7.5 7.5 0 0 1-15 0C4.5 9.9 12 1.5 12 1.5z'/%3E%3C/svg%3E")}
+.t-grass{--tc:#63BC5A;--tx:#0D1F0A;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.5 21C3.5 9.5 11 3.6 21.5 2.5c.4 11-5 18-15.2 18.2L3.8 23z'/%3E%3C/svg%3E")}
+.t-electric{--tc:#F4D23C;--tx:#2A2300;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13.5 1.5L3.5 14h7.2l-1.4 8.5L20.5 9.6h-7.2z'/%3E%3C/svg%3E")}
+.t-psychic{--tc:#FA7179;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 4.5C5.5 4.5 1.5 12 1.5 12s4 7.5 10.5 7.5S22.5 12 22.5 12s-4-7.5-10.5-7.5zm0 3.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8z'/%3E%3C/svg%3E")}
+.t-ice{--tc:#73CEC0;--tx:#0B2420;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5v21M2.9 6.75l18.2 10.5M2.9 17.25l18.2-10.5M9 3.5l3 2.6 3-2.6M9 20.5l3-2.6 3 2.6' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.t-dragon{--tc:#0B6DC3;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 22C4.5 12.5 8 5.8 15 2.5c-3.4 5.4-4.4 11.4-3.4 19.5zM11.5 22c0-6.4 2.4-10.8 7.8-14-2 4.4-2.8 8.8-1.8 14zM17 22c0-3.4 1.2-6.4 4.5-8.6-1 3.2-1 5.8-.4 8.6z'/%3E%3C/svg%3E")}
+.t-dark{--tc:#5A5465;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.5 15.2A9 9 0 0 1 8.8 3.5a9 9 0 1 0 11.7 11.7z'/%3E%3C/svg%3E")}
+.t-fairy{--tc:#EC8FE6;--tx:#2A0E28;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 1.5c.9 5.5 2.4 7.2 7.6 8.2-5.2 1-6.7 2.7-7.6 8.2-.9-5.5-2.4-7.2-7.6-8.2 5.2-1 6.7-2.7 7.6-8.2z'/%3E%3Ccircle cx='19' cy='19' r='2.6'/%3E%3C/svg%3E")}
+.ty{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px 0 4px;border-radius:999px;background:var(--tc);color:var(--tx);font:600 12px/1 'Fredoka',sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.ty i,.ti{display:inline-block;width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,.92);position:relative;flex-shrink:0}
+.ty i::after,.ti::after{content:"";position:absolute;inset:3px;background:var(--tc);-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.ty.sm{height:20px;font-size:11px;padding:0 8px 0 3px}
+.ty.sm i{width:14px;height:14px}
+.ty.sm i::after{inset:2.5px}
+.gl.cm{width:400px}
+.gi .cmi{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:12px;font:700 13px/1 'Fredoka',sans-serif;color:#FFF}
+.cmi.c1{background:linear-gradient(135deg,#FF5A5F,#FFCB3D)}
+.cmi.c2{background:linear-gradient(135deg,#3B4CCA,#7C3AED)}
+.cmi.c3{background:linear-gradient(135deg,#22C55E,#0EA5E9)}
+.gi b em{margin-left:6px;padding:2px 7px;border-radius:999px;background:rgba(255,203,61,.16);color:#FFE08A;font:700 10px/1.4 'IBM Plex Sans',sans-serif;font-style:normal;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+.gi b em.nof{background:rgba(124,58,237,.2);color:#C9B5FF}
+.tglyph{display:inline-block;width:18px;height:18px;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+
+/* comunes */
+.kick{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#FFCB3D}
+.kick i{display:block;width:30px;height:6px;border-radius:3px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%)}
+.h2{margin:10px 0 0;font:700 clamp(30px,3.6vw,44px)/1.04 'Fredoka',sans-serif;letter-spacing:-.01em}
+.sec{padding:64px 0 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px 32px;margin-bottom:24px}
+.sec-h p{margin:8px 0 0;max-width:620px;color:#A3ACBA;font-size:15.5px}
+.pk a.btn-y,.btn-y{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;border:0;background:#FFCB3D;color:#1A1405;font:700 16px/1 'Fredoka',sans-serif;letter-spacing:.01em;text-decoration:none;cursor:pointer;box-shadow:0 14px 34px -14px rgba(255,203,61,.85),inset 0 -3px 0 rgba(0,0,0,.14);transition:transform .2s}
+.btn-y:hover{transform:translateY(-2px)}
+.pk a.btn-o,.btn-o{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.03);color:#EEF1F6;font:600 16px/1 'Fredoka',sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s}
+.btn-o:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#C9D0DA;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{color:#FFF;border-color:rgba(255,255,255,.28)}
+.chip.on{background:#FFCB3D;border-color:#FFCB3D;color:#1A1405}
+.seg{display:inline-flex;gap:3px;padding:4px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.seg button{height:34px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:#A7B0BE;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.seg button:hover{color:#FFF}
+.seg button.on{background:#FFF;color:#0B0E15}
+.gens{display:flex;gap:6px;flex-wrap:wrap}
+.gens button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-width:72px;height:50px;padding:0 12px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#C9D0DA;font:700 15px/1 'Fredoka',sans-serif;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,border-color .2s,background .2s}
+.gens button small{font:600 10.5px/1 'IBM Plex Sans',sans-serif;color:#7C8696;letter-spacing:.02em}
+.gens button::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--rc)}
+.gens button:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.25)}
+.gens button.on{background:linear-gradient(135deg,var(--rc),var(--rc2));border-color:transparent;color:#FFF;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.gens button.on small{color:rgba(255,255,255,.85)}
+.card{position:relative;border-radius:24px;background:linear-gradient(180deg,#111622,#0C1019);border:1px solid rgba(255,255,255,.07)}
+.slot{display:grid;place-items:center;text-align:center;padding:14px;border-radius:16px;border:1.5px dashed rgba(255,255,255,.22);background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 12px,transparent 12px 24px);color:#A3ACBA;font-size:12.5px;font-weight:600;line-height:1.35}
+.slot b{display:block;color:#EEF1F6;font:600 13px/1.3 'Fredoka',sans-serif;margin-bottom:2px}
+.bar{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--bc,#FFCB3D)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font:600 12px/1 'IBM Plex Sans',sans-serif;background:rgba(255,255,255,.06);color:#C9D0DA;border:1px solid rgba(255,255,255,.08)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+.live{color:#7CF3B0}
+.live .dot{animation:pulse 2s infinite;--pc:rgba(124,243,176,.6)}
+
+/* footer */
+.foot{margin-top:88px;border-top:1px solid rgba(255,255,255,.07);padding:48px 0 40px;font-size:13.5px;color:#8F98A5;position:relative}
+.foot::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%);opacity:.5}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot-about{max-width:420px}
+.foot-about p{margin:12px 0 0;line-height:1.7}
+.foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot-col{display:flex;flex-direction:column;gap:8px}
+.foot-col h4{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ECE9E1}
+.pk .foot-col a{color:#A0A8B4;text-decoration:none}
+.pk .foot-col a:hover{color:#FFCB3D}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);font-size:12.5px;color:#7C8592;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* barra inferior móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;height:60px;gap:12px}
+  .nav .search{display:none}
+  .btn-ghost,.pk a.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;height:50px}
+  .sub-in::-webkit-scrollbar{display:none}
+  .menu{display:none}
+  .dd>.slink svg.chev{display:none}
+  .slink{height:50px;padding:0 10px;font-size:13.5px}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.95);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .pk a.tb,.tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;text-decoration:none}
+  .tb svg{width:22px;height:22px}
+  .tb .spr{width:30px;height:30px;margin:-4px 0 -3px}
+  .pk a.tb.on,.tb.on{color:#FFCB3D;background:rgba(255,203,61,.12)}
+  .foot-cols{gap:32px}
+  .sec{padding-top:48px}
+}
+@media (max-width:560px){
+  .brand-name{display:none}
+  .btn-prem{padding:0 12px}
+  .btn-y,.btn-o{height:46px;padding:0 18px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pk *,.pk *::before,.pk *::after{animation:none !important;transition:none !important}
+}
+.pk.still *,.pk.still *::before,.pk.still *::after{animation:none !important;transition:none !important}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+
+.thead{position:relative;padding:44px 0 24px;overflow:hidden;isolation:isolate}
+.thead::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(500px 260px at 5% 0%,rgba(74,222,128,.18),transparent 70%),radial-gradient(500px 260px at 60% 0%,rgba(248,113,113,.16),transparent 70%),radial-gradient(500px 300px at 100% 20%,rgba(91,108,255,.2),transparent 70%)}
+.th-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.h1{margin:12px 0 0;font-size:clamp(40px,5vw,64px);font-weight:700;line-height:.95}
+.h1 span{background:linear-gradient(90deg,#4ADE80,#FFCB3D,#F87171);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{margin:12px 0 0;max-width:560px;color:#A3ACBA;font-size:15.5px}
+.rset{display:flex;gap:8px}
+.rs{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:150px;padding:12px 16px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#C9D0DA;cursor:pointer;text-align:left;transition:transform .2s}
+.rs b{font-size:18px}
+.rs small{font-size:12px;color:#8E97A5}
+.rs:hover{transform:translateY(-2px)}
+.rs.on{background:linear-gradient(135deg,var(--rc),var(--rc2));border-color:transparent;color:#FFF}
+.rs.on small{color:rgba(255,255,255,.85)}
+.tbody{padding-top:10px}
+.tgrid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:start}
+.mx-card{padding:16px;border-radius:26px;background:#0D1119;border:1px solid rgba(255,255,255,.07)}
+.mx-legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:0 4px 12px;font-size:12.5px;color:#A3ACBA}
+.mx-legend span{display:inline-flex;align-items:center;gap:6px}
+.mx-legend i{width:14px;height:14px;border-radius:4px}
+.mx-legend .c2{background:#22C55E}.mx-legend .c5{background:#EF4444}.mx-legend .c0{background:#05070B;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.mx-legend .cch{background:transparent;box-shadow:inset 0 0 0 2px #FFCB3D}
+.mx-legend b{margin-left:auto;font:600 13px/1 'Fredoka',sans-serif;color:#FFE08A}
+.mx-scroll{overflow-x:auto}
+.mx{display:grid;grid-template-columns:100px repeat(var(--n),33px);gap:3px;width:max-content;margin:0 auto}
+.corner{align-self:end;padding-bottom:4px;text-align:left;font:700 10px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.08em;color:#6D7686}
+.corner span{display:block}
+.ch{height:98px;display:flex;align-items:flex-end}
+.ch button{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;width:33px;height:96px;padding:6px 0;border:0;border-radius:10px;background:color-mix(in srgb,var(--tc) 20%,transparent);color:#EEF1F6;cursor:pointer;transition:background .2s}
+.ch button span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 12px/1 'Fredoka',sans-serif}
+.ch .ti{width:22px;height:22px;background:var(--tc)}
+.ch .ti::after{background:var(--tx);inset:4.5px}
+.ch.hl button,.ch button:hover{background:color-mix(in srgb,var(--tc) 45%,transparent)}
+.ch.sel button{background:var(--tc);color:var(--tx)}
+.ch.sel .ti{background:rgba(255,255,255,.9)}
+.ch.sel .ti::after{background:var(--tc)}
+.rh button{display:flex;align-items:center;gap:7px;width:100px;height:33px;padding:0 8px 0 4px;border:0;border-radius:10px;background:color-mix(in srgb,var(--tc) 20%,transparent);color:#EEF1F6;font:600 12.5px/1 'Fredoka',sans-serif;cursor:pointer;text-align:left}
+.rh .ti{width:24px;height:24px;background:var(--tc)}
+.rh .ti::after{background:var(--tx);inset:5px}
+.rh.hl button,.rh button:hover{background:color-mix(in srgb,var(--tc) 45%,transparent)}
+.mx .cell{display:block;width:33px;height:33px;border-radius:8px;background:rgba(255,255,255,.035);text-align:center;font:700 13.5px/33px 'Fredoka',sans-serif;color:#FFF;cursor:default;transition:background .15s,transform .15s}
+.mx .cell.x2{background:#22C55E;color:#04210F}
+.mx .cell.x5{background:#EF4444;color:#2A0505}
+.mx .cell.x0{background:#05070B;color:#9AA3AF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.mx .cell.hl{filter:brightness(1.25)}
+.mx .cell.hl.x1{background:rgba(255,255,255,.1)}
+.mx .cell.hv{transform:scale(1.18);box-shadow:0 0 0 2px #FFF;position:relative;z-index:2}
+.mx .cell.chg{box-shadow:inset 0 0 0 2.5px #FFCB3D}
+.calc{position:sticky;top:132px;padding:18px;border-radius:26px;background:#0D1119;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:14px}
+.cmode{display:grid;grid-template-columns:1fr 1fr}
+.who{display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;background:linear-gradient(135deg,color-mix(in srgb,var(--c1) 45%,#0D1119),color-mix(in srgb,var(--c2) 35%,#0D1119))}
+.who .spr{width:72px;height:72px;flex-shrink:0;border-radius:16px;background-color:rgba(0,0,0,.2)}
+.who small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.who b{display:block;font-size:22px;line-height:1.1;margin:2px 0 6px}
+.tys{display:flex;gap:5px;flex-wrap:wrap}
+.calc .search input{height:44px;border-radius:999px}
+.sug{display:flex;flex-direction:column;gap:2px;margin-top:-8px;padding:6px;border-radius:16px;background:#141925;border:1px solid rgba(255,255,255,.08)}
+.sug button{display:flex;align-items:center;gap:10px;height:40px;padding:0 8px;border:0;border-radius:10px;background:transparent;color:#EEF1F6;font-size:14px;font-weight:600;cursor:pointer;text-align:left}
+.sug button:hover{background:rgba(255,255,255,.06)}
+.sug .spr{width:36px;height:36px}
+.hint{margin:0 0 -6px;font-size:12.5px;color:#8E97A5}
+.tpick{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.tp{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px 6px;border-radius:14px;border:1.5px solid transparent;background:color-mix(in srgb,var(--tc) 14%,transparent);color:#D7DCE3;cursor:pointer;transition:transform .2s,background .2s}
+.tp .tglyph{width:22px;height:22px;background:var(--tc)}
+.tp span{font-size:10.5px;font-weight:600;white-space:nowrap}
+.tp:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--tc) 28%,transparent)}
+.tp.on{background:var(--tc);color:var(--tx);border-color:rgba(255,255,255,.7)}
+.tp.on .tglyph{background:var(--tx)}
+.res{display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07)}
+.sum{font:600 14px/1.35 'Fredoka',sans-serif;color:#FFE08A}
+.rg{display:grid;grid-template-columns:46px minmax(0,1fr);gap:4px 10px;align-items:start}
+.rl{font-size:12px;color:#8E97A5;align-self:center}
+.rg .wt{grid-column:2;display:flex;flex-wrap:wrap;gap:4px}
+.mul{display:grid;place-items:center;width:46px;height:24px;border-radius:8px;font:700 12.5px/1 'Fredoka',sans-serif;grid-row:span 2}
+.mul.x4{background:#FF4D4D;color:#FFF}.mul.x2{background:#FF8A5B;color:#1F0A00}.mul.x1{background:rgba(255,255,255,.1);color:#C9D0DA}.mul.x05{background:#3DDC97;color:#06210F}.mul.x025{background:#22B07D;color:#FFF}.mul.x0{background:#0A0D14;color:#C9D0DA;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.quirks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.qk{padding:18px;border-radius:22px;background:linear-gradient(180deg,color-mix(in srgb,var(--k) 14%,#0D1119),#0D1119 70%);border:1px solid color-mix(in srgb,var(--k) 35%,transparent)}
+.qk-v{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.arr{display:grid;place-items:center;min-width:44px;height:26px;padding:0 8px;border-radius:8px;background:var(--k);color:#0B0E15;font:700 13px/1 'Fredoka',sans-serif}
+.qk h3{margin:14px 0 0;font-size:19px;font-weight:600;line-height:1.2}
+.qk p{margin:6px 0 0;font-size:13.5px;color:#A3ACBA}
+.combos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.cb{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px 14px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--c1) 40%,#0D1119),color-mix(in srgb,var(--c2) 40%,#0D1119));border:1px solid rgba(255,255,255,.08);text-align:center}
+.cb-r{position:absolute;left:12px;top:8px;font-size:22px;font-weight:700;color:rgba(255,255,255,.5)}
+.cb .spr{width:88px;height:88px}
+.cb .tys{justify-content:center}
+.cb b{font-size:16px}
+.cb-s{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;font-size:11px;font-weight:700}
+.cb-s span{padding:3px 7px;border-radius:999px}
+.cb-s .g{background:rgba(61,220,151,.18);color:#7CF3B0}.cb-s .z{background:rgba(0,0,0,.35);color:#E2E6EC}.cb-s .w{background:rgba(255,77,77,.18);color:#FF9A9A}
+.tri{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:center;margin-top:18px;padding:24px;border-radius:26px;background:#0D1119;border:1px solid rgba(255,255,255,.07)}
+.tri-v{position:relative;width:220px;height:198px;margin:0 auto}
+.tri-v svg{position:absolute;inset:0;width:100%;height:100%}
+.tn{position:absolute;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--tc);color:var(--tx);box-shadow:0 10px 24px -8px var(--tc)}
+.tn .tglyph{width:30px;height:30px}
+.tn.t-fire{left:79px;top:0}.tn.t-grass{left:0;top:136px}.tn.t-water{right:0;top:136px}
+.tri-t h3{margin:0;font-size:24px;font-weight:600}
+.tri-t p{margin:8px 0 0;color:#A3ACBA}
+.tri-t ul{margin:12px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13.5px;color:#C9D0DA}
+.tri-t li::before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#FFCB3D;vertical-align:middle}
+@media (max-width:1180px){.tgrid{grid-template-columns:minmax(0,1fr)}.calc{position:relative;top:0}.combos{grid-template-columns:repeat(3,minmax(0,1fr))}.quirks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .rset{width:100%;overflow-x:auto;scrollbar-width:none}
+  .rs{min-width:132px;flex:1 0 auto}
+  .calc{order:-1}
+  .mx-card{padding:10px;border-radius:20px}
+  .tri{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .mx{grid-template-columns:72px repeat(var(--n),26px);gap:2px}
+  .mx .cell{width:26px;height:26px;font-size:11px;line-height:26px;border-radius:6px}
+  .ch{height:76px}
+  .ch button{width:26px;height:74px}
+  .ch button span{font-size:10px}
+  .ch .ti{width:18px;height:18px}
+  .rh button{width:72px;height:26px;font-size:10.5px;gap:4px}
+  .rh .ti{width:18px;height:18px}
+  .rh .ti::after{inset:3.5px}
+  .tpick{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .tp span{display:none}
+  .combos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quirks{grid-template-columns:minmax(0,1fr)}
+  .tri-t ul{grid-template-columns:minmax(0,1fr)}
+  .mx-legend b{margin-left:0;width:100%}
+}
+
+</style>
+</helmet>
+
+<div class="pk {{motionClass}}">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar</label>
+        <input id="q-nav" type="search" placeholder="Busca un Pokémon, un tipo o una guía…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de Pokémon">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Pokemon.dc.html"><span class="spr" style="background-position: 77.419% 0.000%"></span><em>Pokémon</em></a>
+        <a class="slink" href="Pokemon.dc.html">Inicio</a>
+        <div class="dd">
+          <a class="slink" href="PokemonKanto.dc.html" aria-haspopup="true">Regiones <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="rm">
+<a class="ro" href="PokemonKanto.dc.html" style="--c1: #E3350D; --c2: #FFB703"><span class="art" style="background-position: 35.714% 0.000%"></span><small>Gen I</small><b>Kanto</b><span>Rojo, Azul y Amarillo</span></a>
+<span class="ro off" style="--c1: #B8860B; --c2: #6C7A89"><span class="art" style="background-position: 21.429% 71.429%"></span><small>Gen II</small><b>Johto</b><span>Oro, Plata y Cristal</span></span>
+<span class="ro off" style="--c1: #B71C1C; --c2: #1E5BD8"><span class="art" style="background-position: 78.571% 71.429%"></span><small>Gen III</small><b>Hoenn</b><span>Rubí, Zafiro y Esmeralda</span></span>
+<span class="ro off" style="--c1: #4C6CC9; --c2: #D86FA0"><span class="art" style="background-position: 0.000% 78.571%"></span><small>Gen IV</small><b>Sinnoh</b><span>Diamante, Perla y Platino</span></span>
+<span class="ro off" style="--c1: #3A3F47; --c2: #9AA3AD"><span class="art" style="background-position: 28.571% 78.571%"></span><small>Gen V</small><b>Teselia</b><span>Negro y Blanco (1 y 2)</span></span>
+<span class="ro off" style="--c1: #2357B8; --c2: #C52F3A"><span class="art" style="background-position: 71.429% 78.571%"></span><small>Gen VI</small><b>Kalos</b><span>X e Y</span></span>
+<span class="ro off" style="--c1: #E68A00; --c2: #6A4BD1"><span class="art" style="background-position: 100.000% 78.571%"></span><small>Gen VII</small><b>Alola</b><span>Sol, Luna, Ultrasol y Ultraluna</span></span>
+<span class="ro off" style="--c1: #0C8CCB; --c2: #C8106E"><span class="art" style="background-position: 28.571% 85.714%"></span><small>Gen VIII</small><b>Galar</b><span>Espada y Escudo</span></span>
+<span class="ro off" style="--c1: #C9302C; --c2: #6A35A6"><span class="art" style="background-position: 100.000% 85.714%"></span><small>Gen IX</small><b>Paldea</b><span>Escarlata y Púrpura</span></span>
+<span class="ro off" style="--c1: #2BB3A3; --c2: #3567D6"><small>Gen X</small><b>¿?</b><span>Viento y Oleaje · 2027</span></span>
+<div class="rm-f"><span>Una sección por generación, de la más antigua a la más nueva</span><a href="Pokemon.dc.html#regiones">Todas las regiones →</a></div></div></div>
+        </div>
+        <a class="slink" href="PokemonDex.dc.html">Pokédex</a>
+        <a class="slink on" href="PokemonTipos.dc.html">Tabla de tipos</a>
+        <a class="slink" href="PokemonHabilidades.dc.html">Habilidades y movimientos</a>
+        <div class="dd">
+          <a class="slink" href="PokemonCompetitivo.dc.html" aria-haspopup="true">Competitivo <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu">
+            <div class="gl cm">
+              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="cmi c1">VGC</span><span><b>Pokémon Champions <em>Oficial</em></b><span>Reglamento M-C: uso, sets, equipos de torneo</span></span></a>
+              <a class="gi" href="PokemonShowdown.dc.html"><span class="cmi c2">PS</span><span><b>Pokémon Showdown <em class="nof">Simulador</em></b><span>Tiers de Smogon, sets y núcleos</span></span></a>
+              <a class="gi" href="PokemonEquipo.dc.html"><span class="cmi c3">+6</span><span><b>Crea tu equipo</b><span>Elige formato y te sugerimos compañeros</span></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="dd">
+          <a class="slink" href="PokemonKanto.dc.html" aria-haspopup="true">Guías <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu">
+            <div class="gl">
+              <a class="gi" href="PokemonKanto.dc.html"><span class="g1s" style="background-position: 33.333% 0.000%"></span><span><b>Historia de Kanto paso a paso</b><span>Rojo, Azul y Amarillo, de Paleta a la Liga</span></span></a>
+              <a class="gi" href="PokemonKantoMapa.dc.html"><span class="g1s" style="background-position: 53.333% 11.111%"></span><span><b>Mapa interactivo de Kanto</b><span>Pokémon por zona, MT, MO y objetos clave</span></span></a>
+              <a class="gi" href="PokemonKanto100.dc.html"><span class="g1s" style="background-position: 40.000% 100.000%"></span><span><b>Kanto al 100 %</b><span>Los 151, medallas, MT y legendarios</span></span></a>
+              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="g1s" style="background-position: 26.667% 100.000%"></span><span><b>Arquetipos del meta</b><span>Lluvia, sol, Espacio Raro y Viento Afín</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="thead">
+    <div class="wrap">
+      <div class="th-top">
+        <div>
+          <span class="kick"><i></i>Tabla de tipos</span>
+          <h1 class="h1 fd">¿Quién le gana <span>a quién?</span></h1>
+          <p class="lead">Fila = tipo del ataque, columna = tipo del Pokémon que lo recibe. Pasa el ratón para ver el cruce y toca una columna para calcular sus debilidades.</p>
+        </div>
+        <div class="rset" role="tablist" aria-label="Generación">
+          <sc-for list="{{sets}}" as="s" hint-placeholder-count="3">
+            <button type="button" role="tab" class="rs {{s.on}}" style="--rc: {{s.c}}; --rc2: {{s.c2}}" aria-selected="{{s.pr}}" onClick="{{s.pick}}"><b class="fd">{{s.n}}</b><small>{{s.d}}</small></button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tbody">
+    <div class="wrap tgrid">
+      <div class="mx-card">
+        <div class="mx-legend"><span><i class="c2"></i>×2 súper eficaz</span><span><i class="c5"></i>×½ poco eficaz</span><span><i class="c0"></i>×0 no afecta</span><span><i class="cch"></i>Cambió en esta generación</span><b>{{hoverTxt}}</b></div>
+        <div class="mx-scroll">
+          <div class="mx" style="--n: {{n}}" role="grid">
+            <div class="corner"><span>ATQ ↓</span><span>DEF →</span></div>
+            <sc-for list="{{cols}}" as="c" hint-placeholder-count="18">
+              <div class="ch t-{{c.k}} {{c.hl}} {{c.sel}}"><button type="button" onClick="{{c.pick}}" aria-label="Defensa {{c.n}}"><i class="ti"></i><span>{{c.n}}</span></button></div>
+            </sc-for>
+            <sc-for list="{{rows}}" as="r" hint-placeholder-count="18">
+              <div class="rh t-{{r.k}} {{r.hl}}"><button type="button" onClick="{{r.pick}}" aria-label="Ataque {{r.n}}"><i class="ti"></i>{{r.n}}</button></div>
+              <sc-for list="{{r.c}}" as="x" hint-placeholder-count="18">
+                <span class="cell {{x.cls}}" onMouseEnter="{{x.hov}}">{{x.v}}</span>
+              </sc-for>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc" aria-label="Calculadora de debilidades">
+        <div class="cmode seg"><sc-for list="{{modes}}" as="m" hint-placeholder-count="2"><button type="button" class="{{m.on}}" onClick="{{m.pick}}">{{m.n}}</button></sc-for></div>
+        <sc-if value="{{isDef}}" hint-placeholder-val="true">
+          <div data-pane class="who" style="--c1: {{d1c}}; --c2: {{d2c}}">
+            <span class="spr" style="background-position: {{whoBp}}"></span>
+            <div><small>Defensor</small><b class="fd">{{whoName}}</b>
+              <div class="tys"><sc-for list="{{dts}}" as="t" hint-placeholder-count="2"><span class="ty t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></div></div>
+          </div>
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <label class="sr" for="q-t">Buscar un Pokémon</label>
+            <input id="q-t" type="search" placeholder="Busca un Pokémon…" value="{{q}}" onInput="{{onQ}}" autocomplete="off">
+          </div>
+          <sc-if value="{{hasSug}}" hint-placeholder-val="false">
+            <div class="sug"><sc-for list="{{sug}}" as="s" hint-placeholder-count="5"><button type="button" onClick="{{s.pick}}"><span class="spr" style="background-position: {{s.bp}}"></span>{{s.n}}</button></sc-for></div>
+          </sc-if>
+          <p class="hint">O elige hasta dos tipos:</p>
+        </sc-if>
+        <sc-if value="{{isAtk}}" hint-placeholder-val="false"><p class="hint">Elige el tipo del ataque:</p></sc-if>
+        <div class="tpick" style="--n: {{n}}">
+          <sc-for list="{{picks}}" as="t" hint-placeholder-count="18">
+            <button type="button" class="tp t-{{t.k}} {{t.on}}" onClick="{{t.pick}}" aria-pressed="{{t.pr}}" title="{{t.n}}"><i class="tglyph"></i><span>{{t.n}}</span></button>
+          </sc-for>
+        </div>
+        <div class="res">
+          <div class="sum">{{sumTxt}}</div>
+          <sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+            <div class="rg"><span class="mul {{g.cls}}">{{g.m}}</span><span class="rl">{{g.lbl}}</span><span class="wt"><sc-for list="{{g.t}}" as="t" hint-placeholder-count="3"><span class="ty sm t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></span></div>
+          </sc-for>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kick"><i></i>Lo que cambia</span><h2 class="h2">{{setName}}: lo que tienes que saber</h2></div></div>
+      <div class="quirks">
+        <sc-for list="{{quirks}}" as="q" hint-placeholder-count="4">
+          <article class="qk" style="--k: {{q.c}}">
+            <div class="qk-v"><span class="ty t-{{q.a}}"><i></i>{{q.an}}</span><span class="arr">{{q.op}}</span><span class="ty t-{{q.d}}"><i></i>{{q.dn}}</span></div>
+            <h3 class="fd">{{q.t}}</h3><p>{{q.p}}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kick"><i></i>Mini guía</span><h2 class="h2">Las mejores combinaciones defensivas</h2><p>Calculado con la tabla de esta generación: parejas de tipos con más resistencias e inmunidades y menos debilidades, con un Pokémon que la tiene.</p></div></div>
+      <div class="combos">
+        <sc-for list="{{combos}}" as="c" hint-placeholder-count="6">
+          <article class="cb" style="--c1: {{c.c1}}; --c2: {{c.c2}}">
+            <span class="cb-r fd">{{c.r}}</span>
+            <span class="spr" style="background-position: {{c.bp}}"></span>
+            <div class="tys"><span class="ty t-{{c.a}}"><i></i>{{c.an}}</span><span class="ty t-{{c.b}}"><i></i>{{c.bn}}</span></div>
+            <b class="fd">{{c.mon}}</b>
+            <div class="cb-s"><span class="g">{{c.res}} resiste</span><span class="z">{{c.imm}} inmune</span><span class="w">{{c.weak}} débil</span></div>
+          </article>
+        </sc-for>
+      </div>
+      <div class="tri">
+        <div class="tri-v" aria-hidden="true">
+          <span class="tn t-fire"><i class="tglyph"></i></span><span class="tn t-grass"><i class="tglyph"></i></span><span class="tn t-water"><i class="tglyph"></i></span>
+          <svg viewBox="0 0 200 180"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFCB3D"></path></marker></defs>
+            <path d="M85 32 L42 118" stroke="#FFCB3D" stroke-width="3" fill="none" marker-end="url(#ah)" stroke-dasharray="6 5"></path>
+            <path d="M60 146 L140 146" stroke="#FFCB3D" stroke-width="3" fill="none" marker-end="url(#ah)" stroke-dasharray="6 5"></path>
+            <path d="M158 118 L115 32" stroke="#FFCB3D" stroke-width="3" fill="none" marker-end="url(#ah)" stroke-dasharray="6 5"></path></svg>
+        </div>
+        <div class="tri-t"><h3 class="fd">El triángulo para no olvidarlo</h3><p>Fuego quema Planta, Planta absorbe Agua y Agua apaga Fuego. Los iniciales de cada región siguen esta regla, así que tu rival siempre elige el que gana al tuyo.</p>
+          <ul><li><b>Eléctrico</b> no afecta a Tierra.</li><li><b>Normal y Lucha</b> no afectan a Fantasma.</li><li><b>Dragón</b> no afecta a Hada (desde la Gen VI).</li><li><b>Tierra</b> no afecta a Volador.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-about">
+          <a class="brand" href="Main.dc.html"><span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span><span class="brand-name">GRIETA<span>META</span></span></a>
+          <p>GrietaMeta es un sitio de fans, no está afiliado a Nintendo, Game Freak ni The Pokémon Company. Pokémon y sus nombres son marcas de sus propietarios.</p>
+        </div>
+        <div class="foot-cols">
+          <nav class="foot-col" aria-label="Pokémon">
+            <h4>Pokémon</h4>
+            <a href="PokemonDex.dc.html">Pokédex</a>
+            <a href="PokemonTipos.dc.html">Tabla de tipos</a>
+            <a href="PokemonHabilidades.dc.html">Habilidades y movimientos</a>
+            <a href="PokemonCompetitivo.dc.html">Pokémon Champions</a>
+            <a href="PokemonShowdown.dc.html">Pokémon Showdown</a>
+            <a href="PokemonEquipo.dc.html">Crea tu equipo</a>
+            <a href="PokemonKanto.dc.html">Kanto</a>
+          </nav>
+          <nav class="foot-col" aria-label="Juegos">
+            <h4>Juegos</h4>
+            <a href="Lol.dc.html">League of Legends</a>
+            <a href="Arc.dc.html">ARC Raiders</a>
+            <a href="Zelda.dc.html">Zelda: TotK</a>
+            <a href="Main.dc.html#juegos">Ver los 9 juegos</a>
+          </nav>
+          <nav class="foot-col" aria-label="Ayuda">
+            <h4>Ayuda</h4>
+            <a href="Contacto.dc.html">Contáctanos</a>
+            <a href="Contacto.dc.html">Avisar de un error</a>
+          </nav>
+        </div>
+      </div>
+      <div class="foot-bottom"><span>© 2026 GrietaMeta. Todos los derechos reservados.</span><span>Datos: PokeAPI y pret/pokered · Uso competitivo: estadísticas de Smogon / Pokémon Showdown (octubre de 2026)</span></div>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación de Pokémon">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Pokemon.dc.html"><span class="spr" style="background-position: 77.419% 0.000%"></span>Pokémon</a>
+    <a class="tb" href="PokemonDex.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg>Pokédex</a>
+    <a class="tb on" href="PokemonTipos.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M3 9h18M9 3v18"></path></svg>Tipos</a>
+    <a class="tb" href="PokemonKantoMapa.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>Mapa</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones": {"editor": "boolean", "default": true}, "$preview": {"width": 1440, "height": 2600}}'>
+
+const EFF = [[100,100,100,100,100,50,100,0,50,100,100,100,100,100,100,100,100,100],[200,100,50,50,100,200,50,0,200,100,100,100,100,50,200,100,200,50],[100,200,100,100,100,50,200,100,50,100,100,200,50,100,100,100,100,100],[100,100,100,50,50,50,100,50,0,100,100,200,100,100,100,100,100,200],[100,100,0,200,100,200,50,100,200,200,100,50,200,100,100,100,100,100],[100,50,200,100,50,100,200,100,50,200,100,100,100,100,200,100,100,100],[100,50,50,50,100,100,100,50,50,50,100,200,100,200,100,100,200,50],[0,100,100,100,100,100,100,200,100,100,100,100,100,200,100,100,50,100],[100,100,100,100,100,200,100,100,50,50,50,100,50,100,200,100,100,200],[100,100,100,100,100,50,200,100,200,50,50,200,100,100,200,50,100,100],[100,100,100,100,200,200,100,100,100,200,50,50,100,100,100,50,100,100],[100,100,50,50,200,200,50,100,50,50,200,50,100,100,100,50,100,100],[100,100,200,100,0,100,100,100,100,100,200,50,50,100,100,50,100,100],[100,200,100,200,100,100,100,100,50,100,100,100,100,50,100,100,0,100],[100,100,200,100,200,100,100,100,50,50,50,200,100,100,50,200,100,100],[100,100,100,100,100,100,100,100,50,100,100,100,100,100,100,200,100,0],[100,50,100,100,100,100,100,200,100,100,100,100,100,200,100,100,50,50],[100,200,100,50,100,100,100,100,50,50,100,100,100,100,100,200,200,100]]; const EPAST = [[4,7,200,1],[7,4,200,1],[8,14,0,1],[15,10,100,1],[8,9,50,5],[17,9,50,5]]; const PT = {"35":[[5,[1]]],"36":[[5,[1]]],"39":[[5,[1]]],"40":[[5,[1]]],"81":[[1,[13]]],"82":[[1,[13]]],"122":[[5,[14]]],"173":[[5,[1]]],"174":[[5,[1]]],"175":[[5,[1]]],"176":[[5,[1,3]]],"183":[[5,[11]]],"184":[[5,[11]]],"209":[[5,[1]]],"210":[[5,[1]]],"280":[[5,[14]]],"281":[[5,[14]]],"282":[[5,[14]]],"298":[[5,[1]]],"303":[[5,[9]]],"439":[[5,[14]]],"468":[[5,[1,3]]],"546":[[5,[12]]],"547":[[5,[12]]]}; const DM = [[1,"Bulbasaur",1,[12,4]],[2,"Ivysaur",1,[12,4]],[3,"Venusaur",1,[12,4]],[4,"Charmander",1,[10]],[5,"Charmeleon",1,[10]],[6,"Charizard",1,[10,3]],[7,"Squirtle",1,[11]],[8,"Wartortle",1,[11]],[9,"Blastoise",1,[11]],[10,"Caterpie",1,[7]],[11,"Metapod",1,[7]],[12,"Butterfree",1,[7,3]],[13,"Weedle",1,[7,4]],[14,"Kakuna",1,[7,4]],[15,"Beedrill",1,[7,4]],[16,"Pidgey",1,[1,3]],[17,"Pidgeotto",1,[1,3]],[18,"Pidgeot",1,[1,3]],[19,"Rattata",1,[1]],[20,"Raticate",1,[1]],[21,"Spearow",1,[1,3]],[22,"Fearow",1,[1,3]],[23,"Ekans",1,[4]],[24,"Arbok",1,[4]],[25,"Pikachu",1,[13]],[26,"Raichu",1,[13]],[27,"Sandshrew",1,[5]],[28,"Sandslash",1,[5]],[29,"Nidoran♀",1,[4]],[30,"Nidorina",1,[4]],[31,"Nidoqueen",1,[4,5]],[32,"Nidoran♂",1,[4]],[33,"Nidorino",1,[4]],[34,"Nidoking",1,[4,5]],[35,"Clefairy",1,[18]],[36,"Clefable",1,[18]],[37,"Vulpix",1,[10]],[38,"Ninetales",1,[10]],[39,"Jigglypuff",1,[1,18]],[40,"Wigglytuff",1,[1,18]],[41,"Zubat",1,[4,3]],[42,"Golbat",1,[4,3]],[43,"Oddish",1,[12,4]],[44,"Gloom",1,[12,4]],[45,"Vileplume",1,[12,4]],[46,"Paras",1,[7,12]],[47,"Parasect",1,[7,12]],[48,"Venonat",1,[7,4]],[49,"Venomoth",1,[7,4]],[50,"Diglett",1,[5]],[51,"Dugtrio",1,[5]],[52,"Meowth",1,[1]],[53,"Persian",1,[1]],[54,"Psyduck",1,[11]],[55,"Golduck",1,[11]],[56,"Mankey",1,[2]],[57,"Primeape",1,[2]],[58,"Growlithe",1,[10]],[59,"Arcanine",1,[10]],[60,"Poliwag",1,[11]],[61,"Poliwhirl",1,[11]],[62,"Poliwrath",1,[11,2]],[63,"Abra",1,[14]],[64,"Kadabra",1,[14]],[65,"Alakazam",1,[14]],[66,"Machop",1,[2]],[67,"Machoke",1,[2]],[68,"Machamp",1,[2]],[69,"Bellsprout",1,[12,4]],[70,"Weepinbell",1,[12,4]],[71,"Victreebel",1,[12,4]],[72,"Tentacool",1,[11,4]],[73,"Tentacruel",1,[11,4]],[74,"Geodude",1,[6,5]],[75,"Graveler",1,[6,5]],[76,"Golem",1,[6,5]],[77,"Ponyta",1,[10]],[78,"Rapidash",1,[10]],[79,"Slowpoke",1,[11,14]],[80,"Slowbro",1,[11,14]],[81,"Magnemite",1,[13,9]],[82,"Magneton",1,[13,9]],[83,"Farfetch’d",1,[1,3]],[84,"Doduo",1,[1,3]],[85,"Dodrio",1,[1,3]],[86,"Seel",1,[11]],[87,"Dewgong",1,[11,15]],[88,"Grimer",1,[4]],[89,"Muk",1,[4]],[90,"Shellder",1,[11]],[91,"Cloyster",1,[11,15]],[92,"Gastly",1,[8,4]],[93,"Haunter",1,[8,4]],[94,"Gengar",1,[8,4]],[95,"Onix",1,[6,5]],[96,"Drowzee",1,[14]],[97,"Hypno",1,[14]],[98,"Krabby",1,[11]],[99,"Kingler",1,[11]],[100,"Voltorb",1,[13]],[101,"Electrode",1,[13]],[102,"Exeggcute",1,[12,14]],[103,"Exeggutor",1,[12,14]],[104,"Cubone",1,[5]],[105,"Marowak",1,[5]],[106,"Hitmonlee",1,[2]],[107,"Hitmonchan",1,[2]],[108,"Lickitung",1,[1]],[109,"Koffing",1,[4]],[110,"Weezing",1,[4]],[111,"Rhyhorn",1,[5,6]],[112,"Rhydon",1,[5,6]],[113,"Chansey",1,[1]],[114,"Tangela",1,[12]],[115,"Kangaskhan",1,[1]],[116,"Horsea",1,[11]],[117,"Seadra",1,[11]],[118,"Goldeen",1,[11]],[119,"Seaking",1,[11]],[120,"Staryu",1,[11]],[121,"Starmie",1,[11,14]],[122,"Mr. Mime",1,[14,18]],[123,"Scyther",1,[7,3]],[124,"Jynx",1,[15,14]],[125,"Electabuzz",1,[13]],[126,"Magmar",1,[10]],[127,"Pinsir",1,[7]],[128,"Tauros",1,[1]],[129,"Magikarp",1,[11]],[130,"Gyarados",1,[11,3]],[131,"Lapras",1,[11,15]],[132,"Ditto",1,[1]],[133,"Eevee",1,[1]],[134,"Vaporeon",1,[11]],[135,"Jolteon",1,[13]],[136,"Flareon",1,[10]],[137,"Porygon",1,[1]],[138,"Omanyte",1,[6,11]],[139,"Omastar",1,[6,11]],[140,"Kabuto",1,[6,11]],[141,"Kabutops",1,[6,11]],[142,"Aerodactyl",1,[6,3]],[143,"Snorlax",1,[1]],[144,"Articuno",1,[15,3]],[145,"Zapdos",1,[13,3]],[146,"Moltres",1,[10,3]],[147,"Dratini",1,[16]],[148,"Dragonair",1,[16]],[149,"Dragonite",1,[16,3]],[150,"Mewtwo",1,[14]],[151,"Mew",1,[14]],[152,"Chikorita",2,[12]],[153,"Bayleef",2,[12]],[154,"Meganium",2,[12]],[155,"Cyndaquil",2,[10]],[156,"Quilava",2,[10]],[157,"Typhlosion",2,[10]],[158,"Totodile",2,[11]],[159,"Croconaw",2,[11]],[160,"Feraligatr",2,[11]],[161,"Sentret",2,[1]],[162,"Furret",2,[1]],[163,"Hoothoot",2,[1,3]],[164,"Noctowl",2,[1,3]],[165,"Ledyba",2,[7,3]],[166,"Ledian",2,[7,3]],[167,"Spinarak",2,[7,4]],[168,"Ariados",2,[7,4]],[169,"Crobat",2,[4,3]],[170,"Chinchou",2,[11,13]],[171,"Lanturn",2,[11,13]],[172,"Pichu",2,[13]],[173,"Cleffa",2,[18]],[174,"Igglybuff",2,[1,18]],[175,"Togepi",2,[18]],[176,"Togetic",2,[18,3]],[177,"Natu",2,[14,3]],[178,"Xatu",2,[14,3]],[179,"Mareep",2,[13]],[180,"Flaaffy",2,[13]],[181,"Ampharos",2,[13]],[182,"Bellossom",2,[12]],[183,"Marill",2,[11,18]],[184,"Azumarill",2,[11,18]],[185,"Sudowoodo",2,[6]],[186,"Politoed",2,[11]],[187,"Hoppip",2,[12,3]],[188,"Skiploom",2,[12,3]],[189,"Jumpluff",2,[12,3]],[190,"Aipom",2,[1]],[191,"Sunkern",2,[12]],[192,"Sunflora",2,[12]],[193,"Yanma",2,[7,3]],[194,"Wooper",2,[11,5]],[195,"Quagsire",2,[11,5]],[196,"Espeon",2,[14]],[197,"Umbreon",2,[17]],[198,"Murkrow",2,[17,3]],[199,"Slowking",2,[11,14]],[200,"Misdreavus",2,[8]],[201,"Unown",2,[14]],[202,"Wobbuffet",2,[14]],[203,"Girafarig",2,[1,14]],[204,"Pineco",2,[7]],[205,"Forretress",2,[7,9]],[206,"Dunsparce",2,[1]],[207,"Gligar",2,[5,3]],[208,"Steelix",2,[9,5]],[209,"Snubbull",2,[18]],[210,"Granbull",2,[18]],[211,"Qwilfish",2,[11,4]],[212,"Scizor",2,[7,9]],[213,"Shuckle",2,[7,6]],[214,"Heracross",2,[7,2]],[215,"Sneasel",2,[17,15]],[216,"Teddiursa",2,[1]],[217,"Ursaring",2,[1]],[218,"Slugma",2,[10]],[219,"Magcargo",2,[10,6]],[220,"Swinub",2,[15,5]],[221,"Piloswine",2,[15,5]],[222,"Corsola",2,[11,6]],[223,"Remoraid",2,[11]],[224,"Octillery",2,[11]],[225,"Delibird",2,[15,3]],[226,"Mantine",2,[11,3]],[227,"Skarmory",2,[9,3]],[228,"Houndour",2,[17,10]],[229,"Houndoom",2,[17,10]],[230,"Kingdra",2,[11,16]],[231,"Phanpy",2,[5]],[232,"Donphan",2,[5]],[233,"Porygon2",2,[1]],[234,"Stantler",2,[1]],[235,"Smeargle",2,[1]],[236,"Tyrogue",2,[2]],[237,"Hitmontop",2,[2]],[238,"Smoochum",2,[15,14]],[239,"Elekid",2,[13]],[240,"Magby",2,[10]],[241,"Miltank",2,[1]],[242,"Blissey",2,[1]],[243,"Raikou",2,[13]],[244,"Entei",2,[10]],[245,"Suicune",2,[11]],[246,"Larvitar",2,[6,5]],[247,"Pupitar",2,[6,5]],[248,"Tyranitar",2,[6,17]],[249,"Lugia",2,[14,3]],[250,"Ho-Oh",2,[10,3]],[251,"Celebi",2,[14,12]],[252,"Treecko",3,[12]],[253,"Grovyle",3,[12]],[254,"Sceptile",3,[12]],[255,"Torchic",3,[10]],[256,"Combusken",3,[10,2]],[257,"Blaziken",3,[10,2]],[258,"Mudkip",3,[11]],[259,"Marshtomp",3,[11,5]],[260,"Swampert",3,[11,5]],[261,"Poochyena",3,[17]],[262,"Mightyena",3,[17]],[263,"Zigzagoon",3,[1]],[264,"Linoone",3,[1]],[265,"Wurmple",3,[7]],[266,"Silcoon",3,[7]],[267,"Beautifly",3,[7,3]],[268,"Cascoon",3,[7]],[269,"Dustox",3,[7,4]],[270,"Lotad",3,[11,12]],[271,"Lombre",3,[11,12]],[272,"Ludicolo",3,[11,12]],[273,"Seedot",3,[12]],[274,"Nuzleaf",3,[12,17]],[275,"Shiftry",3,[12,17]],[276,"Taillow",3,[1,3]],[277,"Swellow",3,[1,3]],[278,"Wingull",3,[11,3]],[279,"Pelipper",3,[11,3]],[280,"Ralts",3,[14,18]],[281,"Kirlia",3,[14,18]],[282,"Gardevoir",3,[14,18]],[283,"Surskit",3,[7,11]],[284,"Masquerain",3,[7,3]],[285,"Shroomish",3,[12]],[286,"Breloom",3,[12,2]],[287,"Slakoth",3,[1]],[288,"Vigoroth",3,[1]],[289,"Slaking",3,[1]],[290,"Nincada",3,[7,5]],[291,"Ninjask",3,[7,3]],[292,"Shedinja",3,[7,8]],[293,"Whismur",3,[1]],[294,"Loudred",3,[1]],[295,"Exploud",3,[1]],[296,"Makuhita",3,[2]],[297,"Hariyama",3,[2]],[298,"Azurill",3,[1,18]],[299,"Nosepass",3,[6]],[300,"Skitty",3,[1]],[301,"Delcatty",3,[1]],[302,"Sableye",3,[17,8]],[303,"Mawile",3,[9,18]],[304,"Aron",3,[9,6]],[305,"Lairon",3,[9,6]],[306,"Aggron",3,[9,6]],[307,"Meditite",3,[2,14]],[308,"Medicham",3,[2,14]],[309,"Electrike",3,[13]],[310,"Manectric",3,[13]],[311,"Plusle",3,[13]],[312,"Minun",3,[13]],[313,"Volbeat",3,[7]],[314,"Illumise",3,[7]],[315,"Roselia",3,[12,4]],[316,"Gulpin",3,[4]],[317,"Swalot",3,[4]],[318,"Carvanha",3,[11,17]],[319,"Sharpedo",3,[11,17]],[320,"Wailmer",3,[11]],[321,"Wailord",3,[11]],[322,"Numel",3,[10,5]],[323,"Camerupt",3,[10,5]],[324,"Torkoal",3,[10]],[325,"Spoink",3,[14]],[326,"Grumpig",3,[14]],[327,"Spinda",3,[1]],[328,"Trapinch",3,[5]],[329,"Vibrava",3,[5,16]],[330,"Flygon",3,[5,16]],[331,"Cacnea",3,[12]],[332,"Cacturne",3,[12,17]],[333,"Swablu",3,[1,3]],[334,"Altaria",3,[16,3]],[335,"Zangoose",3,[1]],[336,"Seviper",3,[4]],[337,"Lunatone",3,[6,14]],[338,"Solrock",3,[6,14]],[339,"Barboach",3,[11,5]],[340,"Whiscash",3,[11,5]],[341,"Corphish",3,[11]],[342,"Crawdaunt",3,[11,17]],[343,"Baltoy",3,[5,14]],[344,"Claydol",3,[5,14]],[345,"Lileep",3,[6,12]],[346,"Cradily",3,[6,12]],[347,"Anorith",3,[6,7]],[348,"Armaldo",3,[6,7]],[349,"Feebas",3,[11]],[350,"Milotic",3,[11]],[351,"Castform",3,[1]],[352,"Kecleon",3,[1]],[353,"Shuppet",3,[8]],[354,"Banette",3,[8]],[355,"Duskull",3,[8]],[356,"Dusclops",3,[8]],[357,"Tropius",3,[12,3]],[358,"Chimecho",3,[14]],[359,"Absol",3,[17]],[360,"Wynaut",3,[14]],[361,"Snorunt",3,[15]],[362,"Glalie",3,[15]],[363,"Spheal",3,[15,11]],[364,"Sealeo",3,[15,11]],[365,"Walrein",3,[15,11]],[366,"Clamperl",3,[11]],[367,"Huntail",3,[11]],[368,"Gorebyss",3,[11]],[369,"Relicanth",3,[11,6]],[370,"Luvdisc",3,[11]],[371,"Bagon",3,[16]],[372,"Shelgon",3,[16]],[373,"Salamence",3,[16,3]],[374,"Beldum",3,[9,14]],[375,"Metang",3,[9,14]],[376,"Metagross",3,[9,14]],[377,"Regirock",3,[6]],[378,"Regice",3,[15]],[379,"Registeel",3,[9]],[380,"Latias",3,[16,14]],[381,"Latios",3,[16,14]],[382,"Kyogre",3,[11]],[383,"Groudon",3,[5]],[384,"Rayquaza",3,[16,3]],[385,"Jirachi",3,[9,14]],[386,"Deoxys",3,[14]],[387,"Turtwig",4,[12]],[388,"Grotle",4,[12]],[389,"Torterra",4,[12,5]],[390,"Chimchar",4,[10]],[391,"Monferno",4,[10,2]],[392,"Infernape",4,[10,2]],[393,"Piplup",4,[11]],[394,"Prinplup",4,[11]],[395,"Empoleon",4,[11,9]],[396,"Starly",4,[1,3]],[397,"Staravia",4,[1,3]],[398,"Staraptor",4,[1,3]],[399,"Bidoof",4,[1]],[400,"Bibarel",4,[1,11]],[401,"Kricketot",4,[7]],[402,"Kricketune",4,[7]],[403,"Shinx",4,[13]],[404,"Luxio",4,[13]],[405,"Luxray",4,[13]],[406,"Budew",4,[12,4]],[407,"Roserade",4,[12,4]],[408,"Cranidos",4,[6]],[409,"Rampardos",4,[6]],[410,"Shieldon",4,[6,9]],[411,"Bastiodon",4,[6,9]],[412,"Burmy",4,[7]],[413,"Wormadam",4,[7,12]],[414,"Mothim",4,[7,3]],[415,"Combee",4,[7,3]],[416,"Vespiquen",4,[7,3]],[417,"Pachirisu",4,[13]],[418,"Buizel",4,[11]],[419,"Floatzel",4,[11]],[420,"Cherubi",4,[12]],[421,"Cherrim",4,[12]],[422,"Shellos",4,[11]],[423,"Gastrodon",4,[11,5]],[424,"Ambipom",4,[1]],[425,"Drifloon",4,[8,3]],[426,"Drifblim",4,[8,3]],[427,"Buneary",4,[1]],[428,"Lopunny",4,[1]],[429,"Mismagius",4,[8]],[430,"Honchkrow",4,[17,3]],[431,"Glameow",4,[1]],[432,"Purugly",4,[1]],[433,"Chingling",4,[14]],[434,"Stunky",4,[4,17]],[435,"Skuntank",4,[4,17]],[436,"Bronzor",4,[9,14]],[437,"Bronzong",4,[9,14]],[438,"Bonsly",4,[6]],[439,"Mime Jr.",4,[14,18]],[440,"Happiny",4,[1]],[441,"Chatot",4,[1,3]],[442,"Spiritomb",4,[8,17]],[443,"Gible",4,[16,5]],[444,"Gabite",4,[16,5]],[445,"Garchomp",4,[16,5]],[446,"Munchlax",4,[1]],[447,"Riolu",4,[2]],[448,"Lucario",4,[2,9]],[449,"Hippopotas",4,[5]],[450,"Hippowdon",4,[5]],[451,"Skorupi",4,[4,7]],[452,"Drapion",4,[4,17]],[453,"Croagunk",4,[4,2]],[454,"Toxicroak",4,[4,2]],[455,"Carnivine",4,[12]],[456,"Finneon",4,[11]],[457,"Lumineon",4,[11]],[458,"Mantyke",4,[11,3]],[459,"Snover",4,[12,15]],[460,"Abomasnow",4,[12,15]],[461,"Weavile",4,[17,15]],[462,"Magnezone",4,[13,9]],[463,"Lickilicky",4,[1]],[464,"Rhyperior",4,[5,6]],[465,"Tangrowth",4,[12]],[466,"Electivire",4,[13]],[467,"Magmortar",4,[10]],[468,"Togekiss",4,[18,3]],[469,"Yanmega",4,[7,3]],[470,"Leafeon",4,[12]],[471,"Glaceon",4,[15]],[472,"Gliscor",4,[5,3]],[473,"Mamoswine",4,[15,5]],[474,"Porygon-Z",4,[1]],[475,"Gallade",4,[14,2]],[476,"Probopass",4,[6,9]],[477,"Dusknoir",4,[8]],[478,"Froslass",4,[15,8]],[479,"Rotom",4,[13,8]],[480,"Uxie",4,[14]],[481,"Mesprit",4,[14]],[482,"Azelf",4,[14]],[483,"Dialga",4,[9,16]],[484,"Palkia",4,[11,16]],[485,"Heatran",4,[10,9]],[486,"Regigigas",4,[1]],[487,"Giratina",4,[8,16]],[488,"Cresselia",4,[14]],[489,"Phione",4,[11]],[490,"Manaphy",4,[11]],[491,"Darkrai",4,[17]],[492,"Shaymin",4,[12]],[493,"Arceus",4,[1]],[494,"Victini",5,[14,10]],[495,"Snivy",5,[12]],[496,"Servine",5,[12]],[497,"Serperior",5,[12]],[498,"Tepig",5,[10]],[499,"Pignite",5,[10,2]],[500,"Emboar",5,[10,2]],[501,"Oshawott",5,[11]],[502,"Dewott",5,[11]],[503,"Samurott",5,[11]],[504,"Patrat",5,[1]],[505,"Watchog",5,[1]],[506,"Lillipup",5,[1]],[507,"Herdier",5,[1]],[508,"Stoutland",5,[1]],[509,"Purrloin",5,[17]],[510,"Liepard",5,[17]],[511,"Pansage",5,[12]],[512,"Simisage",5,[12]],[513,"Pansear",5,[10]],[514,"Simisear",5,[10]],[515,"Panpour",5,[11]],[516,"Simipour",5,[11]],[517,"Munna",5,[14]],[518,"Musharna",5,[14]],[519,"Pidove",5,[1,3]],[520,"Tranquill",5,[1,3]],[521,"Unfezant",5,[1,3]],[522,"Blitzle",5,[13]],[523,"Zebstrika",5,[13]],[524,"Roggenrola",5,[6]],[525,"Boldore",5,[6]],[526,"Gigalith",5,[6]],[527,"Woobat",5,[14,3]],[528,"Swoobat",5,[14,3]],[529,"Drilbur",5,[5]],[530,"Excadrill",5,[5,9]],[531,"Audino",5,[1]],[532,"Timburr",5,[2]],[533,"Gurdurr",5,[2]],[534,"Conkeldurr",5,[2]],[535,"Tympole",5,[11]],[536,"Palpitoad",5,[11,5]],[537,"Seismitoad",5,[11,5]],[538,"Throh",5,[2]],[539,"Sawk",5,[2]],[540,"Sewaddle",5,[7,12]],[541,"Swadloon",5,[7,12]],[542,"Leavanny",5,[7,12]],[543,"Venipede",5,[7,4]],[544,"Whirlipede",5,[7,4]],[545,"Scolipede",5,[7,4]],[546,"Cottonee",5,[12,18]],[547,"Whimsicott",5,[12,18]],[548,"Petilil",5,[12]],[549,"Lilligant",5,[12]],[550,"Basculin",5,[11]],[551,"Sandile",5,[5,17]],[552,"Krokorok",5,[5,17]],[553,"Krookodile",5,[5,17]],[554,"Darumaka",5,[10]],[555,"Darmanitan",5,[10]],[556,"Maractus",5,[12]],[557,"Dwebble",5,[7,6]],[558,"Crustle",5,[7,6]],[559,"Scraggy",5,[17,2]],[560,"Scrafty",5,[17,2]],[561,"Sigilyph",5,[14,3]],[562,"Yamask",5,[8]],[563,"Cofagrigus",5,[8]],[564,"Tirtouga",5,[11,6]],[565,"Carracosta",5,[11,6]],[566,"Archen",5,[6,3]],[567,"Archeops",5,[6,3]],[568,"Trubbish",5,[4]],[569,"Garbodor",5,[4]],[570,"Zorua",5,[17]],[571,"Zoroark",5,[17]],[572,"Minccino",5,[1]],[573,"Cinccino",5,[1]],[574,"Gothita",5,[14]],[575,"Gothorita",5,[14]],[576,"Gothitelle",5,[14]],[577,"Solosis",5,[14]],[578,"Duosion",5,[14]],[579,"Reuniclus",5,[14]],[580,"Ducklett",5,[11,3]],[581,"Swanna",5,[11,3]],[582,"Vanillite",5,[15]],[583,"Vanillish",5,[15]],[584,"Vanilluxe",5,[15]],[585,"Deerling",5,[1,12]],[586,"Sawsbuck",5,[1,12]],[587,"Emolga",5,[13,3]],[588,"Karrablast",5,[7]],[589,"Escavalier",5,[7,9]],[590,"Foongus",5,[12,4]],[591,"Amoonguss",5,[12,4]],[592,"Frillish",5,[11,8]],[593,"Jellicent",5,[11,8]],[594,"Alomomola",5,[11]],[595,"Joltik",5,[7,13]],[596,"Galvantula",5,[7,13]],[597,"Ferroseed",5,[12,9]],[598,"Ferrothorn",5,[12,9]],[599,"Klink",5,[9]],[600,"Klang",5,[9]],[601,"Klinklang",5,[9]],[602,"Tynamo",5,[13]],[603,"Eelektrik",5,[13]],[604,"Eelektross",5,[13]],[605,"Elgyem",5,[14]],[606,"Beheeyem",5,[14]],[607,"Litwick",5,[8,10]],[608,"Lampent",5,[8,10]],[609,"Chandelure",5,[8,10]],[610,"Axew",5,[16]],[611,"Fraxure",5,[16]],[612,"Haxorus",5,[16]],[613,"Cubchoo",5,[15]],[614,"Beartic",5,[15]],[615,"Cryogonal",5,[15]],[616,"Shelmet",5,[7]],[617,"Accelgor",5,[7]],[618,"Stunfisk",5,[5,13]],[619,"Mienfoo",5,[2]],[620,"Mienshao",5,[2]],[621,"Druddigon",5,[16]],[622,"Golett",5,[5,8]],[623,"Golurk",5,[5,8]],[624,"Pawniard",5,[17,9]],[625,"Bisharp",5,[17,9]],[626,"Bouffalant",5,[1]],[627,"Rufflet",5,[1,3]],[628,"Braviary",5,[1,3]],[629,"Vullaby",5,[17,3]],[630,"Mandibuzz",5,[17,3]],[631,"Heatmor",5,[10]],[632,"Durant",5,[7,9]],[633,"Deino",5,[17,16]],[634,"Zweilous",5,[17,16]],[635,"Hydreigon",5,[17,16]],[636,"Larvesta",5,[7,10]],[637,"Volcarona",5,[7,10]],[638,"Cobalion",5,[9,2]],[639,"Terrakion",5,[6,2]],[640,"Virizion",5,[12,2]],[641,"Tornadus",5,[3]],[642,"Thundurus",5,[13,3]],[643,"Reshiram",5,[16,10]],[644,"Zekrom",5,[16,13]],[645,"Landorus",5,[5,3]],[646,"Kyurem",5,[16,15]],[647,"Keldeo",5,[11,2]],[648,"Meloetta",5,[1,14]],[649,"Genesect",5,[7,9]],[650,"Chespin",6,[12]],[651,"Quilladin",6,[12]],[652,"Chesnaught",6,[12,2]],[653,"Fennekin",6,[10]],[654,"Braixen",6,[10]],[655,"Delphox",6,[10,14]],[656,"Froakie",6,[11]],[657,"Frogadier",6,[11]],[658,"Greninja",6,[11,17]],[659,"Bunnelby",6,[1]],[660,"Diggersby",6,[1,5]],[661,"Fletchling",6,[1,3]],[662,"Fletchinder",6,[10,3]],[663,"Talonflame",6,[10,3]],[664,"Scatterbug",6,[7]],[665,"Spewpa",6,[7]],[666,"Vivillon",6,[7,3]],[667,"Litleo",6,[10,1]],[668,"Pyroar",6,[10,1]],[669,"Flabébé",6,[18]],[670,"Floette",6,[18]],[671,"Florges",6,[18]],[672,"Skiddo",6,[12]],[673,"Gogoat",6,[12]],[674,"Pancham",6,[2]],[675,"Pangoro",6,[2,17]],[676,"Furfrou",6,[1]],[677,"Espurr",6,[14]],[678,"Meowstic",6,[14]],[679,"Honedge",6,[9,8]],[680,"Doublade",6,[9,8]],[681,"Aegislash",6,[9,8]],[682,"Spritzee",6,[18]],[683,"Aromatisse",6,[18]],[684,"Swirlix",6,[18]],[685,"Slurpuff",6,[18]],[686,"Inkay",6,[17,14]],[687,"Malamar",6,[17,14]],[688,"Binacle",6,[6,11]],[689,"Barbaracle",6,[6,11]],[690,"Skrelp",6,[4,11]],[691,"Dragalge",6,[4,16]],[692,"Clauncher",6,[11]],[693,"Clawitzer",6,[11]],[694,"Helioptile",6,[13,1]],[695,"Heliolisk",6,[13,1]],[696,"Tyrunt",6,[6,16]],[697,"Tyrantrum",6,[6,16]],[698,"Amaura",6,[6,15]],[699,"Aurorus",6,[6,15]],[700,"Sylveon",6,[18]],[701,"Hawlucha",6,[2,3]],[702,"Dedenne",6,[13,18]],[703,"Carbink",6,[6,18]],[704,"Goomy",6,[16]],[705,"Sliggoo",6,[16]],[706,"Goodra",6,[16]],[707,"Klefki",6,[9,18]],[708,"Phantump",6,[8,12]],[709,"Trevenant",6,[8,12]],[710,"Pumpkaboo",6,[8,12]],[711,"Gourgeist",6,[8,12]],[712,"Bergmite",6,[15]],[713,"Avalugg",6,[15]],[714,"Noibat",6,[3,16]],[715,"Noivern",6,[3,16]],[716,"Xerneas",6,[18]],[717,"Yveltal",6,[17,3]],[718,"Zygarde",6,[16,5]],[719,"Diancie",6,[6,18]],[720,"Hoopa",6,[14,8]],[721,"Volcanion",6,[10,11]],[722,"Rowlet",7,[12,3]],[723,"Dartrix",7,[12,3]],[724,"Decidueye",7,[12,8]],[725,"Litten",7,[10]],[726,"Torracat",7,[10]],[727,"Incineroar",7,[10,17]],[728,"Popplio",7,[11]],[729,"Brionne",7,[11]],[730,"Primarina",7,[11,18]],[731,"Pikipek",7,[1,3]],[732,"Trumbeak",7,[1,3]],[733,"Toucannon",7,[1,3]],[734,"Yungoos",7,[1]],[735,"Gumshoos",7,[1]],[736,"Grubbin",7,[7]],[737,"Charjabug",7,[7,13]],[738,"Vikavolt",7,[7,13]],[739,"Crabrawler",7,[2]],[740,"Crabominable",7,[2,15]],[741,"Oricorio",7,[10,3]],[742,"Cutiefly",7,[7,18]],[743,"Ribombee",7,[7,18]],[744,"Rockruff",7,[6]],[745,"Lycanroc",7,[6]],[746,"Wishiwashi",7,[11]],[747,"Mareanie",7,[4,11]],[748,"Toxapex",7,[4,11]],[749,"Mudbray",7,[5]],[750,"Mudsdale",7,[5]],[751,"Dewpider",7,[11,7]],[752,"Araquanid",7,[11,7]],[753,"Fomantis",7,[12]],[754,"Lurantis",7,[12]],[755,"Morelull",7,[12,18]],[756,"Shiinotic",7,[12,18]],[757,"Salandit",7,[4,10]],[758,"Salazzle",7,[4,10]],[759,"Stufful",7,[1,2]],[760,"Bewear",7,[1,2]],[761,"Bounsweet",7,[12]],[762,"Steenee",7,[12]],[763,"Tsareena",7,[12]],[764,"Comfey",7,[18]],[765,"Oranguru",7,[1,14]],[766,"Passimian",7,[2]],[767,"Wimpod",7,[7,11]],[768,"Golisopod",7,[7,11]],[769,"Sandygast",7,[8,5]],[770,"Palossand",7,[8,5]],[771,"Pyukumuku",7,[11]],[772,"Código Cero",7,[1]],[773,"Silvally",7,[1]],[774,"Minior",7,[6,3]],[775,"Komala",7,[1]],[776,"Turtonator",7,[10,16]],[777,"Togedemaru",7,[13,9]],[778,"Mimikyu",7,[8,18]],[779,"Bruxish",7,[11,14]],[780,"Drampa",7,[1,16]],[781,"Dhelmise",7,[8,12]],[782,"Jangmo-o",7,[16]],[783,"Hakamo-o",7,[16,2]],[784,"Kommo-o",7,[16,2]],[785,"Tapu Koko",7,[13,18]],[786,"Tapu Lele",7,[14,18]],[787,"Tapu Bulu",7,[12,18]],[788,"Tapu Fini",7,[11,18]],[789,"Cosmog",7,[14]],[790,"Cosmoem",7,[14]],[791,"Solgaleo",7,[14,9]],[792,"Lunala",7,[14,8]],[793,"Nihilego",7,[6,4]],[794,"Buzzwole",7,[7,2]],[795,"Pheromosa",7,[7,2]],[796,"Xurkitree",7,[13]],[797,"Celesteela",7,[9,3]],[798,"Kartana",7,[12,9]],[799,"Guzzlord",7,[17,16]],[800,"Necrozma",7,[14]],[801,"Magearna",7,[9,18]],[802,"Marshadow",7,[2,8]],[803,"Poipole",7,[4]],[804,"Naganadel",7,[4,16]],[805,"Stakataka",7,[6,9]],[806,"Blacephalon",7,[10,8]],[807,"Zeraora",7,[13]],[808,"Meltan",7,[9]],[809,"Melmetal",7,[9]],[810,"Grookey",8,[12]],[811,"Thwackey",8,[12]],[812,"Rillaboom",8,[12]],[813,"Scorbunny",8,[10]],[814,"Raboot",8,[10]],[815,"Cinderace",8,[10]],[816,"Sobble",8,[11]],[817,"Drizzile",8,[11]],[818,"Inteleon",8,[11]],[819,"Skwovet",8,[1]],[820,"Greedent",8,[1]],[821,"Rookidee",8,[3]],[822,"Corvisquire",8,[3]],[823,"Corviknight",8,[3,9]],[824,"Blipbug",8,[7]],[825,"Dottler",8,[7,14]],[826,"Orbeetle",8,[7,14]],[827,"Nickit",8,[17]],[828,"Thievul",8,[17]],[829,"Gossifleur",8,[12]],[830,"Eldegoss",8,[12]],[831,"Wooloo",8,[1]],[832,"Dubwool",8,[1]],[833,"Chewtle",8,[11]],[834,"Drednaw",8,[11,6]],[835,"Yamper",8,[13]],[836,"Boltund",8,[13]],[837,"Rolycoly",8,[6]],[838,"Carkol",8,[6,10]],[839,"Coalossal",8,[6,10]],[840,"Applin",8,[12,16]],[841,"Flapple",8,[12,16]],[842,"Appletun",8,[12,16]],[843,"Silicobra",8,[5]],[844,"Sandaconda",8,[5]],[845,"Cramorant",8,[3,11]],[846,"Arrokuda",8,[11]],[847,"Barraskewda",8,[11]],[848,"Toxel",8,[13,4]],[849,"Toxtricity",8,[13,4]],[850,"Sizzlipede",8,[10,7]],[851,"Centiskorch",8,[10,7]],[852,"Clobbopus",8,[2]],[853,"Grapploct",8,[2]],[854,"Sinistea",8,[8]],[855,"Polteageist",8,[8]],[856,"Hatenna",8,[14]],[857,"Hattrem",8,[14]],[858,"Hatterene",8,[14,18]],[859,"Impidimp",8,[17,18]],[860,"Morgrem",8,[17,18]],[861,"Grimmsnarl",8,[17,18]],[862,"Obstagoon",8,[17,1]],[863,"Perrserker",8,[9]],[864,"Cursola",8,[8]],[865,"Sirfetch’d",8,[2]],[866,"Mr. Rime",8,[15,14]],[867,"Runerigus",8,[5,8]],[868,"Milcery",8,[18]],[869,"Alcremie",8,[18]],[870,"Falinks",8,[2]],[871,"Pincurchin",8,[13]],[872,"Snom",8,[15,7]],[873,"Frosmoth",8,[15,7]],[874,"Stonjourner",8,[6]],[875,"Eiscue",8,[15]],[876,"Indeedee",8,[14,1]],[877,"Morpeko",8,[13,17]],[878,"Cufant",8,[9]],[879,"Copperajah",8,[9]],[880,"Dracozolt",8,[13,16]],[881,"Arctozolt",8,[13,15]],[882,"Dracovish",8,[11,16]],[883,"Arctovish",8,[11,15]],[884,"Duraludon",8,[9,16]],[885,"Dreepy",8,[16,8]],[886,"Drakloak",8,[16,8]],[887,"Dragapult",8,[16,8]],[888,"Zacian",8,[18]],[889,"Zamazenta",8,[2]],[890,"Eternatus",8,[4,16]],[891,"Kubfu",8,[2]],[892,"Urshifu",8,[2,17]],[893,"Zarude",8,[17,12]],[894,"Regieleki",8,[13]],[895,"Regidrago",8,[16]],[896,"Glastrier",8,[15]],[897,"Spectrier",8,[8]],[898,"Calyrex",8,[14,12]],[899,"Wyrdeer",8,[1,14]],[900,"Kleavor",8,[7,6]],[901,"Ursaluna",8,[5,1]],[902,"Basculegion",8,[11,8]],[903,"Sneasler",8,[2,4]],[904,"Overqwil",8,[17,4]],[905,"Enamorus",8,[18,3]],[906,"Sprigatito",9,[12]],[907,"Floragato",9,[12]],[908,"Meowscarada",9,[12,17]],[909,"Fuecoco",9,[10]],[910,"Crocalor",9,[10]],[911,"Skeledirge",9,[10,8]],[912,"Quaxly",9,[11]],[913,"Quaxwell",9,[11]],[914,"Quaquaval",9,[11,2]],[915,"Lechonk",9,[1]],[916,"Oinkologne",9,[1]],[917,"Tarountula",9,[7]],[918,"Spidops",9,[7]],[919,"Nymble",9,[7]],[920,"Lokix",9,[7,17]],[921,"Pawmi",9,[13]],[922,"Pawmo",9,[13,2]],[923,"Pawmot",9,[13,2]],[924,"Tandemaus",9,[1]],[925,"Maushold",9,[1]],[926,"Fidough",9,[18]],[927,"Dachsbun",9,[18]],[928,"Smoliv",9,[12,1]],[929,"Dolliv",9,[12,1]],[930,"Arboliva",9,[12,1]],[931,"Squawkabilly",9,[1,3]],[932,"Nacli",9,[6]],[933,"Naclstack",9,[6]],[934,"Garganacl",9,[6]],[935,"Charcadet",9,[10]],[936,"Armarouge",9,[10,14]],[937,"Ceruledge",9,[10,8]],[938,"Tadbulb",9,[13]],[939,"Bellibolt",9,[13]],[940,"Wattrel",9,[13,3]],[941,"Kilowattrel",9,[13,3]],[942,"Maschiff",9,[17]],[943,"Mabosstiff",9,[17]],[944,"Shroodle",9,[4,1]],[945,"Grafaiai",9,[4,1]],[946,"Bramblin",9,[12,8]],[947,"Brambleghast",9,[12,8]],[948,"Toedscool",9,[5,12]],[949,"Toedscruel",9,[5,12]],[950,"Klawf",9,[6]],[951,"Capsakid",9,[12]],[952,"Scovillain",9,[12,10]],[953,"Rellor",9,[7]],[954,"Rabsca",9,[7,14]],[955,"Flittle",9,[14]],[956,"Espathra",9,[14]],[957,"Tinkatink",9,[18,9]],[958,"Tinkatuff",9,[18,9]],[959,"Tinkaton",9,[18,9]],[960,"Wiglett",9,[11]],[961,"Wugtrio",9,[11]],[962,"Bombirdier",9,[3,17]],[963,"Finizen",9,[11]],[964,"Palafin",9,[11]],[965,"Varoom",9,[9,4]],[966,"Revavroom",9,[9,4]],[967,"Cyclizar",9,[16,1]],[968,"Orthworm",9,[9]],[969,"Glimmet",9,[6,4]],[970,"Glimmora",9,[6,4]],[971,"Greavard",9,[8]],[972,"Houndstone",9,[8]],[973,"Flamigo",9,[3,2]],[974,"Cetoddle",9,[15]],[975,"Cetitan",9,[15]],[976,"Veluza",9,[11,14]],[977,"Dondozo",9,[11]],[978,"Tatsugiri",9,[16,11]],[979,"Annihilape",9,[2,8]],[980,"Clodsire",9,[4,5]],[981,"Farigiraf",9,[1,14]],[982,"Dudunsparce",9,[1]],[983,"Kingambit",9,[17,9]],[984,"Colmilargo",9,[5,2]],[985,"Colagrito",9,[18,14]],[986,"Furioseta",9,[12,17]],[987,"Melenaleteo",9,[8,18]],[988,"Reptalada",9,[7,2]],[989,"Pelarena",9,[13,5]],[990,"Ferrodada",9,[5,9]],[991,"Ferrosaco",9,[15,11]],[992,"Ferropalmas",9,[2,13]],[993,"Ferrocuello",9,[17,3]],[994,"Ferropolilla",9,[10,4]],[995,"Ferropúas",9,[6,13]],[996,"Frigibax",9,[16,15]],[997,"Arctibax",9,[16,15]],[998,"Baxcalibur",9,[16,15]],[999,"Gimmighoul",9,[8]],[1000,"Gholdengo",9,[9,8]],[1001,"Wo-Chien",9,[17,12]],[1002,"Chien-Pao",9,[17,15]],[1003,"Ting-Lu",9,[17,5]],[1004,"Chi-Yu",9,[17,10]],[1005,"Bramaluna",9,[16,17]],[1006,"Ferropaladín",9,[18,2]],[1007,"Koraidon",9,[2,16]],[1008,"Miraidon",9,[13,16]],[1009,"Ondulagua",9,[11,16]],[1010,"Ferroverdor",9,[12,14]],[1011,"Dipplin",9,[12,16]],[1012,"Poltchageist",9,[12,8]],[1013,"Sinistcha",9,[12,8]],[1014,"Okidogi",9,[4,2]],[1015,"Munkidori",9,[4,14]],[1016,"Fezandipiti",9,[4,18]],[1017,"Ogerpon",9,[12]],[1018,"Archaludon",9,[9,16]],[1019,"Hydrapple",9,[12,16]],[1020,"Flamariete",9,[10,16]],[1021,"Electrofuria",9,[13,16]],[1022,"Ferromole",9,[6,14]],[1023,"Ferrotesta",9,[9,14]],[1024,"Terapagos",9,[1]],[1025,"Pecharunt",9,[4,8]]];
+const TK = ["normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy"]; const TN = ["Normal","Lucha","Volador","Veneno","Tierra","Roca","Bicho","Fantasma","Acero","Fuego","Agua","Planta","Eléctrico","Psíquico","Hielo","Dragón","Siniestro","Hada"]; const TC = ["#A8A77A","#D3425F","#8FA8DD","#B567CE","#D97845","#C5B78C","#91C12F","#5269AD","#5A8EA2","#FF9D55","#4D90D5","#63BC5A","#F4D23C","#FA7179","#73CEC0","#0B6DC3","#5A5465","#EC8FE6"];
+const sp = (id) => { const i = id - 1; return ((i % 32) / 31 * 100).toFixed(3) + '% ' + (Math.floor(i / 32) / 32 * 100).toFixed(3) + '%'; };
+const SETS = [{ g: 1, n: 'Gen I', d: '15 tipos · Rojo y Azul', c: '#E3350D', c2: '#FFB703', nt: 15 }, { g: 5, n: 'Gen II a V', d: '17 tipos · Oro a Blanco 2', c: '#4C6CC9', c2: '#6A35A6', nt: 17 }, { g: 9, n: 'Gen VI en adelante', d: '18 tipos · X a Escarlata', c: '#DB2777', c2: '#7C3AED', nt: 18 }];
+const eff = (a, d, g) => { let f = EFF[a - 1][d - 1]; EPAST.forEach((r) => { if (r[0] === a && r[1] === d && r[3] >= g) f = r[2]; }); return f / 100; };
+const changed = (a, d, g) => g < 9 && eff(a, d, g) !== eff(a, d, 9);
+const typesFor = (m, g) => { const pt = PT[m[0]]; if (pt) { const c = pt.filter((x) => x[0] >= g).sort((a, b) => a[0] - b[0])[0]; if (c) return c[1]; } return m[3]; };
+const ty = (i) => ({ k: TK[i - 1], n: TN[i - 1] });
+const fmt = (m) => m === 4 ? '×4' : m === 2 ? '×2' : m === 1 ? '×1' : m === 0.5 ? '×½' : m === 0.25 ? '×¼' : '×0';
+const cls = (m) => m === 4 ? 'x4' : m === 2 ? 'x2' : m === 1 ? 'x1' : m === 0.5 ? 'x05' : m === 0.25 ? 'x025' : 'x0';
+const LBL = { 4: 'Muy débil', 2: 'Débil', 1: 'Normal', 0.5: 'Resiste', 0.25: 'Resiste mucho', 0: 'Inmune' };
+const QUIRKS = {
+  1: [{ a: 8, d: 14, op: '×0', c: '#B98CFF', t: 'Fantasma no afecta a Psíquico', p: 'Debía ser súper eficaz, pero un error lo dejó en ×0. Y el único ataque Fantasma, Lengüetazo, era débil.' },
+      { a: 7, d: 4, op: '×2', c: '#91C12F', t: 'Bicho y Veneno se pegan ×2', p: 'Bicho era súper eficaz contra Veneno y Veneno contra Bicho. Cambió en Oro y Plata.' },
+      { a: 15, d: 10, op: '×1', c: '#73CEC0', t: 'Hielo contra Fuego, neutro', p: 'Fuego no resistía Hielo. Desde la Gen II, Fuego lo resiste.' },
+      { a: 14, d: 14, op: '×½', c: '#FA7179', t: 'Psíquico no tenía rival', p: 'Sin Siniestro ni Acero, y con Bicho y Fantasma flojos, Psíquico dominaba la Gen I.' }],
+  5: [{ a: 17, d: 14, op: '×2', c: '#5A5465', t: 'Llega Siniestro', p: 'Creado para frenar a Psíquico: lo golpea ×2 y además es inmune a sus ataques.' },
+      { a: 8, d: 9, op: '×½', c: '#5A8EA2', t: 'Acero resiste Fantasma', p: 'Hasta la Gen V, Acero resistía Fantasma y Siniestro. En la Gen VI dejó de hacerlo.' },
+      { a: 17, d: 9, op: '×½', c: '#5A8EA2', t: 'Acero resiste Siniestro', p: 'Por eso Scizor, Metagross o Skarmory aguantaban casi todo en la Gen IV.' },
+      { a: 15, d: 10, op: '×½', c: '#FF9D55', t: 'Fuego ya resiste Hielo', p: 'Corregido en Oro y Plata. Bicho y Veneno pasan a ser neutros entre sí.' }],
+  9: [{ a: 18, d: 16, op: '×2', c: '#EC8FE6', t: 'Hada caza dragones', p: 'Hada pega ×2 a Dragón y es inmune a sus ataques. Llegó en X e Y para equilibrar a los dragones.' },
+      { a: 4, d: 18, op: '×2', c: '#B567CE', t: 'Veneno y Acero frenan a Hada', p: 'Son los dos tipos que le pegan ×2 a Hada.' },
+      { a: 8, d: 9, op: '×1', c: '#5A8EA2', t: 'Acero pierde resistencias', p: 'Ya no resiste Fantasma ni Siniestro.' },
+      { a: 16, d: 18, op: '×0', c: '#0B6DC3', t: 'Dragón no afecta a Hada', p: 'Hada es el único tipo inmune a los ataques de tipo Dragón.' }],
+};
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { set: 2, mode: 'def', dt: [10, 3], at: 10, who: 6, hr: 0, hc: 0, q: '' }; }
+  renderVals() {
+    const S = this.state; const st = SETS[S.set]; const g = st.g; const nt = st.nt;
+    const on = this.props.animaciones ?? true;
+    const T = []; for (let i = 1; i <= nt; i++) T.push(i);
+    const dt = S.dt.filter((x) => x <= nt);
+    const cols = T.map((d) => ({ k: TK[d - 1], n: TN[d - 1], hl: S.hc === d ? 'hl' : '', sel: S.mode === 'def' && dt.includes(d) ? 'sel' : '',
+      pick: () => this.setState({ mode: 'def', who: 0, dt: dt.includes(d) ? dt.filter((x) => x !== d) : (dt.length >= 2 ? [dt[1], d] : dt.concat(d)) }) }));
+    const rows = T.map((a) => ({ k: TK[a - 1], n: TN[a - 1], hl: S.hr === a ? 'hl' : '', pick: () => this.setState({ mode: 'atk', at: a }),
+      c: T.map((d) => { const m = eff(a, d, g); const c = m === 2 ? 'x2' : m === 0.5 ? 'x5' : m === 0 ? 'x0' : 'x1';
+        return { v: m === 2 ? '2' : m === 0.5 ? '½' : m === 0 ? '0' : '', cls: c + (S.hr === a || S.hc === d ? ' hl' : '') + (S.hr === a && S.hc === d ? ' hv' : '') + (changed(a, d, g) ? ' chg' : ''),
+          hov: () => this.setState({ hr: a, hc: d }) }; }) }));
+    let hoverTxt = 'Pasa el ratón por la tabla';
+    if (S.hr && S.hc && S.hr <= nt && S.hc <= nt) { const m = eff(S.hr, S.hc, g); hoverTxt = TN[S.hr - 1] + ' contra ' + TN[S.hc - 1] + ': ' + fmt(m); }
+    let groups = []; let sumTxt = '';
+    if (S.mode === 'def') {
+      const by = {};
+      T.forEach((a) => { const m = dt.reduce((x, d) => x * eff(a, d, g), 1); (by[m] = by[m] || []).push(a); });
+      groups = [4, 2, 0.5, 0.25, 0].filter((m) => by[m]).map((m) => ({ m: fmt(m), cls: cls(m), lbl: LBL[m], t: by[m].map(ty) }));
+      const w = (by[4] || []).length + (by[2] || []).length, r = (by[0.5] || []).length + (by[0.25] || []).length, z = (by[0] || []).length;
+      const pl = (n, a, b) => n + ' ' + (n === 1 ? a : b);
+      sumTxt = dt.length ? pl(w, 'debilidad', 'debilidades') + ' · ' + pl(r, 'resistencia', 'resistencias') + ' · ' + pl(z, 'inmunidad', 'inmunidades') : 'Elige un tipo o un Pokémon';
+    } else {
+      const by = {};
+      T.forEach((d) => { const m = eff(S.at, d, g); (by[m] = by[m] || []).push(d); });
+      groups = [2, 0.5, 0].filter((m) => by[m]).map((m) => ({ m: fmt(m), cls: cls(m), lbl: m === 2 ? 'Súper eficaz contra' : m === 0.5 ? 'Poco eficaz contra' : 'No afecta a', t: by[m].map(ty) }));
+      sumTxt = 'Ataques de tipo ' + TN[S.at - 1] + ': súper eficaz contra ' + ((by[2] || []).length) + ' tipos';
+    }
+    const picks = T.map((i) => { const isOn = S.mode === 'def' ? dt.includes(i) : S.at === i;
+      return { k: TK[i - 1], n: TN[i - 1], on: isOn ? 'on' : '', pr: isOn ? 'true' : 'false',
+        pick: () => S.mode === 'def' ? this.setState({ who: 0, dt: isOn ? dt.filter((x) => x !== i) : (dt.length >= 2 ? [dt[1], i] : dt.concat(i)) }) : this.setState({ at: i }) }; });
+    const q = S.q.trim().toLowerCase();
+    const lim = [151, 251, 386, 493, 649, 721, 809, 905, 1025][g - 1];
+    const sug = q.length >= 2 ? DM.filter((m) => m[0] <= lim && m[1].toLowerCase().startsWith(q)).slice(0, 5).map((m) => ({ n: m[1], bp: sp(m[0]),
+      pick: () => this.setState({ who: m[0], dt: typesFor(m, g).slice(), q: '' }) })) : [];
+    const whoM = S.who ? DM[S.who - 1] : null;
+    // combos
+    const combos = [];
+    for (let a = 1; a <= nt; a++) for (let b = a + 1; b <= nt; b++) {
+      let res = 0, imm = 0, weak = 0;
+      T.forEach((x) => { const m = eff(x, a, g) * eff(x, b, g); if (m === 0) imm++; else if (m < 1) res++; else if (m > 1) weak++; });
+      const mon = DM.find((m) => m[0] <= lim && (() => { const t = typesFor(m, g); return t.length === 2 && t.includes(a) && t.includes(b); })());
+      if (mon) combos.push({ a, b, res, imm, weak, score: res + imm * 1.5 - weak * 1.6, mon });
+    }
+    combos.sort((x, y) => y.score - x.score);
+    return {
+      motionClass: on ? '' : 'still',
+      n: nt, setName: st.n,
+      sets: SETS.map((s, i) => ({ n: s.n, d: s.d, c: s.c, c2: s.c2, on: i === S.set ? 'on' : '', pr: i === S.set ? 'true' : 'false', pick: () => this.setState({ set: i }) })),
+      cols, rows, hoverTxt,
+      modes: [['def', 'Defensa'], ['atk', 'Ataque']].map((m) => ({ n: m[1], on: S.mode === m[0] ? 'on' : '', pick: () => this.setState({ mode: m[0] }) })),
+      isDef: S.mode === 'def', isAtk: S.mode === 'atk',
+      dts: dt.map(ty), d1c: TC[(dt[0] || 1) - 1], d2c: TC[(dt[1] || dt[0] || 1) - 1],
+      whoName: whoM ? whoM[1] : (dt.length ? dt.map((x) => TN[x - 1]).join(' / ') : 'Sin tipo'), whoBp: sp(whoM ? whoM[0] : 132),
+      q: S.q, onQ: (e) => this.setState({ q: e.target.value }), sug, hasSug: sug.length > 0,
+      picks, groups, sumTxt,
+      quirks: QUIRKS[g].map((x) => ({ a: TK[x.a - 1], an: TN[x.a - 1], d: TK[x.d - 1], dn: TN[x.d - 1], op: x.op, c: x.c, t: x.t, p: x.p })),
+      combos: combos.slice(0, 6).map((c, i) => ({ r: '#' + (i + 1), a: TK[c.a - 1], an: TN[c.a - 1], b: TK[c.b - 1], bn: TN[c.b - 1], c1: TC[c.a - 1], c2: TC[c.b - 1],
+        res: c.res, imm: c.imm, weak: c.weak, mon: c.mon[1], bp: sp(c.mon[0]) })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

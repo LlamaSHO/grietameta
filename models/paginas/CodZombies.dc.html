@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Call of Duty Zombies</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&amp;family=Saira+Condensed:wght@500;600;700;800&amp;family=Chakra+Petch:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0A0A0B}
+a{color:#FFB066}a:hover{color:#FFE0C2}
+.cdp{position:relative;background:#0A0A0B;color:#ECE8E1;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.cdp *,.cdp *::before,.cdp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sc{font-family:'Saira Condensed',sans-serif;font-variant-numeric:lining-nums}
+.serif{font-family:'Saira Condensed',sans-serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,26,.7)}70%{box-shadow:0 0 0 14px rgba(255,122,26,0)}100%{box-shadow:0 0 0 0 rgba(255,122,26,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(236,228,214,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE8E1;justify-self:start}
+.brand:hover{color:#ECE8E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#A19B92;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(236,228,214,.14);background:rgba(236,228,214,.04);color:#ECE8E1;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8A847B}
+.search input:focus{border-color:rgba(255,122,26,.6);box-shadow:0 0 0 4px rgba(255,122,26,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#A19B92;padding:5px 8px;border-radius:6px;border:1px solid rgba(236,228,214,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(236,228,214,.18);color:#ECE8E1;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#ECE8E1;background:rgba(236,228,214,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(236,228,214,.07);background:rgba(20,19,18,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(236,228,214,.14);color:#ECE8E1;text-decoration:none;font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#B0AA9F;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#ECE8E1}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#FF7A1A;box-shadow:0 0 12px rgba(255,122,26,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#ECE8E1}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#141414;border:1px solid rgba(236,228,214,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#ECE8E1;transition:background .2s}
+.mapo:hover{background:rgba(236,228,214,.06);color:#ECE8E1}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(236,228,214,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Saira Condensed',sans-serif;font-size:14px}
+.mapo span{font-size:12px;color:#9A948A}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#8A847B}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#ECE8E1;transition:background .2s}
+.io:hover{background:rgba(236,228,214,.06);color:#ECE8E1}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(255,122,26,.1);border:1px solid rgba(255,122,26,.25);color:#FFB066;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#9A948A}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+.foot{margin-top:64px;border-top:1px solid rgba(236,228,214,.1);padding:32px 0 36px;font-size:13px;color:#9A948A}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(236,228,214,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .cdp *,.cdp *::before,.cdp *::after{animation:none !important;transition:none !important}
+}
+.cdp.still *,.cdp.still *::before,.cdp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+
+
+.cdp .slink{color:#B0AA9F}
+.cdp .slink:hover,.cdp .slink.on{color:#FFF}
+.cdp .slink.on::after{background:#FF7A1A;box-shadow:0 0 12px rgba(255,122,26,.8)}
+.gchip{font-family:'Saira Condensed',sans-serif;font-size:17px;letter-spacing:.04em;text-transform:uppercase}
+.gchip img{width:46px;height:28px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,122,26,.4)}
+.slink svg{opacity:.8}
+.slink.on{color:#FFF}
+.status{border-color:rgba(255,122,26,.4);background:rgba(255,122,26,.1);color:#FFB066}
+.status i{background:#FF7A1A;box-shadow:0 0 10px rgba(255,122,26,.8)}
+.cdm{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:470px}
+.cdo{display:flex;gap:12px;align-items:center;padding:10px;border-radius:13px;color:#ECE8E1 !important;text-decoration:none;transition:background .2s}
+.cdo:hover{background:rgba(255,122,26,.08)}
+.cdo .th{flex-shrink:0;width:72px;height:44px;border-radius:9px;overflow:hidden;border:1px solid rgba(236,228,214,.14);display:grid;place-items:center;background:linear-gradient(135deg,#2A1A0C,#0F0F10)}
+.cdo .th img{width:100%;height:100%;object-fit:cover}
+.cdo .th i{font:400 22px/1 'Saira Stencil One',sans-serif;font-style:normal;color:#FF7A1A}
+.cdo b{display:block;font:700 17px/1.1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.cdo small{display:block;margin-top:2px;font-size:12px;color:#9A948A}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FF7A1A}
+.kicker::before{content:"";width:22px;height:2px;background:currentColor}
+.sec{padding:72px 0 0;scroll-margin-top:118px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
+.h2{margin:8px 0 0;font:800 46px/1 'Saira Condensed',sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.sec-h p{margin:8px 0 0;color:#B0AA9F;max-width:660px}
+.btn-r{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,#FF8A2E,#E05A00);color:#160A00 !important;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(255,122,26,.85),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .2s;border:0;cursor:pointer}
+.btn-r:hover{transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:12px;border:1px solid rgba(236,228,214,.3);color:#ECE8E1 !important;font-weight:600;font-size:14.5px;text-decoration:none;background:rgba(10,10,11,.4);transition:background .2s,border-color .2s;cursor:pointer}
+.btn-o:hover{background:rgba(236,228,214,.08);border-color:rgba(236,228,214,.55)}
+.stencil{font-family:'Saira Stencil One',sans-serif;font-weight:400;letter-spacing:.01em}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.08;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes flick{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.4}50%{opacity:1}72%{opacity:.85}}
+
+
+.zh{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(236,228,214,.1)}
+.zh-bg{position:absolute;inset:0;z-index:-1}
+.zh-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.9) brightness(.62);animation:zoomSlow 26s ease-in-out infinite alternate}
+.zh-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.92) 10%,rgba(10,10,11,.45) 48%,rgba(10,10,11,.1)),linear-gradient(0deg,#0A0A0B 2%,rgba(10,10,11,0) 40%)}
+.fog{position:absolute;left:-10%;right:-10%;bottom:-10%;height:55%;background:radial-gradient(50% 60% at 30% 70%,rgba(79,216,255,.12),transparent 70%),radial-gradient(40% 50% at 75% 80%,rgba(255,122,26,.12),transparent 70%);filter:blur(10px);animation:fogMove 14s ease-in-out infinite alternate}
+@keyframes zoomSlow{from{transform:scale(1)}to{transform:scale(1.06)}}
+@keyframes fogMove{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+.still .zh-bg img,.still .fog{animation:none}
+.zh-in{padding-top:120px;padding-bottom:84px;min-height:660px;display:flex;flex-direction:column;justify-content:flex-end;animation:gmFade .8s cubic-bezier(.2,.8,.2,1) both}
+.zh h1{margin:10px 0 0;font-size:168px;line-height:.86;color:#FFF;text-shadow:0 0 60px rgba(255,122,26,.35),0 6px 0 rgba(0,0,0,.4)}
+.zh .lead{margin:20px 0 0;font-size:19px;color:#DCD6CB;max-width:56ch;text-wrap:pretty}
+.zh .lead b{color:#FFF}
+.cta{display:flex;gap:12px;margin-top:28px}
+.stats{display:flex;gap:36px;margin:40px 0 0;padding-top:22px;border-top:1px solid rgba(236,228,214,.14);max-width:860px}
+.stats div{display:flex;flex-direction:column;gap:3px}
+.stats dt{font-size:40px;font-weight:800;line-height:1;color:#FF7A1A}
+.stats dd{margin:0;font-size:13px;color:#A19B92}
+.hz{position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(-45deg,#FF7A1A 0 14px,#0A0A0B 14px 28px);opacity:.75}
+
+/* juegos */
+.gks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gk{display:flex;flex-direction:column;gap:14px;padding:14px 14px 18px;border-radius:24px;background:#121213;border:1px solid rgba(236,228,214,.1);transition:border-color .3s,box-shadow .3s}
+.gk:hover{border-color:color-mix(in srgb,var(--gc) 60%,transparent);box-shadow:0 30px 60px -36px var(--gc)}
+.gk-top{position:relative;display:block;height:250px;border-radius:16px;overflow:hidden;isolation:isolate;text-decoration:none;color:#FFF !important;background:radial-gradient(60% 90% at 80% 20%,color-mix(in srgb,var(--gc) 40%,transparent),transparent 70%),#151413}
+.gk-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.7) saturate(.9);transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .4s}
+.gk:hover .gk-img{transform:scale(1.05);filter:brightness(.8)}
+.gk-top::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,11,0) 35%,rgba(10,10,11,.9))}
+.gk-ph{position:absolute;right:20px;top:-10px;z-index:-2;font-size:220px;line-height:1;color:color-mix(in srgb,var(--gc) 30%,transparent)}
+.gk-y{position:absolute;right:14px;top:12px;padding:4px 10px;border-radius:999px;background:rgba(10,10,11,.7);border:1px solid rgba(236,228,214,.2);font-size:14px;font-weight:700;letter-spacing:.06em}
+.gk-tt{position:absolute;left:20px;bottom:16px;display:flex;flex-direction:column}
+.gk-tt small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gc)}
+.gk-tt b{font-size:52px;line-height:.95}
+.gk > p{margin:0 6px;font-size:15px;color:#CFC9BE;text-wrap:pretty}
+.mchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 6px}
+.mchip{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 11px;border-radius:999px;background:rgba(236,228,214,.05);border:1px solid rgba(236,228,214,.12);font-size:12.5px;font-weight:600;color:#ECE8E1 !important;text-decoration:none;transition:border-color .2s,background .2s}
+.mchip::before{content:"";width:7px;height:7px;border-radius:2px;transform:rotate(45deg);background:var(--mc)}
+.mchip:hover{border-color:var(--mc);background:color-mix(in srgb,var(--mc) 12%,transparent)}
+.gk-go{align-self:flex-start;margin:4px 6px 0;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 15px;border-radius:11px;background:rgba(255,122,26,.12);border:1px solid rgba(255,122,26,.4);color:#FFB066 !important;font-size:14px;font-weight:700;text-decoration:none;transition:gap .2s,background .2s}
+.gk-go:hover{gap:12px;background:rgba(255,122,26,.2)}
+
+/* buscador */
+.finder{padding:28px;border-radius:26px;background:radial-gradient(60% 120% at 100% 0%,rgba(255,122,26,.1),transparent 60%),#111112;border:1px solid rgba(236,228,214,.12)}
+.fd-h{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.fd-in{display:flex;align-items:center;gap:10px;width:560px;height:54px;padding:0 18px;border-radius:14px;background:#0A0A0B;border:1px solid rgba(236,228,214,.18);color:#8A847B;transition:border-color .2s,box-shadow .2s}
+.fd-in:focus-within{border-color:#FF7A1A;box-shadow:0 0 0 4px rgba(255,122,26,.15)}
+.fd-in input{flex:1;min-width:0;height:100%;border:0;background:transparent;color:#ECE8E1;font:500 15px/1 'IBM Plex Sans',sans-serif;outline:none}
+.fd-in input::placeholder{color:#7E7970}
+.fd-f{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:20px 0 14px}
+.fchip{height:34px;padding:0 14px;border-radius:999px;border:1px solid rgba(236,228,214,.14);background:transparent;color:#B0AA9F;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.fchip:hover{color:#FFF;border-color:rgba(236,228,214,.3)}
+.fchip.on{background:#FF7A1A;border-color:#FF7A1A;color:#160A00}
+.fd-n{margin-left:auto;font-size:13px;color:#8A847B}
+.fd-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fm{position:relative;display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:rgba(236,228,214,.035);border:1px solid rgba(236,228,214,.08);color:#ECE8E1 !important;text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.fm:hover{border-color:var(--mc);background:color-mix(in srgb,var(--mc) 8%,transparent);transform:translateY(-2px)}
+.fm-i{display:grid;place-items:center;flex-shrink:0;width:48px;height:40px;border-radius:10px;background:color-mix(in srgb,var(--mc) 16%,#0A0A0B);font-size:16px;color:var(--mc)}
+.fm-t{display:flex;flex-direction:column;min-width:0}
+.fm-t b{font:700 16.5px/1.1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fm-t small{font-size:11.5px;color:#8A847B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fm-ee{position:absolute;right:8px;top:8px;padding:1px 6px;border-radius:6px;background:rgba(79,216,255,.12);color:#7FE3FF;font-size:10px;font-weight:700;letter-spacing:.08em}
+.fd-none{margin-top:6px;padding:16px;border-radius:14px;border:1px dashed rgba(236,228,214,.2);color:#A19B92;font-size:14px}
+.fd-none button{margin-left:8px;border:0;background:none;color:#FFB066;font:600 14px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+
+/* historia */
+.btn-o.on{border-color:#FF7A1A;color:#FFB066 !important}
+.tl{position:relative;display:flex;flex-direction:column;gap:12px;margin:0;padding:0 0 0 28px;list-style:none}
+.tl::before{content:"";position:absolute;left:23px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,#4FD8FF,#FF7A1A 60%,#E2364B)}
+.tl-i{position:relative;display:flex;gap:22px;align-items:flex-start}
+.tl-n{position:relative;z-index:1;display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;margin-left:-28px;border-radius:14px;background:#0A0A0B;border:2px solid #FF7A1A;font-size:20px;font-weight:800;color:#FFB066}
+.tl-c{flex:1;padding:18px 22px 20px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1)}
+.tl-g{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7FE3FF}
+.tl-c h3{margin:4px 0 0;font-size:30px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.tl-c p{margin:8px 0 0;font-size:15.5px;color:#DCD6CB;max-width:90ch}
+.tl-c .tl-sp,.ky .ky-sp{padding:12px 14px;border-radius:12px;background:rgba(255,122,26,.07);border:1px solid rgba(255,122,26,.25);color:#FFE0C2;animation:gmFade .35s cubic-bezier(.2,.8,.2,1) both}
+.spoil{display:inline-flex;align-items:center;gap:8px;margin-top:12px;height:34px;padding:0 13px;border-radius:10px;border:1px solid rgba(255,122,26,.45);background:rgba(255,122,26,.08);color:#FFB066;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s}
+.spoil:hover{background:rgba(255,122,26,.16)}
+
+/* clave */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ky{display:flex;flex-direction:column;align-items:flex-start;padding:20px 22px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1);transition:border-color .3s,transform .3s}
+.ky:hover{border-color:rgba(79,216,255,.35);transform:translateY(-2px)}
+.ky small{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7FE3FF}
+.ky h3{margin:4px 0 0;font-size:28px;font-weight:800;text-transform:uppercase}
+.ky p{margin:8px 0 0;font-size:14.5px;color:#CFC9BE}
+.ky .spoil{margin-top:auto;padding-top:0}
+.ky p + .spoil,.ky .ky-sp + .spoil{margin-top:12px}
+
+/* tripulaciones */
+.crews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.crew{padding:20px 22px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1);border-top:3px solid var(--cc)}
+.crew header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.crew h3{margin:0;font-size:26px;font-weight:800;text-transform:uppercase;color:var(--cc)}
+.crew header span{font-size:12.5px;color:#8A847B}
+.crew ul{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0;list-style:none}
+.crew li{padding:10px 12px;border-radius:12px;background:rgba(236,228,214,.035)}
+.crew li b{display:block;font-size:14.5px;color:#FFF}
+.crew li small{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cc)}
+.crew li p{margin:4px 0 0;font-size:13px;color:#A19B92}
+
+/* glosario */
+.gls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.gl{padding:16px 18px;border-radius:16px;background:#121213;border:1px solid rgba(236,228,214,.1);border-left:3px solid #FF7A1A}
+.gl b{font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:#FFF}
+.gl p{margin:6px 0 0;font-size:13.5px;color:#B0AA9F}
+
+</style>
+</helmet>
+
+<div class="cdp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Call of Duty Zombies">
+      <div class="wrap sub-in">
+        <a class="gchip" href="CodZombies.dc.html"><img src="../assets/call-of-duty/cod-hero.webp" alt="">CoD Zombis</a>
+        <a class="slink on" href="CodZombies.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>Portada</a>
+        <div class="dd">
+          <a class="slink" href="CodZombies.dc.html#juegos" aria-haspopup="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a8 8 0 0 0-8 8c0 2.6 1.2 4.4 3 5.5V20h10v-3.5c1.8-1.1 3-2.9 3-5.5a8 8 0 0 0-8-8z"></path><circle cx="9" cy="11.5" r="1.6"></circle><circle cx="15" cy="11.5" r="1.6"></circle><path d="M10 20v-2M14 20v-2"></path></svg>Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="cdm"><a class="cdo" href="CodBO1.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo1.webp" alt=""></span><span><b>Black Ops</b><small>2010</small></span></a><a class="cdo" href="CodBO2.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo2.webp" alt=""></span><span><b>Black Ops II</b><small>2012</small></span></a><a class="cdo" href="CodBO3.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo3.webp" alt=""></span><span><b>Black Ops III</b><small>2015</small></span></a><a class="cdo" href="CodBO4.dc.html"><span class="th"><i>4</i></span><span><b>Black Ops 4</b><small>2018</small></span></a></div></div>
+        </div>
+        <a class="slink" href="CodBO1.dc.html">Black Ops</a><a class="slink" href="CodBO2.dc.html">Black Ops II</a><a class="slink" href="CodBO3.dc.html">Black Ops III</a><a class="slink" href="CodBO4.dc.html">Black Ops 4</a>
+        <a class="slink" href="CodZombies.dc.html#historia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path></svg>Historia</a>
+        <a class="slink" href="CodZombies.dc.html#personajes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0"></path><path d="M17 4a4 4 0 0 1 0 8"></path><path d="M22 21a6 6 0 0 0-4-5.6"></path></svg>Personajes</a>
+        <span class="status"><i></i>Nuevo</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="zh" id="inicio">
+    <div class="zh-bg" aria-hidden="true"><img src="../assets/call-of-duty/cod-hero.webp" alt=""><span class="grain"></span><span class="fog"></span></div>
+    <div class="wrap zh-in">
+      <span class="kicker">Call of Duty · Black Ops 1 a 4</span>
+      <h1 class="stencil">Zombis</h1>
+      <p class="lead">De un cine abandonado en 1963 al final del Aether: <b>26 mapas</b> con su Pack-a-Punch, ventajas, armas de pared y Easter eggs paso a paso, con los spoilers tapados hasta que tú quieras.</p>
+      <div class="cta"><a class="btn-r" href="CodBO1.dc.html">Empieza por Black Ops <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a><a class="btn-o" href="#historia">La historia del Aether</a></div>
+      <dl class="stats">
+        <div><dt class="sc">4</dt><dd>juegos de Treyarch</dd></div>
+        <div><dt class="sc">26</dt><dd>mapas con ficha</dd></div>
+        <div><dt class="sc">22</dt><dd>Easter eggs principales</dd></div>
+        <div><dt class="sc">2010–2018</dt><dd>de Kino a Tag der Toten</dd></div>
+      </dl>
+    </div>
+    <span class="hz" aria-hidden="true"></span>
+  </section>
+
+  <!-- JUEGOS -->
+  <section class="sec" id="juegos">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Elige juego</span><h2 class="h2">Los cuatro Black Ops</h2><p>Una página por juego con todos sus mapas. Pulsa un mapa para ir directo a su ficha.</p></div></div>
+      <div class="gks">
+        <article class="gk bo1" style="--gc: #7FD3E8">
+          <a class="gk-top" href="CodBO1.dc.html"><img class="gk-img" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="gk-y sc">2010</span><span class="gk-tt"><small>6 mapas · 4 Easter eggs</small><b class="stencil">Black Ops</b></span></a>
+          <p>El juego que convirtió Zombies en una saga: los Ultimis viajan del cine de Kino der Toten hasta la Luna, y Richtofen pone en marcha su plan.</p>
+          <div class="mchips"><a class="mchip" href="CodBO1.dc.html#kino" style="--mc: #E2B866">Kino der Toten</a><a class="mchip" href="CodBO1.dc.html#five" style="--mc: #B9C2CC">«Five»</a><a class="mchip" href="CodBO1.dc.html#ascension" style="--mc: #E2364B">Ascension</a><a class="mchip" href="CodBO1.dc.html#cotd" style="--mc: #8FB2F2">Call of the Dead</a><a class="mchip" href="CodBO1.dc.html#shangri" style="--mc: #7FE0A3">Shangri-La</a><a class="mchip" href="CodBO1.dc.html#moon" style="--mc: #BCD0F2">Moon</a></div>
+          <a class="gk-go" href="CodBO1.dc.html">Abrir Black Ops <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+        </article>
+        <article class="gk bo2" style="--gc: #F0B35A">
+          <a class="gk-top" href="CodBO2.dc.html"><img class="gk-img" src="../assets/call-of-duty/cod-bo2.webp" alt=""><span class="gk-y sc">2012</span><span class="gk-tt"><small>6 mapas · 5 Easter eggs</small><b class="stencil">Black Ops II</b></span></a>
+          <p>La Tierra está rota. Los Victis sobreviven en el futuro entre Maxis y Richtofen, mientras en Alcatraz y en 1918 empiezan otras historias.</p>
+          <div class="mchips"><a class="mchip" href="CodBO2.dc.html#tranzit" style="--mc: #F0B35A">TranZit</a><a class="mchip" href="CodBO2.dc.html#nuketown" style="--mc: #E8C98A">Nuketown Zombies</a><a class="mchip" href="CodBO2.dc.html#dierise" style="--mc: #E2364B">Die Rise</a><a class="mchip" href="CodBO2.dc.html#mob" style="--mc: #F28FA0">Mob of the Dead</a><a class="mchip" href="CodBO2.dc.html#buried" style="--mc: #C9A45C">Buried</a><a class="mchip" href="CodBO2.dc.html#origins" style="--mc: #E8C98A">Origins</a></div>
+          <a class="gk-go" href="CodBO2.dc.html">Abrir Black Ops II <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+        </article>
+        <article class="gk bo3" style="--gc: #E2364B">
+          <a class="gk-top" href="CodBO3.dc.html"><img class="gk-img" src="../assets/call-of-duty/cod-bo3.webp" alt=""><span class="gk-y sc">2015</span><span class="gk-tt"><small>6 mapas · 6 Easter eggs</small><b class="stencil">Black Ops III</b></span></a>
+          <p>Los Primis recorren el multiverso con la Llave de la Invocación para arreglar el plan de Richtofen, de Morg City a Agartha.</p>
+          <div class="mchips"><a class="mchip" href="CodBO3.dc.html#soe" style="--mc: #B9A3E8">Shadows of Evil</a><a class="mchip" href="CodBO3.dc.html#giant" style="--mc: #BCD0F2">The Giant</a><a class="mchip" href="CodBO3.dc.html#de" style="--mc: #F28FA0">Der Eisendrache</a><a class="mchip" href="CodBO3.dc.html#zns" style="--mc: #7FE0A3">Zetsubou No Shima</a><a class="mchip" href="CodBO3.dc.html#gk" style="--mc: #E2364B">Gorod Krovi</a><a class="mchip" href="CodBO3.dc.html#rev" style="--mc: #8FB2F2">Revelations</a></div>
+          <a class="gk-go" href="CodBO3.dc.html">Abrir Black Ops III <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+        </article>
+        <article class="gk bo4" style="--gc: #C9A45C">
+          <a class="gk-top" href="CodBO4.dc.html"><span class="gk-ph stencil" aria-hidden="true">IIII</span><span class="gk-y sc">2018</span><span class="gk-tt"><small>8 mapas · 7 Easter eggs</small><b class="stencil">Black Ops 4</b></span></a>
+          <p>Dos historias en paralelo: la nueva tripulación del Caos persigue artefactos antiguos y el Aether llega a su final.</p>
+          <div class="mchips"><a class="mchip" href="CodBO4.dc.html#ix" style="--mc: #E2364B">IX</a><a class="mchip" href="CodBO4.dc.html#vod" style="--mc: #8FB2F2">Voyage of Despair</a><a class="mchip" href="CodBO4.dc.html#botd" style="--mc: #F28FA0">Blood of the Dead</a><a class="mchip" href="CodBO4.dc.html#classified" style="--mc: #B9C2CC">Classified</a><a class="mchip" href="CodBO4.dc.html#dotn" style="--mc: #B9A3E8">Dead of the Night</a><a class="mchip" href="CodBO4.dc.html#ae" style="--mc: #E8C98A">Ancient Evil</a><a class="mchip" href="CodBO4.dc.html#ao" style="--mc: #7FE0A3">Alpha Omega</a><a class="mchip" href="CodBO4.dc.html#tdt" style="--mc: #BCD0F2">Tag der Toten</a></div>
+          <a class="gk-go" href="CodBO4.dc.html">Abrir Black Ops 4 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSCADOR -->
+  <section class="sec" id="buscar">
+    <div class="wrap">
+      <div class="finder">
+        <div class="fd-h">
+          <div><span class="kicker">Buscador</span><h2 class="h2">¿En qué mapa estás?</h2></div>
+          <label class="fd-in">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.6" y2="16.6"></line></svg>
+            <input type="search" placeholder="Nombre del mapa, juego o lugar (Alcatraz, Luna, Titanic…)" value="{{q}}" onInput="{{onQ}}" autocomplete="off" aria-label="Buscar mapa">
+          </label>
+        </div>
+        <div class="fd-f">
+          <sc-for list="{{gfs}}" as="f" hint-placeholder-count="5"><button type="button" class="fchip {{f.cls}}" onClick="{{f.pick}}">{{f.t}}</button></sc-for>
+          <span class="fd-n">{{nFound}}</span>
+        </div>
+        <div class="fd-g" data-pane>
+          <sc-for list="{{found}}" as="m" hint-placeholder-count="26">
+            <a class="fm" href="{{m.href}}" style="--mc: {{m.c}}">
+              <span class="fm-i stencil">{{m.ini}}</span>
+              <span class="fm-t"><b>{{m.n}}</b><small>{{m.gt}} · {{m.dlc}}</small></span>
+              <sc-if value="{{m.hasEe}}" hint-placeholder-val="true"><span class="fm-ee">EE</span></sc-if>
+            </a>
+          </sc-for>
+        </div>
+        <sc-if value="{{none}}" hint-placeholder-val="false"><div class="fd-none">No hay ningún mapa con ese nombre en los Black Ops 1 a 4. <button type="button" onClick="{{clearQ}}">Ver todos</button></div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="sec" id="historia">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">La historia</span><h2 class="h2">La saga del Aether</h2><p>Diez años de historia contados en seis capítulos. Cada uno se lee sin miedo; los giros están tapados.</p></div>
+        <button type="button" class="btn-o {{allCls}}" onClick="{{toggleAll}}">{{allTxt}}</button></div>
+      <ol class="tl">
+        <sc-for list="{{story}}" as="s" hint-placeholder-count="6">
+          <li class="tl-i">
+            <span class="tl-n sc">{{s.n}}</span>
+            <div class="tl-c">
+              <span class="tl-g">{{s.g}}</span>
+              <h3 class="sc">{{s.t}}</h3>
+              <p>{{s.b}}</p>
+              <sc-if value="{{s.shown}}" hint-placeholder-val="false"><p class="tl-sp">{{s.sp}}</p></sc-if>
+              <button type="button" class="spoil" onClick="{{s.tog}}">{{s.btn}}</button>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PERSONAJES CLAVE -->
+  <section class="sec" id="clave">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Quién es quién</span><h2 class="h2">Personajes clave</h2><p>Los nombres que se repiten de un mapa a otro. Lo que les pasa al final, solo si lo pides.</p></div></div>
+      <div class="keys">
+        <sc-for list="{{key}}" as="k" hint-placeholder-count="6">
+          <article class="ky">
+            <small>{{k.r}}</small>
+            <h3 class="sc">{{k.n}}</h3>
+            <p>{{k.b}}</p>
+            <sc-if value="{{k.shown}}" hint-placeholder-val="false"><p class="ky-sp">{{k.sp}}</p></sc-if>
+            <button type="button" class="spoil" onClick="{{k.tog}}">{{k.btn}}</button>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIPULACIONES -->
+  <section class="sec" id="personajes">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Personajes jugables</span><h2 class="h2">Las tripulaciones</h2><p>Con quién juegas en cada mapa, sin spoilers.</p></div></div>
+      <div class="crews">
+        <article class="crew" style="--cc: #7FD3E8">
+          <header><h3 class="sc">Ultimis</h3><span>Black Ops · Classified</span></header>
+          <ul><li><b>Tank Dempsey</b><small>Marine estadounidense</small><p>Lo mandaron a rescatar a un espía en una base del Grupo 935 y acabó capturado y convertido en sujeto de pruebas. Duro, impulsivo y con un chiste para cada zombi.</p></li><li><b>Nikolai Belinski</b><small>Soldado soviético</small><p>Llegó a las instalaciones del Grupo 935 con el Ejército Rojo y también terminó en las pruebas de Richtofen. Vodka, mal humor y muchas exmujeres.</p></li><li><b>Takeo Masaki</b><small>Oficial japonés</small><p>Enviado por el Imperio para vigilar a sus aliados alemanes. Habla con proverbios y se toma el honor muy en serio.</p></li><li><b>Edward Richtofen</b><small>Científico del Grupo 935</small><p>Ayudante del doctor Maxis. Oye voces que lo empujan a buscar el control del Aether: su plan mueve toda la saga.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #B9C2CC">
+          <header><h3 class="sc">Invitados</h3><span>Black Ops</span></header>
+          <ul><li><b>Kennedy, McNamara, Nixon y Castro</b><small>«Five»</small><p>Los líderes de la Guerra Fría, atrapados en el Pentágono.</p></li><li><b>Trejo, Englund, Rooker y Gellar</b><small>Call of the Dead</small><p>Cuatro actores de cine de terror rodando en Siberia.</p></li><li><b>George A. Romero</b><small>Call of the Dead</small><p>El director de «La noche de los muertos vivientes», convertido en jefe zombi.</p></li><li><b>Brock y Gary</b><small>Shangri-La</small><p>Dos exploradores atrapados en un bucle temporal dentro del templo.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #F0B35A">
+          <header><h3 class="sc">Victis</h3><span>Black Ops II · Tag der Toten</span></header>
+          <ul><li><b>Samuel J. Stuhlinger</b><small>El paranoico</small><p>Oye voces en su cabeza y se queja de todo, pero sigue vivo.</p></li><li><b>Abigail «Misty» Briarton</b><small>La dura</small><p>Sabe disparar, sabe arreglar coches y no se calla nada.</p></li><li><b>Marlton Johnson</b><small>El ingeniero</small><p>Listo, nervioso y obsesionado con tener un plan para cada cosa.</p></li><li><b>Russman</b><small>El veterano</small><p>Un anciano sin memoria que recuerda más de lo que parece.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #F28FA0">
+          <header><h3 class="sc">La banda de Alcatraz</h3><span>Mob of the Dead</span></header>
+          <ul><li><b>Albert «Weasel» Arlington</b><small>El soplón</small><p>El más débil de la banda… y la clave del ciclo.</p></li><li><b>Finn O&#x27;Leary</b><small>El irlandés</small><p>Mafioso de Chicago, leal a Sal.</p></li><li><b>Salvatore DeLuca</b><small>El jefe</small><p>Lidera el plan de fuga.</p></li><li><b>Billy Handsome</b><small>El matón</small><p>Violento e imprevisible.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #E8C98A">
+          <header><h3 class="sc">Primis</h3><span>Origins · Black Ops III · Black Ops 4</span></header>
+          <ul><li><b>Dempsey</b><small>1918</small><p>La versión de la Gran Guerra, sacada de Origins. Sigue siendo el más bruto del grupo.</p></li><li><b>Nikolai</b><small>1918</small><p>Más joven y aún casado. Viaja por el multiverso para corregir el plan de Richtofen.</p></li><li><b>Takeo</b><small>1918</small><p>Busca respuestas sobre su otro yo y sobre el Imperio al que sirve.</p></li><li><b>Richtofen</b><small>1918</small><p>Lleva la Llave de la Invocación y sabe más de lo que cuenta a sus compañeros.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #B9A3E8">
+          <header><h3 class="sc">Morg City</h3><span>Shadows of Evil</span></header>
+          <ul><li><b>Nero Blackstone</b><small>Mago</small><p>Un ilusionista venido a menos con un crimen en la conciencia.</p></li><li><b>Jessica Rose</b><small>Bailarina</small><p>Estrella del burlesque de Morg City.</p></li><li><b>Jack Vincent</b><small>Policía corrupto</small><p>Detective con muchos pecados.</p></li><li><b>Floyd Campbell</b><small>Boxeador</small><p>Un púgil que perdió una pelea que no debía.</p></li></ul>
+        </article>
+        <article class="crew" style="--cc: #E2364B">
+          <header><h3 class="sc">Caos</h3><span>Black Ops 4</span></header>
+          <ul><li><b>Scarlett Rhodes</b><small>Aventurera</small><p>Busca a su padre, Alistair Rhodes.</p></li><li><b>Diego Necalli</b><small>Guerrero azteca</small><p>Cree que es su destino detener a la Orden.</p></li><li><b>Bruno Delacroix</b><small>Exsoldado</small><p>Fuerza bruta del grupo.</p></li><li><b>Stanton Shaw</b><small>Médico</small><p>Doctor británico con un pasado oscuro.</p></li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOSARIO -->
+  <section class="sec" id="basico">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Para recién llegados</span><h2 class="h2">Lo básico</h2><p>Las palabras que vas a leer en todas las fichas.</p></div></div>
+      <div class="gls"><div class="gl"><b class="sc">Grupo 935</b><p>El grupo de científicos alemanes que experimentaba con el Elemento 115: el origen de todo.</p></div><div class="gl"><b class="sc">El Aether</b><p>La dimensión de donde sale el poder del 115. «Aether» es también el nombre de toda la historia de 2008 a 2019.</p></div><div class="gl"><b class="sc">Agartha</b><p>«La Casa»: un lugar fuera del tiempo, puro y luminoso, donde vive el Doctor Monty.</p></div><div class="gl"><b class="sc">Llave de la Invocación</b><p>Un orbe que guarda almas y abre portales: el objeto alrededor del que gira Black Ops III.</p></div><div class="gl"><b class="sc">Elemento 115</b><p>El mineral que lo provoca todo: reanima a los muertos y alimenta las máquinas y las armas maravilla.</p></div><div class="gl"><b class="sc">Pack-a-Punch</b><p>La máquina que mejora tu arma por 5.000 puntos: más daño, más munición y a veces efectos nuevos.</p></div><div class="gl"><b class="sc">Caja misteriosa</b><p>Arma aleatoria por 950 puntos. Cuando aparece el osito, cambia de sitio.</p></div><div class="gl"><b class="sc">Ventajas (Perk-a-Cola)</b><p>Bebidas que te mejoran: Juggernog (más vida), Quick Revive, Speed Cola (recarga), Double Tap…</p></div><div class="gl"><b class="sc">Armas maravilla</b><p>Armas únicas de cada mapa, como el Ray Gun, la Thundergun o los bastones de Origins.</p></div><div class="gl"><b class="sc">Easter egg principal</b><p>La misión secreta de cada mapa que cuenta la historia. Suele necesitar varios jugadores.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Activision ni a Treyarch. Call of Duty, Black Ops y sus imágenes son marcas y material de Activision. Datos de mapas, armas y Easter eggs: Call of Duty Wiki (Fandom) y guías de SegmentNext, Shacknews y Gfinity; capturas oficiales de Steam.</p>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":7124}}'>
+
+const D = {"maps": [{"n": "Kino der Toten", "g": "BO1", "gt": "Black Ops", "dlc": "Juego base", "c": "#E2B866", "ee": false, "href": "CodBO1.dc.html#kino", "ini": "KDT", "k": "kino der toten black ops bo1 juego base un viejo cine abandonado de alemania usado por el grupo 935."}, {"n": "«Five»", "g": "BO1", "gt": "Black Ops", "dlc": "Juego base", "c": "#B9C2CC", "ee": false, "href": "CodBO1.dc.html#five", "ini": "5", "k": "«five» black ops bo1 juego base el pentágono, en arlington (virginia)."}, {"n": "Ascension", "g": "BO1", "gt": "Black Ops", "dlc": "First Strike", "c": "#E2364B", "ee": true, "href": "CodBO1.dc.html#ascension", "ini": "ASC", "k": "ascension black ops bo1 first strike un cosmódromo soviético abandonado."}, {"n": "Call of the Dead", "g": "BO1", "gt": "Black Ops", "dlc": "Escalation", "c": "#8FB2F2", "ee": true, "href": "CodBO1.dc.html#cotd", "ini": "COTD", "k": "call of the dead black ops bo1 escalation un puesto del grupo 935 en la costa de siberia, con un barco encallado y un faro."}, {"n": "Shangri-La", "g": "BO1", "gt": "Black Ops", "dlc": "Annihilation", "c": "#7FE0A3", "ee": true, "href": "CodBO1.dc.html#shangri", "ini": "SL", "k": "shangri-la black ops bo1 annihilation un templo perdido en el himalaya donde se extraía elemento 115."}, {"n": "Moon", "g": "BO1", "gt": "Black Ops", "dlc": "Rezurrection", "c": "#BCD0F2", "ee": true, "href": "CodBO1.dc.html#moon", "ini": "MOON", "k": "moon black ops bo1 rezurrection la base griffin, en la luna, y el área 51 en la tierra."}, {"n": "TranZit", "g": "BO2", "gt": "Black Ops II", "dlc": "Juego base", "c": "#F0B35A", "ee": true, "href": "CodBO2.dc.html#tranzit", "ini": "TZ", "k": "tranzit black ops ii bo2 juego base cinco zonas unidas por un autobús: estación, cafetería, granja, central eléctrica y pueblo."}, {"n": "Nuketown Zombies", "g": "BO2", "gt": "Black Ops II", "dlc": "Pase de temporada / edición Hardened", "c": "#E8C98A", "ee": false, "href": "CodBO2.dc.html#nuketown", "ini": "NZ", "k": "nuketown zombies black ops ii bo2 pase de temporada / edición hardened el pueblo de pruebas nucleares de nuketown, tras una explosión de elemento 115."}, {"n": "Die Rise", "g": "BO2", "gt": "Black Ops II", "dlc": "Revolution", "c": "#E2364B", "ee": true, "href": "CodBO2.dc.html#dierise", "ini": "DR", "k": "die rise black ops ii bo2 revolution rascacielos derrumbados en china."}, {"n": "Mob of the Dead", "g": "BO2", "gt": "Black Ops II", "dlc": "Uprising", "c": "#F28FA0", "ee": true, "href": "CodBO2.dc.html#mob", "ini": "MOTD", "k": "mob of the dead black ops ii bo2 uprising la prisión de alcatraz."}, {"n": "Buried", "g": "BO2", "gt": "Black Ops II", "dlc": "Vengeance", "c": "#C9A45C", "ee": true, "href": "CodBO2.dc.html#buried", "ini": "BUR", "k": "buried black ops ii bo2 vengeance un pueblo del oeste enterrado bajo tierra."}, {"n": "Origins", "g": "BO2", "gt": "Black Ops II", "dlc": "Apocalypse", "c": "#E8C98A", "ee": true, "href": "CodBO2.dc.html#origins", "ini": "ORI", "k": "origins black ops ii bo2 apocalypse el norte de francia durante la primera guerra mundial."}, {"n": "Shadows of Evil", "g": "BO3", "gt": "Black Ops III", "dlc": "Juego base", "c": "#B9A3E8", "ee": true, "href": "CodBO3.dc.html#soe", "ini": "SOE", "k": "shadows of evil black ops iii bo3 juego base morg city, una ciudad ficticia de cine negro."}, {"n": "The Giant", "g": "BO3", "gt": "Black Ops III", "dlc": "Bonificación (edición especial)", "c": "#BCD0F2", "ee": true, "href": "CodBO3.dc.html#giant", "ini": "TG", "k": "the giant black ops iii bo3 bonificación (edición especial) una fábrica nevada del grupo 935: el regreso de der riese."}, {"n": "Der Eisendrache", "g": "BO3", "gt": "Black Ops III", "dlc": "Awakening", "c": "#F28FA0", "ee": true, "href": "CodBO3.dc.html#de", "ini": "DE", "k": "der eisendrache black ops iii bo3 awakening un castillo en los alpes austriacos."}, {"n": "Zetsubou No Shima", "g": "BO3", "gt": "Black Ops III", "dlc": "Eclipse", "c": "#7FE0A3", "ee": true, "href": "CodBO3.dc.html#zns", "ini": "ZNS", "k": "zetsubou no shima black ops iii bo3 eclipse una isla del pacífico con laboratorios abandonados de la división 9."}, {"n": "Gorod Krovi", "g": "BO3", "gt": "Black Ops III", "dlc": "Descent", "c": "#E2364B", "ee": true, "href": "CodBO3.dc.html#gk", "ini": "GK", "k": "gorod krovi black ops iii bo3 descent una stalingrado alternativa en plena guerra, con dragones."}, {"n": "Revelations", "g": "BO3", "gt": "Black Ops III", "dlc": "Salvation", "c": "#8FB2F2", "ee": true, "href": "CodBO3.dc.html#rev", "ini": "REV", "k": "revelations black ops iii bo3 salvation agartha, «la casa», hecha con fragmentos de mapas anteriores."}, {"n": "IX", "g": "BO4", "gt": "Black Ops 4", "dlc": "Juego base", "c": "#E2364B", "ee": true, "href": "CodBO4.dc.html#ix", "ini": "IX", "k": "ix black ops 4 bo4 juego base un coliseo de gladiadores con templos de danu, ra, odín y zeus."}, {"n": "Voyage of Despair", "g": "BO4", "gt": "Black Ops 4", "dlc": "Juego base", "c": "#8FB2F2", "ee": true, "href": "CodBO4.dc.html#vod", "ini": "VOD", "k": "voyage of despair black ops 4 bo4 juego base el titanic, tras chocar con el iceberg."}, {"n": "Blood of the Dead", "g": "BO4", "gt": "Black Ops 4", "dlc": "Juego base", "c": "#F28FA0", "ee": true, "href": "CodBO4.dc.html#botd", "ini": "BOTD", "k": "blood of the dead black ops 4 bo4 juego base alcatraz, reimaginado: vuelve mob of the dead con zonas nuevas."}, {"n": "Classified", "g": "BO4", "gt": "Black Ops 4", "dlc": "Juego base (Black Ops Pass)", "c": "#B9C2CC", "ee": false, "href": "CodBO4.dc.html#classified", "ini": "CL", "k": "classified black ops 4 bo4 juego base (black ops pass) el pentágono y groom lake: «five» reimaginado."}, {"n": "Dead of the Night", "g": "BO4", "gt": "Black Ops 4", "dlc": "Black Ops Pass", "c": "#B9A3E8", "ee": true, "href": "CodBO4.dc.html#dotn", "ini": "DOTN", "k": "dead of the night black ops 4 bo4 black ops pass la mansión inglesa de alistair rhodes."}, {"n": "Ancient Evil", "g": "BO4", "gt": "Black Ops 4", "dlc": "Black Ops Pass", "c": "#E8C98A", "ee": true, "href": "CodBO4.dc.html#ae", "ini": "AE", "k": "ancient evil black ops 4 bo4 black ops pass una ciudad griega subterránea bajo delfos, detenida en el tiempo."}, {"n": "Alpha Omega", "g": "BO4", "gt": "Black Ops 4", "dlc": "Black Ops Pass", "c": "#7FE0A3", "ee": true, "href": "CodBO4.dc.html#ao", "ini": "AΩ", "k": "alpha omega black ops 4 bo4 black ops pass nuketown en la base broken arrow (nevada), antes de la explosión."}, {"n": "Tag der Toten", "g": "BO4", "gt": "Black Ops 4", "dlc": "Black Ops Pass", "c": "#BCD0F2", "ee": true, "href": "CodBO4.dc.html#tdt", "ini": "TDT", "k": "tag der toten black ops 4 bo4 black ops pass una montaña nevada con un faro: call of the dead reimaginado."}], "story": [{"g": "World at War", "t": "Los orígenes", "b": "El Grupo 935 experimenta con el Elemento 115 y la teletransportación. El doctor Maxis, su hija Samantha y Richtofen están en el centro de todo.", "sp": "Samantha acaba dentro del Aether y empieza a controlar a los zombis. Richtofen ya tiene su propio plan."}, {"g": "Black Ops", "t": "El plan de Richtofen", "b": "Los Ultimis saltan de Kino der Toten a Ascension, Shangri-La y la Luna, mientras Richtofen reúne lo que necesita.", "sp": "En Moon, Richtofen intercambia su alma con Samantha y toma el control de los zombis; los cohetes de Maxis destruyen la Tierra."}, {"g": "Black Ops II", "t": "Tierra rota", "b": "Los Victis sobreviven en la Tierra destruida, divididos entre Richtofen y Maxis. En Alcatraz, cuatro mafiosos repiten un ciclo; en 1918, Origins presenta a unos personajes muy conocidos.", "sp": "Buried decide quién controla el Aether. Origins termina con dos niños jugando con figuras de los personajes: el inicio de la historia de los Primis."}, {"g": "Black Ops III", "t": "El multiverso", "b": "Los Primis, con la Llave de la Invocación, persiguen a sus versiones Ultimis por distintos universos para arreglar el plan de Richtofen.", "sp": "Cada mapa termina con un Ultimis muerto y su alma en la llave. En Revelations derrotan al Hombre Sombra."}, {"g": "Black Ops 4", "t": "El fin del Aether", "b": "Primis, Ultimis y Victis siguen el plan de Nikolai para romper el ciclo, de Alcatraz a la montaña de Tag der Toten.", "sp": "El Dispositivo de Agartha destruye la Llave de la Invocación y Samantha y Eddie se marchan a un universo nuevo."}, {"g": "Black Ops 4", "t": "La historia del Caos", "b": "Una historia nueva: Scarlett Rhodes y su grupo persiguen artefactos antiguos y a la Orden, del coliseo al Titanic y a Delfos.", "sp": "En Ancient Evil, el Oráculo resulta ser Medusa."}], "key": [{"n": "Samantha Maxis", "r": "La hija del doctor Maxis", "b": "Atrapada en el Aether de niña, controla a los zombis y es la voz que anuncia las rondas.", "sp": "Al final de la historia del Aether se marcha con Eddie (un Richtofen niño) a un universo nuevo."}, {"n": "Ludvig Maxis", "r": "Director del Grupo 935", "b": "El científico que empezó los experimentos con el Elemento 115 y la teletransportación.", "sp": "En Black Ops II su voz guía a los Victis desde dentro del Aether, enfrentado a Richtofen."}, {"n": "Edward Richtofen", "r": "El que lo empieza todo", "b": "Ayudante de Maxis con planes propios: quiere el control del Aether.", "sp": "Su versión Primis reúne las almas de los Ultimis en la Llave de la Invocación para cerrar el ciclo que él mismo provocó."}, {"n": "Doctor Monty", "r": "El guardián de Agartha", "b": "Un ser que vive en «la Casa» y habla como un abuelo campechano.", "sp": "Aparece al final de Gorod Krovi y prepara el último viaje de los Primis."}, {"n": "El Hombre Sombra", "r": "El villano de Black Ops III", "b": "Una entidad apothicona encerrada en la Llave de la Invocación que manipula Morg City.", "sp": "Los Primis lo derrotan en Revelations."}, {"n": "Los Guardianes", "r": "Seres del Aether", "b": "Figuras encapuchadas que protegen a la humanidad de los Apothicones.", "sp": "Los Apothicones son Guardianes corrompidos por el Aether Oscuro."}]};
+const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+D.maps.forEach(m => { m.kn = norm(m.k); });
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const motion = this.props.animaciones !== false;
+    const set = (o) => this.setState(o);
+    const q = S.q || ''; const gf = S.gf || 'all'; const sp = S.sp || {}; const all = !!S.all;
+    const qn = norm(q.trim());
+    let list = D.maps.filter(m => (gf === 'all' || m.g === gf) && (!qn || m.kn.indexOf(qn) >= 0));
+    const togg = (k) => { const o = Object.assign({}, sp); o[k] = !o[k]; set({ sp: o }); };
+    const gfs = [['all', 'Todos'], ['BO1', 'Black Ops'], ['BO2', 'Black Ops II'], ['BO3', 'Black Ops III'], ['BO4', 'Black Ops 4']]
+      .map(x => ({ t: x[1], cls: gf === x[0] ? 'on' : '', pick: () => set({ gf: x[0] }) }));
+    return {
+      motionClass: motion ? '' : 'still',
+      q: q, onQ: (e) => set({ q: e.target.value }), clearQ: () => set({ q: '', gf: 'all' }),
+      gfs: gfs, found: list.map(m => ({ n: m.n, g: m.g, gt: m.gt, dlc: m.dlc, c: m.c, href: m.href, ini: m.ini, ee: m.ee ? 'Easter egg' : '', hasEe: m.ee })),
+      nFound: list.length + (list.length === 1 ? ' mapa' : ' mapas'), none: list.length === 0,
+      allTxt: all ? 'Ocultar todos los spoilers' : 'Mostrar todos los spoilers', toggleAll: () => set({ all: !all, sp: {} }), allCls: all ? 'on' : '',
+      story: D.story.map((s, i) => { const on = all || !!sp['s' + i]; return { n: String(i + 1).padStart(2, '0'), g: s.g, t: s.t, b: s.b, sp: s.sp, shown: on, hid: !on, tog: () => togg('s' + i), btn: on ? 'Ocultar' : 'Mostrar el giro' }; }),
+      key: D.key.map((k, i) => { const on = all || !!sp['k' + i]; return { n: k.n, r: k.r, b: k.b, sp: k.sp, shown: on, hid: !on, tog: () => togg('k' + i), btn: on ? 'Ocultar' : 'Spoiler' }; })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

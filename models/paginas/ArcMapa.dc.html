@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ARC Raiders · Mapas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0B0A0E}
+a{color:#F5C02A}a:hover{color:#FFD45A}
+.ap{position:relative;background:#0B0A0E;color:#F2EBDD;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.ap *,.ap *::before,.ap *::after{box-sizing:border-box}
+.wrap{max-width:1400px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cond{font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.stripe-bg{background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,14,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(242,235,221,.08)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#F2EBDD;justify-self:start}
+.brand:hover{color:#F2EBDD}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#9A938A;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(242,235,221,.1);background:rgba(242,235,221,.04);color:#F2EBDD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#857E75}
+.search input:focus{border-color:rgba(245,192,42,.6)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#9A938A;padding:5px 8px;border-radius:6px;border:1px solid rgba(242,235,221,.12)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(242,235,221,.14);color:#F2EBDD;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#F2EBDD;background:rgba(242,235,221,.06)}
+.sub{border-top:1px solid rgba(242,235,221,.06);background:rgba(20,18,25,.75)}
+.sub-in{display:flex;align-items:center;gap:4px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(242,235,221,.1);color:#F2EBDD;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+.gchip img{width:28px;height:28px;border-radius:50%}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;height:50px;padding:0 12px;color:#ABA49A;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover,.slink.on{color:#F2EBDD}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+
+/* selector de mapas */
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:10px;padding:22px 0 0}
+.mt{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;border:1px solid rgba(242,235,221,.1);background:#141219;color:#F2EBDD;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,transform .2s}
+.mt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.7) brightness(.55);transform:scale(1.3);transition:transform .6s,filter .4s}
+.mt::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent,rgba(11,10,14,.9))}
+.mt:hover{transform:translateY(-2px);border-color:rgba(242,235,221,.3)}
+.mt:hover img{transform:scale(1.45);filter:saturate(.9) brightness(.7)}
+.mt b{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1}
+.mt span{font-size:12px;color:#C8C1B6}
+.mt.on{border-color:#F5C02A;box-shadow:0 0 0 1px #F5C02A,0 20px 40px -24px rgba(245,192,42,.7)}
+.mt.on img{filter:saturate(1) brightness(.75)}
+.mt .bar{position:absolute;left:0;right:0;bottom:0;height:3px;opacity:0;transition:opacity .2s}
+.mt.on .bar{opacity:1}
+
+/* cabecera del mapa */
+.mh{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;padding:26px 0 18px;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:#9A938A}
+.crumbs a{color:#ABA49A;text-decoration:none}
+.h1{margin:6px 0 0;font-size:clamp(44px,5vw,68px);font-weight:800;line-height:.92}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 12px;border-radius:8px;background:#141219;border:1px solid rgba(242,235,221,.1);font-size:13px;font-weight:600;color:#E2DBCE}
+.floors{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:#141219;border:1px solid rgba(242,235,221,.1)}
+.fl{height:38px;padding:0 14px;border-radius:9px;border:0;background:transparent;color:#ABA49A;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.fl:hover{color:#F2EBDD}
+.fl.on{background:#F5C02A;color:#141007}
+
+/* mapa + panel */
+.board{display:flex;flex-wrap:wrap;border-radius:20px;overflow:hidden;background:#100E14;border:1px solid rgba(242,235,221,.1)}
+.vp{position:relative;flex:999 1 620px;min-width:0;height:760px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,#17151D,#0B0A0E 75%);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.vp:active{cursor:grabbing}
+.vp::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(242,235,221,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(242,235,221,.035) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.mapin{position:relative;height:100%;max-width:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.mapin.drag{transition:none}
+.mapin > img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.zoom{position:absolute;top:14px;right:14px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.zoom button{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;border:1px solid rgba(242,235,221,.18);background:rgba(16,14,20,.88);color:#F2EBDD;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.zoom button:hover{background:rgba(245,192,42,.18)}
+.vtag{position:absolute;top:14px;left:14px;z-index:5;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:10px;background:rgba(16,14,20,.88);border:1px solid rgba(242,235,221,.16);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase}
+.vtag i{width:8px;height:8px;border-radius:50%;background:#2FB45A;animation:blink 1.6s infinite}
+.vhint{position:absolute;left:14px;bottom:14px;z-index:5;padding:8px 12px;border-radius:10px;background:rgba(16,14,20,.88);border:1px solid rgba(242,235,221,.14);font-size:12px;color:#C8C1B6}
+
+.side{flex:1 1 360px;max-width:420px;display:flex;flex-direction:column;border-left:1px solid rgba(242,235,221,.08);background:#121016}
+.stabs{display:flex;border-bottom:1px solid rgba(242,235,221,.08)}
+.stab{flex:1;height:52px;border:0;background:transparent;color:#ABA49A;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;position:relative}
+.stab:hover{color:#F2EBDD}
+.stab.on{color:#F2EBDD}
+.stab.on::after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:3px;background:#F5C02A}
+.filt{display:flex;gap:6px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid rgba(242,235,221,.06)}
+.fc{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:8px;border:1px solid rgba(242,235,221,.12);background:transparent;color:#ABA49A;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.fc:hover{color:#F2EBDD}
+.fc.on{background:rgba(245,192,42,.14);border-color:rgba(245,192,42,.5);color:#F5C02A}
+.fc i{width:8px;height:8px;border-radius:50%;background:var(--tc)}
+.list{flex:1;max-height:656px;overflow-y:auto;padding:10px 12px 14px;display:flex;flex-direction:column;gap:8px;scrollbar-width:thin}
+.q{padding:12px 12px 12px 14px;border-radius:12px;background:#17151D;border:1px solid rgba(242,235,221,.07);animation:pop .25s ease-out both;transition:border-color .2s}
+.q:hover{border-color:rgba(245,192,42,.35)}
+.q-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.q-h b{font-size:14.5px;font-weight:600;line-height:1.3}
+.tp{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:700;color:var(--tc);background:rgba(242,235,221,.06)}
+.tp::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tc)}
+.q p{margin:6px 0 0;font-size:13px;color:#C8C1B6}
+.q .ft{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font-size:12px;color:#9A938A}
+.q .ft span:last-child{color:#E2DBCE;text-align:right}
+.c-y{--tc:#F5C02A}.c-c{--tc:#3BC9E8}.c-r{--tc:#FF6B5B}.c-o{--tc:#F28A1E}.c-g{--tc:#5FD18A}
+.e{display:flex;gap:12px;padding:10px;border-radius:12px;background:#17151D;border:1px solid rgba(242,235,221,.07);animation:pop .25s ease-out both}
+.e img{width:84px;height:60px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.e .tx{min-width:0;display:flex;flex-direction:column;gap:3px}
+.e b{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1}
+.e .ty{font-size:12px;color:#ABA49A}
+.e .wk{font-size:12.5px;color:#C8C1B6}
+.thr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
+.thr::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.t-ext{color:#FF6B5B;background:rgba(229,55,43,.16)}
+.t-cri{color:#FFA24A;background:rgba(242,138,30,.16)}
+.t-alt{color:#F5C02A;background:rgba(245,192,42,.14)}
+.t-mod{color:#7FD9A0;background:rgba(47,180,90,.14)}
+.t-baj{color:#7FD6F0;background:rgba(59,201,232,.14)}
+.none{padding:28px 16px;text-align:center;color:#ABA49A;font-size:14px}
+
+.ov{position:absolute;inset:0;pointer-events:none}
+.heat{position:absolute;width:6%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,92,48,.62) 0%,rgba(255,92,48,.26) 38%,rgba(255,92,48,0) 70%);mix-blend-mode:screen;animation:heatp 3.2s ease-in-out infinite}
+.heat:nth-child(3n){animation-delay:-1s}
+.heat:nth-child(3n+1){animation-delay:-2s}
+@keyframes heatp{0%,100%{opacity:.7}50%{opacity:1}}
+.hdot{position:absolute;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#FFD2B8;box-shadow:0 0 6px 2px rgba(255,92,48,.9);transform:scale(var(--s))}
+.zl0{--s:1}.zl1{--s:.67}.zl2{--s:.46}.zl3{--s:.34}
+.qp{position:absolute;pointer-events:auto;transform:translate(-50%,-50%) scale(var(--s));z-index:2}
+.qp:hover,.qp:focus-within,.qp.pin{z-index:6}
+.qpb{position:relative;z-index:1;display:grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--tc);background:#141219;color:#F2EBDD;font:800 17px/1 'Barlow Condensed',sans-serif;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 0 4px rgba(20,18,25,.5);transition:transform .2s}
+.qpb:hover{transform:scale(1.14)}
+.qpb img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.qp.ovw .qpb{width:32px;height:32px;padding:1px}
+.qpulse{position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--tc);opacity:0;animation:qpulse 2.4s ease-out infinite;pointer-events:none}
+.qp.ovw .qpulse{display:none}
+@keyframes qpulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.qc{display:none;position:absolute;left:50%;bottom:calc(100% + 12px);width:280px;transform:translateX(-50%);padding:12px 14px;border-radius:14px;background:rgba(18,16,22,.97);border:1px solid rgba(242,235,221,.16);box-shadow:0 20px 40px -10px rgba(0,0,0,.8);text-align:left;cursor:default}
+.qc::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);background:rgba(18,16,22,.97);border-right:1px solid rgba(242,235,221,.16);border-bottom:1px solid rgba(242,235,221,.16)}
+.qp:hover .qc,.qp:focus-within .qc,.qp.pin .qc{display:block;animation:pop .2s ease-out both}
+.qc-h{display:flex;align-items:center;gap:10px}
+.qc-h img{width:40px;height:40px;border-radius:11px;object-fit:cover;border:2px solid var(--tc);flex-shrink:0}
+.qc-h b{display:block;font-size:14.5px;line-height:1.2}
+.qc-h span{font-size:11.5px;color:#ABA49A}
+.qc ol{margin:10px 0 0;padding-left:18px;font-size:12.5px;line-height:1.4;color:#D8D1C5;display:flex;flex-direction:column;gap:4px}
+.qc .qn{margin-top:8px;font-size:11.5px;color:#F5C02A;font-weight:600}
+.mchip{position:absolute;left:14px;top:58px;z-index:5;display:flex;align-items:center;gap:10px;max-width:calc(100% - 90px);padding:5px 5px 5px 12px;border-radius:12px;background:rgba(16,14,20,.92);border:1px solid rgba(242,235,221,.18);font-size:13px;color:#F2EBDD;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mchip img{width:26px;height:26px;border-radius:8px;object-fit:cover}
+.mchip i{flex-shrink:0;width:10px;height:10px;border-radius:50%;background:#FF5C30;box-shadow:0 0 8px #FF5C30}
+.mchip button{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:8px;background:rgba(242,235,221,.08);color:#F2EBDD;cursor:pointer}
+.mchip button:hover{background:rgba(242,235,221,.18)}
+.qbtn{display:flex;gap:11px;align-items:flex-start;width:100%;padding:0;border:0;background:none;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.q .qo{display:block;margin-top:6px;font-size:13px;color:#C8C1B6}
+.q.sel{border-color:rgba(245,192,42,.65);background:#1D1A23}
+.qav{width:42px;height:42px;border-radius:12px;object-fit:cover;border:2px solid var(--tc);flex-shrink:0}
+.qbtn .qt{flex:1;min-width:0}
+.q ol{margin:10px 0 0;padding-left:20px;font-size:13px;line-height:1.45;color:#D8D1C5;display:flex;flex-direction:column;gap:5px}
+.q .pts{display:inline-flex;align-items:center;gap:6px;color:#F5C02A;font-weight:600}
+.q .pts.no{color:#9A938A;font-weight:500}
+.e{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.e:hover{border-color:rgba(255,92,48,.45)}
+.e.sel{border-color:rgba(255,92,48,.75);background:#21161A}
+.e .zn{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;font-weight:600;color:#FF8A66}
+.e .zn.no{color:#9A938A;font-weight:500}
+.e .zn i{width:8px;height:8px;border-radius:50%;background:#FF5C30;box-shadow:0 0 6px #FF5C30}
+.foot{margin-top:56px;border-top:1px solid rgba(242,235,221,.08);padding:30px 0 34px;font-size:13px;color:#9A938A}
+.foot p{margin:10px 0 0;max-width:680px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .vp{height:460px}
+  .side{max-width:none;border-left:0;border-top:1px solid rgba(242,235,221,.08)}
+  .list{max-height:none}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .ap *,.ap *::before,.ap *::after{animation:none !important;transition:none !important}
+}
+.ap.still *,.ap.still *::before,.ap.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:860px){
+  .vp{height:auto;aspect-ratio:1/1;place-items:center}
+  .mapin{height:auto;width:100%}
+  .list{max-height:560px}
+  .q .ft{flex-direction:column;gap:2px}
+  .q .ft span:last-child{text-align:left}
+  .mchip{top:56px;right:14px;max-width:none}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+</style>
+</helmet>
+
+<div class="ap {{motionClass}}">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de ARC Raiders">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC Raiders</a>
+        <a class="slink" href="Arc.dc.html">Inicio</a>
+        <a class="slink on" href="ArcMapa.dc.html">Mapas</a>
+        <a class="slink" href="Arc.dc.html#objetos">Objetos y reciclaje</a>
+        <a class="slink" href="Arc.dc.html#misiones">Misiones</a>
+        <a class="slink" href="Arc.dc.html#arc">Enemigos</a>
+        <a class="slink" href="Arc.dc.html#objetos">Guías</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Mapas">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+        <button type="button" class="mt {{t.on}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">
+          <img src="{{t.img}}" alt="">
+          <b>{{t.n}}</b><span>{{t.q}} misiones</span>
+          <span class="bar stripe-bg" aria-hidden="true"></span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div class="mh">
+      <div>
+        <div class="crumbs"><a href="Arc.dc.html">ARC Raiders</a><span aria-hidden="true">/</span><a href="ArcMapa.dc.html">Mapas</a><span aria-hidden="true">/</span><span>{{name}}</span></div>
+        <h1 class="h1 cond">{{name}}</h1>
+        <div class="meta">
+          <span class="chip">{{qCount}} misiones</span>
+          <span class="chip">{{eLabel}}</span>
+          <span class="chip">{{desc}}</span>
+        </div>
+      </div>
+      <sc-if value="{{hasFloors}}" hint-placeholder-val="{{ false }}">
+        <div class="floors" role="group" aria-label="Planta">
+          <button type="button" class="fl {{flUp}}" onClick="{{setUp}}">Planta superior</button>
+          <button type="button" class="fl {{flLo}}" onClick="{{setLo}}">Planta inferior</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <div class="board">
+      <div class="vp" onScroll="{{vpWheel}}" onPointerEnter="{{vpArm}}" onPointerDown="{{vpDown}}" onPointerMove="{{vpMove}}" onPointerUp="{{vpUp}}" onPointerLeave="{{vpUp}}" onDoubleClick="{{vpDbl}}"><div class="vp-in">
+        <span class="vtag"><i></i>{{name}}{{floorTxt}}</span>
+        <div class="zoom">
+          <button type="button" onClick="{{zoomIn}}" aria-label="Acercar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+          <button type="button" onClick="{{zoomOut}}" aria-label="Alejar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+          <button type="button" onClick="{{zoomReset}}" aria-label="Ver el mapa completo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></button>
+        </div>
+        <sc-if value="{{hasChip}}" hint-placeholder-val="{{ false }}">
+          <div class="mchip {{chipCls}}">
+            <sc-if value="{{chipImg}}" hint-placeholder-val="{{ false }}"><img src="{{chipImg}}" alt=""></sc-if>
+            <sc-if value="{{chipDot}}" hint-placeholder-val="{{ false }}"><i aria-hidden="true"></i></sc-if>
+            <span>{{chipTxt}}</span>
+            <button type="button" aria-label="Quitar del mapa" onClick="{{clearSel}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
+          </div>
+        </sc-if>
+        <div class="mapin {{dragCls}}" style="aspect-ratio: {{ar}}; transform: translate({{tx}}, {{ty}}) translate({{px}}px, {{py}}px) scale({{zoom}})">
+          <img src="{{img}}" alt="Mapa de {{name}} con los nombres de zona" draggable="false">
+          <div class="ov {{zl}}">
+            <sc-for list="{{heat}}" as="h" hint-placeholder-count="0">
+              <span class="heat" style="left: {{h.x}}; top: {{h.y}}"></span>
+            </sc-for>
+            <sc-for list="{{heat}}" as="h" hint-placeholder-count="0">
+              <span class="hdot" style="left: {{h.x}}; top: {{h.y}}"></span>
+            </sc-for>
+            <sc-for list="{{qpins}}" as="p" hint-placeholder-count="0">
+              <div class="qp {{p.cls}}" style="left: {{p.x}}; top: {{p.y}}">
+                <button type="button" class="qpb" aria-label="{{p.aria}}" onClick="{{p.pick}}">
+                  <sc-if value="{{p.ovw}}" hint-placeholder-val="{{ true }}"><img src="{{p.img}}" alt=""></sc-if>
+                  <sc-if value="{{p.num}}" hint-placeholder-val="{{ false }}">{{p.n}}</sc-if>
+                </button>
+                <span class="qpulse" aria-hidden="true"></span>
+                <div class="qc" role="tooltip">
+                  <div class="qc-h"><img src="{{p.img}}" alt=""><div><b>{{p.qn}}</b><span>{{p.tn}} · {{p.sub}}</span></div></div>
+                  <ol>
+                    <sc-for list="{{p.obj}}" as="o" hint-placeholder-count="2"><li>{{o.t}}</li></sc-for>
+                  </ol>
+                  <div class="qn">{{p.hint}}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <span class="vhint">{{hintTxt}} · ×{{zoomTxt}}</span>
+      </div><div class="vp-pad"></div></div>
+
+      <aside class="side" aria-label="Información del mapa">
+        <div class="stabs" role="tablist">
+          <button type="button" class="stab {{tabQ}}" role="tab" aria-selected="{{selQ}}" onClick="{{goQ}}">Misiones · {{qCount}}</button>
+          <button type="button" class="stab {{tabE}}" role="tab" aria-selected="{{selE}}" onClick="{{goE}}">Enemigos · {{eCount}}</button>
+        </div>
+
+        <sc-if value="{{showQ}}" hint-placeholder-val="{{ true }}">
+          <div class="filt" role="group" aria-label="Filtrar por comerciante">
+            <sc-for list="{{tf}}" as="f" hint-placeholder-count="4">
+              <button type="button" class="fc {{f.on}} {{f.c}}" onClick="{{f.pick}}"><i></i>{{f.n}} · {{f.k}}</button>
+            </sc-for>
+          </div>
+          <div class="list">
+            <sc-for list="{{quests}}" as="q" hint-placeholder-count="6">
+              <article class="q {{q.c}} {{q.cls}}">
+                <button type="button" class="qbtn" aria-expanded="{{q.exp}}" onClick="{{q.pick}}">
+                  <img class="qav" src="{{q.img}}" alt="">
+                  <span class="qt">
+                    <span class="q-h"><b>{{q.n}}</b><span class="tp {{q.c}}">{{q.t}}</span></span>
+                    <sc-if value="{{q.closed}}" hint-placeholder-val="{{ true }}"><span class="qo">{{q.o}}</span></sc-if>
+                  </span>
+                </button>
+                <sc-if value="{{q.open}}" hint-placeholder-val="{{ false }}">
+                  <ol>
+                    <sc-for list="{{q.obj}}" as="o" hint-placeholder-count="3"><li>{{o.t}}</li></sc-for>
+                  </ol>
+                </sc-if>
+                <div class="ft"><span class="pts {{q.ptsCls}}">{{q.ptsTxt}}</span><span>{{q.r}}</span></div>
+              </article>
+            </sc-for>
+            <sc-if value="{{noQ}}" hint-placeholder-val="{{ false }}">
+              <div class="none">No hay misiones de este comerciante en {{name}}.</div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showE}}" hint-placeholder-val="{{ false }}">
+          <div class="list">
+            <sc-for list="{{foes}}" as="f" hint-placeholder-count="6">
+              <button type="button" class="e {{f.cls}}" aria-pressed="{{f.pr}}" onClick="{{f.pick}}">
+                <img src="{{f.img}}" alt="">
+                <span class="tx">
+                  <b>{{f.n}}</b>
+                  <span class="thr {{f.tc}}">{{f.t}}</span>
+                  <span class="ty">{{f.ty}}</span>
+                  <span class="wk">{{f.wk}}</span>
+                  <span class="zn {{f.znCls}}"><sc-if value="{{f.has}}" hint-placeholder-val="{{ true }}"><i aria-hidden="true"></i></sc-if>{{f.zn}}</span>
+                </span>
+              </button>
+            </sc-for>
+            <sc-if value="{{noE}}" hint-placeholder-val="{{ false }}">
+              <div class="none">Todavía no tenemos datos de los ARC de {{name}}.</div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>El contenido de ARC Raiders pertenece a Embark Studios AB y sus licenciantes. GrietaMeta no está afiliado ni respaldado por Embark Studios. Mapas, misiones y enemigos: RaidTheory/arcraiders-data (licencia MIT). Zonas de aparición y puntos de misión: MetaForge (metaforge.app/arc-raiders).</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb on" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1440}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const m = S.m || 0;
+    const floor = S.floor || 'up';
+    const tab = S.tab || 'q';
+    const tr = S.tr || 'Todos';
+    const zi = S.zi || 0;
+    const px = S.px || 0;
+    const py = S.py || 0;
+    const ZS = [1, 1.5, 2.2, 3];
+    const motion = this.props.animaciones ?? true;
+
+    const MAPS = [
+      { n: 'Dam Battlegrounds', img: '/images/arc-raiders/maps/dam_battlegrounds.webp', ar: '3000 / 2739', desc: 'Presa, pantanos y la Matriarca' },
+      { n: 'Buried City', img: '/images/arc-raiders/maps/buried_city.webp', ar: '1 / 1', desc: 'Casco antiguo y aparcamientos' },
+      { n: 'Spaceport', img: '/images/arc-raiders/maps/the_spaceport.webp', ar: '1 / 1', desc: 'Torres de lanzamiento y túneles' },
+      { n: 'Blue Gate', img: '/images/arc-raiders/maps/the_blue_gate.webp', ar: '4 / 3', desc: 'Autopista derrumbada y claro desolado' },
+      { n: 'Stella Montis', img: '/images/arc-raiders/maps/stella_montis_upper.webp', ar: '4 / 3', desc: 'Dos plantas', lower: '/images/arc-raiders/maps/stella_montis_lower.webp', lowerAr: '5 / 3' },
+      { n: 'Riven Tides', img: '/images/arc-raiders/maps/riven_tides.webp', ar: '1 / 1', desc: 'Hotel, rompeolas y puerto' }
+    ];
+
+    // [nombre, comerciante, mapas, objetivos, recompensas, {mapa: [[x%, y%], …]}]
+    const Q = [["Fuera del radar","Shani",[1,2,0],["Visita un depósito de campo.","Repara la antena del techo del depósito de campo."],"Desfibrilador ×2",{}],["Afianzando la presencia","Apollo",[3],["Estabiliza la plataforma de observación que hay cerca de la cresta.","Activa el terminal de comunicaciones que hay cerca del olivar.","Gira las antenas parabólicas del tejado de la iglesia que hay al norte del almacén de datos.","Clava las placas del techo de la estructura de Raider que hay cerca del claro del trampero."],"Granada de metralla ×3, Granada de ráfaga ×3",{"3":[[74.8,54.6],[37.6,71.0],[29.9,41.7],[59.3,17.3],[74.9,54.5],[74.7,54.4]]}],["Apuntalando las defensas","Apollo",[5],["Destruye 5 avispas.","Destruye 3 luciérnagas.","Usa 1 aleaciones de ARC para reforzar la estructura de Raiders de cualquier grúa del patio de apilado.","Sella las ventanas rotas del hotel."],"Kit de barricada ×3, Trampa de granada señuelo ×3",{}],["Echar el cerrojo","Apollo",[5],["Saca una foto de las grietas del rompeolas.","Recoge muestras en la orilla junto al hotel.","Repara la tubería de crudo en el noreste."],"Tarjeta llave del hotel Riven Tides n.º 107, Trampa de granada de humo ×3",{}],["A mi semejanza","Lance",[4],["Despliégate en Stella Montis.","Busca y registra 3 androides."],"Saqueo Ver. 2, Barra luminosa verde ×5",{"4":[[82.4,41.2],[86.0,36.8],[82.7,59.6],[75.7,41.9],[1.9,56.1],[2.2,68.1],[70.8,90.3],[73.7,54.3],[43.1,31.5],[50.9,26.2],[57.9,19.9],[68.1,78.8],[39.1,66.7],[38.0,56.9]]}],["Reducido a escombros","Shani",[3],["Saca una foto de la autopista derrumbada.","Ve al terreno quebrado.","Sigue el rastro de destrucción por el terreno quebrado.","Investiga las máquinas ARC desconocidas."],"Tirolina, Kit de barricada ×3",{"3":[[32.8,67.2],[57.3,70.3],[66.0,63.6],[67.3,63.1],[29.0,65.3],[67.7,60.9],[34.8,65.9],[32.6,64.6],[29.6,69.3],[67.6,62.4],[21.4,57.7],[30.3,69.8],[27.6,67.1],[30.4,68.7],[64.6,61.7],[30.7,67.2],[34.0,66.1],[31.8,67.3],[33.4,64.1],[67.2,60.9],[65.3,61.9],[20.0,57.3],[31.5,69.6],[33.7,66.5],[28.4,65.0],[30.5,65.6],[24.2,61.1],[63.9,61.5],[34.7,61.0],[19.2,58.7],[29.7,65.1],[32.0,65.3],[24.8,65.3],[22.5,59.3],[29.6,66.2],[27.1,64.9],[66.8,62.9],[33.8,64.9],[66.1,62.8],[23.5,64.5],[43.9,64.8],[29.0,67.7],[64.6,60.4]]}],["Buscando el rastro","Shani",[3],["Llega al claro desolado.","Busca señales de quién abatió a las máquinas ARC.","Inspecciona las ruinas adornadas.","Inspecciona el dispositivo de comunicaciones."],"Saqueo Ver. 2, Escudo mediano",{"3":[[19.2,30.0],[25.0,47.4],[24.4,45.5],[17.5,27.4]]}],["Cámara frigorífica","Shani",[4],["Registra cualquier contenedor de J Kozma Ventures.","Entrégale los libros del mundo antiguo a Shani."],"Mina de gas ×3, Llave de trampilla de raider",{"4":[[49.5,16.4],[23.8,67.6],[16.4,42.0],[17.6,47.8],[23.7,73.4],[14.6,74.9],[14.6,75.4],[38.0,56.9]]}],["Pies en la tierra","Shani",[1,2,0],["Visita un depósito de campo.","Entrega una caja de campo en un depósito de campo.","Cobra la recompensa."],"Combate Ver. 1, Escudo mediano",{"0":[[51.1,55.0],[65.5,60.9],[34.1,48.7],[38.0,66.2],[34.1,48.8],[51.2,55.0],[49.5,33.4],[38.1,66.2],[77.5,31.1],[49.5,33.5],[77.4,31.2],[65.6,60.9]],"1":[[46.0,70.8],[45.8,70.8],[49.0,32.3],[74.7,52.8],[74.7,52.7],[49.1,32.4]],"2":[[71.4,64.9],[30.0,22.3],[45.4,70.5],[73.7,43.9],[32.9,47.1],[30.0,22.2],[33.0,47.1],[73.6,44.0],[45.3,70.4],[71.3,65.0]]}],["Un mejor uso","Tian Wen",[1,2,3,0],["Solicita una entrega de suministros mediante una estación de solicitud.","Saquea una entrega de suministros."],"Cargador ligero extendido I, Culata estable I",{}],["Sueños destilados","Apollo",[2,3],["En el Puerto espacial, registra 4 contenedores en los túneles subterráneos.","Encuentra y monitoriza cualquier sistema de filtración en los túneles.","En la Puerta azul, visita el búnker de mantenimiento.","Monitoriza el sistema de purificación en el búnker.","Busca y fotografía los proyectos en el búnker."],"Ultimátum ×2, Aguafiestas ×3",{"2":[[45.1,39.8],[46.2,40.6],[42.7,31.1],[47.9,42.0],[46.0,26.2],[42.1,30.8],[57.0,41.1],[45.1,28.3],[41.4,33.8]],"3":[[56.0,60.9],[56.2,61.6],[53.4,61.4],[55.6,62.6]]}],["Untando la mano","Celeste",[1,2,0],["En los Campos de batalla de la Presa, entra en la sala cerrada del edificio de control del tratamiento de aguas.","En el Puerto espacial, inspecciona los propulsores de cohetes frente al ensamblaje de cohetes.","En Ciudad enterrada, visita la zona bloqueada en el piso 6 del edificio de viaje espacial."],"Plano de granada señuelo, Componente de altavoz ×3",{"0":[[41.9,53.3]],"1":[[56.9,42.2]],"2":[[59.2,44.6]]}],["Triplete","Shani",[1,2,3,0],["Destruye una avispa.","Consigue un controlador de avispa para Shani.","Destruye un avispón.","Consigue un controlador de avispón para Shani.","Destruye un delator.","Consigue un escáner de delator para Shani."],"Llave de trampilla de raider, Desfibrilador ×2",{}],["Fotografiar y saquear","Tian Wen",[4],["Saca una foto de cualquier astromóvil en la zona de pruebas.","Busca los papeles en la sala del control de seguridad junto al vestíbulo.","Entrégale un magnetrón a Tian Wen.","Entrégale un regulador de flujo a Tian Wen."],"Burletta III, Silenciador II",{"4":[[36.3,39.4],[58.3,19.1],[36.3,70.4],[56.2,17.5],[17.0,3.5],[20.9,4.6],[65.8,38.2],[64.1,45.9],[61.0,22.4],[7.8,2.6],[2.7,52.4],[36.2,71.4],[36.6,70.8],[37.2,39.4],[36.1,45.1],[36.7,45.3],[36.6,38.7],[36.9,44.5],[35.9,38.6],[36.3,46.0],[37.0,71.7]]}],["La liga","Apollo",[0,1],["Entrégale un balón desinflado a Apollo.","Entrégale una bomba de bicicleta a Apollo.","En los Campos de batalla de la Presa, fotografía la portería que hay junto a las torres de agua.","En Ciudad enterrada, fotografía las revistas de fútbol de cualquier quiosco."],"Granada de marcaje ×5, Petardo ×5",{"0":[[33.7,68.2],[33.4,67.6],[33.0,68.3],[33.7,67.7],[36.1,68.2],[32.9,68.8],[33.5,68.8],[36.5,68.5],[36.9,67.7]],"1":[[50.2,46.5],[34.4,40.6],[34.8,40.3],[35.9,35.8],[36.1,35.5],[50.4,46.3]]}],["Ojo avizor","Celeste",[3],["Encuentra la autopista derrumbada junto al extremo sur del claro desolado.","Encuentra el refugio de Bilguun y busca pistas de que ha estado ahí."],"Mina de pulso ×5, Lanzallamas",{"3":[[17.8,55.2],[20.8,60.1],[20.2,59.0]]}],["Barones durmientes","Shani",[2,3,0],["Saquea un cascarón de barón."],"Bloqueador de puerta ×3, Pequeña granada de humo ×3",{"0":[[60.8,39.9],[31.1,41.0],[36.9,54.1]],"2":[[48.0,56.0],[30.6,58.9],[37.5,13.5]],"3":[[20.8,28.2]]}],["Con vistas","Shani",[4],["Consigue un codificador rotatorio.","Visita cualquiera de las salas de control que hay cerca de la cadena de montaje.","Usa el codificador rotatorio para activar el interruptor del servidor.","Interactúa con un ordenador cercano para identificar las piezas correctas.","Entrégale un pulverizador de iones a Shani."],"Resorte de acero ×5, Cables ×5",{"4":[[4.9,4.6],[5.2,20.1],[7.1,8.0],[18.5,2.9],[15.8,6.2],[14.8,3.8],[6.0,18.2],[4.8,4.9],[5.0,6.3]]}],["Ejemplar único","Shani",[3],["Consigue 2 células de energía ARC.","Interactúa con cualquier deforestadora ARC.","Saquea una deforestadora ARC."],"Llave de coche patrulla, Bloqueador de puerta ×3",{"3":[[20.3,47.5],[66.4,62.6],[28.0,49.4]]}],["Polvo en los cables","Shani",[2],["Visita cualquier depósito de campo en el lado este del Puerto espacial.","Usa la radio de campo para transmitirle a Shani el último registro del grupo de exploradores.","Interactúa con el terminal en la antigua torre de Raiders al norte del hangar de mantenimiento.","Encuentra rastros de la patrulla de exploradores cerca del hangar de mantenimiento.","Inspecciona los restos que dejaron los exploradores.","Entrégale la nota de la patrulla de exploradores a Shani."],"",{"2":[[71.1,64.8],[73.9,44.0],[43.8,61.6],[46.1,69.2],[46.1,69.7],[45.5,70.2]]}],["Saldo pendiente","Tian Wen",[3],["Busca el alijo de Dodger dentro del túnel de autopista.","Inspecciona el lugar del trato de Dodger junto a la antena de cima del peregrino.","Entrégale la nota de Dodger a Tian Wen."],"Cargador mediano extendido III, Silenciador II",{"3":[[57.6,20.1],[77.4,19.4]]}],["Productos médicos","Lance",[1,2,0],["En el Puerto espacial, registra 2 contenedores en las salas de revisión del edificio de salidas.","Registra 3 contenedores en el hospital de Ciudad enterrada.","En los Campos de batalla de la Presa, registra 2 contenedores en la enfermería del edificio de investigación y administración."],"Desfibrilador ×3, Inyección de Vita ×2",{"0":[[57.2,57.6]],"1":[[51.3,33.2]],"2":[[38.4,35.8]]}],["Despertar la red","Shani",[2],["Activa los sensores de seguridad de una de las torres de vigilancia.","Pon en marcha el centro de control de seguridad en el edificio de salidas.","Busca rastros de una brecha de seguridad en la oficina de datos del edificio de llegadas."],"Táctico Ver. 3 (Reanimación), Inyección de Vita ×3",{"2":[[40.2,22.4],[33.8,30.4],[42.0,50.2],[37.9,40.5],[36.4,26.1],[58.2,64.4]]}],["Llamar la atención","Shani",[3],["Usa 3 cables para reparar y activar la sirena de emergencia junto al complejo de almacenes.","Usa una batería para encender el radiocasete en el pueblo.","Toca el claxon de cualquier autobús junto al control de seguridad."],"Granada señuelo ×5, Generador de ruido ×5",{"3":[[62.4,37.0],[44.4,22.6],[46.9,48.6],[38.7,16.5],[30.9,20.6],[63.6,44.3],[48.2,43.6],[33.2,16.2],[59.0,46.0],[59.8,39.3],[43.3,55.4],[63.6,38.9],[39.7,19.0],[30.2,17.3],[61.8,42.0],[60.0,39.5],[58.4,45.2],[39.6,25.0],[50.3,46.1],[61.7,41.8],[41.7,21.5],[63.5,38.7],[42.3,52.8],[58.8,45.8],[27.6,16.9],[38.8,21.6],[41.3,55.9],[51.5,42.4]]}],["Señales mixtas","Shani",[1,2,3,0],["Destruye un vigilante ARC.","Consigue 1 depósito de vigilante."],"Capa fotoeléctrica, Llave de trampilla de raider",{}],["Lo que dejamos atrás","Tian Wen",[1,2,0],["En Ciudad enterrada, registra 2 contenedores en el campamento de Raiders bajo el aparcamiento.","En los Campos de batalla de la Presa, busca cualquier cosa relevante en el puesto del pantano sur. ","En el Puerto espacial, busca cualquier cosa relevante en la guarida de Bilguun, junto al almacén de contenedores."],"Freno de boca II, Empuñadura vertical II",{"0":[[28.3,52.8],[27.6,49.5]],"1":[[52.8,41.7],[55.6,41.6]],"2":[[67.1,54.8]]}],["Viviendas estables","Tian Wen",[4],["Ve al puente de seguridad.","Busca la caja fuerte dentro de una sala junto a las escaleras del tercer piso.","Ve a la sala de control del cuarto piso.","Usa la impresora de tarjetas de acceso para imprimir una llave de la caja fuerte.","Busca otra forma de acceder a la caja fuerte.","Recupera el contenido de la caja fuerte.","Entrégale los proyectos del proyecto Perenne a Tian Wen."],"Granada rastreadora ×5, Granada señuelo ×5",{"4":[[56.1,18.0],[61.3,23.8],[60.9,23.6],[60.5,22.2],[46.0,20.0]]}],["Descubrimiento en ruinas","Lance",[1],["Busca un analizador ESR dentro de cualquier farmacia de Ciudad enterrada.","Entrégale el analizador ESR a Lance."],"Táctico Ver. 3 (Curación), Cargador de escudos de sobrecarga",{}],["Monumento destrozado","Tian Wen",[0],["Llega a las tierras sagradas junto al desguace.","Busca una brújula cerca de los vehículos destartalados.","Busca la cinta de vídeo cerca de los contenedores cilíndricos.","Busca las raciones antiguas en el campamento de Raiders.","Entrégale la cinta de la primera oleada a Tian Wen.","Entrégale la brújula de la primera oleada a Tian Wen.","Entrégale las raciones de la primera oleada a Tian Wen."],"Arpegio I, Compensador II",{"0":[[50.9,75.1],[54.3,70.5],[52.7,74.0]]}],["Asunto aclarado","Celeste",[0],["Llega a cordillera victoriosa.","Encuentra la antigua trampa PEM.","Desactiva el primer interruptor de alimentación.","Desactiva el segundo interruptor de alimentación.","Desactiva el tercer interruptor de alimentación.","Apaga la trampa PEM."],"Piezas de armas medianas ×5, Componentes mecánicos avanzados ×3",{"0":[[51.4,22.4],[51.2,20.2],[53.1,22.6],[51.4,22.4],[51.4,26.7],[40.7,21.4]]}],["Reconociendo el terreno","Shani",[2],["Llega al almacén de Jiangsu.","Busca los albaranes en el despacho del capataz.","Localiza los escáneres en la oficina de control aéreo de la torre de control A6.","Entrégale 1 escáneres lídar a Shani."],"Llave del anexo de pruebas de la presa, Tirolina ×3",{"2":[[21.4,18.8],[55.6,49.0],[24.8,19.1]]}],["Marcado para morir","Tian Wen",[1],["Llega a los almacenes Su Durante en las afueras de Ciudad enterrada.","Busca el alijo de Tian Wen cerca de los almacenes.","Sigue las pistas."],"Estrangulador de escopeta II, Empuñadura inclinada II",{"1":[[38.3,22.2],[37.3,23.4],[35.8,23.5]]}],["Preservar la memoria","Celeste",[0],["Llega a los restos en la colina Formicai.","Busca el casco perdido.","Devuelve el caso al monumento conmemorativo."],"Piezas de arma básica ×5, Cinta Americana ×5",{"0":[[59.3,72.1],[59.0,72.2]]}],["Ojos en el cielo","Shani",[1,2,0],["En los Campos de batalla de la Presa, instala un escáner lídar en lo alto de la torre de control.","En el Puerto espacial, instala un escáner lídar en la torre de comunicaciones.","En Ciudad enterrada, instala un escáner lídar encima del cartel de la galería."],"Granada de marcaje ×3, Aerosol Vita",{"0":[[61.7,54.5],[60.3,54.4]],"1":[[59.0,36.0],[60.9,40.9]],"2":[[79.5,54.8],[81.0,55.7]]}],["Corrección del mercado","Tian Wen",[1],["Encuentra el alijo cerca de la estación de Marano.","Sabotea el alijo."],"Silenciador II, Cargador ligero extendido I",{"1":[[35.6,35.6]]}],["Ecos de la cordillera victoriosa","Celeste",[0],["Llega a cordillera victoriosa.","Recupera los planes de batalla del escondite bajo la autopista derrumbada.","Entrégale el parche de la comandante Aiva a Celeste."],"Explosivos rudimentarios ×6, Procesador ×2",{"0":[[56.4,18.4],[40.7,21.4]]}],["Tras la tormenta","Celeste",[1],["Encuentra los paneles solares inundados cerca de los apartamentos Grandioso.","Repara los paneles solares usando 5 cables y 2 baterías."],"Barra luminosa azul ×5, Antiséptico ×3",{"1":[[36.9,61.6],[35.8,62.8]]}],["Una cosecha equilibrada","Celeste",[0],["Ve al edificio de investigación y administración.","Encuentra el laboratorio 1 en la planta superior sobre la recepción.","Busca indicios del proyecto de investigación agrícola."],"Componentes mecánicos avanzados ×3, Piezas de armas medianas ×3",{"0":[[57.3,56.3],[58.3,56.1]]}],["Botín vigilado","Tian Wen",[1],["Encuentra la terraza apartada al sudoeste de la estación sur. Busca los toldos azules.","Reconecta el panel solar usando 3 cables."],"Cargador de escopeta extendido II, Cargador mediano extendido II",{"1":[[44.1,73.9],[46.3,77.5]]}],["Jardín desatendido","Celeste",[0],["Ve al complejo de la cúpula hidropónica.","Accede al archivo de datos en una de las cúpulas.","Sube los datos en el terminal informático de cualquier depósito de campo."],"Componentes mecánicos avanzados ×3, Piezas de arma pesada ×3",{"0":[[48.6,36.7],[50.5,30.9],[49.7,33.3],[53.8,35.2],[51.0,54.8],[37.9,66.0],[65.5,60.6],[53.9,30.5],[34.2,48.5],[77.1,31.1],[50.7,37.6]]}],["Espionaje industrial","Tian Wen",[1],["Encuentra el escondite de armas de Tian Wen cerca de la gasolinera en las afueras.","Entrega la Burletta en el alijo de armas rival.","Coloca un micrófono en el alijo de armas."],"Plano de Burletta, Componentes mecánicos ×3",{"1":[[46.5,22.7],[46.5,22.7],[50.5,20.2]]}],["La raíz del problema","Celeste",[1],["Ve al edificio de investigación.","Busca el depósito de semillas en la «sala con unas buenas vistas».","Entrega la muestra de semilla experimental a Celeste."],"Monedas ×1000",{"1":[[54.9,46.0]]}],["Iniciativa inesperada","Tian Wen",[1],["Llega a los apartamentos Grandioso en Ciudad enterrada.","Busca un medidor de humedad en el tejado de los apartamentos Grandioso.","Llega a Piazza Roma en Ciudad enterrada.","Busca un medidor de nutrientes en los jardines destrozados de la azotea de Piazza Roma.","Entrégale un medidor de nutrientes a Tian Wen.","Entrégale un medidor de humedad a Tian Wen."],"Il Toro I, Munición de escopeta ×40",{"1":[[32.3,65.8],[35.7,53.5],[37.9,57.1],[37.6,57.6],[34.0,61.4],[32.6,66.6],[39.3,56.1],[33.8,61.0],[38.8,55.9],[33.4,62.7],[40.7,47.1]]}],["Problemas de agua","Celeste",[0],["Encuentra el túnel de acceso para inundaciones debajo del balcón de los lagos rojos","Busca la toma de agua del suministro de agua del distrito.","Prueba el agua."],"Componentes mecánicos ×3, Piezas de arma básica ×3",{"0":[[61.7,57.6],[63.6,56.8],[61.3,58.9]]}],["Un símbolo de unificación","Celeste",[0],["Llega al puesto Formicai en los Campos de batalla de la Presa.","Encuentra la bandera en el puesto Formicai.","Iza la bandera en la plataforma pequeña con vistas a los lagos rojos."],"Componentes de modificación ×3, Cinta Americana ×5",{"0":[[53.2,83.3],[54.5,82.4]]}],["Los diarios de Celeste","Celeste",[0],["Recupera los diarios de Celeste en el puesto del pantano sur.","Recupera los diarios de Celeste en el puesto de Raider este.","Entrégale 2 diarios a Celeste."],"Acelerador Magnético, Piezas de arma pesada ×3",{"0":[[28.9,52.4],[80.0,26.9]]}],["Origen de la contaminación","Celeste",[0],["Llega al edificio de tratamiento de aguas de la Presa.","Busca el aliviadero cerca del pantano.","Investiga cualquier objeto sospechoso."],"Resorte de acero ×5, Cinta Americana ×5",{"0":[[41.9,48.0],[42.4,51.3]]}],["Saliendo de las sombras","Shani",[1,2,3,0],["Destruye un cohetero.","Consigue un controlador de cohetero."],"Cargador de escudos de sobrecarga ×3, Manada de lobos",{}],["El baúl de la comandante","Tian Wen",[0],["Busca los recuerdos de la comandante Aiva en los apartamentos situados al noroeste de la Presa.","Entrégale los recuerdos de la comandante Aiva a Tian Wen."],"Planos de Partecascos",{"0":[[38.9,22.9]]}],["Cambiando el suministro","Celeste",[2],["Encuentra los túneles debajo del Puerto espacial.","Encuentra y gira la válvula de los túneles bajo el Puerto espacial."],"Llave de la torre de trincheras del espaciopuerto, Combustible sintetizado ×3",{"2":[[44.9,39.6],[46.0,25.8]]}],["Recuperando la ventaja","Tian Wen",[1,2,3,0],["En los Campos de batalla de la Presa, marca la casa de muestras.","En Puerta azul, marca la torre de vigilancia blanca que hay al sur del complejo de almacenes.","En el Puerto espacial, marca la torre de la trinchera sur.","En Ciudad enterrada, marca el edificio con un mural en las propiedades enterradas."],"Renegado I, Culata estable III",{"0":[[64.8,17.5],[65.0,17.9],[66.0,17.1],[64.8,17.7],[66.1,17.3],[65.7,16.8],[65.4,18.4],[65.2,16.8],[65.7,18.0],[64.9,17.2],[65.1,18.2],[65.4,16.6]],"1":[[68.5,42.8],[69.0,42.1],[69.8,43.6],[68.2,42.0],[68.4,41.9],[69.0,43.8],[68.9,41.8],[69.3,42.5],[69.5,43.0]],"2":[[55.1,21.0],[55.9,21.4],[55.9,21.7],[55.7,21.2],[55.8,21.3],[55.5,21.1],[55.4,21.0]],"3":[[57.2,51.6],[57.5,51.0],[57.5,51.4],[57.1,51.0],[57.1,51.4],[57.5,51.2]]}],["Un lugar cálido donde descansar","Apollo",[1],["Encuentra el campamento de carretera abandonado.","Busca algún rastro de supervivientes.","Sigue los marcadores rojos.","Inspecciona la tumba."],"Generador de ruido ×3, Barra luminosa azul ×5",{"1":[[71.2,52.6],[35.7,68.3],[34.8,69.1]]}],["Nuestra presencia ahí arriba","Shani",[0],["Visita la casa de muestras en la Presa.","Encuentra y activa el interruptor de encendido.","Termina de instalar la antena en el tejado."],"Llave del ayuntamiento de la ciudad enterrada, Llave de trampilla de raider",{"0":[[65.1,17.7],[64.7,18.0]]}],["Recetas del pasado","Lance",[2],["Visita el edificio de salidas en el Puerto espacial.","Encuentra la sala de revisión médica dentro del edificio de salidas.","Busca los expedientes."],"Escudo pesado, Táctico Ver. 3 (Curación)",{"2":[[37.7,35.8],[38.6,38.3]]}],["Transmisión perdida","Shani",[2],["Visita la torre de control A6.","Llega a lo alto de la torre de control A6.","Establece una conexión desde el terminal."],"Mosquetón",{"2":[[52.3,49.0],[51.0,48.8]]}],["Apagón","Celeste",[2],["Encuentra la subestación eléctrica al sur del Puerto espacial.","Encuentra alguna pista sobre el ingeniero desaparecido.","Instala el fusible.","Restablece la energía."],"Cables ×5, Compuesto explosivo ×5",{"2":[[59.5,78.3],[59.0,78.7],[59.1,78.7],[57.9,77.0]]}],["Escondite de comunicaciones","Shani",[1],["Llega a la torre roja en el casco antiguo.","Busca la célula de batería perdida.","Instala la célula de batería en el generador.","Dale energía al generador.","Enciende el terminal de la antena cerca de la torre roja."],"Yunque III, Munición pesada ×40",{"1":[[60.6,67.9],[61.3,66.9],[60.7,68.0],[58.9,67.2],[61.3,71.0]]}],["Amenaza titilante","Celeste",[0],["Encuentra la sala del generador.","Repara el generador usando 4 cables.","Encuentra el conducto de ventilación.","Activa la corriente con el interruptor bajo las escaleras."],"Piezas de armas medianas ×5, Componentes mecánicos avanzados ×3",{"0":[[65.4,26.0],[69.5,26.1]]}],["A la refriega","Shani",[1,2,3,0],["Destruye un saltador.","Consigue una unidad de impulso de saltador."],"Vulcano III, Munición de escopeta ×40",{}],["Allanar el camino","Apollo",[3,1,0],["Ve a cualquier edificio de ENELICA.","Busca un tablón de anuncios con una nota de la investigadora.","En Ciudad enterrada, llega a la planta superior sobre el Convinio en Piazza Roma.","Encuentra el piso de la investigadora y busca datos de la investigación."],"Llave de trampilla de raider, Granada rastreadora ×3",{"0":[[63.5,26.0],[63.7,25.7],[78.8,33.5],[41.9,53.4],[60.3,55.6],[68.6,34.7],[69.2,26.1],[58.3,54.5]],"1":[[38.9,56.4],[43.3,59.2]],"3":[[56.8,59.9]]}],["¡Abejas!","Celeste",[3],["Llega al olivar en Puerta azul.","Busca colmenas en el olivar."],"Componentes eléctricos avanzados, Sensores ×3",{"3":[[39.0,70.7],[41.7,76.1],[44.6,69.0],[43.4,69.6]]}],["Reconocimiento de combate","Shani",[1],["Busca un punto de cobertura en las escaleras del aparcamiento.","Busca un punto de cobertura en los autobuses que hay cerca del parque de Marano.","Busca un punto de cobertura en los áticos de la avenida principal.","Destruye 2 vigías.","Entrégale un repetidor de vigía a Shani."],"Petardo ×5, Caja de fuegos artificiales",{"1":[[45.9,51.2],[51.9,38.4],[48.8,65.6],[48.7,71.2],[54.8,63.6],[51.8,73.7],[51.0,64.1],[58.9,60.4],[46.3,50.2],[49.5,64.8],[58.4,67.3],[53.0,62.3],[59.1,64.5],[46.9,50.2],[52.6,42.1],[45.9,50.6],[57.6,67.5]]}],["Café","Apollo",[1],["Busca una máquina de cafés para desguazarla y llevarte piezas de repuesto.","Consigue las piezas de máquina de cafés para Apollo."],"Cafetera, Inyección de adrenalina ×3",{"1":[[48.6,69.7],[39.8,67.6],[59.2,36.4],[45.9,63.1],[44.0,51.8]]}],["Descifrando los datos","Shani",[2],["Usa el descifrador magnético en el edificio de control de combustible.","Llega al edificio de llegadas en el Puerto espacial.","Usa el descifrador magnético en la planta superior del edificio de llegadas."],"Desfibrilador ×3, Pionero ×3",{"2":[[62.5,33.8],[38.4,28.1],[37.8,25.5],[38.7,26.1]]}],["Revolucionario","Apollo",[3],["Entra en la habitación cerrada de cima del peregrino.","Registra la sala en busca de investigación sobre construcción.","Encuentra el edificio que había en la pizarra.","Fotografía el proyecto de viviendas abandonado."],"Varilla de energía",{"3":[[76.7,22.4],[77.1,46.4],[78.4,41.9],[74.5,47.5],[76.0,45.3],[75.7,49.3],[78.9,45.8],[77.5,44.1],[75.0,44.6],[76.8,49.3],[76.6,23.8],[75.7,42.1],[75.0,46.5],[79.3,43.5],[79.5,40.5],[77.0,42.5],[77.7,45.1],[77.3,40.6],[76.3,47.2],[75.2,52.6]]}],["La vida de una farmacéutica","Lance",[1],["Encuentra la farmacia Arbusto junto a la autopista derrumbada.","Documenta los pasatiempos del farmacéutica.","Documenta la familia de la farmacéutica.","Documenta los gustos de la farmacéutica.","Documenta las habilidades de la farmacéutica."],"Desfibrilador, Cargador de escudos de sobrecarga",{"1":[[68.0,59.4],[68.3,59.0],[67.1,59.5],[69.1,60.1],[70.2,58.8]]}],["Con su sal y pimienta","Celeste",[2],["Ve al ensamblaje de cohetes.","Busca el prototipo de batería escondido en un sitio elevado.","Lleva el prototipo de batería al recargador industrial.","Usa la maquinaria para cargar la batería.","Deja la batería cargada en el punto de entrega situado en la esquina."],"Plano de aerosol Vita",{"2":[[66.6,34.2],[65.4,34.8],[65.3,33.2],[65.3,34.9],[66.2,37.0]]}],["Callejón sin salida","Shani",[3],["Encuentra las instalaciones subterráneas de MANTIKOR.","Busca una forma de entrar en la sala cerrada del ala de seguridad.","Busca en la sala cerrada cualquier registro sobre el proyecto Perenne.","Encuentra el carrete de película polvoriento.","Entrégale el carrete de película polvoriento a Shani."],"Monedas ×2000",{"3":[[50.0,34.1],[49.2,34.9],[48.7,35.2],[51.4,29.0],[47.8,31.0]]}],["Un rastro tóxico","Shani",[0],["Vuelve a la toma de agua bajo el edificio de control del tratamiento de aguas.","Busca en el pantano pistas sobre la procedencia del barril.","Saca una foto del barril.","Busca en el camión pistas sobre la identidad del saboteador."],"Táctico Ver. 2, Tirolina ×3",{"0":[[38.4,46.9],[41.5,46.5],[38.6,46.7],[38.5,46.6],[38.5,46.9]]}],["Marea creciente","Celeste",[1,0],["En Ciudad enterrada, encuentra el apartamento bloqueado del capataz situado al sur de Piazza Roma.","Accede al diario digital del capataz.","En los Campos de batalla de la Presa, llega al complejo de producción de electricidad.","Busca una forma de entrar en la zona de acceso controlado.","Busca en la zona de acceso controlado pistas sobre el proyecto de reconstrucción del capataz."],"Yunque II, Divisor Yunque",{"0":[[71.2,28.8],[65.0,32.2],[65.9,33.4]],"1":[[37.8,53.9],[37.6,53.3],[40.5,54.4]]}],["Trapos sucios","Celeste",[1],["Encuentra las casas Santa María en el casco antiguo.","Encuentra el punto de entrega dentro del patio."],"Componentes eléctricos avanzados ×2, Componente de altavoz ×4",{"1":[[50.6,63.3],[51.1,65.8]]}],["Oídos sordos","Lance",[4],["Encuentra los registros de los invitados de la investigadora en los ordenadores de la recepción.","Encuentra el lugar donde la investigadora dio su ponencia y hazte con sus notas.","Encuentra información acerca de los prototipos en los ordenadores de investigación médica.","Encuentra los registros de envío impresos en los talleres de ensamblaje."],"Granada señuelo ×3, Generador de ruido ×5",{"4":[[4.6,65.8],[66.1,30.7],[62.7,41.7],[18.7,5.8],[56.7,14.1],[3.5,44.8],[50.1,20.9],[49.6,21.1],[63.7,33.9],[52.8,14.2],[0.0,54.7],[49.8,13.7],[50.2,14.4],[53.4,14.1],[64.4,30.7],[2.7,57.6],[48.7,13.7],[49.9,21.9],[0.2,57.6]]}],["El tufo de la corrupción","Shani",[2],["Llega al vestíbulo suroeste del edificio de salidas.","Encuentra el vestuario.","Registra la sala en busca de pistas sobre la identidad del saboteador.","Llega a los túneles bajo el Puerto espacial.","Usa la llave en cualquier terminal de descarga para eludir el protocolo de anulación."],"Ambientador, Llave de la sala de personal de la presa",{"2":[[36.3,38.7],[37.0,40.8],[41.9,37.7],[48.4,43.2],[42.6,38.4],[40.9,34.2],[41.0,32.3],[41.0,35.1],[44.4,28.2],[46.8,41.8],[46.0,25.8]]}],["Registros fragmentados","Shani",[4],["En cualquiera de las salas de control de la zona de pruebas robóticas, repara el terminal averiado con 1 componente eléctrico.","Activa la corriente en cualquiera de las salas del conducto cerca de la zona de pruebas robóticas.","Enciende el terminal de datos principal en la sala de servicio de los archivos culturales."],"Aguafiestas ×3, Pionero ×3",{"4":[[33.3,59.4],[46.3,50.5],[89.1,56.6],[49.4,56.3],[33.9,33.7],[45.4,42.9],[38.2,79.6],[38.0,62.5]]}],["Biblioteca en construcción","Apollo",[1],["Encuentra la biblioteca en el centro urbano.","Encuentra 1 libro de romance.","Encuentra 1 novela policíaca.","Encuentra 1 libro de aventuras.","Entrégale 3 libros a Apollo."],"Mina explosiva, Mina de choque",{"1":[[44.4,39.0],[46.0,37.1],[46.6,38.4]]}],["Vuelco","Celeste",[2],["Ve a la torre de la trinchera norte.","Encuentra los archivos de chantaje y mándaselos a Celeste."],"Piezas de arma pesada ×2, Piezas de armas medianas ×2",{"2":[[57.5,18.1],[58.4,18.9],[58.2,18.1]]}],["En el mapa","Lance",[2],["Ve al lugar donde se rompieron las líneas de suministro de combustible y transmite tu posición.","Ve a la antena que hay cerca del control de combustible y transmite tu posición.","Ve al campo de cactus que hay en la brecha del muro y transmite tu posición.","Transmite tu posición desde el tejado del almacén de contenedores.","Encuentra el contenedor tapado con una lona y márcalo."],"Venda esterilizada ×3, Cargador de escudos de sobrecarga ×3",{"2":[[61.6,30.9],[63.3,50.3],[63.1,51.2],[66.3,46.0],[36.8,50.0],[45.5,17.0],[40.0,48.4],[45.3,21.7],[45.0,20.8],[38.2,48.9],[36.8,47.6],[63.4,55.1],[37.1,46.7],[64.6,44.3],[38.4,49.0],[37.9,46.6],[40.6,47.8],[44.7,17.9],[63.9,46.6],[38.8,46.3],[38.4,45.7],[63.3,50.9],[64.0,53.2],[38.6,51.3],[60.5,31.2],[61.8,48.8],[41.2,48.1],[66.0,48.0],[64.4,48.0],[39.7,50.0],[40.4,46.4],[35.7,48.8],[39.6,48.8],[36.8,48.6],[62.9,50.3],[61.2,50.9],[61.0,30.3],[62.9,50.5],[63.8,53.1],[62.9,51.0],[65.2,46.4],[39.0,47.2],[38.3,47.3],[37.6,51.3],[46.0,20.1],[63.9,53.2],[62.0,53.8],[44.1,18.7],[62.8,50.0]]}],["Reuniones clandestinas","Shani",[4],["Busca el lugar de reunión secreto bajo una escalera de la zona de investigación médica.","Encuentra el lugar de reunión secreto cerca del conducto de ventilación entre la zona de pruebas robóticas B y el depósito de semillas.","Encuentra el lugar de reunión secreto al pie de la escalera que conecta los archivos culturales y el depósito de semillas.","Inspecciona el área de reunión.","Entrégale la información de reuniones secretas a Shani."],"Afelio, Clip de energía ×5",{"4":[[45.8,73.6],[60.9,59.7],[60.1,59.1]]}],["Un nuevo tipo de planta","Lance",[0],["Busca la planta nueva cerca del cascarón de barón en el antiguo campo de batalla.","Entrégale la planta posiblemente tóxica a Lance."],"Inyección de Vita, Antiséptico ×5",{"0":[[31.4,41.7],[31.0,42.0],[30.3,41.4],[30.9,41.0],[31.3,41.0],[31.0,40.8]]}],["Última entrada","Shani",[4],["Encuentra el puesto de trabajo adecuado en el depósito de semillas y accede a él para buscar pistas.","Busca la llave escondida en la sala contigua.","Registra el depósito de semillas y abre la caja de semillas.","Registra la caja del depósito de semillas.","Entrégale los documentos de cancelación oficiales a Shani."],"Barra de luz amarilla",{"4":[[70.1,75.8],[72.5,71.1],[67.1,92.2]]}],["Una línea en la arena","Celeste",[1],["Averigua por qué el tren nunca llegó a la estación de Marano.","Descubre quién orquestó el robo.","Averigua dónde escondieron las válvulas de propulsor.","Registra el sótano del apartamento cercano del comerciante."],"Módulos del Éxodo ×2, Acelerador Magnético ×2",{"1":[[29.2,48.4],[34.5,48.0],[53.3,27.6],[63.0,25.0],[26.8,44.9],[28.7,51.9]]}],["Transportes blindados","Tian Wen",[3],["Llega al control de seguridad.","Registra las casetas de vigilancia en busca de una tarjeta de coche patrulla blindado.","Llega al túnel de autopista que hay cerca del control de seguridad de Puerta azul.","Encuentra y abre la puerta trasera de un coche patrulla blindado."],"Granada de humo ×3, Desfibrilador ×3",{"3":[[55.9,37.9],[58.8,34.7],[44.7,48.9],[64.5,25.4],[55.6,40.6],[46.0,51.0],[34.2,61.1],[51.2,38.2]]}],["Puerto seguro","Tian Wen",[5],["Encuentra la pista que dejó el personal de cocina.","Encuentra la zona del dibujo.","Desentierra la parte cubierta de arena.","Entrégale el cardán de precisión a Tian Wen."],"Surge Coil, Piezas de arma pesada",{}],["Un contratiempo","Celeste",[2],["Registra los autobuses junto a la puerta oeste.","Encuentra el alijo de suministros saboteados oculto en las torres de agua."],"Componentes mecánicos ×5, Componentes de modificación ×3",{"2":[[30.5,34.2],[13.4,29.2]]}]];
+    // zonas de aparición: {enemigo: {mapa: [[x%, y%], …]}} (MetaForge, calibrado sobre cada imagen)
+    const SP = {"Pop":{"0":[[49.7,30.4],[58.3,56.8],[67.7,68.3],[57.5,53.2],[42.7,52.7],[68.9,69.7],[45.8,49.9],[38.1,37.4],[58.3,57.0],[70.8,55.7],[63.5,39.4],[51.9,59.8],[58.5,53.2],[56.6,54.1],[54.7,34.7],[53.3,35.2],[48.0,37.0],[66.5,26.8],[70.9,30.2],[42.3,49.6],[65.9,32.2]],"1":[[44.2,39.4],[46.6,40.3],[52.8,28.4],[57.5,29.1],[60.5,38.8],[62.1,40.1],[53.6,40.4],[50.0,63.7],[55.2,46.3],[55.2,46.3],[51.7,34.3],[49.3,30.4],[44.7,52.6],[41.3,65.1],[42.2,65.3],[52.3,33.4],[53.4,39.2],[32.9,62.8],[32.4,65.1],[31.7,64.7],[31.7,65.9],[57.9,64.3],[49.6,71.3],[50.3,70.8],[53.8,63.3],[54.4,63.7],[41.6,68.2],[63.9,62.4]],"2":[[46.7,66.5],[68.8,74.9],[62.4,65.1],[43.7,18.5],[28.3,13.2],[25.7,44.5],[53.3,56.6],[45.7,19.3],[56.0,48.1],[68.0,36.1],[66.9,35.4],[40.4,38.9],[58.8,60.2],[39.3,27.3],[40.5,25.5],[38.9,27.1],[37.2,38.6],[38.4,37.5],[53.5,48.4],[52.5,48.6],[55.3,54.7],[60.7,51.2],[61.6,52.3],[62.4,55.4],[62.9,55.3],[63.7,55.0],[46.5,65.5],[77.9,40.7],[77.6,41.0],[31.0,63.7],[55.5,57.9],[55.2,57.9],[48.8,33.7],[48.9,33.7],[48.8,33.7],[21.9,19.3]],"3":[[57.9,45.5],[54.8,38.8],[56.6,25.4],[62.9,25.5],[62.5,29.9],[63.5,31.4],[39.9,20.4],[77.2,22.1],[32.4,15.7]],"4":[[51.1,10.1],[9.0,24.1],[8.3,17.5],[33.8,61.3],[40.0,67.4],[4.8,1.8],[50.2,31.2],[55.9,33.2],[57.3,29.8],[66.6,32.4],[78.3,40.4],[75.8,39.9],[42.6,57.0],[56.2,69.7],[56.2,61.0],[78.9,51.8],[5.9,27.9],[52.4,10.2],[44.0,72.4],[45.6,70.8],[52.8,62.9],[58.9,60.0],[57.1,58.1],[41.2,39.0],[38.6,37.5],[59.3,61.8],[38.5,43.3],[35.2,45.2],[36.8,72.4],[40.0,74.5],[34.2,71.4],[35.7,69.3],[37.2,57.2],[38.1,56.5],[41.3,14.3],[41.4,15.4],[61.3,13.5],[11.9,54.9],[13.2,50.4],[35.6,53.2],[10.7,5.9],[13.9,12.9],[47.0,13.0],[46.7,13.6],[2.5,16.9],[3.1,27.5],[23.4,27.7],[42.0,32.9],[36.4,54.2],[41.1,67.8],[41.2,77.2],[41.2,63.2],[42.2,56.3],[42.1,57.3],[54.3,11.1],[55.9,11.2]]},"Tick":{"0":[[65.3,25.7],[69.8,66.7],[34.1,27.3],[58.3,58.4],[69.5,65.8],[41.3,22.7],[36.8,21.2],[30.2,29.8],[72.7,31.5],[67.4,27.4],[54.0,29.8],[40.8,19.1],[59.6,54.7],[48.5,37.8],[55.8,48.7],[33.0,27.6],[48.2,36.6],[41.7,53.5],[61.3,54.9],[36.6,39.5],[48.9,51.8],[65.6,32.4]],"1":[[56.0,40.0],[54.6,38.3],[58.4,44.6],[54.0,43.8],[54.4,28.1],[58.7,62.0],[62.6,60.3],[45.8,65.2],[43.1,53.5],[68.5,61.3],[57.3,64.0],[42.1,38.7],[40.6,44.4],[47.6,55.9],[61.2,69.0],[49.5,64.6],[54.1,71.4]],"2":[[62.2,54.1],[38.3,36.6],[37.6,37.1],[44.7,18.6],[45.9,18.2],[38.2,25.6],[45.2,19.4],[50.7,35.6],[50.8,35.7],[25.7,44.6],[30.9,63.9],[52.8,42.7],[55.8,47.6],[79.2,40.9],[49.4,34.1],[48.9,33.6],[57.9,64.6],[55.3,55.1]],"3":[[62.8,47.8],[58.6,44.8],[40.6,20.5],[39.5,18.6],[66.2,30.9],[53.3,82.3],[60.4,39.5],[51.5,28.9]],"4":[[82.6,54.6],[79.3,60.7],[4.7,67.1],[2.5,47.3],[77.2,35.3],[78.3,38.0],[3.2,62.8],[65.6,33.3],[58.7,32.6],[64.4,81.8],[64.4,83.5],[65.6,80.7],[64.4,91.8],[66.1,87.0],[72.6,83.8],[72.6,80.2],[72.7,91.2],[72.6,95.1],[76.1,81.8],[76.2,85.8],[76.1,91.7],[76.1,94.3],[67.6,83.5],[67.5,92.2],[72.6,56.9],[70.5,69.3],[84.9,57.3],[82.7,41.2],[55.1,47.4],[75.6,53.5],[83.3,53.4],[84.8,52.5],[77.9,36.0],[2.9,65.5],[88.4,39.8],[6.8,47.6],[68.1,34.9],[63.8,31.7],[66.0,35.2],[35.1,17.6],[46.0,19.3]]},"Turret":{"0":[[57.7,57.0],[61.1,54.6],[41.1,51.0],[57.7,57.9],[56.9,55.5],[60.3,57.0],[69.5,26.8],[52.6,51.1],[69.8,65.7],[68.7,67.1],[49.4,51.9],[71.2,30.6],[69.3,26.4],[65.3,32.7],[69.5,67.5],[69.1,68.3],[44.7,50.4],[42.8,52.9],[58.1,53.3],[59.8,54.8],[58.6,56.3],[70.4,66.0],[65.0,31.8],[59.7,54.1],[60.2,54.2],[64.7,32.2],[61.6,54.5],[61.0,54.8],[46.0,49.7],[64.9,32.8],[59.5,53.1]],"1":[[47.4,66.0],[48.8,70.4],[61.8,63.3],[53.4,43.4],[54.0,44.1],[58.7,37.5],[60.4,37.2],[50.7,32.4],[52.5,34.2],[55.9,33.1],[33.9,61.7],[53.9,53.6],[54.0,61.6],[65.5,62.8],[55.8,41.8],[61.4,36.6],[64.3,62.0],[41.3,51.7],[52.4,36.2],[54.6,71.7],[49.1,28.9],[42.3,51.7],[57.7,43.3],[48.9,70.8],[44.5,50.4],[62.7,64.4],[32.2,62.0],[59.5,64.8],[53.5,54.6],[41.1,37.9],[51.1,31.4],[53.6,70.9],[41.6,50.9],[47.9,69.6],[53.2,62.8],[52.5,32.4],[55.4,41.7],[56.3,45.1],[64.7,62.8],[45.1,39.5],[43.7,40.2],[53.0,35.4],[53.8,53.8],[44.2,50.6],[56.7,46.0],[53.7,70.6],[54.2,70.5],[44.4,51.7],[56.9,46.7],[50.9,63.3],[49.5,31.1],[55.6,41.6],[54.0,71.7],[58.6,45.3],[58.6,65.3],[56.6,43.4],[64.2,61.8],[50.4,63.1],[53.9,64.1]],"2":[[62.4,25.8],[54.9,48.5],[51.3,49.1],[57.4,19.4],[38.6,39.3],[50.6,35.4],[38.3,27.8],[56.2,20.6],[64.6,37.2],[37.7,36.0],[40.9,33.2],[33.9,29.9],[61.4,52.7],[40.6,22.1],[39.5,24.7],[49.5,34.4],[40.5,38.8],[42.0,50.0],[64.4,53.6],[55.2,56.6],[53.7,55.6],[51.7,42.9],[53.3,48.9],[54.6,55.8],[48.9,33.7],[51.7,49.7],[38.8,40.1],[40.9,38.8],[40.8,22.6],[51.1,35.6],[64.8,35.6],[33.6,30.3],[61.7,53.7],[36.5,37.9],[37.8,37.5],[41.6,50.1],[66.9,36.1],[39.2,24.3],[38.6,38.1],[60.9,50.9],[38.1,38.5],[38.7,26.6],[51.0,43.6],[39.1,39.6],[55.2,56.4],[61.5,51.9],[38.5,37.5],[58.0,64.7],[54.4,47.7],[40.6,33.7],[63.5,50.3],[57.8,64.0],[39.1,25.7]],"3":[[58.4,28.8],[59.7,45.3],[60.4,45.9],[60.8,30.2],[29.7,32.2],[51.6,28.8],[76.0,20.9],[62.6,24.5],[75.3,23.7],[56.8,47.1],[66.5,50.0],[63.2,40.6],[58.7,31.6],[64.1,34.8],[62.3,41.8],[51.4,28.3],[51.9,29.9],[64.4,35.0],[51.1,31.2],[50.9,34.2],[76.4,23.3],[51.5,33.3],[30.3,32.2],[53.1,33.8],[63.5,36.5],[59.2,32.0],[66.7,49.3],[58.9,44.8],[75.1,24.2],[57.3,31.3]],"4":[[46.6,13.7],[71.5,83.5],[54.2,21.1],[33.9,24.1],[36.6,52.3],[18.0,46.4],[17.2,46.5],[37.6,76.3],[36.6,65.5],[34.5,22.2],[69.1,32.6],[75.8,39.0],[36.6,36.7],[52.4,19.3],[55.0,49.5],[56.5,50.7],[54.9,14.7],[61.0,15.8],[12.1,62.8],[47.7,34.9],[51.4,13.0],[67.0,91.2],[4.5,32.8],[65.2,95.9],[20.0,62.8],[0.4,24.9],[9.0,61.6],[75.3,91.2],[64.0,89.0],[18.4,61.2],[62.4,42.7]]},"Bastion":{"0":[[68.2,32.9],[51.6,33.7],[50.8,36.2],[53.2,32.1],[61.7,61.7],[55.6,51.2],[54.5,66.5]],"1":[[56.4,64.1],[56.4,35.4],[49.9,44.5],[51.8,51.3],[64.3,58.7],[37.4,59.5],[55.7,49.6]],"2":[[44.3,42.1],[60.5,21.9],[53.6,16.4],[60.8,42.6],[58.0,52.8],[33.3,42.0],[47.5,47.8],[32.8,52.5],[57.3,49.3],[45.5,33.1]],"3":[[52.2,46.4],[56.0,38.8],[58.2,30.7],[61.0,43.9],[52.3,44.9],[46.2,75.8],[43.9,39.3],[51.2,43.6]],"4":[[15.7,57.7]]},"Fireball":{"0":[[58.0,56.6],[54.2,35.9],[41.4,49.9],[67.9,69.6],[59.2,54.6],[47.8,36.5],[38.3,22.4],[64.9,25.3],[53.9,30.5],[66.1,26.5],[70.5,29.9],[41.9,52.5],[65.1,31.6]],"1":[[72.2,50.7],[60.4,40.6],[38.2,34.1],[39.4,59.1],[51.0,33.8],[50.3,63.7],[54.8,53.3],[42.3,64.7],[56.1,42.6],[33.5,63.0],[54.1,39.5],[45.3,53.0],[44.1,50.9],[38.2,56.3],[33.7,61.0],[57.3,64.7],[49.7,72.5],[54.5,62.9],[54.5,28.3],[64.6,62.6],[46.8,55.5]],"2":[[79.5,41.7],[56.6,47.1],[53.0,48.7],[51.3,36.0],[57.9,56.5],[39.4,37.7],[39.9,25.5],[56.6,20.8],[44.8,18.9],[45.9,18.7],[56.4,48.5],[53.6,56.2],[53.7,54.4],[53.9,56.5],[55.7,57.8],[22.2,19.6]],"3":[[54.4,37.5],[40.9,23.1],[55.3,32.8],[43.3,24.4],[51.5,29.0],[53.5,41.2],[31.8,16.1],[62.7,39.3],[64.1,35.8],[50.3,36.8]],"4":[[40.1,55.1],[12.2,18.4],[14.7,47.1],[11.9,44.8],[37.3,43.8],[6.3,2.2],[53.5,34.6],[77.4,42.5],[40.3,57.4],[57.1,62.7],[56.1,12.3],[35.8,58.2],[41.2,44.2],[38.7,74.9],[34.4,72.1],[40.3,53.7],[11.7,6.0],[1.5,17.2],[63.6,65.3],[86.8,45.5],[81.1,57.6],[48.3,11.8],[48.7,19.0],[55.7,10.2],[65.8,66.3],[73.4,45.4],[23.3,26.2],[25.1,26.4],[39.5,46.6],[43.1,35.2],[61.7,3.1],[58.2,24.8],[34.9,74.5]]},"Rocketeer":{"0":[[78.3,49.2],[49.2,44.7],[48.9,34.3],[66.6,22.8],[67.6,65.4],[43.8,29.6],[48.9,55.3],[62.6,36.0],[48.7,36.8],[68.9,24.6],[70.9,64.6],[41.1,38.2],[68.0,64.0],[51.5,32.2],[62.0,43.1],[75.2,49.5],[41.7,39.5],[61.6,52.3],[50.4,41.0],[56.4,30.7],[48.9,53.9],[50.7,41.9],[47.6,53.6],[51.4,32.2],[62.5,27.0]],"1":[[52.9,66.5],[34.6,50.6],[53.4,31.7],[44.9,37.3],[37.6,53.2],[54.1,60.2],[63.2,53.9]],"2":[[46.9,31.8],[46.0,46.9],[63.4,40.6],[58.2,21.6],[49.6,35.7],[51.3,29.4],[56.8,52.0],[29.7,37.3],[52.0,19.1],[52.7,35.0],[62.8,44.0],[47.9,48.9],[40.0,32.7],[66.3,47.3],[49.7,36.0],[52.4,65.6],[45.4,32.5],[48.9,53.1],[58.2,49.8],[62.8,44.0],[71.4,33.6]],"3":[[45.0,59.8],[50.8,38.4],[50.8,30.2],[58.5,47.1],[41.1,35.1],[56.5,58.6],[27.9,48.0],[30.7,20.3],[75.0,25.3],[41.2,44.6],[54.6,65.1],[28.9,34.9],[70.0,42.2]]},"Hornet":{"0":[[48.7,37.8],[70.3,29.4],[52.0,28.1],[48.6,34.9],[70.9,64.0],[50.8,48.9],[77.7,30.4],[48.1,36.8],[66.9,24.8],[51.5,56.5],[57.9,24.7],[48.2,36.7],[57.0,64.7],[64.8,66.3],[68.0,35.1],[64.4,22.7],[57.4,44.4],[52.0,36.6],[53.1,37.3],[76.9,45.7],[35.8,59.4],[46.2,35.1],[41.8,25.9],[56.9,38.7],[53.5,64.0],[42.1,53.5],[77.4,52.8],[54.8,52.8],[55.1,46.0],[45.9,47.9],[40.6,53.9],[45.2,38.5],[74.0,43.1],[36.2,34.2],[69.4,24.3],[63.9,35.6],[63.2,20.2],[50.1,53.3],[75.8,36.0],[63.6,38.9],[62.1,37.6],[58.1,54.9],[57.4,70.7],[62.3,65.3],[33.6,54.0],[44.7,46.2],[70.4,42.6],[72.8,64.3],[65.6,32.1],[72.0,53.0],[51.0,36.9],[57.0,60.6],[59.4,55.3],[68.8,23.4],[68.9,57.6],[50.0,38.3],[45.6,56.8]],"1":[[51.3,37.7],[62.7,40.3],[34.6,50.3],[40.5,64.4],[30.5,41.6],[49.0,57.1],[52.7,64.0],[60.7,60.3],[57.0,55.3],[65.1,48.2],[46.5,27.8],[61.7,52.5],[52.4,68.5],[37.3,65.1],[37.5,60.3],[54.0,72.2],[51.7,49.6],[46.8,53.2],[43.8,56.0],[47.3,33.5],[37.5,59.1],[52.5,71.9],[49.4,24.9],[60.1,61.4],[42.6,50.8],[44.3,42.7],[51.4,68.5],[50.8,39.7],[51.6,45.0],[48.8,66.6],[59.1,65.2],[66.7,62.7]],"2":[[51.8,22.9],[31.4,44.6],[60.2,56.6],[59.2,19.9],[59.3,20.0],[63.1,24.8],[53.9,17.4],[44.9,33.4],[49.8,16.9],[56.6,54.8],[30.9,50.0],[64.3,44.4],[52.5,63.6],[48.6,18.2],[46.1,47.2],[66.6,56.2],[49.4,42.8],[68.4,42.9],[53.6,27.6],[46.5,45.7],[65.4,33.7],[55.2,40.4],[69.9,33.6],[62.4,68.3],[41.0,27.4],[77.0,42.0],[55.3,51.3],[51.5,37.0],[62.5,56.2],[58.6,24.4],[27.9,34.3],[51.7,36.9],[57.1,54.2],[43.8,26.4],[46.4,24.6],[39.0,17.3],[60.7,42.8],[40.1,18.9],[60.9,45.1],[54.4,66.1],[43.4,21.6],[62.5,39.5],[66.4,27.4],[57.1,63.0],[48.2,47.6],[35.8,44.3],[27.8,33.0],[42.2,58.7],[42.0,26.5],[37.8,45.0],[45.0,48.6],[39.9,28.5],[32.9,24.5],[47.2,36.0],[61.5,59.3],[35.5,38.6],[32.5,54.4],[52.0,40.5],[53.8,59.7],[33.2,41.9],[61.4,48.4],[55.2,32.5],[54.7,55.7],[61.7,57.7],[59.1,35.6],[56.0,33.4],[51.4,51.3],[43.3,26.4],[48.6,33.9],[60.5,65.7],[39.4,39.9]],"3":[[49.9,63.7],[56.9,50.0],[58.7,48.7],[64.5,28.0],[44.5,25.3],[53.2,40.5],[41.5,33.5],[48.6,75.1],[76.4,23.0],[26.4,33.9],[67.1,33.2],[48.9,48.1],[37.0,33.8],[33.5,22.8],[57.1,77.8],[47.6,53.8],[78.4,26.1],[46.2,46.2],[60.6,50.2],[21.1,53.6],[55.0,61.8],[55.3,34.0],[30.2,39.0],[54.4,56.9],[31.1,59.0],[25.7,60.5],[34.9,35.3],[32.3,28.6],[60.9,52.6],[51.8,80.5],[68.2,33.3],[33.2,24.1],[74.2,37.6],[42.8,76.8],[57.8,41.1],[61.3,68.8],[65.2,51.7],[61.1,53.4],[55.6,49.5],[38.3,31.1],[68.3,54.5],[21.2,27.9],[33.5,33.7],[67.3,40.1],[57.1,37.4],[46.5,82.8],[43.1,50.6],[45.1,58.5],[54.2,67.3],[31.6,66.2],[56.9,35.3],[60.5,29.1]],"4":[[15.0,41.9],[45.0,68.6],[53.1,22.8],[48.7,35.5],[24.6,57.5],[15.3,60.6]]},"The Queen":{"0":[[78.0,45.7]],"2":[[52.8,68.3]],"3":[[38.1,42.4]]},"Sentinel":{"0":[[58.6,59.9],[60.1,43.4],[62.2,36.1],[62.3,31.3],[56.3,47.2],[51.6,53.0],[64.9,42.7],[69.3,26.6],[47.9,35.5],[62.4,63.7],[58.4,59.7],[54.4,34.9],[41.9,48.9]],"1":[[53.5,53.4],[59.2,57.1],[38.1,65.7],[50.2,33.6],[58.9,38.2],[48.6,45.0],[45.9,54.2],[66.8,56.9],[39.6,57.0],[63.6,62.8],[51.1,73.9],[53.0,66.2]],"2":[[61.6,48.6],[57.2,49.1],[58.2,19.6],[55.7,22.0],[41.1,49.1],[37.8,44.2],[60.1,50.0],[51.7,37.6],[47.1,33.8],[39.9,27.2],[51.9,23.8],[51.1,48.3],[59.4,53.8],[61.3,31.1],[63.5,43.0],[54.9,21.3],[42.2,38.6],[34.8,34.9]],"3":[[77.0,23.3],[54.0,39.0],[57.5,29.0],[30.0,32.1],[58.2,31.6],[52.9,43.5],[66.3,30.5],[26.4,50.3],[38.7,45.8],[57.4,27.8],[42.8,30.4],[59.9,39.4],[57.2,51.0],[44.7,54.8],[77.6,20.3],[52.7,43.2],[52.5,62.1],[45.5,31.0]],"4":[[50.4,64.7],[46.9,59.9]]},"Wasp":{"0":[[77.0,29.3],[75.1,29.4],[77.3,30.1],[69.9,28.1],[68.5,28.1],[38.7,30.5],[63.8,31.2],[47.0,37.3],[67.2,34.8],[63.5,31.4],[47.0,36.2],[51.0,37.0],[51.3,32.6],[32.3,63.0],[70.0,64.0],[50.7,47.7],[53.4,33.3],[48.3,41.0],[39.1,28.7],[52.7,60.5],[62.1,69.7],[44.1,53.5],[48.0,38.2],[75.3,41.7],[44.6,54.7],[56.8,25.1],[67.1,57.5],[74.7,56.6],[66.7,34.5],[45.4,40.5],[80.3,46.2],[70.0,27.3],[59.1,54.1],[61.6,38.3],[53.5,52.2],[66.7,67.5],[44.5,55.9],[72.0,45.9],[30.5,53.7],[39.5,55.3],[53.1,52.0],[68.0,45.3],[62.6,64.9],[49.8,59.5],[79.7,39.2],[46.9,38.3],[48.9,24.3],[65.6,30.2],[62.0,67.4],[62.5,20.8],[59.2,32.1],[61.7,65.4],[52.4,36.0],[61.6,40.7],[71.7,65.7],[60.7,72.0],[37.3,40.9],[28.6,48.6],[72.9,55.1],[53.6,45.3],[57.2,61.0],[40.7,51.0],[49.6,31.9],[59.2,33.6],[56.3,48.8],[46.4,48.6],[67.8,50.2],[56.8,37.0],[39.8,44.8],[52.0,47.9],[41.6,51.7],[63.5,23.2],[70.2,51.6],[52.5,57.4],[63.2,64.6],[53.7,60.5],[64.3,39.0],[55.9,34.4],[63.3,22.7],[66.8,50.1],[64.5,41.5],[56.2,46.5]],"1":[[62.8,40.5],[52.0,38.0],[67.9,62.6],[30.4,41.7],[34.6,50.2],[48.1,52.7],[40.6,54.7],[51.3,37.7],[68.6,55.8],[48.4,42.3],[45.9,30.9],[51.8,35.0],[47.0,53.5],[36.7,65.0],[38.3,60.3],[47.3,42.8],[55.1,72.4],[66.4,61.3],[61.1,60.7],[50.7,61.6],[43.2,42.4],[55.0,67.5],[44.1,67.1],[57.2,66.7],[44.8,51.3],[47.7,70.4],[36.0,68.5],[51.8,29.5],[46.0,66.7],[64.4,66.5],[53.3,27.6]],"2":[[46.9,19.0],[60.9,61.7],[60.5,57.0],[54.4,19.8],[54.8,19.9],[41.4,42.0],[57.1,20.0],[57.2,52.7],[45.1,30.8],[56.7,46.8],[29.7,39.6],[35.8,31.3],[54.6,37.9],[39.3,27.9],[63.4,36.6],[42.3,45.1],[62.5,70.6],[38.5,36.6],[48.6,32.5],[56.4,28.6],[49.8,36.3],[42.8,34.0],[50.7,35.2],[52.0,59.4],[33.5,26.3],[28.2,47.2],[55.1,51.9],[68.5,45.3],[39.6,41.9],[59.8,50.4],[50.4,36.7],[49.2,49.1],[52.5,23.6],[70.1,51.7],[54.6,22.6],[37.1,47.9],[66.2,58.7],[42.3,61.1],[55.1,51.9],[57.1,64.7],[51.3,68.1],[58.1,38.8],[69.1,36.1],[32.4,31.4],[36.6,20.9],[52.0,59.3],[56.4,65.1],[63.8,47.5],[45.6,51.5],[51.5,26.0],[27.8,36.4],[30.5,26.8],[38.2,33.0],[63.2,39.8],[65.7,31.1],[49.1,25.8],[53.3,58.7],[53.7,30.0],[60.3,57.8],[36.5,51.9],[63.4,36.6]],"3":[[62.9,45.3],[55.4,54.6],[69.1,43.3],[52.4,31.7],[33.2,24.0],[58.9,30.2],[73.8,23.7],[50.5,48.6],[37.7,44.9],[49.7,42.0],[46.8,75.4],[48.0,72.9],[25.8,51.4],[48.4,52.3],[76.6,22.9],[76.6,22.9],[73.8,23.7],[25.8,33.7],[44.3,56.9],[56.6,73.3],[63.3,29.3],[66.3,70.3],[73.3,56.0],[50.0,46.3],[40.9,35.9],[68.9,28.4],[60.4,66.0],[69.1,46.4],[67.3,29.6],[67.7,45.9],[44.4,77.4],[37.3,57.7],[57.6,47.7],[57.3,22.5],[31.3,25.5],[32.8,36.9],[50.7,72.9],[54.4,65.2],[51.1,28.4],[24.4,36.1],[36.0,65.2],[38.1,39.4],[34.7,28.4],[26.4,39.6],[63.1,52.7],[78.7,36.5],[67.3,52.2]],"4":[[55.6,21.4],[50.0,19.5],[21.8,60.8],[16.5,72.3],[17.3,49.7],[50.1,70.6]]},"Bombardier":{"0":[[53.4,51.9],[60.4,65.5],[54.0,36.9],[53.9,33.1]],"1":[[48.7,42.3],[52.6,39.3],[49.7,66.6]],"2":[[32.3,39.4],[50.7,20.6],[72.1,34.8],[60.7,58.0],[32.2,44.7],[53.0,51.1],[40.1,29.8],[47.4,58.9],[47.0,50.2],[29.5,34.8]],"3":[[49.1,47.5],[30.6,33.3],[57.8,47.6],[50.1,75.5],[62.3,61.5],[70.8,34.7]]},"Snitch":{"0":[[55.6,57.4],[56.6,71.6],[73.4,58.2],[56.6,33.1],[48.4,41.0],[76.3,53.0],[54.5,65.1],[65.5,44.0],[46.7,29.1],[64.3,36.5],[76.9,50.7],[56.7,67.0],[50.6,46.1],[53.8,31.9],[58.6,52.4],[53.8,31.9]],"1":[[60.6,57.4],[59.6,74.4],[67.5,39.8],[61.9,34.4],[55.5,23.6],[35.9,43.1],[40.9,68.3],[48.6,69.2],[39.4,39.5],[58.2,57.8],[58.1,62.6]],"2":[[49.1,57.0],[66.1,50.9],[38.4,30.4],[29.4,39.9],[36.6,17.9],[45.8,60.4],[47.3,24.0],[36.6,53.2],[29.4,39.9],[36.6,17.9],[36.7,53.2],[51.8,25.8]],"3":[[41.7,79.0],[75.2,37.0],[65.2,49.6],[58.8,47.3],[57.8,48.1],[22.9,43.9],[44.0,57.0],[24.9,48.8],[44.5,47.1],[51.1,76.0],[45.5,33.9],[57.3,62.3],[51.0,76.0],[33.4,37.0]]},"Matriarch":{"0":[[39.9,68.0]],"2":[[51.4,42.4]],"3":[[55.3,36.1]]},"Shredder":{"0":[[69.2,30.8],[48.7,37.3],[64.8,32.1],[58.7,56.5],[59.1,45.6]],"1":[[32.1,59.5],[58.4,72.9],[63.0,60.9],[66.1,61.2],[58.0,43.3],[52.6,40.9],[55.2,46.3],[55.0,53.4],[51.4,31.8],[53.3,72.5],[38.4,55.0]],"2":[[36.9,41.7],[42.7,19.3],[36.8,38.7],[53.8,54.9],[62.9,52.4],[46.7,19.5]],"3":[[50.5,33.8],[51.2,31.7],[51.6,29.1],[50.7,31.9]],"4":[[80.8,48.5],[49.1,24.6],[52.8,27.4],[86.5,38.5],[6.0,36.1],[71.2,64.8],[20.5,81.7],[68.3,40.0],[48.2,14.1],[38.5,72.4],[44.9,60.5],[56.6,79.5],[39.5,42.5],[56.0,59.8],[52.9,73.8],[42.9,60.7],[72.4,45.6],[39.8,34.5]]}};
+
+    // [nombre, tipo, amenaza, imagen, mapas, punto débil]
+    const E = [
+      ['The Queen', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_the_queen.webp', [0, 2, 3], 'Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.'],
+      ['Matriarch', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_matriarch.webp', [0], 'Núcleo central brillante, expuesto cuando ataca. También las articulaciones de las patas y las zonas rojas de la corona.'],
+      ['Bastion', 'Asalto pesado', 'Crítica', '/images/arc-raiders/bots/arc_bastion.webp', [0, 2, 3, 1, 4], 'Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.'],
+      ['Bombardier', 'Artillería pesada', 'Crítica', '/images/arc-raiders/bots/arc_bombardier.webp', [0, 2, 3, 1], 'Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.'],
+      ['Leaper', 'Máquina de asedio', 'Crítica', '/images/arc-raiders/bots/arc_leaper.webp', [0, 2, 3, 1], 'El fuego es lo más eficaz. También puedes dispararle al ojo.'],
+      ['Rocketeer', 'Artillería voladora', 'Crítica', '/images/arc-raiders/bots/arc_rocketeer.webp', [0, 2, 3, 1], 'Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.'],
+      ['Fireball', 'Denegación de zona', 'Alta', '/images/arc-raiders/bots/arc_fireball.webp', [0, 2, 3, 1, 4], 'Su núcleo queda expuesto cuando usa el lanzallamas.'],
+      ['Hornet', 'Dron medio', 'Alta', '/images/arc-raiders/bots/arc_hornet.webp', [0, 2, 3, 1], 'Propulsores traseros sin blindaje.'],
+      ['Sentinel', 'Torreta francotiradora', 'Alta', '/images/arc-raiders/bots/arc_sentinel.webp', [0, 2, 3, 1], 'El bidón amarillo sin blindaje será tu objetivo principal.'],
+      ['Shredder', 'Denegación de zona', 'Alta', '/images/arc-raiders/bots/arc_shredder.webp', [4], 'La «barra-ojo» de la cabeza. También el núcleo naranja que se ve entre sus placas.'],
+      ['Spotter', 'Dron explorador', 'Alta', '/images/arc-raiders/bots/arc_spotter.webp', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
+      ['Pop', 'Explosivo', 'Moderada', '/images/arc-raiders/bots/arc_pop.webp', [0, 2, 3, 1, 4], 'Simplemente dispárale.'],
+      ['Snitch', 'Dron explorador', 'Moderada', '/images/arc-raiders/bots/arc_snitch.webp', [0, 2, 3, 1], 'Propulsores o placa inferior.'],
+      ['Tick', 'Depredador de emboscada', 'Moderada', '/images/arc-raiders/bots/arc_tick.webp', [0, 2, 3, 1, 4], 'Simplemente dispárale. También cae de un golpe cuerpo a cuerpo.'],
+      ['Turret', 'Sistema de defensa', 'Moderada', '/images/arc-raiders/bots/arc_turret.webp', [0, 2, 3, 1, 4], 'Sin blindaje: con dispararle basta.'],
+      ['Wasp', 'Dron volador', 'Moderada', '/images/arc-raiders/bots/arc_wasp.webp', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
+      ['Surveyor', 'Reconocimiento', 'Baja', '/images/arc-raiders/bots/arc_surveyor.webp', [0, 2, 3, 1], 'Expone su núcleo de energía cuando dispara su rayo azul al cielo.']
+    ];
+    const TC = { Extrema: 't-ext', 'Crítica': 't-cri', Alta: 't-alt', Moderada: 't-mod', Baja: 't-baj' };
+    const TRC = { Shani: 'c-y', Celeste: 'c-c', 'Tian Wen': 'c-r', Apollo: 'c-o', Lance: 'c-g' };
+    const TRI = { Shani: '../assets/arc/comerciantes/shani.webp', Celeste: '../assets/arc/comerciantes/celeste.webp', 'Tian Wen': '../assets/arc/comerciantes/tian-wen.webp', Apollo: '../assets/arc/comerciantes/apollo.webp', Lance: '../assets/arc/comerciantes/lance.webp' };
+    const foe = S.foe || null;
+    const qs = S.qs === undefined ? null : S.qs;
+    const pin = S.pin === undefined ? null : S.pin;
+
+    const qCountOf = (i) => Q.filter((q) => q[2].indexOf(i) >= 0).length;
+    const tabs = MAPS.map((x, i) => ({
+      n: x.n, img: x.img, q: qCountOf(i), on: i === m ? 'on' : '', sel: i === m ? 'true' : 'false',
+      pick: () => this.setState({ m: i, floor: 'up', tr: 'Todos', zi: 0, px: 0, py: 0, foe: null, qs: null, pin: null })
+    }));
+
+    const cur = MAPS[m];
+    const lower = cur.lower && floor === 'lo';
+    const mq = Q.map((q, qi) => q.concat([qi])).filter((q) => q[2].indexOf(m) >= 0);
+    const ptsOf = (q) => (lower ? [] : (q[5][m] || []));
+    const centroid = (pts) => pts.reduce((a, p) => [a[0] + p[0] / pts.length, a[1] + p[1] / pts.length], [0, 0]);
+    const counts = {};
+    mq.forEach((q) => { counts[q[1]] = (counts[q[1]] || 0) + 1; });
+    const tf = [{ n: 'Todos', k: mq.length }].concat(Object.keys(counts).sort((a, b) => counts[b] - counts[a]).map((t) => ({ n: t, k: counts[t] }))).map((f) => ({
+      n: f.n, k: f.k, c: TRC[f.n] || '', on: f.n === tr ? 'on' : '', pick: () => this.setState({ tr: f.n })
+    }));
+    const selectQuest = (qi) => {
+      if (qs === qi) { this.setState({ qs: null, pin: null, zi: 0, px: 0, py: 0 }); return; }
+      const pts = ptsOf(Q[qi]);
+      this.setState({ qs: qi, foe: null, pin: null, tab: 'q', zi: pts.length ? 1 : 0, px: 0, py: 0 });
+    };
+    const quests = mq.filter((q) => tr === 'Todos' || q[1] === tr).map((q) => {
+      const qi = q[6], open = qs === qi, pts = ptsOf(q);
+      return {
+        n: q[0], t: q[1], c: TRC[q[1]] || '', img: TRI[q[1]], o: q[3][0] || '',
+        obj: q[3].map((t) => ({ t })), open, closed: !open, cls: open ? 'sel' : '', exp: open ? 'true' : 'false',
+        ptsTxt: pts.length ? (pts.length === 1 ? '1 punto en el mapa' : pts.length + ' puntos en el mapa') : (lower ? 'Puntos en la planta superior' : 'Sin puntos en el mapa'),
+        ptsCls: pts.length ? '' : 'no',
+        r: q[4] ? 'Recompensa: ' + q[4] : 'Sin recompensa de objetos',
+        pick: () => selectQuest(qi)
+      };
+    });
+    const zonesOf = (n) => (lower ? [] : ((SP[n] || {})[m] || []));
+    const foes = E.filter((e) => e[4].indexOf(m) >= 0 || (SP[e[0]] || {})[m]).map((e) => {
+      const z = zonesOf(e[0]), on = foe === e[0];
+      return {
+        n: e[0], ty: e[1], t: e[2], tc: TC[e[2]], img: e[3], wk: e[5],
+        has: z.length > 0, zn: z.length ? (on ? 'Zonas en el mapa · ' : 'Ver zonas · ') + z.length + (z.length === 1 ? ' punto' : ' puntos') : (lower ? 'Zonas en la planta superior' : 'Sin ubicaciones conocidas'),
+        znCls: z.length ? '' : 'no', cls: on ? 'sel' : '', pr: on ? 'true' : 'false',
+        pick: () => this.setState(on ? { foe: null } : { foe: e[0], qs: null, pin: null, zi: 0, px: 0, py: 0 })
+      };
+    });
+    const zoom = ZS[zi];
+    const onTarget = (e) => e.target && e.target.closest && e.target.closest('.zoom, .qp, .mchip');
+
+    // capas del mapa
+    const heat = foe ? zonesOf(foe).map((p) => ({ x: p[0] + '%', y: p[1] + '%' })) : [];
+    let qpins = [];
+    let focus = null;
+    if (qs !== null && Q[qs] && Q[qs][2].indexOf(m) >= 0) {
+      const q = Q[qs], pts = ptsOf(q);
+      if (pts.length) focus = centroid(pts);
+      qpins = pts.map((p, i) => ({
+        x: p[0] + '%', y: p[1] + '%', cls: 'num ' + (TRC[q[1]] || '') + (pin === i ? ' pin' : ''),
+        ovw: false, num: true, n: i + 1, img: TRI[q[1]], qn: q[0], tn: q[1],
+        sub: 'Punto ' + (i + 1) + ' de ' + pts.length, obj: q[3].map((t) => ({ t })),
+        hint: pts.length > 1 ? 'Los números marcan los puntos de esta misión.' : 'Aquí se hace esta misión.',
+        aria: 'Punto ' + (i + 1) + ' de ' + q[0],
+        pick: () => this.setState({ pin: pin === i ? null : i })
+      }));
+    } else if (!foe) {
+      qpins = mq.filter((q) => tr === 'Todos' || q[1] === tr).filter((q) => ptsOf(q).length).map((q) => {
+        const p = ptsOf(q)[0];
+        return {
+          x: p[0] + '%', y: p[1] + '%', cls: 'ovw ' + (TRC[q[1]] || ''), ovw: true, num: false, n: '',
+          img: TRI[q[1]], qn: q[0], tn: q[1], sub: ptsOf(q).length + (ptsOf(q).length === 1 ? ' punto' : ' puntos'),
+          obj: q[3].slice(0, 3).map((t) => ({ t })), hint: 'Pulsa para ver la mini guía en el mapa.',
+          aria: 'Misión ' + q[0] + ' de ' + q[1], pick: () => selectQuest(q[6])
+        };
+      });
+    }
+    const selQ = qs !== null ? Q[qs] : null;
+    const selPts = selQ ? ptsOf(selQ).length : 0;
+
+    return {
+      motionClass: motion ? '' : 'still',
+      tabs, tf, quests, foes,
+      name: cur.n, desc: cur.desc,
+      img: lower ? cur.lower : cur.img, ar: lower ? cur.lowerAr : cur.ar,
+      floorTxt: cur.lower ? (lower ? ' · planta inferior' : ' · planta superior') : '',
+      hasFloors: !!cur.lower, flUp: lower ? '' : 'on', flLo: lower ? 'on' : '',
+      setUp: () => this.setState({ floor: 'up', zi: 0, px: 0, py: 0, pin: null }),
+      setLo: () => this.setState({ floor: 'lo', zi: 0, px: 0, py: 0, pin: null }),
+      qCount: mq.length, eCount: foes.length,
+      eLabel: foes.length ? foes.length + ' tipos de ARC' : 'Sin datos de ARC',
+      noQ: quests.length === 0, noE: foes.length === 0,
+      tabQ: tab === 'q' ? 'on' : '', tabE: tab === 'e' ? 'on' : '',
+      selQ: tab === 'q' ? 'true' : 'false', selE: tab === 'e' ? 'true' : 'false',
+      showQ: tab === 'q', showE: tab === 'e',
+      goQ: () => this.setState({ tab: 'q' }), goE: () => this.setState({ tab: 'e' }),
+      zoom, zoomTxt: String(zoom).replace('.', ','), px, py, dragCls: S.drag ? 'drag' : '',
+      zl: 'zl' + zi,
+      tx: focus ? (-zoom * (focus[0] - 50)).toFixed(2) + '%' : '0%',
+      ty: focus ? (-zoom * (focus[1] - 50)).toFixed(2) + '%' : '0%',
+      heat, qpins,
+      hasChip: !!foe || !!selQ,
+      chipCls: selQ ? (TRC[selQ[1]] || '') : '',
+      chipImg: selQ ? TRI[selQ[1]] : '',
+      chipDot: !!foe,
+      chipTxt: foe ? 'Zonas de aparición · ' + foe + ' · ' + heat.length + (heat.length === 1 ? ' punto' : ' puntos') : (selQ ? selQ[0] + ' · ' + (selPts ? selPts + (selPts === 1 ? ' punto' : ' puntos') : 'sin puntos en este mapa') : ''),
+      clearSel: () => this.setState({ foe: null, qs: null, pin: null, zi: 0, px: 0, py: 0 }),
+      hintTxt: foe ? 'Las zonas brillan más donde aparecen más ARC' : (selQ ? 'Pasa el ratón por un número para ver qué hacer' : (lower ? 'Los puntos se ven en la planta superior' : 'Pasa por un retrato para ver la misión · arrastra para moverte')),
+      vpArm: (e) => { const el = e.currentTarget; this._trapEl = el; el.scrollTop = 1500; },
+      vpWheel: (e) => { const el = e.currentTarget; if (!el.isConnected) return; if (this._trapEl !== el) { this._trapEl = el; el.scrollTop = 1500; return; } const d = el.scrollTop - 1500; if (!d) return; el.scrollTop = 1500; this._wacc = (this._wacc || 0) + d; const now = Date.now(); if (Math.abs(this._wacc) < 60 || now - (this._wt || 0) < 140) return; const dir = this._wacc < 0 ? 1 : -1; this._wacc = 0; this._wt = now; const z0 = (this.state || {}).zi || 0; const z1 = Math.max(0, Math.min(3, z0 + dir)); if (z1 !== z0) this.setState(z1 === 0 ? { zi: 0, px: 0, py: 0 } : { zi: z1 }); },
+      zoomIn: () => this.setState({ zi: Math.min(3, zi + 1) }),
+      zoomOut: () => this.setState({ zi: Math.max(0, zi - 1) }),
+      zoomReset: () => this.setState({ zi: 0, px: 0, py: 0, qs: null, pin: null }),
+      vpDown: (e) => {
+        if ((e.button !== undefined && e.button !== 0) || onTarget(e)) return;
+        this._drag = { x: e.clientX, y: e.clientY, px, py };
+        this.setState({ drag: true });
+      },
+      vpMove: (e) => {
+        const d = this._drag;
+        if (!d) return;
+        this._next = { px: d.px + (e.clientX - d.x), py: d.py + (e.clientY - d.y) };
+        if (!this._raf) {
+          this._raf = requestAnimationFrame(() => { this._raf = null; if (this._next) this.setState(this._next); });
+        }
+      },
+      vpUp: () => { if (!this._drag) return; this._drag = null; this.setState({ drag: false }); },
+      vpDbl: (e) => { if (onTarget(e)) return; this.setState({ zi: Math.min(3, zi + 1) }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

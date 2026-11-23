@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Assassin&#x27;s Creed Unity · Guía, mapa e historia</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Cormorant+SC:wght@600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0B0A09}
+a{color:#F0D8A8}a:hover{color:#FFF1D6}
+.acp{position:relative;background:#0B0A09;color:#EFE9DD;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.acp *,.acp *::before,.acp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cg{font-family:'Cormorant Garamond',Georgia,serif;font-variant-numeric:lining-nums}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,54,75,.7)}70%{box-shadow:0 0 0 14px rgba(226,54,75,0)}100%{box-shadow:0 0 0 0 rgba(226,54,75,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,9,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(232,226,208,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#EFE9DD;justify-self:start}
+.brand:hover{color:#EFE9DD}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#A39C90;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(232,226,208,.14);background:rgba(232,226,208,.04);color:#EFE9DD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8C857A}
+.search input:focus{border-color:rgba(226,54,75,.6);box-shadow:0 0 0 4px rgba(226,54,75,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#A39C90;padding:5px 8px;border-radius:6px;border:1px solid rgba(232,226,208,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(232,226,208,.18);color:#EFE9DD;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#EFE9DD;background:rgba(232,226,208,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(232,226,208,.07);background:rgba(22,18,15,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(232,226,208,.14);color:#EFE9DD;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#B3AB9E;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#EFE9DD}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#E2364B;box-shadow:0 0 12px rgba(226,54,75,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#EFE9DD}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#15120F;border:1px solid rgba(232,226,208,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#EFE9DD;transition:background .2s}
+.mapo:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(232,226,208,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Cormorant Garamond',Georgia,serif;font-size:14px}
+.mapo span{font-size:12px;color:#9A9387}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#8C857A}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#EFE9DD;transition:background .2s}
+.io:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.25);color:#F0D8A8;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#9A9387}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+.foot{margin-top:64px;border-top:1px solid rgba(232,226,208,.1);padding:32px 0 36px;font-size:13px;color:#9A9387}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(232,226,208,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .acp *,.acp *::before,.acp *::after{animation:none !important;transition:none !important}
+}
+.acp.still *,.acp.still *::before,.acp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+
+
+.gchip{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;letter-spacing:.01em}
+.gchip img{width:46px;height:28px;object-fit:cover;border-radius:6px;border:1px solid rgba(232,226,208,.25)}
+.slink svg{opacity:.8}
+.status i{background:#E2364B;box-shadow:0 0 10px rgba(226,54,75,.8)}
+.acm{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:560px}
+.acmo{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:13px;color:#EFE9DD;text-decoration:none;transition:background .2s}
+.acmo:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.acmo .ic{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;border-radius:12px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.3);color:#F2A0AB}
+.acmo b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.15}
+.acmo small{display:block;margin-top:2px;font-size:12px;color:#9A9387}
+
+
+.status{border-color:rgba(226,54,75,.4);background:rgba(226,54,75,.1);color:#F2A0AB}
+.acp a{color:#F0D8A8}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E2364B}
+.kicker::before{content:"";width:22px;height:1px;background:currentColor}
+.sec{padding:64px 0 0;scroll-margin-top:118px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
+.h2{margin:8px 0 0;font-size:44px;font-weight:700;line-height:1.02;letter-spacing:-.01em}
+.sec-h p{margin:8px 0 0;color:#B3AB9E;max-width:640px}
+.sec-h .note{max-width:340px;font-size:12.5px;color:#8C857A;text-align:right}
+.btn-r{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;background:linear-gradient(180deg,#E2364B,#B00E28);color:#FFF4F0 !important;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(226,54,75,.9),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .2s}
+.btn-r:hover{transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(232,226,208,.35);color:#EFE9DD !important;font-weight:600;font-size:14.5px;text-decoration:none;background:rgba(11,10,9,.35);transition:background .2s,border-color .2s}
+.btn-o:hover{background:rgba(232,226,208,.08);border-color:rgba(232,226,208,.6)}
+.btn-o.sm{height:42px;font-size:13.5px}
+
+/* hero */
+.uh{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(232,226,208,.1)}
+.uh-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;z-index:-2;animation:ken 24s ease-in-out infinite alternate}
+@keyframes ken{from{transform:scale(1.02)}to{transform:scale(1.09) translateX(-1.5%)}}
+.uh-sh{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0B0A09 0%,rgba(11,10,9,.94) 30%,rgba(11,10,9,.55) 52%,rgba(11,10,9,.05) 72%,rgba(11,10,9,.3) 100%),linear-gradient(0deg,#0B0A09 0%,rgba(11,10,9,0) 30%)}
+.uh-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:40px;width:100%;padding-top:56px;padding-bottom:60px}
+.uh-t{max-width:600px;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.crumb{display:inline-flex;gap:8px;font-size:13px;color:#B3AB9E !important;text-decoration:none}
+.crumb span{color:#E2364B}
+.crumb:hover{color:#EFE9DD !important}
+.kick{display:block;margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E2364B}
+.uh h1{margin:10px 0 0;font-size:76px;font-weight:700;line-height:.95;letter-spacing:-.015em}
+.uh h1 em{display:block;font-style:italic;font-weight:600;color:#F3E6C8}
+.lead{margin:18px 0 0;font-size:17px;color:#D3CCBF;max-width:52ch;text-wrap:pretty}
+.uh-cta{display:flex;gap:12px;margin-top:26px}
+.uh-f{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;padding:0;list-style:none}
+.uh-f li{padding:6px 11px;border-radius:999px;background:rgba(11,10,9,.55);border:1px solid rgba(232,226,208,.16);font-size:12.5px;color:#CFC8BA;backdrop-filter:blur(6px)}
+.uh-f li.hot{border-color:rgba(226,54,75,.55);color:#FFD9DE}
+.prog{position:relative;width:330px;flex-shrink:0;align-self:flex-end;padding:20px;border-radius:20px;background:rgba(14,12,10,.78);border:1px solid rgba(232,226,208,.16);box-shadow:0 30px 60px -30px rgba(0,0,0,.9);backdrop-filter:blur(12px);animation:rise .8s .15s cubic-bezier(.2,.8,.2,1) both}
+.prog>small{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9A9387}
+.pg-n{margin-top:6px;font-size:54px;font-weight:700;line-height:1}
+.pg-n span{margin-left:6px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:500;color:#A39C90}
+.pg-bar{height:6px;margin-top:12px;border-radius:9px;background:rgba(232,226,208,.1);overflow:hidden}
+.pg-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#3E6DB5,#EFE9DD 50%,#E2364B);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.pg-nx{display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 10px;margin-top:14px;padding:11px 13px;border-radius:13px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.35);color:#EFE9DD !important;text-decoration:none;transition:background .2s}
+.pg-nx:hover{background:rgba(226,54,75,.18)}
+.pg-nx small{grid-column:1;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F2A0AB}
+.pg-nx b{grid-column:1;font-size:14px}
+.pg-nx svg{grid-column:2;grid-row:1 / span 2;color:#E2364B}
+.pg-ok{margin:12px 0 0;font-size:13.5px;color:#BFE9C9}
+.pg-h{margin:10px 0 0;font-size:12px;color:#8C857A}
+.tri{position:absolute;left:0;right:0;bottom:0;display:flex;height:3px}
+.tri i{flex:1}.tri i:nth-child(1){background:#2F5FA7}.tri i:nth-child(2){background:#EFE9DD}.tri i:nth-child(3){background:#C8102E}
+
+/* mapa v2 */
+.sec-h .note{max-width:430px;font-size:12.5px;color:#8C857A;text-align:right;line-height:1.55}
+.sqbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px;border-radius:14px;background:rgba(232,226,208,.03);border:1px solid rgba(232,226,208,.08)}
+.sqb-l{margin:0 6px 0 4px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C857A}
+.sqc{min-width:40px;height:34px;padding:0 11px;border-radius:10px;border:1px solid rgba(232,226,208,.12);background:transparent;color:#CFC8BA;font:700 16px/1 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.sqbar .sqc:first-of-type{font:600 13px/1 'IBM Plex Sans',sans-serif}
+.sqc:hover{border-color:rgba(232,226,208,.35);color:#FFF}
+.sqc.ok{border-color:rgba(63,174,109,.55)}
+.sqc.on{background:#E2364B;border-color:#E2364B;color:#FFF}
+.mgrid{display:grid;grid-template-columns:262px minmax(0,1fr);gap:18px;align-items:start}
+.mside{display:flex;flex-direction:column;gap:14px;position:sticky;top:130px}
+.mf{display:flex;flex-direction:column;gap:6px}
+.fchip{display:flex;align-items:center;gap:10px;height:38px;padding:0 12px;border-radius:11px;border:1px solid rgba(232,226,208,.12);background:rgba(232,226,208,.03);color:#A39C90;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;text-align:left;transition:background .2s,color .2s,border-color .2s}
+.fchip i{position:relative;width:30px;height:17px;border-radius:9px;background:rgba(232,226,208,.14);flex-shrink:0;transition:background .2s}
+.fchip i::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#8C857A;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s}
+.fchip.on{color:#EFE9DD;border-color:rgba(232,226,208,.22)}
+.fchip.on i{background:rgba(226,54,75,.55)}
+.fchip.on i::after{transform:translateX(13px);background:#FFF}
+.fchip:hover{background:rgba(232,226,208,.06)}
+.dlist{display:flex;flex-direction:column;gap:12px;max-height:390px;overflow:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(232,226,208,.2) transparent}
+.dg h4{margin:0 0 6px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C857A}
+.dg-l{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.db{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:30px;padding:5px 9px;border-radius:9px;border:1px solid transparent;background:rgba(232,226,208,.03);color:#CFC8BA;font:500 12px/1.2 'IBM Plex Sans',sans-serif;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.db:hover{background:rgba(232,226,208,.08);color:#FFF}
+.db em{font-style:normal;font-size:10.5px;font-weight:700;color:#FFF;background:#C8102E;border-radius:6px;padding:1px 5px}
+.db em:empty{display:none}
+.db.on{border-color:#E2364B;background:rgba(226,54,75,.14);color:#FFF}
+.db.in,.db.sq{border-color:rgba(226,54,75,.35)}
+.db.dim{opacity:.45}
+.mapv{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(232,226,208,.16);background:#0B1014;box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.vp{position:relative;aspect-ratio:2928/2016;overflow-y:scroll;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain;cursor:grab;touch-action:none}
+.vp::-webkit-scrollbar{display:none}
+.dragging .vp{cursor:grabbing}
+.vp-in{position:sticky;top:0;width:100%;height:100%;overflow:hidden}
+.vp-pad{height:3000px}
+.zl{position:absolute;inset:0;transform-origin:0 0;will-change:transform}
+.zl .base{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dz{fill:rgba(232,226,208,0);stroke:rgba(239,233,221,.4);stroke-width:1.2;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .25s,stroke .25s}
+.dz:hover{fill:rgba(232,226,208,.08);stroke:rgba(239,233,221,.85)}
+.dz.in{fill:rgba(226,54,75,.08);stroke:rgba(226,54,75,.7)}
+.dz.on{fill:rgba(226,54,75,.16);stroke:#E2364B;stroke-width:2.2}
+.dz.sq{fill:rgba(226,54,75,.12);stroke:rgba(255,120,135,.95);stroke-width:1.8}
+.dz.dim{fill:rgba(4,7,9,.5)}
+.nolbl .dz{stroke:rgba(239,233,221,0)}
+.nolbl .dz:hover,.nolbl .dz.on,.nolbl .dz.in{stroke:#E2364B}
+.dl{font-family:'Cormorant SC',Georgia,serif;font-size:calc(46px * var(--iz));font-weight:700;letter-spacing:.14em;fill:rgba(244,238,224,.9);pointer-events:none;paint-order:stroke;stroke:rgba(8,13,16,.88);stroke-width:calc(9px * var(--iz));stroke-linejoin:round;transition:opacity .25s,fill .25s}
+.dl.s{font-size:calc(27px * var(--iz));letter-spacing:.08em}
+.dl.on,.dl.in,.dl.sq{fill:#FFF}
+.dl.dim{opacity:.3}
+.nolbl .dl{opacity:0}
+.rt{opacity:0;transition:opacity .35s;pointer-events:none}
+.rt-on .rt{opacity:1}
+.rt-l{fill:none;stroke:rgba(5,8,10,.85);stroke-width:7;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.rt-d{fill:none;stroke:#E2364B;stroke-width:2.6;vector-effect:non-scaling-stroke;stroke-dasharray:8 7;stroke-linejoin:round;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-30}}
+.pin,.ap{position:absolute;z-index:3;width:0;height:0;padding:0;border:0;background:none;cursor:pointer}
+.pin>*,.ap>*{transform:scale(var(--iz))}
+.pin .pd{position:absolute;left:-6px;top:-6px;width:12px;height:12px;rotate:45deg;background:#EFE9DD;border:2px solid #0B1014;box-shadow:0 0 0 1px rgba(239,233,221,.7),0 4px 10px rgba(0,0,0,.7);transition:scale .25s cubic-bezier(.2,.8,.2,1),background .2s,opacity .25s}
+.pin:hover .pd,.pin:focus-visible .pd{scale:1.35}
+.pin.pm .pd{left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;rotate:0deg;background:#C8102E;border:2px solid #FFE3E7;box-shadow:0 0 0 4px rgba(200,16,46,.28),0 6px 14px rgba(0,0,0,.8)}
+.pin.pm .pd::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(226,54,75,.6);animation:ping 2.2s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+.pin.pm.done .pd{background:#2E7D4F;border-color:#D4F5DF;box-shadow:0 0 0 4px rgba(46,125,79,.3)}
+.pin.pm.done .pd::after{display:none}
+.pin.aprox .pd{outline:1.5px dashed rgba(239,233,221,.75);outline-offset:4px}
+.pin.dimp .pd{opacity:.3}
+.pin .pb{position:absolute;left:4px;top:-30px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#0B1014;border:1px solid #E2364B;color:#FFF;font:700 10.5px/16px 'IBM Plex Sans',sans-serif;text-align:center;white-space:nowrap;pointer-events:none;transform-origin:0 100%}
+.pin .pb:empty{display:none}
+.pin.on .pd{background:#E2364B;box-shadow:0 0 0 4px rgba(226,54,75,.45),0 0 24px rgba(226,54,75,.9)}
+.pin.pm.on .pd{background:#FFF;border-color:#E2364B}
+.ptip{position:absolute;left:0;bottom:16px;display:flex;flex-direction:column;gap:1px;width:max-content;max-width:240px;padding:7px 10px;border-radius:10px;background:#12100D;border:1px solid rgba(232,226,208,.22);box-shadow:0 14px 30px -10px rgba(0,0,0,.95);text-align:left;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,visibility .15s;z-index:5;translate:-50% 0;transform-origin:50% 100%}
+.ptip b{font:700 13px/1.2 'IBM Plex Sans',sans-serif;color:#EFE9DD}
+.ptip small{font-size:11px;color:#A39C90}
+.pin:hover .ptip,.pin:focus-visible .ptip{opacity:1;visibility:visible}
+.pin.tl .ptip{translate:-92% 0}
+.pin.tb .ptip{bottom:auto;top:16px;transform-origin:50% 0}
+.ap{z-index:2}
+.apd{position:absolute;left:0;top:0;display:flex;translate:-50% -50%;white-space:nowrap;transform-origin:0 0}
+.ap i{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:-3px;padding:0 4px;border-radius:10px;background:var(--c);color:#0B1014;font:700 10.5px/1 'IBM Plex Sans',sans-serif;font-style:normal;border:2px solid #0B1014}
+.ap:hover i{filter:brightness(1.15)}
+.vins{position:absolute;left:14px;top:14px;z-index:4;width:184px;padding:0;border:0;background:none;cursor:pointer;text-align:left;transition:opacity .25s}
+.vins svg{display:block;width:184px;height:auto}
+.vins .vb{fill:rgba(14,18,21,.92);stroke:rgba(201,164,92,.55);stroke-width:1.2}
+.vins:hover .vb,.vins.on .vb{stroke:#E2364B}
+.vgd line,.vgd circle{fill:none;stroke:rgba(150,196,236,.5);stroke-width:2}
+.vpal{fill:#CDBF9F;opacity:.85}
+.vins .vt{position:absolute;left:12px;top:9px;font:700 13px/1 'Cormorant SC',serif;letter-spacing:.16em;color:#EFE9DD}
+.vins .vs{position:absolute;left:12px;top:25px;font-size:9.5px;color:#A39C90}
+.vins .vbd{position:absolute;left:84px;top:32px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#C8102E;border:2px solid #FFE3E7;color:#FFF;font:700 10.5px/16px 'IBM Plex Sans',sans-serif;text-align:center;white-space:nowrap}
+.vins .vbd:empty{display:none}
+.vins.dim{opacity:.4}
+.zoom{position:absolute;right:14px;bottom:14px;z-index:4;display:flex;align-items:center;gap:4px;padding:4px;border-radius:12px;background:rgba(14,18,21,.9);border:1px solid rgba(232,226,208,.16)}
+.zoom button{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:9px;background:transparent;color:#EFE9DD;font:600 18px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.zoom button:hover{background:rgba(232,226,208,.1)}
+.zoom span{padding:0 8px 0 4px;font:600 12px/1 'IBM Plex Sans',sans-serif;color:#A39C90}
+.mleg{position:absolute;left:14px;bottom:14px;z-index:4;display:flex;gap:12px;padding:8px 12px;border-radius:12px;background:rgba(14,18,21,.88);border:1px solid rgba(232,226,208,.12);font-size:11.5px;color:#A39C90;pointer-events:none}
+.mleg span{display:flex;align-items:center;gap:7px}
+.lg{display:inline-block;flex:0 0 auto}
+.lg.lgl{width:10px;height:10px;transform:rotate(45deg);background:#EFE9DD;border:2px solid #0B1014;box-shadow:0 0 0 1px rgba(239,233,221,.6)}
+.lg.lgm{width:13px;height:13px;border-radius:50%;background:#C8102E;box-shadow:0 0 0 2px rgba(226,54,75,.35)}
+.lg.lga{width:13px;height:13px;border-radius:50%;background:#E8C98A}
+.lg.lgr{width:18px;height:0;border-top:2px dashed #E2364B}
+.sqinfo{position:absolute;left:14px;top:142px;z-index:4;width:296px;padding:14px;border-radius:16px;background:rgba(14,12,10,.94);border:1px solid rgba(226,54,75,.42);box-shadow:0 20px 50px -20px rgba(0,0,0,.95)}
+.sqi-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.sqi-h small{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E2364B}
+.sqi-h b{display:block;font-size:22px;line-height:1.1}
+.sqinfo ol{display:flex;flex-direction:column;gap:5px;margin:10px 0 0;padding:0;list-style:none}
+.sqinfo li button{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;width:100%;padding:7px 9px;border-radius:10px;border:1px solid rgba(232,226,208,.1);background:rgba(232,226,208,.03);color:#EFE9DD;text-align:left;cursor:pointer;font:inherit}
+.sqinfo li.has button:hover{border-color:#E2364B;background:rgba(226,54,75,.1)}
+.sqinfo li.no button{cursor:default}
+.sqinfo li b{display:block;font-size:13px;line-height:1.2}
+.sqinfo li small{display:block;font-size:11px;color:#A39C90}
+.sqinfo li.no small{color:#8FB2F2}
+.sqinfo li.ok .mn{background:#2E7D4F;color:#FFF;border-color:#3FAE6D}
+.x{flex-shrink:0;width:32px;height:32px;border-radius:10px;border:1px solid rgba(232,226,208,.16);background:transparent;color:#EFE9DD;font-size:20px;line-height:1;cursor:pointer}
+.x:hover{background:rgba(232,226,208,.08)}
+.drawer{position:absolute;top:14px;right:14px;bottom:62px;z-index:6;width:360px;display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:18px;background:rgba(14,12,10,.96);border:1px solid rgba(232,226,208,.18);box-shadow:-20px 0 60px -20px rgba(0,0,0,.9);overflow:auto;scrollbar-width:thin;scrollbar-color:rgba(232,226,208,.2) transparent;cursor:auto}
+.dr-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dr-h small{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E2364B}
+.dr-h h3{margin:4px 0 0;font-size:28px;line-height:1.05}
+.apx{align-self:flex-start;padding:4px 9px;border-radius:999px;border:1px dashed rgba(239,233,221,.45);font-size:11.5px;color:#CFC8BA}
+.dr-d{margin:0;font-size:14px;color:#D3CCBF;text-wrap:pretty}
+.drawer h4{margin:6px 0 0;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8C857A}
+.dr-l{display:flex;flex-wrap:wrap;gap:6px}
+.lmc{padding:6px 10px;border-radius:9px;border:1px solid rgba(232,226,208,.16);background:rgba(232,226,208,.04);color:#EFE9DD;font:500 12.5px/1.2 'IBM Plex Sans',sans-serif;cursor:pointer}
+.lmc.m{border-color:rgba(226,54,75,.5)}
+.lmc:hover{background:rgba(232,226,208,.1)}
+.dr-m{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dr-m a{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;background:rgba(226,54,75,.08);border:1px solid rgba(226,54,75,.25);color:#EFE9DD !important;text-decoration:none;font-size:13.5px;transition:background .2s}
+.dr-m a:hover{background:rgba(226,54,75,.16)}
+.dr-m a svg{color:#E2364B}
+.dr-m li.ok a{background:rgba(46,125,79,.12);border-color:rgba(46,125,79,.4)}
+.mn{display:inline-grid;place-items:center;min-width:36px;height:24px;padding:0 6px;border-radius:7px;background:#0B0A09;border:1px solid rgba(232,226,208,.2);font:700 11.5px/1 'IBM Plex Sans',sans-serif;color:#F2A0AB;font-variant-numeric:tabular-nums}
+.dcol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.dcol span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:10px;background:rgba(232,226,208,.04);border:1px solid rgba(232,226,208,.1)}
+.dcol b{font-size:24px;line-height:1;color:#F3E6C8}
+.dcol small{font-size:10.5px;color:#A39C90}
+.dnote{margin:0;font-size:12.5px;color:#A39C90}
+.smh{display:flex;align-items:center;gap:8px;color:#CFC8BA !important}
+.smh i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.sml{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.sml li{padding:8px 10px;border-radius:10px;background:rgba(232,226,208,.03);border:1px solid rgba(232,226,208,.08)}
+.sml b{font-size:13px;color:#EFE9DD}
+.sml .rw{float:right;margin-left:8px;font-size:11px;color:#E8C98A}
+.sml p{margin:3px 0 0;font-size:12.5px;color:#B3AB9E}
+.dr-b{margin-top:auto;min-height:40px;border-radius:11px;border:1px solid rgba(232,226,208,.2);background:transparent;color:#EFE9DD;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.dr-b:hover{background:rgba(232,226,208,.07)}
+
+/* historia: diapositivas */
+.hctl{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sw{display:inline-flex;align-items:center;gap:10px;height:38px;padding:0 13px;border-radius:11px;border:1px solid rgba(232,226,208,.16);background:rgba(232,226,208,.03);color:#CFC8BA;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.sw i{position:relative;width:30px;height:17px;border-radius:9px;background:rgba(232,226,208,.14)}
+.sw i::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#8C857A;transition:transform .25s}
+.sw.on{color:#FFF;border-color:rgba(226,54,75,.5)}
+.sw.on i{background:#C8102E}.sw.on i::after{transform:translateX(13px);background:#FFF}
+.lnk{height:38px;padding:0 10px;border:0;background:none;color:#A39C90;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.lnk:hover{color:#EFE9DD}
+.tl{position:relative;display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:6px;margin-bottom:16px}
+.tl::before{content:"";position:absolute;left:3%;right:3%;top:22px;height:2px;background:linear-gradient(90deg,#2F5FA7,rgba(239,233,221,.5) 50%,#C8102E);opacity:.55}
+.tlc{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 2px 6px;border:0;background:none;color:#A39C90;cursor:pointer;font:inherit}
+.tln{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#13100D;border:2px solid rgba(232,226,208,.25);font-size:22px;font-weight:700;color:#EFE9DD;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .2s,background .2s,box-shadow .2s}
+.tlt{font-size:11px;line-height:1.2;text-align:center;max-width:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tlb{width:70%;height:3px;border-radius:3px;background:rgba(232,226,208,.1);overflow:hidden}
+.tlb i{display:block;height:100%;background:#3FAE6D}
+.tlc:hover .tln{transform:translateY(-2px);border-color:rgba(232,226,208,.6)}
+.tlc.part .tln{border-color:rgba(226,54,75,.65)}
+.tlc.full .tln{background:#1C3A28;border-color:#3FAE6D}
+.tlc.on{color:#FFF}
+.tlc.on .tln{background:#C8102E;border-color:#FFE3E7;box-shadow:0 0 0 5px rgba(226,54,75,.2),0 10px 30px -8px rgba(226,54,75,.8);transform:scale(1.08)}
+.deck{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:580px;border-radius:26px;overflow:hidden;border:1px solid rgba(232,226,208,.14);background:#100E0B;box-shadow:0 40px 90px -50px rgba(0,0,0,.95)}
+.dk-side{position:relative;display:flex;flex-direction:column;gap:8px;padding:26px 22px;overflow:hidden;isolation:isolate;background:linear-gradient(170deg,#2A0C12,#120E0B 60%);border-right:1px solid rgba(232,226,208,.1)}
+.dk-big{position:absolute;right:-14px;bottom:-70px;z-index:-1;font-size:280px;font-weight:700;line-height:1;color:rgba(255,227,231,.06)}
+.dk-k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F2A0AB}
+.dk-side h3{margin:0;font-size:34px;line-height:1.02}
+.dk-p{display:flex;flex-direction:column;gap:6px;margin:6px 0 8px;font-size:12.5px;color:#B3AB9E}
+.dk-bar{height:4px;border-radius:4px;background:rgba(232,226,208,.12);overflow:hidden}
+.dk-bar i{display:block;height:100%;background:linear-gradient(90deg,#2F5FA7,#EFE9DD,#E2364B);transition:width .4s}
+.dk-ml{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.dk-ml button{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;width:100%;padding:9px 10px;border-radius:11px;border:1px solid transparent;background:transparent;color:#CFC8BA;text-align:left;cursor:pointer;font:500 13.5px/1.25 'IBM Plex Sans',sans-serif;transition:background .2s,border-color .2s}
+.dk-ml button:hover{background:rgba(232,226,208,.06)}
+.dk-ml li.on button{background:rgba(226,54,75,.14);border-color:rgba(226,54,75,.45);color:#FFF}
+.dk-ml .okd{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(232,226,208,.25);color:transparent;font-style:normal}
+.dk-ml li.ok .okd{background:#2E7D4F;border-color:#3FAE6D;color:#FFF}
+.dk-ml li.rift .mn{color:#BCD0F2}
+.dk-all{margin-top:auto;height:38px;border-radius:10px;border:1px solid rgba(232,226,208,.16);background:rgba(11,10,9,.4);color:#CFC8BA;font:600 12.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.dk-all:hover{color:#FFF;border-color:rgba(232,226,208,.4)}
+.dk-view{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:radial-gradient(90% 60% at 100% 0%,rgba(200,16,46,.10),transparent 60%),repeating-linear-gradient(115deg,rgba(232,226,208,.018) 0 2px,transparent 2px 22px)}
+.dk-track{display:flex;flex:1;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.slide{flex:0 0 100%;display:flex;flex-direction:column;gap:12px;padding:28px 32px 20px;min-width:0;opacity:.25;transition:opacity .45s}
+.slide.cur{opacity:1}
+.sl-top{display:flex;align-items:center;gap:10px;font-size:12px;color:#A39C90}
+.sl-n{padding:4px 10px;border-radius:999px;background:#C8102E;color:#FFF;font-weight:700;letter-spacing:.06em}
+.sl-en{font-style:italic}
+.sl-c{margin-left:auto;font-variant-numeric:tabular-nums}
+.slide h4{margin:0;font-size:46px;line-height:1;letter-spacing:-.01em}
+.slide.ok h4{color:#BFE9C9}
+.sl-tags{display:flex;flex-wrap:wrap;gap:8px}
+.plc{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;border:1px solid rgba(226,54,75,.45);color:#F2A0AB !important;font-size:12.5px;font-weight:600;text-decoration:none;transition:background .2s}
+.plc:hover{background:rgba(226,54,75,.14)}
+.rift{padding:5px 11px;border-radius:999px;background:rgba(94,134,201,.15);border:1px solid rgba(94,134,201,.45);color:#BCD0F2;font-size:12px;font-weight:700}
+.sl-obj{margin:0;font-size:17px;line-height:1.55;color:#E6DFD2;max-width:70ch;text-wrap:pretty}
+.blks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+.blk{position:relative;border-radius:14px;border:1px solid rgba(232,226,208,.12);background:rgba(11,10,9,.55);overflow:hidden}
+.blk.b-steps{grid-column:1 / -1}
+.blk-h{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;width:100%;padding:12px 14px;border:0;background:none;color:#EFE9DD;text-align:left;cursor:pointer;font:inherit}
+.blk-t b{display:block;font-size:14px}
+.blk-t small{display:block;font-size:11.5px;color:#8C857A}
+.blk-h em{font-style:normal;min-width:24px;height:24px;padding:0 7px;border-radius:12px;display:grid;place-items:center;background:rgba(232,226,208,.08);font-size:12px;font-weight:700;color:#E8C98A}
+.blk-h em:empty{display:none}
+.eye{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:rgba(226,54,75,.12);color:#F2A0AB;transition:background .2s}
+.blk-h:hover .eye{background:rgba(226,54,75,.25)}
+.blk.open{border-color:rgba(226,54,75,.35)}
+.blk.open .eye{background:#C8102E;color:#FFF}
+.veil{margin:0 14px 12px;height:30px;border-radius:9px;display:grid;place-items:center;background:repeating-linear-gradient(135deg,rgba(232,226,208,.05) 0 8px,rgba(232,226,208,.015) 8px 16px);font-size:11.5px;color:#8C857A;letter-spacing:.04em}
+.blk-b{padding:0 16px 14px}
+.blk-b ol,.blk-b ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:#D3CCBF}
+.blk-b ol li::marker{color:#E2364B;font-weight:700}
+.blk-b ul li::marker{color:#E8C98A}
+.b-sp.open{border-color:rgba(242,160,171,.5);background:rgba(60,10,18,.5)}
+.b-uk.open{border-color:rgba(232,201,138,.5)}
+.nob{margin:0;font-size:13.5px;color:#8C857A}
+.sl-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.unl{display:inline-flex;gap:8px;align-items:baseline;font-size:13px;color:#D3CCBF}
+.unl b{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E8C98A}
+.done-b{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:12px;border:1px solid rgba(232,226,208,.25);background:transparent;color:#EFE9DD;font:700 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.done-b svg{color:transparent;width:18px;height:18px;border-radius:5px;border:1.5px solid rgba(232,226,208,.4);padding:1px}
+.done-b:hover{border-color:#3FAE6D}
+.slide.ok .done-b{background:#2E7D4F;border-color:#3FAE6D}
+.slide.ok .done-b svg{color:#FFF;border-color:#FFF}
+.dk-nav{display:grid;grid-template-columns:1fr 1fr;gap:1px;border-top:1px solid rgba(232,226,208,.1);background:rgba(232,226,208,.1)}
+.dk-nav button{display:flex;align-items:center;gap:12px;padding:14px 20px;border:0;background:#100E0B;color:#EFE9DD;cursor:pointer;font:600 13.5px/1.3 'IBM Plex Sans',sans-serif;text-align:left;transition:background .2s}
+.dk-nav button:hover{background:#1A1512}
+.dk-nav small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8C857A}
+.dk-next{justify-content:flex-end;text-align:right !important}
+.dk-nav button.off{opacity:.3;pointer-events:none}
+.dk-nav svg{flex-shrink:0;color:#E2364B}
+.trn{margin:12px 0 0;font-size:12.5px;color:#8C857A}
+
+/* actividades */
+.acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.act{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:18px;background:#13100D;border:1px solid rgba(232,226,208,.1);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.act:hover{transform:translateY(-3px);border-color:rgba(226,54,75,.4)}
+.act-h{display:flex;align-items:center;gap:12px}
+.ai{display:grid;place-items:center;flex-shrink:0;width:44px;height:44px;border-radius:13px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.3);color:#F2A0AB}
+.act h3{margin:0;font-size:22px;line-height:1.1}
+.act p{margin:0;font-size:14px;color:#CFC8BA}
+.act dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:auto 0 0;padding-top:10px;border-top:1px solid rgba(232,226,208,.08);font-size:13px}
+.act dt{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8C857A;padding-top:2px}
+.act dd{margin:0;color:#D3CCBF}
+.act.cta{text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(200,16,46,.16),rgba(19,16,13,1) 60%);border-color:rgba(226,54,75,.35)}
+.act.cta .go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#F2A0AB;transition:gap .2s}
+.act.cta:hover .go{gap:12px}
+.tips{margin-top:14px;padding:22px 24px;border-radius:20px;background:linear-gradient(120deg,rgba(47,95,167,.12),rgba(200,16,46,.1));border:1px solid rgba(232,226,208,.12)}
+.tips h3{margin:0 0 12px;font-size:26px}
+.tips ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none;counter-reset:t}
+.tips li{counter-increment:t;display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:#CFC8BA}
+.tips li::before{content:counter(t,upper-roman);font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#E2364B;line-height:1}
+.tips li b{color:#EFE9DD;font-size:14.5px}
+
+/* personajes */
+.sec-h .note i{display:inline-block;width:9px;height:9px;margin:0 6px 0 12px;border-radius:50%}
+.fa{background:#C8102E}.ft{background:#C9A45C}.fh{background:#8CA3C7}
+.pdx{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+.chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ch{display:flex;gap:12px;padding:14px;border-radius:16px;background:#13100D;border:1px solid rgba(232,226,208,.1)}
+.mono{display:grid;place-items:center;flex-shrink:0;width:46px;height:46px;border-radius:50%;font-size:19px;font-weight:700;color:#0B0A09;background:#8CA3C7}
+.f-a .mono{background:linear-gradient(160deg,#E2364B,#9E0C22);color:#FFF}
+.f-t .mono{background:linear-gradient(160deg,#E8C98A,#A88440)}
+.ch b{display:block;font-size:14.5px;color:#EFE9DD;line-height:1.2}
+.ch small{display:block;margin-top:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9387}
+.ch p{margin:6px 0 0;font-size:13px;color:#CFC8BA}
+.facts{padding:20px;border-radius:18px;background:#13100D;border:1px solid rgba(232,226,208,.12)}
+.facts h3{margin:0 0 10px;font-size:26px}
+.facts dl{margin:0 0 16px}
+.facts dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid rgba(232,226,208,.07);font-size:13.5px}
+.facts dt{color:#8C857A;font-weight:600}
+.facts dd{margin:0;color:#E6DFD2}
+</style>
+</helmet>
+
+<div class="acp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Assassin's Creed">
+      <div class="wrap sub-in">
+        <a class="gchip" href="AssassinsCreed.dc.html"><img src="../assets/juegos/ac-saga.webp" alt="">Assassin's Creed</a>
+        <a class="slink" href="AssassinsCreed.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><circle cx="4" cy="6" r="1"></circle><circle cx="4" cy="12" r="1"></circle><circle cx="4" cy="18" r="1"></circle></svg>La saga</a>
+        <div class="dd">
+          <a class="slink on" href="ACUnity.dc.html" aria-haspopup="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>Guía de Unity <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="acm"><a class="acmo" href="ACUnity.dc.html#mapa"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span><span><b>Mapa de París</b><small>22 barrios, lugares y memorias</small></span></a><a class="acmo" href="ACUnity.dc.html#historia"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path></svg></span><span><b>Historia paso a paso</b><small>Prólogo y 12 secuencias</small></span></a><a class="acmo" href="ACUnity.dc.html#actividades"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg></span><span><b>Actividades y coleccionables</b><small>Enigmas, cofres, cooperativo…</small></span></a><a class="acmo" href="ACUnity.dc.html#personajes"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0"></path><path d="M17 4a4 4 0 0 1 0 8"></path><path d="M22 21a6 6 0 0 0-4-5.6"></path></svg></span><span><b>Personajes y datos</b><small>Quién es quién, sin spoilers</small></span></a></div></div>
+        </div>
+        <a class="slink" href="AssassinsCreed.dc.html#empezar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"></path><path d="M5 4h12l-2 4 2 4H5"></path></svg>Por dónde empezar</a>
+        <a class="slink" href="AssassinsCreed.dc.html#novedades"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>Novedades</a>
+        <span class="status"><i></i>Guía completa</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="uh" id="inicio">
+    <img class="uh-bg" src="../assets/juegos/hero-ac.webp" alt="">
+    <div class="uh-sh"></div>
+    <div class="wrap uh-in">
+      <div class="uh-t">
+        <a class="crumb" href="AssassinsCreed.dc.html">Assassin's Creed <span>›</span> Unity</a>
+        <span class="kick">Guía completa · París, 1789–1794</span>
+        <h1 class="cg">Assassin's Creed <em>Unity</em></h1>
+        <p class="lead">El París de la Revolución barrio a barrio, la historia de Arno memoria a memoria y todo lo que hay que hacer para completar la ciudad.</p>
+        <div class="uh-cta"><a class="btn-r" href="#mapa">Abrir el mapa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a><a class="btn-o" href="#historia">Historia paso a paso</a></div>
+        <ul class="uh-f"><li>2014 · Ubisoft Montreal</li><li>PS4 · Xbox One · PC</li><li>Cooperativo 1–4</li><li class="hot">60 FPS en PS5 y Xbox Series</li></ul>
+      </div>
+      <aside class="prog">
+        <small>Tu progreso en la historia</small>
+        <div class="pg-n cg">{{doneN}}<span>/{{total}} memorias</span></div>
+        <div class="pg-bar"><i style="width: {{pct}}"></i></div>
+        <sc-if value="{{hasNext}}" hint-placeholder-val="true"><a class="pg-nx" href="#historia" onClick="{{goNext}}"><small>Siguiente</small><b>{{nextTxt}}</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></sc-if>
+        <sc-if value="{{allDone}}" hint-placeholder-val="false"><p class="pg-ok">¡Historia completada! Ahora toca Dead Kings y el 100 % de París.</p></sc-if>
+        <p class="pg-h">Marca cada memoria al terminarla en las diapositivas de la historia.</p>
+      </aside>
+    </div>
+    <div class="tri" aria-hidden="true"><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="sec" id="mapa">
+    <div class="wrap">
+      <div class="sec-h">
+        <div><span class="kicker">Mapa de la sincronización</span><h2 class="h2 cg">París, 1790</h2><p>El plano real de la ciudad en 1790, con los 22 barrios del juego, sus lugares, dónde pasa cada memoria y las misiones secundarias de cada barrio.</p></div>
+        <p class="note">Rueda del ratón: zoom · arrastra para moverte · doble clic para acercar.<br>Plano de Mondhare et Jean (1790) coloreado por GrietaMeta. Los límites de los barrios son aproximados.</p>
+      </div>
+      <div class="sqbar" role="group" aria-label="Ver una secuencia en el mapa">
+        <span class="sqb-l">Ver secuencia</span>
+        <sc-for list="{{sqChips}}" as="c" hint-placeholder-count="14"><button type="button" class="sqc {{c.cls}}" onClick="{{c.pick}}">{{c.n}}</button></sc-for>
+      </div>
+      <div class="mgrid">
+        <aside class="mside">
+          <div class="mf" role="group" aria-label="Capas del mapa">
+            <sc-for list="{{fl}}" as="x" hint-placeholder-count="5"><button type="button" class="fchip {{x.cls}}" onClick="{{x.tog}}"><i></i>{{x.n}}</button></sc-for>
+          </div>
+          <div class="dlist">
+            <sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
+              <div class="dg"><h4>{{g.n}}</h4><div class="dg-l">
+                <sc-for list="{{g.items}}" as="d" hint-placeholder-count="6"><button type="button" class="db {{d.cls}}" onClick="{{d.pick}}"><span>{{d.n}}</span><em>{{d.cnt}}</em></button></sc-for>
+              </div></div>
+            </sc-for>
+          </div>
+        </aside>
+        <div class="mapv {{mapCls}}">
+          <div class="vp" onScroll="{{vpScroll}}" onPointerEnter="{{vpEnter}}" onPointerDown="{{vpDown}}" onPointerMove="{{vpMove}}" onPointerUp="{{vpUp}}" onPointerLeave="{{vpUp}}" onDoubleClick="{{vpDbl}}">
+            <div class="vp-in">
+              <div class="zl" style="transform: {{zt}}; --iz: {{iz}}">
+                <img class="base" src="../assets/assassins-creed/paris-1790.webp" alt="Plano de París de 1790" draggable="false">
+                <svg class="ov" viewBox="0 0 2928 2016" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="rtA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="#E2364B"></path></marker></defs><g class="dzs"><path class="dz {{dc.tuileries}}" d="M128 1161 L121 1158 L118 1149 L110 1149 L90 1157 L80 1149 L66 1159 L63 1156 L111 688 L116 675 L230 677 L280 683 L328 697 L420 745 L470 761 L510 767 L584 771 L656 779 L742 795 L804 813 L904 859 L948 873 L955 878 L965 928 L989 1004 L982 1007 L974 995 L966 995 L965 1002 L960 1007 L946 1007 L938 997 L902 991 L894 979 L886 981 L878 991 L870 991 L860 981 L852 981 L847 990 L865 1004 L862 1009 L758 1011 L755 1006 L763 1000 L763 990 L756 983 L706 987 L700 983 L670 985 L594 979 L578 985 L566 985 L558 989 L556 987 L553 990 L556 993 L574 991 L578 995 L588 995 L596 989 L640 989 L649 994 L647 1002 L651 1006 L646 1011 L604 1007 L576 1013 L572 1009 L536 1011 L508 1023 L494 1023 L462 1035 L457 1030 L462 1025 L482 1019 L502 1007 L516 1005 L523 1000 L520 993 L488 995 L444 1011 L380 1027 L361 1038 L363 1046 L356 1053 L344 1043 L298 1063 L280 1067 L259 1080 L265 1092 L256 1099 L242 1085 L188 1109 L180 1109 L152 1125 L144 1125 L133 1134 L136 1135 L150 1127 L163 1142 L158 1147 L128 1161ZM809 994 L820 993 L821 990 L814 983 L806 981 L788 983 L781 990 L788 995 L809 994ZM845 992 L840 983 L831 984 L836 993 L845 992Z" onClick="{{dz.tuileries}}"><title>Tullerías</title></path><path class="dz {{dc.vendome}}" d="M952 875 L904 859 L804 813 L742 795 L642 777 L510 767 L454 757 L420 745 L342 703 L298 687 L230 677 L116 675 L113 670 L119 620 L300 379 L646 267 L651 274 L659 300 L687 350 L761 436 L789 478 L821 542 L859 630 L903 712 L939 760 L975 800 L975 808 L961 854 L952 875Z" onClick="{{dz.vendome}}"><title>Vendôme</title></path><path class="dz {{dc.feydeau}}" d="M978 801 L939 760 L903 712 L859 630 L821 542 L789 478 L761 436 L701 368 L675 332 L655 290 L649 272 L652 265 L700 249 L1004 231 L1075 338 L1103 388 L1193 572 L1157 608 L1053 726 L978 801Z" onClick="{{dz.feydeau}}"><title>Feydeau</title></path><path class="dz {{dc.halles}}" d="M1184 1005 L1148 1005 L1143 1000 L1145 992 L1150 987 L1160 991 L1166 983 L1176 983 L1179 980 L1176 977 L1122 977 L1111 992 L1121 1000 L1116 1005 L1108 1005 L1100 999 L1092 1005 L1062 1005 L1057 1000 L1061 996 L1058 993 L1053 994 L1055 1000 L1050 1005 L1006 1005 L998 993 L994 993 L988 999 L975 964 L955 884 L955 868 L975 804 L1053 726 L1157 608 L1194 571 L1316 563 L1420 569 L1481 640 L1459 732 L1439 784 L1421 820 L1359 922 L1335 972 L1330 977 L1310 975 L1304 983 L1296 983 L1284 995 L1280 993 L1212 997 L1184 1005Z" onClick="{{dz.halles}}"><title>Les Halles</title></path><path class="dz {{dc.stdenis}}" d="M1208 571 L1194 571 L1189 566 L1091 366 L1007 234 L1010 231 L1034 229 L1300 213 L1516 227 L1519 232 L1441 478 L1423 564 L1418 569 L1316 563 L1208 571Z" onClick="{{dz.stdenis}}"><title>Porte-Saint-Denis</title></path><path class="dz {{dc.temple}}" d="M1584 673 L1482 641 L1421 570 L1431 518 L1453 436 L1505 278 L1513 246 L1522 227 L1900 249 L2161 370 L2143 402 L2114 421 L2072 441 L1984 473 L1928 497 L1744 599 L1584 673Z" onClick="{{dz.temple}}"><title>Temple</title></path><path class="dz {{dc.marais}}" d="M1910 1035 L1899 1026 L1901 1020 L1898 1017 L1878 1015 L1870 1027 L1838 1021 L1830 1009 L1814 1017 L1809 1012 L1808 1001 L1788 999 L1784 1003 L1779 998 L1755 940 L1719 874 L1681 818 L1621 740 L1595 700 L1583 674 L1744 599 L1928 497 L1984 473 L2072 441 L2114 421 L2136 407 L2139 410 L2139 428 L2135 458 L2117 530 L2103 564 L2055 658 L2031 716 L1981 878 L1955 952 L1927 1012 L1910 1035Z" onClick="{{dz.marais}}"><title>Marais</title></path><path class="dz {{dc.hdv}}" d="M1782 1013 L1756 1009 L1753 1006 L1756 997 L1752 997 L1744 1009 L1712 1005 L1709 1002 L1711 996 L1704 991 L1697 996 L1694 1003 L1686 1003 L1674 1001 L1669 996 L1671 990 L1668 987 L1628 981 L1617 982 L1627 990 L1622 995 L1606 993 L1600 989 L1578 991 L1506 985 L1499 980 L1505 972 L1502 969 L1452 969 L1449 972 L1453 976 L1450 981 L1390 979 L1362 981 L1336 979 L1333 976 L1349 940 L1411 838 L1439 784 L1459 732 L1479 646 L1484 641 L1560 665 L1583 676 L1621 740 L1691 832 L1731 894 L1779 994 L1785 1008 L1782 1013Z" onClick="{{dz.hdv}}"><title>Hôtel de Ville</title></path><path class="dz {{dc.arsenal}}" d="M2342 1341 L2335 1336 L2332 1323 L2314 1317 L2302 1307 L2288 1305 L2245 1274 L2250 1269 L2270 1281 L2278 1281 L2292 1289 L2304 1291 L2328 1307 L2336 1305 L2337 1298 L2280 1257 L2234 1241 L2229 1234 L2233 1228 L2228 1221 L2221 1224 L2219 1232 L2214 1237 L2206 1237 L2196 1233 L2166 1211 L2148 1207 L2141 1200 L2141 1186 L2120 1173 L2112 1179 L2092 1177 L2089 1180 L2098 1191 L2111 1200 L2102 1205 L2086 1197 L2073 1184 L2070 1175 L2064 1179 L2048 1175 L2040 1177 L2006 1161 L1999 1152 L1989 1116 L1992 1109 L2001 1112 L1999 1102 L1954 1073 L1941 1060 L1949 1052 L1934 1039 L1931 1040 L1931 1044 L1939 1050 L1936 1055 L1932 1055 L1913 1038 L1921 1032 L1919 1024 L1941 984 L1965 926 L2013 768 L2047 676 L2103 564 L2117 530 L2133 470 L2139 410 L2162 371 L2172 373 L2253 412 L2421 700 L2441 1102 L2371 1334 L2368 1337 L2362 1331 L2354 1329 L2342 1341ZM2063 1166 L2063 1160 L2042 1139 L2029 1134 L2040 1153 L2046 1153 L2058 1165 L2063 1166Z" onClick="{{dz.arsenal}}"><title>Arsenal</title></path><path class="dz {{dc.pdj}}" d="M1460 1087 L1453 1082 L1457 1076 L1452 1071 L1438 1069 L1435 1072 L1437 1080 L1434 1083 L1424 1083 L1416 1075 L1410 1079 L1384 1079 L1368 1075 L1354 1077 L1350 1073 L1306 1073 L1295 1058 L1301 1032 L1298 1029 L1292 1031 L1285 1022 L1302 1003 L1307 1006 L1309 1016 L1312 1017 L1316 1013 L1414 1011 L1422 997 L1432 1005 L1436 1001 L1440 1005 L1446 999 L1450 999 L1458 1013 L1478 1013 L1475 1004 L1482 1001 L1485 1004 L1485 1016 L1475 1072 L1472 1075 L1461 1074 L1459 1078 L1463 1084 L1460 1087Z" onClick="{{dz.pdj}}"><title>Palais de Justice</title></path><path class="dz {{dc.cite}}" d="M1664 1125 L1652 1125 L1646 1121 L1620 1121 L1615 1116 L1613 1108 L1606 1103 L1594 1103 L1584 1099 L1578 1101 L1574 1097 L1558 1095 L1552 1091 L1548 1093 L1536 1087 L1533 1092 L1537 1096 L1532 1101 L1527 1096 L1528 1091 L1520 1091 L1510 1079 L1500 1089 L1495 1084 L1497 1080 L1492 1077 L1488 1085 L1480 1089 L1475 1084 L1481 1078 L1475 1072 L1475 1066 L1485 1004 L1488 1001 L1516 1003 L1519 1006 L1519 1014 L1524 1017 L1572 1019 L1662 1029 L1665 1032 L1669 1104 L1669 1118 L1664 1125Z" onClick="{{dz.cite}}"><title>La Cité</title></path><path class="dz {{dc.stlouis}}" d="M1976 1171 L1960 1167 L1928 1139 L1904 1129 L1897 1132 L1903 1140 L1894 1145 L1828 1137 L1823 1132 L1825 1128 L1822 1125 L1812 1125 L1808 1133 L1796 1133 L1790 1125 L1784 1133 L1700 1129 L1690 1115 L1672 1113 L1669 1110 L1665 1034 L1668 1031 L1678 1031 L1764 1041 L1772 1029 L1788 1029 L1800 1031 L1805 1036 L1805 1044 L1808 1047 L1832 1049 L1838 1045 L1862 1045 L1870 1051 L1880 1049 L1885 1054 L1883 1058 L1886 1061 L1892 1061 L1908 1075 L1914 1063 L1969 1108 L1983 1158 L1983 1164 L1976 1171Z" onClick="{{dz.stlouis}}"><title>Île Saint-Louis</title></path><path class="dz {{dc.invalides}}" d="M482 1861 L149 1620 L69 1250 L74 1243 L94 1233 L99 1242 L85 1252 L88 1255 L138 1235 L154 1223 L168 1223 L214 1205 L224 1197 L238 1195 L304 1165 L338 1153 L345 1148 L341 1142 L347 1136 L339 1128 L339 1124 L354 1115 L366 1111 L369 1114 L351 1130 L358 1143 L365 1140 L361 1130 L366 1125 L378 1125 L382 1133 L388 1133 L393 1128 L389 1120 L399 1112 L397 1104 L400 1101 L413 1116 L405 1122 L408 1125 L416 1121 L419 1124 L449 1170 L515 1296 L551 1348 L647 1466 L679 1516 L709 1572 L683 1616 L635 1684 L527 1802 L482 1861Z" onClick="{{dz.invalides}}"><title>Invalides</title></path><path class="dz {{dc.stthomas}}" d="M980 1583 L834 1575 L710 1573 L679 1516 L647 1466 L551 1348 L515 1296 L449 1170 L419 1126 L419 1122 L442 1113 L456 1103 L462 1103 L466 1107 L474 1105 L477 1102 L475 1090 L490 1075 L514 1071 L522 1075 L544 1075 L556 1061 L564 1059 L570 1063 L586 1063 L602 1053 L630 1063 L635 1068 L635 1078 L638 1081 L645 1080 L645 1068 L648 1065 L678 1059 L700 1061 L706 1065 L720 1061 L750 1065 L760 1063 L774 1079 L780 1077 L790 1065 L812 1065 L828 1081 L840 1081 L860 1067 L870 1067 L876 1063 L882 1067 L890 1067 L898 1075 L910 1079 L930 1079 L935 1072 L920 1057 L916 1061 L910 1061 L907 1056 L912 1051 L920 1055 L924 1051 L934 1051 L939 1056 L939 1068 L944 1073 L948 1073 L956 1065 L962 1065 L972 1073 L984 1065 L1000 1067 L1003 1070 L1003 1080 L995 1138 L993 1246 L1001 1398 L1001 1462 L991 1550 L985 1578 L980 1583Z" onClick="{{dz.stthomas}}"><title>Saint-Thomas-d&#x27;Aquin</title></path><path class="dz {{dc.fsg}}" d="M1026 1613 L983 1582 L995 1526 L1001 1462 L993 1178 L997 1114 L1003 1074 L1012 1071 L1018 1077 L1026 1077 L1038 1067 L1046 1073 L1068 1067 L1084 1071 L1088 1075 L1130 1075 L1129 1068 L1138 1061 L1148 1061 L1154 1065 L1178 1061 L1187 1066 L1183 1074 L1186 1077 L1212 1077 L1220 1069 L1230 1077 L1274 1081 L1282 1071 L1298 1089 L1305 1092 L1310 1103 L1330 1103 L1335 1108 L1337 1354 L1331 1424 L1294 1447 L1188 1497 L1126 1531 L1080 1565 L1026 1613ZM1295 1100 L1288 1089 L1281 1092 L1290 1101 L1295 1100Z" onClick="{{dz.fsg}}"><title>Faubourg Saint-Germain</title></path><path class="dz {{dc.stlambert}}" d="M1000 1961 L500 1865 L490 1863 L485 1858 L527 1802 L635 1684 L710 1573 L834 1575 L984 1583 L1027 1616 L1061 1684 L1125 1794 L1161 1866 L1197 1952 L1194 1957 L1000 1961Z" onClick="{{dz.stlambert}}"><title>Saint-Lambert</title></path><path class="dz {{dc.sorbonne}}" d="M1528 1481 L1410 1453 L1344 1431 L1331 1422 L1337 1354 L1335 1108 L1345 1102 L1337 1096 L1340 1091 L1360 1091 L1366 1097 L1372 1093 L1388 1093 L1392 1097 L1404 1095 L1407 1098 L1404 1109 L1408 1109 L1420 1097 L1454 1101 L1462 1103 L1467 1108 L1465 1116 L1468 1119 L1482 1119 L1479 1110 L1484 1105 L1493 1110 L1485 1118 L1496 1123 L1514 1125 L1524 1123 L1530 1117 L1536 1117 L1594 1133 L1622 1135 L1632 1143 L1668 1143 L1673 1148 L1669 1154 L1672 1157 L1730 1159 L1735 1164 L1681 1272 L1661 1306 L1603 1388 L1528 1481Z" onClick="{{dz.sorbonne}}"><title>Sorbonne</title></path><path class="dz {{dc.luxembourg}}" d="M1240 1957 L1200 1957 L1197 1954 L1161 1866 L1125 1794 L1061 1684 L1025 1614 L1080 1565 L1126 1531 L1168 1507 L1294 1447 L1330 1425 L1410 1453 L1528 1481 L1571 1550 L1605 1624 L1573 1664 L1537 1718 L1483 1790 L1453 1824 L1349 1926 L1326 1955 L1240 1957Z" onClick="{{dz.luxembourg}}"><title>Luxembourg</title></path><path class="dz {{dc.pantheon}}" d="M1846 1681 L1770 1669 L1606 1625 L1571 1550 L1529 1482 L1603 1388 L1661 1306 L1681 1272 L1733 1166 L1738 1161 L1744 1161 L1752 1147 L1780 1147 L1785 1152 L1783 1158 L1796 1163 L1896 1175 L1906 1163 L1910 1163 L1952 1181 L1958 1181 L1969 1188 L1973 1202 L1968 1207 L1953 1198 L1952 1189 L1944 1195 L1938 1193 L1935 1196 L1941 1218 L1949 1230 L1972 1249 L1986 1253 L1994 1245 L1998 1245 L2007 1252 L1987 1308 L1945 1394 L1919 1456 L1895 1526 L1859 1652 L1846 1681Z" onClick="{{dz.pantheon}}"><title>Panthéon</title></path><path class="dz {{dc.stjacques}}" d="M1360 1955 L1332 1955 L1329 1952 L1349 1926 L1453 1824 L1483 1790 L1604 1625 L1636 1631 L1770 1669 L1846 1681 L1939 1790 L1975 1840 L1968 1845 L1600 1951 L1360 1955Z" onClick="{{dz.stjacques}}"><title>Saint-Jacques</title></path><path class="dz {{dc.stmarcel}}" d="M1982 1841 L1973 1838 L1939 1790 L1871 1712 L1849 1684 L1849 1676 L1859 1652 L1895 1526 L1919 1456 L1945 1394 L1987 1308 L2008 1253 L2030 1267 L2036 1267 L2054 1285 L2162 1333 L2180 1327 L2192 1317 L2197 1322 L2185 1334 L2181 1342 L2184 1347 L2194 1353 L2198 1351 L2204 1361 L2212 1353 L2222 1353 L2231 1364 L2227 1376 L2236 1383 L2248 1371 L2258 1371 L2286 1385 L2298 1385 L2307 1394 L2302 1399 L2294 1405 L2274 1403 L2271 1406 L2332 1449 L2335 1456 L2319 1504 L2123 1798 L2114 1803 L1982 1841Z" onClick="{{dz.stmarcel}}"><title>Saint-Marcel</title></path></g><g class="rt"><path class="rt-l" d="{{routeD}}"></path><path class="rt-d" d="{{routeD}}" marker-mid="url(#rtA)" marker-end="url(#rtA)"></path></g><g class="lbls"><text class="dl {{dc.tuileries}}" x="276" y="874" text-anchor="middle">Tullerías</text><text class="dl {{dc.vendome}}" x="548" y="540" text-anchor="middle">Vendôme</text><text class="dl {{dc.feydeau}}" x="996" y="538" text-anchor="middle">Feydeau</text><text class="dl {{dc.halles}}" x="1224" y="802" text-anchor="middle">Les Halles</text><text class="dl {{dc.stdenis}}" x="1292" y="384" text-anchor="middle" dy="-0.4em"><tspan x="1292" dy="0">Porte</tspan><tspan x="1292" dy="1.1em">Saint-Denis</tspan></text><text class="dl {{dc.temple}}" x="1656" y="428" text-anchor="middle">Temple</text><text class="dl {{dc.marais}}" x="1840" y="744" text-anchor="middle">Marais</text><text class="dl {{dc.hdv}}" x="1548" y="852" text-anchor="middle" dy="-0.4em"><tspan x="1548" dy="0">Hôtel</tspan><tspan x="1548" dy="1.1em">de Ville</tspan></text><text class="dl {{dc.arsenal}}" x="2200" y="954" text-anchor="middle">Arsenal</text><text class="dl s {{dc.pdj}}" x="1395" y="1050" text-anchor="middle" dy="-0.4em"><tspan x="1395" dy="0">Palais</tspan><tspan x="1395" dy="1.1em">de Justice</tspan></text><text class="dl s {{dc.cite}}" x="1590" y="1080" text-anchor="middle">La Cité</text><text class="dl s {{dc.stlouis}}" x="1795" y="1074" text-anchor="middle" dy="-0.4em"><tspan x="1795" dy="0">Île</tspan><tspan x="1795" dy="1.1em">Saint-Louis</tspan></text><text class="dl {{dc.invalides}}" x="360" y="1484" text-anchor="middle">Invalides</text><text class="dl {{dc.stthomas}}" x="782" y="1292" text-anchor="middle" dy="-0.4em"><tspan x="782" dy="0">Saint-Thomas</tspan><tspan x="782" dy="1.1em">d’Aquin</tspan></text><text class="dl {{dc.fsg}}" x="1166" y="1248" text-anchor="middle" dy="-0.4em"><tspan x="1166" dy="0">Faubourg</tspan><tspan x="1166" dy="1.1em">Saint-Germain</tspan></text><text class="dl {{dc.stlambert}}" x="898" y="1758" text-anchor="middle">Saint-Lambert</text><text class="dl {{dc.sorbonne}}" x="1492" y="1278" text-anchor="middle">Sorbonne</text><text class="dl {{dc.luxembourg}}" x="1300" y="1678" text-anchor="middle">Luxembourg</text><text class="dl {{dc.pantheon}}" x="1734" y="1488" text-anchor="middle">Panthéon</text><text class="dl {{dc.stjacques}}" x="1662" y="1786" text-anchor="middle">Saint-Jacques</text><text class="dl {{dc.stmarcel}}" x="2096" y="1508" text-anchor="middle">Saint-Marcel</text></g></svg>
+                <sc-for list="{{aps}}" as="a" hint-placeholder-count="0">
+                  <button type="button" class="ap" style="left: {{a.x}}; top: {{a.y}}" onClick="{{a.pick}}" aria-label="{{a.lbl}}"><span class="apd"><sc-for list="{{a.dots}}" as="o" hint-placeholder-count="3"><i style="--c: {{o.c}}" title="{{o.t}}">{{o.n}}</i></sc-for></span></button>
+                </sc-for>
+                <sc-for list="{{pins}}" as="p" hint-placeholder-count="12">
+                  <button type="button" class="pin {{p.cls}}" style="left: {{p.x}}; top: {{p.y}}" onClick="{{p.pick}}" aria-label="{{p.lbl}}"><span class="pd"></span><span class="pb">{{p.badge}}</span><span class="ptip"><b>{{p.lbl}}</b><small>{{p.sub}}</small></span></button>
+                </sc-for>
+              </div>
+            </div>
+            <div class="vp-pad"></div>
+          </div>
+          <button type="button" class="vins {{vCls}}" onClick="{{pickV}}" aria-label="Versalles">
+            <svg viewBox="0 0 184 112" aria-hidden="true"><rect x="1" y="1" width="182" height="110" rx="10" class="vb"></rect><g class="vgd"><line x1="92" y1="62" x2="92" y2="104"></line><line x1="52" y1="86" x2="132" y2="86"></line><line x1="66" y1="66" x2="66" y2="104"></line><line x1="118" y1="66" x2="118" y2="104"></line><circle cx="92" cy="86" r="6"></circle></g><path class="vpal" d="M58 42 H126 V58 H114 V50 H70 V58 H58 Z"></path></svg>
+            <span class="vt">Versalles</span><span class="vs">≈ 20 km al suroeste</span><span class="vbd">{{vBadge}}</span>
+          </button>
+          <div class="zoom">
+            <button type="button" onClick="{{zoomIn}}" aria-label="Acercar">+</button>
+            <button type="button" onClick="{{zoomOut}}" aria-label="Alejar">−</button>
+            <button type="button" onClick="{{zoomReset}}" aria-label="Ver todo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></button>
+            <span>×{{zTxt}}</span>
+          </div>
+          <div class="mleg" aria-hidden="true"><span><i class="lg lgl"></i>Lugar histórico</span><span><i class="lg lgm"></i>Memoria</span><span><i class="lg lga"></i>Misiones del barrio</span><span><i class="lg lgr"></i>Ruta</span></div>
+          <sc-if value="{{hasSq}}" hint-placeholder-val="false">
+            <div class="sqinfo" data-pane>
+              <div class="sqi-h"><div><small>{{sqInfo.kick}}</small><b class="cg">{{sqInfo.t}}</b></div><button type="button" class="x" onClick="{{clearSq}}" aria-label="Ver todo el mapa">×</button></div>
+              <ol><sc-for list="{{sqInfo.items}}" as="m" hint-placeholder-count="3"><li class="{{m.cls}}"><button type="button" onClick="{{m.go}}"><span class="mn">{{m.id}}</span><span><b>{{m.t}}</b><small>{{m.pl}}</small></span></button></li></sc-for></ol>
+            </div>
+          </sc-if>
+          <sc-if value="{{hasSel}}" hint-placeholder-val="false">
+            <aside class="drawer" data-pane aria-label="Ficha del mapa">
+              <div class="dr-h"><div><small>{{dr.kind}}</small><h3 class="cg">{{dr.n}}</h3></div><button type="button" class="x" onClick="{{closeSel}}" aria-label="Cerrar">×</button></div>
+              <sc-if value="{{dr.aprox}}" hint-placeholder-val="false"><span class="apx">Posición aproximada</span></sc-if>
+              <p class="dr-d">{{dr.desc}}</p>
+              <sc-if value="{{dr.hasMems}}" hint-placeholder-val="true"><h4>Memorias aquí</h4><ul class="dr-m"><sc-for list="{{dr.mems}}" as="m" hint-placeholder-count="2"><li class="{{m.cls}}"><a href="#historia" onClick="{{m.go}}"><span class="mn">{{m.id}}</span>{{m.t}}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></li></sc-for></ul></sc-if>
+              <sc-if value="{{dr.hasLms}}" hint-placeholder-val="true"><h4>Lugares</h4><div class="dr-l"><sc-for list="{{dr.lms}}" as="l" hint-placeholder-count="3"><button type="button" class="lmc {{l.cls}}" onClick="{{l.pick}}">{{l.n}}</button></sc-for></div></sc-if>
+              <sc-if value="{{dr.hasAct}}" hint-placeholder-val="false">
+                <h4>Coleccionables</h4>
+                <div class="dcol"><sc-for list="{{dr.col}}" as="c" hint-placeholder-count="4"><span><b class="cg">{{c.n}}</b><small>{{c.t}}</small></span></sc-for></div>
+                <sc-if value="{{dr.hasNote}}" hint-placeholder-val="false"><p class="dnote">{{dr.note}}</p></sc-if>
+                <sc-for list="{{dr.smg}}" as="g" hint-placeholder-count="2">
+                  <h4 class="smh" style="--c: {{g.c}}"><i></i>{{g.t}}</h4>
+                  <ul class="sml"><sc-for list="{{g.items}}" as="s" hint-placeholder-count="2"><li><span class="rw">{{s.r}}</span><b>{{s.n}}</b><p>{{s.t}}</p></li></sc-for></ul>
+                </sc-for>
+              </sc-if>
+              <sc-if value="{{dr.isL}}" hint-placeholder-val="false"><button type="button" class="dr-b" onClick="{{dr.back}}">{{dr.backTxt}}</button></sc-if>
+            </aside>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="sec" id="historia">
+    <div class="wrap">
+      <div class="sec-h">
+        <div><span class="kicker">Historia paso a paso</span><h2 class="h2 cg">La revolución de Arno</h2><p>Cada secuencia se abre como una serie de diapositivas. De cada memoria ves el objetivo; los objetivos opcionales, el paso a paso, las oportunidades y el asesinato único quedan ocultos hasta que los pidas.</p></div>
+        <div class="hctl">
+          <button type="button" class="sw {{spoilCls}}" onClick="{{togSpoil}}"><i></i>{{spoilTxt}}</button>
+          <sc-if value="{{hasDone}}" hint-placeholder-val="false"><button type="button" class="lnk" onClick="{{resetAll}}">Reiniciar progreso</button></sc-if>
+        </div>
+      </div>
+      <div class="tl" role="tablist" aria-label="Secuencias">
+        <sc-for list="{{seqNav}}" as="s" hint-placeholder-count="13">
+          <button type="button" role="tab" class="tlc {{s.cls}}" onClick="{{s.pick}}"><span class="tln cg">{{s.num}}</span><span class="tlt">{{s.t}}</span><span class="tlb"><i style="width: {{s.pct}}"></i></span></button>
+        </sc-for>
+      </div>
+      <div class="deck">
+        <aside class="dk-side">
+          <span class="dk-big cg" aria-hidden="true">{{stNum}}</span>
+          <small class="dk-k">{{stKick}}</small>
+          <h3 class="cg">{{stT}}</h3>
+          <div class="dk-p"><span>{{stProg}}</span><span class="dk-bar"><i style="width: {{stPct}}"></i></span></div>
+          <ol class="dk-ml">
+            <sc-for list="{{memNav}}" as="m" hint-placeholder-count="3"><li class="{{m.cls}}"><button type="button" onClick="{{m.pick}}"><span class="mn">{{m.id}}</span><span class="mt2">{{m.t}}</span><i class="okd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg></i></button></li></sc-for>
+          </ol>
+          <button type="button" class="dk-all" onClick="{{markSeq}}">{{markSeqTxt}}</button>
+        </aside>
+        <div class="dk-view">
+          <div class="dk-track" style="transform: {{track}}">
+            <sc-for list="{{slides}}" as="m" hint-placeholder-count="3">
+              <article class="slide {{m.cls}}">
+                <div class="sl-top"><span class="sl-n">Memoria {{m.id}}</span><span class="sl-en">{{m.en}}</span><span class="sl-c">{{m.nth}}</span></div>
+                <h4 class="cg">{{m.t}}</h4>
+                <div class="sl-tags">
+                  <sc-if value="{{m.hasPlace}}" hint-placeholder-val="true"><a class="plc" href="#mapa" onClick="{{m.goPlace}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>{{m.place}} · ver en el mapa</a></sc-if>
+                  <sc-if value="{{m.rift}}" hint-placeholder-val="false"><span class="rift">Fallo del Helix</span></sc-if>
+                </div>
+                <p class="sl-obj">{{m.obj}}</p>
+                <div class="blks">
+                  <sc-for list="{{m.blocks}}" as="b" hint-placeholder-count="3">
+                    <div class="blk {{b.cls}}">
+                      <button type="button" class="blk-h" onClick="{{b.tog}}"><span class="blk-t"><b>{{b.lbl}}</b><small>{{b.hint}}</small></span><em>{{b.cnt}}</em><span class="eye"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
+                      <sc-if value="{{b.closed}}" hint-placeholder-val="true"><div class="veil"><span>Oculto · pulsa para revelarlo</span></div></sc-if>
+                      <sc-if value="{{b.open}}" hint-placeholder-val="false"><div class="blk-b" data-pane>
+                        <sc-if value="{{b.ol}}" hint-placeholder-val="true"><ol><sc-for list="{{b.items}}" as="it" hint-placeholder-count="4"><li>{{it}}</li></sc-for></ol></sc-if>
+                        <sc-if value="{{b.ul}}" hint-placeholder-val="false"><ul><sc-for list="{{b.items}}" as="it" hint-placeholder-count="2"><li>{{it}}</li></sc-for></ul></sc-if>
+                      </div></sc-if>
+                    </div>
+                  </sc-for>
+                  <sc-if value="{{m.noBlocks}}" hint-placeholder-val="false"><p class="nob">Memoria de historia: no tiene objetivos opcionales ni pasos que revelar.</p></sc-if>
+                </div>
+                <div class="sl-foot">
+                  <sc-if value="{{m.hasUnlock}}" hint-placeholder-val="false"><span class="unl"><b>Desbloquea</b>{{m.unlock}}</span></sc-if>
+                  <button type="button" class="done-b" onClick="{{m.toggle}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>{{m.doneTxt}}</button>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <div class="dk-nav">
+            <button type="button" class="dk-prev {{prevCls}}" onClick="{{prev}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg><span><small>Anterior</small>{{prevTxt}}</span></button>
+            <button type="button" class="dk-next {{nextCls}}" onClick="{{next}}"><span><small>Siguiente</small>{{nextTxt2}}</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></button>
+          </div>
+        </div>
+      </div>
+      <p class="trn">Títulos traducidos por GrietaMeta (junto a cada uno, el nombre original en inglés). Detalles de cada memoria contrastados con la guía de Gamer Guides.</p>
+    </div>
+  </section>
+
+  <!-- ACTIVIDADES -->
+  <section class="sec" id="actividades">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Cosas importantes</span><h2 class="h2 cg">Actividades y coleccionables</h2><p>Todo lo que hay en París además de la historia, qué te da cada cosa y cómo sacarle partido.</p></div></div>
+      <div class="acts">
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M8 7l4-4 4 4"/><path d="M5 21h14"/><path d="M9 21v-6h6v6"/></svg></span><h3 class="cg">Puntos de sincronización</h3></div>
+          <p>Escala los edificios más altos para revelar la zona en el mapa y termina con un salto de fe.</p>
+          <dl><dt>Recompensa</dt><dd>El mapa y las actividades del barrio.</dd><dt>Consejo</dt><dd>Hazlos al llegar a cada barrio: te ahorran mucho tiempo.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M3 13h18"/><path d="M5 9a7 5 0 0 1 14 0"/><rect x="10.5" y="11.5" width="3" height="4" rx="1"/></svg></span><h3 class="cg">Cofres</h3></div>
+          <p>Repartidos por toda la ciudad. Algunos están cerrados y necesitan ganzúa.</p>
+          <dl><dt>Recompensa</dt><dd>Dinero y equipo.</dd><dt>Consejo</dt><dd>Compra pronto la habilidad de ganzúa para abrir los cerrados.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="6"/><circle cx="12" cy="10" r="2.5"/><path d="M9 15l-2 6 3-2 2 2"/><path d="M15 15l2 6-3-2"/></svg></span><h3 class="cg">Escarapelas</h3></div>
+          <p>Coleccionables revolucionarios escondidos por los barrios de París.</p>
+          <dl><dt>Recompensa</dt><dd>Cuentan para completar la ciudad.</dd><dt>Consejo</dt><dd>Los puntos de sincronización revelan muchos coleccionables cercanos.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></span><h3 class="cg">Enigmas de Nostradamus</h3></div>
+          <p>18 acertijos (6 planetas y 12 signos del zodiaco) que llevan a símbolos ocultos en monumentos de París.</p>
+          <dl><dt>Recompensa</dt><dd>Fragmentos de llave para la sala bajo el Café Théâtre con la armadura de Thomas de Carneillon.</dd><dt>Consejo</dt><dd>Usa la Vista de Águila para ver los símbolos. Cada enigma se resuelve en orden.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l6 6"/><path d="M8.5 10.5h4"/></svg></span><h3 class="cg">Misterios de asesinato</h3></div>
+          <p>Casos de detective: examina pistas, interroga a testigos y acusa al culpable.</p>
+          <dl><dt>Recompensa</dt><dd>Dinero y equipo.</dd><dt>Consejo</dt><dd>Revisa todas las pistas antes de acusar a nadie.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h11a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V5"/><path d="M8 8h7M8 12h7M8 16h4"/></svg></span><h3 class="cg">Historias de París</h3></div>
+          <p>Misiones secundarias con personajes de la época.</p>
+          <dl><dt>Recompensa</dt><dd>Dinero, equipo y algún que otro guiño histórico.</dd><dt>Consejo</dt><dd>Aparecen al avanzar en la historia principal: vuelve a mirar el mapa tras cada secuencia.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 3 10 3-8 2 3h4"/></svg></span><h3 class="cg">Fallos del Helix</h3></div>
+          <p>Saltos a otras épocas de París para recoger datos antes de que se acabe el tiempo.</p>
+          <dl><dt>Recompensa</dt><dd>Progreso de los fallos del Helix.</dd><dt>Consejo</dt><dd>Hay tiempo límite: ve primero a por los datos más cercanos.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h2a2 2 0 0 1 0 4h-2"/><path d="M8 3c0 2 2 2 2 4M12 3c0 2 2 2 2 4"/></svg></span><h3 class="cg">Café Théâtre y clubes sociales</h3></div>
+          <p>Tu base de operaciones. Renuévala junto a los clubes sociales de cada barrio.</p>
+          <dl><dt>Recompensa</dt><dd>Ingresos que se acumulan solos y misiones nuevas.</dd><dt>Consejo</dt><dd>Renuévalos pronto: cuanto antes inviertas, más dinero acumulas.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="M10 20a6 6 0 0 1 12 0"/></svg></span><h3 class="cg">Cooperativo y atracos</h3></div>
+          <p>Misiones para hasta cuatro jugadores. Los atracos premian que nadie dé la alarma.</p>
+          <dl><dt>Recompensa</dt><dd>Mucho dinero y equipo de nivel alto.</dd><dt>Consejo</dt><dd>Coordinaos por voz y repartíos los objetivos.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><circle cx="5" cy="9" r="2"/><circle cx="19" cy="9" r="2"/><path d="M8 21v-5a4 4 0 0 1 8 0v5"/><path d="M2 20v-3a3 3 0 0 1 4-2.8M22 20v-3a3 3 0 0 0-4-2.8"/></svg></span><h3 class="cg">Eventos de multitud</h3></div>
+          <p>Robos, peleas y abusos en plena calle.</p>
+          <dl><dt>Recompensa</dt><dd>Pequeñas recompensas mientras exploras.</dd><dt>Consejo</dt><dd>Atiéndelos de camino a otras misiones.</dd></dl>
+        </article>
+        <article class="act">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg></span><h3 class="cg">Dead Kings</h3></div>
+          <p>DLC gratuito ambientado tras la historia, en Franciade (Saint-Denis), en 1794.</p>
+          <dl><dt>Recompensa</dt><dd>Una zona nueva, equipo y una historia corta.</dd><dt>Consejo</dt><dd>Su historia sucede después del final: mejor al terminar Unity.</dd></dl>
+        </article>
+        <a class="act cta" href="#mapa">
+          <div class="act-h"><span class="ai"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M8 7l4-4 4 4"/><path d="M5 21h14"/><path d="M9 21v-6h6v6"/></svg></span><h3 class="cg">Barrio a barrio</h3></div>
+          <p>Activa «Misiones secundarias» en el mapa: cada barrio muestra cuántas historias, misterios, enigmas, atracos y misiones de club tiene, y su ficha lista los cofres y las escarapelas.</p>
+          <span class="go">Ir al mapa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+        </a>
+      </div>
+      <div class="tips">
+        <h3 class="cg">Consejos para empezar</h3>
+        <ol><li><b>Unity no tiene niveles de personaje</b><span>Tu fuerza depende del equipo y de las habilidades. Mejora espada, capucha y armadura antes de las misiones difíciles.</span></li><li><b>Habilidades primero</b><span>Con los puntos de sincronización que ganas en la historia, prioriza la doble ejecución, la ganzúa y la salud.</span></li><li><b>Usa el sigilo</b><span>Agáchate, ponte a cubierto y evita las peleas contra grupos grandes: en Unity son muy duras.</span></li><li><b>Misiones de caja negra</b><span>Antes de cada gran asesinato, revisa las oportunidades: llaves, distracciones y entradas secretas.</span></li></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAJES Y DATOS -->
+  <section class="sec" id="personajes">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Sin spoilers</span><h2 class="h2 cg">Personajes y datos</h2></div><p class="note"><i class="fa"></i>Asesinos <i class="ft"></i>Templarios <i class="fh"></i>Figuras históricas</p></div>
+      <div class="pdx">
+        <div class="chars"><article class="ch f-a"><span class="mono cg">AD</span><div><b>Arno Dorian</b><small>Protagonista</small><p>Hijo de un asesino, criado por la familia De la Serre en Versalles.</p></div></article><article class="ch f-t"><span class="mono cg">ÉS</span><div><b>Élise de la Serre</b><small>Templaria</small><p>Hija de François y amiga de la infancia de Arno.</p></div></article><article class="ch f-t"><span class="mono cg">FS</span><div><b>François de la Serre</b><small>Gran Maestre templario</small><p>Padre adoptivo de Arno.</p></div></article><article class="ch f-a"><span class="mono cg">PB</span><div><b>Pierre Bellec</b><small>Asesino veterano</small><p>El preso que Arno conoce en la Bastilla.</p></div></article><article class="ch f-a"><span class="mono cg">M</span><div><b>Mirabeau</b><small>Mentor de los Asesinos</small><p>Líder de la Hermandad de París y gran orador de la Asamblea.</p></div></article><article class="ch f-h"><span class="mono cg">FG</span><div><b>François-Thomas Germain</b><small>Platero</small><p>Artesano parisino ligado a la historia templaria. Pieza clave de la trama.</p></div></article><article class="ch f-h"><span class="mono cg">MR</span><div><b>Maximilien Robespierre</b><small>Jacobino</small><p>El rostro del Terror.</p></div></article><article class="ch f-h"><span class="mono cg">NB</span><div><b>Napoleón Bonaparte</b><small>Oficial de artillería</small><p>Un joven militar con el que Arno se cruza.</p></div></article><article class="ch f-h"><span class="mono cg">MS</span><div><b>Marqués de Sade</b><small>Aliado incómodo</small><p>Escritor libertino que conoce bien los bajos fondos.</p></div></article></div>
+        <aside class="facts"><h3 class="cg">Ficha del juego</h3><dl><div><dt>Lanzamiento</dt><dd>11 nov 2014 (EE. UU.) · 13 nov 2014 (Europa)</dd></div><div><dt>Estudio</dt><dd>Ubisoft Montreal</dd></div><div><dt>Plataformas</dt><dd>PS4, Xbox One y PC · Stadia (2020) · juega en PS5 y Xbox Series por retrocompatibilidad</dd></div><div><dt>Ambientación</dt><dd>París y Versalles, 1789–1794</dd></div><div><dt>Cooperativo</dt><dd>Hasta 4 jugadores</dd></div><div><dt>DLC</dt><dd>Dead Kings (gratuito): Franciade, 1794</dd></div><div><dt>60 FPS</dt><dd>Actualización 1.06 del 5 de marzo de 2026 para PS5 y Xbox Series X|S</dd></div></dl>
+          <a class="btn-o sm" href="AssassinsCreed.dc.html">Ver toda la saga <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Ubisoft. Assassin's Creed, Unity y sus imágenes son marcas y material de Ubisoft Entertainment. Guía no oficial. Mapa: plano de París de Mondhare et Jean (1790), Princeton University Library, sin derechos de autor conocidos, coloreado por GrietaMeta. Memorias según la guía de Gamer Guides; coleccionables y misiones secundarias según la guía de gamepressure.</p>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4989}}'>
+const D = {"groups": [["dcha", "Orilla derecha"], ["isla", "Islas"], ["izq", "Orilla izquierda"], ["fuera", "Fuera de París"]], "dist": [{"id": "versalles", "n": "Versalles", "g": "fuera", "desc": "Fuera de París, a unos 20 km al suroeste. Palacio real y jardines: aquí transcurren el prólogo de 1776, la secuencia 1 y el comienzo de la 11.", "lx": 0, "ly": 0, "c": [["cofres", 20], ["escarapelas", 8]], "note": "2 cofres nómadas y 2 de novicio (nivel 4 y 11). 1 punto del Helix.", "sm": []}, {"id": "tuileries", "n": "Tullerías", "g": "dcha", "desc": "El palacio de las Tullerías, el Louvre y la plaza de la Revolución. Desde octubre de 1789, residencia del rey.", "lx": 276, "ly": 874, "c": [["cofres", 7], ["cerrados", 8], ["escarapelas", 6], ["artefactos", 2]], "note": "2 cofres nómadas y 1 punto nómada. Incluye los Campos Elíseos.", "sm": [["ps", "Headlining the Guillotine", "700 libras", "Pon diarios falsos a tres vendedores de periódicos."], ["ps", "Desiree Desired", "5.000 libras", "Sigue al oficial de Bernadotte y defiende a Désirée."], ["ps", "Desiree Dismayed", "5.000 libras", "Tres pruebas en el piso de Bernadotte."], ["mm", "Red Ghost of the Tuileries", "Pistola de diseño", "37 pistas: el caso más largo."], ["ne", "Aries", "—", "Reloj del Louvre, jardines del Palais-Royal y Pont de la Concorde."], ["ne", "Libra", "—", "Palacio de las Tullerías, la guillotina y la cripta del cementerio de la Madeleine."], ["co", "Danton's Sacrifice", "Puntos y equipo", "Protege a tres aliados y recupera dos cartas."], ["co", "The Infernal Machine", "Puntos y equipo", "Mata nueve francotiradores en la ruta de Napoleón."]]}, {"id": "vendome", "n": "Vendôme", "g": "dcha", "desc": "Plazas reales y mansiones al noroeste de la orilla derecha.", "lx": 548, "ly": 540, "c": [["cofres", 3], ["cerrados", 9], ["escarapelas", 4], ["artefactos", 1]], "note": "2 cofres nómadas. El artefacto está cerca de la plaza Vendôme.", "sm": [["ps", "French Crown Jewels", "5.000 libras", "Roba a un fugitivo y a dos extremistas vigilados."], ["ps", "Desiree Delighted", "2.500 libras", "Escolta a Bernadotte y roba las cartas de Napoleón."], ["mm", "The Body Politic", "Claymore", "24 pistas."], ["sc", "Retribution for a Rabble-Rouser · The Black Office · Betrayer of the Queen", "700–12.500 libras", "Tres asesinatos del club social."], ["he", "The Party Palace", "5.000 + 10.000 libras", "Francotirador a la ventana, limpia el edificio y saquea el cofre."]]}, {"id": "feydeau", "n": "Feydeau", "g": "dcha", "desc": "Teatros y el Palais-Royal: la zona de ocio y de debate político de la ciudad.", "lx": 996, "ly": 538, "c": [["cofres", 3], ["cerrados", 10], ["escarapelas", 5], ["artefactos", 2]], "note": "2 cofres nómadas. Casi todos los cerrados son de nivel 3.", "sm": [["ps", "Constructing a Close Shave", "25.000 libras", "Recupera cuatro piezas de guillotina guardadas por extremistas."], ["ps", "Marianne Returns Home", "12.500 libras", "Practica paradas y escolta a Marianne a casa."], ["ps", "Up in Arms", "5.000 libras", "Sabotea tres cañones en una zona muy vigilada."], ["ne", "Venus", "—", "Torre de una iglesia, la estatua de Vendôme, la plaza de la Revolución y el tejado de la Halle aux Blés."], ["he", "Ancient History", "25.000 + 45.000 libras", "El cofre bueno está en el primer piso del edificio alargado."]]}, {"id": "halles", "n": "Les Halles", "g": "dcha", "desc": "El vientre de París: mercados, la Halle aux Blés y el Cementerio de los Inocentes.", "lx": 1224, "ly": 802, "c": [["cofres", 6], ["cerrados", 8], ["escarapelas", 5], ["artefactos", 1]], "note": "2 cofres nómadas. Junto al Cementerio de los Inocentes.", "sm": [["ps", "Sewer Rat", "400 libras", "Encuentra a Rotondo en las alcantarillas con la Vista de Águila."], ["mm", "Bones of Contention", "L'Étoile polaire", "17 pistas por Les Halles."], ["mm", "Death in Brothel", "Alabarda", "17 pistas por Porte-Saint-Denis."], ["sc", "Hoarding Hostages · Let 'em Eat Hay · Cat Food on the Hot Tin Roof", "700–800 libras", "Liberar granjeros, eliminar acaparadores y tenientes."], ["co", "Heads Will Roll", "Puntos y equipo", "Llaves del alcaide, la guillotina y liberar a Paton."]]}, {"id": "stdenis", "n": "Porte-Saint-Denis", "g": "dcha", "desc": "El norte popular de la ciudad, junto a la Puerta de San Denis.", "lx": 1292, "ly": 384, "c": [["cofres", 4], ["cerrados", 8], ["escarapelas", 5], ["artefactos", 1]], "note": "2 cofres nómadas. Aquí vivía el marqués de Sade.", "sm": [["ps", "My Kingdom for Some Whores", "400 libras", "Asesina a Grignon en una zona restringida."], ["ps", "De Sade's Reprieve", "1.200 libras", "Roba la orden del Grand Châtelet por la ventana del río."], ["ps", "Sadistic Blackmail", "1.400 libras", "Reúne cuatro objetos por el barrio para De Sade."], ["ps", "La Bande Noire", "700 libras", "Sigue a Dossonville y defiéndelo de tres oleadas."], ["ps", "Iscariotte the Giant", "700 libras", "Interroga a cinco testigos y busca al culpable en el desván."], ["ne", "Virgo", "—", "Iglesia, la cama de De Sade, la cruz de la Corte de los Milagros y Les Halles."]]}, {"id": "temple", "n": "Temple", "g": "dcha", "desc": "Antiguo recinto de los templarios. La familia real estuvo presa en su torre desde 1792.", "lx": 1656, "ly": 428, "c": [["cofres", 5], ["cerrados", 9], ["escarapelas", 5], ["artefactos", 3]], "note": "1 cofre de novicio y 1 punto nómada.", "sm": [["ps", "Scene Stealer", "5.000 libras", "Roba el diario de un edificio cerrado del Arsenal."], ["mm", "Barber of Seville", "Espada ancha", "15 pistas en el patio, el café y el teatro al aire libre."], ["ne", "Aquarius", "—", "Un tejado junto al club social, la torre del Temple y el sarcófago bajo ella."], ["co", "Political Persecution", "Puntos y equipo", "Incendia dos torres de la Bastilla y llega a la barca."], ["he", "Royals, Guns and Money", "5.000 + 10.000 libras", "Roba el cofre correcto: planta baja, en la esquina."], ["sc", "Artful Dodger · A Dramatic Exit · Breaking the Habit", "700–2.500 libras", "Tres misiones del club social del barrio."], ["hr", "París ocupada (3 fallos)", "Bonus de dinero", "Bajo y dentro de la torre Eiffel; derribar dirigibles."]]}, {"id": "marais", "n": "Marais", "g": "dcha", "desc": "Barrio de mansiones aristocráticas alrededor de la plaza Real.", "lx": 1840, "ly": 744, "c": [["cofres", 7], ["cerrados", 9], ["escarapelas", 5], ["artefactos", 1]], "note": "1 cofre nómada y 1 de novicio.", "sm": [["ps", "A Fistful of Duelers", "1.400 libras", "Vence a cinco esgrimistas cada vez más fuertes (sin pistolas ni artilugios)."], ["ps", "The Return of the Crimson Rose", "700 libras", "Entra por una ventana en el Arsenal y libera a De Choisy."], ["mm", "Hot Chocolate to Die For", "Espada de empuñadura pesada", "18 pistas entre jardín, cocina, comedor, estudio y terraza."], ["ne", "Scorpio", "—", "Muro y suelo de la iglesia, la torre del Hôtel de Sens y la estatua de la plaza Real."], ["co", "The Austrian Conspiracy", "Puntos y equipo", "Derrota al espía, escolta a Danton y recupera dos cartas."]]}, {"id": "hdv", "n": "Hôtel de Ville", "g": "dcha", "desc": "El ayuntamiento, la plaza de Grève y el Grand Châtelet, frente a la Cité.", "lx": 1548, "ly": 852, "c": [["cofres", 6], ["cerrados", 8], ["escarapelas", 5], ["artefactos", 2]], "note": "1 cofre nómada y 2 puntos nómadas.", "sm": [["ps", "À la lanterne!", "400 libras", "Escolta a la condesa de Frémiet desde la guillotina al cementerio."], ["ne", "Capricorn", "—", "Chimenea junto a Pont Notre-Dame; respuestas en el ayuntamiento, la guillotina y una torre."], ["ne", "Leo", "—", "Grand Châtelet, los Inocentes y Saint-Eustache."], ["co", "The Food Chain", "Puntos y equipo", "Libera a Théroigne, escóltala y elimina templarios en el mercado."]]}, {"id": "arsenal", "n": "Arsenal", "g": "dcha", "desc": "El extremo este de la orilla derecha: la Bastilla y el faubourg Saint-Antoine.", "lx": 2200, "ly": 954, "c": [["cofres", 6], ["cerrados", 8], ["escarapelas", 5], ["artefactos", 1]], "note": "1 cofre nómada y 1 de novicio. Junto a la Bastilla.", "sm": [["ps", "Critical Comedown", "400 libras", "Roba una crítica sin que te vean y bátete con el censor."], ["ps", "The League of the Crimson Rose", "400 libras", "Defiende a Rose de tres oleadas y mata a Chauvelin."], ["ps", "Crimson Sunset", "400 libras", "Vence a tiradores y duelistas y bátete con Rose."], ["ps", "The Great Escapist", "800 libras", "Saca la cuerda de la Bastilla por una ventana alta."], ["ne", "Terra", "—", "Cúpula, estatua del jardín y torre del laberinto."]]}, {"id": "pdj", "n": "Palais de Justice", "g": "isla", "desc": "Oeste de la isla de la Cité: el Palacio de Justicia, la Conciergerie y la Sainte-Chapelle.", "lx": 1380, "ly": 1044, "c": [["cofres", 7], ["cerrados", 3], ["escarapelas", 4], ["artefactos", 1]], "note": "2 cofres nómadas.", "sm": [["ps", "Riddle", "750 libras", "Habla con tres ayudantes y recupera tres cabezas con sus objetos."], ["ps", "Tall, Dark Strangers", "500 libras", "Sigue a Lenormand y asesina a sus cuatro objetivos."], ["ps", "Flamel's Secret (3 partes)", "400–1.200 libras", "Monjes de Notre-Dame, el cofre de Molinier y el elixir bajo la catedral."], ["sc", "Bridge Brigands", "500 libras", "Elimina a cuatro extremistas que vigilan los puentes."], ["sc", "Marat's Missive", "400 libras", "Consigue una carta de un hombre en el cementerio del norte."], ["ne", "Saturnus", "—", "Pont Notre-Dame, el reloj del Palais de Justice y la fachada y el tejado de Notre-Dame."], ["hr", "Belle Époque (3 fallos)", "Bonus de dinero", "Tutorial y dos fallos de 1.500 puntos."]]}, {"id": "cite", "n": "La Cité", "g": "isla", "desc": "Este de la isla de la Cité: Notre-Dame y sus calles medievales.", "lx": 1626, "ly": 1068, "c": [["cofres", 2], ["cerrados", 8], ["escarapelas", 4], ["artefactos", 1]], "note": "2 cofres nómadas y 1 punto nómada. Un cofre en el taller subterráneo de Flamel.", "sm": [["ps", "Devilishly Tricky", "1.200 libras", "Bebe de tres fuentes sospechosas y vence al grupo de cada zona."], ["ps", "Cult of Baphomet", "400 libras", "Roba vasos litúrgicos de Notre-Dame."], ["ps", "Ritual of Baphomet", "400 libras", "Mata a tres templarios en un laberinto subterráneo."], ["ps", "Waxworks", "400 libras", "Roba a tres rivales en el taller y elimina a Jean Lessard."], ["mm", "Murder Foretold", "Martillo de madera", "Asesinato en el monasterio: 13 pistas."], ["mm", "Ancestral Vengeance", "Maza larga", "Varios asesinatos en casas: 17 pistas."], ["ne", "Mars", "—", "Símbolos alrededor del cementerio y del Palais de Justice."], ["he", "Tithing Templars", "250 + 500 libras", "Roba lo que los templarios sacan del subsuelo de la catedral."]]}, {"id": "stlouis", "n": "Île Saint-Louis", "g": "isla", "desc": "Isla residencial y tranquila al este de la Cité.", "lx": 1726, "ly": 1084, "c": [["cofres", 7], ["cerrados", 3], ["escarapelas", 4]], "note": "Cofre de novicio en la entrada del Café Théâtre (traje de Edward).", "sm": [["ct", "Auto-da-fé", "500 libras", "Recupera tres manuscritos antes de que los hebertistas los quemen."], ["ct", "Colette", "400 libras", "Escóndete durante una discusión, elimina al posadero y habla con Colette arriba."], ["ct", "Damsel in Seamstress", "1.400 libras", "Habla con Rose y recupera tres alijos de vestuario vigilados."], ["ct", "The Queen's Necklace", "2.500 libras", "Quítale el collar al comandante y llévaselo al contrabandista."], ["ct", "Foxy Renard", "25.000 libras", "Roba la llave del cura, persigue al hombre marcado y elimina a Renard."], ["ne", "Mercurius", "—", "Tres respuestas en el Café Théâtre: junto a la armadura de Thomas de Carneillon, un retrato del primer piso y el tejado."]]}, {"id": "invalides", "n": "Invalides", "g": "izq", "desc": "Los Inválidos, la Escuela Militar y el Campo de Marte.", "lx": 360, "ly": 1484, "c": [["cofres", 6], ["cerrados", 10], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre nómada y 1 punto nómada.", "sm": [["ps", "A Romantic Stroll", "25.000 libras", "Elimina a diez extremistas para que Napoleón pasee tranquilo."], ["ps", "Signaling Officer Murat", "10.000 libras", "Francotiradores, guardias y dos cañones."], ["ps", "A Nine Chappe", "25.000 libras", "Destruye cuatro torres del telégrafo Chappe."], ["ps", "Precious Correspondence", "37.500 libras", "Recupera tres cartas."], ["mm", "A Dash of Poison", "Corseca", "19 pistas."], ["ne", "Taurus", "—", "El símbolo está bajo el puente de piedra."], ["co", "The Tournament", "Puntos y equipo", "Carrera de 32 banderas y cuatro conspiradores."]]}, {"id": "stthomas", "n": "Saint-Thomas-d'Aquin", "g": "izq", "desc": "Orilla izquierda frente a las Tullerías: conventos y mansiones.", "lx": 782, "ly": 1292, "c": [["cofres", 2], ["cerrados", 8], ["escarapelas", 7], ["artefactos", 3]], "note": "4 cofres nómadas.", "sm": [["ne", "Jupiter", "—", "Entrada del Palais Bourbon, una roca junto a la rueda del molino y un puente."]]}, {"id": "fsg", "n": "Faubourg Saint-Germain", "g": "izq", "desc": "El barrio aristocrático de la orilla izquierda, con la abadía de Saint-Germain-des-Prés.", "lx": 1166, "ly": 1248, "c": [["cofres", 5], ["cerrados", 8], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre de novicio. Junto al Institut de France.", "sm": [["ps", "Flying Boy", "700 libras", "Sabotea un aparato en el piso de Laplace sin que te vean."], ["ps", "Diderot's Encyclopedia", "700 libras", "Atrapa al ladrón y vence a los extremistas."], ["ne", "Sagittarius", "—", "Por el barrio, la Sorbona y el observatorio."], ["ne", "Cancer", "—", "Jardines del Luxemburgo y un túnel de las catacumbas."], ["he", "Catacomb Raider", "1.000 + 2.000 libras", "El cofre está en las catacumbas."], ["sc", "An Engaging Egyptologist · Café Théâtre Procope · Roux's Remains", "700–2.500 libras", "Tres misiones del club social."]]}, {"id": "stlambert", "n": "Saint-Lambert", "g": "izq", "desc": "Suroeste casi rural: huertos, canteras y pueblos como Vaugirard.", "lx": 898, "ly": 1758, "c": [["cofres", 3], ["cerrados", 11], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre nómada y 1 de novicio.", "sm": [["ps", "Cartouche's Memoirs", "25.000 libras", "Recupera dos diarios de cofres vigilados."], ["ps", "Turtle, Snake, Bear, Paper, Scissors", "25.000 libras", "Tres objetivos: que sus guardias se maten entre ellos."], ["ps", "Vicious Verses", "25.000 libras", "Tres libros en una zona restringida."], ["mm", "The Death of Philibert Aspairt", "Flamberge", "Pistas por todo el barrio."], ["co", "Women's March", "Puntos y equipo", "Escolta a Théroigne y sabotea tres cañones."], ["sc", "Smoky, Yet Robust · Spiked Bourbon · Special Delivery", "12.500–37.500 libras", "Viñedo, Palais Bourbon y la Escuela Militar."], ["hr", "Medieval (2 fallos)", "Bonus de dinero", "Campo de batalla y cantera, con catapultas."]]}, {"id": "sorbonne", "n": "Sorbonne", "g": "izq", "desc": "El Barrio Latino: la universidad, colegios y librerías.", "lx": 1492, "ly": 1278, "c": [["cofres", 4], ["cerrados", 8], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre nómada, 1 de novicio y 1 punto nómada. La torre de la Sorbona sirve para un salto de fe.", "sm": [["ps", "The Condorcet Method", "2.500 libras", "Dos documentos en zonas vigiladas; no hieras al civil cautivo."], ["ps", "Carmelite Nuns", "700 libras", "Protege la marcha de las monjas."], ["mm", "Hand of Science", "Arcabuz", "18 pistas."], ["mm", "The Assassination of Jean-Paul Marat", "Messer", "22 pistas."], ["he", "It Belongs in a Museum", "25.000 + 45.000 libras", "La obra maestra está en el salón de baile del primer piso."]]}, {"id": "luxembourg", "n": "Luxembourg", "g": "izq", "desc": "Palacio y jardines del Luxemburgo, usado como prisión durante el Terror.", "lx": 1300, "ly": 1678, "c": [["cofres", 6], ["cerrados", 9], ["escarapelas", 7], ["artefactos", 1]], "note": "1 cofre nómada y 1 de novicio (nivel 5).", "sm": [["ps", "Cassini's Constellations", "5.000 libras", "Tres notas en el Observatorio de París."], ["co", "Jacobin Raid", "Puntos y equipo", "Jacobinos en la iglesia y sus líderes en las catacumbas."]]}, {"id": "pantheon", "n": "Panthéon", "g": "izq", "desc": "La colina de Santa Genoveva, coronada por el Panteón.", "lx": 1734, "ly": 1488, "c": [["cofres", 3], ["cerrados", 8], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre nómada, 1 de novicio y 1 punto nómada.", "sm": [["ps", "Swiss Stash", "7.500 libras", "Roba una carta y saquea cuatro cofres."], ["ps", "Coat of Arms", "7.500 libras", "Asalta la curtiduría y vence a los guardias del curtidor."], ["co", "Moving Mirabeau", "Puntos y equipo", "Entra en el Panteón, alinea los anillos del zodiaco de la cripta y llévate el artefacto de Mirabeau."]]}, {"id": "stjacques", "n": "Saint-Jacques", "g": "izq", "desc": "El sur de la orilla izquierda: la calle Saint-Jacques y el Val-de-Grâce.", "lx": 1662, "ly": 1786, "c": [["cofres", 2], ["cerrados", 11], ["escarapelas", 7], ["artefactos", 2]], "note": "2 cofres nómadas. Algunos están en las alcantarillas.", "sm": [["ps", "The Little Prince", "25.000 libras", "Rescata al príncipe y despeja su ruta de escape."], ["sc", "Chouan Riddles · Bara's Funeral · With Forced Smile", "2.500–5.000 libras", "Un acertijo con reloj, un cortejo al Panteón y un jefe de banda."], ["ne", "Pisces", "—", "Símbolo en un callejón; respuestas en el Panteón."]]}, {"id": "stmarcel", "n": "Saint-Marcel", "g": "izq", "desc": "Faubourg obrero del sureste: los Gobelinos y el Jardín del Rey.", "lx": 2096, "ly": 1508, "c": [["cofres", 7], ["cerrados", 9], ["escarapelas", 7], ["artefactos", 2]], "note": "1 cofre nómada y 1 de novicio.", "sm": [["ps", "Tapestry Thief", "37.500 libras", "Sigue a los testigos y mata al líder extremista desde un tejado."], ["ps", "Arm the People", "10.000 libras", "Un documento y cuatro cofres en la armería municipal."], ["ps", "Assassin to Keep You Company", "50.000 libras", "Libera a tres grupos de mujeres."], ["mm", "The Decapitated Warden", "Gladius", "16 pistas."], ["mm", "Cut the Middle Man", "Hacha de oficial", "25 pistas."], ["ne", "Gemini", "—", "Cuatro símbolos; la tercera respuesta está en Saint-Jacques."], ["co", "Les Enragés", "Puntos y equipo", "Roba el registro, rescata a tres asesinos del hospital y mata a Roux."], ["he", "Smuggler's Paradise", "5.000 + 10.000 libras", "El cofre más lejano del almacén subterráneo."]]}], "lms": [{"id": "versailles", "n": "Palacio de Versalles", "d": "versalles", "x": 0, "y": 0, "desc": "La corte de Luis XVI hasta octubre de 1789. Aquí crece Arno, adoptado por la familia De la Serre.", "aprox": false, "ins": true, "mems": ["1.1", "1.2", "1.3", "11.1"]}, {"id": "notredame", "n": "Notre-Dame", "d": "cite", "x": 1582, "y": 1086, "desc": "La catedral gótica de la isla de la Cité. En Unity puedes recorrerla por dentro y escalarla entera.", "aprox": false, "ins": false, "mems": ["3.2"]}, {"id": "chapelle", "n": "Sainte-Chapelle", "d": "pdj", "x": 1418, "y": 1077, "desc": "Capilla gótica del siglo XIII dentro del Palacio de Justicia. Bajo ella está el cuartel de la Hermandad de los Asesinos.", "aprox": false, "ins": false, "mems": ["2.2", "3.1", "10.3"]}, {"id": "bastille", "n": "La Bastilla", "d": "arsenal", "x": 2077, "y": 860, "desc": "Fortaleza-prisión tomada el 14 de julio de 1789. Empezó a demolerse ese mismo verano.", "aprox": false, "ins": false, "mems": ["2.1", "11.3"]}, {"id": "hoteldeville", "n": "Hôtel de Ville", "d": "hdv", "x": 1590, "y": 945, "desc": "El ayuntamiento de París, frente a la plaza de Grève.", "aprox": false, "ins": false, "mems": []}, {"id": "chatelet", "n": "Grand Châtelet", "d": "hdv", "x": 1395, "y": 962, "desc": "Fortaleza y tribunal de la orilla derecha, frente a la Cité. Escenario de las masacres de septiembre de 1792.", "aprox": false, "ins": false, "mems": ["8.2"]}, {"id": "halleble", "n": "Halle aux Blés", "d": "halles", "x": 1222, "y": 800, "desc": "El mercado de grano circular de Les Halles, con su gran cúpula.", "aprox": false, "ins": false, "mems": ["5.2"]}, {"id": "innocents", "n": "Cementerio de los Inocentes", "d": "halles", "x": 1389, "y": 817, "desc": "Antiguo cementerio junto a Les Halles. Se clausuró en 1780 y sus huesos acabaron en las catacumbas.", "aprox": false, "ins": false, "mems": ["5.3"]}, {"id": "palaisroyal", "n": "Palais-Royal", "d": "feydeau", "x": 1050, "y": 772, "desc": "Jardines, cafés y galerías donde se debatía la Revolución.", "aprox": false, "ins": false, "mems": []}, {"id": "louvre", "n": "Louvre y Tullerías", "d": "tuileries", "x": 933, "y": 917, "desc": "El viejo palacio real y el de las Tullerías, residencia de Luis XVI desde 1789.", "aprox": false, "ins": false, "mems": ["8.1"]}, {"id": "placerev", "n": "Plaza de la Revolución", "d": "tuileries", "x": 590, "y": 925, "desc": "La actual plaza de la Concordia. Aquí fue guillotinado Luis XVI el 21 de enero de 1793.", "aprox": false, "ins": false, "mems": ["10.2"]}, {"id": "vendomep", "n": "Plaza Vendôme", "d": "vendome", "x": 768, "y": 756, "desc": "Plaza real de Luis XIV. En 1792 pasó a llamarse plaza de las Picas.", "aprox": false, "ins": false, "mems": []}, {"id": "templetower", "n": "Torre del Temple", "d": "temple", "x": 1643, "y": 452, "desc": "La antigua fortaleza de los templarios. Aquí empieza el juego, en 1307, y aquí termina la historia de Arno. La familia real estuvo presa en su torre desde 1792.", "aprox": false, "ins": false, "mems": ["p1", "12.3"]}, {"id": "portestdenis", "n": "Puerta de San Denis", "d": "stdenis", "x": 1366, "y": 350, "desc": "Arco triunfal levantado en 1672 en honor de Luis XIV.", "aprox": false, "ins": false, "mems": []}, {"id": "miracles", "n": "Corte de los Milagros", "d": "stdenis", "x": 1263, "y": 497, "desc": "El reino de mendigos y ladrones de la orilla derecha. Posición aproximada.", "aprox": true, "ins": false, "mems": ["4.1", "4.2"]}, {"id": "placeroyale", "n": "Plaza Real", "d": "marais", "x": 1970, "y": 815, "desc": "La plaza más antigua de París (hoy plaza de los Vosgos), en el corazón del Marais.", "aprox": false, "ins": false, "mems": []}, {"id": "invalidesb", "n": "Los Inválidos", "d": "invalides", "x": 500, "y": 1450, "desc": "Hospital de veteranos con su gran cúpula dorada. El 14 de julio de 1789 la multitud se llevó de aquí miles de fusiles.", "aprox": false, "ins": false, "mems": []}, {"id": "champmars", "n": "Campo de Marte", "d": "invalides", "x": 178, "y": 1527, "desc": "La explanada de la Escuela Militar, escenario de la Fiesta de la Federación de 1790.", "aprox": false, "ins": false, "mems": ["12.1"]}, {"id": "stgermain", "n": "Saint-Germain-des-Prés", "d": "fsg", "x": 1150, "y": 1283, "desc": "La abadía medieval del barrio aristocrático de la orilla izquierda.", "aprox": false, "ins": false, "mems": []}, {"id": "stthomasc", "n": "Iglesia de Saint-Thomas-d'Aquin", "d": "stthomas", "x": 935, "y": 1304, "desc": "Iglesia de los dominicos que da nombre al barrio.", "aprox": false, "ins": false, "mems": []}, {"id": "sorbonneb", "n": "La Sorbona", "d": "sorbonne", "x": 1493, "y": 1389, "desc": "La universidad, corazón del Barrio Latino.", "aprox": false, "ins": false, "mems": []}, {"id": "luxpal", "n": "Palacio del Luxemburgo", "d": "luxembourg", "x": 1262, "y": 1495, "desc": "Palacio y jardines. Durante el Terror sirvió de prisión.", "aprox": false, "ins": false, "mems": []}, {"id": "pantheonb", "n": "Panteón", "d": "pantheon", "x": 1634, "y": 1458, "desc": "La iglesia de Santa Genoveva, convertida en 1791 en panteón de grandes hombres. Mirabeau fue el primero en entrar.", "aprox": false, "ins": false, "mems": []}, {"id": "valdegrace", "n": "Val-de-Grâce", "d": "stjacques", "x": 1637, "y": 1769, "desc": "Abadía con cúpula barroca. Con la Revolución pasó a ser hospital militar.", "aprox": false, "ins": false, "mems": []}, {"id": "gobelins", "n": "Manufactura de los Gobelinos", "d": "stmarcel", "x": 2001, "y": 1871, "desc": "Talleres reales de tapices en el faubourg obrero de Saint-Marcel.", "aprox": false, "ins": false, "mems": []}, {"id": "jardinroi", "n": "Jardín del Rey", "d": "stmarcel", "x": 2040, "y": 1330, "desc": "El jardín botánico de París. En 1793 nació aquí el Museo de Historia Natural.", "aprox": false, "ins": false, "mems": []}, {"id": "beauvais", "n": "Hôtel de Beauvais", "d": "marais", "x": 1748, "y": 920, "desc": "Mansión del siglo XVII en el Marais. En Unity acoge la reunión de los jacobinos de la secuencia 6.", "aprox": false, "ins": false, "mems": ["6.1"]}, {"id": "cafe", "n": "Café Théâtre", "d": "stlouis", "x": 1770, "y": 1062, "desc": "La base de Arno en la Île Saint-Louis: renuévala para ganar dinero. Bajo ella está la sala con la armadura de Thomas de Carneillon. Posición aproximada.", "aprox": true, "ins": false, "mems": ["7.1"]}, {"id": "steustache", "n": "Saint-Eustache", "d": "halles", "x": 1266, "y": 728, "desc": "La gran iglesia gótica de Les Halles.", "aprox": false, "ins": false, "mems": []}, {"id": "palaisbourbon", "n": "Palais Bourbon", "d": "stthomas", "x": 530, "y": 1085, "desc": "Palacio a orillas del Sena, frente a la plaza de la Revolución.", "aprox": false, "ins": false, "mems": []}, {"id": "stsulpice", "n": "Saint-Sulpice", "d": "fsg", "x": 1276, "y": 1415, "desc": "Gran iglesia del faubourg Saint-Germain, con dos torres desiguales.", "aprox": false, "ins": false, "mems": []}, {"id": "salpetriere", "n": "La Salpêtrière", "d": "stmarcel", "x": 2250, "y": 1550, "desc": "Enorme hospital-asilo del sureste de París.", "aprox": false, "ins": false, "mems": []}, {"id": "ecolemil", "n": "Escuela Militar", "d": "invalides", "x": 425, "y": 1799, "desc": "Academia militar junto al Campo de Marte, donde estudió Napoleón.", "aprox": false, "ins": false, "mems": []}], "seqs": [{"id": "p", "num": "P", "t": "El último Gran Maestre", "yr": "1307", "mems": [{"id": "p1", "t": "Jacques de Molay", "en": "Prologue", "pl": "templetower", "obj": "Tutorial como templario junto a Jacques de Molay durante la caída de la Orden: esconde una espada y un libro antes de que lleguen los asesinos.", "steps": ["Sigue a De Molay por la fortaleza tras la escena inicial.", "Esconde la espada y el libro y corre hacia el marcador, evitando o enfrentándote a los enemigos.", "Cruza el patio y trepa por la escalera y los muros hasta el edificio.", "Persigue por tejados y escaleras al asesino que roba el libro.", "Derrótalo: para sus golpes y esquiva los ataques pesados del bruto (esos no se pueden parar)."], "opt": [], "opp": [], "uk": "", "unlock": "Trofeo «A Long Time Ago»", "sp": "", "rift": false}]}, {"id": "s1", "num": "1", "t": "Versalles", "yr": "1776 y 1789", "mems": [{"id": "1.1", "t": "Recuerdos de Versalles", "en": "Memories of Versailles", "pl": "versailles", "obj": "Arno, de niño, sigue a una chica misteriosa por Versalles. Años después, ya adulto, persigue a Hugo por las calles.", "steps": ["Sigue a la chica por las salas de Versalles hasta el patio del jardín.", "Coge la manzana de la mesa del guardia dormido y rompe su línea de visión para despistarlo.", "Atrae al guardia lejos de la salida para poder salir del jardín.", "Tras la escena, persigue a Hugo pasando por encima y por debajo de obstáculos y derríbalo.", "Ve al norte por la izquierda del Cafés et Épices, escóndete entre la gente y llega a la finca De la Serre."], "opt": ["Pasa por encima o por debajo de 5 obstáculos", "Que no te derriben"], "opp": ["El guardia del patio es el tutorial de la «última posición conocida»: más adelante sirve para atraer objetivos a una emboscada."], "uk": "", "unlock": "", "sp": "La chica es Élise de la Serre. Ese mismo día, el padre de Arno muere asesinado.", "rift": false}, {"id": "1.2", "t": "Los Estados Generales", "en": "The Estates General", "pl": "versailles", "obj": "Entrega una carta alcanzando el carruaje de los De la Serre y escapa de la policía.", "steps": ["Habla con Olivier dentro de la finca De la Serre.", "Sigue el carruaje por los tejados y sincroniza el punto de observación de la catedral, en la plaza del mercado.", "Salto de fe hasta las puertas; mézclate con la multitud y usa las coberturas para pasar a los guardias.", "Sube al piso principal y cruza al balcón del marcador.", "Pelea con Hugo (para sus golpes) y con Victor (esquiva sus golpes pesados).", "Huye de la policía y sal de la zona."], "opt": ["Para 2 ataques", "Esquiva 2 ataques"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "1.3", "t": "Alta sociedad", "en": "High Society", "pl": "versailles", "obj": "Deja la carta en el despacho de De la Serre y cuélate en la gala de palacio para ver a Élise.", "steps": ["Recorre la residencia, examina los objetos brillantes y desliza la carta bajo la puerta del despacho.", "Cámbiate de ropa y entra en la gala usando la multitud para evitar a los guardias.", "Entra en el edificio por el lado iluminado con dos estandartes rojos.", "Avanza a cubierto entre salas y mesas; muévete solo cuando los guardias miren a otro lado.", "Sigue a Élise por el salón de baile y las salas de muebles tapados.", "Sal del palacio tras la escena del comedor."], "opt": ["No entres en conflicto"], "opp": [], "uk": "", "unlock": "Trofeo «Youth in Versailles»", "sp": "Esa noche asesinan a François de la Serre y culpan a Arno.", "rift": false}]}, {"id": "s2", "num": "2", "t": "La Bastilla", "yr": "1789", "mems": [{"id": "2.1", "t": "Encarcelado", "en": "Imprisoned", "pl": "bastille", "obj": "Sobrevive en la Bastilla y escapa junto a un preso veterano.", "steps": ["Explora la celda y habla con todos.", "Gana el duelo de la mañana con paradas perfectas y lee con la Vista de Águila lo escrito en la pared.", "Cuando entren los guardias en la celda, elimina en sigilo al del fondo.", "Sigue a Bellec: paradas perfectas contra la primera oleada y bombas de humo contra la segunda.", "Escapa por la ventana, cruza tejados y vigas y acaba con los guardias de fuera.", "Sube al tejado con Bellec y haz un salto de fe."], "opt": ["2 evasiones con bomba de humo", "3 paradas perfectas"], "opp": ["El duelo de la mañana es el tutorial de la parada perfecta.", "La Vista de Águila revela la escritura de la pared.", "Puedes matar en sigilo a los guardias que entran en la celda."], "uk": "", "unlock": "", "sp": "Pierre Bellec te habla del pasado de tu padre, te recluta para la Hermandad y escapáis durante la toma de la Bastilla.", "rift": false}, {"id": "2.2", "t": "Renacimiento", "en": "Rebirth", "pl": "chapelle", "obj": "Sigue a Bellec hasta el refugio de la Hermandad, bajo la Sainte-Chapelle.", "steps": ["Trepa por los pilares hasta el segundo piso y entra en la nave.", "Coloca el talismán para mover las lámparas y cruza por ellas hasta el marcador.", "Desde la cornisa, haz un salto de fe a la oscuridad cuando se revele el camino.", "Sigue a Bellec al refugio y bebe del cáliz cuando recuperes el control.", "En la visión de Versalles, corre por el camino que se derrumba saltando de plataforma en plataforma.", "Cruza la sala abarrotada, colócate detrás del objetivo y asesínalo."], "opt": [], "opp": [], "uk": "El objetivo de la sala abarrotada, dentro de la visión.", "unlock": "Trofeo «Rebirth»", "sp": "", "rift": false}]}, {"id": "s3", "num": "3", "t": "Iniciación", "yr": "", "mems": [{"id": "3.1", "t": "Graduación", "en": "Graduation", "pl": "chapelle", "obj": "Primera misión con Bellec por los tejados de París, hasta la sala del Consejo de la Hermandad.", "steps": ["Habla con Bellec en el tejado y cruza ventanas y gárgolas hasta las dos tiendas.", "Mata a los tres guardias desde cobertura (cajas y el pilar junto al último).", "Sabotea la campana de alarma, asesina al matón que queda y registra el cadáver marcado.", "Usa una bomba de humo y sigue a Bellec por los tejados y una cuerda.", "Abre paso por las calles hasta el cuartel de la Hermandad y entra en la sala del Consejo."], "opt": ["3 muertes desde cobertura", "No te quedes atrás respecto a Bellec"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "3.2", "t": "Confesión", "en": "Confession", "pl": "notredame", "obj": "Tu primer gran asesinato de caja negra: elimina a Sivert dentro de Notre-Dame.", "steps": ["Por los tejados al norte de la catedral, alcanza a los dos matones que robaron las llaves de un cura.", "Vuelve a la fachada y sube al punto marcado para localizar a Duchesneau.", "Escóndete en el carro de heno del nivel inferior y asesínalo cuando pase.", "Por el sureste, baja por el pozo y sigue las alcantarillas hasta una escalera oculta que entra en la catedral.", "Avanza tras las cortinas rojas y atrae a los guardias de uno en uno.", "Desde el carro de heno del centro, localiza a Sivert con la Vista de Águila y entra en el confesionario antes de que se vaya.", "Sal por el segundo piso usando las llaves."], "opt": ["2 muertes desde un escondite", "No hagas saltar ninguna alarma"], "opp": ["Infiltración: quítales las llaves a los dos matones que se las robaron al cura.", "Asesinato: mata a Duchesneau, socio de Sivert, para desbloquear el asesinato único."], "uk": "Sivert, desde el confesionario. Hay que actuar rápido: si sale, pierdes el asesinato único.", "unlock": "Trofeo «First Blood»", "sp": "", "rift": false}, {"id": "3.3", "t": "Fallo del Helix: París, 1898", "en": "Server bridge · Paris 1898", "pl": "", "obj": "Abstergo está barriendo el servidor: encuentra el portal y sal antes de que te alcance. Las barras rojas del cielo te desincronizan.", "steps": ["Cruza la ciudad hasta el portal y salta a 1898.", "Ve hacia el Café Terminus, baja al metro y cruza las vías.", "Sigue los túneles y trepa por tuberías y cuerdas hasta otro túnel.", "Cuando Arno cae a las vías, huye corriendo del tren deslizándote bajo los obstáculos.", "Esquiva los escombros del vórtice a cubierto y trepa por la grúa.", "Trepa alrededor de la Estatua de la Libertad hasta la salida."], "opt": [], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": true}]}, {"id": "s4", "num": "4", "t": "Los bajos fondos", "yr": "", "mems": [{"id": "4.1", "t": "El reino de los mendigos", "en": "The Kingdom of Beggars", "pl": "miracles", "obj": "Busca al templario La Touche en la Corte de los Milagros y síguelo sin que te vea.", "steps": ["Rodea la zona de búsqueda en vez de cruzarla y encuentra a La Touche en un cuartucho.", "Tras la escena, sigue el rastro de sangre con la Vista de Águila en sigilo.", "Síguelo a distancia por el laberinto de edificios, trepando por las estructuras de madera.", "Por los tejados, elimina guardias con la Hoja Fantasma y asesinatos aéreos (primero el que te puede ver).", "Entra en el edificio, distrae o elimina al guardia de la ventana y baja hasta La Touche.", "Sal por donde entraste lanzando un petardo al patio."], "opt": ["2 muertes con la Hoja Fantasma", "2 señuelos con petardos"], "opp": [], "uk": "", "unlock": "La Hoja Fantasma (se encarga en el cuartel de la Hermandad) y mejoras de armas.", "sp": "", "rift": false}, {"id": "4.2", "t": "Le roi est mort", "en": "Le Roi Est Mort", "pl": "miracles", "obj": "Da caza al Rey de los Mendigos (Roi des Thunes) en las alcantarillas.", "steps": ["Asesina desde el aire al guardia de abajo y tapa las dos chimeneas.", "Salva con una bomba de humo a los rebeldes atacados y síguelos hasta el callejón.", "Entra en las alcantarillas por el mausoleo y avanza por los túneles.", "Sube a la sala principal, deslízate bajo las rejas y mata al francotirador de la puerta cerrada.", "Fuerza la cerradura y ve a por el Rey de los Mendigos.", "Consigue otra muerte con la Hoja Fantasma y escapa por los túneles llenos de humo."], "opt": ["3 asesinatos aéreos", "2 muertes con la Hoja Fantasma"], "opp": ["Tapa las dos chimeneas con tablas para que el humo no alerte a los guardias.", "Salva a los rebeldes con una bomba de humo.", "Doble asesinato a los dos guardias del callejón (si tienes la habilidad).", "En las alcantarillas, cuélate cuando la patrulla se aleje."], "uk": "El Rey de los Mendigos: disparo a la cabeza con la Hoja Fantasma por la espalda y remate con la hoja oculta.", "unlock": "Trofeo «La Cour des Miracles»", "sp": "", "rift": false}]}, {"id": "s5", "num": "5", "t": "La pista del platero", "yr": "", "mems": [{"id": "5.1", "t": "El platero", "en": "The Silversmith", "pl": "", "obj": "El arma que mató a De la Serre lleva la marca de un platero. Sigue la pista hasta él.", "steps": ["Rodea el edificio por la derecha y entra por una ventana de la esquina noreste.", "Limpia la sala de guardia contigua forzando las puertas.", "Separa a los dos brutos de la sala siguiente con la línea de visión y mátalos.", "Usa la Cuchilla Berserker con el bruto de abajo tras limpiar el piso de arriba.", "Sube en el elevador al tejado para eliminar a los francotiradores.", "Desde la última puerta, usa la Vista de Águila y dispara a los enemigos mientras Germain pide ayuda."], "opt": ["Fuerza 4 cerraduras", "Enloquece a 2 brutos"], "opp": ["Usa la línea de visión y la última posición conocida para separar a los brutos.", "Muertes desde cobertura con guardias y brutos.", "Los francotiradores del tejado se pueden matar por la espalda tras subir en el elevador."], "uk": "", "unlock": "Pistolas y fusiles, y la siguiente pista sobre el verdadero culpable.", "sp": "", "rift": false}, {"id": "5.2", "t": "La Halle aux Blés", "en": "La Halle aux Blés", "pl": "halleble", "obj": "Infíltrate en el mercado de grano y sigue la pista hasta el corazón del edificio.", "steps": ["Dispara a la cabeza con la pistola a los dos guardias de la línea de la zona restringida.", "Rodea en sentido antihorario hasta la siguiente pareja y completa las muertes con pistola.", "Vuelve a la entrada principal y cruza el centro escondido entre el heno cuando los guardias miren a otro lado.", "Mata en silencio al bruto del otro lado, trepa por las tablas, asesina al francotirador y cruza por la cuerda.", "Cruza la puerta, deslízate sobre los barriles y bajo la pared y salta bajo las vigas que caen.", "Trepa por la columna central y sal por la plataforma exterior y la cuerda."], "opt": ["3 muertes con pistola (antes de entrar en la zona restringida)", "Desliza por encima o por debajo de 4 objetos"], "opp": ["Mata desde cobertura al bruto que revisa los barriles.", "Al guardia apoyado en la pared, desde el otro lado de los toneles."], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "5.3", "t": "El profeta", "en": "The Prophet", "pl": "innocents", "obj": "Elimina a Lafrenière en el Cementerio de los Inocentes.", "steps": ["Baja al cementerio y sigue el muro hacia el sur hasta una entrada en la esquina.", "Sabotea la primera campana junto a la pila de calaveras y baja a los túneles.", "Salva con una bomba de humo a los rebeldes acosados y sabotea el resto de campanas.", "Escóndete en el carro de heno hasta que anochezca y mata desde cobertura a los guardias de la primera campana.", "Atrae a los guardias del mausoleo a muertes desde cobertura.", "Escóndete en la letrina junto a los huesos y mata a Lafrenière cuando pase."], "opt": ["Sabotea 4 campanas de alarma", "3 muertes desde cobertura"], "opp": ["Hay dos eventos de oportunidad en la zona."], "uk": "Lafrenière: muerte silenciosa desde el escondite de la letrina, junto a los huesos.", "unlock": "Trofeo «The Root of Evil»", "sp": "", "rift": false}]}, {"id": "s6", "num": "6", "t": "Política y emboscadas", "yr": "", "mems": [{"id": "6.1", "t": "El club de los jacobinos", "en": "The Jacobin Club", "pl": "beauvais", "obj": "Sigue a La Touche dentro del Hôtel de Beauvais, donde se reúnen los jacobinos.", "steps": ["Localiza a La Touche en el marcador del hotel y cruza los tejados enloqueciendo al primer francotirador.", "Dispara a la cabeza al guardia que patrulla, enloquece a un segundo francotirador y entra por el balcón.", "A cubierto, busca a La Touche entre el público con la Vista de Águila.", "Sigue a un guardia hasta un escondite para matarlo.", "Cuando La Touche suba, sigue a los hombres que bajan corriendo al sótano.", "Usa el armario de la sala principal para llegar al balcón y sal por donde entraste."], "opt": ["Enloquece a 2 francotiradores", "2 muertes desde un escondite"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "6.2", "t": "Emboscada templaria", "en": "Templar Ambush", "pl": "", "obj": "Los templarios van a por Élise: defiéndela y escapad juntos.", "steps": ["Ve a casa de Élise y luego al marcador de los jardines.", "Defiende a Élise de los templarios y síguela por un balcón y bajo un seto.", "Limpia el laberinto de setos y sube a la torre central para disparar a los guardias cercanos.", "En el laberinto, haz dos dobles asesinatos; en el cruce en T, ve por la derecha.", "En la persecución, sigue a Élise, trepa por una farola y salta por los toldos para abatir a los francotiradores.", "Tras la escena, suelta una bomba de humo y huye de las colinas."], "opt": ["4 disparos a la cabeza", "2 dobles asesinatos"], "opp": [], "uk": "", "unlock": "Trofeo «Secret Meeting»", "sp": "", "rift": false}]}, {"id": "s7", "num": "7", "t": "Alianzas y traiciones", "yr": "1791", "mems": [{"id": "7.1", "t": "Una alianza prudente", "en": "A Cautious Alliance", "pl": "cafe", "obj": "Reúnete con Élise en el Café Théâtre y acompáñala por París.", "steps": ["Reúnete con Élise en el Café Théâtre y escóltala hasta el cuartel de la Hermandad.", "Síguela escaleras arriba hasta el despacho de Germain.", "Cuando entren los tres guardias, suelta bombas aturdidoras y remátalos.", "Equipa la Hoja Fantasma y apunta a los cuatro francotiradores de fuera.", "Acierta al menos tres disparos a la cabeza (si se acaban las hojas, usa la pistola)."], "opt": ["Aturde a 3 enemigos con bombas aturdidoras", "3 disparos a la cabeza"], "opp": [], "uk": "", "unlock": "", "sp": "Una escena revela de qué lado está realmente Germain.", "rift": false}, {"id": "7.2", "t": "Reunión con Mirabeau", "en": "Meeting with Mirabeau", "pl": "", "obj": "Ve a casa de Mirabeau para avisar al Maestro Asesino de lo que has descubierto.", "steps": ["Examina el cuerpo en el dormitorio del tercer piso: hay un alfiler igual al que mató a De la Serre y un pañuelo junto a la cama.", "Revisa el libro del escritorio y el armario en busca de la última pista.", "Habla con el maestro Quemar en el cuartel; te manda a por un boticario.", "Persigue al boticario por los túneles deslizándote bajo las vigas.", "Síguelo por el parque, atraviesa su bomba de humo en el patio de arcos y usa el elevador junto a la fuente.", "Salta los bancos del parque y derríbalo."], "opt": ["Desliza por encima o por debajo de 5 objetos", "Usa un elevador"], "opp": [], "uk": "", "unlock": "", "sp": "Mirabeau ha muerto envenenado, y las sospechas apuntan a Élise.", "rift": false}, {"id": "7.3", "t": "Enfrentamiento", "en": "Confrontation", "pl": "", "obj": "Sigue el rastro del asesino de Mirabeau hasta el tejado de una iglesia.", "steps": ["Ve al último alijo del boticario y sigue el rastro con la Vista de Águila hasta la iglesia.", "Trepa por el pilar izquierdo hasta el tejado.", "Combate en cuatro fases: golpes normales, después pesados y por último bombas.", "Encadena combos con bombas de humo y aturdidoras y usa el golpe aturdidor para desequilibrarlo.", "Si suelta la espada y grita, va a usar su golpe aturdidor: rueda o contrarresta con el tuyo.", "Sigue la pelea del tejado al interior hasta asesinarlo."], "opt": ["Usa el golpe aturdidor 5 veces", "Que no te derriben"], "opp": [], "uk": "Duelo final de cuatro fases que termina en un asesinato obligatorio.", "unlock": "Trofeo «Mystery Solved»", "sp": "El asesino es Bellec, que mató a Mirabeau para impedir la paz con los templarios.", "rift": false}, {"id": "7.4", "t": "Fallo del Helix: París, 1944", "en": "Server bridge · Paris 1944", "pl": "", "obj": "Atraviesa la París ocupada hasta la torre Eiffel y salta al portal desde lo más alto.", "steps": ["Sal de las alcantarillas junto a la torre Eiffel sin pisar la luz de los focos.", "Cruza el tanque, cuélate por un hueco de la valla y empieza a trepar.", "Cruza la estructura metálica y sube por el hueco del ascensor.", "Derriba aviones con las ametralladoras de la torre mientras esquivas su fuego.", "Trepa por una cuerda hasta el zepelín y cruza su cola hasta un elevador.", "Llega a la cima y salta al portal cuando cambie de sitio."], "opt": [], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": true}]}, {"id": "s8", "num": "8", "t": "El Terror se acerca", "yr": "1792", "mems": [{"id": "8.1", "t": "La correspondencia del rey", "en": "The King's Correspondence", "pl": "louvre", "obj": "Recupera las cartas de Mirabeau al rey antes de que caigan en manos templarias.", "steps": ["Baja del tejado, cruza la multitud y trepa por el muro del fondo (cuidado con el francotirador y el bruto).", "Doble asesinato aéreo a la patrulla y sabotea la primera campana.", "Disparos a la cabeza y una muerte sigilosa para sabotear la segunda.", "Escóndete en el carro de heno, sabotea la tercera campana y asesina al francotirador de la escalera.", "Limpia las salas del edificio a cubierto y entra en la cámara del rey.", "Aguanta dos minutos las oleadas de rebeldes con bombas y sigue a Napoleón."], "opt": ["Sabotea 3 campanas de alarma", "3 muertes desde cobertura"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "8.2", "t": "Masacres de septiembre", "en": "September Massacres", "pl": "chatelet", "obj": "Elimina a Rouillé, que está asaltando la prisión del Grand Châtelet.", "steps": ["Habla con Napoleón y salta desde la atalaya al carro de heno.", "Evita la entrada directa: cruza el puente y entra por las alcantarillas que llevan a una escalera dentro de la prisión.", "Elimina a los guardias del interior, del comedor y de las celdas desde cobertura.", "Sube al tejado y baja al muro inferior para asesinar desde la cornisa a dos francotiradores.", "Quema la bandera de la torre principal y asesina a otro francotirador del muro.", "Mata al último guardia y ve a por Rouillé en la plataforma."], "opt": ["3 muertes desde cobertura", "3 asesinatos desde una cornisa"], "opp": ["Ruta por las alcantarillas: entras dentro de la prisión sin pasar por la puerta.", "Quemar la bandera de la torre principal."], "uk": "", "unlock": "Trofeo «Bloody Trail»", "sp": "", "rift": false}]}, {"id": "s9", "num": "9", "t": "Hambre", "yr": "", "mems": [{"id": "9.1", "t": "Tiempos de hambre", "en": "Starving Times", "pl": "", "obj": "Falta el grano en París: recorre los muelles hasta el hombre de Marie Lévesque y quítale sus órdenes.", "steps": ["Sigue el barco por las cuerdas, sube a la casa del embarcadero y cruza los edificios.", "Cruza muelles, pilotes y la playa esquivando la caja que cae; sube por el elevador y las vigas hasta el puente.", "Esquiva el contenedor que cae, evita a los matones y salta al carro de heno desde el tejado.", "Mata al guardia del heno y al bruto; nada hasta la plataforma y usa la Hoja Fantasma con la patrulla.", "Elimina al objetivo, coge sus órdenes y sal de la zona por el carro de heno."], "opt": ["No toques el agua", "No hagas saltar ninguna alarma"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "9.2", "t": "Acaparadores", "en": "Hoarders", "pl": "", "obj": "Asesina a Marie Lévesque, que acapara el grano mientras París pasa hambre.", "steps": ["Asesina desde el aire a los guardias que acosan al mercader y cubre su carro desde los tejados.", "Defiende el carro a disparos y habla con el mercader.", "En la zona restringida, limpia francotiradores y guardias y libera a los presos de las dos celdas con la cuerda del patio.", "Entra por una ventana abierta, libera a Thomas Lévesque y acaba con el bruto y los guardias.", "Espera a que Marie Lévesque cruce el salón del banquete y asesínala desde arriba.", "Escapa por las salidas del edificio."], "opt": ["Rescata a Thomas Lévesque", "No hagas saltar ninguna alarma"], "opp": ["Protege el carro del mercader de 6 atacantes.", "Libera a los presos de las dos celdas sin dar la alarma.", "Un mercader junto a los primeros guardias repone Hojas Fantasma."], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "9.3", "t": "La huida", "en": "The Escape", "pl": "", "obj": "El reparto de grano sale mal: alcanza a Élise y libera el globo cortando sus tres amarras.", "steps": ["Suelta bombas de humo para ignorar a los guardias.", "Corta las cuerdas que sujetan el globo.", "Sube en el elevador, cruza la cuerda y la rampa de madera y sigue al globo por los tejados.", "Cerca del francotirador, cruza la plaza por la cuerda hasta el edificio del boticario y libera el globo.", "Sube al tejado de la capilla para liberar a Élise.", "Ya en el suelo, toma un elevador y cruza los edificios hasta la escena final."], "opt": ["No te quedes atrás del globo", "No toques el suelo"], "opp": [], "uk": "", "unlock": "Trofeo «Road to Starvation»", "sp": "", "rift": false}]}, {"id": "s10", "num": "10", "t": "La caída del rey", "yr": "1793", "mems": [{"id": "10.1", "t": "Una cena comprometida", "en": "A Dinner Engagement", "pl": "", "obj": "Elimina a Le Peletier durante una cena.", "steps": ["Salta al carro de heno y elimina a los guardias cercanos según su patrulla.", "Limpia la entrada principal y enloquece a un bruto al este.", "Ruta del veneno: sube al piso superior, pasa al guardia de la ventana y deja la botella en la mesa de Le Peletier.", "Ruta del soborno: paga a la mujer del patio, entra y limpia los pasillos.", "Espera junto a la puerta del comedor a que salga Le Peletier y mátalo desde cobertura.", "Sal por donde entraste."], "opt": ["Enloquece a 2 brutos", "2 dobles asesinatos"], "opp": ["Vino envenenado: exige sigilo total, un error puede hacer fracasar la misión.", "Soborno por la ventana: cuesta 4.000 francos y te obliga a enfrentarte a más enemigos."], "uk": "Le Peletier, con veneno o desde cobertura según la ruta.", "unlock": "", "sp": "", "rift": false}, {"id": "10.2", "t": "La ejecución", "en": "The Execution", "pl": "placerev", "obj": "Sigue a Élise entre la multitud de la ejecución de Luis XVI y encuentra a Germain.", "steps": ["Tras la escena, salta al carro de heno y trepa por el poste hasta las cuerdas.", "Sigue las cuerdas exteriores hasta la primera atalaya y mata al francotirador.", "Cruza de poste en poste por encima de la multitud.", "Salta a la atalaya de la derecha y mata al segundo francotirador.", "Rodea el carruaje entre la gente hasta la tienda de Germain y acércate por detrás.", "Lanza bombas aturdidoras hasta que se pierda el rastro de Germain."], "opt": ["Mata a 2 francotiradores", "Aturde a 5 enemigos"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "10.3", "t": "Reunión del Consejo", "en": "Council Meeting", "pl": "chapelle", "obj": "Vuelve al cuartel de la Hermandad: el Consejo quiere hablar contigo.", "steps": [], "opt": [], "opp": [], "uk": "", "unlock": "Trofeo «Love and Duty»", "sp": "El Consejo cree que Arno solo busca venganza y lo expulsa de la Hermandad.", "rift": false}]}, {"id": "s11", "num": "11", "t": "Tocar fondo", "yr": "", "mems": [{"id": "11.1", "t": "Tocar fondo", "en": "Bottom of the Barrel", "pl": "versailles", "obj": "Arno despierta con resaca en Versalles: averigua qué pasó anoche y dónde está el reloj de su padre.", "steps": ["En el recuerdo de la noche anterior, atrae a los guardias con petardos y trepa hasta la calle.", "Sube al balcón, espera a que el bruto se mueva y usa el barril.", "De vuelta en el bar, pelea con los matones y derriba al que huye para sacarle dónde está su jefe.", "En Versalles, usa un dardo berserker en el bruto y una bomba de gas venenoso en su grupo.", "Limpia el edificio (asesinato aéreo desde el balcón y la patrulla del piano).", "Atrae al jefe con un petardo, dale con la cuchilla berserker y acaba con el resto."], "opt": ["4 señuelos con petardos", "2 muertes con gas venenoso"], "opp": ["Dardo berserker al bruto para reunir guardias y rematarlos con gas.", "Cuchilla berserker al jefe tras sacarlo de la puerta con un petardo."], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "11.2", "t": "El ascenso del asesino", "en": "Rise of the Assassin", "pl": "", "obj": "Libera a Victor y Hugo y llega hasta La Touche junto a la guillotina.", "steps": ["Cruza los tejados hasta el edificio del tejado marrón y limpia a los francotiradores.", "Elimina patrullas y brutos en el suelo usando la multitud.", "Limpia el lado sur y los francotiradores de la jaula, incluido el de la atalaya.", "Roba la llave a un guardia del edificio de detrás de la jaula y libera a Victor y Hugo.", "Sigue a los Defensores hasta la guillotina, coge la llave y llega a La Touche antes de que te reconozca.", "Lanza una bomba de humo y escapa de la plaza."], "opt": ["3 disparos a la cabeza", "4 muertes desde cobertura"], "opp": [], "uk": "", "unlock": "Trofeo «Down But Not Out»", "sp": "", "rift": false}, {"id": "11.3", "t": "Fallo del Helix: París, 1394", "en": "Server bridge · Paris 1394", "pl": "bastille", "obj": "Último salto del servidor: llega al portal junto a la Bastilla y entra en la París medieval.", "steps": ["Cruza el cementerio hacia las catacumbas y deslízate por la rampa.", "Trepa por una columna en la gran caverna y sal por una tumba.", "Esquiva las rocas rodantes de los túneles usando los huecos y trepa por la pared de madera.", "Escapa de la simulación que se derrumba cuesta arriba.", "Sal de la cantera, cruza el puente y llega al campo de batalla.", "Esquiva las bolas de fuego de la Bastilla tras vallas y barricadas hasta el portal."], "opt": [], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": true}]}, {"id": "s12", "num": "12", "t": "El Ser Supremo", "yr": "1794", "mems": [{"id": "12.1", "t": "El Ser Supremo", "en": "The Supreme Being", "pl": "champmars", "obj": "Durante la Fiesta del Ser Supremo, pon una lista de nombres a tres personas influyentes para volver a la multitud contra Robespierre.", "steps": ["Sigue a Élise entre la multitud y sube a la atalaya de las tiendas del este cuando nadie mire.", "Asesina desde el aire al guardia de abajo y llega a la tienda de la campana.", "Distrae a los dos guardias con un petardo, sabotea la campana y coge el libro de nombres.", "Escóndete en los carros de heno y elimina patrullas sin que detecten a Élise.", "Coloca la primera lista al hombre cercano cuando los matones miren a otro lado.", "Coloca la segunda al objetivo del norte y la tercera al de la tienda."], "opt": ["Sabotea 1 campana de alarma", "Que no detecten a Élise"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "12.2", "t": "La caída de Robespierre", "en": "The Fall of Robespierre", "pl": "", "obj": "Termidor: encuentra a los supervivientes y localiza a Robespierre, que ha sido detenido.", "steps": ["Habla con los guardias de los callejones y encuentra a los otros dos supervivientes.", "Sigue a Robespierre por los tejados sin bajar al suelo (si lo pierdes, aparece una zona de búsqueda).", "Tras la escena en su escondite, rodea el edificio y elimina a los francotiradores.", "Fuerza la puerta cerrada y cuélate entre los guardias.", "Acaba con el bruto con la Hoja Fantasma y elimina en silencio a los dos últimos guardias.", "Abre la puerta para la escena final."], "opt": ["No entres en conflicto", "Fuerza 1 cerradura"], "opp": [], "uk": "", "unlock": "", "sp": "", "rift": false}, {"id": "12.3", "t": "El Temple", "en": "The Temple", "pl": "templetower", "obj": "Enfrentamiento final con Germain, que se esconde en las catacumbas del Temple con la Espada del Edén.", "steps": ["Baja al suelo, ve a la esquina derecha de la zona restringida y trepa.", "Limpia francotiradores y guardias con la Hoja Fantasma y sabotea la primera campana.", "Completa los tres dobles asesinatos aéreos sobre patrullas y guardias.", "Repón Hojas Fantasma con el mercader de fuera y sabotea la segunda campana.", "Sube a la torre, rodéala y apuñala a Germain por la espalda.", "Usa la cuchilla berserker con el Defensor del granero, baja a las catacumbas y pelea con Germain usando coberturas y petardos."], "opt": ["3 dobles asesinatos aéreos", "Sabotea 2 campanas de alarma"], "opp": ["Escóndete en los carros de heno para muertes desde escondite.", "Las rutas por los tejados llevan a los francotiradores y a asesinatos aéreos.", "Un mercader fuera de la fortaleza vende Hojas Fantasma.", "Cuchilla berserker al Defensor del granero para despistar a los guardias antes de bajar."], "uk": "Germain: tres puñaladas con la hoja oculta durante el combate final.", "unlock": "Trofeos «Curtain Call» y, con todos los objetivos opcionales, «I Want It All»", "sp": "", "rift": false}]}], "smt": {"ps": ["Historias de París", "#E8C98A"], "mm": ["Misterios de asesinato", "#B9A3E8"], "ne": ["Enigmas de Nostradamus", "#7FD3E8"], "co": ["Cooperativo", "#7FE0A3"], "he": ["Atracos", "#F0B35A"], "sc": ["Club social", "#F28FA0"], "hr": ["Fallos del Helix", "#8FB2F2"], "ct": ["Café Théâtre", "#F5D06B"]}, "route": ["bastille", "chapelle", "notredame", "miracles", "halleble", "innocents", "chatelet", "placerev", "templetower"], "mw": 2928, "mh": 2016};
+const LM = {}; D.lms.forEach(l => { LM[l.id] = l; });
+const DI = {}; D.dist.forEach(d => { DI[d.id] = d; });
+const GN = {}; D.groups.forEach(g => { GN[g[0]] = g[1]; });
+const MEM = {}; const ORDER = []; const SQI = {};
+D.seqs.forEach((s, si) => { SQI[s.id] = si; s.mems.forEach((m, mi) => { MEM[m.id] = Object.assign({ seq: s.id, mi: mi }, m); ORDER.push(m.id); }); });
+const TOTAL = ORDER.length;
+const lab = (id) => id === 'p1' ? 'P' : id;
+const VW0 = 956, VH0 = 658, TRAP = 1500;
+const BLK = [['opt', 'Objetivos opcionales', 'Desafíos para la sincronización completa'], ['steps', 'Paso a paso', 'La ruta recomendada'], ['opp', 'Oportunidades', 'Formas alternativas de completarla'], ['uk', 'Asesinato único', 'La forma especial de acabar con el objetivo'], ['sp', 'Qué pasa (spoiler)', 'Lo que ocurre en esta memoria']];
+const LBLC = { cofres: 'Cofres', cerrados: 'Cerrados', escarapelas: 'Escarapelas', artefactos: 'Artefactos' };
+class Component extends DCLogic {
+  vp() { return { w: this._vw || VW0, h: this._vh || VH0 }; }
+  clampT(z, tx, ty) { const v = this.vp(); return { z: z, tx: Math.min(0, Math.max(v.w * (1 - z), tx)), ty: Math.min(0, Math.max(v.h * (1 - z), ty)) }; }
+  zoomAt(f, mx, my) {
+    const S = this.state || {}; const z0 = S.z || 1, tx0 = S.tx || 0, ty0 = S.ty || 0;
+    const z = Math.min(5, Math.max(1, z0 * f)); const k = z / z0;
+    this.setState(this.clampT(z, mx - (mx - tx0) * k, my - (my - ty0) * k));
+  }
+  flyTo(id) {
+    const l = LM[id]; if (!l || l.ins) return {};
+    const v = this.vp(); const z = Math.max((this.state && this.state.z) || 1, 2.2);
+    const x = l.x / D.mw * v.w, y = l.y / D.mh * v.h;
+    return this.clampT(z, v.w / 2 - x * z, v.h / 2 - y * z);
+  }
+  renderVals() {
+    const S = this.state || {};
+    const motion = this.props.animaciones !== false;
+    const f = Object.assign({ lbl: true, lm: true, mem: true, act: false, rt: false }, S.f || {});
+    const sq = S.sq || 'all';
+    const done = S.done || {};
+    const sel = S.sel || null;
+    const spoil = !!S.spoil;
+    const rv = S.rv || {};
+    const zz = S.z || 1, tx = S.tx || 0, ty = S.ty || 0;
+    const set = (o) => this.setState(o);
+    const guard = (fn) => () => { if (this._moved) { this._moved = false; return; } fn(); };
+    const pickD = (id) => guard(() => set({ sel: sel && sel.k === 'd' && sel.id === id ? null : { k: 'd', id: id } }));
+    const pickL = (id) => guard(() => set({ sel: { k: 'l', id: id } }));
+    const openStory = (mid) => () => { const m = MEM[mid]; set({ st: m.seq, si: m.mi }); };
+    // ---------------------------------------------------------------- mapa
+    const sqObj = sq === 'all' ? null : D.seqs[SQI[sq]];
+    const sqPlaces = sqObj ? sqObj.mems.filter(m => m.pl).map(m => m.pl) : [];
+    const sqD = {}; sqPlaces.forEach(p => { sqD[LM[p].d] = true; });
+    const selD = sel ? (sel.k === 'd' ? sel.id : LM[sel.id].d) : '';
+    const dz = {}, dc = {};
+    D.dist.forEach(d => {
+      dz[d.id] = pickD(d.id);
+      dc[d.id] = (sel && sel.k === 'd' && sel.id === d.id ? 'on ' : (selD === d.id ? 'in ' : '')) + (sqObj ? (sqD[d.id] ? 'sq' : 'dim') : '');
+    });
+    const memsIn = (l) => sqObj ? l.mems.filter(m => MEM[m].seq === sq) : l.mems;
+    const pins = D.lms.filter(l => !l.ins).filter(l => (f.mem && memsIn(l).length) || f.lm).map(l => {
+      const mm = f.mem ? memsIn(l) : [];
+      const isM = mm.length > 0; const allDone = isM && mm.every(m => done[m]);
+      return {
+        x: (l.x / D.mw * 100) + '%', y: (l.y / D.mh * 100) + '%', pick: pickL(l.id), lbl: l.n,
+        sub: (DI[l.d] ? DI[l.d].n : '') + (l.mems.length ? ' · memorias ' + l.mems.map(lab).join(', ') : ''),
+        badge: isM ? (sqObj ? mm.map(lab).join(' · ') : String(mm.length)) : '',
+        cls: (isM ? 'pm' : 'pl') + (sel && sel.k === 'l' && sel.id === l.id ? ' on' : '') + (l.aprox ? ' aprox' : '') + (allDone ? ' done' : '') + (sqObj && !isM ? ' dimp' : '') + (l.x > D.mw * .8 ? ' tl' : '') + (l.y < D.mh * .14 ? ' tb' : '')
+      };
+    });
+    const aps = f.act && !sqObj ? D.dist.filter(d => d.id !== 'versalles' && d.sm.length).map(d => {
+      const cnt = {}; d.sm.forEach(s => { cnt[s[0]] = (cnt[s[0]] || 0) + 1; });
+      return { x: (d.lx / D.mw * 100) + '%', y: ((d.ly + 80) / D.mh * 100) + '%', pick: pickD(d.id), lbl: d.n + ': ' + d.sm.length + ' misiones secundarias',
+        dots: Object.keys(cnt).map(k => ({ c: D.smt[k][1], n: String(cnt[k]), t: D.smt[k][0] })) };
+    }) : [];
+    const pts = (sqObj ? sqPlaces.filter((p, i, a) => a.indexOf(p) === i && !LM[p].ins) : (f.rt ? D.route : [])).map(p => LM[p]);
+    const routeD = pts.length > 1 ? 'M' + pts.map(p => p.x + ' ' + p.y).join(' L') : 'M0 0';
+    const memRow = (mid) => ({ id: lab(mid), t: MEM[mid].t, go: openStory(mid), cls: done[mid] ? 'ok' : '' });
+    let dr = { kind: '', n: '', desc: '', lms: [], mems: [], hasLms: false, hasMems: false, aprox: false, isL: false, back: () => {}, backTxt: '', hasAct: false, col: [], note: '', hasNote: false, smg: [] };
+    if (sel) {
+      if (sel.k === 'd') {
+        const d = DI[sel.id]; const lms = D.lms.filter(l => l.d === d.id);
+        const mids = ORDER.filter(m => lms.some(l => l.mems.indexOf(m) >= 0));
+        const gr = {}; d.sm.forEach(s => { (gr[s[0]] = gr[s[0]] || []).push({ n: s[1], r: s[2], t: s[3] }); });
+        dr = { kind: GN[d.g], n: d.n, desc: d.desc, lms: lms.map(l => ({ n: l.n, pick: () => set(Object.assign({ sel: { k: 'l', id: l.id } }, l.ins ? {} : this.flyTo(l.id))), cls: l.mems.length ? 'm' : '' })), hasLms: lms.length > 0,
+          mems: mids.map(memRow), hasMems: mids.length > 0, aprox: false, isL: false, back: () => {}, backTxt: '',
+          hasAct: d.c.length > 0 || d.sm.length > 0, col: d.c.map(c => ({ n: String(c[1]), t: LBLC[c[0]] || c[0] })), note: d.note, hasNote: !!d.note,
+          smg: Object.keys(gr).map(k => ({ t: D.smt[k][0], c: D.smt[k][1], items: gr[k] })) };
+      } else {
+        const l = LM[sel.id]; const d = DI[l.d];
+        dr = { kind: 'Lugar · ' + (d ? d.n : ''), n: l.n, desc: l.desc, lms: [], hasLms: false, mems: l.mems.map(memRow), hasMems: l.mems.length > 0,
+          aprox: l.aprox, isL: true, back: () => set({ sel: { k: 'd', id: l.d } }), backTxt: 'Ver el barrio: ' + (d ? d.n : ''), hasAct: false, col: [], note: '', hasNote: false, smg: [] };
+      }
+    }
+    const groups = D.groups.map(g => ({ n: g[1], items: D.dist.filter(d => d.g === g[0]).map(d => {
+      const c = ORDER.filter(m => D.lms.some(l => l.d === d.id && l.mems.indexOf(m) >= 0)).length;
+      return { n: d.n, pick: () => set({ sel: { k: 'd', id: d.id } }), cls: dc[d.id], cnt: c ? String(c) : '' };
+    }) }));
+    const tog = (k) => () => { const o = Object.assign({}, f); o[k] = !f[k]; set({ f: o }); };
+    const fl = [['lbl', 'Barrios'], ['lm', 'Lugares históricos'], ['mem', 'Memorias'], ['act', 'Misiones secundarias'], ['rt', 'Ruta de la historia']].map(x => ({ n: x[1], cls: (f[x[0]] ? 'on' : '') + ' f-' + x[0], tog: tog(x[0]) }));
+    const sqChips = [{ n: 'Todo', cls: sq === 'all' ? 'on' : '', pick: () => set({ sq: 'all', sel: null }) }].concat(D.seqs.map(s => ({ n: s.num, cls: (sq === s.id ? 'on' : '') + (s.mems.every(m => done[m.id]) ? ' ok' : ''), pick: () => set({ sq: s.id, sel: null, f: Object.assign({}, f, { mem: true }) }) })));
+    const sqInfo = sqObj ? { kick: sqObj.id === 'p' ? 'Prólogo' : 'Secuencia ' + sqObj.num, t: sqObj.t, items: sqObj.mems.map(m => ({ id: lab(m.id), t: m.t,
+      pl: m.pl ? LM[m.pl].n : (m.rift ? 'Fallo del Helix · fuera del mapa' : 'Lugar sin marcar en el mapa'),
+      go: m.pl ? () => set(Object.assign({ sel: { k: 'l', id: m.pl } }, LM[m.pl].ins ? {} : this.flyTo(m.pl))) : () => {},
+      cls: (m.pl ? 'has' : 'no') + (done[m.id] ? ' ok' : '') })) } : { kick: '', t: '', items: [] };
+    const vM = (sqObj ? sqObj.mems : ORDER.map(id => MEM[id])).filter(m => m.pl === 'versailles');
+    // ---------------------------------------------------------------- historia
+    const doneN = ORDER.filter(m => done[m]).length;
+    const nx = ORDER.find(m => !done[m]);
+    const stId = S.st || (nx ? MEM[nx].seq : 'p');
+    const st = D.seqs[SQI[stId]];
+    const si = Math.min(S.si || 0, st.mems.length - 1);
+    const goSlide = (sid, i) => set({ st: sid, si: i });
+    const seqNav = D.seqs.map(s => { const n = s.mems.filter(m => done[m.id]).length; return { num: s.num, t: s.t, cls: (s.id === stId ? 'on' : '') + (n === s.mems.length ? ' full' : (n ? ' part' : '')), pick: () => goSlide(s.id, 0), pct: Math.round(n / s.mems.length * 100) + '%' }; });
+    const stN = st.mems.filter(m => done[m.id]).length;
+    const slides = st.mems.map((m, i) => {
+      const blocks = BLK.filter(b => (Array.isArray(m[b[0]]) ? m[b[0]].length : !!m[b[0]])).map(b => {
+        const key = m.id + ':' + b[0]; const open = !!rv[key] || (b[0] === 'sp' && spoil);
+        const items = Array.isArray(m[b[0]]) ? m[b[0]] : [m[b[0]]];
+        return { lbl: b[1], hint: b[2], cnt: Array.isArray(m[b[0]]) ? String(items.length) : '', open: open, closed: !open,
+          cls: (open ? 'open' : '') + ' b-' + b[0], ol: b[0] === 'steps', ul: b[0] !== 'steps', items: items,
+          tog: () => { const o = Object.assign({}, rv); o[key] = !o[key]; set({ rv: o }); } };
+      });
+      return {
+        id: lab(m.id), t: m.t, en: m.en, obj: m.obj, rift: m.rift, hasPlace: !!m.pl, place: m.pl ? LM[m.pl].n : '',
+        goPlace: m.pl ? () => set(Object.assign({ sq: st.id, sel: { k: 'l', id: m.pl } }, LM[m.pl].ins ? {} : this.flyTo(m.pl))) : () => {},
+        unlock: m.unlock, hasUnlock: !!m.unlock, blocks: blocks, noBlocks: blocks.length === 0,
+        cls: (done[m.id] ? 'ok' : '') + (i === si ? ' cur' : ''),
+        doneTxt: done[m.id] ? 'Completada' : 'Marcar como completada',
+        toggle: () => { const o = Object.assign({}, done); if (o[m.id]) delete o[m.id]; else o[m.id] = true; set({ done: o }); },
+        nth: (i + 1) + ' / ' + st.mems.length
+      };
+    });
+    const memNav = st.mems.map((m, i) => ({ id: lab(m.id), t: m.t, cls: (i === si ? 'on' : '') + (done[m.id] ? ' ok' : '') + (m.rift ? ' rift' : ''), pick: () => set({ si: i }) }));
+    const sIdx = SQI[stId];
+    const prev = si > 0 ? () => set({ si: si - 1 }) : (sIdx > 0 ? () => goSlide(D.seqs[sIdx - 1].id, D.seqs[sIdx - 1].mems.length - 1) : null);
+    const next = si < st.mems.length - 1 ? () => set({ si: si + 1 }) : (sIdx < D.seqs.length - 1 ? () => goSlide(D.seqs[sIdx + 1].id, 0) : null);
+    const pm = si > 0 ? st.mems[si - 1] : (sIdx > 0 ? D.seqs[sIdx - 1].mems[D.seqs[sIdx - 1].mems.length - 1] : null);
+    const nm = si < st.mems.length - 1 ? st.mems[si + 1] : (sIdx < D.seqs.length - 1 ? D.seqs[sIdx + 1].mems[0] : null);
+    return {
+      motionClass: motion ? '' : 'still',
+      dz: dz, dc: dc, pins: pins, aps: aps, groups: groups, fl: fl, sqChips: sqChips, hasSq: !!sqObj, sqInfo: sqInfo,
+      clearSq: () => set({ sq: 'all' }),
+      routeD: routeD, mapCls: (f.lbl ? '' : 'nolbl') + (sqObj ? ' sqm' : '') + (pts.length > 1 ? ' rt-on' : '') + (sel ? ' has-sel' : '') + (S.drag ? ' dragging' : ''),
+      zt: 'translate(' + tx + 'px, ' + ty + 'px) scale(' + zz + ')', iz: String(1 / zz), zTxt: zz.toFixed(1).replace('.0', ''),
+      hasSel: !!sel, dr: dr, closeSel: () => set({ sel: null }),
+      vCls: (sel && sel.k === 'd' && sel.id === 'versalles' ? 'on' : '') + (vM.length ? ' hasm' : '') + (sqObj && !vM.length ? ' dim' : ''),
+      vBadge: vM.length ? (sqObj ? vM.map(m => lab(m.id)).join(' · ') : String(vM.length)) : '', pickV: () => set({ sel: { k: 'd', id: 'versalles' } }),
+      zoomIn: () => { const v = this.vp(); this.zoomAt(1.5, v.w / 2, v.h / 2); },
+      zoomOut: () => { const v = this.vp(); this.zoomAt(1 / 1.5, v.w / 2, v.h / 2); },
+      zoomReset: () => set({ z: 1, tx: 0, ty: 0 }),
+      vpEnter: (e) => { const el = e.currentTarget; const r = el.getBoundingClientRect(); this._vw = r.width; this._vh = r.height; this._trapEl = el; el.scrollTop = TRAP; },
+      vpScroll: (e) => {
+        const el = e.currentTarget; if (!el.isConnected) return;
+        if (this._trapEl !== el) { this._trapEl = el; el.scrollTop = TRAP; return; }
+        const d0 = el.scrollTop - TRAP; if (!d0) return; el.scrollTop = TRAP;
+        const d = Math.max(-240, Math.min(240, d0));
+        const r = el.getBoundingClientRect(); this._vw = r.width; this._vh = r.height;
+        this.zoomAt(Math.exp(-d * 0.0025), this._mx == null ? r.width / 2 : this._mx, this._my == null ? r.height / 2 : this._my);
+      },
+      vpDown: (e) => { if (e.button !== 0) return; const r = e.currentTarget.getBoundingClientRect(); this._vw = r.width; this._vh = r.height; this._drag = { x: e.clientX, y: e.clientY, tx: tx, ty: ty }; this._moved = false; },
+      vpMove: (e) => {
+        const r = e.currentTarget.getBoundingClientRect(); this._mx = e.clientX - r.left; this._my = e.clientY - r.top;
+        const g = this._drag; if (!g) return; const dx = e.clientX - g.x, dy = e.clientY - g.y;
+        if (!this._moved && Math.abs(dx) + Math.abs(dy) < 5) return; this._moved = true;
+        set(Object.assign(this.clampT(zz, g.tx + dx, g.ty + dy), { drag: true }));
+      },
+      vpUp: () => { this._drag = null; if (S.drag) set({ drag: false }); },
+      vpDbl: (e) => { const r = e.currentTarget.getBoundingClientRect(); this.zoomAt(1.8, e.clientX - r.left, e.clientY - r.top); },
+      doneN: doneN, total: TOTAL, pct: Math.round(doneN / TOTAL * 100) + '%',
+      hasNext: !!nx, nextTxt: nx ? lab(nx) + ' · ' + MEM[nx].t : '', allDone: !nx, goNext: nx ? openStory(nx) : () => {},
+      spoilCls: spoil ? 'on' : '', spoilTxt: spoil ? 'Spoilers visibles' : 'Spoilers ocultos', togSpoil: () => set({ spoil: !spoil }),
+      resetAll: () => set({ done: {}, rv: {} }), hasDone: doneN > 0,
+      seqNav: seqNav, stNum: st.num, stKick: st.id === 'p' ? 'Prólogo · ' + st.yr : 'Secuencia ' + st.num + (st.yr ? ' · ' + st.yr : ''), stT: st.t,
+      stProg: stN + ' de ' + st.mems.length + ' memorias completadas', stPct: Math.round(stN / st.mems.length * 100) + '%',
+      memNav: memNav, slides: slides, track: 'translateX(' + (-si * 100) + '%)',
+      prev: prev || (() => {}), next: next || (() => {}), prevCls: prev ? '' : 'off', nextCls: next ? '' : 'off',
+      prevTxt: pm ? lab(pm.id) + ' · ' + pm.t : '', nextTxt2: nm ? lab(nm.id) + ' · ' + nm.t : '',
+      markSeq: () => { const o = Object.assign({}, done); const all = st.mems.every(m => o[m.id]); st.mems.forEach(m => { if (all) delete o[m.id]; else o[m.id] = true; }); set({ done: o }); },
+      markSeqTxt: st.mems.every(m => done[m.id]) ? 'Desmarcar la secuencia' : 'Marcar la secuencia entera'
+    };
+  }
+}
+
+</script>
+</body>
+</html>

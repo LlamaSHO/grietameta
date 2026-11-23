@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabla de tipos · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  .t-top { padding-block: 40px 8px; }
+  .t-top h1 { font-size: clamp(32px, 4.4vw, 52px); }
+  .gens { display: flex; gap: 6px; margin-top: 18px; flex-wrap: wrap; }
+
+  .layout { display: grid; grid-template-columns: auto 1fr; gap: 40px; padding-block: 28px 72px; align-items: start; }
+  .chart-wrap { overflow-x: auto; scrollbar-width: thin; padding-bottom: 6px; }
+  table.chart { border-collapse: separate; border-spacing: 2px; font-size: 13px; }
+  .chart th { font-weight: 500; }
+  .chart thead th { height: 92px; vertical-align: bottom; padding: 0 0 6px; }
+  .chart thead th span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-size: 12px; color: var(--ink-dim); }
+  .chart thead th .dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-bottom: 4px; }
+  .chart tbody th { text-align: left; padding-right: 8px; white-space: nowrap; }
+  .chart td { width: 34px; height: 34px; text-align: center; border-radius: 6px; font: 600 13px var(--font-pixel); background: rgba(255, 255, 255, 0.025); color: transparent; position: relative; cursor: default; }
+  .chart td.x2 { background: #2F6B3C; color: #CFF5D6; }
+  .chart td.xh { background: #5B2A26; color: #F6C5BF; }
+  .chart td.x0 { background: #0B0D11; color: #8F98A5; box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .chart td.diff::after { content: ""; position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-hi); }
+  .chart td.hl, .chart th.hl { outline: 2px solid rgba(255, 255, 255, 0.45); outline-offset: -1px; }
+  .axis { display: flex; justify-content: space-between; color: var(--ink-mute); font-size: 12.5px; margin-bottom: 8px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; color: var(--ink-mute); font-size: 13px; }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; }
+
+  .side h2 { font-size: 22px; }
+  .pick { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 18px; }
+  .pick .type { border: 0; cursor: pointer; height: 28px; opacity: 0.5; }
+  .pick .type[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px #fff; }
+  .res { display: grid; gap: 10px; padding: 16px; border-radius: 14px; background: var(--bg-raised); border: 1px solid var(--line); }
+  .res div { display: grid; grid-template-columns: 44px 1fr; gap: 10px; align-items: start; }
+  .res .m { font: 600 14px var(--font-pixel); color: var(--ink-dim); padding-top: 3px; }
+  .res .ts { display: flex; gap: 5px; flex-wrap: wrap; }
+  .changes { margin-top: 34px; }
+  .changes ul { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .changes li { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .changes .pair { display: flex; gap: 6px; align-items: center; }
+  .changes p { margin: 0; color: var(--ink-dim); font-size: 14px; grid-column: 1 / -1; }
+  .changes .now { color: var(--ink-mute); font-size: 13px; }
+
+  @media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-page="tipos">
+<main class="wrap">
+  <div class="t-top">
+    <h1>Tabla de tipos</h1>
+    <p class="lead">Cuánto daño hace cada tipo de ataque a cada tipo de Pokémon. Pasa por una casilla para ver la fila y la columna.</p>
+    <div class="gens" role="group" aria-label="Generación">
+      <button class="chip" aria-pressed="true">Gen I · 15 tipos</button>
+      <button class="chip" disabled>Gen II–V · pronto</button>
+      <button class="chip" disabled>Gen VI en adelante · pronto</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="axis"><span>Ataque ↓ · Defensa →</span></div>
+      <div class="chart-wrap"><table class="chart" id="chart"></table></div>
+      <div class="legend">
+        <span><i style="background:#2F6B3C"></i>×2 súper eficaz</span>
+        <span><i style="background:#5B2A26"></i>×½ poco eficaz</span>
+        <span><i style="background:#0B0D11;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)"></i>×0 no afecta</span>
+        <span><i style="background:var(--accent-hi);border-radius:50%;width:8px;height:8px;vertical-align:1px"></i>Distinto a hoy</span>
+      </div>
+    </div>
+
+    <aside class="side">
+      <h2>¿A qué es débil?</h2>
+      <p class="muted" style="margin:6px 0 0;font-size:14px">Elige uno o dos tipos del Pokémon que defiende.</p>
+      <div class="pick" id="pick"></div>
+      <div class="res" id="res"></div>
+
+      <div class="changes">
+        <h2>Lo que cambia en Gen I</h2>
+        <ul id="changes"></ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const O = PK.ORDER, T = PK.TYPES;
+  const isDiff = (a, d) => PK.GEN1_DIFF.some(([x, y]) => x === a && y === d);
+  const label = (m) => (m === 2 ? "2" : m === 0.5 ? "½" : m === 0 ? "0" : "");
+  const cls = (m) => (m === 2 ? "x2" : m === 0.5 ? "xh" : m === 0 ? "x0" : "");
+
+  document.getElementById("chart").innerHTML =
+    `<thead><tr><th></th>${O.map((d) => `<th data-c="${d}"><span><i class="dot" style="background:${T[d].c}"></i> ${T[d].n}</span></th>`).join("")}</tr></thead>
+     <tbody>${O.map((a) => `<tr><th data-r="${a}">${typeChip(a)}</th>${O.map((d) => {
+       const m = PK.eff(a, d);
+       const tip = `${T[a].n} contra ${T[d].n}: ×${m === 0.5 ? "½" : m}`;
+       return `<td class="${cls(m)}${isDiff(a, d) ? " diff" : ""}" data-a="${a}" data-d="${d}" title="${tip}" aria-label="${tip}">${label(m)}</td>`;
+     }).join("")}</tr>`).join("")}</tbody>`;
+
+  const chart = document.getElementById("chart");
+  chart.addEventListener("mouseover", (e) => {
+    const td = e.target.closest("td"); chart.querySelectorAll(".hl").forEach((x) => x.classList.remove("hl"));
+    if (!td) return;
+    chart.querySelectorAll(`td[data-a="${td.dataset.a}"], td[data-d="${td.dataset.d}"], th[data-r="${td.dataset.a}"], th[data-c="${td.dataset.d}"]`).forEach((x) => x.classList.add("hl"));
+  });
+  chart.addEventListener("mouseleave", () => chart.querySelectorAll(".hl").forEach((x) => x.classList.remove("hl")));
+
+  let picked = ["AGU", "VOL"];
+  function res() {
+    const d = PK.defending(picked);
+    const rows = [[4, "×4"], [2, "×2"], [0.5, "×½"], [0.25, "×¼"], [0, "×0"]]
+      .map(([m, l]) => [l, O.filter((a) => d[a] === m)])
+      .filter(([, ts]) => ts.length);
+    document.getElementById("res").innerHTML = picked.length
+      ? `<div><span class="m">Tipo</span><span class="ts">${picked.map(typeChip).join("")} <span class="muted" style="font-size:13px">p. ej. Gyarados</span></span></div>` +
+        rows.map(([l, ts]) => `<div><span class="m">${l}</span><span class="ts">${ts.map(typeChip).join("")}</span></div>`).join("")
+      : `<p class="muted" style="margin:0">Elige al menos un tipo.</p>`;
+    document.querySelectorAll("#pick .type").forEach((b) => b.setAttribute("aria-pressed", picked.includes(b.dataset.t)));
+  }
+  document.getElementById("pick").innerHTML = O.map((c) => `<button class="type" style="--t:${T[c].c}" data-t="${c}" aria-pressed="false">${T[c].n}</button>`).join("");
+  document.getElementById("pick").addEventListener("click", (e) => {
+    const b = e.target.closest(".type"); if (!b) return;
+    const t = b.dataset.t;
+    picked = picked.includes(t) ? picked.filter((x) => x !== t) : [...picked, t].slice(-2);
+    res();
+  });
+  res();
+
+  document.getElementById("changes").innerHTML = PK.GEN1_DIFF.map(([a, d, now, txt]) =>
+    `<li><span class="pair">${typeChip(a)} → ${typeChip(d)} <b class="num">×${PK.eff(a, d) === 0.5 ? "½" : PK.eff(a, d)}</b></span><span class="now">hoy ×${now === 0.5 ? "½" : now}</span><p>${txt}.</p></li>`).join("");
+</script>
+</body>
+</html>

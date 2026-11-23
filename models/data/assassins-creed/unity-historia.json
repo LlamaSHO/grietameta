@@ -1,0 +1,936 @@
+{
+ "nota": "Prólogo y 12 secuencias, 34 memorias. Campos ocultos por defecto en la web: pasos, opcionales, oportunidades, desconocido y spoiler. Títulos traducidos por GrietaMeta.",
+ "secuencias": [
+  {
+   "id": "p",
+   "num": "P",
+   "t": "El último Gran Maestre",
+   "yr": "1307",
+   "memorias": [
+    {
+     "id": "p1",
+     "t": "Jacques de Molay",
+     "en": "Prologue",
+     "pl": "templetower",
+     "obj": "Tutorial como templario junto a Jacques de Molay durante la caída de la Orden: esconde una espada y un libro antes de que lleguen los asesinos.",
+     "steps": [
+      "Sigue a De Molay por la fortaleza tras la escena inicial.",
+      "Esconde la espada y el libro y corre hacia el marcador, evitando o enfrentándote a los enemigos.",
+      "Cruza el patio y trepa por la escalera y los muros hasta el edificio.",
+      "Persigue por tejados y escaleras al asesino que roba el libro.",
+      "Derrótalo: para sus golpes y esquiva los ataques pesados del bruto (esos no se pueden parar)."
+     ],
+     "opt": [],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «A Long Time Ago»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "num": "1",
+   "t": "Versalles",
+   "yr": "1776 y 1789",
+   "memorias": [
+    {
+     "id": "1.1",
+     "t": "Recuerdos de Versalles",
+     "en": "Memories of Versailles",
+     "pl": "versailles",
+     "obj": "Arno, de niño, sigue a una chica misteriosa por Versalles. Años después, ya adulto, persigue a Hugo por las calles.",
+     "steps": [
+      "Sigue a la chica por las salas de Versalles hasta el patio del jardín.",
+      "Coge la manzana de la mesa del guardia dormido y rompe su línea de visión para despistarlo.",
+      "Atrae al guardia lejos de la salida para poder salir del jardín.",
+      "Tras la escena, persigue a Hugo pasando por encima y por debajo de obstáculos y derríbalo.",
+      "Ve al norte por la izquierda del Cafés et Épices, escóndete entre la gente y llega a la finca De la Serre."
+     ],
+     "opt": [
+      "Pasa por encima o por debajo de 5 obstáculos",
+      "Que no te derriben"
+     ],
+     "opp": [
+      "El guardia del patio es el tutorial de la «última posición conocida»: más adelante sirve para atraer objetivos a una emboscada."
+     ],
+     "uk": "",
+     "unlock": "",
+     "sp": "La chica es Élise de la Serre. Ese mismo día, el padre de Arno muere asesinado.",
+     "rift": false
+    },
+    {
+     "id": "1.2",
+     "t": "Los Estados Generales",
+     "en": "The Estates General",
+     "pl": "versailles",
+     "obj": "Entrega una carta alcanzando el carruaje de los De la Serre y escapa de la policía.",
+     "steps": [
+      "Habla con Olivier dentro de la finca De la Serre.",
+      "Sigue el carruaje por los tejados y sincroniza el punto de observación de la catedral, en la plaza del mercado.",
+      "Salto de fe hasta las puertas; mézclate con la multitud y usa las coberturas para pasar a los guardias.",
+      "Sube al piso principal y cruza al balcón del marcador.",
+      "Pelea con Hugo (para sus golpes) y con Victor (esquiva sus golpes pesados).",
+      "Huye de la policía y sal de la zona."
+     ],
+     "opt": [
+      "Para 2 ataques",
+      "Esquiva 2 ataques"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "1.3",
+     "t": "Alta sociedad",
+     "en": "High Society",
+     "pl": "versailles",
+     "obj": "Deja la carta en el despacho de De la Serre y cuélate en la gala de palacio para ver a Élise.",
+     "steps": [
+      "Recorre la residencia, examina los objetos brillantes y desliza la carta bajo la puerta del despacho.",
+      "Cámbiate de ropa y entra en la gala usando la multitud para evitar a los guardias.",
+      "Entra en el edificio por el lado iluminado con dos estandartes rojos.",
+      "Avanza a cubierto entre salas y mesas; muévete solo cuando los guardias miren a otro lado.",
+      "Sigue a Élise por el salón de baile y las salas de muebles tapados.",
+      "Sal del palacio tras la escena del comedor."
+     ],
+     "opt": [
+      "No entres en conflicto"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «Youth in Versailles»",
+     "sp": "Esa noche asesinan a François de la Serre y culpan a Arno.",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "num": "2",
+   "t": "La Bastilla",
+   "yr": "1789",
+   "memorias": [
+    {
+     "id": "2.1",
+     "t": "Encarcelado",
+     "en": "Imprisoned",
+     "pl": "bastille",
+     "obj": "Sobrevive en la Bastilla y escapa junto a un preso veterano.",
+     "steps": [
+      "Explora la celda y habla con todos.",
+      "Gana el duelo de la mañana con paradas perfectas y lee con la Vista de Águila lo escrito en la pared.",
+      "Cuando entren los guardias en la celda, elimina en sigilo al del fondo.",
+      "Sigue a Bellec: paradas perfectas contra la primera oleada y bombas de humo contra la segunda.",
+      "Escapa por la ventana, cruza tejados y vigas y acaba con los guardias de fuera.",
+      "Sube al tejado con Bellec y haz un salto de fe."
+     ],
+     "opt": [
+      "2 evasiones con bomba de humo",
+      "3 paradas perfectas"
+     ],
+     "opp": [
+      "El duelo de la mañana es el tutorial de la parada perfecta.",
+      "La Vista de Águila revela la escritura de la pared.",
+      "Puedes matar en sigilo a los guardias que entran en la celda."
+     ],
+     "uk": "",
+     "unlock": "",
+     "sp": "Pierre Bellec te habla del pasado de tu padre, te recluta para la Hermandad y escapáis durante la toma de la Bastilla.",
+     "rift": false
+    },
+    {
+     "id": "2.2",
+     "t": "Renacimiento",
+     "en": "Rebirth",
+     "pl": "chapelle",
+     "obj": "Sigue a Bellec hasta el refugio de la Hermandad, bajo la Sainte-Chapelle.",
+     "steps": [
+      "Trepa por los pilares hasta el segundo piso y entra en la nave.",
+      "Coloca el talismán para mover las lámparas y cruza por ellas hasta el marcador.",
+      "Desde la cornisa, haz un salto de fe a la oscuridad cuando se revele el camino.",
+      "Sigue a Bellec al refugio y bebe del cáliz cuando recuperes el control.",
+      "En la visión de Versalles, corre por el camino que se derrumba saltando de plataforma en plataforma.",
+      "Cruza la sala abarrotada, colócate detrás del objetivo y asesínalo."
+     ],
+     "opt": [],
+     "opp": [],
+     "uk": "El objetivo de la sala abarrotada, dentro de la visión.",
+     "unlock": "Trofeo «Rebirth»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "num": "3",
+   "t": "Iniciación",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "3.1",
+     "t": "Graduación",
+     "en": "Graduation",
+     "pl": "chapelle",
+     "obj": "Primera misión con Bellec por los tejados de París, hasta la sala del Consejo de la Hermandad.",
+     "steps": [
+      "Habla con Bellec en el tejado y cruza ventanas y gárgolas hasta las dos tiendas.",
+      "Mata a los tres guardias desde cobertura (cajas y el pilar junto al último).",
+      "Sabotea la campana de alarma, asesina al matón que queda y registra el cadáver marcado.",
+      "Usa una bomba de humo y sigue a Bellec por los tejados y una cuerda.",
+      "Abre paso por las calles hasta el cuartel de la Hermandad y entra en la sala del Consejo."
+     ],
+     "opt": [
+      "3 muertes desde cobertura",
+      "No te quedes atrás respecto a Bellec"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "3.2",
+     "t": "Confesión",
+     "en": "Confession",
+     "pl": "notredame",
+     "obj": "Tu primer gran asesinato de caja negra: elimina a Sivert dentro de Notre-Dame.",
+     "steps": [
+      "Por los tejados al norte de la catedral, alcanza a los dos matones que robaron las llaves de un cura.",
+      "Vuelve a la fachada y sube al punto marcado para localizar a Duchesneau.",
+      "Escóndete en el carro de heno del nivel inferior y asesínalo cuando pase.",
+      "Por el sureste, baja por el pozo y sigue las alcantarillas hasta una escalera oculta que entra en la catedral.",
+      "Avanza tras las cortinas rojas y atrae a los guardias de uno en uno.",
+      "Desde el carro de heno del centro, localiza a Sivert con la Vista de Águila y entra en el confesionario antes de que se vaya.",
+      "Sal por el segundo piso usando las llaves."
+     ],
+     "opt": [
+      "2 muertes desde un escondite",
+      "No hagas saltar ninguna alarma"
+     ],
+     "opp": [
+      "Infiltración: quítales las llaves a los dos matones que se las robaron al cura.",
+      "Asesinato: mata a Duchesneau, socio de Sivert, para desbloquear el asesinato único."
+     ],
+     "uk": "Sivert, desde el confesionario. Hay que actuar rápido: si sale, pierdes el asesinato único.",
+     "unlock": "Trofeo «First Blood»",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "3.3",
+     "t": "Fallo del Helix: París, 1898",
+     "en": "Server bridge · Paris 1898",
+     "pl": "",
+     "obj": "Abstergo está barriendo el servidor: encuentra el portal y sal antes de que te alcance. Las barras rojas del cielo te desincronizan.",
+     "steps": [
+      "Cruza la ciudad hasta el portal y salta a 1898.",
+      "Ve hacia el Café Terminus, baja al metro y cruza las vías.",
+      "Sigue los túneles y trepa por tuberías y cuerdas hasta otro túnel.",
+      "Cuando Arno cae a las vías, huye corriendo del tren deslizándote bajo los obstáculos.",
+      "Esquiva los escombros del vórtice a cubierto y trepa por la grúa.",
+      "Trepa alrededor de la Estatua de la Libertad hasta la salida."
+     ],
+     "opt": [],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": true
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "num": "4",
+   "t": "Los bajos fondos",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "4.1",
+     "t": "El reino de los mendigos",
+     "en": "The Kingdom of Beggars",
+     "pl": "miracles",
+     "obj": "Busca al templario La Touche en la Corte de los Milagros y síguelo sin que te vea.",
+     "steps": [
+      "Rodea la zona de búsqueda en vez de cruzarla y encuentra a La Touche en un cuartucho.",
+      "Tras la escena, sigue el rastro de sangre con la Vista de Águila en sigilo.",
+      "Síguelo a distancia por el laberinto de edificios, trepando por las estructuras de madera.",
+      "Por los tejados, elimina guardias con la Hoja Fantasma y asesinatos aéreos (primero el que te puede ver).",
+      "Entra en el edificio, distrae o elimina al guardia de la ventana y baja hasta La Touche.",
+      "Sal por donde entraste lanzando un petardo al patio."
+     ],
+     "opt": [
+      "2 muertes con la Hoja Fantasma",
+      "2 señuelos con petardos"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "La Hoja Fantasma (se encarga en el cuartel de la Hermandad) y mejoras de armas.",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "4.2",
+     "t": "Le roi est mort",
+     "en": "Le Roi Est Mort",
+     "pl": "miracles",
+     "obj": "Da caza al Rey de los Mendigos (Roi des Thunes) en las alcantarillas.",
+     "steps": [
+      "Asesina desde el aire al guardia de abajo y tapa las dos chimeneas.",
+      "Salva con una bomba de humo a los rebeldes atacados y síguelos hasta el callejón.",
+      "Entra en las alcantarillas por el mausoleo y avanza por los túneles.",
+      "Sube a la sala principal, deslízate bajo las rejas y mata al francotirador de la puerta cerrada.",
+      "Fuerza la cerradura y ve a por el Rey de los Mendigos.",
+      "Consigue otra muerte con la Hoja Fantasma y escapa por los túneles llenos de humo."
+     ],
+     "opt": [
+      "3 asesinatos aéreos",
+      "2 muertes con la Hoja Fantasma"
+     ],
+     "opp": [
+      "Tapa las dos chimeneas con tablas para que el humo no alerte a los guardias.",
+      "Salva a los rebeldes con una bomba de humo.",
+      "Doble asesinato a los dos guardias del callejón (si tienes la habilidad).",
+      "En las alcantarillas, cuélate cuando la patrulla se aleje."
+     ],
+     "uk": "El Rey de los Mendigos: disparo a la cabeza con la Hoja Fantasma por la espalda y remate con la hoja oculta.",
+     "unlock": "Trofeo «La Cour des Miracles»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "num": "5",
+   "t": "La pista del platero",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "5.1",
+     "t": "El platero",
+     "en": "The Silversmith",
+     "pl": "",
+     "obj": "El arma que mató a De la Serre lleva la marca de un platero. Sigue la pista hasta él.",
+     "steps": [
+      "Rodea el edificio por la derecha y entra por una ventana de la esquina noreste.",
+      "Limpia la sala de guardia contigua forzando las puertas.",
+      "Separa a los dos brutos de la sala siguiente con la línea de visión y mátalos.",
+      "Usa la Cuchilla Berserker con el bruto de abajo tras limpiar el piso de arriba.",
+      "Sube en el elevador al tejado para eliminar a los francotiradores.",
+      "Desde la última puerta, usa la Vista de Águila y dispara a los enemigos mientras Germain pide ayuda."
+     ],
+     "opt": [
+      "Fuerza 4 cerraduras",
+      "Enloquece a 2 brutos"
+     ],
+     "opp": [
+      "Usa la línea de visión y la última posición conocida para separar a los brutos.",
+      "Muertes desde cobertura con guardias y brutos.",
+      "Los francotiradores del tejado se pueden matar por la espalda tras subir en el elevador."
+     ],
+     "uk": "",
+     "unlock": "Pistolas y fusiles, y la siguiente pista sobre el verdadero culpable.",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "5.2",
+     "t": "La Halle aux Blés",
+     "en": "La Halle aux Blés",
+     "pl": "halleble",
+     "obj": "Infíltrate en el mercado de grano y sigue la pista hasta el corazón del edificio.",
+     "steps": [
+      "Dispara a la cabeza con la pistola a los dos guardias de la línea de la zona restringida.",
+      "Rodea en sentido antihorario hasta la siguiente pareja y completa las muertes con pistola.",
+      "Vuelve a la entrada principal y cruza el centro escondido entre el heno cuando los guardias miren a otro lado.",
+      "Mata en silencio al bruto del otro lado, trepa por las tablas, asesina al francotirador y cruza por la cuerda.",
+      "Cruza la puerta, deslízate sobre los barriles y bajo la pared y salta bajo las vigas que caen.",
+      "Trepa por la columna central y sal por la plataforma exterior y la cuerda."
+     ],
+     "opt": [
+      "3 muertes con pistola (antes de entrar en la zona restringida)",
+      "Desliza por encima o por debajo de 4 objetos"
+     ],
+     "opp": [
+      "Mata desde cobertura al bruto que revisa los barriles.",
+      "Al guardia apoyado en la pared, desde el otro lado de los toneles."
+     ],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "5.3",
+     "t": "El profeta",
+     "en": "The Prophet",
+     "pl": "innocents",
+     "obj": "Elimina a Lafrenière en el Cementerio de los Inocentes.",
+     "steps": [
+      "Baja al cementerio y sigue el muro hacia el sur hasta una entrada en la esquina.",
+      "Sabotea la primera campana junto a la pila de calaveras y baja a los túneles.",
+      "Salva con una bomba de humo a los rebeldes acosados y sabotea el resto de campanas.",
+      "Escóndete en el carro de heno hasta que anochezca y mata desde cobertura a los guardias de la primera campana.",
+      "Atrae a los guardias del mausoleo a muertes desde cobertura.",
+      "Escóndete en la letrina junto a los huesos y mata a Lafrenière cuando pase."
+     ],
+     "opt": [
+      "Sabotea 4 campanas de alarma",
+      "3 muertes desde cobertura"
+     ],
+     "opp": [
+      "Hay dos eventos de oportunidad en la zona."
+     ],
+     "uk": "Lafrenière: muerte silenciosa desde el escondite de la letrina, junto a los huesos.",
+     "unlock": "Trofeo «The Root of Evil»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "num": "6",
+   "t": "Política y emboscadas",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "6.1",
+     "t": "El club de los jacobinos",
+     "en": "The Jacobin Club",
+     "pl": "beauvais",
+     "obj": "Sigue a La Touche dentro del Hôtel de Beauvais, donde se reúnen los jacobinos.",
+     "steps": [
+      "Localiza a La Touche en el marcador del hotel y cruza los tejados enloqueciendo al primer francotirador.",
+      "Dispara a la cabeza al guardia que patrulla, enloquece a un segundo francotirador y entra por el balcón.",
+      "A cubierto, busca a La Touche entre el público con la Vista de Águila.",
+      "Sigue a un guardia hasta un escondite para matarlo.",
+      "Cuando La Touche suba, sigue a los hombres que bajan corriendo al sótano.",
+      "Usa el armario de la sala principal para llegar al balcón y sal por donde entraste."
+     ],
+     "opt": [
+      "Enloquece a 2 francotiradores",
+      "2 muertes desde un escondite"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "6.2",
+     "t": "Emboscada templaria",
+     "en": "Templar Ambush",
+     "pl": "",
+     "obj": "Los templarios van a por Élise: defiéndela y escapad juntos.",
+     "steps": [
+      "Ve a casa de Élise y luego al marcador de los jardines.",
+      "Defiende a Élise de los templarios y síguela por un balcón y bajo un seto.",
+      "Limpia el laberinto de setos y sube a la torre central para disparar a los guardias cercanos.",
+      "En el laberinto, haz dos dobles asesinatos; en el cruce en T, ve por la derecha.",
+      "En la persecución, sigue a Élise, trepa por una farola y salta por los toldos para abatir a los francotiradores.",
+      "Tras la escena, suelta una bomba de humo y huye de las colinas."
+     ],
+     "opt": [
+      "4 disparos a la cabeza",
+      "2 dobles asesinatos"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «Secret Meeting»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "num": "7",
+   "t": "Alianzas y traiciones",
+   "yr": "1791",
+   "memorias": [
+    {
+     "id": "7.1",
+     "t": "Una alianza prudente",
+     "en": "A Cautious Alliance",
+     "pl": "cafe",
+     "obj": "Reúnete con Élise en el Café Théâtre y acompáñala por París.",
+     "steps": [
+      "Reúnete con Élise en el Café Théâtre y escóltala hasta el cuartel de la Hermandad.",
+      "Síguela escaleras arriba hasta el despacho de Germain.",
+      "Cuando entren los tres guardias, suelta bombas aturdidoras y remátalos.",
+      "Equipa la Hoja Fantasma y apunta a los cuatro francotiradores de fuera.",
+      "Acierta al menos tres disparos a la cabeza (si se acaban las hojas, usa la pistola)."
+     ],
+     "opt": [
+      "Aturde a 3 enemigos con bombas aturdidoras",
+      "3 disparos a la cabeza"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "Una escena revela de qué lado está realmente Germain.",
+     "rift": false
+    },
+    {
+     "id": "7.2",
+     "t": "Reunión con Mirabeau",
+     "en": "Meeting with Mirabeau",
+     "pl": "",
+     "obj": "Ve a casa de Mirabeau para avisar al Maestro Asesino de lo que has descubierto.",
+     "steps": [
+      "Examina el cuerpo en el dormitorio del tercer piso: hay un alfiler igual al que mató a De la Serre y un pañuelo junto a la cama.",
+      "Revisa el libro del escritorio y el armario en busca de la última pista.",
+      "Habla con el maestro Quemar en el cuartel; te manda a por un boticario.",
+      "Persigue al boticario por los túneles deslizándote bajo las vigas.",
+      "Síguelo por el parque, atraviesa su bomba de humo en el patio de arcos y usa el elevador junto a la fuente.",
+      "Salta los bancos del parque y derríbalo."
+     ],
+     "opt": [
+      "Desliza por encima o por debajo de 5 objetos",
+      "Usa un elevador"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "Mirabeau ha muerto envenenado, y las sospechas apuntan a Élise.",
+     "rift": false
+    },
+    {
+     "id": "7.3",
+     "t": "Enfrentamiento",
+     "en": "Confrontation",
+     "pl": "",
+     "obj": "Sigue el rastro del asesino de Mirabeau hasta el tejado de una iglesia.",
+     "steps": [
+      "Ve al último alijo del boticario y sigue el rastro con la Vista de Águila hasta la iglesia.",
+      "Trepa por el pilar izquierdo hasta el tejado.",
+      "Combate en cuatro fases: golpes normales, después pesados y por último bombas.",
+      "Encadena combos con bombas de humo y aturdidoras y usa el golpe aturdidor para desequilibrarlo.",
+      "Si suelta la espada y grita, va a usar su golpe aturdidor: rueda o contrarresta con el tuyo.",
+      "Sigue la pelea del tejado al interior hasta asesinarlo."
+     ],
+     "opt": [
+      "Usa el golpe aturdidor 5 veces",
+      "Que no te derriben"
+     ],
+     "opp": [],
+     "uk": "Duelo final de cuatro fases que termina en un asesinato obligatorio.",
+     "unlock": "Trofeo «Mystery Solved»",
+     "sp": "El asesino es Bellec, que mató a Mirabeau para impedir la paz con los templarios.",
+     "rift": false
+    },
+    {
+     "id": "7.4",
+     "t": "Fallo del Helix: París, 1944",
+     "en": "Server bridge · Paris 1944",
+     "pl": "",
+     "obj": "Atraviesa la París ocupada hasta la torre Eiffel y salta al portal desde lo más alto.",
+     "steps": [
+      "Sal de las alcantarillas junto a la torre Eiffel sin pisar la luz de los focos.",
+      "Cruza el tanque, cuélate por un hueco de la valla y empieza a trepar.",
+      "Cruza la estructura metálica y sube por el hueco del ascensor.",
+      "Derriba aviones con las ametralladoras de la torre mientras esquivas su fuego.",
+      "Trepa por una cuerda hasta el zepelín y cruza su cola hasta un elevador.",
+      "Llega a la cima y salta al portal cuando cambie de sitio."
+     ],
+     "opt": [],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": true
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "num": "8",
+   "t": "El Terror se acerca",
+   "yr": "1792",
+   "memorias": [
+    {
+     "id": "8.1",
+     "t": "La correspondencia del rey",
+     "en": "The King's Correspondence",
+     "pl": "louvre",
+     "obj": "Recupera las cartas de Mirabeau al rey antes de que caigan en manos templarias.",
+     "steps": [
+      "Baja del tejado, cruza la multitud y trepa por el muro del fondo (cuidado con el francotirador y el bruto).",
+      "Doble asesinato aéreo a la patrulla y sabotea la primera campana.",
+      "Disparos a la cabeza y una muerte sigilosa para sabotear la segunda.",
+      "Escóndete en el carro de heno, sabotea la tercera campana y asesina al francotirador de la escalera.",
+      "Limpia las salas del edificio a cubierto y entra en la cámara del rey.",
+      "Aguanta dos minutos las oleadas de rebeldes con bombas y sigue a Napoleón."
+     ],
+     "opt": [
+      "Sabotea 3 campanas de alarma",
+      "3 muertes desde cobertura"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "8.2",
+     "t": "Masacres de septiembre",
+     "en": "September Massacres",
+     "pl": "chatelet",
+     "obj": "Elimina a Rouillé, que está asaltando la prisión del Grand Châtelet.",
+     "steps": [
+      "Habla con Napoleón y salta desde la atalaya al carro de heno.",
+      "Evita la entrada directa: cruza el puente y entra por las alcantarillas que llevan a una escalera dentro de la prisión.",
+      "Elimina a los guardias del interior, del comedor y de las celdas desde cobertura.",
+      "Sube al tejado y baja al muro inferior para asesinar desde la cornisa a dos francotiradores.",
+      "Quema la bandera de la torre principal y asesina a otro francotirador del muro.",
+      "Mata al último guardia y ve a por Rouillé en la plataforma."
+     ],
+     "opt": [
+      "3 muertes desde cobertura",
+      "3 asesinatos desde una cornisa"
+     ],
+     "opp": [
+      "Ruta por las alcantarillas: entras dentro de la prisión sin pasar por la puerta.",
+      "Quemar la bandera de la torre principal."
+     ],
+     "uk": "",
+     "unlock": "Trofeo «Bloody Trail»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "num": "9",
+   "t": "Hambre",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "9.1",
+     "t": "Tiempos de hambre",
+     "en": "Starving Times",
+     "pl": "",
+     "obj": "Falta el grano en París: recorre los muelles hasta el hombre de Marie Lévesque y quítale sus órdenes.",
+     "steps": [
+      "Sigue el barco por las cuerdas, sube a la casa del embarcadero y cruza los edificios.",
+      "Cruza muelles, pilotes y la playa esquivando la caja que cae; sube por el elevador y las vigas hasta el puente.",
+      "Esquiva el contenedor que cae, evita a los matones y salta al carro de heno desde el tejado.",
+      "Mata al guardia del heno y al bruto; nada hasta la plataforma y usa la Hoja Fantasma con la patrulla.",
+      "Elimina al objetivo, coge sus órdenes y sal de la zona por el carro de heno."
+     ],
+     "opt": [
+      "No toques el agua",
+      "No hagas saltar ninguna alarma"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "9.2",
+     "t": "Acaparadores",
+     "en": "Hoarders",
+     "pl": "",
+     "obj": "Asesina a Marie Lévesque, que acapara el grano mientras París pasa hambre.",
+     "steps": [
+      "Asesina desde el aire a los guardias que acosan al mercader y cubre su carro desde los tejados.",
+      "Defiende el carro a disparos y habla con el mercader.",
+      "En la zona restringida, limpia francotiradores y guardias y libera a los presos de las dos celdas con la cuerda del patio.",
+      "Entra por una ventana abierta, libera a Thomas Lévesque y acaba con el bruto y los guardias.",
+      "Espera a que Marie Lévesque cruce el salón del banquete y asesínala desde arriba.",
+      "Escapa por las salidas del edificio."
+     ],
+     "opt": [
+      "Rescata a Thomas Lévesque",
+      "No hagas saltar ninguna alarma"
+     ],
+     "opp": [
+      "Protege el carro del mercader de 6 atacantes.",
+      "Libera a los presos de las dos celdas sin dar la alarma.",
+      "Un mercader junto a los primeros guardias repone Hojas Fantasma."
+     ],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "9.3",
+     "t": "La huida",
+     "en": "The Escape",
+     "pl": "",
+     "obj": "El reparto de grano sale mal: alcanza a Élise y libera el globo cortando sus tres amarras.",
+     "steps": [
+      "Suelta bombas de humo para ignorar a los guardias.",
+      "Corta las cuerdas que sujetan el globo.",
+      "Sube en el elevador, cruza la cuerda y la rampa de madera y sigue al globo por los tejados.",
+      "Cerca del francotirador, cruza la plaza por la cuerda hasta el edificio del boticario y libera el globo.",
+      "Sube al tejado de la capilla para liberar a Élise.",
+      "Ya en el suelo, toma un elevador y cruza los edificios hasta la escena final."
+     ],
+     "opt": [
+      "No te quedes atrás del globo",
+      "No toques el suelo"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «Road to Starvation»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "num": "10",
+   "t": "La caída del rey",
+   "yr": "1793",
+   "memorias": [
+    {
+     "id": "10.1",
+     "t": "Una cena comprometida",
+     "en": "A Dinner Engagement",
+     "pl": "",
+     "obj": "Elimina a Le Peletier durante una cena.",
+     "steps": [
+      "Salta al carro de heno y elimina a los guardias cercanos según su patrulla.",
+      "Limpia la entrada principal y enloquece a un bruto al este.",
+      "Ruta del veneno: sube al piso superior, pasa al guardia de la ventana y deja la botella en la mesa de Le Peletier.",
+      "Ruta del soborno: paga a la mujer del patio, entra y limpia los pasillos.",
+      "Espera junto a la puerta del comedor a que salga Le Peletier y mátalo desde cobertura.",
+      "Sal por donde entraste."
+     ],
+     "opt": [
+      "Enloquece a 2 brutos",
+      "2 dobles asesinatos"
+     ],
+     "opp": [
+      "Vino envenenado: exige sigilo total, un error puede hacer fracasar la misión.",
+      "Soborno por la ventana: cuesta 4.000 francos y te obliga a enfrentarte a más enemigos."
+     ],
+     "uk": "Le Peletier, con veneno o desde cobertura según la ruta.",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "10.2",
+     "t": "La ejecución",
+     "en": "The Execution",
+     "pl": "placerev",
+     "obj": "Sigue a Élise entre la multitud de la ejecución de Luis XVI y encuentra a Germain.",
+     "steps": [
+      "Tras la escena, salta al carro de heno y trepa por el poste hasta las cuerdas.",
+      "Sigue las cuerdas exteriores hasta la primera atalaya y mata al francotirador.",
+      "Cruza de poste en poste por encima de la multitud.",
+      "Salta a la atalaya de la derecha y mata al segundo francotirador.",
+      "Rodea el carruaje entre la gente hasta la tienda de Germain y acércate por detrás.",
+      "Lanza bombas aturdidoras hasta que se pierda el rastro de Germain."
+     ],
+     "opt": [
+      "Mata a 2 francotiradores",
+      "Aturde a 5 enemigos"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "10.3",
+     "t": "Reunión del Consejo",
+     "en": "Council Meeting",
+     "pl": "chapelle",
+     "obj": "Vuelve al cuartel de la Hermandad: el Consejo quiere hablar contigo.",
+     "steps": [],
+     "opt": [],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «Love and Duty»",
+     "sp": "El Consejo cree que Arno solo busca venganza y lo expulsa de la Hermandad.",
+     "rift": false
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "num": "11",
+   "t": "Tocar fondo",
+   "yr": "",
+   "memorias": [
+    {
+     "id": "11.1",
+     "t": "Tocar fondo",
+     "en": "Bottom of the Barrel",
+     "pl": "versailles",
+     "obj": "Arno despierta con resaca en Versalles: averigua qué pasó anoche y dónde está el reloj de su padre.",
+     "steps": [
+      "En el recuerdo de la noche anterior, atrae a los guardias con petardos y trepa hasta la calle.",
+      "Sube al balcón, espera a que el bruto se mueva y usa el barril.",
+      "De vuelta en el bar, pelea con los matones y derriba al que huye para sacarle dónde está su jefe.",
+      "En Versalles, usa un dardo berserker en el bruto y una bomba de gas venenoso en su grupo.",
+      "Limpia el edificio (asesinato aéreo desde el balcón y la patrulla del piano).",
+      "Atrae al jefe con un petardo, dale con la cuchilla berserker y acaba con el resto."
+     ],
+     "opt": [
+      "4 señuelos con petardos",
+      "2 muertes con gas venenoso"
+     ],
+     "opp": [
+      "Dardo berserker al bruto para reunir guardias y rematarlos con gas.",
+      "Cuchilla berserker al jefe tras sacarlo de la puerta con un petardo."
+     ],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "11.2",
+     "t": "El ascenso del asesino",
+     "en": "Rise of the Assassin",
+     "pl": "",
+     "obj": "Libera a Victor y Hugo y llega hasta La Touche junto a la guillotina.",
+     "steps": [
+      "Cruza los tejados hasta el edificio del tejado marrón y limpia a los francotiradores.",
+      "Elimina patrullas y brutos en el suelo usando la multitud.",
+      "Limpia el lado sur y los francotiradores de la jaula, incluido el de la atalaya.",
+      "Roba la llave a un guardia del edificio de detrás de la jaula y libera a Victor y Hugo.",
+      "Sigue a los Defensores hasta la guillotina, coge la llave y llega a La Touche antes de que te reconozca.",
+      "Lanza una bomba de humo y escapa de la plaza."
+     ],
+     "opt": [
+      "3 disparos a la cabeza",
+      "4 muertes desde cobertura"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "Trofeo «Down But Not Out»",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "11.3",
+     "t": "Fallo del Helix: París, 1394",
+     "en": "Server bridge · Paris 1394",
+     "pl": "bastille",
+     "obj": "Último salto del servidor: llega al portal junto a la Bastilla y entra en la París medieval.",
+     "steps": [
+      "Cruza el cementerio hacia las catacumbas y deslízate por la rampa.",
+      "Trepa por una columna en la gran caverna y sal por una tumba.",
+      "Esquiva las rocas rodantes de los túneles usando los huecos y trepa por la pared de madera.",
+      "Escapa de la simulación que se derrumba cuesta arriba.",
+      "Sal de la cantera, cruza el puente y llega al campo de batalla.",
+      "Esquiva las bolas de fuego de la Bastilla tras vallas y barricadas hasta el portal."
+     ],
+     "opt": [],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": true
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "num": "12",
+   "t": "El Ser Supremo",
+   "yr": "1794",
+   "memorias": [
+    {
+     "id": "12.1",
+     "t": "El Ser Supremo",
+     "en": "The Supreme Being",
+     "pl": "champmars",
+     "obj": "Durante la Fiesta del Ser Supremo, pon una lista de nombres a tres personas influyentes para volver a la multitud contra Robespierre.",
+     "steps": [
+      "Sigue a Élise entre la multitud y sube a la atalaya de las tiendas del este cuando nadie mire.",
+      "Asesina desde el aire al guardia de abajo y llega a la tienda de la campana.",
+      "Distrae a los dos guardias con un petardo, sabotea la campana y coge el libro de nombres.",
+      "Escóndete en los carros de heno y elimina patrullas sin que detecten a Élise.",
+      "Coloca la primera lista al hombre cercano cuando los matones miren a otro lado.",
+      "Coloca la segunda al objetivo del norte y la tercera al de la tienda."
+     ],
+     "opt": [
+      "Sabotea 1 campana de alarma",
+      "Que no detecten a Élise"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "12.2",
+     "t": "La caída de Robespierre",
+     "en": "The Fall of Robespierre",
+     "pl": "",
+     "obj": "Termidor: encuentra a los supervivientes y localiza a Robespierre, que ha sido detenido.",
+     "steps": [
+      "Habla con los guardias de los callejones y encuentra a los otros dos supervivientes.",
+      "Sigue a Robespierre por los tejados sin bajar al suelo (si lo pierdes, aparece una zona de búsqueda).",
+      "Tras la escena en su escondite, rodea el edificio y elimina a los francotiradores.",
+      "Fuerza la puerta cerrada y cuélate entre los guardias.",
+      "Acaba con el bruto con la Hoja Fantasma y elimina en silencio a los dos últimos guardias.",
+      "Abre la puerta para la escena final."
+     ],
+     "opt": [
+      "No entres en conflicto",
+      "Fuerza 1 cerradura"
+     ],
+     "opp": [],
+     "uk": "",
+     "unlock": "",
+     "sp": "",
+     "rift": false
+    },
+    {
+     "id": "12.3",
+     "t": "El Temple",
+     "en": "The Temple",
+     "pl": "templetower",
+     "obj": "Enfrentamiento final con Germain, que se esconde en las catacumbas del Temple con la Espada del Edén.",
+     "steps": [
+      "Baja al suelo, ve a la esquina derecha de la zona restringida y trepa.",
+      "Limpia francotiradores y guardias con la Hoja Fantasma y sabotea la primera campana.",
+      "Completa los tres dobles asesinatos aéreos sobre patrullas y guardias.",
+      "Repón Hojas Fantasma con el mercader de fuera y sabotea la segunda campana.",
+      "Sube a la torre, rodéala y apuñala a Germain por la espalda.",
+      "Usa la cuchilla berserker con el Defensor del granero, baja a las catacumbas y pelea con Germain usando coberturas y petardos."
+     ],
+     "opt": [
+      "3 dobles asesinatos aéreos",
+      "Sabotea 2 campanas de alarma"
+     ],
+     "opp": [
+      "Escóndete en los carros de heno para muertes desde escondite.",
+      "Las rutas por los tejados llevan a los francotiradores y a asesinatos aéreos.",
+      "Un mercader fuera de la fortaleza vende Hojas Fantasma.",
+      "Cuchilla berserker al Defensor del granero para despistar a los guardias antes de bajar."
+     ],
+     "uk": "Germain: tres puñaladas con la hoja oculta durante el combate final.",
+     "unlock": "Trofeos «Curtain Call» y, con todos los objetivos opcionales, «I Want It All»",
+     "sp": "",
+     "rift": false
+    }
+   ]
+  }
+ ]
+}

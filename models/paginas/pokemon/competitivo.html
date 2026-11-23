@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competitivo · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  .c-top { padding-block: 40px 0; display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+  .c-top h1 { font-size: clamp(32px, 4.4vw, 52px); }
+  .fmt { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .meta { display: grid; grid-template-columns: 1fr 420px; gap: 32px; padding-block: 28px 40px; align-items: start; }
+  .tier { display: grid; grid-template-columns: 64px 1fr; border-bottom: 1px solid var(--line); }
+  .tier:first-child { border-top: 1px solid var(--line); }
+  .tier .lvl { display: grid; place-items: center; font: 600 22px var(--font-pixel); }
+  .tier.s .lvl { color: var(--accent-hi); }
+  .tier.a .lvl { color: #FF8A80; }
+  .tier.b .lvl { color: var(--ink-dim); }
+  .tier .mons { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0; }
+  .mon { display: flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-raised); cursor: pointer; }
+  .mon:hover { border-color: var(--line-strong); }
+  .mon[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(var(--accent-soft), transparent), var(--bg-raised); }
+  .mon .sprite { width: 38px; border-radius: 9px; }
+  .mon b { font-weight: 600; font-size: 14px; }
+  .mon .ts { display: flex; gap: 3px; margin-top: 2px; }
+  .mon .ts .type { height: 18px; font-size: 10.5px; padding: 0 6px; }
+
+  .set { position: sticky; top: calc(var(--nav-h) + var(--sub-h) + 16px); border-radius: 20px; border: 1px solid var(--line); background: var(--bg-raised); overflow: hidden; }
+  .set-h { display: grid; grid-template-columns: 84px 1fr; gap: 14px; padding: 18px; border-bottom: 1px solid var(--line); }
+  .set-h h2 { font-size: 26px; margin-bottom: 6px; }
+  .set-h .role { color: var(--ink-dim); font-size: 14px; margin-top: 6px; }
+  .set-b { padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .set-b:last-child { border: 0; }
+  .set-b h3 { font: 600 13px var(--font-body); color: var(--ink-mute); margin-bottom: 10px; }
+  .moves { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .move { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 10px; background: var(--panel); font-size: 14px; }
+  .move .type { height: 18px; font-size: 10.5px; padding: 0 6px; }
+  .set-b p { margin: 0; color: var(--ink-dim); font-size: 14px; }
+  .counters { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
+  .rules div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .rules h3 { font-size: 16px; }
+  .rules p { margin: 4px 0 0; color: var(--ink-dim); font-size: 14px; max-width: 60ch; }
+
+  .teams { display: grid; gap: 10px; }
+  .team { display: grid; grid-template-columns: 200px 1fr auto; gap: 16px; align-items: center; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--line); }
+  .team .six { display: flex; gap: 6px; }
+  .team .six .sprite { width: 44px; border-radius: 10px; }
+  .team b { font-weight: 600; }
+  .team span.muted { font-size: 13px; display: block; }
+
+  @media (max-width: 1000px) { .meta { grid-template-columns: 1fr; } .set { position: static; } }
+  @media (max-width: 640px) {
+    .rules { grid-template-columns: 1fr; }
+    .team { grid-template-columns: 1fr; }
+    .team .six .sprite { width: 40px; }
+    .moves { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="competitivo">
+<main class="wrap">
+  <div class="c-top">
+    <div>
+      <h1>Competitivo</h1>
+      <p class="muted" style="margin:6px 0 0">Formato: Gen I OU (Rojo, Azul y Amarillo), seis contra seis</p>
+    </div>
+    <div class="fmt" role="group" aria-label="Formato">
+      <button class="chip" aria-pressed="true">Gen I · OU</button>
+      <button class="chip" disabled>Gen II · pronto</button>
+      <button class="chip" disabled>VGC actual · pronto</button>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="sec-head" style="margin-bottom:12px"><div><h2>Tiers</h2><p>Orden de ejemplo para el diseño: al implementar saldrá del uso real (Smogon).</p></div></div>
+      <div id="tiers"></div>
+    </div>
+    <aside class="set" id="set" aria-live="polite"></aside>
+  </div>
+
+  <section style="padding-top:8px">
+    <div class="sec-head"><div><h2>Lo que hay que saber de Gen I</h2><p>Reglas del juego que cambian por completo cómo se juega.</p></div></div>
+    <div class="rules">
+      <div><h3>Los críticos dependen de la Velocidad</h3><p>Cuanto más rápido es el Pokémon, más críticos hace. Por eso Persian y Tauros pegan tan fuerte.</p></div>
+      <div><h3>Hiperrayo no recarga si debilita</h3><p>Si el rival cae, no pierdes el turno siguiente: es el remate más usado del formato.</p></div>
+      <div><h3>La congelación no se cura sola</h3><p>Un Pokémon congelado se queda así casi para siempre. Ventisca es temida por eso.</p></div>
+      <div><h3>Especial es una sola estadística</h3><p>Sube el ataque y la defensa especiales a la vez: Amnesia y Psíquico son durísimos.</p></div>
+      <div><h3>Cláusulas habituales</h3><p>Solo un Pokémon dormido y uno congelado por equipo, y nada de ataques de KO directo ni de evasión.</p></div>
+      <div><h3>Psíquico domina</h3><p>Fantasma no le afecta y Bicho apenas existe: los psíquicos casi no tienen contra.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div><h2>Equipos de ejemplo</h2><p>Para empezar a jugar en simuladores.</p></div></div>
+    <div class="teams" id="teams"></div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const TIERS = [["s", "S", [128, 143, 113]], ["a", "A", [65, 121, 103, 145, 124]], ["b", "B", [131, 112, 76, 80, 94, 91, 53, 135]]];
+  const SETS = {
+    128: { role: "Atacante físico", moves: [["Golpe Cuerpo", "NOR"], ["Hiperrayo", "NOR"], ["Ventisca", "HIE"], ["Terremoto", "TIE"]], why: "Rápido, fuerte y con críticos frecuentes. Golpe Cuerpo paraliza y Hiperrayo remata sin recargar.", counters: [143, 76, 112] },
+    143: { role: "Tanque ofensivo", moves: [["Golpe Cuerpo", "NOR"], ["Hiperrayo", "NOR"], ["Terremoto", "TIE"], ["Autodestrucción", "NOR"]], why: "Aguanta casi todo y devuelve el daño. Autodestrucción se lleva a un rival con él.", counters: [128, 91, 80] },
+    113: { role: "Muro especial", moves: [["Rayo Hielo", "HIE"], ["Rayo", "ELE"], ["Onda Trueno", "ELE"], ["Ovocuración", "NOR"]], why: "Con 250 de PS y Especial alto, frena a los atacantes especiales y paraliza.", counters: [128, 143, 65] },
+  };
+  let cur = 128;
+
+  document.getElementById("tiers").innerHTML = TIERS.map(([c, l, ids]) => `<div class="tier ${c}"><span class="lvl">${l}</span><div class="mons">${ids.map((id) => {
+    const p = PK.DEX[id - 1];
+    return `<button class="mon" data-id="${id}" aria-pressed="${id === cur}">${spriteSlot()}<span><b>${p.name}</b><span class="ts">${p.types.map(typeChip).join("")}</span></span></button>`;
+  }).join("")}</div></div>`).join("");
+
+  function set() {
+    const p = PK.DEX[cur - 1], s = SETS[cur], st = PK.STATS[cur];
+    document.getElementById("set").innerHTML = `
+      <div class="set-h">${spriteSlot()}<div><h2>${p.name}</h2>${p.types.map(typeChip).join(" ")}<div class="role">${s ? s.role : "Set de ejemplo pendiente"}</div></div></div>
+      ${s ? `<div class="set-b"><h3>Set más usado</h3><div class="moves">${s.moves.map(([m, t]) => `<div class="move">${m}${typeChip(t)}</div>`).join("")}</div></div>
+      <div class="set-b"><h3>Por qué funciona</h3><p>${s.why}</p></div>
+      <div class="set-b"><h3>Quién le planta cara</h3><div class="counters">${s.counters.map((id) => `<span class="tag" style="font-size:13px;padding:4px 10px">${PK.DEX[id - 1].name}</span>`).join("")}</div></div>`
+      : `<div class="set-b"><p>En el diseño solo están los sets de Tauros, Snorlax y Chansey.</p></div>`}
+      ${st ? `<div class="set-b"><h3>Estadísticas base</h3><p class="num" style="font-size:13px">PS ${st[0]} · Atq ${st[1]} · Def ${st[2]} · Vel ${st[3]} · Esp ${st[4]}</p></div>` : ""}`;
+  }
+  document.getElementById("tiers").addEventListener("click", (e) => {
+    const b = e.target.closest(".mon"); if (!b) return;
+    cur = +b.dataset.id; document.querySelectorAll(".mon").forEach((x) => x.setAttribute("aria-pressed", +x.dataset.id === cur)); set();
+  });
+  set();
+
+  const TEAMS = [
+    ["Clásico", "El equipo base del formato", [65, 113, 103, 145, 143, 128]],
+    ["Ofensivo", "Presión desde el primer turno", [121, 124, 145, 143, 128, 112]],
+  ];
+  document.getElementById("teams").innerHTML = TEAMS.map(([n, d, ids]) => `<div class="team"><div><b>${n}</b><span class="muted">${d}</span></div><div class="six" style="flex-wrap:wrap">${ids.map((id) => `<span class="tag" style="font-size:13px;padding:4px 10px;color:var(--ink)">${PK.DEX[id - 1].name}</span>`).join("")}</div><button class="btn">Copiar equipo</button></div>`).join("");
+</script>
+</body>
+</html>

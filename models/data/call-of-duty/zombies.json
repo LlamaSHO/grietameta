@@ -1,0 +1,1595 @@
+{
+ "nota": "Black Ops 1 a 4. Textos propios de GrietaMeta; datos de Call of Duty Wiki (Fandom), SegmentNext, Shacknews y Gfinity. ee = Easter egg principal (steps vacío = pasos en preparación), song = canción secreta, partial = solo objetivo y final.",
+ "juegos": [
+  {
+   "id": "bo1",
+   "t": "Black Ops",
+   "short": "BO1",
+   "year": 2010,
+   "color": "#7FD3E8",
+   "lead": "El juego que convirtió Zombies en una saga: los Ultimis viajan del cine de Kino der Toten hasta la Luna, y Richtofen pone en marcha su plan.",
+   "packs": "Juego base (Kino der Toten y «Five») · First Strike (Ascension) · Escalation (Call of the Dead) · Annihilation (Shangri-La) · Rezurrection (Moon y los cuatro mapas de World at War remasterizados)",
+   "imagen": "assets/call-of-duty/cod-bo1.webp",
+   "mapas": [
+    {
+     "id": "kino",
+     "n": "Kino der Toten",
+     "dlc": "Juego base",
+     "year": "1963",
+     "setting": "Un viejo cine abandonado de Alemania usado por el Grupo 935.",
+     "crew": "Ultimis: Dempsey, Nikolai, Takeo y Richtofen",
+     "desc": "El mapa clásico por excelencia: el vestíbulo, el escenario y el teletransportador que lleva a la Pack-a-Punch.",
+     "pap": "Enciende la corriente detrás del escenario, enlaza el teletransportador del escenario con el ordenador del vestíbulo y úsalo: te lleva a la sala del proyector, donde está la Pack-a-Punch.",
+     "perks": [
+      "Quick Revive (vestíbulo)",
+      "Juggernog (patio de butacas)",
+      "Speed Cola (foyer)",
+      "Double Tap (callejón)",
+      "Mule Kick (sala superior, añadida en una actualización)"
+     ],
+     "enemies": "Zombis «crawler» que sueltan gas Nova 6 al morir.",
+     "ee": null,
+     "song": {
+      "name": "«115» (Elena Siegman)",
+      "steps": [
+       "Busca las tres rocas de meteorito y mantén pulsado el botón de usar sobre cada una.",
+       "Vestíbulo: en un tarro junto a la ventana de abajo.",
+       "Sala que une el callejón con la escalera: en una estantería.",
+       "Camerino: en una mesa negra detrás de los maniquíes."
+      ]
+     },
+     "extra": [
+      "Bobinas de película para el proyector y dos radios escondidas (callejón y lámpara del escenario) con pistas de la historia."
+     ],
+     "color": "#E2B866",
+     "imagen": "",
+     "armasPared": [
+      {
+       "arma": "M14 y Olympia",
+       "donde": "Vestíbulo (inicio)",
+       "precio": ""
+      },
+      {
+       "arma": "MPL",
+       "donde": "Sala inferior",
+       "precio": ""
+      },
+      {
+       "arma": "AK-74u",
+       "donde": "Callejón",
+       "precio": ""
+      },
+      {
+       "arma": "PM63",
+       "donde": "Sala superior",
+       "precio": ""
+      },
+      {
+       "arma": "MP40 y Stakeout",
+       "donde": "Foyer",
+       "precio": ""
+      },
+      {
+       "arma": "MP5K",
+       "donde": "Camerino",
+       "precio": ""
+      },
+      {
+       "arma": "M16",
+       "donde": "Escenario",
+       "precio": ""
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "Thundergun",
+       "descripcion": "Caja misteriosa. Su debut en la saga."
+      },
+      {
+       "nombre": "Ray Gun",
+       "descripcion": "Caja misteriosa."
+      }
+     ]
+    },
+    {
+     "id": "five",
+     "n": "«Five»",
+     "dlc": "Juego base",
+     "year": "Guerra Fría",
+     "setting": "El Pentágono, en Arlington (Virginia).",
+     "crew": "John F. Kennedy, Robert McNamara, Richard Nixon y Fidel Castro",
+     "desc": "Los políticos de la Guerra Fría contra los zombis en el Pentágono, con ascensores entre plantas y un ladrón que roba armas.",
+     "pap": "Enciende la corriente (laboratorio) y baja las cuatro palancas DEFCON de la sala de guerra hasta DEFCON 5: se abre la sala del pánico con la Pack-a-Punch.",
+     "perks": [
+      "Quick Revive (sala de juntas, inicio)",
+      "Speed Cola (sala contigua al inicio)",
+      "Double Tap (sala de guerra, arriba)",
+      "Juggernog (sala de guerra, abajo)",
+      "Mule Kick (sala de guerra, abajo)"
+     ],
+     "enemies": "El Ladrón del Pentágono: en sus rondas especiales te roba el arma (no hace daño); mátalo antes de que escape para recuperarla.",
+     "ee": null,
+     "song": {
+      "name": "«Won't Back Down» (Eminem)",
+      "steps": [
+       "Enciende la corriente.",
+       "Activa los tres teléfonos rojos: junto a Quick Revive, en una mesa de la sala del interruptor de corriente y en la sala del pánico junto a una barricada."
+      ]
+     },
+     "extra": [],
+     "color": "#B9C2CC",
+     "imagen": "",
+     "armasPared": [
+      {
+       "arma": "Olympia y M14",
+       "donde": "Sala de juntas",
+       "precio": "500 cada una"
+      },
+      {
+       "arma": "MPL",
+       "donde": "Sala contigua al inicio",
+       "precio": "1.000"
+      },
+      {
+       "arma": "MP5K y PM63",
+       "donde": "Sala de guerra, arriba",
+       "precio": "1.000"
+      },
+      {
+       "arma": "Stakeout",
+       "donde": "Sala de guerra, abajo",
+       "precio": "1.500"
+      },
+      {
+       "arma": "M16 y AK-74u",
+       "donde": "Laboratorio",
+       "precio": "1.200"
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "Winter's Howl",
+       "descripcion": "Solo en la caja. Congela a los zombis; mejorada es Winter's Fury."
+      }
+     ]
+    },
+    {
+     "id": "ascension",
+     "n": "Ascension",
+     "dlc": "First Strike",
+     "year": "1963",
+     "setting": "Un cosmódromo soviético abandonado.",
+     "crew": "Ultimis: Dempsey, Nikolai, Takeo y Richtofen",
+     "desc": "Los Ultimis llegan en un módulo lunar a un cosmódromo soviético para rescatar a Gersh. Debutan los monos espaciales.",
+     "pap": "Viaja en los tres módulos lunares y vuelve a la sala de la centrifugadora; pulsa el botón a la derecha del interruptor de corriente para lanzar el cohete. Se abre la sala de la Pack-a-Punch (5.000 puntos por mejora).",
+     "perks": [
+      "Quick Revive",
+      "Juggernog",
+      "Speed Cola",
+      "Double Tap",
+      "PhD Flopper (debuta aquí)",
+      "Stamin-Up (debuta aquí)"
+     ],
+     "enemies": "Monos espaciales que roban ventajas en rondas especiales.",
+     "ee": {
+      "name": "Liberar a Gersh (mecanismo de Casimir)",
+      "goal": "Reparar el mecanismo de Casimir y liberar al científico Gersh.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Abracadavre»",
+      "steps": [
+       "Interactúa con los tres osos de peluche con hoz.",
+       "Centrifugadora: al final de la pasarela, a la derecha, tras subir las escaleras.",
+       "Bajo la estrella roja de la verja junto al módulo lunar de Stamin-Up.",
+       "En una pared junto al módulo lunar pasado Speed Cola."
+      ]
+     },
+     "extra": [],
+     "color": "#E2364B",
+     "imagen": "assets/call-of-duty/cod-hero.webp",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Gersh Device",
+       "descripcion": "Caja misteriosa: crea un agujero negro."
+      },
+      {
+       "nombre": "Muñecas Matryoshka",
+       "descripcion": "Caja misteriosa: sustituyen a los monos bomba."
+      },
+      {
+       "nombre": "Thundergun",
+       "descripcion": "Caja misteriosa."
+      }
+     ]
+    },
+    {
+     "id": "cotd",
+     "n": "Call of the Dead",
+     "dlc": "Escalation",
+     "year": "—",
+     "setting": "Un puesto del Grupo 935 en la costa de Siberia, con un barco encallado y un faro.",
+     "crew": "Danny Trejo, Robert Englund, Michael Rooker y Sarah Michelle Gellar",
+     "desc": "Cuatro actores de cine de terror rodando una película en Siberia, perseguidos por George A. Romero en persona.",
+     "pap": "Con la corriente encendida (arriba del barco), sigue el haz del faro: apunta a donde está la Pack-a-Punch, que cambia de sitio durante la partida.",
+     "perks": [
+      "Deadshot Daiquiri (lo alto del faro, debuta aquí)",
+      "Juggernog",
+      "Speed Cola",
+      "Double Tap",
+      "Quick Revive",
+      "PhD Flopper",
+      "Stamin-Up"
+     ],
+     "enemies": "George A. Romero: jefe invencible que se enfada si le disparas o le pisas el agua.",
+     "ee": {
+      "name": "«Stand-in» y «Ensemble Cast»",
+      "goal": "Liberar a los Ultimis, atrapados en una sala oscura del mapa (en solitario, «Stand-in»; en cooperativo, «Ensemble Cast»).",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Not Ready to Die» (Avenged Sevenfold)",
+      "steps": [
+       "Dispara a tres rocas escondidas.",
+       "En un barril de la zona de inicio, junto a la barca que va al faro.",
+       "En la cafetería del barco.",
+       "Bajo una mesita de la sala de PhD Flopper."
+      ]
+     },
+     "extra": [
+      "Las barcas cuestan 750 puntos: una lleva al faro y otra al barco."
+     ],
+     "color": "#8FB2F2",
+     "imagen": "assets/call-of-duty/cod-cotd.webp",
+     "armasPared": [
+      {
+       "arma": "M14 y Olympia",
+       "donde": "Zona de inicio",
+       "precio": ""
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "V-R11",
+       "descripcion": "Caja: vuelve humanos a los zombis y calma a George."
+      },
+      {
+       "nombre": "Scavenger",
+       "descripcion": "Caja: francotirador de virotes explosivos (mejorado, Hyena Infra-Dead)."
+      },
+      {
+       "nombre": "Wunderwaffe DG-2",
+       "descripcion": "La suelta George A. Romero cuando lo derrotas."
+      }
+     ]
+    },
+    {
+     "id": "shangri",
+     "n": "Shangri-La",
+     "dlc": "Annihilation",
+     "year": "1956",
+     "setting": "Un templo perdido en el Himalaya donde se extraía Elemento 115.",
+     "crew": "Ultimis: Dempsey, Nikolai, Takeo y Richtofen, con los exploradores Brock y Gary",
+     "desc": "Selva, cascadas, trampas y viajes en el tiempo: los Ultimis ayudan a dos exploradores atrapados en un bucle.",
+     "pap": "Pisa los interruptores de piedra que rodean el templo central: con todos activados se abre el acceso a la Pack-a-Punch, en el centro del templo.",
+     "perks": [
+      "Juggernog",
+      "Speed Cola",
+      "Double Tap",
+      "Quick Revive",
+      "PhD Flopper",
+      "Stamin-Up",
+      "Mule Kick",
+      "Deadshot Daiquiri"
+     ],
+     "enemies": "Zombis de napalm y zombis aulladores (shrieker). Monos que roban potenciadores.",
+     "ee": {
+      "name": "«Time Travel Will Tell»",
+      "goal": "Sacar a Brock y Gary del bucle temporal.",
+      "steps": [],
+      "reward": "La piedra de enfoque, que Richtofen necesita en Moon.",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Pareidolia» (Elena Siegman)",
+      "steps": []
+     },
+     "extra": [],
+     "color": "#7FE0A3",
+     "imagen": "assets/call-of-duty/cod-shangri.webp",
+     "armasPared": [
+      {
+       "arma": "M14 y Olympia",
+       "donde": "Zona de inicio",
+       "precio": ""
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "31-79 JGb215",
+       "descripcion": "Caja: encoge a los zombis; corre hacia ellos para aplastarlos."
+      }
+     ]
+    },
+    {
+     "id": "moon",
+     "n": "Moon",
+     "dlc": "Rezurrection",
+     "year": "2025",
+     "setting": "La Base Griffin, en la Luna, y el Área 51 en la Tierra.",
+     "crew": "Ultimis: Dempsey, Nikolai, Takeo y Richtofen",
+     "desc": "El final de la historia de Black Ops: gravedad baja, trajes espaciales y el gran plan de Richtofen.",
+     "pap": "La Pack-a-Punch está en el Área 51 (No Man's Land), donde empiezas la partida.",
+     "perks": [
+      "Juggernog o Speed Cola (Área 51, se alternan)",
+      "Quick Revive (zona de recepción)",
+      "Stamin-Up (túnel 11)",
+      "Double Tap (laboratorios, planta 1)",
+      "Deadshot Daiquiri (laboratorios, planta 3)",
+      "PhD Flopper (biocúpula)",
+      "Mule Kick (exterior, 4.000)"
+     ],
+     "enemies": "Excavadoras que perforan los túneles. Sin traje P.E.S. te asfixias fuera de las cúpulas.",
+     "ee": {
+      "name": "«Richtofen's Grand Scheme»",
+      "goal": "Ayudar a Richtofen a completar su plan en la Luna.",
+      "steps": [],
+      "reward": "",
+      "ending": "Richtofen intercambia su alma con Samantha y toma el control de los zombis. Maxis pide a los demás que lo detengan, pero sus tres cohetes impactan en la Tierra y la parten en pedazos.",
+      "partial": true
+     },
+     "song": {
+      "name": "«Coming Home» (Elena Siegman)",
+      "steps": [
+       "Busca tres osos de peluche con casco P.E.S.",
+       "Fuera de la zona de recepción.",
+       "En la esclusa entre el túnel 6 y el interruptor de corriente.",
+       "En un agujero de la pared del túnel 11."
+      ]
+     },
+     "extra": [
+      "El pack Rezurrection incluye además los cuatro mapas de World at War remasterizados: Nacht der Untoten, Verrückt, Shi No Numa y Der Riese."
+     ],
+     "color": "#BCD0F2",
+     "imagen": "assets/call-of-duty/cod-bo1.webp",
+     "armasPared": [
+      {
+       "arma": "AK-74u",
+       "donde": "Fuera de los laboratorios",
+       "precio": "1.200"
+      },
+      {
+       "arma": "MPL y M16",
+       "donde": "Túnel 6",
+       "precio": ""
+      },
+      {
+       "arma": "PM63",
+       "donde": "Túnel 11",
+       "precio": ""
+      },
+      {
+       "arma": "Stakeout",
+       "donde": "Sala de corriente",
+       "precio": ""
+      },
+      {
+       "arma": "M14 y Olympia",
+       "donde": "Tras la segunda puerta desde el inicio",
+       "precio": ""
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "Wave Gun (Zap Guns)",
+       "descripcion": "Caja: dos pistolas que se combinan en un rifle."
+      },
+      {
+       "nombre": "Q.E.D.",
+       "descripcion": "Caja: granada de efectos aleatorios."
+      },
+      {
+       "nombre": "Hacker",
+       "descripcion": "Equipo para hackear máquinas, puertas y potenciadores."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bo2",
+   "t": "Black Ops II",
+   "short": "BO2",
+   "year": 2012,
+   "color": "#F0B35A",
+   "lead": "La Tierra está rota. Los Victis sobreviven en el futuro entre Maxis y Richtofen, mientras en Alcatraz y en 1918 empiezan otras historias.",
+   "packs": "Juego base (TranZit y sus zonas, Nuketown Zombies) · Revolution (Die Rise) · Uprising (Mob of the Dead) · Vengeance (Buried) · Apocalypse (Origins)",
+   "imagen": "assets/call-of-duty/cod-bo2.webp",
+   "mapas": [
+    {
+     "id": "tranzit",
+     "n": "TranZit",
+     "dlc": "Juego base",
+     "year": "Tras la destrucción de la Tierra",
+     "setting": "Cinco zonas unidas por un autobús: estación, cafetería, granja, central eléctrica y pueblo.",
+     "crew": "Victis: Stuhlinger, Misty, Marlton y Russman",
+     "desc": "Un mapa enorme que se recorre en autobús, con niebla, lava y piezas para construir armas y máquinas.",
+     "pap": "Construye la Pack-a-Punch en la cámara acorazada del banco del pueblo: coloca una turbina en el panel del rayo de la central para abrir la puerta del banco, vuela las dos puertas de la cámara con explosivos y monta la máquina (cuerpo, batería y mesa).",
+     "perks": [
+      "Quick Revive (estación de autobús)",
+      "Speed Cola (cafetería)",
+      "Juggernog (pueblo)",
+      "Stamin-Up (bar del pueblo)",
+      "Double Tap 2.0 (piso de arriba del granero)",
+      "Tombstone (central eléctrica)"
+     ],
+     "enemies": "Denizens en la niebla (se te tiran a la cara: quítatelos a cuchillo), zombis en llamas junto a la lava y el Avogadro durante las tormentas eléctricas.",
+     "ee": {
+      "name": "«Tower of Babble»",
+      "goal": "Construir la mesa NAV y ayudar a Richtofen o a Maxis a tomar el control de la torre del maizal.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Carrion» (Kevin Sherwood)",
+      "steps": []
+     },
+     "extra": [
+      "Modos Supervivencia y Duelo en la estación, el pueblo y la granja."
+     ],
+     "color": "#F0B35A",
+     "imagen": "assets/call-of-duty/cod-tranzit.webp",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Jet Gun",
+       "descripcion": "Se construye en el bar del pueblo con cuatro piezas repartidas por el túnel entre la estación y la cafetería, la cabaña del bosque, la central eléctrica y Nacht der Untoten."
+      }
+     ]
+    },
+    {
+     "id": "nuketown",
+     "n": "Nuketown Zombies",
+     "dlc": "Pase de temporada / edición Hardened",
+     "year": "—",
+     "setting": "El pueblo de pruebas nucleares de Nuketown, tras una explosión de Elemento 115.",
+     "crew": "Agentes de la CIA y del CDC",
+     "desc": "Mapa pequeño de supervivencia: las ventajas y la Pack-a-Punch caen del cielo en sitios aleatorios.",
+     "pap": "Cae del cielo en un punto aleatorio del mapa cuando suena la alarma nuclear.",
+     "perks": [
+      "Las ventajas caen del cielo en sitios aleatorios a lo largo de la partida."
+     ],
+     "enemies": "En la ronda 25, Richtofen ocupa el lugar de Samantha como anunciador.",
+     "ee": null,
+     "song": {
+      "name": "Tres canciones",
+      "steps": [
+       "Activa los tres osos de peluche: nana de Samantha.",
+       "Dispara a la cabeza de todos los maniquíes: «Coming Home» en 8 bits.",
+       "Coge un potenciador del cobertizo cuando el contador de población marque 15."
+      ]
+     },
+     "extra": [],
+     "color": "#E8C98A",
+     "imagen": "",
+     "armasPared": [
+      {
+       "arma": "M14",
+       "donde": "Parte trasera del autobús",
+       "precio": ""
+      },
+      {
+       "arma": "Olympia",
+       "donde": "Delante del camión, tras unas tablas",
+       "precio": ""
+      },
+      {
+       "arma": "Remington 870 MCS",
+       "donde": "Casa amarilla, sobre la chimenea",
+       "precio": "1.500"
+      },
+      {
+       "arma": "M16A1",
+       "donde": "Casa amarilla, arriba entre ventanas",
+       "precio": "1.200"
+      },
+      {
+       "arma": "B23R",
+       "donde": "Casa verde, junto a la tele",
+       "precio": "1.000"
+      },
+      {
+       "arma": "MP5",
+       "donde": "Casa verde, dormitorio de arriba",
+       "precio": "1.000"
+      }
+     ],
+     "armasEspeciales": [
+      {
+       "nombre": "Ray Gun y Ray Gun Mark II",
+       "descripcion": "Caja misteriosa."
+      }
+     ]
+    },
+    {
+     "id": "dierise",
+     "n": "Die Rise",
+     "dlc": "Revolution",
+     "year": "Tras la destrucción de la Tierra",
+     "setting": "Rascacielos derrumbados en China.",
+     "crew": "Victis: Stuhlinger, Misty, Marlton y Russman",
+     "desc": "Ascensores, saltos entre edificios y Who's Who, la ventaja que te da una segunda vida.",
+     "pap": "La Pack-a-Punch viaja dentro de uno de los ascensores del edificio.",
+     "perks": [
+      "Who's Who (debuta aquí)",
+      "Juggernog",
+      "Quick Revive",
+      "Speed Cola",
+      "Double Tap",
+      "Mule Kick"
+     ],
+     "enemies": "Jumping Jacks: zombis que saltan desde los conductos de ventilación.",
+     "ee": {
+      "name": "«High Maintenance»",
+      "goal": "Activar la torre de Die Rise para Richtofen o para Maxis.",
+      "steps": [
+       "Enciende la corriente y construye la mesa NAV.",
+       "Con cuatro jugadores, colocaos a la vez en los cuatro aros dorados de los ascensores.",
+       "Pisa en orden los cuatro símbolos dorados del suelo (cambia cada partida).",
+       "Dispara con francotirador a las bolas de las bocas de los dos dragones y elige bando.",
+       "Richtofen: carga las bolas con el Sliquifier y coloca Trample Steams en los símbolos de zombi. Maxis: consigue 15 muertes seguidas en la sala del Buda y dispara el Krauss Refibrillator.",
+       "Recoge las fichas de Mahjong para saber el orden y golpea los postes de la torre con los Galvaknuckles."
+      ],
+      "reward": "Todas las ventajas del mapa (se pierden si caes). La torre se ilumina en azul (Richtofen) o naranja (Maxis).",
+      "ending": "",
+      "partial": false
+     },
+     "song": {
+      "name": "«We All Fall Down» (Clark S. Nova)",
+      "steps": []
+     },
+     "extra": [],
+     "color": "#E2364B",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Sliquifier",
+       "descripcion": "Se construye con piezas repartidas por los edificios."
+      },
+      {
+       "nombre": "Trample Steam",
+       "descripcion": "Plataforma de vapor que lanza zombis (y jugadores)."
+      }
+     ]
+    },
+    {
+     "id": "mob",
+     "n": "Mob of the Dead",
+     "dlc": "Uprising",
+     "year": "1933",
+     "setting": "La prisión de Alcatraz.",
+     "crew": "Albert «Weasel» Arlington, Finn O'Leary, Salvatore DeLuca y Billy Handsome",
+     "desc": "Cuatro mafiosos intentan escapar de Alcatraz. El modo Más Allá te deja abrir puertas y cargar aparatos como fantasma.",
+     "pap": "Construye el avión en el tejado con las piezas que se consiguen en el modo Más Allá y vuela al puente Golden Gate: allí está la Pack-a-Punch. Vuelves a la isla por las sillas eléctricas.",
+     "perks": [
+      "Juggernog",
+      "Double Tap",
+      "Speed Cola",
+      "Deadshot Daiquiri",
+      "Electric Cherry (debuta aquí)"
+     ],
+     "enemies": "Brutus, el alcaide: inutiliza máquinas y hay que tumbarlo con cabeza.",
+     "ee": {
+      "name": "«Pop Goes the Weasel»",
+      "goal": "Completar el ciclo de huida tres veces y enfrentaros en el puente.",
+      "steps": [],
+      "reward": "",
+      "ending": "Hay dos finales: si Weasel acaba con los otros tres, rompe el ciclo; si los otros tres acaban con él, el ciclo vuelve a empezar.",
+      "partial": true
+     },
+     "song": {
+      "name": "«Rusty Cage» (versión de Johnny Cash)",
+      "steps": []
+     },
+     "extra": [],
+     "color": "#F28FA0",
+     "imagen": "assets/call-of-duty/cod-mob.webp",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Blundergat / Acid Gat",
+       "descripcion": "La Blundergat sale de la caja; el kit de ácido se construye para convertirla en la Acid Gat."
+      },
+      {
+       "nombre": "Hell's Retriever",
+       "descripcion": "Tomahawk que se consigue alimentando a los perros infernales de la isla; mejorado, Hell's Redeemer."
+      }
+     ]
+    },
+    {
+     "id": "buried",
+     "n": "Buried",
+     "dlc": "Vengeance",
+     "year": "Tras la destrucción de la Tierra",
+     "setting": "Un pueblo del Oeste enterrado bajo tierra.",
+     "crew": "Victis: Stuhlinger, Misty, Marlton y Russman",
+     "desc": "Arthur, el gigante, te ayuda si le das caramelos o alcohol; en la mansión, un fantasma te roba puntos.",
+     "pap": "Al final del laberinto de setos, detrás de la mansión. Dale caramelos o alcohol a Arthur para que rompa la verja de la mansión, sube, entra en la sala de la escalera izquierda (una estantería abre un pasadizo al jardín), cruza el laberinto, sal por la puerta verde y baja las escaleras del edificio. Ojo: al usarla empieza una horda.",
+     "perks": [
+      "Vulture Aid (debuta aquí: muestra armas y ventajas a través de las paredes)",
+      "Juggernog",
+      "Quick Revive",
+      "Speed Cola",
+      "Double Tap",
+      "Stamin-Up",
+      "Mule Kick"
+     ],
+     "enemies": "La fantasma de la mansión roba 2.000 puntos por golpe.",
+     "ee": {
+      "name": "«Mined Games»",
+      "goal": "La última pieza del conflicto entre Richtofen y Maxis.",
+      "steps": [
+       "Juega en dificultad Original y, para el final completo, con cuatro jugadores.",
+       "Construye la guillotina (bando de Richtofen) o la horca junto al juzgado (bando de Maxis).",
+       "Carga o destruye los cuatro orbes rojos (Paralyzer o Subsurface Resonator) y carga el farol morado.",
+       "Descifra el código, golpea los tres carteles y guía al «wisp» hasta la guillotina o la horca.",
+       "Último paso con las bombas de tiempo (Richtofen) o con las campanas (Maxis).",
+       "Pide un deseo en la fuente y dispara a todas las dianas."
+      ],
+      "reward": "Depende del bando que elijáis: Richtofen y Maxis dan recompensas distintas.",
+      "ending": "Si gana Richtofen, el equipo consigue la venta de fuego permanente y Mule Kick con cuatro armas. Si gana Maxis, Maxis vence a Richtofen y toma el control.",
+      "partial": false
+     },
+     "song": {
+      "name": "«Always Running» (Malukah)",
+      "steps": []
+     },
+     "extra": [
+      "Construibles: Trample Steam, turbina, Head Chopper y Subsurface Resonator.",
+      "Para el final completo de los Victis, los cuatro jugadores deben haber elegido el mismo bando en TranZit, Die Rise y Buried."
+     ],
+     "color": "#C9A45C",
+     "imagen": "assets/call-of-duty/cod-buried.webp",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Paralyzer",
+       "descripcion": "Arma maravilla del mapa: congela a los zombis y te deja flotar."
+      },
+      {
+       "nombre": "Time Bomb",
+       "descripcion": "Táctico que te devuelve a un punto anterior de la partida."
+      }
+     ]
+    },
+    {
+     "id": "origins",
+     "n": "Origins",
+     "dlc": "Apocalypse",
+     "year": "1918",
+     "setting": "El norte de Francia durante la Primera Guerra Mundial.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "Barro, robots gigantes y cuatro bastones elementales: el mapa favorito de muchísimos jugadores.",
+     "pap": "Activa los seis generadores de Elemento 115 repartidos por el mapa: con los seis encendidos se activa la Pack-a-Punch.",
+     "perks": [
+      "Juggernog, Quick Revive, Speed Cola, Double Tap y Stamin-Up (se encienden con los generadores)",
+      "Der Wunderfizz: ventaja aleatoria"
+     ],
+     "enemies": "Panzer Soldat y los robots gigantes Freya, Odin y Thor (pisan a quien esté debajo).",
+     "ee": {
+      "name": "«Little Lost Girl»",
+      "goal": "Liberar a Samantha de Agartha.",
+      "steps": [],
+      "reward": "",
+      "ending": "La escena final muestra a dos niños jugando con figuras de los personajes.",
+      "partial": true
+     },
+     "song": {
+      "name": "«Archangel» (Elena Siegman)",
+      "steps": []
+     },
+     "extra": [
+      "Pala para excavar, casco dorado contra los robots y un tanque que recorre el mapa."
+     ],
+     "color": "#E8C98A",
+     "imagen": "assets/call-of-duty/cod-origins.webp",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Bastón de Fuego",
+       "descripcion": "Uno de los cuatro bastones elementales: cada uno se construye con piezas repartidas por el mapa y se mejora con su propio puzle."
+      },
+      {
+       "nombre": "Bastón de Hielo",
+       "descripcion": "Sus piezas se excavan con la pala cuando nieva."
+      },
+      {
+       "nombre": "Bastón de Rayo",
+       "descripcion": "Piezas repartidas por el mapa."
+      },
+      {
+       "nombre": "Bastón de Viento",
+       "descripcion": "Sus piezas las sueltan los robots gigantes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bo3",
+   "t": "Black Ops III",
+   "short": "BO3",
+   "year": 2015,
+   "color": "#E2364B",
+   "lead": "Los Primis recorren el multiverso con la Llave de la Invocación para arreglar el plan de Richtofen, de Morg City a Agartha.",
+   "packs": "Juego base (Shadows of Evil) · The Giant (bonificación) · Awakening (Der Eisendrache) · Eclipse (Zetsubou No Shima) · Descent (Gorod Krovi) · Salvation (Revelations) · Zombies Chronicles (8 mapas clásicos remasterizados)",
+   "imagen": "assets/call-of-duty/cod-bo3.webp",
+   "mapas": [
+    {
+     "id": "soe",
+     "n": "Shadows of Evil",
+     "dlc": "Juego base",
+     "year": "Años 40",
+     "setting": "Morg City, una ciudad ficticia de cine negro.",
+     "crew": "Nero Blackstone, Jessica Rose, Jack Vincent y Floyd Campbell",
+     "desc": "Un mago, una bailarina, un policía corrupto y un boxeador atrapados por el Hombre Sombra. Debuta el modo Bestia.",
+     "pap": "Completa los cuatro rituales (uno por personaje) y coloca los cuatro gusanos de portal en el lugar sagrado para abrir la piedra del rift con la Pack-a-Punch.",
+     "perks": [
+      "Juggernog, Speed Cola y Double Tap (aparecen en barrios aleatorios; una botella rota en el cruce indica cuál)",
+      "Quick Revive (inicio)",
+      "El resto, repartidas por la ciudad"
+     ],
+     "enemies": "Margwa, Meatballs y Parasites.",
+     "ee": {
+      "name": "«Apocalypse Averted»",
+      "goal": "Detener al Hombre Sombra.",
+      "steps": [],
+      "reward": "",
+      "ending": "Un rayo destruye a la bestia apothicona sobre la ciudad. Llega un Guardián con la Llave de la Invocación, pero Richtofen la coge, dice que tiene «un universo que arreglar» y desaparece por un portal.",
+      "partial": true
+     },
+     "song": {
+      "name": "«Snakeskin Boots»",
+      "steps": []
+     },
+     "extra": [
+      "Modo Bestia: electrifica paneles para encender ventajas y abre caminos."
+     ],
+     "color": "#B9A3E8",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Apothicon Servant",
+       "descripcion": "Arma maravilla del mapa: abre un agujero que absorbe a los zombis."
+      },
+      {
+       "nombre": "Li'l Arnie",
+       "descripcion": "Táctico: un calamar que atrae y destroza a los zombis."
+      },
+      {
+       "nombre": "Rocket Shield",
+       "descripcion": "Escudo propulsado que lanza zombis."
+      }
+     ]
+    },
+    {
+     "id": "giant",
+     "n": "The Giant",
+     "dlc": "Bonificación (edición especial)",
+     "year": "—",
+     "setting": "Una fábrica nevada del Grupo 935: el regreso de Der Riese.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "El clásico de los teletransportadores, rehecho. Empieza con el Richtofen Primis matando a su yo Ultimis.",
+     "pap": "Enlaza los tres teletransportadores (A, B y C) con el ordenador central: entonces se abre la Pack-a-Punch.",
+     "perks": [
+      "Juggernog, Quick Revive, Speed Cola y otras (posiciones aleatorias)",
+      "Una sexta máquina oculta: Stamin-Up o Deadshot Daiquiri"
+     ],
+     "enemies": "Perros infernales.",
+     "ee": {
+      "name": "«Fly Trap» y la baliza",
+      "goal": "Repetir la trampa para moscas de Der Riese y encender la baliza del mapa.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Beauty of Annihilation» (remezcla)",
+      "steps": []
+     },
+     "extra": [],
+     "color": "#BCD0F2",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Wunderwaffe DG-2",
+       "descripcion": "Caja misteriosa."
+      },
+      {
+       "nombre": "Annihilator",
+       "descripcion": "Revólver de un solo uso por recarga: se consigue en el horno del mapa."
+      }
+     ]
+    },
+    {
+     "id": "de",
+     "n": "Der Eisendrache",
+     "dlc": "Awakening",
+     "year": "—",
+     "setting": "Un castillo en los Alpes austriacos.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "Dragones, un castillo con cohetes y el arco Wrath of the Ancients con cuatro mejoras elementales.",
+     "pap": "Enciende la corriente y activa las tres plataformas de aterrizaje del castillo (una está junto a la plataforma del cohete). Con las tres activas, la Pack-a-Punch sale de la pirámide de la cripta (Undercroft).",
+     "perks": [
+      "Juggernog, Quick Revive, Speed Cola, Double Tap, Stamin-Up y Mule Kick (por el castillo)"
+     ],
+     "enemies": "Panzersoldat.",
+     "ee": {
+      "name": "«My Brother's Keeper»",
+      "goal": "Atrapar el alma del Dempsey Ultimis.",
+      "steps": [],
+      "reward": "",
+      "ending": "Dempsey insiste en hacerlo él: apaga el soporte vital de su yo Ultimis, y Richtofen guarda su alma en la Llave de la Invocación.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [
+      "Secreto: el desatascador, un arma cuerpo a cuerpo que se consigue con un puzle del reloj de la torre."
+     ],
+     "color": "#F28FA0",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Wrath of the Ancients",
+       "descripcion": "Alimenta con 8 zombis a cada uno de los tres dragones; luego mejóralo a una de sus cuatro versiones elementales."
+      },
+      {
+       "nombre": "Ragnarok DG-4",
+       "descripcion": "Se construye; en modo trampa también mueve el reloj de la torre."
+      }
+     ]
+    },
+    {
+     "id": "zns",
+     "n": "Zetsubou No Shima",
+     "dlc": "Eclipse",
+     "year": "—",
+     "setting": "Una isla del Pacífico con laboratorios abandonados de la División 9.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "Plantas mutantes, arañas y agua de Elemento 115. Takeo viene a por su yo Ultimis.",
+     "pap": "Está sumergida bajo el búnker principal. Enciende la corriente, reúne sus tres piezas (el asa, bajo el agua del búnker; el manómetro, dentro de un capullo de la sala oeste; y la rueda, en el agua junto a Mule Kick) y usa las tres bombas del terminal para vaciar el agua.",
+     "perks": [
+      "Las ventajas habituales, más botellas vacías que dan huecos extra para ventajas"
+     ],
+     "enemies": "Thrashers, arañas y zombis bajo el agua.",
+     "ee": {
+      "name": "«Seeds of Doubt»",
+      "goal": "Salvar a Takeo.",
+      "steps": [],
+      "reward": "",
+      "ending": "El Takeo Ultimis revela que las órdenes de matarlo venían del Emperador y se hace el seppuku; el Primis le corta la cabeza y la Llave captura su alma.",
+      "partial": true
+     },
+     "song": {
+      "name": "«Dead Again»",
+      "steps": []
+     },
+     "extra": [
+      "Semillas que se riegan con agua de colores: azul da objetos; verde, morado e iridiscente, otras plantas."
+     ],
+     "color": "#7FE0A3",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "KT-4",
+       "descripcion": "Se construye con ingredientes del mapa; mejorado se llama Masamune."
+      }
+     ]
+    },
+    {
+     "id": "gk",
+     "n": "Gorod Krovi",
+     "dlc": "Descent",
+     "year": "—",
+     "setting": "Una Stalingrado alternativa en plena guerra, con dragones.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "Dragones, mechas soviéticos y el regreso de Gersh y Sophia. Aparece el doctor Monty.",
+     "pap": "Está en el criadero: llega montado en el dragón rojo tras construir el controlador de la red de dragones y conseguir las alas.",
+     "perks": [
+      "Las ventajas habituales de Black Ops III"
+     ],
+     "enemies": "Manglers y Valkyrie drones.",
+     "ee": {
+      "name": "«Love and War»",
+      "goal": "Encontrar al Nikolai de la Fractura Agonía y asegurar su alma.",
+      "steps": [],
+      "reward": "",
+      "ending": "El Nikolai Primis mata al Ultimis. Richtofen libera las almas reunidas y Monty se presenta: pronto tendrán que ir a «la Casa».",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#E2364B",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "GKZ-45 Mk3",
+       "descripcion": "Caja misteriosa: pistola doble con el Ray Gun Mark III."
+      },
+      {
+       "nombre": "Guard of Fafnir",
+       "descripcion": "Escudo dragón inmune al fuego; mejorado, Tiamat's Maw."
+      },
+      {
+       "nombre": "Dragon Strike",
+       "descripcion": "Ataque aéreo de dragón; mejorado, Draconite Controller."
+      },
+      {
+       "nombre": "Gauntlet of Siegfried",
+       "descripcion": "Arma de especialista: incuba un huevo de dragón."
+      }
+     ]
+    },
+    {
+     "id": "rev",
+     "n": "Revelations",
+     "dlc": "Salvation",
+     "year": "—",
+     "setting": "Agartha, «la Casa», hecha con fragmentos de mapas anteriores.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "El final de los Primis en Black Ops III: Kino, Shangri-La, Origins y otros mapas flotando en el Aether.",
+     "pap": "Está dentro del Apothicon que sobrevuela el mapa. Activa los cuatro motores de corrupción desde la mesa del templo (500 puntos cada uno), aturde al Apothicon con el terminal de control de la parte alta de Nacht der Untoten, entra por su boca y dispara a los orbes amarillos que sujetan el corazón.",
+     "perks": [
+      "Las ventajas habituales de Black Ops III"
+     ],
+     "enemies": "El Hombre Sombra como jefe final, Margwas y Fury.",
+     "ee": {
+      "name": "«Revelations»",
+      "goal": "Derrotar al Hombre Sombra y cerrar la historia de los Primis.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": {
+      "name": "«Dead Ended»",
+      "steps": []
+     },
+     "extra": [],
+     "color": "#8FB2F2",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Apothicon Servant",
+       "descripcion": "Vuelve en este mapa."
+      },
+      {
+       "nombre": "Thundergun",
+       "descripcion": "Caja misteriosa."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bo4",
+   "t": "Black Ops 4",
+   "short": "BO4",
+   "year": 2018,
+   "color": "#C9A45C",
+   "lead": "Dos historias en paralelo: la nueva tripulación del Caos persigue artefactos antiguos y el Aether llega a su final.",
+   "packs": "Juego base (IX, Voyage of Despair, Blood of the Dead y Classified) · Dead of the Night · Ancient Evil · Alpha Omega · Tag der Toten",
+   "imagen": "",
+   "mapas": [
+    {
+     "id": "ix",
+     "n": "IX",
+     "dlc": "Juego base",
+     "year": "80 a. C.",
+     "setting": "Un coliseo de gladiadores con templos de Danu, Ra, Odín y Zeus.",
+     "crew": "Scarlett Rhodes, Diego Necalli, Bruno Delacroix y Stanton Shaw",
+     "desc": "La tripulación del Caos, transportada en el tiempo a una arena de gladiadores.",
+     "pap": "El altar de la Pack-a-Punch está en el templo principal, al que se llega por los templos de Danu o Ra y una cámara subterránea.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Destroyers, Marauders y tigres zombi.",
+     "ee": {
+      "name": "IX",
+      "goal": "Completar los pergaminos y escapar de la arena.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#E2364B",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Death of Orion",
+       "descripcion": "Arma maravilla del mapa."
+      }
+     ]
+    },
+    {
+     "id": "vod",
+     "n": "Voyage of Despair",
+     "dlc": "Juego base",
+     "year": "1912",
+     "setting": "El Titanic, tras chocar con el iceberg.",
+     "crew": "Scarlett Rhodes, Diego Necalli, Bruno Delacroix y Stanton Shaw",
+     "desc": "El Titanic hundiéndose y un artefacto que infecta el barco.",
+     "pap": "Interactúa con el artefacto Centinela en la popa: aparecen los cuatro altares de la Pack-a-Punch y se abren zonas bloqueadas.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Catalysts, Stokers y Blightfather.",
+     "ee": {
+      "name": "Voyage of Despair",
+      "goal": "Escapar del barco.",
+      "steps": [],
+      "reward": "",
+      "ending": "El artefacto se rompe e infecta el barco. La tripulación escapa en botes salvavidas y pone rumbo a Delfos.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [
+      "Las bodegas inundadas se vacían con válvulas."
+     ],
+     "color": "#8FB2F2",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Kraken",
+       "descripcion": "Arma maravilla del mapa."
+      }
+     ]
+    },
+    {
+     "id": "botd",
+     "n": "Blood of the Dead",
+     "dlc": "Juego base",
+     "year": "—",
+     "setting": "Alcatraz, reimaginado: vuelve Mob of the Dead con zonas nuevas.",
+     "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)",
+     "desc": "Los Primis en Alcatraz, con el laboratorio de Richtofen y la casa del alcaide.",
+     "pap": "Está en el tejado de la prisión. Enciende la corriente, construye el Escudo Espectral (marco del escudo, esencia del Más Allá y la llave del alcaide, que suelta un zombi acorazado), cárgalo matando zombis con su disparo secundario y dispara al indicador junto a la Pack-a-Punch hasta llenarlo.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Brutus vuelve como alcaide.",
+     "ee": {
+      "name": "Blood of the Dead",
+      "goal": "Liberar a los espíritus atrapados en la isla.",
+      "steps": [],
+      "reward": "",
+      "ending": "Los Primis liberan los espíritus, pero el futuro cambia y el Richtofen Primis muere desangrado. El Richtofen de la Gran Guerra se lleva los viales de sangre.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#F28FA0",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Blundergat (y sus variantes)",
+       "descripcion": "Caja misteriosa y kits."
+      },
+      {
+       "nombre": "Hell's Retriever",
+       "descripcion": "Vuelve el tomahawk."
+      },
+      {
+       "nombre": "Cuchara / Spork",
+       "descripcion": "Arma cuerpo a cuerpo secreta."
+      }
+     ]
+    },
+    {
+     "id": "classified",
+     "n": "Classified",
+     "dlc": "Juego base (Black Ops Pass)",
+     "year": "Guerra Fría",
+     "setting": "El Pentágono y Groom Lake: «Five» reimaginado.",
+     "crew": "Ultimis: Dempsey, Nikolai, Takeo y Richtofen",
+     "desc": "Los Ultimis aparecen en el Pentágono tras sobrecargar un teletransportador en Shangri-La.",
+     "pap": "Construye el amplificador de señal del teletransportador para llegar a la Pack-a-Punch en Groom Lake.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Perros infernales (sustituyen al ladrón) y crawlers en varias plantas.",
+     "ee": null,
+     "song": null,
+     "extra": [
+      "No tiene un Easter egg principal clásico."
+     ],
+     "color": "#B9C2CC",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Winter's Howl",
+       "descripcion": "Caja misteriosa o misión Project Skadi."
+      }
+     ]
+    },
+    {
+     "id": "dotn",
+     "n": "Dead of the Night",
+     "dlc": "Black Ops Pass",
+     "year": "1912",
+     "setting": "La mansión inglesa de Alistair Rhodes.",
+     "crew": "Gideon Jones, Christina Fowler, el general Jonathan Warwick y el mayordomo Godfrey",
+     "desc": "Una fiesta que acaba en brote zombi, con hombres lobo y vampiros.",
+     "pap": "Abre el bosque reuniendo sus tres diapasones: la Pack-a-Punch está al final de sus caminos.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Hombres lobo (el Hombre Lobo Sombra es jefe en las ruinas) y Nosferatus.",
+     "ee": {
+      "name": "«Trial by Ordeal»",
+      "goal": "Completar tres misiones para escapar de la mansión y vencer al mal que la habita.",
+      "steps": [],
+      "reward": "",
+      "ending": "",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#B9A3E8",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Savage Impaler",
+       "descripcion": "Ballesta neumática en la cripta del cementerio, tras un pequeño Easter egg; al cogerla te encierran con vampiros."
+      }
+     ]
+    },
+    {
+     "id": "ae",
+     "n": "Ancient Evil",
+     "dlc": "Black Ops Pass",
+     "year": "Antigua Grecia",
+     "setting": "Una ciudad griega subterránea bajo Delfos, detenida en el tiempo.",
+     "crew": "Scarlett Rhodes, Diego Necalli, Bruno Delacroix y Stanton Shaw",
+     "desc": "Pegaso, la cara oscura de la ciudad y el Oráculo de Delfos.",
+     "pap": "En el Centro del Mundo de la cara oscura: abre las dos jaulas de águilas con un arma especial y defiende la zona mientras las águilas revelan la máquina.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Gegenees, Spartoi y Blightfathers.",
+     "ee": {
+      "name": "Ancient Evil",
+      "goal": "Rescatar a Alistair Rhodes.",
+      "steps": [],
+      "reward": "",
+      "ending": "El Oráculo resulta ser Medusa, que escapa. Scarlett queda inconsciente con los ojos amarillos.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#E8C98A",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Armas primordiales",
+       "descripcion": "Armas especiales del mapa."
+      }
+     ]
+    },
+    {
+     "id": "ao",
+     "n": "Alpha Omega",
+     "dlc": "Black Ops Pass",
+     "year": "Años 60",
+     "setting": "Nuketown en la base Broken Arrow (Nevada), antes de la explosión.",
+     "crew": "Primis o Ultimis, a elegir",
+     "desc": "Nuketown ampliado con un búnker subterráneo, robots y el Avogadro.",
+     "pap": "Está en el búnker, en la zona de las camas: hay que poner verdes sus cuatro luces. Enciende la corriente en la casa de máquinas, activa el confinamiento de ventilación desde el terminal de la sala de generadores y repara cuatro de los seis respiraderos (salen con gas verde) antes de que termine.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Perros eléctricos, Nova 6 Bombers, Jolting Jacks y el Avogadro como jefe final.",
+     "ee": {
+      "name": "Alpha Omega",
+      "goal": "Llevar a cabo el plan del Kronorium de Nikolai.",
+      "steps": [],
+      "reward": "",
+      "ending": "Se descubre que fue Samantha, y no la bomba, quien destruyó Camp Edward tras ver morir a Maxis.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#7FE0A3",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Ray Gun Mark II",
+       "descripcion": "Se mejora a cuatro variantes con habilidades distintas."
+      },
+      {
+       "nombre": "Galvaknuckles",
+       "descripcion": "5.000 puntos."
+      }
+     ]
+    },
+    {
+     "id": "tdt",
+     "n": "Tag der Toten",
+     "dlc": "Black Ops Pass",
+     "year": "—",
+     "setting": "Una montaña nevada con un faro: Call of the Dead reimaginado.",
+     "crew": "Victis: Stuhlinger, Misty, Marlton y Russman",
+     "desc": "El último mapa del Aether: los Victis buscan el Dispositivo de Agartha.",
+     "pap": "Como en Call of the Dead, la Pack-a-Punch está donde apunta el faro. Hay además una Pack-a-Punch dorada en un islote.",
+     "perks": [
+      "Ventajas personalizables (sistema de Black Ops 4)"
+     ],
+     "enemies": "Zombis eléctricos; el Ermitaño te guía desde el faro.",
+     "ee": {
+      "name": "Tag der Toten",
+      "goal": "Montar el Dispositivo de Agartha para cerrar la paradoja del multiverso.",
+      "steps": [],
+      "reward": "",
+      "ending": "El fin del Aether: el dispositivo destruye la Llave de la Invocación, Nikolai acaba con el Richtofen Ultimis y Samantha y Eddie se marchan a un universo nuevo.",
+      "partial": true
+     },
+     "song": null,
+     "extra": [],
+     "color": "#BCD0F2",
+     "imagen": "",
+     "armasPared": [],
+     "armasEspeciales": [
+      {
+       "nombre": "Tundra Gun",
+       "descripcion": "Nueva."
+      },
+      {
+       "nombre": "Wunderwaffe DG-Scharfschütze",
+       "descripcion": "Nueva."
+      },
+      {
+       "nombre": "Thundergun",
+       "descripcion": "Vuelve."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "tripulaciones": [
+  {
+   "nombre": "Ultimis",
+   "aparece": "Black Ops · Classified",
+   "color": "#7FD3E8",
+   "personajes": [
+    {
+     "nombre": "Tank Dempsey",
+     "rol": "Marine estadounidense",
+     "descripcion": "Lo mandaron a rescatar a un espía en una base del Grupo 935 y acabó capturado y convertido en sujeto de pruebas. Duro, impulsivo y con un chiste para cada zombi."
+    },
+    {
+     "nombre": "Nikolai Belinski",
+     "rol": "Soldado soviético",
+     "descripcion": "Llegó a las instalaciones del Grupo 935 con el Ejército Rojo y también terminó en las pruebas de Richtofen. Vodka, mal humor y muchas exmujeres."
+    },
+    {
+     "nombre": "Takeo Masaki",
+     "rol": "Oficial japonés",
+     "descripcion": "Enviado por el Imperio para vigilar a sus aliados alemanes. Habla con proverbios y se toma el honor muy en serio."
+    },
+    {
+     "nombre": "Edward Richtofen",
+     "rol": "Científico del Grupo 935",
+     "descripcion": "Ayudante del doctor Maxis. Oye voces que lo empujan a buscar el control del Aether: su plan mueve toda la saga."
+    }
+   ]
+  },
+  {
+   "nombre": "Invitados",
+   "aparece": "Black Ops",
+   "color": "#B9C2CC",
+   "personajes": [
+    {
+     "nombre": "Kennedy, McNamara, Nixon y Castro",
+     "rol": "«Five»",
+     "descripcion": "Los líderes de la Guerra Fría, atrapados en el Pentágono."
+    },
+    {
+     "nombre": "Trejo, Englund, Rooker y Gellar",
+     "rol": "Call of the Dead",
+     "descripcion": "Cuatro actores de cine de terror rodando en Siberia."
+    },
+    {
+     "nombre": "George A. Romero",
+     "rol": "Call of the Dead",
+     "descripcion": "El director de «La noche de los muertos vivientes», convertido en jefe zombi."
+    },
+    {
+     "nombre": "Brock y Gary",
+     "rol": "Shangri-La",
+     "descripcion": "Dos exploradores atrapados en un bucle temporal dentro del templo."
+    }
+   ]
+  },
+  {
+   "nombre": "Victis",
+   "aparece": "Black Ops II · Tag der Toten",
+   "color": "#F0B35A",
+   "personajes": [
+    {
+     "nombre": "Samuel J. Stuhlinger",
+     "rol": "El paranoico",
+     "descripcion": "Oye voces en su cabeza y se queja de todo, pero sigue vivo."
+    },
+    {
+     "nombre": "Abigail «Misty» Briarton",
+     "rol": "La dura",
+     "descripcion": "Sabe disparar, sabe arreglar coches y no se calla nada."
+    },
+    {
+     "nombre": "Marlton Johnson",
+     "rol": "El ingeniero",
+     "descripcion": "Listo, nervioso y obsesionado con tener un plan para cada cosa."
+    },
+    {
+     "nombre": "Russman",
+     "rol": "El veterano",
+     "descripcion": "Un anciano sin memoria que recuerda más de lo que parece."
+    }
+   ]
+  },
+  {
+   "nombre": "La banda de Alcatraz",
+   "aparece": "Mob of the Dead",
+   "color": "#F28FA0",
+   "personajes": [
+    {
+     "nombre": "Albert «Weasel» Arlington",
+     "rol": "El soplón",
+     "descripcion": "El más débil de la banda… y la clave del ciclo."
+    },
+    {
+     "nombre": "Finn O'Leary",
+     "rol": "El irlandés",
+     "descripcion": "Mafioso de Chicago, leal a Sal."
+    },
+    {
+     "nombre": "Salvatore DeLuca",
+     "rol": "El jefe",
+     "descripcion": "Lidera el plan de fuga."
+    },
+    {
+     "nombre": "Billy Handsome",
+     "rol": "El matón",
+     "descripcion": "Violento e imprevisible."
+    }
+   ]
+  },
+  {
+   "nombre": "Primis",
+   "aparece": "Origins · Black Ops III · Black Ops 4",
+   "color": "#E8C98A",
+   "personajes": [
+    {
+     "nombre": "Dempsey",
+     "rol": "1918",
+     "descripcion": "La versión de la Gran Guerra, sacada de Origins. Sigue siendo el más bruto del grupo."
+    },
+    {
+     "nombre": "Nikolai",
+     "rol": "1918",
+     "descripcion": "Más joven y aún casado. Viaja por el multiverso para corregir el plan de Richtofen."
+    },
+    {
+     "nombre": "Takeo",
+     "rol": "1918",
+     "descripcion": "Busca respuestas sobre su otro yo y sobre el Imperio al que sirve."
+    },
+    {
+     "nombre": "Richtofen",
+     "rol": "1918",
+     "descripcion": "Lleva la Llave de la Invocación y sabe más de lo que cuenta a sus compañeros."
+    }
+   ]
+  },
+  {
+   "nombre": "Morg City",
+   "aparece": "Shadows of Evil",
+   "color": "#B9A3E8",
+   "personajes": [
+    {
+     "nombre": "Nero Blackstone",
+     "rol": "Mago",
+     "descripcion": "Un ilusionista venido a menos con un crimen en la conciencia."
+    },
+    {
+     "nombre": "Jessica Rose",
+     "rol": "Bailarina",
+     "descripcion": "Estrella del burlesque de Morg City."
+    },
+    {
+     "nombre": "Jack Vincent",
+     "rol": "Policía corrupto",
+     "descripcion": "Detective con muchos pecados."
+    },
+    {
+     "nombre": "Floyd Campbell",
+     "rol": "Boxeador",
+     "descripcion": "Un púgil que perdió una pelea que no debía."
+    }
+   ]
+  },
+  {
+   "nombre": "Caos",
+   "aparece": "Black Ops 4",
+   "color": "#E2364B",
+   "personajes": [
+    {
+     "nombre": "Scarlett Rhodes",
+     "rol": "Aventurera",
+     "descripcion": "Busca a su padre, Alistair Rhodes."
+    },
+    {
+     "nombre": "Diego Necalli",
+     "rol": "Guerrero azteca",
+     "descripcion": "Cree que es su destino detener a la Orden."
+    },
+    {
+     "nombre": "Bruno Delacroix",
+     "rol": "Exsoldado",
+     "descripcion": "Fuerza bruta del grupo."
+    },
+    {
+     "nombre": "Stanton Shaw",
+     "rol": "Médico",
+     "descripcion": "Doctor británico con un pasado oscuro."
+    }
+   ]
+  }
+ ],
+ "personajesClave": [
+  {
+   "nombre": "Samantha Maxis",
+   "rol": "La hija del doctor Maxis",
+   "descripcion": "Atrapada en el Aether de niña, controla a los zombis y es la voz que anuncia las rondas.",
+   "spoiler": "Al final de la historia del Aether se marcha con Eddie (un Richtofen niño) a un universo nuevo."
+  },
+  {
+   "nombre": "Ludvig Maxis",
+   "rol": "Director del Grupo 935",
+   "descripcion": "El científico que empezó los experimentos con el Elemento 115 y la teletransportación.",
+   "spoiler": "En Black Ops II su voz guía a los Victis desde dentro del Aether, enfrentado a Richtofen."
+  },
+  {
+   "nombre": "Edward Richtofen",
+   "rol": "El que lo empieza todo",
+   "descripcion": "Ayudante de Maxis con planes propios: quiere el control del Aether.",
+   "spoiler": "Su versión Primis reúne las almas de los Ultimis en la Llave de la Invocación para cerrar el ciclo que él mismo provocó."
+  },
+  {
+   "nombre": "Doctor Monty",
+   "rol": "El guardián de Agartha",
+   "descripcion": "Un ser que vive en «la Casa» y habla como un abuelo campechano.",
+   "spoiler": "Aparece al final de Gorod Krovi y prepara el último viaje de los Primis."
+  },
+  {
+   "nombre": "El Hombre Sombra",
+   "rol": "El villano de Black Ops III",
+   "descripcion": "Una entidad apothicona encerrada en la Llave de la Invocación que manipula Morg City.",
+   "spoiler": "Los Primis lo derrotan en Revelations."
+  },
+  {
+   "nombre": "Los Guardianes",
+   "rol": "Seres del Aether",
+   "descripcion": "Figuras encapuchadas que protegen a la humanidad de los Apothicones.",
+   "spoiler": "Los Apothicones son Guardianes corrompidos por el Aether Oscuro."
+  }
+ ],
+ "historia": [
+  {
+   "juego": "World at War",
+   "titulo": "Los orígenes",
+   "resumen": "El Grupo 935 experimenta con el Elemento 115 y la teletransportación. El doctor Maxis, su hija Samantha y Richtofen están en el centro de todo.",
+   "spoiler": "Samantha acaba dentro del Aether y empieza a controlar a los zombis. Richtofen ya tiene su propio plan."
+  },
+  {
+   "juego": "Black Ops",
+   "titulo": "El plan de Richtofen",
+   "resumen": "Los Ultimis saltan de Kino der Toten a Ascension, Shangri-La y la Luna, mientras Richtofen reúne lo que necesita.",
+   "spoiler": "En Moon, Richtofen intercambia su alma con Samantha y toma el control de los zombis; los cohetes de Maxis destruyen la Tierra."
+  },
+  {
+   "juego": "Black Ops II",
+   "titulo": "Tierra rota",
+   "resumen": "Los Victis sobreviven en la Tierra destruida, divididos entre Richtofen y Maxis. En Alcatraz, cuatro mafiosos repiten un ciclo; en 1918, Origins presenta a unos personajes muy conocidos.",
+   "spoiler": "Buried decide quién controla el Aether. Origins termina con dos niños jugando con figuras de los personajes: el inicio de la historia de los Primis."
+  },
+  {
+   "juego": "Black Ops III",
+   "titulo": "El multiverso",
+   "resumen": "Los Primis, con la Llave de la Invocación, persiguen a sus versiones Ultimis por distintos universos para arreglar el plan de Richtofen.",
+   "spoiler": "Cada mapa termina con un Ultimis muerto y su alma en la llave. En Revelations derrotan al Hombre Sombra."
+  },
+  {
+   "juego": "Black Ops 4",
+   "titulo": "El fin del Aether",
+   "resumen": "Primis, Ultimis y Victis siguen el plan de Nikolai para romper el ciclo, de Alcatraz a la montaña de Tag der Toten.",
+   "spoiler": "El Dispositivo de Agartha destruye la Llave de la Invocación y Samantha y Eddie se marchan a un universo nuevo."
+  },
+  {
+   "juego": "Black Ops 4",
+   "titulo": "La historia del Caos",
+   "resumen": "Una historia nueva: Scarlett Rhodes y su grupo persiguen artefactos antiguos y a la Orden, del coliseo al Titanic y a Delfos.",
+   "spoiler": "En Ancient Evil, el Oráculo resulta ser Medusa."
+  }
+ ],
+ "glosario": [
+  {
+   "termino": "Grupo 935",
+   "definicion": "El grupo de científicos alemanes que experimentaba con el Elemento 115: el origen de todo."
+  },
+  {
+   "termino": "El Aether",
+   "definicion": "La dimensión de donde sale el poder del 115. «Aether» es también el nombre de toda la historia de 2008 a 2019."
+  },
+  {
+   "termino": "Agartha",
+   "definicion": "«La Casa»: un lugar fuera del tiempo, puro y luminoso, donde vive el Doctor Monty."
+  },
+  {
+   "termino": "Llave de la Invocación",
+   "definicion": "Un orbe que guarda almas y abre portales: el objeto alrededor del que gira Black Ops III."
+  },
+  {
+   "termino": "Elemento 115",
+   "definicion": "El mineral que lo provoca todo: reanima a los muertos y alimenta las máquinas y las armas maravilla."
+  },
+  {
+   "termino": "Pack-a-Punch",
+   "definicion": "La máquina que mejora tu arma por 5.000 puntos: más daño, más munición y a veces efectos nuevos."
+  },
+  {
+   "termino": "Caja misteriosa",
+   "definicion": "Arma aleatoria por 950 puntos. Cuando aparece el osito, cambia de sitio."
+  },
+  {
+   "termino": "Ventajas (Perk-a-Cola)",
+   "definicion": "Bebidas que te mejoran: Juggernog (más vida), Quick Revive, Speed Cola (recarga), Double Tap…"
+  },
+  {
+   "termino": "Armas maravilla",
+   "definicion": "Armas únicas de cada mapa, como el Ray Gun, la Thundergun o los bastones de Origins."
+  },
+  {
+   "termino": "Easter egg principal",
+   "definicion": "La misión secreta de cada mapa que cuenta la historia. Suele necesitar varios jugadores."
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Habilidades y naturalezas · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  .h-top { padding-block: 40px 0; }
+  .h-top h1 { font-size: clamp(32px, 4.4vw, 52px); }
+
+  /* Estado «aún no existe en esta generación» */
+  .notyet { margin-top: 28px; display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center; padding: 26px; border-radius: 20px; border: 1px dashed var(--line-strong); }
+  .notyet .lcd { padding: 18px; font-size: 14px; line-height: 1.7; }
+  .notyet h2 { font-size: 24px; }
+  .notyet p { color: var(--ink-dim); margin: 8px 0 14px; max-width: 62ch; }
+  .notyet .row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .ab-list { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .ab-list li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .ab-list p { grid-column: 1 / -1; margin: 0; color: var(--ink-mute); font-size: 13.5px; }
+  .rate { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 5px; }
+  .rate.good { color: #A9EBB9; background: rgba(79, 169, 122, 0.18); }
+  .rate.bad { color: #F6B8B1; background: rgba(224, 107, 96, 0.16); }
+  .rate.sit { color: var(--ink-dim); background: rgba(255, 255, 255, 0.06); }
+
+  /* Naturalezas: tabla 5×5 */
+  .nat-wrap { overflow-x: auto; margin-top: 16px; }
+  table.nat { border-collapse: separate; border-spacing: 3px; font-size: 13.5px; min-width: 560px; width: 100%; }
+  .nat th { font-weight: 500; color: var(--ink-mute); padding: 6px; text-align: left; white-space: nowrap; }
+  .nat thead th { text-align: center; }
+  .nat .up { color: #A9EBB9; }
+  .nat .down { color: #F6B8B1; }
+  .nat td { padding: 10px 8px; border-radius: 8px; background: var(--bg-raised); text-align: center; border: 1px solid var(--line); }
+  .nat td.neu { color: var(--ink-mute); background: transparent; border-style: dashed; }
+  .nat td:hover { border-color: var(--line-strong); }
+  .nat td.pop { background: var(--accent-soft); border-color: rgba(255, 90, 78, 0.45); }
+  .nat td.pop small { display: block; color: var(--accent-hi); font-size: 11px; }
+
+  @media (max-width: 860px) {
+    .notyet { grid-template-columns: 1fr; }
+    .two { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="habilidades">
+<main class="wrap">
+  <div class="h-top">
+    <h1>Habilidades y naturalezas</h1>
+    <p class="lead">Las dos llegaron en la 3.ª generación (Rubí y Zafiro). Mientras tengas elegida la Gen I, aquí verás qué traerán.</p>
+  </div>
+
+  <div class="notyet">
+    <div class="lcd">GEN I<br>HABILIDAD: ---<br>NATURALEZA: ---<br>SEXO: ---</div>
+    <div>
+      <h2>En Kanto no existen</h2>
+      <p>En Rojo, Azul y Amarillo cada Pokémon solo tiene tipos, estadísticas y movimientos. Tampoco hay objetos equipados ni crianza. Cuando añadamos Hoenn, esta página se llenará con las de cada generación.</p>
+      <div class="row"><a class="btn" href="pokedex.html">Volver a la Pokédex de Kanto</a><button class="btn" disabled style="opacity:.55">Ver Gen III · pronto</button></div>
+    </div>
+  </div>
+
+  <section class="two">
+    <div>
+      <div class="sec-head" style="margin:0"><div><h2>Habilidades</h2><p>Qué hace cada una y cómo de útil es. Vista previa.</p></div></div>
+      <ul class="ab-list" aria-label="Vista previa de habilidades">
+        <li><b>Levitación</b><span class="rate good">Buena</span><p>No recibe daño de ataques de tipo Tierra.</p></li>
+        <li><b>Intimidación</b><span class="rate good">Buena</span><p>Baja el Ataque del rival al entrar en combate.</p></li>
+        <li><b>Ausente</b><span class="rate bad">Mala</span><p>Solo puede atacar un turno de cada dos.</p></li>
+        <li><b>Nado Rápido</b><span class="rate sit">Situacional</span><p>Dobla la Velocidad cuando llueve.</p></li>
+      </ul>
+    </div>
+    <div id="naturalezas">
+      <div class="sec-head" style="margin:0"><div><h2>Naturalezas</h2><p>Suben un 10 % una estadística y bajan otra. Las cinco de la diagonal no cambian nada.</p></div></div>
+      <div class="nat-wrap"><table class="nat" id="nat"></table></div>
+      <p class="muted" style="font-size:13px;margin-top:10px">Resaltadas: las que más se usan en competitivo.</p>
+    </div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const S = ["Ataque", "Defensa", "Velocidad", "At. Esp.", "Def. Esp."];
+  const N = [
+    ["Fuerte", "Huraña", "Audaz", "Firme", "Pícara"],
+    ["Osada", "Dócil", "Plácida", "Agitada", "Floja"],
+    ["Miedosa", "Activa", "Seria", "Alegre", "Ingenua"],
+    ["Modesta", "Afable", "Mansa", "Tímida", "Alocada"],
+    ["Serena", "Amable", "Grosera", "Cauta", "Rara"],
+  ];
+  const POP = { Firme: "atacante físico", Alegre: "físico rápido", Modesta: "atacante especial", Miedosa: "especial rápido", Osada: "muro físico", Serena: "muro especial", Cauta: "muro especial" };
+  document.getElementById("nat").innerHTML =
+    `<thead><tr><th>Sube ↓ · Baja →</th>${S.map((s) => `<th class="down">−${s}</th>`).join("")}</tr></thead><tbody>` +
+    N.map((row, i) => `<tr><th class="up">+${S[i]}</th>${row.map((n, j) => `<td class="${i === j ? "neu" : POP[n] ? "pop" : ""}">${n}${POP[n] ? `<small>${POP[n]}</small>` : ""}</td>`).join("")}</tr>`).join("") + "</tbody>";
+</script>
+</body>
+</html>

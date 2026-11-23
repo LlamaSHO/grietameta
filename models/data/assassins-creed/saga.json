@@ -1,0 +1,283 @@
+{
+ "juegos": [
+  {
+   "id": "ac1",
+   "titulo": "Assassin's Creed",
+   "anio": 2007,
+   "fecha": "13 nov 2007",
+   "protagonista": "Altaïr Ibn-La'Ahad",
+   "lugar": "Tierra Santa: Acre, Damasco y Jerusalén",
+   "epoca": "1191",
+   "anioHistoria": 1191,
+   "era": "med",
+   "nota": "Tercera Cruzada. El origen de todo."
+  },
+  {
+   "id": "ac2",
+   "titulo": "Assassin's Creed II",
+   "anio": 2009,
+   "fecha": "17 nov 2009",
+   "protagonista": "Ezio Auditore",
+   "lugar": "Florencia, Venecia y la Toscana",
+   "epoca": "1476–1499",
+   "anioHistoria": 1476,
+   "era": "ren",
+   "nota": "Empieza la trilogía de Ezio."
+  },
+  {
+   "id": "acb",
+   "titulo": "Brotherhood",
+   "anio": 2010,
+   "fecha": "16 nov 2010",
+   "protagonista": "Ezio Auditore",
+   "lugar": "Roma",
+   "epoca": "1499–1507",
+   "anioHistoria": 1499,
+   "era": "ren",
+   "nota": "Ezio reconstruye la Hermandad."
+  },
+  {
+   "id": "acr",
+   "titulo": "Revelations",
+   "anio": 2011,
+   "fecha": "15 nov 2011",
+   "protagonista": "Ezio y Altaïr",
+   "lugar": "Constantinopla",
+   "epoca": "1511–1512",
+   "anioHistoria": 1511,
+   "era": "ren",
+   "nota": "Cierra las historias de Ezio y Altaïr."
+  },
+  {
+   "id": "ac3",
+   "titulo": "Assassin's Creed III",
+   "anio": 2012,
+   "fecha": "30 oct 2012",
+   "protagonista": "Connor (Ratonhnhaké:ton)",
+   "lugar": "Boston, Nueva York y la frontera",
+   "epoca": "1754–1783",
+   "anioHistoria": 1754,
+   "era": "s18",
+   "nota": "Revolución americana."
+  },
+  {
+   "id": "ac4",
+   "titulo": "IV Black Flag",
+   "anio": 2013,
+   "fecha": "29 oct 2013",
+   "protagonista": "Edward Kenway",
+   "lugar": "El Caribe",
+   "epoca": "1715–1722",
+   "anioHistoria": 1715,
+   "era": "s18",
+   "nota": "Piratas y combate naval."
+  },
+  {
+   "id": "acrg",
+   "titulo": "Rogue",
+   "anio": 2014,
+   "fecha": "11 nov 2014",
+   "protagonista": "Shay Cormac",
+   "lugar": "Atlántico Norte y Nueva York",
+   "epoca": "1752–1776",
+   "anioHistoria": 1752,
+   "era": "s18",
+   "nota": "La historia desde el lado templario."
+  },
+  {
+   "id": "acu",
+   "titulo": "Unity",
+   "anio": 2014,
+   "fecha": "11 nov 2014",
+   "protagonista": "Arno Dorian",
+   "lugar": "París y Versalles",
+   "epoca": "1789–1794",
+   "anioHistoria": 1789,
+   "era": "s18",
+   "nota": "Revolución francesa. Guía completa aquí."
+  },
+  {
+   "id": "acs",
+   "titulo": "Syndicate",
+   "anio": 2015,
+   "fecha": "23 oct 2015",
+   "protagonista": "Jacob y Evie Frye",
+   "lugar": "Londres",
+   "epoca": "1868",
+   "anioHistoria": 1868,
+   "era": "s19",
+   "nota": "Revolución industrial."
+  },
+  {
+   "id": "aco",
+   "titulo": "Origins",
+   "anio": 2017,
+   "fecha": "27 oct 2017",
+   "protagonista": "Bayek de Siwa",
+   "lugar": "Egipto ptolemaico",
+   "epoca": "49–43 a. C.",
+   "anioHistoria": -49,
+   "era": "ant",
+   "nota": "El nacimiento de la Hermandad. Primer RPG."
+  },
+  {
+   "id": "acod",
+   "titulo": "Odyssey",
+   "anio": 2018,
+   "fecha": "5 oct 2018",
+   "protagonista": "Kassandra o Alexios",
+   "lugar": "Grecia y el Egeo",
+   "epoca": "431–422 a. C.",
+   "anioHistoria": -431,
+   "era": "ant",
+   "nota": "Guerra del Peloponeso."
+  },
+  {
+   "id": "acv",
+   "titulo": "Valhalla",
+   "anio": 2020,
+   "fecha": "10 nov 2020",
+   "protagonista": "Eivor",
+   "lugar": "Noruega e Inglaterra",
+   "epoca": "873–878",
+   "anioHistoria": 873,
+   "era": "med",
+   "nota": "Vikingos y asentamientos."
+  },
+  {
+   "id": "acm",
+   "titulo": "Mirage",
+   "anio": 2023,
+   "fecha": "5 oct 2023",
+   "protagonista": "Basim Ibn Ishaq",
+   "lugar": "Bagdad",
+   "epoca": "861",
+   "anioHistoria": 861,
+   "era": "med",
+   "nota": "Vuelta al sigilo clásico."
+  },
+  {
+   "id": "acsh",
+   "titulo": "Shadows",
+   "anio": 2025,
+   "fecha": "20 mar 2025",
+   "protagonista": "Naoe y Yasuke",
+   "lugar": "Japón feudal",
+   "epoca": "1579–1580",
+   "anioHistoria": 1579,
+   "era": "ren",
+   "nota": "Dos protagonistas: shinobi y samurái."
+  },
+  {
+   "id": "ac4r",
+   "titulo": "Black Flag Resynced",
+   "anio": 2026,
+   "fecha": "9 jul 2026",
+   "protagonista": "Edward Kenway",
+   "lugar": "El Caribe",
+   "epoca": "1715–1722",
+   "anioHistoria": 1715,
+   "era": "s18",
+   "nota": "Remake de Black Flag rehecho desde cero.",
+   "etiqueta": "Remake"
+  },
+  {
+   "id": "hexe",
+   "titulo": "Codename Hexe",
+   "anio": null,
+   "fecha": "Sin fecha",
+   "protagonista": "—",
+   "lugar": "Sin confirmar",
+   "epoca": "—",
+   "anioHistoria": 9999,
+   "era": "fut",
+   "nota": "Anunciado en 2022. Sin fecha oficial; las filtraciones apuntan a 2027.",
+   "etiqueta": "En desarrollo"
+  }
+ ],
+ "eras": [
+  {
+   "id": "ant",
+   "nombre": "Antigüedad",
+   "color": "#D9A55B"
+  },
+  {
+   "id": "med",
+   "nombre": "Edad Media",
+   "color": "#B9895A"
+  },
+  {
+   "id": "ren",
+   "nombre": "Siglos XV–XVI",
+   "color": "#C8102E"
+  },
+  {
+   "id": "s18",
+   "nombre": "Siglo XVIII",
+   "color": "#5E86C9"
+  },
+  {
+   "id": "s19",
+   "nombre": "Siglo XIX",
+   "color": "#9AA3AE"
+  },
+  {
+   "id": "fut",
+   "nombre": "Próximamente",
+   "color": "#8C857A"
+  }
+ ],
+ "empezar": [
+  {
+   "titulo": "Quiero la historia desde el principio",
+   "texto": "Empieza por el primer Assassin's Creed y sigue con la trilogía de Ezio (II, Brotherhood y Revelations). La Ezio Collection reúne los tres.",
+   "juegos": [
+    "ac1",
+    "ac2",
+    "acb",
+    "acr"
+   ]
+  },
+  {
+   "titulo": "Quiero parkour y una ciudad viva",
+   "texto": "Unity: el París de la Revolución a escala real, con el mejor parkour de la saga y cooperativo para cuatro. Tienes la guía completa aquí.",
+   "juegos": [
+    "acu"
+   ]
+  },
+  {
+   "titulo": "Prefiero un RPG de mundo abierto",
+   "texto": "Origins, Odyssey y Valhalla: mapas enormes, niveles, equipo y decenas de horas por juego.",
+   "juegos": [
+    "aco",
+    "acod",
+    "acv"
+   ]
+  },
+  {
+   "titulo": "Quiero lo más nuevo",
+   "texto": "Shadows (2025), con Naoe y Yasuke en Japón, y Black Flag Resynced (2026), el remake de las aventuras piratas de Edward Kenway.",
+   "juegos": [
+    "acsh",
+    "ac4r"
+   ]
+  }
+ ],
+ "novedades": [
+  {
+   "fecha": "9 jul 2026",
+   "titulo": "Black Flag Resynced ya está a la venta",
+   "texto": "Ubisoft rehízo Black Flag desde cero: combate revisado, misiones nuevas y la historia de Edward Kenway con gráficos actuales."
+  },
+  {
+   "fecha": "5 mar 2026",
+   "titulo": "Unity, a 60 FPS en PS5 y Xbox Series",
+   "texto": "La actualización 1.06 desbloquea los 60 FPS en consolas actuales. Buen momento para volver a París (o empezar con nuestra guía)."
+  },
+  {
+   "fecha": "2026",
+   "titulo": "Hexe sigue sin fecha",
+   "texto": "El siguiente gran Assassin's Creed aún no tiene fecha oficial. Las filtraciones hablan de 2027."
+  }
+ ]
+}

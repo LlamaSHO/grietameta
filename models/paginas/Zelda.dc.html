@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Zelda: Tears of the Kingdom · Inicio y mapa</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#050C0B}
+a{color:#7FEBCB}a:hover{color:#A8F5DE}
+.zp{position:relative;background:#050C0B;color:#E6EEEA;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.zp *,.zp *::before,.zp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.serif{font-family:'Cinzel',Georgia,serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,224,182,.7)}70%{box-shadow:0 0 0 14px rgba(79,224,182,0)}100%{box-shadow:0 0 0 0 rgba(79,224,182,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(5,12,11,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(127,235,203,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#E6EEEA;justify-self:start}
+.brand:hover{color:#E6EEEA}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8FA8A1;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(127,235,203,.14);background:rgba(127,235,203,.04);color:#E6EEEA;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7F978F}
+.search input:focus{border-color:rgba(79,224,182,.6);box-shadow:0 0 0 4px rgba(79,224,182,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8FA8A1;padding:5px 8px;border-radius:6px;border:1px solid rgba(127,235,203,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(127,235,203,.18);color:#E6EEEA;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#E6EEEA;background:rgba(127,235,203,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(127,235,203,.07);background:rgba(8,22,20,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(127,235,203,.14);color:#E6EEEA;text-decoration:none;font-family:'Cinzel',serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#A4B9B2;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#E6EEEA}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#4FE0B6;box-shadow:0 0 12px rgba(79,224,182,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#E6EEEA}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#0A1816;border:1px solid rgba(127,235,203,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#E6EEEA;transition:background .2s}
+.mapo:hover{background:rgba(127,235,203,.06);color:#E6EEEA}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(127,235,203,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Cinzel',serif;font-size:14px}
+.mapo span{font-size:12px;color:#93AAA3}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#7F978F}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#E6EEEA;transition:background .2s}
+.io:hover{background:rgba(127,235,203,.06);color:#E6EEEA}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(79,224,182,.1);border:1px solid rgba(79,224,182,.25);color:#7FEBCB;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#93AAA3}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+/* hero */
+.hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(127,235,203,.08)}
+.hero-bg{position:absolute;right:-4%;top:-10%;width:62%;height:120%;object-fit:cover;z-index:-3;opacity:.32;filter:saturate(.5) hue-rotate(95deg);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 60% 50%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 70% at 60% 50%,#000 30%,transparent 75%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(600px 400px at 75% 40%,rgba(79,224,182,.14),transparent 70%),radial-gradient(500px 300px at 10% 0%,rgba(216,194,122,.07),transparent 70%)}
+.rings{position:absolute;right:12%;top:50%;width:440px;height:440px;margin-top:-220px;z-index:-1;pointer-events:none}
+.rings span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(127,235,203,.18)}
+.rings span:nth-child(2){inset:44px;border-style:dashed;border-color:rgba(127,235,203,.24);animation:spin 60s linear infinite}
+.rings span:nth-child(3){inset:96px;border-color:rgba(216,194,122,.22);animation:spinr 40s linear infinite;border-top-color:rgba(216,194,122,.6)}
+.rings span:nth-child(4){inset:150px;border:2px dotted rgba(127,235,203,.35);animation:spin 24s linear infinite}
+.hero-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;padding:56px 0 52px}
+.htx{flex:1 1 520px;max-width:640px;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#7FEBCB}
+.kick::before{content:"";width:22px;height:1px;background:#7FEBCB}
+.h1{margin:16px 0 0;font-size:clamp(38px,5vw,62px);font-weight:700;line-height:1.06;letter-spacing:.01em}
+.h1 em{font-style:normal;color:#4FE0B6;text-shadow:0 0 30px rgba(79,224,182,.45)}
+.lead{margin:18px 0 0;color:#A9BDB6;font-size:17px;max-width:560px;text-wrap:pretty}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-z{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;background:linear-gradient(180deg,#5DE8C1,#2FBF97);color:#04211A;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 14px 34px -14px rgba(79,224,182,.8),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s}
+.btn-z:hover{color:#04211A;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(216,194,122,.45);color:#E9DCAF;font-weight:600;font-size:14.5px;text-decoration:none;transition:background .2s}
+.btn-o:hover{color:#E9DCAF;background:rgba(216,194,122,.08)}
+.hstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;flex:0 1 420px;animation:rise .8s .15s cubic-bezier(.2,.8,.2,1) both}
+.hs{position:relative;padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(12,30,27,.85),rgba(7,18,16,.85));border:1px solid rgba(127,235,203,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden}
+.hs:nth-child(2),.hs:nth-child(3){animation:drift 7s ease-in-out infinite}
+.hs:nth-child(3){animation-delay:-3.5s}
+.hs .ic{color:#7FEBCB}
+.hs b{display:block;margin-top:10px;font-family:'Cinzel',serif;font-size:34px;font-weight:700;line-height:1;color:#F1E7C8}
+.hs span{display:block;margin-top:6px;font-size:13px;color:#A9BDB6}
+.hs small{display:block;margin-top:2px;font-size:12px;color:#7F978F}
+
+/* sección mapa */
+.sec{padding:52px 0 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:20px}
+.h2{margin:8px 0 0;font-size:clamp(28px,3vw,38px);font-weight:700;line-height:1.1}
+.sec-h p{margin:6px 0 0;color:#A9BDB6;max-width:620px}
+.layers{display:inline-flex;gap:4px;padding:4px;border-radius:14px;background:#0A1816;border:1px solid rgba(127,235,203,.12)}
+.ly{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:11px;border:0;background:transparent;color:#A4B9B2;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
+.ly:hover{color:#E6EEEA;background:rgba(127,235,203,.05)}
+.ly.on{background:rgba(79,224,182,.15);color:#7FEBCB;box-shadow:inset 0 0 0 1px rgba(79,224,182,.4)}
+.ly.off{opacity:.5;cursor:not-allowed}
+.ly small{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;background:rgba(242,195,107,.12);color:#F2C36B}
+.mapcard{display:flex;flex-wrap:wrap;gap:0;border-radius:22px;background:#081412;border:1px solid rgba(127,235,203,.14);overflow:hidden}
+.side{flex:1 1 300px;max-width:340px;display:flex;flex-direction:column;gap:18px;padding:20px;border-right:1px solid rgba(127,235,203,.1);background:linear-gradient(180deg,#0A1A17,#081412)}
+.fld{position:relative;display:flex;align-items:center}
+.fld svg{position:absolute;left:12px;color:#8FA8A1;pointer-events:none}
+.fld input{width:100%;height:42px;border-radius:11px;border:1px solid rgba(127,235,203,.16);background:rgba(127,235,203,.04);color:#E6EEEA;font:inherit;font-size:14px;padding:0 12px 0 36px;outline:none;-webkit-appearance:none;appearance:none}
+.fld input::placeholder{color:#7F978F}
+.fld input:focus{border-color:rgba(79,224,182,.55)}
+.res{display:flex;flex-direction:column;gap:2px;margin-top:-8px}
+.rs{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:9px;border:0;background:transparent;color:#E6EEEA;font:inherit;font-size:13.5px;text-align:left;cursor:pointer}
+.rs:hover{background:rgba(127,235,203,.07)}
+.rs small{font-size:11px;color:#93AAA3}
+.gl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7F978F;margin-bottom:-8px}
+.cat{display:flex;align-items:center;gap:12px;width:100%;padding:10px;border-radius:12px;border:1px solid rgba(127,235,203,.1);background:rgba(127,235,203,.03);color:#E6EEEA;font:inherit;font-size:14px;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.cat:hover{background:rgba(127,235,203,.07)}
+.cat.offc{opacity:.5}
+.cat .sw{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0}
+.cat .nm{flex:1}
+.cat .ct{font-size:13px;color:#A9BDB6}
+.tg{position:relative;width:34px;height:20px;border-radius:999px;background:rgba(255,255,255,.12);flex-shrink:0;transition:background .2s}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#E6EEEA;transition:transform .2s}
+.cat.onc .tg{background:#2FBF97}
+.cat.onc .tg::after{transform:translateX(14px)}
+.prog{padding:14px;border-radius:14px;background:rgba(216,194,122,.06);border:1px solid rgba(216,194,122,.22)}
+.prog .row{display:flex;justify-content:space-between;font-size:13.5px}
+.prog .row b{color:#F1E7C8}
+.prog .pb{height:8px;margin-top:10px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden}
+.prog .pb i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#D8C27A,#F1E7C8);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.prog p{margin:8px 0 0;font-size:12px;color:#93AAA3}
+.selc{padding:16px;border-radius:16px;background:linear-gradient(180deg,rgba(79,224,182,.12),rgba(79,224,182,.03));border:1px solid rgba(79,224,182,.35);animation:pop .25s ease-out}
+.selc .t{font-family:'Cinzel',serif;font-size:19px;font-weight:700}
+.selc .m{margin-top:2px;font-size:12.5px;color:#A9BDB6}
+.coords{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
+.coords span{padding:8px;border-radius:9px;background:rgba(5,12,11,.6);text-align:center;font-size:11px;color:#93AAA3}
+.coords b{display:block;font-size:15px;color:#E6EEEA}
+.btn-done{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;margin-top:12px;border-radius:11px;border:1px solid rgba(216,194,122,.5);background:transparent;color:#F1E7C8;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-done:hover{background:rgba(216,194,122,.1)}
+.btn-done.is{background:linear-gradient(180deg,#E9DCAF,#C9B571);color:#1E1906;border-color:transparent}
+.hintc{padding:16px;border-radius:16px;border:1px dashed rgba(127,235,203,.2);font-size:13.5px;color:#A9BDB6}
+
+.vp{position:relative;flex:999 1 560px;min-width:0;height:720px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,#0B1F1B,#050C0B 75%);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.vp:active{cursor:grabbing}
+.vp::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(127,235,203,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(127,235,203,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.mapin{position:relative;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.mapin.surf,.mapin.sky{aspect-ratio:6/5}
+.mapimg{position:absolute;inset:0;width:100%;height:100%;display:block;filter:saturate(.9) brightness(.9);border-radius:6px}
+.mapin.sky .mapimg{filter:saturate(.8) brightness(1)}
+.mapin.drag{transition:none}
+.m{position:absolute;transform:translate(-50%,-50%) scale(var(--s,1));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.mapin.drag .m{transition:none}
+.zl1 .m{--s:.65}
+.zl2 .m{--s:.45}
+.zl3 .m{--s:.32}
+.zl4 .m{--s:.24}
+.zl0 .m{--s:.85}
+.zl0 .m.p-sd,.zl0 .m.p-sd2{--s:.6}
+.zl1 .m.p-sd,.zl1 .m.p-sd2{--s:.5}
+.m .tip{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);min-width:180px;max-width:240px;padding:9px 12px;border-radius:12px;background:rgba(6,18,16,.96);border:1px solid rgba(127,235,203,.28);box-shadow:0 14px 30px -8px rgba(0,0,0,.8);text-align:left;white-space:normal;pointer-events:none;z-index:9}
+.m .tip::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;margin-left:-5px;transform:rotate(45deg);background:rgba(6,18,16,.96);border-right:1px solid rgba(127,235,203,.28);border-bottom:1px solid rgba(127,235,203,.28)}
+.m .tip b{display:block;font:600 13px/1.25 'IBM Plex Sans',sans-serif;color:#E6EEEA}
+.m .tip small{display:block;margin-top:3px;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#93AAA3}
+.m .tip em{display:inline-block;margin-top:6px;padding:2px 7px;border-radius:6px;font:600 11px/1.4 'IBM Plex Sans',sans-serif;font-style:normal;background:rgba(127,235,203,.1);color:#7FEBCB}
+.m .tip em.ok{background:rgba(241,231,200,.14);color:#F1E7C8}
+.m:hover .tip,.m:focus-visible .tip{display:block;animation:fade .18s ease-out both}
+.m:hover,.m:focus-visible{z-index:8}
+@keyframes fade{from{opacity:0;transform:translate(-50%,4px)}to{opacity:1;transform:translate(-50%,0)}}
+.stf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border-radius:12px;background:rgba(5,12,11,.6);border:1px solid rgba(127,235,203,.12)}
+.stf button{height:36px;border:0;border-radius:9px;background:transparent;color:#A4B9B2;font:600 12.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.stf button:hover{color:#E6EEEA}
+.stf button.on{background:rgba(79,224,182,.16);color:#E6EEEA;box-shadow:inset 0 0 0 1px rgba(79,224,182,.35)}
+.stf button small{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:#7F978F}
+
+/* iconos del mapa (propios): círculo de color + glifo con máscara */
+.pin{display:grid;place-items:center;width:24px;height:24px;padding:0;border-radius:50%;border:2px solid #04130F;background:var(--pc);box-shadow:0 2px 8px rgba(0,0,0,.6);cursor:pointer;z-index:2}
+.pin::after{content:"";width:62%;height:62%;background:#04211A;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.pin:hover{z-index:6;filter:brightness(1.15)}
+.pin.sel{z-index:7;animation:pulse 1.6s infinite;border-color:#F1E7C8}
+.p-sh{--pc:#4FE0B6;--ic:url(../assets/zelda/iconos/santuario.svg)}
+.mapin.sky .p-sh{--pc:#E9CF7E}
+.p-tw{--pc:#A78BFA;--ic:url(../assets/zelda/iconos/torre.svg)}
+.p-cv{--pc:#E8A15A;--ic:url(../assets/zelda/iconos/cueva.svg)}
+.p-sd{--pc:#B5E86E;--ic:url(../assets/zelda/iconos/semilla.svg);width:16px;height:16px;border-width:1.5px;box-shadow:0 1px 4px rgba(0,0,0,.6);z-index:1}
+.p-sd2{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/semilla.svg);width:18px;height:18px;border-width:1.5px;z-index:1}
+.p-fr{width:11px;height:11px;border-radius:50%;border:2px dashed #F1E7C8;background:rgba(5,12,11,.5);pointer-events:none;z-index:1}
+.pin.done{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/hecho.svg)}
+.pin.lg::after{width:62%;height:62%}
+.pin.lg{position:static;width:20px;height:20px;transform:none;cursor:default;pointer-events:none;box-shadow:none;animation:none;flex-shrink:0}
+.pin.lg.p-sd{width:16px;height:16px}
+.allrow{display:flex;gap:8px;margin-top:-6px}
+.allrow button{flex:1;height:34px;border-radius:9px;border:1px solid rgba(127,235,203,.14);background:transparent;color:#A4B9B2;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.allrow button:hover{color:#E6EEEA;background:rgba(127,235,203,.06)}
+.prog .row+.row{margin-top:12px}
+.prog .pb.tw i{background:linear-gradient(90deg,#8B6CF0,#C7B5FF)}
+.prog .pb.sd i{background:linear-gradient(90deg,#8DCB45,#D4F59A)}
+.zoom{position:absolute;top:14px;right:14px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.zoom button{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;border:1px solid rgba(127,235,203,.2);background:rgba(8,20,18,.88);color:#E6EEEA;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s}
+.zoom button:hover{background:rgba(79,224,182,.18)}
+.vtag{position:absolute;top:14px;left:14px;z-index:5;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:10px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.2);font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:#E6EEEA}
+.legend{position:absolute;left:14px;bottom:14px;z-index:5;display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-radius:11px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.16);font-size:12px;color:#C3D3CD}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend .pin.lg{width:16px;height:16px;border-width:1.5px}
+.coordtag{position:absolute;right:14px;bottom:14px;z-index:5;padding:8px 12px;border-radius:10px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.16);font-size:12px;color:#C3D3CD}
+
+/* información */
+.igrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px}
+.icard{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:20px;background:linear-gradient(180deg,#0B1C19,#081412);border:1px solid rgba(127,235,203,.12);text-decoration:none;color:#E6EEEA;overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.icard::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;border:1px dashed rgba(127,235,203,.14);transition:transform .8s}
+.icard:hover{color:#E6EEEA;transform:translateY(-4px);border-color:rgba(79,224,182,.45);box-shadow:0 30px 60px -30px rgba(79,224,182,.5)}
+.icard:hover::after{transform:rotate(90deg) scale(1.1)}
+.icard .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(79,224,182,.1);border:1px solid rgba(79,224,182,.3);color:#7FEBCB}
+.icard h3{margin:0;font-family:'Cinzel',serif;font-size:19px;font-weight:700}
+.icard .n{font-size:13px;color:#F1E7C8;font-weight:600}
+.icard p{margin:0;font-size:13.5px;color:#A9BDB6;text-wrap:pretty}
+.prev{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;background:rgba(5,12,11,.55);font-size:12.5px;color:#C3D3CD}
+.prev div{display:flex;justify-content:space-between;gap:8px}
+.prev span{color:#93AAA3}
+.go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#7FEBCB;transition:gap .2s}
+.icard:hover .go{gap:12px}
+
+.foot{margin-top:64px;border-top:1px solid rgba(127,235,203,.1);padding:32px 0 36px;font-size:13px;color:#93AAA3}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(127,235,203,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .zp *,.zp *::before,.zp *::after{animation:none !important;transition:none !important}
+}
+.zp.still *,.zp.still *::before,.zp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:860px){
+  .vp{order:-1;height:auto;aspect-ratio:6/5;place-items:stretch}
+  .mapin{height:auto;width:100%}
+  .legend{display:none}
+  .coordtag{display:none}
+  .zl0 .m{--s:.55}
+  .zl0 .m.p-sd,.zl0 .m.p-sd2{--s:.36}
+  .zl1 .m{--s:.45}
+  .zl1 .m.p-sd,.zl1 .m.p-sd2{--s:.3}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+</style>
+</helmet>
+
+<div class="zp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Zelda: Tears of the Kingdom">
+      <div class="wrap sub-in">
+        <a class="gchip" href="#inicio"><img src="../assets/games/logo-zelda.png" alt="">Tears of the Kingdom</a>
+        <a class="slink on" href="#inicio">Inicio</a>
+
+        <div class="dd">
+          <a class="slink" href="#mapa" aria-haspopup="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+            Mapas
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="mapsm">
+              <a class="mapo" href="#mapa" onClick="{{setSurf}}">
+                <span class="th"><img src="/images/zelda/mapa-superficie.jpg" alt=""></span>
+                <b>Superficie</b><span>120 santuarios · 838 semillas</span>
+              </a>
+              <a class="mapo" href="#mapa" onClick="{{setSky}}">
+                <span class="th"><img src="/images/zelda/mapa-cielo.jpg" alt=""></span>
+                <b>Cielo</b><span>32 santuarios · 37 semillas</span>
+              </a>
+              <span class="mapo off" aria-disabled="true">
+                <span class="th">Próximamente</span>
+                <b>Subsuelo</b><span>Raíces de luz y minas</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dd">
+          <a class="slink" href="#info" aria-haspopup="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6M8 11h6"></path></svg>
+            Información
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="infom">
+              <a class="io" href="#info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11"></path><path d="M9 21v-6a3 3 0 0 1 6 0v6"></path><path d="M3 21h18"></path></svg></span><span><b>Santuarios</b><span>Los 152, con coordenadas y altitud</span></span></a>
+              <a class="io" href="#info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span><b>Semillas kolog</b><span>875 semillas en superficie y cielo</span></span></a>
+              <a class="io" href="#info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v2h-4"></path><path d="M17 7v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h11"></path><path d="M8 3a2 2 0 0 0-2 2v12"></path><path d="M10 8h4M10 12h4"></path></svg></span><span><b>Misiones</b><span>23 principales, 50 aventuras y 105 secundarias</span></span></a>
+              <a class="io" href="#info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span><span><b>Armaduras</b><span>Las de más defensa, de mayor a menor</span></span></a>
+              <a class="io" href="#info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5z"></path><path d="M3 12l9 5 9-5"></path><path d="M3 16.5l9 5 9-5"></path></svg></span><span><b>Conjuntos</b><span>57 sets y sus materiales de mejora</span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <span class="status"><i></i>En construcción</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <img class="hero-bg" src="/images/zelda/hyrule.jpg" alt="">
+    <div class="rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="wrap hero-in">
+      <div class="htx">
+        <span class="kick">Guía en español · versión 1.2.1</span>
+        <h1 class="h1 serif">No te dejes nada en <em>Hyrule</em>.</h1>
+        <p class="lead">Mapa de semillas kolog y de los 152 santuarios, misiones principales y secundarias, y las armaduras con más defensa de Tears of the Kingdom.</p>
+        <div class="ctas">
+          <a class="btn-z" href="#mapa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+            Abrir el mapa interactivo
+          </a>
+          <a class="btn-o" href="#info">Ver las guías</a>
+        </div>
+      </div>
+      <div class="hstats">
+        <div class="hs">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11"></path><path d="M9 21v-6a3 3 0 0 1 6 0v6"></path><path d="M3 21h18"></path></svg>
+          <b>152</b><span>Santuarios</span><small>120 superficie · 32 cielo</small>
+        </div>
+        <div class="hs">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+          <b>875</b><span>Semillas kolog</span><small>de 775 kologs en el mapa</small>
+        </div>
+        <div class="hs">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v2h-4"></path><path d="M17 7v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h11"></path><path d="M8 3a2 2 0 0 0-2 2v12"></path></svg>
+          <b>178</b><span>Misiones</span><small>23 principales · 155 extra</small>
+        </div>
+        <div class="hs">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5z"></path><path d="M3 12l9 5 9-5"></path><path d="M3 16.5l9 5 9-5"></path></svg>
+          <b>57</b><span>Conjuntos</span><small>con materiales por nivel</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="sec" id="mapa">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick">Mapas</span>
+          <h2 class="h2 serif">Mapa interactivo</h2>
+          <p>Elige capa, filtra lo que quieres ver y toca un santuario para ver su ficha y marcarlo como completado.</p>
+        </div>
+        <div class="layers" role="tablist" aria-label="Capa del mapa">
+          <button type="button" class="ly {{lySurf}}" role="tab" aria-selected="{{selSurf}}" onClick="{{setSurf}}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"></path><circle cx="17" cy="6" r="2"></circle></svg>
+            Superficie
+          </button>
+          <button type="button" class="ly {{lySky}}" role="tab" aria-selected="{{selSky}}" onClick="{{setSky}}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9z"></path></svg>
+            Cielo
+          </button>
+          <button type="button" class="ly off" role="tab" aria-selected="false" aria-disabled="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M12 11v9"></path><path d="M8 16l4 4 4-4"></path></svg>
+            Subsuelo <small>Pronto</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="mapcard">
+        <div class="side">
+          <div class="fld">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <label class="sr" for="q-shrine">Buscar santuario</label>
+            <input id="q-shrine" type="search" placeholder="Busca un santuario (Ukouh, Tajikats…)" autocomplete="off" onChange="{{onQuery}}">
+          </div>
+          <sc-if value="{{hasRes}}" hint-placeholder-val="{{ false }}">
+            <div class="res">
+              <sc-for list="{{res}}" as="r" hint-placeholder-count="4">
+                <button type="button" class="rs" onClick="{{r.pick}}">{{r.n}} <small>{{r.ln}}</small></button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <span class="gl">Mostrar en el mapa</span>
+          <button type="button" class="cat {{cat.sh}}" onClick="{{tog.sh}}" aria-pressed="{{pr.sh}}">
+            <span class="pin lg p-sh" aria-hidden="true"></span>
+            <span class="nm">Santuarios</span><span class="ct">{{cnt.sh}}</span><span class="tg" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="cat {{cat.tw}}" onClick="{{tog.tw}}" aria-pressed="{{pr.tw}}">
+            <span class="pin lg p-tw" aria-hidden="true"></span>
+            <span class="nm">Torres de vigilancia</span><span class="ct">{{cnt.tw}}</span><span class="tg" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="cat {{cat.cv}}" onClick="{{tog.cv}}" aria-pressed="{{pr.cv}}">
+            <span class="pin lg p-cv" aria-hidden="true"></span>
+            <span class="nm">Cuevas y túneles</span><span class="ct">{{cnt.cv}}</span><span class="tg" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="cat {{cat.sd}}" onClick="{{tog.sd}}" aria-pressed="{{pr.sd}}">
+            <span class="pin lg p-sd" aria-hidden="true"></span>
+            <span class="nm">Semillas kolog</span><span class="ct">{{cnt.sd}}</span><span class="tg" aria-hidden="true"></span>
+          </button>
+          <div class="allrow">
+            <button type="button" onClick="{{showAll}}">Mostrar todo</button>
+            <button type="button" onClick="{{hideAll}}">Ocultar todo</button>
+          </div>
+
+          <span class="gl">Estado</span>
+          <div class="stf" role="group" aria-label="Filtrar por estado">
+            <button type="button" class="{{stAll}}" aria-pressed="{{stAllP}}" onClick="{{setAll}}">Todos<small>{{nAll}}</small></button>
+            <button type="button" class="{{stTodo}}" aria-pressed="{{stTodoP}}" onClick="{{setTodo}}">Pendientes<small>{{nTodo}}</small></button>
+            <button type="button" class="{{stDone}}" aria-pressed="{{stDoneP}}" onClick="{{setDone}}">Completados<small>{{nDone}}</small></button>
+          </div>
+
+          <div class="prog">
+            <div class="row"><span>Santuarios completados</span><b>{{doneSh}} / 152</b></div>
+            <div class="pb"><i style="width: {{pctSh}}"></i></div>
+            <div class="row"><span>Torres activadas</span><b>{{doneTw}} / 15</b></div>
+            <div class="pb tw"><i style="width: {{pctTw}}"></i></div>
+            <div class="row"><span>Semillas recogidas</span><b>{{doneSd}} / 875</b></div>
+            <div class="pb sd"><i style="width: {{pctSd}}"></i></div>
+            <p>Tu progreso se guarda en tu cuenta.</p>
+          </div>
+
+          <sc-if value="{{hasSel}}" hint-placeholder-val="{{ false }}">
+            <div class="selc">
+              <div class="t">{{selN}}</div>
+              <div class="m">{{selC}} · {{selL}} · zona {{selZ}}</div>
+              <div class="coords">
+                <span><b>{{selX}}</b>x</span>
+                <span><b>{{selY}}</b>y</span>
+                <span><b>{{selA}}</b>altitud</span>
+              </div>
+              <button type="button" class="btn-done {{selDoneCls}}" onClick="{{toggleDone}}">{{selDoneTxt}}</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{noSel}}" hint-placeholder-val="{{ true }}">
+            <div class="hintc">Pasa el ratón por un icono para ver qué es y tócalo para abrir su ficha y marcarlo como hecho. Arrastra para moverte y haz doble clic para acercar.</div>
+          </sc-if>
+        </div>
+
+        <div class="vp" onScroll="{{vpWheel}}" onPointerEnter="{{vpArm}}" onPointerDown="{{vpDown}}" onPointerMove="{{vpMove}}" onPointerUp="{{vpUp}}" onPointerLeave="{{vpUp}}" onDoubleClick="{{vpDbl}}"><div class="vp-in">
+          <span class="vtag">{{layerName}}</span>
+          <div class="zoom">
+            <button type="button" onClick="{{zoomIn}}" aria-label="Acercar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+            <button type="button" onClick="{{zoomOut}}" aria-label="Alejar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+            <button type="button" onClick="{{zoomReset}}" aria-label="Ver el mapa completo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></button>
+          </div>
+          <div class="mapin {{layerCls}} zl{{zi}} {{dragCls}}" style="transform: translate({{tx}}, {{ty}}) translate({{px}}px, {{py}}px) scale({{zoom}})">
+            <img class="mapimg" src="{{mapImg}}" alt="Mapa de {{layerName}}" draggable="false">
+            <sc-for list="{{fr}}" as="p" hint-placeholder-count="0">
+              <span class="m p-fr" style="left: {{p.x}}; top: {{p.y}}"></span>
+            </sc-for>
+            <sc-for list="{{pins}}" as="s" hint-placeholder-count="0">
+              <button type="button" class="m {{s.cls}}" style="left: {{s.x}}; top: {{s.y}}" onClick="{{s.pick}}" aria-label="{{s.aria}}">
+                <span class="tip"><b>{{s.lbl}}</b><small>{{s.sub}}</small><em class="{{s.stc}}">{{s.st}}</em></span>
+              </button>
+            </sc-for>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="pin lg p-sh"></i>Santuario</span>
+            <span><i class="pin lg p-tw"></i>Torre</span>
+            <span><i class="pin lg p-cv"></i>Cueva o túnel</span>
+            <span><i class="pin lg p-sd"></i>Semilla kolog</span>
+            <span><i class="pin lg p-sd2"></i>Kolog con amigo</span>
+            <span><i class="pin lg done"></i>Hecho</span>
+          </div>
+          <span class="coordtag">Zoom ×{{zoomTxt}}</span>
+        </div><div class="vp-pad"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFORMACIÓN -->
+  <section class="sec" id="info">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <span class="kick">Información</span>
+          <h2 class="h2 serif">Guías de Tears of the Kingdom</h2>
+          <p>Todo lo que hay en la guía, separado por temas. Los nombres en inglés van entre paréntesis para que los encuentres aunque juegues en otro idioma.</p>
+        </div>
+      </div>
+      <div class="igrid">
+        <a class="icard" href="https://grietameta.vercel.app/zelda#santuarios">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11"></path><path d="M9 21v-6a3 3 0 0 1 6 0v6"></path><path d="M3 21h18"></path></svg></span>
+          <div><h3>Santuarios</h3><span class="n">152 · 120 superficie, 32 cielo</span></div>
+          <p>Con sus coordenadas (x, y, altitud). Busca por nombre o por zona, como «noroeste».</p>
+          <div class="prev"><div>Ukouh <span>Gran Isla del Cielo</span></div><div>In-isa <span>Gran Isla del Cielo</span></div><div>Tajikats <span>Superficie</span></div></div>
+          <span class="go">Ver santuarios →</span>
+        </a>
+        <a class="icard" href="https://grietameta.vercel.app/zelda#semillas">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span>
+          <div><h3>Semillas kolog</h3><span class="n">875 semillas · 775 kologs</span></div>
+          <p>Ubicaciones en la superficie y en el cielo, incluidos los 100 kologs que te piden llevarlos con su amigo.</p>
+          <div class="prev"><div>Superficie <span>838 semillas</span></div><div>Cielo <span>37 semillas</span></div></div>
+          <span class="go">Ver semillas →</span>
+        </a>
+        <a class="icard" href="https://grietameta.vercel.app/zelda#misiones">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v2h-4"></path><path d="M17 7v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h11"></path><path d="M8 3a2 2 0 0 0-2 2v12"></path><path d="M10 8h4M10 12h4"></path></svg></span>
+          <div><h3>Misiones</h3><span class="n">23 principales · 50 aventuras · 105 secundarias</span></div>
+          <p>Las principales con su guía y el resto con enlace a la guía paso a paso.</p>
+          <div class="prev"><div>The Closed Door <span>Principal 1</span></div><div>To the Kingdom of Hyrule <span>Principal 2</span></div><div>Crisis at Hyrule Castle <span>Principal 3</span></div></div>
+          <span class="go">Ver misiones →</span>
+        </a>
+        <a class="icard" href="https://grietameta.vercel.app/zelda#armaduras">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+          <div><h3>Armaduras</h3><span class="n">Top 10 por defensa</span></div>
+          <p>Defensa al máximo nivel, de mayor a menor, indicando si es del set completo o de una pieza.</p>
+          <div class="prev"><div>Aspecto del Héroe Antiguo <span>84</span></div><div>Set de soldado <span>84</span></div><div>Set Zonaite <span>84</span></div></div>
+          <span class="go">Ver armaduras →</span>
+        </a>
+        <a class="icard" href="https://grietameta.vercel.app/zelda#conjuntos">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5z"></path><path d="M3 12l9 5 9-5"></path><path d="M3 16.5l9 5 9-5"></path></svg></span>
+          <div><h3>Conjuntos</h3><span class="n">57 conjuntos</span></div>
+          <p>Los materiales de cada mejora en la Gran Hada. El coste es por pieza y por nivel.</p>
+          <div class="prev"><div>Hylian <span>Solo defensa</span></div><div>Armor of the Wild <span>Bonus de ataque</span></div></div>
+          <span class="go">Ver conjuntos →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Nintendo. The Legend of Zelda y Tears of the Kingdom son marcas de Nintendo. Guía no oficial con datos de la versión 1.2.1 contrastados con varias guías.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb on" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2430}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const layer = S.layer || 'surf';
+    const L = layer === 'sky' ? 'k' : 's';
+    const cats = Object.assign({ sh: true, tw: true, cv: true, sd: true }, S.cats || {});
+    const zi = S.zi || 0;
+    const px = S.px || 0;
+    const py = S.py || 0;
+    const ZS = [1, 1.6, 2.4, 3.4, 4.6];
+    const sel = S.sel || null;
+    const found = S.found || {};
+    const q = (S.q || '').trim();
+    const motion = this.props.animaciones ?? true;
+
+    const D = {"SH":{"s":[["Tajikats",52.87,60.09,344,-1009,42],["Jochi-iu",86.22,21.24,4347,2876,188],["Sitsum",69.74,24.04,2369,2596,802],["Oromuwak",24.34,33.83,-3079,1617,264],["Mayachin",44.12,58.69,-706,-869,57],["Musanokir",53.4,28.66,408,2134,167],["Ren-iz",56.3,41.76,756,824,106],["Sahirow",22.05,26.14,-3354,2386,380],["Rotsumamu",21.61,63.63,-3407,-1363,355],["Mayamats",11.35,65.13,-4638,-1513,470],["Serutabomac",48.51,38.3,-179,1170,301],["Mogawak",77.5,45.76,3300,424,136],["Zanmik",78.92,71.81,3470,-2181,171],["Jiukoum",57.23,72.78,868,-2278,165],["Iun-orok",20.51,41.49,-3539,851,-105],["Soryotanog",17.65,79.63,-3882,-2963,147],["Mayak",60.58,12.67,1270,3733,130],["Gemimik",87.61,28.84,4513,2116,27],["Orochium",36.36,23.58,-1637,2642,261],["Sinakawak",38.21,42.43,-1415,757,113],["Tauyosipun",12.18,21.2,-4539,2880,283],["Tukarok",57.62,52.51,915,-251,59],["Sikukuu",55.83,22.07,699,2793,248],["Siwakama",29.62,83.44,-2446,-3344,67],["Turakawak",20.85,51.97,-3498,-197,90],["Riogok",37.99,66.16,-1441,-1616,113],["Anedamimik",85.27,71.78,4232,-2178,13],["Mayausiy",40.27,23.98,-1167,2602,-57],["Ishodag",42.67,45.77,-879,423,74],["Kiuyoyou",40.77,29.12,-1107,2088,128],["Ekochiu",58.86,37.2,1063,1280,71],["Tadarok",40.98,71.87,-1082,-2187,152],["Karahatag",18.93,86.25,-3728,-3625,68],["Kisinona",71.4,37.54,2568,1246,196],["Oshozan-u",38.3,13.22,-1404,3678,308],["Gasas",15.39,49.02,-4153,98,66],["Turakamik",27.86,72.37,-2657,-2237,92],["Gatakis",19.57,31.94,-3652,1806,191],["Ihen-a",81.55,44.22,3786,578,503],["Tsutsu-um",38.14,63.51,-1423,-1351,92],["Kamatukis",78.59,16.43,3431,3357,95],["Sepapa",51.85,39.15,222,1085,53],["Mayatat",22.57,75.12,-3291,-2512,50],["Susuyai",43.46,54.34,-785,-434,44],["Apogek",82.39,52.17,3887,-217,187],["Domizuin",77.54,35.57,3305,1443,444],["Kikakin",46.7,22.64,-396,2736,308],["Sibajitak",70.0,17.25,2400,3275,421],["Utsushok",55.58,83.58,670,-3358,96],["Jikais",85.56,66.73,4267,-1673,204],["Kitawak",37.25,79.29,-1530,-2929,341],["Sonapan",33.98,53.59,-1922,-359,250],["Marakuguc",64.68,24.9,1762,2510,455],["Runakit",28.92,38.3,-2530,1170,200],["Wao-os",16.18,30.1,-4058,1990,206],["Kyokugon",44.09,65.51,-709,-1551,32],["Nouda",30.68,27.99,-2318,2201,196],["Eutoum",20.77,14.3,-3507,3570,406],["Isisim",65.35,21.58,1842,2842,383],["Mayachideg",75.51,31.76,3061,1824,238],["Otutsum",12.76,56.71,-4469,-671,526],["Utojis",60.15,75.43,1218,-2543,121],["Kamizun",48.52,65.58,-178,-1558,48],["Suariwak",28.97,67.7,-2524,-1770,155],["Rakakudaj",33.02,68.53,-2037,-1853,89],["Rasitakiwak",84.72,36.77,4167,1323,251],["Zakusu",79.38,64.82,3526,-1482,190],["Jojon",60.02,46.7,1202,330,52],["Sifumim",73.55,82.7,2826,-3270,102],["Otak",13.41,12.86,-4391,3714,234],["Miryotanog",11.0,80.86,-4680,-3086,79],["Kimayat",73.87,13.62,2864,3638,262],["Momosik",74.67,22.42,2960,2758,541],["Igashuk",88.79,12.86,4655,3714,154],["Taki-ihaban",34.75,38.05,-1830,1195,171],["En-oma",50.86,75.18,103,-2518,-61],["Yomizuk",86.78,56.13,4413,-613,60],["Mayahisik",81.08,70.59,3729,-2059,211],["Motsusis",35.04,84.87,-1795,-3487,70],["Maoikes",68.97,48.53,2276,147,103],["Moshapin",72.33,30.96,2679,1904,154],["Usazum",32.17,58.74,-2139,-874,118],["Joniu",74.32,44.93,2918,507,178],["Jiotak",65.28,18.2,1834,3180,279],["Ikatak",17.07,38.61,-3951,1139,135],["Chichim",23.24,80.07,-3211,-3007,-24],["Ninjis",52.96,31.08,355,1892,201],["Tokiy",69.2,73.78,2304,-2378,-3],["Sakunbomar",51.39,26.8,167,2320,202],["Rutafu-um",25.02,18.98,-2998,3102,531],["O-ogim",72.97,60.89,2756,-1089,124],["Jogou",77.88,61.87,3346,-1187,82],["Marari-in",88.59,87.12,4631,-3712,44],["Pupunke",55.17,27.89,621,2211,187],["Bamitok",75.78,82.1,3094,-3210,106],["Irasak",15.34,88.25,-4159,-3825,53],["Kurakat",69.67,55.11,2361,-511,179],["Susub",52.91,70.52,349,-2052,-1],["Eshos",63.05,69.45,1566,-1945,180],["Yamiyo",52.77,45.3,333,470,54],["Teniten",49.38,61.16,-75,-1116,46],["Mayaotaki",43.12,14.65,-825,3535,256],["Makurukis",26.27,43.7,-2847,630,255],["Sinatanika",82.02,27.0,3842,2300,73],["Jochisiu",57.76,69.03,931,-1903,55],["Ishokin",45.29,85.24,-565,-3524,152],["Sisuran",28.68,16.46,-2559,3354,266],["Tenmaten",45.04,34.49,-595,1551,11],["Jochi-ihiga",81.76,37.81,3811,1219,115],["Makasura",64.75,60.52,1770,-1052,189],["Kyononis",48.29,45.49,-205,451,46],["Timawak",65.0,33.6,1800,1640,332],["Jonsau",64.53,49.82,1744,18,51],["Rasiwak",88.87,17.37,4664,3263,27],["Kudanisar",15.28,71.43,-4167,-2143,75],["Joju-u-u",62.62,85.77,1515,-3577,165],["Jiosin",47.99,53.71,-241,-371,52],["Gatanisis",87.48,41.74,4498,826,119],["Morok",59.85,57.79,1182,-779,157],["Minetak",53.28,15.15,394,3485,93]],"k":[["Rakashog",35.71,71.19,-1715,-2119,1155],["Tenbez",41.92,14.65,-970,3535,1019],["Ijo-o",17.82,23.18,-3861,2682,716],["Mayaumekis",25.43,19.49,-2948,3051,907],["Jirutagumac",74.3,44.66,2916,534,960],["Kadaunar",65.68,37.97,1882,1203,1255],["Mogisari",88.79,15.0,4655,3500,1018],["Siyamotsus",35.04,82.95,-1795,-3295,1019],["Ukouh",52.29,59.13,275,-913,1460],["Gutanbac",55.91,63.83,709,-1383,1582],["In-isa",50.22,65.04,26,-1504,1409],["Nachoyah",53.25,66.61,390,-1661,2284],["Mayanas",88.44,59.47,4613,-947,1784],["Igoshon",79.01,43.34,3481,666,1328],["Joku-usin",58.96,83.48,1075,-3348,798],["Simosiwak",51.35,30.28,162,1972,771],["Yansamin",69.59,67.83,2351,-1783,1475],["Kumamayn",73.81,78.56,2857,-2856,1216],["Gikaku",87.55,28.34,4506,2166,1160],["Kahatanaum",22.53,15.68,-3296,3432,1349],["Joku-u",61.47,83.4,1376,-3340,447],["Natak",80.59,35.16,3671,1484,1163],["Ganos",21.92,45.33,-3370,467,1691],["Taunhiy",29.98,41.75,-2402,825,630],["Josiu",64.65,62.08,1758,-1208,933],["Ga-ahisas",20.03,40.39,-3596,961,1694],["Jinodok",39.52,64.87,-1257,-1487,1016],["Sihajog",87.88,58.46,4546,-846,1127],["Mayasiar",20.44,53.21,-3547,-321,1956],["Mayam",52.83,21.85,340,2815,1814],["Ukoojisi",62.24,71.69,1469,-2169,601],["Taninoud",34.98,15.93,-1802,3407,958]]},"SD":{"s1":[[19.38,57.99,-3674,-799],[47.88,45.74,-254,426],[64.8,59.84,1776,-984],[45.09,55.59,-589,-559],[70.75,71.23,2490,-2123],[19.93,46.42,-3609,358],[59.32,47.71,1118,229],[67.17,22.44,2061,2756],[47.39,46.76,-313,324],[17.89,78.64,-3853,-2864],[35.24,62.43,-1771,-1243],[72.5,32.52,2700,1748],[86.62,55.35,4395,-535],[55.48,36.29,657,1371],[85.95,24.82,4314,2518],[46.83,40.04,-381,996],[20.4,44.05,-3552,595],[35.04,85.79,-1795,-3579],[62.3,82.64,1476,-3264],[71.98,53.68,2638,-368],[47.73,42.54,-273,746],[52.77,62.83,333,-1283],[66.13,77.77,1936,-2777],[72.88,47.98,2746,202],[42.59,69.08,-889,-1908],[13.97,60.9,-4323,-1090],[87.7,60.05,4524,-1005],[46.43,47.51,-428,249],[47.98,89.19,-242,-3919],[50.43,18.53,52,3147],[76.26,19.08,3151,3092],[81.4,23.1,3768,2690],[55.44,67.7,653,-1770],[15.63,30.65,-4124,1935],[80.65,45.5,3678,450],[18.28,64.75,-3806,-1475],[20.13,69.91,-3584,-1991],[15.25,33.04,-4170,1696],[86.12,68.71,4335,-1871],[47.13,42.14,-344,786],[44.38,41.39,-675,861],[71.22,55.85,2547,-585],[75.12,75.37,3014,-2537],[26.49,78.32,-2821,-2832],[52.42,52.47,290,-247],[49.85,79.75,-18,-2975],[51.11,44.0,133,600],[82.78,74.8,3933,-2480],[60.43,68.56,1252,-1856],[20.43,32.48,-3549,1752],[63.42,88.02,1611,-3802],[76.93,32.13,3232,1787],[66.76,89.57,2011,-3957],[72.71,71.22,2725,-2122],[56.55,20.47,786,2953],[85.6,48.63,4272,137],[25.72,47.6,-2914,240],[54.73,73.84,567,-2384],[76.83,47.18,3220,282],[13.02,71.14,-4438,-2114],[29.28,70.55,-2486,-2055],[54.52,62.66,543,-1266],[72.93,36.26,2752,1374],[29.12,65.9,-2506,-1590],[21.56,14.94,-3413,3506],[39.21,72.14,-1295,-2214],[16.15,32.06,-4062,1794],[63.92,30.19,1671,1981],[69.46,47.26,2335,274],[58.52,82.28,1023,-3228],[46.07,70.39,-472,-2039],[78.78,14.19,3453,3581],[37.9,86.38,-1452,-3638],[11.38,21.81,-4635,2819],[81.43,16.23,3772,3377],[59.85,46.2,1182,380],[43.36,44.41,-797,559],[61.05,69.63,1326,-1963],[16.35,16.35,-4038,3365],[37.02,58.24,-1557,-824],[18.73,22.02,-3753,2798],[70.6,48.49,2472,151],[70.05,16.72,2406,3328],[30.4,57.42,-2352,-742],[20.09,80.3,-3589,-3030],[41.71,82.54,-995,-3254],[77.38,46.61,3285,339],[59.29,57.32,1115,-732],[61.46,21.56,1375,2844],[34.91,28.02,-1811,2198],[69.22,49.85,2306,15],[48.93,41.86,-128,814],[28.04,29.44,-2635,2056],[84.03,79.74,4084,-2974],[62.1,32.54,1452,1746],[87.55,65.21,4506,-1521],[45.74,61.77,-511,-1177],[64.51,26.7,1741,2330],[29.7,44.88,-2436,512],[31.49,34.2,-2221,1580],[79.41,66.84,3529,-1684],[76.6,47.73,3192,227],[72.61,79.61,2713,-2961],[40.39,83.04,-1153,-3304],[40.45,53.81,-1146,-381],[88.27,71.6,4592,-2160],[87.43,18.52,4492,3148],[57.66,45.9,919,410],[82.47,66.84,3896,-1684],[17.51,66.44,-3899,-1644],[23.32,46.57,-3201,343],[69.12,65.11,2295,-1511],[18.18,41.66,-3818,834],[69.97,68.47,2397,-1847],[64.95,85.8,1794,-3580],[84.32,17.14,4118,3286],[56.54,77.64,785,-2764],[53.25,86.09,390,-3609],[16.82,40.69,-3982,931],[30.85,30.92,-2298,1908],[64.17,32.44,1701,1756],[68.91,31.63,2269,1837],[13.9,23.98,-4332,2602],[43.42,72.3,-790,-2230],[84.91,58.12,4189,-812],[47.0,41.15,-360,885],[76.55,15.41,3186,3459],[31.67,57.99,-2200,-799],[46.02,18.67,-477,3133],[31.49,56.93,-2221,-693],[70.94,68.66,2513,-1866],[56.84,53.3,821,-330],[84.45,35.05,4134,1495],[41.23,23.83,-1052,2617],[52.23,72.15,268,-2215],[74.8,70.25,2976,-2025],[57.41,73.94,889,-2394],[57.99,59.44,959,-944],[50.52,67.53,63,-1753],[52.3,18.8,276,3120],[32.71,29.22,-2075,2078],[47.88,47.43,-254,257],[87.16,53.57,4459,-357],[62.77,82.61,1533,-3261],[20.77,11.64,-3508,3836],[41.97,66.07,-964,-1607],[44.47,62.22,-664,-1222],[20.57,45.12,-3532,488],[71.22,60.77,2546,-1077],[43.23,69.64,-812,-1964],[19.91,78.44,-3611,-2844],[47.41,55.5,-311,-550],[44.43,67.8,-668,-1780],[77.68,44.84,3322,516],[42.24,72.08,-931,-2208],[33.59,55.95,-1969,-595],[58.06,39.73,967,1027],[33.6,60.91,-1968,-1091],[86.62,74.15,4395,-2415],[88.01,40.59,4561,941],[36.68,60.16,-1598,-1016],[30.12,28.63,-2385,2137],[61.0,42.84,1320,716],[16.18,42.26,-4059,774],[39.98,66.91,-1202,-1691],[31.3,67.4,-2244,-1740],[73.37,68.51,2804,-1851],[82.62,71.01,3914,-2101],[66.52,54.49,1982,-449],[46.68,75.6,-398,-2560],[77.22,16.03,3267,3397],[16.11,24.95,-4067,2505],[68.66,26.37,2239,2363],[44.33,14.65,-681,3535],[84.46,45.94,4135,406],[75.53,83.95,3064,-3395],[47.65,65.76,-282,-1576],[61.43,77.64,1372,-2764],[85.59,21.73,4271,2827],[39.03,62.61,-1316,-1261],[27.39,73.56,-2713,-2356],[68.62,13.23,2234,3677],[77.92,19.26,3350,3074],[27.38,54.97,-2715,-497],[55.14,42.46,617,754],[56.78,87.05,814,-3705],[69.03,76.57,2283,-2657],[80.63,71.93,3676,-2193],[23.65,25.34,-3162,2466],[14.61,18.75,-4247,3125],[64.79,77.67,1775,-2767],[49.92,75.87,-10,-2587],[13.18,18.19,-4419,3181],[19.2,33.15,-3696,1685],[13.07,13.17,-4431,3683],[86.04,51.42,4325,-142],[70.92,65.73,2510,-1573],[52.48,64.97,297,-1497],[51.72,76.39,206,-2639],[39.77,34.22,-1227,1578],[9.08,87.78,-4910,-3778],[62.81,63.02,1537,-1302],[85.17,48.41,4220,159],[80.41,32.02,3649,1798],[80.38,35.4,3645,1460],[66.17,75.64,1940,-2564],[11.73,73.49,-4592,-2349],[47.23,32.53,-333,1747],[83.71,37.15,4045,1285],[22.62,36.59,-3285,1341],[83.94,25.47,4073,2453],[52.27,89.06,272,-3906],[32.68,24.1,-2078,2590],[60.34,68.5,1241,-1850],[80.55,82.77,3666,-3277],[50.97,79.61,116,-2961],[83.65,73.09,4038,-2309],[40.44,24.65,-1147,2535],[53.83,66.99,459,-1699],[57.16,16.44,859,3356],[17.16,18.38,-3941,3162],[48.12,83.41,-225,-3341],[26.51,66.52,-2819,-1652],[53.33,38.26,399,1174],[51.37,69.4,164,-1940],[36.76,47.71,-1589,229],[85.64,20.53,4277,2947],[77.38,71.8,3286,-2180],[65.39,83.43,1847,-3343],[25.52,72.14,-2937,-2214],[18.39,26.81,-3793,2319],[21.12,15.24,-3466,3476],[31.15,73.41,-2262,-2341],[76.97,65.45,3237,-1545],[83.31,79.96,3997,-2996],[66.66,72.82,1999,-2282],[77.75,44.67,3330,533],[70.11,72.69,2413,-2269],[12.66,30.55,-4481,1945],[20.29,27.43,-3565,2257],[66.05,64.9,1926,-1490],[16.97,56.09,-3964,-609],[80.96,69.49,3715,-1949],[73.19,48.02,2783,198],[81.63,86.15,3796,-3615],[29.69,55.54,-2437,-554],[85.26,53.11,4231,-311],[67.85,76.04,2142,-2604],[23.12,44.21,-3226,579],[79.91,45.84,3589,416],[88.62,44.34,4635,566],[19.45,65.65,-3666,-1565],[71.96,78.55,2635,-2855],[81.18,66.85,3742,-1685],[25.32,64.0,-2962,-1400],[84.52,55.57,4142,-557],[64.33,25.78,1719,2422],[76.33,35.74,3160,1426],[35.58,38.38,-1730,1162],[78.46,73.81,3415,-2381],[17.96,68.95,-3845,-1895],[25.66,54.82,-2921,-482],[18.86,59.96,-3737,-996],[32.83,42.31,-2061,769],[54.39,86.66,527,-3666],[40.73,55.71,-1112,-571],[16.56,33.63,-4013,1637],[28.91,31.45,-2531,1855],[15.43,69.32,-4148,-1932],[13.17,53.52,-4420,-352],[18.51,31.34,-3779,1866],[34.87,59.72,-1816,-972],[69.28,38.67,2314,1133],[28.3,17.64,-2604,3236],[47.88,39.41,-254,1059],[75.65,13.17,3078,3683],[33.7,54.1,-1956,-410],[31.61,29.09,-2207,2091],[38.1,62.98,-1428,-1298],[36.23,25.63,-1653,2437],[71.36,85.99,2563,-3599],[33.23,74.7,-2012,-2470],[71.07,67.5,2528,-1750],[19.03,39.61,-3716,1039],[61.44,85.09,1373,-3509],[60.62,81.91,1274,-3191],[61.44,66.8,1373,-1680],[10.9,62.36,-4692,-1236],[79.39,53.68,3527,-368],[28.0,53.23,-2640,-323],[29.77,82.64,-2428,-3264],[40.39,60.12,-1153,-1012],[68.1,19.64,2172,3036],[20.44,44.22,-3547,578],[13.43,57.15,-4389,-715],[20.15,69.85,-3582,-1985],[63.64,86.76,1637,-3676],[35.31,14.46,-1763,3554],[33.85,78.22,-1938,-2822],[87.42,83.96,4491,-3396],[14.39,15.01,-4273,3499],[67.97,19.44,2156,3056],[18.57,16.56,-3772,3344],[74.62,47.44,2955,256],[63.32,63.95,1598,-1395],[83.52,33.78,4022,1622],[88.33,31.43,4599,1857],[20.0,48.89,-3600,111],[61.67,12.18,1400,3782],[20.21,68.52,-3575,-1852],[42.12,46.52,-945,348],[41.52,44.31,-1017,569],[57.02,62.91,843,-1291],[81.52,71.23,3782,-2123],[25.67,44.54,-2920,546],[10.94,69.62,-4687,-1962],[62.36,45.57,1483,443],[84.33,75.74,4119,-2574],[48.97,38.07,-124,1193],[46.44,41.09,-427,891],[35.93,66.0,-1688,-1600],[62.68,68.45,1522,-1845],[13.64,68.46,-4363,-1846],[55.97,46.32,716,368],[30.48,40.61,-2342,939],[78.6,83.25,3432,-3325],[31.12,71.63,-2265,-2163],[79.68,61.13,3562,-1113],[56.35,49.89,762,11],[29.7,38.61,-2436,1139],[58.05,43.72,966,628],[37.83,26.34,-1461,2366],[77.72,28.31,3327,2169],[33.79,81.85,-1945,-3185],[60.76,63.31,1291,-1331],[16.88,12.66,-3974,3734],[41.04,37.23,-1075,1277],[63.28,25.26,1594,2474],[66.22,73.82,1946,-2382],[57.46,72.18,895,-2218],[83.98,41.79,4078,821],[23.77,38.93,-3148,1107],[86.62,22.79,4394,2721],[66.77,68.96,2012,-1896],[62.23,43.22,1467,678],[77.28,36.02,3274,1398],[33.08,49.12,-2031,88],[20.29,57.33,-3565,-733],[35.3,64.49,-1764,-1449],[75.62,38.6,3074,1140],[49.27,45.99,-87,401],[27.6,33.38,-2688,1662],[48.02,43.68,-237,632],[49.45,74.41,-66,-2441],[26.66,30.52,-2801,1948],[16.64,59.69,-4003,-969],[77.67,54.75,3321,-475],[41.69,19.16,-997,3084],[84.79,43.01,4175,699],[47.52,38.81,-297,1119],[22.56,25.58,-3293,2442],[19.36,25.33,-3677,2467],[64.72,34.63,1767,1537],[55.76,43.75,691,625],[75.83,79.51,3100,-2951],[64.94,81.79,1793,-3179],[18.11,78.6,-3827,-2860],[19.99,59.16,-3601,-916],[22.93,64.64,-3249,-1464],[58.22,31.95,986,1805],[49.56,40.29,-53,971],[71.5,45.12,2580,488],[27.73,63.57,-2672,-1357],[51.76,58.86,211,-886],[69.69,84.38,2363,-3438],[88.32,85.62,4598,-3562],[34.48,50.94,-1863,-94],[40.89,15.98,-1093,3402],[31.65,46.44,-2202,356],[23.89,51.13,-3133,-113],[64.12,59.29,1695,-929],[82.24,39.14,3869,1086],[72.28,50.11,2674,-11],[40.45,19.14,-1146,3086],[53.52,78.84,423,-2884],[48.18,53.83,-218,-383],[36.58,80.84,-1610,-3084],[54.52,44.9,542,510],[70.5,50.41,2460,-41],[71.29,42.33,2555,767],[60.38,60.37,1245,-1037],[18.38,19.73,-3794,3027],[52.02,78.75,243,-2875],[61.12,36.82,1334,1318],[40.95,70.5,-1086,-2050],[75.09,57.86,3011,-786],[51.43,19.63,172,3037],[68.6,19.58,2232,3042],[36.17,63.22,-1659,-1322],[42.07,67.2,-952,-1720],[83.57,60.95,4028,-1095],[64.65,59.84,1758,-984],[49.14,72.92,-103,-2292],[24.98,17.8,-3002,3220],[33.12,36.96,-2025,1304],[18.62,11.55,-3765,3845],[73.98,76.85,2878,-2685],[75.99,87.2,3119,-3720],[72.67,38.37,2720,1163],[24.91,65.01,-3011,-1501],[47.61,41.6,-287,840],[74.59,50.79,2951,-79],[64.48,84.68,1738,-3468],[40.92,55.14,-1089,-514],[49.67,33.09,-39,1691],[89.95,12.43,4794,3757],[64.92,58.53,1791,-853],[82.87,54.13,3944,-413],[65.77,51.51,1892,-151],[41.23,63.28,-1053,-1328],[45.58,43.06,-530,694],[64.81,79.91,1777,-2991],[10.75,71.62,-4710,-2162],[16.93,53.24,-3969,-324],[38.06,69.53,-1433,-1953],[69.38,68.29,2326,-1829],[32.17,64.86,-2140,-1486],[17.32,65.91,-3921,-1591],[66.64,59.59,1997,-959],[69.17,63.57,2300,-1357],[76.4,44.14,3168,586],[43.08,69.64,-830,-1964],[65.48,42.14,1858,786],[84.28,45.29,4113,471],[49.3,40.93,-84,907],[44.9,65.25,-612,-1525],[74.34,63.92,2921,-1392],[60.42,27.07,1250,2293],[47.88,39.38,-254,1062],[54.77,88.53,573,-3853],[38.58,87.24,-1370,-3724],[21.32,36.87,-3442,1313],[35.67,24.43,-1720,2557],[52.93,70.0,352,-2000],[46.1,78.99,-468,-2899],[42.15,41.8,-942,820],[57.95,84.76,954,-3476],[61.64,48.72,1397,128],[62.08,85.32,1449,-3532],[72.28,39.26,2674,1074],[40.12,25.18,-1186,2482],[66.92,61.67,2030,-1167],[19.88,31.2,-3614,1880],[52.48,68.34,297,-1834],[75.1,37.97,3012,1203],[69.12,80.2,2294,-3020],[63.55,57.81,1626,-781],[42.62,72.71,-886,-2271],[61.94,30.47,1433,1953],[70.21,84.03,2425,-3403],[73.17,24.75,2780,2525],[21.38,42.92,-3435,708],[46.35,38.84,-438,1116],[20.01,34.62,-3599,1538],[28.77,89.53,-2547,-3953],[40.42,47.78,-1149,222],[65.05,24.7,1806,2530],[33.59,18.87,-1969,3113],[17.12,30.31,-3945,1969],[49.49,41.33,-61,867],[69.12,40.57,2294,943],[59.62,67.04,1154,-1704],[37.36,69.23,-1517,-1923],[22.33,72.75,-3320,-2275],[38.26,54.65,-1409,-465],[27.88,37.17,-2654,1283],[85.62,44.9,4274,510],[35.83,68.26,-1700,-1826],[24.5,62.86,-3060,-1286],[68.67,57.26,2240,-726],[18.76,72.87,-3749,-2287],[73.42,72.48,2810,-2248],[55.31,73.15,637,-2315],[66.66,28.78,1999,2122],[26.46,42.96,-2825,704],[36.24,56.88,-1651,-688],[30.5,61.04,-2340,-1104],[46.54,83.74,-415,-3374],[71.33,74.85,2559,-2485],[87.86,18.38,4543,3162],[77.98,37.0,3358,1300],[62.27,27.8,1473,2220],[63.17,80.34,1581,-3034],[63.07,20.54,1568,2946],[67.36,26.7,2083,2330],[55.14,50.76,617,-76],[56.42,35.84,770,1416],[84.18,45.26,4102,474],[44.46,44.53,-665,547],[81.82,49.24,3818,76],[16.87,42.68,-3976,732],[54.91,62.33,589,-1233],[61.4,72.73,1368,-2273],[73.62,61.19,2834,-1119],[48.74,80.68,-151,-3068],[60.68,58.34,1282,-834],[38.8,56.89,-1344,-689],[31.38,39.3,-2234,1070],[43.62,56.74,-765,-674],[59.13,88.33,1096,-3833],[74.67,50.53,2961,-53],[75.93,37.02,3112,1298],[33.57,12.04,-1972,3796],[42.72,16.87,-874,3313],[81.24,76.29,3749,-2629],[24.47,21.44,-3064,2856],[44.69,73.82,-637,-2382],[23.39,67.45,-3193,-1745],[36.28,50.13,-1646,-13],[56.33,33.56,759,1644],[14.55,28.54,-4254,2146],[40.18,85.11,-1178,-3511],[84.64,18.32,4157,3168],[79.53,19.76,3544,3024],[60.67,69.63,1280,-1963],[40.3,43.34,-1164,666],[66.33,76.28,1960,-2628],[35.48,54.01,-1742,-401],[27.69,41.08,-2677,892],[48.96,59.38,-125,-938],[47.08,41.72,-351,828],[63.17,42.77,1581,723],[67.84,72.23,2141,-2223],[70.34,37.58,2441,1242],[33.81,71.31,-1943,-2131],[55.08,64.68,609,-1468],[60.29,82.17,1235,-3217],[63.12,60.45,1575,-1045],[53.83,71.42,459,-2142],[35.82,50.84,-1702,-84],[22.07,20.07,-3351,2993],[77.2,72.26,3264,-2226],[38.46,84.93,-1385,-3493],[75.11,40.67,3013,933],[21.1,51.68,-3468,-168],[17.93,36.73,-3848,1327],[71.49,77.29,2579,-2729],[24.14,36.84,-3103,1316],[18.0,15.83,-3840,3417],[76.12,54.33,3135,-433],[51.72,83.13,206,-3313],[26.1,61.24,-2868,-1124],[55.23,61.62,628,-1162],[39.92,13.99,-1210,3601],[30.04,60.34,-2395,-1034],[73.76,50.28,2851,-28],[28.32,56.69,-2601,-669],[65.21,54.59,1825,-459],[51.6,41.03,192,897],[13.53,55.25,-4377,-525],[54.91,87.4,589,-3740],[24.02,47.65,-3118,235],[16.62,13.77,-4005,3623],[40.58,49.82,-1131,18],[18.17,48.22,-3820,178],[80.93,56.22,3712,-622],[9.07,62.43,-4911,-1243],[15.57,75.93,-4132,-2593],[71.17,82.91,2540,-3291],[86.58,43.88,4389,612],[86.96,18.1,4435,3190],[31.3,72.12,-2244,-2212],[87.01,54.8,4441,-480],[58.61,63.06,1033,-1306],[69.23,48.67,2308,133],[77.28,50.13,3273,-13],[24.27,28.8,-3087,2120],[84.22,36.23,4106,1377],[20.2,17.33,-3576,3267],[44.45,40.37,-666,963],[75.27,27.11,3032,2289],[78.67,75.17,3440,-2517],[61.88,34.66,1425,1534],[52.83,78.32,340,-2832],[45.04,64.15,-595,-1415],[62.02,55.37,1442,-537],[64.1,83.24,1692,-3324],[70.22,32.77,2426,1723],[31.1,27.16,-2268,2284],[75.09,53.71,3011,-371],[68.42,49.5,2211,50],[18.23,57.9,-3812,-790],[64.62,27.75,1755,2225],[23.27,68.55,-3208,-1855],[29.36,22.52,-2477,2748],[68.34,63.73,2201,-1373],[29.18,55.68,-2498,-568],[81.67,41.44,3801,856],[78.05,69.79,3366,-1979],[47.63,43.91,-284,609],[79.49,23.63,3539,2637],[16.88,12.86,-3975,3714],[63.35,21.73,1602,2827],[20.48,42.48,-3542,752],[38.73,51.92,-1352,-192],[50.62,53.27,75,-327],[63.77,69.08,1652,-1908],[17.02,29.64,-3958,2036],[38.0,58.47,-1440,-847],[22.37,71.64,-3316,-2164],[78.23,42.58,3388,742],[38.1,79.76,-1428,-2976],[70.79,58.92,2495,-892],[37.02,76.26,-1557,-2626],[35.78,67.07,-1706,-1707],[72.27,15.58,2672,3442],[79.13,83.11,3496,-3311],[23.68,23.11,-3158,2689],[60.9,51.78,1308,-178],[19.55,53.92,-3654,-392],[42.08,68.4,-951,-1840],[52.61,67.66,313,-1766],[23.64,60.38,-3163,-1038],[52.25,42.99,270,701],[17.92,22.62,-3850,2738],[15.07,16.26,-4191,3374],[17.21,79.41,-3935,-2941],[21.41,81.28,-3431,-3128],[48.02,69.19,-238,-1919],[75.58,45.43,3070,457],[77.08,63.36,3250,-1336],[18.69,74.43,-3757,-2443],[50.84,88.42,101,-3842],[87.19,58.44,4463,-844],[31.0,54.02,-2280,-402],[79.56,40.35,3547,965],[44.07,76.25,-712,-2625],[56.12,65.04,735,-1504],[28.17,71.98,-2620,-2198],[26.52,34.01,-2818,1599],[64.79,79.33,1775,-2933],[57.08,42.07,850,793]],"s2":[[50.4,66.94,54.9,65.81,48,-1694],[54.36,71.96,52.87,71.83,523,-2196],[73.83,69.13,77.09,71.14,2859,-1913],[22.12,80.56,24.34,80.45,-3345,-3056],[47.31,18.41,50.16,19.01,-323,3159],[14.49,28.25,15.7,25.84,-4261,2175],[68.67,47.55,68.35,48.41,2240,245],[64.36,23.89,64.28,19.39,1723,2611],[53.62,45.16,53.6,44.03,434,484],[15.53,72.6,13.99,68.61,-4136,-2260],[80.72,83.18,87.47,86.16,3687,-3318],[26.39,21.6,26.7,21.22,-2833,2840],[71.2,43.61,72.0,43.67,2544,639],[35.77,73.41,36.33,73.59,-1708,-2341],[25.32,49.12,24.85,48.95,-2962,88],[72.05,71.18,70.68,70.49,2646,-2118],[86.3,24.64,88.57,21.39,4356,2536],[47.44,82.9,45.05,83.36,-307,-3290],[64.74,68.68,68.26,67.01,1769,-1868],[38.05,35.24,43.6,35.86,-1434,1476],[50.56,87.62,53.32,88.62,67,-3762],[56.62,55.11,57.41,55.56,794,-511],[11.55,81.97,9.36,85.65,-4614,-3197],[12.18,63.44,12.43,55.9,-4538,-1344],[73.39,48.17,71.83,49.44,2807,183],[25.9,15.06,23.02,13.11,-2892,3494],[54.46,38.92,55.27,38.33,535,1108],[35.01,53.21,34.59,53.29,-1799,-321],[19.41,16.14,15.62,15.69,-3671,3386],[62.78,33.94,65.64,33.71,1534,1606],[80.45,56.05,77.54,57.74,3654,-605],[38.47,13.7,41.39,14.82,-1384,3630],[77.92,13.32,74.73,13.52,3350,3668],[71.98,38.89,73.0,42.26,2638,1111],[44.2,65.74,41.46,68.57,-696,-1574],[75.77,32.45,76.86,28.3,3092,1755],[79.17,64.58,80.56,63.86,3500,-1458],[66.51,29.6,65.27,30.96,1981,2040],[65.64,58.06,68.12,55.68,1877,-806],[81.51,45.54,82.67,44.57,3781,446],[25.12,73.26,22.37,74.62,-2985,-2326],[41.52,76.32,38.55,74.44,-1018,-2632],[62.85,31.91,62.53,31.98,1542,1809],[83.33,51.87,87.5,56.48,4000,-187],[65.14,23.58,66.59,24.03,1817,2642],[79.52,84.58,80.0,87.8,3542,-3458],[26.06,45.03,28.33,48.11,-2873,497],[85.78,33.91,89.57,30.14,4293,1609],[32.64,45.2,32.87,44.87,-2083,480],[69.77,35.95,67.74,39.17,2372,1405],[79.4,50.61,82.33,47.33,3528,-61],[51.86,85.31,50.4,83.93,223,-3531],[70.64,67.43,71.78,68.68,2477,-1743],[55.24,59.65,58.49,61.85,629,-965],[77.04,72.83,77.17,73.97,3245,-2283],[30.52,20.43,30.23,19.82,-2337,2957],[46.21,66.48,45.76,66.96,-455,-1648],[68.15,22.2,70.92,20.15,2178,2780],[82.99,18.81,78.72,18.27,3959,3119],[68.69,84.69,68.56,88.34,2243,-3469],[58.54,13.26,54.58,13.1,1025,3674],[38.7,63.1,39.15,63.32,-1356,-1310],[20.13,49.86,16.04,49.65,-3584,14],[54.36,16.01,50.47,14.46,523,3399],[49.65,61.12,48.73,65.31,-42,-1112],[59.77,68.85,59.97,68.43,1172,-1885],[45.45,27.74,41.83,27.6,-546,2226],[81.23,26.95,85.67,26.61,3748,2305],[40.58,69.71,40.18,70.89,-1130,-1971],[56.42,71.41,59.58,72.82,770,-2141],[48.42,72.49,48.2,75.95,-190,-2249],[61.64,86.41,58.29,88.05,1397,-3641],[70.44,79.12,74.33,80.83,2453,-2912],[54.33,84.84,54.31,85.14,520,-3484],[83.78,40.55,86.34,42.24,4053,945],[73.57,88.84,70.23,89.45,2828,-3884],[18.17,81.26,18.82,84.78,-3820,-3126],[43.51,55.0,42.66,59.3,-779,-500],[62.54,53.36,64.17,49.9,1505,-336],[26.72,26.92,26.35,26.83,-2794,2308],[29.72,71.19,29.67,71.44,-2434,-2119],[81.06,71.61,82.49,75.06,3727,-2161],[62.79,44.9,64.05,47.44,1535,510],[52.42,62.05,52.85,66.62,290,-1205],[23.36,61.7,23.82,56.2,-3197,-1170],[29.22,83.48,28.78,89.31,-2494,-3348],[33.47,70.79,32.91,69.95,-1984,-2079],[72.41,55.44,73.0,55.83,2689,-544],[63.43,84.93,66.49,83.91,1612,-3493],[60.41,19.95,56.44,21.43,1249,3005],[37.1,60.02,38.99,55.7,-1548,-1002],[85.68,17.32,86.81,17.35,4282,3268],[85.02,22.58,82.12,23.15,4202,2742],[19.89,40.15,20.36,42.32,-3613,985],[57.98,52.03,59.97,56.49,958,-203],[37.17,24.46,38.77,22.08,-1540,2554],[43.53,40.61,43.73,39.29,-776,939],[54.08,19.45,54.95,19.56,489,3055]],"k1":[[53.87,58.81,464,-881],[19.62,39.52,-3645,1048],[52.61,64.36,313,-1436],[76.95,45.38,3234,462],[35.97,14.27,-1684,3573],[70.33,67.22,2440,-1722],[35.72,85.78,-1714,-3578],[69.54,67.53,2345,-1753],[70.25,67.83,2430,-1783],[53.14,67.32,377,-1732],[53.53,65.04,424,-1504],[50.94,60.81,113,-1081],[17.36,21.2,-3917,2880],[90.15,58.22,4818,-822],[80.52,35.92,3662,1408],[58.06,81.85,967,-3185],[52.38,30.4,285,1960],[55.18,66.58,622,-1658],[54.37,22.52,524,2748],[55.26,65.31,631,-1531],[88.78,28.63,4654,2137],[54.52,65.81,542,-1581],[69.43,68.27,2332,-1827],[21.93,50.51,-3369,-51],[54.27,63.18,513,-1318],[74.44,79.92,2933,-2992],[52.86,67.56,343,-1756],[89.97,12.44,4796,3756],[44.32,14.65,-682,3535],[38.31,65.23,-1403,-1523],[61.14,70.62,1337,-2062],[30.27,41.35,-2367,865],[63.98,68.98,1677,-1898]],"k2":[[50.14,62.62,49.24,62.41,17,-1262],[53.92,66.95,53.71,67.87,471,-1695]]}};
+
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+    const zone = (x, y) => {
+      const ns = y > 1200 ? 'N' : (y < -1200 ? 'S' : '');
+      const ew = x > 1200 ? 'E' : (x < -1200 ? 'O' : '');
+      const Z = { NE: 'noreste', NO: 'noroeste', SE: 'sureste', SO: 'suroeste', N: 'norte', S: 'sur', E: 'este', O: 'oeste' };
+      return Z[ns + ew] || 'centro';
+    };
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.').replace('-.', '-');
+
+    // Torres de vigilancia y cuevas: [nombre, x%, y%, x, y, altitud]
+    const X = {"TW":{"s":[["Lookout Landing",47.51,48.57,-299,143,30],["Lindor's Brow",34.08,37.55,-1910,1245,297],["Pikida Stonegrove",30.74,19.38,-2311,3062,441],["Eldin Canyon",63.68,38.09,1642,1191,227],["Ulri Mountain",79.16,29.74,3499,2026,190],["Sahasra Slope",61.17,61.78,1341,-1178,169],["Upland Zorana",73.88,44.19,2866,581,379],["Hyrule Field",43.66,60.19,-761,-1019,69],["Gerudo Canyon",29.68,71.83,-2439,-2183,307],["Gerudo Highlands",16.99,63.06,-3961,-1306,421],["Rabella Wetlands",70.17,77.55,2420,-2755,224],["Thyphlo Ruins",52.87,18.58,344,3142,182],["Popla Foothills",55.04,71.27,605,-2127,103],["Mount Lanayru",82.07,63.15,3848,-1315,535],["Rospro Pass",19.33,26.54,-3680,2346,235]],"k":[]},"CV":{"s":[["Ulria Grotto South Cave",84.35,43.38,4122,662,197],["Ulria Grotto East Cave",87.54,42.95,4505,705,107],["Ulria Grotto East Cave",85.61,42.26,4273,774,154],["Tarrey Town Tunnel",82.72,34.24,3926,1576,117],["Construction Site Cave",80.66,34.62,3679,1538,85],["Construction Site Cave",81.12,34.66,3735,1534,92],["Akkala Citadel Ruins Cave",77.03,35.43,3244,1457,301],["Skull Lake Cave",77.68,15.76,3322,3424,180],["North Akkala Beach Cave",88.76,14.15,4651,3585,-38],["North Akkala Beach Cave",88.72,17.93,4646,3207,19],["Akkala Citadel Ruins Summit Cave",77.44,35.08,3293,1492,400],["Ranch Ruins Cave",50.31,51.99,37,-199,31],["Ranch Ruins Cave",50.05,51.58,6,-158,42],["Great Plateau Foothill Cave",43.07,64.88,-832,-1488,39],["Royal Hidden Passage",47.28,41.97,-326,803,65],["Royal Hidden Passage",47.88,48.71,-254,129,20],["Royal Hidden Passage",47.88,42.33,-254,767,39],["Ancient Tree Stump Cave",40.73,54.32,-1112,-432,35],["Whistling Hill Cave",49.4,60.46,-72,-1046,29],["Passeri Greenbelt Cave",45.73,48.72,-512,128,32],["Coliseum Ruins Cave",40.27,63.11,-1167,-1311,34],["Sage Temple Cave",38.29,52.57,-1405,-257,8],["Death Mountain East Tunnel",73.07,22.22,2768,2778,524],["Death Mountain West Tunnel",68.66,23.18,2239,2682,524],["Lake Darman Monster Den",69.78,19.48,2373,3052,450],["Isle of Rabac Gallery",62.96,18.97,1555,3103,398],["Goronbi River Cave",61.86,28.97,1423,2103,292],["Southern Mine",65.01,30.17,1801,1983,327],["Gorko Tunnel",66.8,29.61,2016,2039,426],["West Restaurant Cave",63.69,32.7,1643,1730,286],["East Restaurant Cave",65.45,32.8,1854,1720,299],["Lizard's Burrow",68.38,19.25,2206,3075,411],["Lake Intenoch Cave",70.71,32.07,2485,1793,167],["YunoboCo HQ East Cave",64.71,21.63,1765,2837,405],["YunoboCo HQ South Cave",64.28,22.81,1714,2719,406],["Death Mountain Foothill Cave",66.25,23.13,1950,2687,431],["Lake Ferona Cave",66.08,37.28,1930,1272,132],["Lake Ferona Cave",66.1,36.95,1932,1305,177],["Cephla Lake Cave",71.62,36.7,2594,1330,161],["Foothill Monster Den",68.96,34.8,2275,1520,167],["Floria River Upstream Excavation",56.75,79.72,810,-2972,23],["Pagos Woods Excavation Site",55.6,81.09,672,-3109,36],["Tobio's Hollow Cave",59.75,74.44,1170,-2444,186],["Cora Lakefront Cave",47.87,79.4,-256,-2940,-6],["Cora Lakefront Cave",48.58,80.67,-171,-3067,-1],["Finra Woods Excavation Site",54.74,79.82,569,-2982,25],["Sarjon Woods Cave",60.02,81.71,1203,-3171,37],["Lake Hylia Whirlpool Cave",51.05,75.01,126,-2501,-76],["Popla Foothills Excavation Site",55.08,72.1,609,-2210,62],["Puffer Beach Overhead Cave",52.37,88.51,284,-3851,45],["River of the Dead Waterfall Cave",40.9,71.63,-1092,-2163,153],["Shrine of Resurrection",41.15,68.3,-1062,-1830,152],["Gerudo Sanctuary",18.64,76.99,-3763,-2699,27],["Gerudo Sanctuary",18.64,74.21,-3763,-2421,27],["Valley of Silent Statues",18.11,76.5,-3827,-2650,47],["Quicksand Lake Cave",23.01,79.4,-3239,-2940,-52],["Mount Nabooru Cave",33.61,70.6,-1967,-2060,42],["Mount Nabooru Cave",35.03,69.61,-1796,-1961,43],["Stalry Plateau Cave",37.27,72.23,-1528,-2223,-8],["East Gerudo Ruins Cave",27.53,78.09,-2696,-2809,-54],["Central Gerudo Cave",19.34,82.55,-3679,-3255,-6],["Mount Nabooru South Cave",35.61,71.83,-1727,-2183,17],["Lower Spectacle Rock Cave",35.47,73.94,-1744,-2394,1],["Spectacle Rock Cave",31.53,73.95,-2216,-2395,255],["Ancient Prison Ruins",24.18,80.64,-3099,-3064,-38],["South Gerudo Cave",25.51,88.58,-2939,-3858,-24],["Koukot Plateau Cave",31.18,67.59,-2259,-1759,68],["Koukot Plateau Cave",31.88,68.42,-2174,-1842,137],["Ancient Altar Ruins",28.87,86.26,-2536,-3626,-35],["Oasis Source",22.04,76.94,-3355,-2694,8],["Gerudo Great Skeleton",9.88,88.75,-4814,-3875,11],["West Gerudo Underground Ruins",11.06,69.86,-4673,-1986,21],["Yiga Blademaster Station",29.72,68.2,-2434,-1820,155],["Gerudo Canyon Mine",28.24,76.05,-2611,-2605,123],["Gerudo Canyon Mine",27.69,74.03,-2677,-2403,90],["Taafei Hill Cave",29.52,67.99,-2457,-1799,185],["Statue of the Eighth Heroine Cave",13.46,55.37,-4385,-537,478],["Meadela's Mantle Cave",16.81,62.45,-3983,-1245,431],["Mystathi's Shelf Cave",17.65,57.27,-3882,-727,572],["Mount Dunsel Cave",76.87,80.18,3224,-3018,71],["Mount Dunsel Cave",77.42,82.96,3291,-3296,76],["Mount Floria Cave",66.33,76.12,1960,-2612,82],["Mount Floria Cave",64.92,79.86,1790,-2986,91],["Corta Lake Cave",63.98,80.39,1677,-3039,174],["Rodai Lakefront Tunnel",65.8,81.11,1896,-3111,142],["Calora Lake Cave",66.33,80.33,1959,-3033,202]],"k":[["Bottomless Cave",55.93,64.49,712,-1449,1472],["Bottomless Cave",56.16,63.58,739,-1358,1527],["Pit Cave",55.27,66.39,632,-1639,1469],["Pit Cave",54.89,66.25,587,-1625,1429],["Pondside Cave",51.42,66.34,171,-1634,1365],["Pondside Cave",52.17,65.58,260,-1558,1349],["Mining Cave",53.17,66.32,380,-1632,1398],["Mining Cave",54.08,66.26,490,-1626,1356]]}};
+
+    const CAT = {
+      sh: { n: 'Santuario', done: 'Completado ✓', mark: 'Marcar como completado', ok: 'Completado', todo: 'Pendiente' },
+      tw: { n: 'Torre de vigilancia', done: 'Activada ✓', mark: 'Marcar como activada', ok: 'Activada', todo: 'Pendiente' },
+      cv: { n: 'Cueva o túnel', done: 'Explorada ✓', mark: 'Marcar como explorada', ok: 'Explorada', todo: 'Pendiente' },
+      sd: { n: 'Semilla kolog', done: 'Recogida ✓', mark: 'Marcar como recogida', ok: 'Recogida', todo: 'Pendiente' }
+    };
+    // lista normalizada por categoría y capa: { n, raw, x%, y%, gx, gy, alt, two, fx%, fy% }
+    const NORM = {
+      sh: (l) => D.SH[l].map((a) => ({ n: a[0] + ' Shrine', raw: a[0], x: a[1], y: a[2], gx: a[3], gy: a[4], alt: a[5] })),
+      tw: (l) => X.TW[l].map((a) => ({ n: a[0] + ' Skyview Tower', raw: a[0], x: a[1], y: a[2], gx: a[3], gy: a[4], alt: a[5] })),
+      cv: (l) => X.CV[l].map((a) => ({ n: a[0], raw: a[0], x: a[1], y: a[2], gx: a[3], gy: a[4], alt: a[5] })),
+      sd: (l) => D.SD[l + '1'].map((a) => ({ n: 'Semilla kolog', raw: '', x: a[0], y: a[1], gx: a[2], gy: a[3], alt: null }))
+        .concat(D.SD[l + '2'].map((a) => ({ n: 'Kolog con amigo', raw: '', x: a[0], y: a[1], fx: a[2], fy: a[3], gx: a[4], gy: a[5], alt: null, two: true })))
+    };
+    const NL = {};
+    const get = (c, l) => NL[c + l] || (NL[c + l] = NORM[c](l));
+    const keyOf = (c, l, i) => c + ':' + l + ':' + i;
+    const parse = (k) => { const p = k.split(':'); return { c: p[0], l: p[1], i: Number(p[2]) }; };
+    const pickKey = (key) => () => {
+      const p = parse(key);
+      this.setState({ sel: key, layer: p.l === 'k' ? 'sky' : 'surf', zi: Math.max(zi, 2), px: 0, py: 0 });
+    };
+    const st = S.st || 'all';
+    const pass = (k) => st === 'all' || (st === 'done' ? !!found[k] : !found[k]);
+
+    // iconos: semillas debajo, luego cuevas, torres y santuarios encima
+    const pins = [];
+    const fr = [];
+    let nAll = 0, nDone = 0;
+    ['sd', 'cv', 'tw', 'sh'].forEach((c) => {
+      if (!cats[c]) return;
+      get(c, L).forEach((it, i) => {
+        const key = keyOf(c, L, i);
+        const done = !!found[key];
+        nAll++; if (done) nDone++;
+        if (!pass(key)) return;
+        pins.push({
+          x: it.x + '%', y: it.y + '%', lbl: it.n, aria: it.n + (done ? ', hecho' : ''),
+          sub: (c === 'sd' ? (it.two ? 'Lleva al kolog hasta su amigo' : 'Recógela al resolver el puzle') : CAT[c].n) + ' · zona ' + zone(it.gx, it.gy),
+          st: done ? CAT[c].ok : CAT[c].todo, stc: done ? 'ok' : '',
+          cls: 'pin ' + (c === 'sd' ? (it.two ? 'p-sd2' : 'p-sd') : 'p-' + c) + (done ? ' done' : '') + (sel === key ? ' sel' : ''),
+          pick: pickKey(key)
+        });
+        if (it.two) fr.push({ x: it.fx + '%', y: it.fy + '%' });
+      });
+    });
+
+    let selObj = null;
+    if (sel) {
+      const p = parse(sel);
+      const it = NORM[p.c] && get(p.c, p.l)[p.i];
+      if (it) {
+        const ent = p.c === 'cv' ? get('cv', p.l).filter((b) => b.raw === it.raw).length : 0;
+        selObj = { it, p, layer: p.l === 'k' ? 'Cielo' : 'Superficie', cat: CAT[p.c].n + (ent > 1 ? ' · ' + ent + ' entradas' : '') + (it.two ? ' · con amigo' : '') };
+      }
+    }
+    const selHere = selObj && selObj.p.l === L;
+    const zoom = ZS[zi];
+
+    const all = [];
+    ['sh', 'tw', 'cv'].forEach((c) => ['s', 'k'].forEach((l) => get(c, l).forEach((it, i) => all.push({ a: [it.raw], key: keyOf(c, l, i), ln: CAT[c].n + ' · ' + (l === 'k' ? 'Cielo' : 'Superficie') }))));
+    const nq = norm(q);
+    const seen = {};
+    const res = nq ? all.filter((r) => norm(r.a[0]).includes(nq) && !seen[r.a[0] + r.ln] && (seen[r.a[0] + r.ln] = 1)).slice(0, 7).map((r) => ({ n: r.a[0], ln: r.ln, pick: pickKey(r.key) })) : [];
+
+    const doneOf = (c) => Object.keys(found).filter((k) => found[k] && k.indexOf(c + ':') === 0).length;
+    const doneSd = Object.keys(found).filter((k) => found[k] && k.indexOf('sd:') === 0).reduce((n, k) => { const p = parse(k); const it = get('sd', p.l)[p.i]; return n + (it && it.two ? 2 : 1); }, 0);
+    const doneSh = doneOf('sh');
+    const doneTw = doneOf('tw');
+    const setLayer = (l) => () => this.setState({ layer: l, px: 0, py: 0 });
+    const uniq = (arr) => Object.keys(arr.reduce((o, a) => { o[a[0]] = 1; return o; }, {})).length;
+
+    const cat = {}, pr = {}, tog = {};
+    ['sh', 'tw', 'cv', 'sd'].forEach((c) => {
+      cat[c] = cats[c] ? 'onc' : 'offc';
+      pr[c] = cats[c] ? 'true' : 'false';
+      tog[c] = () => this.setState({ cats: Object.assign({}, cats, { [c]: !cats[c] }) });
+    });
+    const onTarget = (e) => e.target && e.target.closest && e.target.closest('.pin, .zoom, .legend');
+
+    return {
+      motionClass: motion ? '' : 'still',
+      layerCls: layer === 'sky' ? 'sky' : 'surf',
+      layerName: layer === 'sky' ? 'Cielo' : 'Superficie',
+      mapImg: layer === 'sky' ? '../assets/zelda/mapas/cielo-hd.webp' : '../assets/zelda/mapas/superficie-hd.webp',
+      lySurf: layer === 'surf' ? 'on' : '', lySky: layer === 'sky' ? 'on' : '',
+      selSurf: layer === 'surf' ? 'true' : 'false', selSky: layer === 'sky' ? 'true' : 'false',
+      setSurf: setLayer('surf'), setSky: setLayer('sky'),
+      pins,
+      zi, zoom, zoomTxt: String(zoom).replace('.', ','),
+      tx: selHere && zi > 0 ? (-zoom * (selObj.it.x - 50)).toFixed(2) + '%' : '0%',
+      ty: selHere && zi > 0 ? (-zoom * (selObj.it.y - 50)).toFixed(2) + '%' : '0%',
+      px, py, dragCls: S.drag ? 'drag' : '',
+      vpArm: (e) => { const el = e.currentTarget; this._trapEl = el; el.scrollTop = 1500; },
+      vpWheel: (e) => { const el = e.currentTarget; if (!el.isConnected) return; if (this._trapEl !== el) { this._trapEl = el; el.scrollTop = 1500; return; } const d = el.scrollTop - 1500; if (!d) return; el.scrollTop = 1500; this._wacc = (this._wacc || 0) + d; const now = Date.now(); if (Math.abs(this._wacc) < 60 || now - (this._wt || 0) < 140) return; const dir = this._wacc < 0 ? 1 : -1; this._wacc = 0; this._wt = now; const z0 = (this.state || {}).zi || 0; const z1 = Math.max(0, Math.min(4, z0 + dir)); if (z1 !== z0) this.setState(z1 === 0 ? { zi: 0, px: 0, py: 0 } : { zi: z1 }); },
+      zoomIn: () => this.setState({ zi: Math.min(4, zi + 1) }),
+      zoomOut: () => this.setState({ zi: Math.max(0, zi - 1) }),
+      zoomReset: () => this.setState({ zi: 0, sel: null, px: 0, py: 0 }),
+      vpDown: (e) => {
+        if ((e.button !== undefined && e.button !== 0) || onTarget(e)) return;
+        this._drag = { x: e.clientX, y: e.clientY, px, py };
+        this.setState({ drag: true });
+      },
+      vpMove: (e) => {
+        const d = this._drag;
+        if (!d) return;
+        this._next = { px: d.px + (e.clientX - d.x), py: d.py + (e.clientY - d.y) };
+        if (!this._raf) {
+          this._raf = requestAnimationFrame(() => { this._raf = null; if (this._next) this.setState(this._next); });
+        }
+      },
+      vpUp: () => { if (!this._drag) return; this._drag = null; this.setState({ drag: false }); },
+      vpDbl: (e) => { if (onTarget(e)) return; this.setState({ zi: Math.min(4, zi + 1) }); },
+      cat, pr, tog,
+      cnt: { sh: D.SH[L].length, tw: X.TW[L].length, cv: uniq(X.CV[L]), sd: D.SD[L + '1'].length + 2 * D.SD[L + '2'].length },
+      fr, doneSd, pctSd: (doneSd / 875 * 100).toFixed(1) + '%',
+      nAll, nDone, nTodo: nAll - nDone,
+      stAll: st === 'all' ? 'on' : '', stTodo: st === 'todo' ? 'on' : '', stDone: st === 'done' ? 'on' : '',
+      stAllP: st === 'all' ? 'true' : 'false', stTodoP: st === 'todo' ? 'true' : 'false', stDoneP: st === 'done' ? 'true' : 'false',
+      setAll: () => this.setState({ st: 'all' }), setTodo: () => this.setState({ st: 'todo' }), setDone: () => this.setState({ st: 'done' }),
+      showAll: () => this.setState({ cats: { sh: true, tw: true, cv: true, sd: true } }),
+      hideAll: () => this.setState({ cats: { sh: false, tw: false, cv: false, sd: false } }),
+      onQuery: (e) => this.setState({ q: e.target.value }),
+      hasRes: res.length > 0, res,
+      doneSh, doneTw,
+      pctSh: (doneSh / 152 * 100).toFixed(1) + '%', pctTw: (doneTw / 15 * 100).toFixed(1) + '%',
+      hasSel: !!selObj, noSel: !selObj,
+      selN: selObj ? (selObj.it.raw || selObj.it.n) : '', selL: selObj ? selObj.layer : '', selC: selObj ? selObj.cat : '',
+      selZ: selObj ? zone(selObj.it.gx, selObj.it.gy) : '',
+      selX: selObj ? fmt(selObj.it.gx) : '', selY: selObj ? fmt(selObj.it.gy) : '', selA: selObj ? (selObj.it.alt === null ? '—' : fmt(selObj.it.alt)) : '',
+      selDoneCls: selObj && found[sel] ? 'is' : '',
+      selDoneTxt: selObj ? (found[sel] ? CAT[selObj.p.c].done : CAT[selObj.p.c].mark) : '',
+      toggleDone: () => { const f = Object.assign({}, found); f[sel] = !f[sel]; this.setState({ found: f }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

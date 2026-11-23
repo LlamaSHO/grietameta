@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>GrietaMeta · Kanto · Historia</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=Fredoka:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+
+body{margin:0;background:#07090D}
+.pk{position:relative;background:#07090D;color:#EEF1F6;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.pk *,.pk *::before,.pk *::after{box-sizing:border-box}
+.pk a{color:#FFCB3D}
+.pk button{font:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fd{font-family:'Fredoka','Bricolage Grotesque',system-ui,sans-serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r0,0deg))}50%{transform:translateY(-12px) rotate(var(--r1,0deg))}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--pc,rgba(255,203,61,.6))}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes slide{from{background-position:0 0}to{background-position:-1792px 0}}
+
+/* marca GM */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter;stroke-miterlimit:8}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,11,16,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1}
+.pk a.brand{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8E97A5;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#EEF1F6;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7C8696}
+.search input:focus{border-color:rgba(255,203,61,.6);box-shadow:0 0 0 4px rgba(255,203,61,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8E97A5;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.pk a.btn-prem,.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.pk a.btn-ghost,.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(255,255,255,.14);color:#EEF1F6;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+
+/* sub-barra Pokémon */
+.sub{position:relative;border-top:1px solid rgba(255,255,255,.05);background:rgba(16,19,28,.8)}
+.sub::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%);opacity:.85}
+.sub-in{display:flex;align-items:center;gap:2px;height:52px}
+.pk a.gchip,.gchip{display:flex;align-items:center;gap:8px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(255,255,255,.1);color:#FFF;text-decoration:none;font:700 19px/1 'Fredoka',sans-serif;letter-spacing:.01em;flex-shrink:0}
+.gchip .spr{width:34px;height:34px;margin:-4px -2px -4px -6px}
+.gchip em{font-style:normal;background:linear-gradient(90deg,#FFCB3D,#FF7A59);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pk a.slink,.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:52px;padding:0 12px;color:#A7B0BE;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.pk a.slink:hover,.slink.on{color:#FFF}
+.pk a.slink.on{color:#FFF}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:3px;background:linear-gradient(90deg,#FFCB3D,#FF7A59,#FF5AA5,#5B8CFF)}
+.dd{position:relative;display:flex;align-items:center;height:52px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#FFF}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:12px;border-radius:18px;background:#0F131C;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.rm{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;width:820px}
+.pk a.ro,.ro{position:relative;display:flex;flex-direction:column;gap:2px;padding:10px 10px 10px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#FFF;min-height:112px;background:linear-gradient(160deg,var(--c1),var(--c2));transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.ro::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,10,16,.1),rgba(8,10,16,.82))}
+.ro .art{position:absolute;right:2px;top:4px;width:70px;height:70px;z-index:-1;opacity:.95;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.ro:hover{transform:translateY(-2px);box-shadow:0 14px 26px -14px var(--c1)}
+.ro:hover .art{transform:translateY(-4px) scale(1.12)}
+.ro small{font:700 10.5px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.ro b{margin-top:auto;font:700 19px/1 'Fredoka',sans-serif}
+.ro span{font-size:11px;color:rgba(255,255,255,.78);line-height:1.25}
+.ro.off{cursor:default}
+.ro.off::after{content:"Próximamente";position:absolute;top:8px;left:8px;padding:2px 7px;border-radius:999px;background:rgba(8,10,16,.6);font:700 9.5px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#FFE08A}
+.rm-f{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;padding:10px 4px 2px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8E97A5}
+.rm-f a{font-weight:600;text-decoration:none}
+.gl{display:flex;flex-direction:column;gap:2px;width:330px}
+.pk a.gi,.gi{display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:12px;text-decoration:none;color:#EEF1F6;transition:background .2s}
+.gi:hover{background:rgba(255,255,255,.05)}
+.gi .g1s{width:56px;height:56px;margin:-6px -4px;flex-shrink:0;border-radius:10px;background-color:rgba(255,255,255,.05)}
+.gi b{display:block;font-size:14px}
+.gi span{display:block;font-size:12px;color:#8E97A5}
+
+/* sprites (hojas) */
+.spr{display:block;background-image:url(../assets/pokemon/sprites-front.png);background-size:3200% 3300%;background-repeat:no-repeat}
+.art{display:block;background-image:url(../assets/pokemon/artwork.webp);background-size:1500% 1500%;background-repeat:no-repeat}
+.g1s{display:block;background-image:url(../assets/pokemon/sprites-gen1.png);background-size:1600% 1000%;background-repeat:no-repeat;image-rendering:pixelated}
+
+/* tipos */
+.t-normal{--tc:#A8A77A;--tx:#1B1A12;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7.5' fill='none' stroke='%23000' stroke-width='3.4'/%3E%3C/svg%3E")}
+.t-fighting{--tc:#D3425F;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5l2.4 5.6 5.7-2.4-2.1 5.8L23.5 12l-5.5 1.5 2.1 5.8-5.7-2.4L12 22.5l-2.4-5.6-5.7 2.4 2.1-5.8L.5 12l5.5-1.5L3.9 4.7l5.7 2.4z'/%3E%3C/svg%3E")}
+.t-flying{--tc:#8FA8DD;--tx:#10172A;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 15c5-.5 9-4 11-11 1.6 4.4.8 8.4-1.4 10.6 3.3-1.4 6.8-1.6 10.4-.2-3.2 2.4-6.6 3.6-10.2 3.6 2.3.8 4.2 2.2 5.4 4.2-4.6.5-8.8-.6-11.4-2.8C4.4 19.4 3 19.4 2 19z'/%3E%3C/svg%3E")}
+.t-poison{--tc:#B567CE;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='9' cy='14.5' r='6.5'/%3E%3Ccircle cx='17.5' cy='7' r='3.6'/%3E%3Ccircle cx='19' cy='16.8' r='2.4'/%3E%3C/svg%3E")}
+.t-ground{--tc:#D97845;--tx:#1F1206;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1.5 17.5l6.5-9 4.3 5.6 3.2-4.4 7 7.8z'/%3E%3Crect x='1.5' y='19' width='21' height='3' rx='1.5'/%3E%3C/svg%3E")}
+.t-rock{--tc:#C5B78C;--tx:#1D1A10;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M7.5 2.5h9l5 7.5-4.5 11.5h-9L2.5 10.5zM8.5 5l-3 5.5 3.2 8.5h1.6L8 10.6 10.4 5z'/%3E%3C/svg%3E")}
+.t-bug{--tc:#91C12F;--tx:#141B05;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='14.5' rx='6.2' ry='7.2'/%3E%3Cpath d='M8.6 7.2L6 2.5M15.4 7.2L18 2.5M5.8 12H2M18.2 12H22M6 17.5l-3.2 2M18 17.5l3.2 2' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.t-ghost{--tc:#5269AD;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5l-2.5-2.2-2.5 2.2-2.5-2.2-2.5 2.2-2.5-2.2zM9.5 9a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zm5 0a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6z'/%3E%3C/svg%3E")}
+.t-steel{--tc:#5A8EA2;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 1.5l9.1 5.25v10.5L12 22.5l-9.1-5.25V6.75zM12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6z'/%3E%3C/svg%3E")}
+.t-fire{--tc:#FF9D55;--tx:#2A1300;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.5 1.5c.8 4.4 6.5 6.6 6.5 13a7 7 0 0 1-14 0c0-3.4 1.9-5.7 3.4-6.9 0 2.2.9 3.6 2.2 3.9-.6-4.1.1-7.2 1.9-10z'/%3E%3C/svg%3E")}
+.t-water{--tc:#4D90D5;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5s7.5 8.4 7.5 13.6a7.5 7.5 0 0 1-15 0C4.5 9.9 12 1.5 12 1.5z'/%3E%3C/svg%3E")}
+.t-grass{--tc:#63BC5A;--tx:#0D1F0A;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.5 21C3.5 9.5 11 3.6 21.5 2.5c.4 11-5 18-15.2 18.2L3.8 23z'/%3E%3C/svg%3E")}
+.t-electric{--tc:#F4D23C;--tx:#2A2300;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13.5 1.5L3.5 14h7.2l-1.4 8.5L20.5 9.6h-7.2z'/%3E%3C/svg%3E")}
+.t-psychic{--tc:#FA7179;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 4.5C5.5 4.5 1.5 12 1.5 12s4 7.5 10.5 7.5S22.5 12 22.5 12s-4-7.5-10.5-7.5zm0 3.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8z'/%3E%3C/svg%3E")}
+.t-ice{--tc:#73CEC0;--tx:#0B2420;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5v21M2.9 6.75l18.2 10.5M2.9 17.25l18.2-10.5M9 3.5l3 2.6 3-2.6M9 20.5l3-2.6 3 2.6' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.t-dragon{--tc:#0B6DC3;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 22C4.5 12.5 8 5.8 15 2.5c-3.4 5.4-4.4 11.4-3.4 19.5zM11.5 22c0-6.4 2.4-10.8 7.8-14-2 4.4-2.8 8.8-1.8 14zM17 22c0-3.4 1.2-6.4 4.5-8.6-1 3.2-1 5.8-.4 8.6z'/%3E%3C/svg%3E")}
+.t-dark{--tc:#5A5465;--tx:#FFF;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.5 15.2A9 9 0 0 1 8.8 3.5a9 9 0 1 0 11.7 11.7z'/%3E%3C/svg%3E")}
+.t-fairy{--tc:#EC8FE6;--tx:#2A0E28;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 1.5c.9 5.5 2.4 7.2 7.6 8.2-5.2 1-6.7 2.7-7.6 8.2-.9-5.5-2.4-7.2-7.6-8.2 5.2-1 6.7-2.7 7.6-8.2z'/%3E%3Ccircle cx='19' cy='19' r='2.6'/%3E%3C/svg%3E")}
+.ty{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px 0 4px;border-radius:999px;background:var(--tc);color:var(--tx);font:600 12px/1 'Fredoka',sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.ty i,.ti{display:inline-block;width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,.92);position:relative;flex-shrink:0}
+.ty i::after,.ti::after{content:"";position:absolute;inset:3px;background:var(--tc);-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.ty.sm{height:20px;font-size:11px;padding:0 8px 0 3px}
+.ty.sm i{width:14px;height:14px}
+.ty.sm i::after{inset:2.5px}
+.gl.cm{width:400px}
+.gi .cmi{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:12px;font:700 13px/1 'Fredoka',sans-serif;color:#FFF}
+.cmi.c1{background:linear-gradient(135deg,#FF5A5F,#FFCB3D)}
+.cmi.c2{background:linear-gradient(135deg,#3B4CCA,#7C3AED)}
+.cmi.c3{background:linear-gradient(135deg,#22C55E,#0EA5E9)}
+.gi b em{margin-left:6px;padding:2px 7px;border-radius:999px;background:rgba(255,203,61,.16);color:#FFE08A;font:700 10px/1.4 'IBM Plex Sans',sans-serif;font-style:normal;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+.gi b em.nof{background:rgba(124,58,237,.2);color:#C9B5FF}
+.tglyph{display:inline-block;width:18px;height:18px;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+
+/* comunes */
+.kick{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#FFCB3D}
+.kick i{display:block;width:30px;height:6px;border-radius:3px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%)}
+.h2{margin:10px 0 0;font:700 clamp(30px,3.6vw,44px)/1.04 'Fredoka',sans-serif;letter-spacing:-.01em}
+.sec{padding:64px 0 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px 32px;margin-bottom:24px}
+.sec-h p{margin:8px 0 0;max-width:620px;color:#A3ACBA;font-size:15.5px}
+.pk a.btn-y,.btn-y{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;border:0;background:#FFCB3D;color:#1A1405;font:700 16px/1 'Fredoka',sans-serif;letter-spacing:.01em;text-decoration:none;cursor:pointer;box-shadow:0 14px 34px -14px rgba(255,203,61,.85),inset 0 -3px 0 rgba(0,0,0,.14);transition:transform .2s}
+.btn-y:hover{transform:translateY(-2px)}
+.pk a.btn-o,.btn-o{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.03);color:#EEF1F6;font:600 16px/1 'Fredoka',sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s}
+.btn-o:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#C9D0DA;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{color:#FFF;border-color:rgba(255,255,255,.28)}
+.chip.on{background:#FFCB3D;border-color:#FFCB3D;color:#1A1405}
+.seg{display:inline-flex;gap:3px;padding:4px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.seg button{height:34px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:#A7B0BE;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.seg button:hover{color:#FFF}
+.seg button.on{background:#FFF;color:#0B0E15}
+.gens{display:flex;gap:6px;flex-wrap:wrap}
+.gens button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-width:72px;height:50px;padding:0 12px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#C9D0DA;font:700 15px/1 'Fredoka',sans-serif;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,border-color .2s,background .2s}
+.gens button small{font:600 10.5px/1 'IBM Plex Sans',sans-serif;color:#7C8696;letter-spacing:.02em}
+.gens button::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--rc)}
+.gens button:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.25)}
+.gens button.on{background:linear-gradient(135deg,var(--rc),var(--rc2));border-color:transparent;color:#FFF;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.gens button.on small{color:rgba(255,255,255,.85)}
+.card{position:relative;border-radius:24px;background:linear-gradient(180deg,#111622,#0C1019);border:1px solid rgba(255,255,255,.07)}
+.slot{display:grid;place-items:center;text-align:center;padding:14px;border-radius:16px;border:1.5px dashed rgba(255,255,255,.22);background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 12px,transparent 12px 24px);color:#A3ACBA;font-size:12.5px;font-weight:600;line-height:1.35}
+.slot b{display:block;color:#EEF1F6;font:600 13px/1.3 'Fredoka',sans-serif;margin-bottom:2px}
+.bar{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--bc,#FFCB3D)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font:600 12px/1 'IBM Plex Sans',sans-serif;background:rgba(255,255,255,.06);color:#C9D0DA;border:1px solid rgba(255,255,255,.08)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+.live{color:#7CF3B0}
+.live .dot{animation:pulse 2s infinite;--pc:rgba(124,243,176,.6)}
+
+/* footer */
+.foot{margin-top:88px;border-top:1px solid rgba(255,255,255,.07);padding:48px 0 40px;font-size:13.5px;color:#8F98A5;position:relative}
+.foot::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:linear-gradient(90deg,#A8A77A 0.00% 5.56%,#D3425F 5.56% 11.11%,#8FA8DD 11.11% 16.67%,#B567CE 16.67% 22.22%,#D97845 22.22% 27.78%,#C5B78C 27.78% 33.33%,#91C12F 33.33% 38.89%,#5269AD 38.89% 44.44%,#5A8EA2 44.44% 50.00%,#FF9D55 50.00% 55.56%,#4D90D5 55.56% 61.11%,#63BC5A 61.11% 66.67%,#F4D23C 66.67% 72.22%,#FA7179 72.22% 77.78%,#73CEC0 77.78% 83.33%,#0B6DC3 83.33% 88.89%,#5A5465 88.89% 94.44%,#EC8FE6 94.44% 100.00%);opacity:.5}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot-about{max-width:420px}
+.foot-about p{margin:12px 0 0;line-height:1.7}
+.foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot-col{display:flex;flex-direction:column;gap:8px}
+.foot-col h4{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ECE9E1}
+.pk .foot-col a{color:#A0A8B4;text-decoration:none}
+.pk .foot-col a:hover{color:#FFCB3D}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);font-size:12.5px;color:#7C8592;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* barra inferior móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;height:60px;gap:12px}
+  .nav .search{display:none}
+  .btn-ghost,.pk a.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;height:50px}
+  .sub-in::-webkit-scrollbar{display:none}
+  .menu{display:none}
+  .dd>.slink svg.chev{display:none}
+  .slink{height:50px;padding:0 10px;font-size:13.5px}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.95);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .pk a.tb,.tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;text-decoration:none}
+  .tb svg{width:22px;height:22px}
+  .tb .spr{width:30px;height:30px;margin:-4px 0 -3px}
+  .pk a.tb.on,.tb.on{color:#FFCB3D;background:rgba(255,203,61,.12)}
+  .foot-cols{gap:32px}
+  .sec{padding-top:48px}
+}
+@media (max-width:560px){
+  .brand-name{display:none}
+  .btn-prem{padding:0 12px}
+  .btn-y,.btn-o{height:46px;padding:0 18px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pk *,.pk *::before,.pk *::after{animation:none !important;transition:none !important}
+}
+.pk.still *,.pk.still *::before,.pk.still *::after{animation:none !important;transition:none !important}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+
+.kbar{position:relative;background:linear-gradient(90deg,rgba(227,53,13,.16),rgba(59,111,224,.12) 50%,rgba(245,196,0,.12));border-bottom:1px solid rgba(255,255,255,.07)}
+.kbar-in{display:flex;align-items:center;gap:20px;min-height:64px}
+.kb-r{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.kb-r .g1s{width:56px;height:56px;margin:-6px -4px}
+.kb-r small{display:block;font:700 10px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#FFB703}
+.kb-r b{display:block;font-size:22px;line-height:1}
+.kb-t{display:flex;gap:6px;flex:1;min-width:0}
+.pk a.kt,.kt{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;color:#C9D0DA;text-decoration:none;font-size:14px;font-weight:600;border:1px solid transparent;white-space:nowrap;transition:background .2s}
+.pk a.kt:hover{background:rgba(255,255,255,.06);color:#FFF}
+.kn{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08);font:400 10px/1 'Press Start 2P',monospace;color:#FFE08A}
+.pk a.kt.on{background:#FFF;color:#121212}
+.kt.on .kn{background:#E3350D;color:#FFF}
+.kb-v{font:400 9px/1.5 'Press Start 2P',monospace;color:#8E97A5;flex-shrink:0}
+.px{font-family:'Press Start 2P',monospace;font-weight:400}
+@media (max-width:860px){
+  .kbar-in{gap:10px;min-height:56px}
+  .kb-r span:last-child,.kb-v{display:none}
+  .kb-t{overflow-x:auto;scrollbar-width:none}
+  .kb-t::-webkit-scrollbar{display:none}
+  .kt{font-size:13px;height:36px;padding:0 12px 0 4px}
+  .kn{width:26px;height:26px}
+}
+
+.khero{position:relative;overflow:hidden;isolation:isolate;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.06)}
+.kh-bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 85% 30%,color-mix(in srgb,var(--vc) 55%,transparent),transparent 65%),radial-gradient(50% 60% at 10% 0%,color-mix(in srgb,var(--vc2) 25%,transparent),transparent 70%);transition:background .5s}
+.kh-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:16px 16px;-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent)}
+.kh-in{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding-top:40px}
+.kh-tx{flex:1 1 520px;max-width:620px}
+.h1{margin:14px 0 0;font-size:clamp(56px,8vw,112px);font-weight:700;line-height:.86;letter-spacing:-.02em}
+.h1 span{display:block;font-size:.3em;letter-spacing:0;margin-top:14px;color:var(--vc)}
+.lead{margin:18px 0 0;color:#B2BAC6;font-size:17px;max-width:540px}
+.vsel{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.cart{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:150px;padding:10px 12px 12px;border-radius:12px 12px 6px 6px;border:0;background:linear-gradient(180deg,color-mix(in srgb,var(--cc) 85%,#000),color-mix(in srgb,var(--cc) 60%,#000));color:#FFF;cursor:pointer;text-align:left;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.cart::before{content:"";position:absolute;top:0;right:14px;width:22px;height:8px;border-radius:0 0 4px 4px;background:rgba(0,0,0,.25)}
+.cart-l{display:grid;place-items:center;width:100%;height:62px;overflow:hidden;border-radius:6px;background:rgba(255,255,255,.9);margin-bottom:6px}
+.cart-l .g1s{width:56px;height:56px}
+.cart b{font-size:17px}
+.cart small{font-size:11px;color:rgba(255,255,255,.8)}
+.cart:hover{transform:translateY(-4px)}
+.cart.on{transform:translateY(-8px);box-shadow:inset 0 -4px 0 rgba(0,0,0,.25),0 16px 30px -12px var(--cc),0 0 0 3px #FFF}
+.cart.vr{--cc:#E3350D}.cart.va{--cc:#3B6FE0}.cart.vy{--cc:#F5C400}
+.cart.vy b,.cart.vy small{color:#2A2000}
+.kh-art{position:relative;flex:1 1 400px;max-width:480px;aspect-ratio:1}
+.sun{position:absolute;inset:8%;border-radius:50%;background:repeating-conic-gradient(color-mix(in srgb,var(--vc) 55%,transparent) 0 10deg,transparent 10deg 20deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%);animation:spin 60s linear infinite}
+.kh-art .art{position:absolute;inset:6%;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6));animation:bob 7s ease-in-out infinite}
+.dlg{position:absolute;left:-30px;right:20px;bottom:-4px;padding:16px 18px;border-radius:8px;background:#F8F8F0;border:4px solid #303848;box-shadow:0 0 0 4px #F8F8F0,0 20px 40px -14px rgba(0,0,0,.8);color:#202020;font-size:12px;line-height:1.8}
+.dlg i{position:absolute;right:12px;bottom:6px;font-style:normal;font-size:10px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.kfacts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:34px}
+.kfacts div{padding:14px 16px;border-radius:18px;background:rgba(8,10,16,.55);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.kfacts b{display:block;font-size:30px;line-height:1;color:var(--vc)}
+.kfacts span{font-size:13px;color:#A3ACBA}
+.g1g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.g1c{padding:18px;border-radius:22px;background:#0D1119;border:1px solid rgba(255,255,255,.07);border-top:4px solid var(--k)}
+.g1c h3{margin:14px 0 0;font-size:19px;font-weight:600}
+.g1c p{margin:6px 0 0;color:#A3ACBA;font-size:14px}
+.gv{height:84px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;background:color-mix(in srgb,var(--k) 10%,#0A0D14);border:1px dashed color-mix(in srgb,var(--k) 40%,transparent)}
+.gv.no .x{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#FF6B6B;color:#2A0505;font:700 22px/1 'Fredoka',sans-serif}
+.gv.sp{flex-direction:column;align-items:stretch;padding:10px 16px;gap:5px}
+.gv.sp span{display:grid;grid-template-columns:40px 1fr;align-items:center;gap:8px}
+.gv.sp b{font-size:9px;color:#E9DDFF}
+.gv.sp i{display:block;height:9px;border-radius:5px;background:linear-gradient(90deg,#B98CFF,#7C5CFF)}
+.gv.sp .dim i{width:0;background:rgba(255,255,255,.1);width:100%;opacity:.35}
+.gv.sp .dim b{color:#6D7686;text-decoration:line-through}
+.gv.ty3 .ty{filter:grayscale(.85) brightness(.8);text-decoration:line-through}
+.gv.cr .g1s{width:56px;height:56px}
+.gv.cr .px{font-size:10px;color:#7CF3B0}
+.starters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stc{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:26px;overflow:hidden;isolation:isolate;background:radial-gradient(80% 70% at 50% 25%,color-mix(in srgb,var(--tc) 70%,#0D1119),#0D1119 75%);border:1px solid color-mix(in srgb,var(--tc) 40%,transparent)}
+.stc .art{position:absolute;left:50%;top:6px;width:220px;height:220px;margin-left:-110px;z-index:-1;filter:drop-shadow(0 18px 24px rgba(0,0,0,.5));transition:transform .5s}
+.stc:hover .art{transform:scale(1.06) translateY(-4px)}
+.stc-b{padding:18px 20px 20px;background:linear-gradient(180deg,transparent,rgba(9,11,17,.95) 30%);width:100%}
+.lvl{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.lvl.e{background:#7CF3B0;color:#0B2A1A}.lvl.m{background:#FFE08A;color:#2A2000}.lvl.h{background:#FF8A8A;color:#3A0B0B}
+.stc h3{margin:8px 0 0;font-size:26px;font-weight:700}
+.stc p{margin:4px 0 0;color:#B2BAC6;font-size:14px}
+.prog{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ring{position:relative;width:64px;height:64px;border-radius:50%;background:conic-gradient(#FFCB3D var(--p),rgba(255,255,255,.08) 0);display:grid;place-items:center}
+.ring::before{content:"";position:absolute;inset:7px;border-radius:50%;background:#07090D}
+.ring b{position:relative;font-size:16px}
+.prog > div > b{display:block;font-size:15px}
+.prog > div > span{font-size:13px;color:#8E97A5}
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.stp{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px}
+.stp-rail{position:relative;display:flex;justify-content:center}
+.stp-rail::before{content:"";position:absolute;top:0;bottom:-10px;width:4px;border-radius:2px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.14) 0 8px,transparent 8px 14px)}
+.stp:last-child .stp-rail::before{display:none}
+.stp-n{position:relative;z-index:1;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:3px solid #2A3040;background:#0D1119;color:#FFE08A;font-size:18px;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s}
+.stp-n .ok{display:none}
+.stp.gymst .stp-n{border-color:#FFCB3D}
+.stp.done .stp-n{background:#3DDC97;border-color:#3DDC97;color:#06210F}
+.stp.done .stp-n .num{display:none}
+.stp.done .stp-n .ok{display:grid}
+.stp-card{border-radius:20px;background:#0D1119;border:1px solid rgba(255,255,255,.07);overflow:hidden;transition:border-color .2s}
+.stp.isopen .stp-card{border-color:rgba(255,203,61,.35)}
+.stp.done .stp-card{opacity:.7}
+.stp-h{display:flex;align-items:center;gap:14px;width:100%;padding:14px 18px;border:0;background:transparent;color:#EEF1F6;text-align:left;cursor:pointer}
+.stp-h > span:first-child{flex:1;min-width:0}
+.stp-h small{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8E97A5}
+.stp-h b{display:block;font-size:19px;font-weight:600;line-height:1.25}
+.stp-mini{display:flex;gap:2px}
+.stp-mini .g1s{width:56px;height:56px;margin:-8px -6px}
+.chev{color:#8E97A5;transition:transform .25s}
+.stp.isopen .chev{transform:rotate(180deg)}
+.stp-b{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;padding:0 18px 18px;animation:fade .3s ease-out both}
+.obj{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.obj li{position:relative;padding-left:22px;font-size:14.5px;color:#D7DCE3}
+.obj li::before{content:"";position:absolute;left:2px;top:7px;width:10px;height:10px;border-radius:3px;border:2px solid #FFCB3D}
+.stp-l h4{margin:16px 0 8px;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8E97A5}
+.mons{display:flex;flex-wrap:wrap;gap:6px}
+.mon{display:flex;align-items:center;gap:4px;padding:2px 10px 2px 2px;border-radius:999px;background:rgba(255,255,255,.05);font-size:13px;font-weight:600}
+.mon .g1s{width:56px;height:56px;margin:-10px -6px -10px -8px}
+.tip{margin:14px 0 0;padding:12px 14px;border-radius:14px;background:rgba(255,203,61,.08);border:1px solid rgba(255,203,61,.25);font-size:14px;color:#E8E2CC}
+.tip b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#FFCB3D;margin-bottom:2px}
+.gym{border-radius:18px;padding:14px;background:linear-gradient(160deg,color-mix(in srgb,var(--tc) 35%,#0D1119),#0D1119 80%);border:1px solid color-mix(in srgb,var(--tc) 45%,transparent)}
+.gym-h{display:flex;align-items:center;gap:12px}
+.medal{display:grid;place-items:center;width:52px;height:52px;flex-shrink:0;border-radius:50%;background:conic-gradient(from 45deg,#FFE9A8,#C99A2E,#FFE9A8,#C99A2E,#FFE9A8);box-shadow:0 6px 16px -6px rgba(0,0,0,.7)}
+.medal .tglyph{width:26px;height:26px;color:var(--tc);background:var(--tc)}
+.gym-h small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.gym-h b{display:block;font-size:22px;line-height:1.1;margin-bottom:4px}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;margin-top:12px}
+.tm{display:flex;flex-direction:column;align-items:center;padding:4px 2px 6px;border-radius:12px;background:rgba(8,10,16,.55)}
+.tm .g1s{width:56px;height:56px}
+.tm b{font-size:11.5px}
+.tm small{font-size:8px;color:#FFE08A;margin-top:3px}
+.rew{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.rew span{padding:8px 10px;border-radius:10px;background:rgba(8,10,16,.55)}
+.rew small{display:block;font-size:10.5px;color:#8E97A5;text-transform:uppercase;letter-spacing:.08em}
+.rew b{font-size:13px}
+.exc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ex{padding:18px;border-radius:22px;background:linear-gradient(160deg,color-mix(in srgb,var(--vc) 30%,#0D1119),#0D1119 70%);border:1px solid color-mix(in srgb,var(--vc) 40%,transparent)}
+.ex.vr{--vc:#E3350D}.ex.va{--vc:#3B6FE0}.ex.vy{--vc:#F5C400}
+.ex h3{margin:0 0 10px;font-size:20px;font-weight:600}
+.exg{display:flex;flex-wrap:wrap;gap:2px}
+.exg .g1s{width:56px;height:56px;border-radius:10px;background-color:rgba(255,255,255,.05)}
+.next{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.pk a.nx,.nx{display:flex;align-items:center;gap:16px;padding:16px;border-radius:22px;background:#0D1119;border:1px solid rgba(255,255,255,.08);color:#EEF1F6;text-decoration:none;transition:border-color .2s,transform .2s}
+.nx:hover{border-color:#FFCB3D;transform:translateY(-2px)}
+.nx > span:nth-child(2){flex:1}
+.nx small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FFCB3D}
+.nx b{display:block;font-size:20px}
+.nx span span{font-size:13.5px;color:#A3ACBA}
+.nx-v{flex-shrink:0;width:92px;height:72px;border-radius:14px}
+.nx-v.map{background:linear-gradient(135deg,#3FAE5B,#1F7A8C);background-image:radial-gradient(circle at 30% 40%,#F5B301 0 6px,transparent 7px),radial-gradient(circle at 70% 30%,#E5408F 0 5px,transparent 6px),radial-gradient(circle at 55% 75%,#33A8E8 0 5px,transparent 6px),linear-gradient(135deg,#3FAE5B,#1F7A8C)}
+.nx-v.hund{display:grid;place-items:center;background:conic-gradient(#FFCB3D 0 70%,rgba(255,255,255,.1) 0);font-size:20px;font-weight:700;color:#0B0E15}
+
+.liga{grid-column:1 / -1;margin-top:6px;padding:16px;border-radius:20px;background:radial-gradient(80% 120% at 0% 0%,rgba(84,88,214,.28),transparent 60%),#0A0D15;border:1px solid rgba(84,88,214,.45)}
+.lg-prep{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.04)}
+.lg-prep b{font-size:16px;color:#FFE08A;flex-shrink:0}
+.lg-prep ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:#C9D0DA}
+.lg-prep li::before{content:"›";margin-right:6px;color:#FFCB3D;font-weight:700}
+.ladder{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:r}
+.rnd{position:relative;display:flex;flex-direction:column;gap:10px;padding:12px;border-radius:18px;background:linear-gradient(180deg,color-mix(in srgb,var(--tc) 26%,#0D1119),#0D1119 70%);border:1px solid color-mix(in srgb,var(--tc) 45%,transparent)}
+.rnd:not(:last-child)::after{content:"";position:absolute;right:-9px;top:34px;width:8px;height:2px;background:rgba(255,255,255,.3)}
+.rnd.champ{background:linear-gradient(180deg,rgba(255,203,61,.24),#0D1119 70%);border-color:rgba(255,203,61,.6)}
+.rnd.won{opacity:.6}
+.rnd-h{position:relative;display:flex;align-items:center;gap:8px;padding-right:34px}
+.rn{font-size:10px;color:#FFE08A}
+.medal2{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border-radius:50%;background:var(--tc)}
+.medal2 .tglyph{width:18px;height:18px;background:var(--tx)}
+.rnd.champ .medal2{background:conic-gradient(from 45deg,#FFF1C2,#D9A43A,#FFF1C2,#D9A43A,#FFF1C2)}
+.rnd.champ .medal2 .tglyph{background:#3A2600}
+.rnd-t{flex:1;min-width:0}
+.rnd-t small{white-space:nowrap;display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A3ACBA}
+.rnd-t b{display:block;font-size:18px;line-height:1.1}
+.rnd-t .tys{margin-top:4px}
+.chk{position:absolute;right:0;top:0;display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border-radius:10px;border:1.5px dashed rgba(255,255,255,.3);background:transparent;color:transparent;cursor:pointer}
+.rnd.won .chk{background:#3DDC97;border:0;color:#06210F}
+.vars{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:11px;color:#A3ACBA}
+.vars span{width:100%}
+.vars button{height:26px;padding:0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#C9D0DA;font-size:11px;font-weight:600;cursor:pointer}
+.vars button.on{background:#FFCB3D;border-color:#FFCB3D;color:#1A1405}
+.lteam{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.lteam .tm{padding:2px 0 5px}
+.lteam .tm .g1s{width:56px;height:56px}
+.lteam .tm b{font-size:10.5px}
+.how{margin:0;font-size:12.5px;color:#C9D0DA;line-height:1.45}
+.use{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:auto;font-size:11px;color:#8E97A5}
+@media (max-width:1100px){.ladder{grid-template-columns:repeat(2,minmax(0,1fr))}.rnd::after{display:none}}
+@media (max-width:640px){.ladder{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1000px){.stp-b{grid-template-columns:minmax(0,1fr)}.g1g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .kfacts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kh-art{max-width:380px;margin:0 auto}
+  .dlg{left:0;right:0}
+  .starters,.exc,.next{grid-template-columns:minmax(0,1fr)}
+  .stc{min-height:260px}
+}
+@media (max-width:640px){
+  .g1g{grid-template-columns:minmax(0,1fr)}
+  .stp{grid-template-columns:40px minmax(0,1fr);gap:8px}
+  .stp-n{width:38px;height:38px;font-size:15px}
+  .stp-mini{display:none}
+  .stp-h{padding:12px 14px}
+  .stp-b{padding:0 14px 14px}
+  .vsel{gap:8px}
+  .cart{width:calc(33.33% - 6px);min-width:0;padding:8px 8px 10px}
+  .cart-l{height:46px}
+  .cart-l .g1s{width:42px;height:42px}
+  .cart b{font-size:15px}
+}
+@media (max-width:560px){
+  .kfacts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kfacts div:last-child{grid-column:span 2}
+  .dlg{font-size:10px;padding:12px}
+  .prog{width:100%}
+}
+
+</style>
+</helmet>
+
+<div class="pk {{motionClass}}">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar</label>
+        <input id="q-nav" type="search" placeholder="Busca un Pokémon, un tipo o una guía…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de Pokémon">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Pokemon.dc.html"><span class="spr" style="background-position: 77.419% 0.000%"></span><em>Pokémon</em></a>
+        <a class="slink" href="Pokemon.dc.html">Inicio</a>
+        <div class="dd">
+          <a class="slink on" href="PokemonKanto.dc.html" aria-haspopup="true">Regiones <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="rm">
+<a class="ro" href="PokemonKanto.dc.html" style="--c1: #E3350D; --c2: #FFB703"><span class="art" style="background-position: 35.714% 0.000%"></span><small>Gen I</small><b>Kanto</b><span>Rojo, Azul y Amarillo</span></a>
+<span class="ro off" style="--c1: #B8860B; --c2: #6C7A89"><span class="art" style="background-position: 21.429% 71.429%"></span><small>Gen II</small><b>Johto</b><span>Oro, Plata y Cristal</span></span>
+<span class="ro off" style="--c1: #B71C1C; --c2: #1E5BD8"><span class="art" style="background-position: 78.571% 71.429%"></span><small>Gen III</small><b>Hoenn</b><span>Rubí, Zafiro y Esmeralda</span></span>
+<span class="ro off" style="--c1: #4C6CC9; --c2: #D86FA0"><span class="art" style="background-position: 0.000% 78.571%"></span><small>Gen IV</small><b>Sinnoh</b><span>Diamante, Perla y Platino</span></span>
+<span class="ro off" style="--c1: #3A3F47; --c2: #9AA3AD"><span class="art" style="background-position: 28.571% 78.571%"></span><small>Gen V</small><b>Teselia</b><span>Negro y Blanco (1 y 2)</span></span>
+<span class="ro off" style="--c1: #2357B8; --c2: #C52F3A"><span class="art" style="background-position: 71.429% 78.571%"></span><small>Gen VI</small><b>Kalos</b><span>X e Y</span></span>
+<span class="ro off" style="--c1: #E68A00; --c2: #6A4BD1"><span class="art" style="background-position: 100.000% 78.571%"></span><small>Gen VII</small><b>Alola</b><span>Sol, Luna, Ultrasol y Ultraluna</span></span>
+<span class="ro off" style="--c1: #0C8CCB; --c2: #C8106E"><span class="art" style="background-position: 28.571% 85.714%"></span><small>Gen VIII</small><b>Galar</b><span>Espada y Escudo</span></span>
+<span class="ro off" style="--c1: #C9302C; --c2: #6A35A6"><span class="art" style="background-position: 100.000% 85.714%"></span><small>Gen IX</small><b>Paldea</b><span>Escarlata y Púrpura</span></span>
+<span class="ro off" style="--c1: #2BB3A3; --c2: #3567D6"><small>Gen X</small><b>¿?</b><span>Viento y Oleaje · 2027</span></span>
+<div class="rm-f"><span>Una sección por generación, de la más antigua a la más nueva</span><a href="Pokemon.dc.html#regiones">Todas las regiones →</a></div></div></div>
+        </div>
+        <a class="slink" href="PokemonDex.dc.html">Pokédex</a>
+        <a class="slink" href="PokemonTipos.dc.html">Tabla de tipos</a>
+        <a class="slink" href="PokemonHabilidades.dc.html">Habilidades y movimientos</a>
+        <div class="dd">
+          <a class="slink" href="PokemonCompetitivo.dc.html" aria-haspopup="true">Competitivo <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu">
+            <div class="gl cm">
+              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="cmi c1">VGC</span><span><b>Pokémon Champions <em>Oficial</em></b><span>Reglamento M-C: uso, sets, equipos de torneo</span></span></a>
+              <a class="gi" href="PokemonShowdown.dc.html"><span class="cmi c2">PS</span><span><b>Pokémon Showdown <em class="nof">Simulador</em></b><span>Tiers de Smogon, sets y núcleos</span></span></a>
+              <a class="gi" href="PokemonEquipo.dc.html"><span class="cmi c3">+6</span><span><b>Crea tu equipo</b><span>Elige formato y te sugerimos compañeros</span></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="dd">
+          <a class="slink" href="PokemonKanto.dc.html" aria-haspopup="true">Guías <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu">
+            <div class="gl">
+              <a class="gi" href="PokemonKanto.dc.html"><span class="g1s" style="background-position: 33.333% 0.000%"></span><span><b>Historia de Kanto paso a paso</b><span>Rojo, Azul y Amarillo, de Paleta a la Liga</span></span></a>
+              <a class="gi" href="PokemonKantoMapa.dc.html"><span class="g1s" style="background-position: 53.333% 11.111%"></span><span><b>Mapa interactivo de Kanto</b><span>Pokémon por zona, MT, MO y objetos clave</span></span></a>
+              <a class="gi" href="PokemonKanto100.dc.html"><span class="g1s" style="background-position: 40.000% 100.000%"></span><span><b>Kanto al 100 %</b><span>Los 151, medallas, MT y legendarios</span></span></a>
+              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="g1s" style="background-position: 26.667% 100.000%"></span><span><b>Arquetipos del meta</b><span>Lluvia, sol, Espacio Raro y Viento Afín</span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="kbar">
+    <div class="wrap kbar-in">
+      <span class="kb-r"><span class="g1s" style="background-position: 33.333% 0.000%"></span><span><small>Gen I · 1996</small><b class="fd">Kanto</b></span></span>
+      <nav class="kb-t" aria-label="Secciones de Kanto">
+        <a class="kt on" href="PokemonKanto.dc.html"><span class="kn">1</span>Historia</a>
+        <a class="kt" href="PokemonKantoMapa.dc.html"><span class="kn">2</span>Mapa interactivo</a>
+        <a class="kt" href="PokemonKanto100.dc.html"><span class="kn">3</span>Guía al 100 %</a>
+        <a class="kt" href="PokemonDex.dc.html"><span class="kn">4</span>Pokédex de Kanto</a>
+      </nav>
+      <span class="kb-v">Rojo · Azul · Amarillo</span>
+    </div>
+  </div>
+  <section class="khero" style="--vc: {{vc}}; --vc2: {{vc2}}">
+    <div class="kh-bg" aria-hidden="true"></div>
+    <div class="wrap kh-in">
+      <div class="kh-tx">
+        <span class="kick"><i></i>Guía de la historia · Gen I</span>
+        <h1 class="h1 fd">Kanto<span>{{verName}}</span></h1>
+        <p class="lead">De Pueblo Paleta a la Meseta Añil en 16 pasos: qué hacer en cada ciudad, a quién capturar y cómo ganar cada gimnasio. Marca lo que vayas completando.</p>
+        <div class="vsel" role="radiogroup" aria-label="Versión">
+          <sc-for list="{{vers}}" as="v" hint-placeholder-count="3">
+            <button type="button" role="radio" class="cart {{v.cls}} {{v.on}}" aria-checked="{{v.pr}}" onClick="{{v.pick}}"><span class="cart-l"><span class="g1s" style="background-position: {{v.bp}}"></span></span><b class="fd">{{v.n}}</b><small>{{v.y}}</small></button>
+          </sc-for>
+        </div>
+      </div>
+      <div class="kh-art" aria-hidden="true">
+        <span class="sun"></span>
+        <span class="art" style="background-position: {{heroArt}}"></span>
+        <div class="dlg px"><span>{{dlg}}</span><i>▼</i></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="kfacts">
+        <div><b class="fd">151</b><span>Pokémon</span></div><div><b class="fd">8</b><span>gimnasios</span></div><div><b class="fd">50</b><span>MT</span></div><div><b class="fd">5</b><span>MO</span></div><div><b class="fd">4 + 1</b><span>Alto Mando y Campeón</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kick"><i></i>Antes de empezar</span><h2 class="h2">Así funcionaba la Gen I</h2><p>Si vienes de los juegos modernos, esto es lo que cambia en Rojo, Azul y Amarillo.</p></div></div>
+      <div class="g1g">
+<article class="g1c" style="--k: #FF6B6B"><div class="gv no"><span class="x">✕</span></div><h3 class="fd">Sin habilidades</h3><p>Ningún Pokémon tiene habilidad. Llegaron en Rubí y Zafiro.</p></article>
+<article class="g1c" style="--k: #FF6B6B"><div class="gv no"><span class="x">✕</span></div><h3 class="fd">Sin naturalezas ni crianza</h3><p>Las estadísticas solo dependen de los DV (0–15) y la experiencia de combate.</p></article>
+<article class="g1c" style="--k: #FF6B6B"><div class="gv no"><span class="x">✕</span></div><h3 class="fd">Sin objetos equipados</h3><p>Nada de Restos ni bayas: los objetos solo se usan desde la mochila.</p></article>
+<article class="g1c" style="--k: #B98CFF"><div class="gv sp"><span><b class="px">ESP</b><i style="width: 85%"></i></span><span class="dim"><b class="px">ATE</b><i></i></span><span class="dim"><b class="px">DFE</b><i></i></span></div><h3 class="fd">Una sola estadística Especial</h3><p>Ataca y defiende a la vez. Por eso Mewtwo (154) y Alakazam (135) eran tan fuertes.</p></article>
+<article class="g1c" style="--k: #FFCB3D"><div class="gv ty3"><span class="ty sm t-dark"><i></i>Siniestro</span><span class="ty sm t-steel"><i></i>Acero</span><span class="ty sm t-fairy"><i></i>Hada</span></div><h3 class="fd">15 tipos</h3><p>No existen Siniestro, Acero ni Hada. Magnemite es solo Eléctrico y Clefairy, Normal.</p></article>
+<article class="g1c" style="--k: #7CF3B0"><div class="gv cr"><span class="g1s" style="background-position: 26.667% 33.333%"></span><span class="px">¡GOLPE CRÍTICO!</span></div><h3 class="fd">Los críticos dependen de la Velocidad</h3><p>Cuanto más rápido, más golpes críticos. Persian y Jolteon los encadenan.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kick"><i></i>Iniciales</span><h2 class="h2">{{startTitle}}</h2></div></div>
+      <div class="starters">
+        <sc-for list="{{starters}}" as="s" hint-placeholder-count="3">
+          <article class="stc t-{{s.k}}">
+            <span class="art" style="background-position: {{s.ap}}"></span>
+            <div class="stc-b"><span class="lvl {{s.lc}}">{{s.lvl}}</span><h3 class="fd">{{s.n}}</h3><p>{{s.p}}</p></div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="historia">
+    <div class="wrap">
+      <div class="sec-h">
+        <div><span class="kick"><i></i>Paso a paso</span><h2 class="h2">La historia de Kanto</h2></div>
+        <div class="prog"><div class="ring" style="--p: {{pctDeg}}"><b class="fd">{{pct}}</b></div><div><b>{{doneN}} de 16 pasos</b><span>{{medN}} de 8 medallas</span></div>
+          <div class="seg"><button type="button" class="{{fAll}}" onClick="{{setAll}}">Todos</button><button type="button" class="{{fTodo}}" onClick="{{setTodo}}">Pendientes</button></div></div>
+      </div>
+      <ol class="tl">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="16">
+          <li class="stp {{s.cls}}">
+            <div class="stp-rail"><button type="button" class="stp-n fd" onClick="{{s.toggleDone}}" aria-pressed="{{s.donePr}}" aria-label="Marcar paso {{s.i}} como hecho"><span class="num">{{s.i}}</span><span class="ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg></span></button></div>
+            <div class="stp-card">
+              <button type="button" class="stp-h" onClick="{{s.toggleOpen}}" aria-expanded="{{s.openPr}}">
+                <span><small>{{s.pl}}</small><b class="fd">{{s.t}}</b></span>
+                <span class="stp-mini"><sc-for list="{{s.mini}}" as="m" hint-placeholder-count="3"><span class="g1s" style="background-position: {{m.bp}}"></span></sc-for></span>
+                <span class="chev"><svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+              </button>
+              <sc-if value="{{s.open}}" hint-placeholder-val="false">
+                <div class="stp-b">
+                  <div class="stp-l">
+                    <ul class="obj"><sc-for list="{{s.obj}}" as="o" hint-placeholder-count="3"><li>{{o}}</li></sc-for></ul>
+                    <sc-if value="{{s.hasMon}}" hint-placeholder-val="true">
+                      <h4>Captura aquí</h4>
+                      <div class="mons"><sc-for list="{{s.mon}}" as="m" hint-placeholder-count="3"><span class="mon"><span class="g1s" style="background-position: {{m.bp}}"></span>{{m.n}}</span></sc-for></div>
+                    </sc-if>
+                    <sc-if value="{{s.hasTip}}" hint-placeholder-val="true"><p class="tip"><b>Consejo</b>{{s.tip}}</p></sc-if>
+                  </div>
+                  <sc-if value="{{s.hasGym}}" hint-placeholder-val="false">
+                    <div class="gym t-{{s.gym.k}}">
+                      <div class="gym-h"><span class="medal"><i class="tglyph"></i></span><div><small>Líder de gimnasio</small><b class="fd">{{s.gym.l}}</b><span class="ty sm t-{{s.gym.k}}"><i></i>{{s.gym.tn}}</span></div></div>
+                      <div class="team"><sc-for list="{{s.gym.team}}" as="m" hint-placeholder-count="3"><span class="tm"><span class="g1s" style="background-position: {{m.bp}}"></span><b>{{m.n}}</b><small class="px">Nv{{m.lv}}</small></span></sc-for></div>
+                      <div class="rew"><span><small>Premio</small><b>{{s.gym.med}}</b></span><span><small>MT</small><b>{{s.gym.tmn}}</b></span></div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{s.hasLiga}}" hint-placeholder-val="false">
+                    <div class="liga">
+                      <div class="lg-prep"><b class="fd">Antes de entrar</b><ul><sc-for list="{{s.liga.prep}}" as="x" hint-placeholder-count="4"><li>{{x}}</li></sc-for></ul></div>
+                      <ol class="ladder">
+                        <sc-for list="{{s.liga.rounds}}" as="r" hint-placeholder-count="5">
+                          <li class="rnd t-{{r.k}} {{r.cls}}">
+                            <div class="rnd-h">
+                                                            <span class="medal2"><i class="tglyph"></i></span>
+                              <div class="rnd-t"><small>{{r.role}}</small><b class="fd">{{r.n}}</b><span class="tys"><sc-for list="{{r.t}}" as="t" hint-placeholder-count="2"><span class="ty sm t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></span></div>
+                              <button type="button" class="chk" onClick="{{r.toggle}}" aria-pressed="{{r.pr}}" aria-label="Marcar a {{r.n}} como vencido"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg></button>
+                            </div>
+                            <sc-if value="{{r.isChamp}}" hint-placeholder-val="false">
+                              <div class="vars"><span>{{r.q}}</span><sc-for list="{{r.vars}}" as="v" hint-placeholder-count="3"><button type="button" class="{{v.on}}" onClick="{{v.pick}}">{{v.n}}</button></sc-for></div>
+                            </sc-if>
+                            <div class="lteam"><sc-for list="{{r.team}}" as="m" hint-placeholder-count="5"><span class="tm"><span class="g1s" style="background-position: {{m.bp}}"></span><b>{{m.n}}</b><small class="px">Nv{{m.lv}}</small></span></sc-for></div>
+                            <p class="how">{{r.how}}</p>
+                            <div class="use"><span>Lleva</span><sc-for list="{{r.use}}" as="t" hint-placeholder-count="3"><span class="ty sm t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></div>
+                          </li>
+                        </sc-for>
+                      </ol>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kick"><i></i>Exclusivos</span><h2 class="h2">Lo que solo sale en tu versión</h2><p>Para completar la Pokédex tendrás que intercambiar con otra versión.</p></div></div>
+      <div class="exc">
+        <div class="ex vr"><h3 class="fd">Solo en Rojo</h3><div class="exg"><span class="g1s" title="Ekans" style="background-position: 40.000% 11.111%"></span><span class="g1s" title="Arbok" style="background-position: 46.667% 11.111%"></span><span class="g1s" title="Oddish" style="background-position: 66.667% 22.222%"></span><span class="g1s" title="Gloom" style="background-position: 73.333% 22.222%"></span><span class="g1s" title="Vileplume" style="background-position: 80.000% 22.222%"></span><span class="g1s" title="Mankey" style="background-position: 46.667% 33.333%"></span><span class="g1s" title="Primeape" style="background-position: 53.333% 33.333%"></span><span class="g1s" title="Growlithe" style="background-position: 60.000% 33.333%"></span><span class="g1s" title="Arcanine" style="background-position: 66.667% 33.333%"></span><span class="g1s" title="Scyther" style="background-position: 66.667% 77.778%"></span><span class="g1s" title="Electabuzz" style="background-position: 80.000% 77.778%"></span></div></div>
+        <div class="ex va"><h3 class="fd">Solo en Azul</h3><div class="exg"><span class="g1s" title="Sandshrew" style="background-position: 66.667% 11.111%"></span><span class="g1s" title="Sandslash" style="background-position: 73.333% 11.111%"></span><span class="g1s" title="Vulpix" style="background-position: 26.667% 22.222%"></span><span class="g1s" title="Ninetales" style="background-position: 33.333% 22.222%"></span><span class="g1s" title="Meowth" style="background-position: 20.000% 33.333%"></span><span class="g1s" title="Persian" style="background-position: 26.667% 33.333%"></span><span class="g1s" title="Bellsprout" style="background-position: 26.667% 44.444%"></span><span class="g1s" title="Weepinbell" style="background-position: 33.333% 44.444%"></span><span class="g1s" title="Victreebel" style="background-position: 40.000% 44.444%"></span><span class="g1s" title="Magmar" style="background-position: 86.667% 77.778%"></span><span class="g1s" title="Pinsir" style="background-position: 93.333% 77.778%"></span></div></div>
+        <div class="ex vy"><h3 class="fd">No salen en Amarillo</h3><div class="exg"><span class="g1s" title="Weedle" style="background-position: 80.000% 0.000%"></span><span class="g1s" title="Kakuna" style="background-position: 86.667% 0.000%"></span><span class="g1s" title="Beedrill" style="background-position: 93.333% 0.000%"></span><span class="g1s" title="Ekans" style="background-position: 40.000% 11.111%"></span><span class="g1s" title="Arbok" style="background-position: 46.667% 11.111%"></span><span class="g1s" title="Meowth" style="background-position: 20.000% 33.333%"></span><span class="g1s" title="Persian" style="background-position: 26.667% 33.333%"></span><span class="g1s" title="Koffing" style="background-position: 80.000% 66.667%"></span><span class="g1s" title="Weezing" style="background-position: 86.667% 66.667%"></span><span class="g1s" title="Jynx" style="background-position: 73.333% 77.778%"></span><span class="g1s" title="Electabuzz" style="background-position: 80.000% 77.778%"></span><span class="g1s" title="Magmar" style="background-position: 86.667% 77.778%"></span></div></div>
+      </div>
+      <div class="next">
+        <a class="nx" href="PokemonKantoMapa.dc.html"><span class="nx-v map"></span><span><small>Siguiente</small><b class="fd">Mapa interactivo de Kanto</b><span>Pokémon de cada ruta, MT, MO y objetos clave con zoom.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+        <a class="nx" href="PokemonKanto100.dc.html"><span class="nx-v hund fd">100%</span><span><small>Siguiente</small><b class="fd">Kanto al 100 %</b><span>Los 151, las 50 MT, medallas y legendarios con tu progreso.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-about">
+          <a class="brand" href="Main.dc.html"><span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span><span class="brand-name">GRIETA<span>META</span></span></a>
+          <p>GrietaMeta es un sitio de fans, no está afiliado a Nintendo, Game Freak ni The Pokémon Company. Pokémon y sus nombres son marcas de sus propietarios.</p>
+        </div>
+        <div class="foot-cols">
+          <nav class="foot-col" aria-label="Pokémon">
+            <h4>Pokémon</h4>
+            <a href="PokemonDex.dc.html">Pokédex</a>
+            <a href="PokemonTipos.dc.html">Tabla de tipos</a>
+            <a href="PokemonHabilidades.dc.html">Habilidades y movimientos</a>
+            <a href="PokemonCompetitivo.dc.html">Pokémon Champions</a>
+            <a href="PokemonShowdown.dc.html">Pokémon Showdown</a>
+            <a href="PokemonEquipo.dc.html">Crea tu equipo</a>
+            <a href="PokemonKanto.dc.html">Kanto</a>
+          </nav>
+          <nav class="foot-col" aria-label="Juegos">
+            <h4>Juegos</h4>
+            <a href="Lol.dc.html">League of Legends</a>
+            <a href="Arc.dc.html">ARC Raiders</a>
+            <a href="Zelda.dc.html">Zelda: TotK</a>
+            <a href="Main.dc.html#juegos">Ver los 9 juegos</a>
+          </nav>
+          <nav class="foot-col" aria-label="Ayuda">
+            <h4>Ayuda</h4>
+            <a href="Contacto.dc.html">Contáctanos</a>
+            <a href="Contacto.dc.html">Avisar de un error</a>
+          </nav>
+        </div>
+      </div>
+      <div class="foot-bottom"><span>© 2026 GrietaMeta. Todos los derechos reservados.</span><span>Datos: PokeAPI y pret/pokered · Uso competitivo: estadísticas de Smogon / Pokémon Showdown (octubre de 2026)</span></div>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación de Pokémon">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Pokemon.dc.html"><span class="spr" style="background-position: 77.419% 0.000%"></span>Pokémon</a>
+    <a class="tb" href="PokemonDex.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg>Pokédex</a>
+    <a class="tb" href="PokemonTipos.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M3 9h18M9 3v18"></path></svg>Tipos</a>
+    <a class="tb" href="PokemonKantoMapa.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>Mapa</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones": {"editor": "boolean", "default": true}, "$preview": {"width": 1440, "height": 5200}}'>
+
+const STEPS = [{"pl":"Pueblo Paleta","t":"Tu primer Pokémon","obj":["Sal hacia la hierba alta: el Prof. Oak te detiene","Elige a Bulbasaur, Charmander o Squirtle","Gana el primer combate contra tu rival"],"mon":[[1,"Bulbasaur"],[4,"Charmander"],[7,"Squirtle"]],"tip":"Bulbasaur es la opción fácil: tiene ventaja contra los dos primeros gimnasios. En Amarillo empiezas con Pikachu, que no quiere entrar en su Poké Ball."},{"pl":"Ruta 1 · Ciudad Verde","t":"El paquete del Prof. Oak","obj":["Recoge el Correo-Oak en la tienda de Ciudad Verde","Llévaselo al Prof. Oak: recibes la Pokédex","Vuelve a Ciudad Verde y compra Poké Balls"],"mon":[[16,"Pidgey"],[19,"Rattata"]],"tip":"El gimnasio de Ciudad Verde está cerrado: será tu última medalla."},{"pl":"Ruta 2 · Bosque Verde","t":"El primer bosque","obj":["Sube por la Ruta 2 hacia el norte","Cruza el Bosque Verde (hay Poción, Antídoto y una Poké Ball)","Entrena con los cazabichos"],"mon":[[10,"Caterpie"],[13,"Weedle"],[25,"Pikachu"]],"tip":"Pikachu sale en el Bosque Verde con un 5 % de probabilidad en Rojo y Azul. Butterfree aprende Confusión al Nv. 12."},{"pl":"Ciudad Plateada","t":"Primer gimnasio: Brock","obj":["Visita el Museo de la Ciencia (50 ¥)","Vence a Brock"],"mon":[],"tip":"Planta o Agua; con Charmander, sube a Butterfree a Nv. 12 (Confusión).","gym":{"l":"Brock","k":"rock","tn":"Roca","med":"Medalla Roca","team":[[74,"Geodude",12],[95,"Onix",14]],"tm":34,"tip":"Planta o Agua; con Charmander, sube a Butterfree a Nv. 12 (Confusión).","tmn":"MT34 Venganza"}},{"pl":"Ruta 3 · Mt. Moon","t":"Mt. Moon y los fósiles","obj":["Junto a la entrada, un señor del Centro Pokémon te vende un Magikarp (500 ¥)","Recoge las Piedras Lunares de la cueva","Vence al Team Rocket y elige el Fósil Hélix o el Fósil Domo"],"mon":[[39,"Jigglypuff"],[41,"Zubat"],[74,"Geodude"],[46,"Paras"],[35,"Clefairy"]],"tip":"Clefairy aparece poco en Mt. Moon. Guarda una Piedra Lunar para evolucionarlo a Clefable."},{"pl":"Ciudad Celeste","t":"Segundo gimnasio: Misty","obj":["Cruza el Puente Pepita (Ruta 24) y gana la Pepita","Visita a Bill en la Ruta 25: te da el Ticket Barco","Recupera la MT28 (Excavar) en la casa robada","Vence a Misty"],"mon":[[63,"Abra"],[43,"Oddish"],[69,"Bellsprout"]],"tip":"Planta o Eléctrico. Starmie es rápido: llega con Nv. 22+.","gym":{"l":"Misty","k":"water","tn":"Agua","med":"Medalla Cascada","team":[[120,"Staryu",18],[121,"Starmie",21]],"tm":11,"tip":"Planta o Eléctrico. Starmie es rápido: llega con Nv. 22+.","tmn":"MT11 Rayo Burbuja"}},{"pl":"Ciudad Carmín · S.S. Anne","t":"Tercer gimnasio: Teniente Surge","obj":["Sube al S.S. Anne con el Ticket Barco y vence a tu rival","El capitán te enseña la MO01 (Corte)","Pide el Bono Bici en el Club de Fans y cámbialo por la Bici en Celeste","Corta el arbolito de la entrada y vence a Surge"],"mon":[[50,"Diglett"],[96,"Drowzee"]],"tip":"Tierra: Diglett de la Cueva Diglett es inmune a todo su equipo.","gym":{"l":"Teniente Surge","k":"electric","tn":"Eléctrico","med":"Medalla Trueno","team":[[100,"Voltorb",21],[25,"Pikachu",18],[26,"Raichu",24]],"tm":24,"tip":"Tierra: Diglett de la Cueva Diglett es inmune a todo su equipo.","tmn":"MT24 Rayo"}},{"pl":"Túnel Roca · Pueblo Lavanda","t":"Hacia el este","obj":["Vuelve a la Ruta 2 a por la MO05 (Destello): necesitas 10 Pokémon registrados","Cruza las Rutas 9 y 10","Atraviesa el Túnel Roca (con Destello es mucho más fácil)"],"mon":[[66,"Machop"],[95,"Onix"],[104,"Cubone"]],"tip":"La Torre Pokémon de Lavanda aún no se puede completar: te hace falta el Visor Silph."},{"pl":"Ciudad Azulona","t":"Cuarto gimnasio: Erika","obj":["Compra en el Centro Comercial y consigue las MT de la azotea","Consigue el Monedero en el restaurante","Encuentra el póster del Casino: es la entrada de la Guarida Rocket","Vence a Giovanni en la guarida y recoge el Visor Silph","Recoge a Eevee en la azotea de la Mansión Azulona","Vence a Erika"],"mon":[[133,"Eevee"],[147,"Dratini"],[37,"Vulpix"]],"tip":"Fuego, Volador o Hielo. Cuidado con Somnífero y Polvo Veneno.","gym":{"l":"Erika","k":"grass","tn":"Planta","med":"Medalla Arcoíris","team":[[71,"Victreebel",29],[114,"Tangela",24],[45,"Vileplume",29]],"tm":21,"tip":"Fuego, Volador o Hielo. Cuidado con Somnífero y Polvo Veneno.","tmn":"MT21 Megaagotar"}},{"pl":"Torre Pokémon","t":"Los fantasmas de Lavanda","obj":["Con el Visor Silph, los fantasmas se dejan ver","Calma al espíritu de Marowak en la 6.ª planta","Rescata al Sr. Fuji: te da la Poké Flauta"],"mon":[[92,"Gastly"],[93,"Haunter"],[104,"Cubone"]],"tip":"Gastly y Haunter solo se pueden capturar con el Visor Silph. Haunter evoluciona a Gengar por intercambio."},{"pl":"Snorlax · Ciudad Fucsia","t":"Quinto gimnasio: Koga","obj":["Despierta a un Snorlax con la Poké Flauta (Ruta 12 o 16)","Consigue la MO02 (Vuelo) en la Ruta 16","En la Zona Safari: MO03 (Surf) y la Dentadura de Oro","Devuélvele la dentadura al guardián: MO04 (Fuerza)","Vence a Koga"],"mon":[[143,"Snorlax"],[113,"Chansey"],[115,"Kangaskhan"],[123,"Scyther"]],"tip":"Psíquico: Kadabra o Hypno barren casi sin recibir daño.","gym":{"l":"Koga","k":"poison","tn":"Veneno","med":"Medalla Alma","team":[[109,"Koffing",37],[89,"Muk",39],[109,"Koffing",37],[110,"Weezing",43]],"tm":6,"tip":"Psíquico: Kadabra o Hypno barren casi sin recibir daño.","tmn":"MT06 Tóxico"}},{"pl":"Ciudad Azafrán · Silph S.A.","t":"Sexto gimnasio: Sabrina","obj":["Dale una bebida a un guardia para entrar en Azafrán","Silph S.A.: Llave Magnética en la 5.ª planta","Vence a tu rival y a Giovanni: Lapras y la Master Ball","Elige a Hitmonlee o Hitmonchan en el Dojo Kárate","Vence a Sabrina"],"mon":[[131,"Lapras"],[106,"Hitmonlee"],[107,"Hitmonchan"]],"tip":"En Gen 1 casi nada resiste a Psíquico: usa ataques físicos fuertes o Bicho de alto nivel.","gym":{"l":"Sabrina","k":"psychic","tn":"Psíquico","med":"Medalla Pantano","team":[[64,"Kadabra",38],[122,"Mr. Mime",37],[49,"Venomoth",38],[65,"Alakazam",43]],"tm":46,"tip":"En Gen 1 casi nada resiste a Psíquico: usa ataques físicos fuertes o Bicho de alto nivel.","tmn":"MT46 Psicoonda"}},{"pl":"Islas Espuma · Isla Canela","t":"Séptimo gimnasio: Blaine","obj":["Haz Surf por las Rutas 19 y 20","Articuno te espera al fondo de las Islas Espuma (Nv. 50)","Busca la Llave Secreta en la Mansión Pokémon","Revive tus fósiles en el laboratorio","Vence a Blaine"],"mon":[[144,"Articuno"],[138,"Omanyte"],[140,"Kabuto"],[142,"Aerodactyl"]],"tip":"Agua o Tierra. Arcanine (Nv. 47) es el más peligroso.","gym":{"l":"Blaine","k":"fire","tn":"Fuego","med":"Medalla Volcán","team":[[58,"Growlithe",42],[77,"Ponyta",40],[78,"Rapidash",42],[59,"Arcanine",47]],"tm":38,"tip":"Agua o Tierra. Arcanine (Nv. 47) es el más peligroso.","tmn":"MT38 Llamarada"}},{"pl":"Ciudad Verde","t":"Octavo gimnasio: Giovanni","obj":["Vuelve a Ciudad Verde: el gimnasio ya está abierto","Vence a Giovanni, el jefe del Team Rocket"],"mon":[],"tip":"Agua, Planta o Hielo: todo su equipo es débil a Agua y Planta.","gym":{"l":"Giovanni","k":"ground","tn":"Tierra","med":"Medalla Tierra","team":[[111,"Rhyhorn",45],[51,"Dugtrio",42],[31,"Nidoqueen",44],[34,"Nidoking",45],[112,"Rhydon",50]],"tm":27,"tip":"Agua, Planta o Hielo: todo su equipo es débil a Agua y Planta.","tmn":"MT27 Fisura"}},{"pl":"Calle Victoria · Meseta Añil","t":"La Liga Pokémon","obj":["Pasa los controles de medallas de la Ruta 23","Cruza la Calle Victoria con Fuerza (Moltres, Nv. 50)","Prepárate en la Meseta Añil","Cinco combates seguidos: Alto Mando y Campeón (abajo, paso a paso)"],"mon":[[146,"Moltres"],[95,"Onix"],[66,"Machop"]],"tip":"Moltres está en la Calle Victoria: guarda antes de enfrentarte a él. Allí también salen Onix y Machop."},{"pl":"Después de la Liga","t":"Cueva Celeste y Mewtwo","obj":["Entra en la Cueva Celeste, al oeste de Ciudad Celeste","Mewtwo (Nv. 70) te espera al fondo","Si no lo hiciste, captura a Zapdos en la Central Energía (Nv. 50)"],"mon":[[150,"Mewtwo"],[145,"Zapdos"]],"tip":"Guarda la Master Ball para Mewtwo. Zapdos se puede capturar desde que tienes Surf."}];
+const LIGA = {"prep":["Equipo a nivel 50–55 como mínimo","Compra Revivir, Hiperpociones y Antiparaliz en la tienda de la Meseta","Guarda la partida: una vez dentro no puedes salir entre combates","Lleva ataques de Hielo, Eléctrico y Psíquico: cubren casi toda la Liga"],"rounds":[{"n":"Lorelei","role":"Alto Mando","t":["ice","water"],"team":[[87,"Dewgong",54],[91,"Cloyster",53],[80,"Slowbro",54],[124,"Jynx",56],[131,"Lapras",56]],"use":["electric","fighting","rock"],"how":"Eléctrico contra Dewgong, Cloyster, Slowbro y Lapras. Cloyster tiene una Defensa enorme: atácale con ataques especiales. Jynx cae con Fuego o Roca."},{"n":"Bruno","role":"Alto Mando","t":["fighting","rock"],"team":[[95,"Onix",53],[107,"Hitmonchan",55],[106,"Hitmonlee",55],[95,"Onix",56],[68,"Machamp",58]],"use":["water","grass","psychic"],"how":"Agua o Planta tumban a los dos Onix de un golpe (×4). Hitmonlee, Hitmonchan y Machamp no aguantan un ataque Psíquico."},{"n":"Agatha","role":"Alto Mando","t":["ghost","poison"],"team":[[94,"Gengar",56],[42,"Golbat",56],[93,"Haunter",55],[24,"Arbok",58],[94,"Gengar",60]],"use":["psychic","ground"],"how":"Psíquico arrasa: en la Gen I los ataques Fantasma no le afectan. Cuidado con Hipnosis de Gengar; lleva Despertar."},{"n":"Lance","role":"Alto Mando","t":["dragon","flying"],"team":[[130,"Gyarados",58],[148,"Dragonair",56],[148,"Dragonair",56],[142,"Aerodactyl",60],[149,"Dragonite",62]],"use":["ice","electric","rock"],"how":"Rayo Hielo o Ventisca contra los Dragonair y Dragonite (×4 a Dragonite). Eléctrico contra Gyarados y Aerodactyl."}],"champ":{"rb":{"how":"Su inicial es el que gana al tuyo. Siempre lleva Pidgeot, Alakazam y Rhydon: Eléctrico para Pidgeot, Agua o Planta para Rhydon y ataques físicos fuertes para Alakazam.","q":"Tu inicial","vars":[["Elegiste Bulbasaur",[[18,"Pidgeot",61],[65,"Alakazam",59],[112,"Rhydon",61],[103,"Exeggutor",61],[130,"Gyarados",63],[6,"Charizard",65]]],["Elegiste Charmander",[[18,"Pidgeot",61],[65,"Alakazam",59],[112,"Rhydon",61],[59,"Arcanine",61],[103,"Exeggutor",63],[9,"Blastoise",65]]],["Elegiste Squirtle",[[18,"Pidgeot",61],[65,"Alakazam",59],[112,"Rhydon",61],[130,"Gyarados",61],[59,"Arcanine",63],[3,"Venusaur",65]]]]},"y":{"how":"Su Eevee evoluciona según cómo fueron vuestros primeros combates. Siempre lleva Sandslash, Alakazam y Exeggutor: Agua o Planta para Sandslash, Fuego o Hielo para Exeggutor.","q":"Su Eevee","vars":[["Jolteon",[[28,"Sandslash",61],[65,"Alakazam",59],[103,"Exeggutor",61],[91,"Cloyster",61],[38,"Ninetales",63],[135,"Jolteon",65]]],["Flareon",[[28,"Sandslash",61],[65,"Alakazam",59],[103,"Exeggutor",61],[82,"Magneton",61],[91,"Cloyster",63],[136,"Flareon",65]]],["Vaporeon",[[28,"Sandslash",61],[65,"Alakazam",59],[103,"Exeggutor",61],[38,"Ninetales",61],[82,"Magneton",63],[134,"Vaporeon",65]]]]}}};
+const TN = {"normal": "Normal", "fighting": "Lucha", "flying": "Volador", "poison": "Veneno", "ground": "Tierra", "rock": "Roca", "bug": "Bicho", "ghost": "Fantasma", "steel": "Acero", "fire": "Fuego", "water": "Agua", "grass": "Planta", "electric": "Eléctrico", "psychic": "Psíquico", "ice": "Hielo", "dragon": "Dragón", "dark": "Siniestro", "fairy": "Hada"};
+const ART = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 245, 249, 250, 279, 282, 334, 359, 373, 382, 383, 384, 445, 448, 478, 483, 484, 487, 547, 643, 644, 646, 670, 700, 715, 716, 717, 718, 727, 791, 792, 800, 812, 887, 888, 889, 890, 902, 903, 981, 983, 1000, 1003, 1006, 1007, 1008, 1017, 1018, 1024, 10035, 10051, 10089, 10186, 10281, 10285, 10296, 10305, 10307, 10309, 10310, 10316, 10325];
+const ARTI = {}; ART.forEach((id, k) => { ARTI[id] = k; });
+const ap = (id) => { const k = ARTI[id]; return ((k % 15) / 14 * 100).toFixed(3) + '% ' + (Math.floor(k / 15) / 14 * 100).toFixed(3) + '%'; };
+const g1p = (id) => { const i = id - 1; return ((i % 16) / 15 * 100).toFixed(3) + '% ' + (Math.floor(i / 16) / 9 * 100).toFixed(3) + '%'; };
+const VER = {
+  r: { n: 'Rojo', y: '1996 · 1999 en España', vc: '#FF4B2B', vc2: '#FFB703', art: 6, bp: 6, dlg: '¡ROJO! ¡Kanto te espera! ¿Listo para tu aventura?' },
+  b: { n: 'Azul', y: '1996 · 1999 en España', vc: '#4F86F7', vc2: '#7CF3B0', art: 9, bp: 9, dlg: '¡AZUL! ¡Kanto te espera! ¿Listo para tu aventura?' },
+  y: { n: 'Amarillo', y: '1998 · 2000 en España', vc: '#F5C400', vc2: '#FF7A59', art: 25, bp: 25, dlg: '¡PIKACHU te sigue a todas partes!' },
+};
+const ST = {
+  std: [{ id: 1, k: 'grass', n: 'Bulbasaur', lvl: 'Fácil', lc: 'e', p: 'Gana a Brock y a Misty sin esfuerzo. Aguanta bien todo el juego.' },
+        { id: 4, k: 'fire', n: 'Charmander', lvl: 'Difícil', lc: 'h', p: 'Sufre en los dos primeros gimnasios, pero Charizard brilla al final.' },
+        { id: 7, k: 'water', n: 'Squirtle', lvl: 'Normal', lc: 'm', p: 'Equilibrado: buena defensa y gana a Brock con Pistola Agua.' }],
+  y: [{ id: 25, k: 'electric', n: 'Pikachu', lvl: 'Tu inicial', lc: 'm', p: 'Te sigue por el mapa y no evoluciona. Brock será tu gran reto.' },
+      { id: 1, k: 'grass', n: 'Bulbasaur', lvl: 'Regalo', lc: 'e', p: 'Te lo regalan en Ciudad Celeste si Pikachu está contento contigo.' },
+      { id: 4, k: 'fire', n: 'Charmander', lvl: 'Regalo', lc: 'e', p: 'Te lo da un entrenador en la Ruta 24, tras el Puente Pepita.' }],
+};
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { ver: 'r', open: { 0: true, 3: true, 14: true }, done: { 0: true, 1: true, 2: true }, todo: false, rv: 0, ld: {} }; }
+  renderVals() {
+    const S = this.state; const on = this.props.animaciones ?? true;
+    const V = VER[S.ver];
+    const isY = S.ver === 'y'; const ch = LIGA.champ[isY ? 'y' : 'rb']; const rv = S.rv || 0;
+    const tyo = (k) => ({ k, n: TN[k] });
+    const tm = (t) => t.map((m) => ({ n: m[1], lv: m[2], bp: g1p(m[0]) }));
+    const ld = S.ld || {};
+    const rounds = LIGA.rounds.map((r, j) => ({ i: j + 1, n: r.n, role: r.role + ' · ' + (j + 1), k: r.t[0], t: r.t.map(tyo), team: tm(r.team), how: r.how, use: r.use.map(tyo), isChamp: false, vars: [], q: '',
+      cls: ld[j] ? 'won' : '', pr: ld[j] ? 'true' : 'false', toggle: () => this.setState({ ld: Object.assign({}, ld, { [j]: !ld[j] }) }) }));
+    rounds.push({ i: 5, n: isY ? 'Tu rival' : 'Azul, tu rival', role: 'Campeón de la Liga', k: 'normal', t: [tyo('normal')], team: tm(ch.vars[rv][1]), how: ch.how, isChamp: true, q: ch.q,
+      use: (isY ? ['fire', 'ice', 'electric'] : ['electric', 'ice', 'water']).map(tyo),
+      vars: ch.vars.map((v, j) => ({ n: v[0], on: j === rv ? 'on' : '', pick: () => this.setState({ rv: j }) })),
+      cls: 'champ ' + (ld[4] ? 'won' : ''), pr: ld[4] ? 'true' : 'false', toggle: () => this.setState({ ld: Object.assign({}, ld, { 4: !ld[4] }) }) });
+    const ligaView = { prep: LIGA.prep, rounds };
+    const steps = [];
+    STEPS.forEach((s, i) => {
+      const d = !!S.done[i]; const o = !!S.open[i];
+      if (S.todo && d) return;
+      const mons = s.gym ? s.gym.team.map((m) => m[0]) : s.mon.map((m) => m[0]);
+      steps.push({ i: i + 1, pl: s.pl, t: s.t, obj: s.obj, tip: s.tip, hasTip: !!s.tip,
+        mon: s.mon.map((m) => ({ n: m[1], bp: g1p(m[0]) })), hasMon: s.mon.length > 0,
+        mini: mons.slice(0, 4).map((id) => ({ bp: g1p(id) })),
+        hasLiga: i === 14, liga: i === 14 ? ligaView : { prep: [], rounds: [] },
+        hasGym: !!s.gym, gym: s.gym ? { l: s.gym.l, k: s.gym.k, tn: s.gym.tn, med: s.gym.med, tmn: s.gym.tmn, team: s.gym.team.map((m) => ({ n: m[1], lv: m[2], bp: g1p(m[0]) })) } : { team: [] },
+        cls: (d ? 'done ' : '') + (o ? 'isopen ' : '') + (s.gym ? 'gymst' : ''), open: o, openPr: o ? 'true' : 'false', donePr: d ? 'true' : 'false',
+        toggleOpen: () => this.setState({ open: Object.assign({}, S.open, { [i]: !o }) }),
+        toggleDone: () => this.setState({ done: Object.assign({}, S.done, { [i]: !d }) }) });
+    });
+    const doneN = STEPS.filter((s, i) => S.done[i]).length;
+    const medN = STEPS.filter((s, i) => s.gym && S.done[i]).length;
+    const pct = Math.round(doneN / STEPS.length * 100);
+    const stl = (S.ver === 'y' ? ST.y : ST.std).map((s) => ({ k: s.k, n: s.n, lvl: s.lvl, lc: s.lc, p: s.p, ap: ap(s.id) }));
+    return {
+      motionClass: on ? '' : 'still',
+      vc: V.vc, vc2: V.vc2, verName: 'Pokémon ' + V.n, heroArt: ap(V.art), dlg: V.dlg,
+      vers: ['r', 'b', 'y'].map((k) => ({ n: VER[k].n, y: VER[k].y, cls: 'v' + (k === 'r' ? 'r' : k === 'b' ? 'a' : 'y'), on: S.ver === k ? 'on' : '', pr: S.ver === k ? 'true' : 'false', bp: g1p(VER[k].bp), pick: () => this.setState({ ver: k }) })),
+      starters: stl, startTitle: S.ver === 'y' ? 'En Amarillo empiezas con Pikachu' : '¿Bulbasaur, Charmander o Squirtle?',
+      steps, doneN, medN, pct: pct + '%', pctDeg: (pct * 3.6) + 'deg',
+      fAll: S.todo ? '' : 'on', fTodo: S.todo ? 'on' : '', setAll: () => this.setState({ todo: false }), setTodo: () => this.setState({ todo: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

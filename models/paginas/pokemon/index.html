@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  /* Portada */
+  .hero { padding-block: 64px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+  /* Consola: el momento de la página */
+  .console {
+    position: relative; padding: 22px 22px 54px; border-radius: 18px 18px 54px 18px;
+    background: linear-gradient(160deg, #23262E, #16181E 70%);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+  .console .bezel { padding: 14px 18px 18px; border-radius: 10px 10px 28px 10px; background: #2B2F38; }
+  .console .bezel-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font: 600 10px var(--font-brand); letter-spacing: 0.14em; color: #A9AFBB; }
+  .console .led { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .screen { padding: 16px 18px; font-size: 15px; line-height: 1.6; min-height: 236px; }
+  .screen .row { display: flex; justify-content: space-between; }
+  .screen hr { border: 0; border-top: 2px dashed var(--gb-1); margin: 10px 0; }
+  .screen .menu div { padding-left: 18px; position: relative; }
+  .screen .menu div.sel::before { content: ""; position: absolute; left: 2px; top: 7px; border: 6px solid transparent; border-left: 8px solid var(--gb-0); border-right: 0; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .bar { height: 8px; background: var(--gb-3); border: 2px solid var(--gb-0); margin-top: 4px; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--gb-0); }
+  .console .pad { position: absolute; left: 30px; bottom: 16px; width: 26px; height: 26px; }
+  .console .pad::before, .console .pad::after { content: ""; position: absolute; background: #0D0F13; border-radius: 3px; }
+  .console .pad::before { inset: 9px 0; }
+  .console .pad::after { inset: 0 9px; }
+  .console .ab { position: absolute; right: 30px; bottom: 14px; display: flex; gap: 10px; }
+  .console .ab span { width: 22px; height: 22px; border-radius: 50%; background: #7E2A3A; }
+
+  /* Novedades: líneas con fecha, no tarjetas */
+  .news { border-top: 1px solid var(--line); }
+  .news li { display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .news time { color: var(--ink-mute); font-size: 13px; }
+  .news h3 { font-size: 17px; }
+  .news p { margin: 4px 0 0; color: var(--ink-dim); font-size: 14px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+
+  /* Meta competitivo */
+  .meta { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: start; }
+  .fmt { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .rank { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--bg-raised); }
+  .rank li { display: grid; grid-template-columns: 36px 52px 1fr auto; gap: 14px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  .rank li:last-child { border-bottom: 0; }
+  .rank .pos { font: 600 15px var(--font-pixel); color: var(--ink-mute); }
+  .rank li:first-child .pos { color: var(--accent-hi); }
+  .rank .sprite { border-radius: 10px; }
+  .rank b { display: block; font-weight: 600; }
+  .rank .types { display: flex; gap: 4px; margin-top: 3px; }
+  .rank .role { color: var(--ink-mute); font-size: 13px; text-align: right; }
+
+  /* Generaciones: una línea de tiempo */
+  .gens { display: grid; grid-template-columns: 1.6fr repeat(8, 1fr); gap: 8px; }
+  .gen { position: relative; padding: 16px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg-raised); text-decoration: none; min-height: 150px; display: flex; flex-direction: column; }
+  .gen .n { font: 600 13px var(--font-pixel); color: var(--ink-mute); }
+  .gen b { font: 650 18px var(--font-display); margin-top: 6px; }
+  .gen span { color: var(--ink-mute); font-size: 12.5px; margin-top: 2px; }
+  .gen time { margin-top: auto; padding-top: 12px; font-size: 12px; color: var(--ink-mute); }
+  .gen.live { border-color: transparent; background: var(--gb-2); color: var(--gb-0); }
+  .gen.live .n, .gen.live span, .gen.live time { color: var(--gb-1); }
+  .gen.live b { font-size: 26px; }
+  .gen.live:hover { background: var(--gb-3); }
+  .gen:not(.live) { opacity: 0.7; }
+  .gen:not(.live) .soon { position: absolute; top: 14px; right: 12px; }
+
+  /* Herramientas: lista de enlaces */
+  .tools { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .tool { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 20px 18px 20px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .tool:hover h3 { color: var(--accent-hi); }
+  .tool .ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+  .tool p { margin: 4px 0 0; color: var(--ink-mute); font-size: 14px; }
+  .tool .tag { margin-left: 6px; vertical-align: 2px; }
+
+  @media (max-width: 860px) {
+    .hero, .meta { grid-template-columns: 1fr; gap: 32px; }
+    .gens { grid-template-columns: repeat(3, 1fr); }
+    .gen.live { grid-column: 1 / -1; min-height: 120px; }
+    .tools { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding-top: 36px; }
+    .news li { grid-template-columns: 1fr; gap: 4px; }
+    .gens { grid-template-columns: 1fr 1fr; }
+    .tools { grid-template-columns: 1fr; }
+    .rank .role { display: none; }
+    .rank li { grid-template-columns: 30px 44px 1fr; }
+  }
+</style>
+</head>
+<body data-page="inicio">
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Pokémon, de <em>Kanto</em> en adelante</h1>
+      <p class="lead">Vamos generación a generación, empezando por la primera. En Kanto ya tienes la Pokédex de los 151, el mapa con cada objeto y la guía para completar Rojo, Azul y Amarillo al 100 %.</p>
+      <div class="cta">
+        <a class="btn pri" href="kanto.html">Entrar en Kanto</a>
+        <a class="btn" href="pokedex.html">Abrir la Pokédex</a>
+      </div>
+    </div>
+
+    <div class="console" aria-label="Tu progreso en Kanto">
+      <div class="bezel">
+        <div class="bezel-top"><span class="led"></span>GEN I · KANTO</div>
+        <div class="screen lcd">
+          <div class="row"><span>POKéDEX</span><span class="num">012/151</span></div>
+          <div class="bar"><i style="width:8%"></i></div>
+          <div class="row" style="margin-top:8px"><span>MEDALLAS</span><span class="num">2/8</span></div>
+          <div class="bar"><i style="width:25%"></i></div>
+          <hr>
+          <div class="menu">
+            <div class="sel">SEGUIR LA GUÍA</div>
+            <div>MAPA DE KANTO</div>
+            <div>EQUIPO PARA MISTY</div>
+          </div>
+        </div>
+      </div>
+      <span class="pad"></span>
+      <span class="ab"><span></span><span></span></span>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="sec-head"><div><h2>Novedades</h2><p>Lo último que hemos añadido y lo que viene.</p></div></div>
+    <ul class="news">
+      <li><time>12 nov 2026</time><div><h3>Kanto ya está aquí</h3><p>Pokédex, mapa, guía de la historia y checklist del 100 % para Rojo, Azul y Amarillo.</p></div><a class="more" href="kanto.html">Ver Kanto</a></li>
+      <li><time>12 nov 2026</time><div><h3>Tabla de tipos de la 1.ª generación</h3><p>Con lo que cambiaba entonces: Fantasma no afectaba a Psíquico y Bicho y Veneno se pegaban ×2.</p></div><a class="more" href="tipos.html">Ver tipos</a></li>
+      <li><time>Próximamente</time><div><h3>Johto (2.ª generación)</h3><p>Oro, Plata y Cristal, con los 100 Pokémon nuevos y los tipos Siniestro y Acero.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="wrap meta">
+    <div>
+      <h2>Meta competitivo</h2>
+      <p class="lead" style="font-size:15px">Los Pokémon que más se usan en cada formato, con sus sets y sus counters. Mientras solo esté Kanto, el formato es el de la 1.ª generación.</p>
+      <div class="fmt">
+        <button class="chip" aria-pressed="true">Gen I · OU</button>
+        <button class="chip" disabled>VGC actual · pronto</button>
+      </div>
+      <p style="margin-top:22px"><a class="more" href="competitivo.html">Ver el competitivo de Gen I</a></p>
+    </div>
+    <ol class="rank" id="rank"></ol>
+  </section>
+
+  <section class="wrap" id="generaciones">
+    <div class="sec-head"><div><h2>Generaciones</h2><p>Del más antiguo al más reciente. Cada generación tiene su región, su Pokédex, su mapa y su guía.</p></div></div>
+    <div class="gens" id="gens"></div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head"><div><h2>Para todas las generaciones</h2></div></div>
+    <div class="tools">
+      <a class="tool" href="pokedex.html"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="9" cy="8" r="2"/><path d="M8 14h8M8 17h5"/></svg></span><div><h3>Pokédex</h3><p>Estadísticas, evoluciones, movimientos y dónde capturar cada uno.</p></div></a>
+      <a class="tool" href="tipos.html"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span><div><h3>Tabla de tipos</h3><p>Quién gana a quién, y el calculador de debilidades.</p></div></a>
+      <a class="tool" href="competitivo.html"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg></span><div><h3>Competitivo</h3><p>Tiers, sets, equipos y counters por formato.</p></div></a>
+      <a class="tool" href="habilidades.html"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><div><h3>Habilidades <span class="tag">Desde Gen III</span></h3><p>Qué hace cada una y cuáles son buenas, malas o situacionales.</p></div></a>
+      <a class="tool" href="habilidades.html#naturalezas"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 12h6M7 9v6M14 12h6"/></svg></span><div><h3>Naturalezas <span class="tag">Desde Gen III</span></h3><p>Las 25, qué suben y bajan, y la mejor para cada Pokémon.</p></div></a>
+      <a class="tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 19 19 5M9 5h10v10"/></svg></span><div><h3>Movimientos <span class="tag">Pronto</span></h3><p>Potencia, precisión, categoría y quién los aprende.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const top6 = [
+    [128, "Atacante principal"], [143, "Tanque ofensivo"], [113, "Muro especial"],
+    [65, "Barredor especial"], [121, "Barredor rápido"], [103, "Sueño y explosión"],
+  ];
+  document.getElementById("rank").innerHTML = top6.map(([id, role], i) => {
+    const p = PK.DEX[id - 1];
+    return `<li><span class="pos">${i + 1}</span>${spriteSlot()}<div><b>${p.name}</b><div class="types">${p.types.map(typeChip).join("")}</div></div><span class="role">${role}</span></li>`;
+  }).join("");
+
+  document.getElementById("gens").innerHTML = PK.GENS.map((g) =>
+    g.live
+      ? `<a class="gen live" href="kanto.html"><span class="n">GEN ${g.n}</span><b>${g.region}</b><span>${g.games}</span><time>${g.year}</time></a>`
+      : `<div class="gen" aria-disabled="true"><span class="tag soon">Pronto</span><span class="n">GEN ${g.n}</span><b>${g.region}</b><span>${g.games}</span><time>${g.year}</time></div>`
+  ).join("");
+</script>
+</body>
+</html>

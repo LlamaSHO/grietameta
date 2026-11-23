@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>GrietaMeta · Iniciar sesión y crear cuenta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#07090D}
+a{color:#D4A04A}a:hover{color:#E8B865}
+
+.gm{position:relative;min-height:100vh;display:flex;flex-direction:column;background:#07090D;color:#ECE9E1;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow:clip;isolation:isolate;-webkit-font-smoothing:antialiased}
+.gm *,.gm *::before,.gm *::after{box-sizing:border-box}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disp{font-family:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(60px,30px,0) scale(1.15)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes trace{from{stroke-dashoffset:580}to{stroke-dashoffset:0}}
+@keyframes fillin{from{fill-opacity:0}to{fill-opacity:1}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+
+.bg-grid{position:absolute;inset:0;z-index:-2;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%)}
+.glow{position:absolute;z-index:-1;width:520px;height:520px;border-radius:50%;filter:blur(100px);opacity:.3;animation:drift 16s ease-in-out infinite alternate}
+.glow.g1{top:-120px;left:4%;background:#B9832F}
+.glow.g2{bottom:-160px;right:4%;background:#0F8F88;animation-duration:19s;animation-direction:alternate-reverse}
+
+/* ---------- nav ---------- */
+.nav{border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#ECE9E1}
+.brand:hover{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',system-ui,sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.back{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:11px;color:#C6CBD2;text-decoration:none;font-size:14px;font-weight:500;transition:background .2s,color .2s}
+.back:hover{color:#ECE9E1;background:rgba(255,255,255,.05)}
+
+/* ---------- marca GM ---------- */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 2px var(--c)) drop-shadow(0 0 10px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:1.8;stroke-linejoin:miter;stroke-miterlimit:8}
+.mk.mini svg{filter:drop-shadow(0 0 3px var(--g))}
+.mk.mini .face{stroke-width:7}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.55);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.55);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.5);--f:#08221C}
+.mk.anim .face{stroke-dasharray:580;animation:trace 1.8s cubic-bezier(.6,0,.2,1) both,fillin 1s 1.1s ease both}
+.mk.anim .l-ml .face{animation-delay:.15s,1.25s}
+.mk.anim .l-mr .face{animation-delay:.3s,1.4s}
+
+/* ---------- contenedor ---------- */
+.main{position:relative;flex:1;display:flex;align-items:center;padding:44px 0 56px;isolation:isolate}
+/* iconos flotantes alrededor de la tarjeta */
+@keyframes bob{0%,100%{transform:translate3d(0,0,0) rotate(var(--r0))}50%{transform:translate3d(0,-16px,0) rotate(var(--r1))}}
+.deco{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.fl{position:absolute;display:grid;place-items:center;animation:bob var(--t,7s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.fl.tile{width:58px;height:58px;border-radius:17px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.11);box-shadow:0 20px 40px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.fl.logo{width:66px;height:66px;border-radius:50%}
+.fl.logo img{width:40px;height:40px;object-fit:contain}
+.fl.bare{opacity:.5}
+.f1{top:6%;left:2.5%;color:#E2B566;--t:7s;--r0:-10deg;--r1:-3deg}
+.f2{top:30%;left:5.5%;--t:8.5s;--dl:-2s;--r0:6deg;--r1:-4deg}
+.f3{top:52%;left:1.5%;color:#4FE0B6;--t:6s;--dl:-1s;--r0:0deg;--r1:14deg}
+.f4{top:74%;left:5%;color:#FF7A50;--t:9s;--dl:-4s;--r0:-6deg;--r1:6deg}
+.f5{top:97%;left:30%;color:#C3C8CF;--t:7.4s;--dl:-3s;--r0:8deg;--r1:-6deg}
+.f6{top:4%;right:3%;--t:7.5s;--dl:-3s;--r0:8deg;--r1:2deg}
+.f7{top:26%;right:1.5%;color:#E2B566;--t:8s;--dl:-1.5s;--r0:-4deg;--r1:8deg}
+.f8{top:48%;right:5%;--t:6.5s;--dl:-2.5s;--r0:10deg;--r1:-6deg}
+.f9{top:70%;right:2%;color:#4FE0B6;--t:9.5s;--dl:-5s;--r0:-12deg;--r1:-2deg}
+.f10{top:96%;right:30%;color:#FF7A50;--t:8.2s;--dl:-1s;--r0:4deg;--r1:-8deg}
+.f11{top:-1%;left:40%;color:#E2B566;--t:7.8s;--dl:-2s;--r0:-8deg;--r1:4deg}
+.f12{top:95%;left:52%;color:#4FE0B6;--t:8.8s;--dl:-4s;--r0:6deg;--r1:-6deg}
+.auth{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);width:100%;height:860px;border-radius:30px;border:1px solid rgba(255,255,255,.09);background:rgba(11,14,20,.82);box-shadow:0 50px 120px -50px rgba(0,0,0,.9);overflow:hidden;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+
+/* ---------- escaparate ---------- */
+.show{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:22px;padding:44px;background:radial-gradient(90% 60% at 30% 10%,rgba(212,160,74,.16),transparent 60%),radial-gradient(70% 50% at 90% 40%,rgba(79,224,182,.1),transparent 60%),linear-gradient(160deg,#141922 0%,#0C1017 60%,#090C11 100%);border-right:1px solid rgba(255,255,255,.07)}
+.stack{position:absolute;left:0;right:0;top:44px;height:430px}
+.cw{position:absolute;width:276px;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.cw.c1{left:4%;top:24px;transform:rotate(-9deg)}
+.cw.c2{right:4%;top:0;transform:rotate(8deg)}
+.cw.c3{left:50%;top:214px;margin-left:-138px;transform:rotate(-2deg);z-index:2}
+.show:hover .cw.c1{transform:translate(-18px,-6px) rotate(-13deg)}
+.show:hover .cw.c2{transform:translate(18px,-10px) rotate(12deg)}
+.show:hover .cw.c3{transform:translateY(-14px) rotate(0deg)}
+.card{position:relative;height:180px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 60px -20px rgba(0,0,0,.85);background:#0B0E14;animation:floaty 6s ease-in-out infinite}
+.c1 .card{animation-delay:-2s}
+.c2 .card{animation-delay:-4s;animation-duration:7s}
+.card img.bgi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c1 .card img.bgi{object-position:50% 40%}
+.c2 .card img.bgi{object-position:50% 30%}
+.c3 .card img.bgi{object-position:62% 22%}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(7,9,13,.92))}
+.cap{position:absolute;z-index:1;left:12px;right:12px;bottom:10px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
+.cap img{width:26px;height:26px;object-fit:contain;padding:3px;border-radius:8px;background:rgba(7,9,13,.75);border:1px solid rgba(255,255,255,.12)}
+.cap small{display:block;font-size:11.5px;font-weight:500;color:#C6CBD2}
+.c3 .card{border-color:rgba(232,184,101,.55);box-shadow:0 30px 70px -20px rgba(0,0,0,.9),0 0 0 4px rgba(212,160,74,.12)}
+.emb{position:relative}
+.show h2{position:relative;margin:0;font-size:40px;font-weight:800;line-height:1.02;letter-spacing:-.03em}
+.show h2 em{font-style:normal;color:#E2B566}
+.perks{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font-size:14.5px;color:#C6CBD2}
+.perks li{display:flex;gap:12px;align-items:flex-start}
+.perks .pk{flex-shrink:0;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(212,160,74,.12);border:1px solid rgba(212,160,74,.3);color:#F3C878}
+
+/* ---------- formulario ---------- */
+.panel{display:flex;flex-direction:column;justify-content:center;padding:40px 52px;overflow:hidden}
+.tabs{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:5px;border-radius:15px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03);margin-bottom:30px}
+.tthumb{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.tthumb.r{transform:translateX(100%)}
+.tab{position:relative;z-index:1;height:44px;border:none;background:none;color:#A6AEB9;font:600 14.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:color .25s}
+.tab:hover{color:#ECE9E1}
+.tab.on{color:#ECE9E1}
+.backlink{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;padding:0;border:none;background:none;color:#C6CBD2;font:500 14px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.backlink:hover{color:#F3C878}
+.title{margin:0;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;animation:fade .4s ease both}
+.lead{margin:8px 0 26px;color:#A6AEB9;font-size:15px;animation:fade .4s .05s ease both}
+
+.socials{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.soc{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;height:72px;padding:0 4px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#C6CBD2;font:600 12px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .25s,border-color .25s,transform .25s,box-shadow .25s,color .25s}
+.soc img{width:24px;height:24px;object-fit:contain;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.soc:hover{color:#ECE9E1;transform:translateY(-3px);background:rgba(255,255,255,.06);border-color:var(--bc);box-shadow:0 14px 30px -14px var(--bc)}
+.soc:hover img{transform:scale(1.15)}
+.s-go{--bc:rgba(66,133,244,.75)}
+.s-dc{--bc:rgba(88,101,242,.8)}
+.s-ri{--bc:rgba(235,0,41,.75)}
+.s-ep{--bc:rgba(255,255,255,.55)}
+.s-st{--bc:rgba(102,192,244,.7)}
+.soc-note{margin:10px 0 0;text-align:center;font-size:12.5px;color:#8F98A5}
+.slot{flex-shrink:0;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font:700 13px/1 'IBM Plex Sans',sans-serif}
+.slot.go{background:#FFFFFF;color:#1F1F1F}
+.slot.dc{background:#5865F2;color:#FFFFFF}
+.or{display:flex;align-items:center;gap:14px;margin:20px 0;color:#8F98A5;font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.or::before,.or::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.09)}
+
+.form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:#D6D3CB;animation:fade .35s ease both}
+.fhead{display:flex;justify-content:space-between;align-items:baseline}
+.link{padding:0;border:none;background:none;color:#E2B566;font:500 13px/1.4 'IBM Plex Sans',sans-serif;cursor:pointer}
+.link:hover{color:#F3C878;text-decoration:underline}
+.inp{position:relative;display:flex;align-items:center}
+.inp > svg{position:absolute;left:15px;color:#8A93A0;pointer-events:none;transition:color .2s}
+.inp input{width:100%;height:50px;padding:0 48px 0 44px;border-radius:13px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.035);color:#ECE9E1;font:400 15px/1 'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.inp input::placeholder{color:#7C8592}
+.inp input:hover{border-color:rgba(255,255,255,.2)}
+.inp input:focus{border-color:rgba(212,160,74,.65);background:rgba(10,13,19,.9);box-shadow:0 0 0 4px rgba(212,160,74,.14)}
+.inp:focus-within > svg{color:#E2B566}
+.inp.bad input{border-color:rgba(255,106,61,.6)}
+.eye{position:absolute;right:6px;width:40px;height:40px;display:grid;place-items:center;border:none;border-radius:10px;background:none;color:#A6AEB9;cursor:pointer}
+.eye:hover{color:#ECE9E1;background:rgba(255,255,255,.06)}
+.meter{display:flex;align-items:center;gap:10px;margin-top:2px;font-size:12.5px;font-weight:500;color:#8F98A5}
+.bars{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.bars i{height:5px;border-radius:3px;background:rgba(255,255,255,.08);transition:background .3s}
+.meter.s1 .bars i:nth-child(-n+1){background:#FF6A3D}
+.meter.s2 .bars i:nth-child(-n+2){background:#F28A1E}
+.meter.s3 .bars i:nth-child(-n+3){background:#E2B566}
+.meter.s4 .bars i{background:#4FE0B6}
+
+.alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;font-size:13.5px;animation:fade .3s ease both}
+.alert svg{flex-shrink:0;margin-top:1px}
+.alert.err{background:rgba(255,106,61,.09);border:1px solid rgba(255,106,61,.35);color:#FFB59C}
+.alert.ok{background:rgba(79,224,182,.08);border:1px solid rgba(79,224,182,.35);color:#9FF0D6}
+
+.submit{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;height:52px;margin-top:4px;border:none;border-radius:14px;background:linear-gradient(180deg,#E8B865,#C8913A);color:#17120A;font:600 15.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;box-shadow:0 14px 34px -14px rgba(212,160,74,.9),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s,box-shadow .2s,opacity .2s}
+.submit:hover{transform:translateY(-1px);box-shadow:0 18px 40px -14px rgba(212,160,74,1),inset 0 1px 0 rgba(255,255,255,.4)}
+.submit[disabled]{opacity:.7;cursor:default;transform:none}
+.spinner{width:17px;height:17px;border-radius:50%;border:2px solid rgba(23,18,10,.3);border-top-color:#17120A;animation:spin .7s linear infinite}
+.switch{margin:22px 0 0;text-align:center;color:#A6AEB9;font-size:14px}
+.switch .link{font-size:14px;font-weight:600}
+.fine{margin:12px 0 0;text-align:center;color:#8F98A5;font-size:12.5px}
+.fine a{color:#C6CBD2}
+
+/* conectado */
+.done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;animation:fade .4s ease both}
+.ava{position:relative;width:84px;height:84px;margin-bottom:14px;display:grid;place-items:center;animation:pop .6s cubic-bezier(.2,.8,.2,1) both}
+.ava::before{content:"";position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(#F3C878,#FF6A3D,#4FE0B6,#F3C878);animation:spin 5s linear infinite}
+.ava b{position:relative;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#1B2230;font:700 24px/1 'Chakra Petch',sans-serif;color:#ECE9E1}
+.done p{margin:6px 0 0;color:#A6AEB9;font-size:15px}
+.done p strong{color:#ECE9E1}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 24px;border-radius:13px;background:linear-gradient(180deg,#E8B865,#C8913A);color:#17120A;font-weight:600;font-size:15px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.btn-gold:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;height:50px;padding:0 22px;border-radius:13px;border:1px solid rgba(255,255,255,.14);background:none;color:#ECE9E1;font:600 15px/1 'IBM Plex Sans',sans-serif;text-decoration:none;cursor:pointer}
+.btn-ghost:hover{color:#ECE9E1;background:rgba(255,255,255,.05)}
+
+.foot{padding:22px 0 30px;color:#8F98A5;font-size:13px}
+.foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{color:#A0A8B4;text-decoration:none;margin-left:20px}
+.foot a:hover{color:#E2B566}
+
+@media (max-width:980px){
+  .auth{grid-template-columns:1fr;height:auto;min-height:860px}
+  .show{display:none}
+  .f2,.f3,.f4,.f7,.f8,.f9,.f11,.f12{display:none}
+  .panel{padding:36px 28px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .main{padding:20px 0 36px}
+  .auth{border-radius:22px}
+  .panel{padding:28px 20px}
+  .auth{min-height:820px}
+  .soc{height:66px;font-size:11px}
+  .f5,.f10{display:none}
+  .brand-name{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gm *,.gm *::before,.gm *::after{animation:none !important;transition:none !important}
+}
+.gm.still *,.gm.still *::before,.gm.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:560px){
+  .deco{display:none}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+</style>
+</helmet>
+
+<div class="gm {{motionClass}}">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow g1" aria-hidden="true"></div>
+  <div class="glow g2" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk mini" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <a class="back" href="Main.dc.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline></svg>
+        Volver a la web
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="deco" aria-hidden="true">
+      <div class="fl tile f1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path></svg></div>
+      <div class="fl tile logo f2"><img src="../assets/games/logo-lol.png" alt=""></div>
+      <div class="fl tile f3"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+      <div class="fl tile f4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="2"></circle><line x1="12" y1="1.5" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22.5"></line><line x1="1.5" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22.5" y2="12"></line></svg></div>
+      <div class="fl bare f5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"></path><path d="M11 3L8 9l4 13 4-13-3-6"></path><path d="M2 9h20"></path></svg></div>
+      <div class="fl tile logo f6"><img src="../assets/games/logo-arc.png" alt=""></div>
+      <div class="fl tile f7"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 7v9"></path><path d="M8.5 10.5h7"></path></svg></div>
+      <div class="fl tile logo f8"><img src="../assets/games/logo-zelda.png" alt=""></div>
+      <div class="fl tile f9"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"></path><path d="M7 15h10"></path></svg></div>
+      <div class="fl bare f10"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
+      <div class="fl tile f11"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg></div>
+      <div class="fl tile f12"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></div>
+    </div>
+    <div class="wrap">
+      <div class="auth">
+
+        <!-- Escaparate -->
+        <aside class="show" aria-hidden="true">
+          <div class="stack">
+            <div class="cw c1">
+              <div class="card">
+                <img class="bgi" src="/images/zelda/hyrule.jpg" alt="">
+                <span class="cap"><img src="../assets/games/logo-zelda.png" alt=""><span>Zelda TotK<small>Santuarios y semillas</small></span></span>
+              </div>
+            </div>
+            <div class="cw c2">
+              <div class="card">
+                <img class="bgi" src="/images/arc-raiders/bots/arc_the_queen.webp" alt="">
+                <span class="cap"><img src="../assets/games/logo-arc.png" alt=""><span>ARC Raiders<small>Misiones completadas</small></span></span>
+              </div>
+            </div>
+            <div class="cw c3">
+              <div class="card">
+                <img class="bgi" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="">
+                <span class="cap"><img src="../assets/games/logo-lol.png" alt=""><span>League of Legends<small>Campeones favoritos</small></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="emb">
+            <div class="mk anim" style="width: 46px">
+              <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+              <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+              <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+            </div>
+          </div>
+          <h2 class="disp">Tu meta,<br><em>siempre contigo.</em></h2>
+          <ul class="perks">
+            <li><span class="pk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>Guarda tus juegos favoritos y tu progreso.</li>
+            <li><span class="pk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span>Tu cuenta funciona en todos los juegos de GrietaMeta.</li>
+            <li><span class="pk"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg></span>Con Premium navegas sin anuncios y recibes los avisos de parche antes que nadie.</li>
+          </ul>
+        </aside>
+
+        <!-- Formulario -->
+        <section class="panel">
+          <sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+            <div class="done">
+              <div class="ava"><b>TU</b></div>
+              <h1 class="title disp">Ya has iniciado sesión</h1>
+              <p>Estás conectado como <strong>TuUsuario</strong> (tu@email.com).</p>
+              <div class="row">
+                <a class="btn-gold" href="Main.dc.html">Continuar</a>
+                <a class="btn-ghost" href="MiPremium.dc.html">Mi Premium</a>
+                <button type="button" class="btn-ghost" onClick="{{logout}}">Cerrar sesión</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{notDone}}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{notReset}}" hint-placeholder-val="{{ true }}">
+              <div class="tabs" role="tablist" aria-label="Acceso">
+                <span class="tthumb {{thumb}}" aria-hidden="true"></span>
+                <button type="button" role="tab" class="tab {{loginOn}}" aria-selected="{{loginSel}}" onClick="{{toLogin}}">Iniciar sesión</button>
+                <button type="button" role="tab" class="tab {{regOn}}" aria-selected="{{regSel}}" onClick="{{toRegister}}">Crear cuenta</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{isReset}}" hint-placeholder-val="{{ false }}">
+              <button type="button" class="backlink" onClick="{{toLogin}}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline></svg>
+                Volver a iniciar sesión
+              </button>
+            </sc-if>
+
+            <sc-if value="{{isLogin}}" hint-placeholder-val="{{ true }}">
+              <h1 data-pane class="title disp">Bienvenido de nuevo</h1>
+              <p class="lead">Entra con tu cuenta de juego o con tu email.</p>
+            </sc-if>
+            <sc-if value="{{isRegister}}" hint-placeholder-val="{{ false }}">
+              <h1 data-pane class="title disp">Crea tu cuenta</h1>
+              <p class="lead">Es gratis y tardas menos de un minuto.</p>
+            </sc-if>
+            <sc-if value="{{isReset}}" hint-placeholder-val="{{ false }}">
+              <h1 data-pane class="title disp">Recupera tu contraseña</h1>
+              <p class="lead">Te enviaremos un enlace para elegir una nueva.</p>
+            </sc-if>
+
+            <sc-if value="{{notReset}}" hint-placeholder-val="{{ true }}">
+              <div class="socials" role="group" aria-label="Entrar con otra cuenta">
+                <button type="button" class="soc s-go" aria-label="Continuar con Google" onClick="{{submit}}"><img src="../assets/social/google.png" alt="">Google</button>
+                <button type="button" class="soc s-dc" aria-label="Continuar con Discord" onClick="{{submit}}"><img src="../assets/social/discord.svg" alt="">Discord</button>
+                <button type="button" class="soc s-ri" aria-label="Continuar con Riot Games" onClick="{{submit}}"><img src="../assets/social/riotgames.svg" alt="">Riot</button>
+                <button type="button" class="soc s-ep" aria-label="Continuar con Epic Games" onClick="{{submit}}"><img src="../assets/social/epicgames.svg" alt="">Epic</button>
+                <button type="button" class="soc s-st" aria-label="Continuar con Steam" onClick="{{submit}}"><img src="../assets/social/steam.svg" alt="">Steam</button>
+              </div>
+              <div class="or">o con tu email</div>
+            </sc-if>
+
+            <form class="form" novalidate="novalidate">
+              <sc-if value="{{isRegister}}" hint-placeholder-val="{{ false }}">
+                <label class="field" for="f-user">
+                  Nombre de usuario
+                  <span class="inp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                    <input id="f-user" type="text" autocomplete="nickname" maxlength="40" placeholder="Cómo quieres que te veamos">
+                  </span>
+                </label>
+              </sc-if>
+
+              <label class="field" for="f-mail">
+                Email
+                <span class="inp {{badClass}}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>
+                  <input id="f-mail" type="email" autocomplete="email" placeholder="tu@email.com">
+                </span>
+              </label>
+
+              <sc-if value="{{notReset}}" hint-placeholder-val="{{ true }}">
+                <div class="field">
+                  <span class="fhead">
+                    <label for="f-pass">Contraseña</label>
+                    <sc-if value="{{isLogin}}" hint-placeholder-val="{{ true }}">
+                      <button type="button" class="link" onClick="{{toReset}}">¿La has olvidado?</button>
+                    </sc-if>
+                  </span>
+                  <span class="inp {{badClass}}">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                    <input id="f-pass" type="{{pwType}}" autocomplete="{{pwAuto}}" placeholder="{{pwHint}}" onInput="{{onPw}}">
+                    <button type="button" class="eye" aria-label="{{eyeLabel}}" onClick="{{toggleEye}}">
+                      <sc-if value="{{pwHidden}}" hint-placeholder-val="{{ true }}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                      </sc-if>
+                      <sc-if value="{{pwShown}}" hint-placeholder-val="{{ false }}">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      </sc-if>
+                    </button>
+                  </span>
+                  <sc-if value="{{isRegister}}" hint-placeholder-val="{{ false }}">
+                    <span class="meter {{meterClass}}" aria-live="polite">
+                      <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                      {{meterLabel}}
+                    </span>
+                  </sc-if>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{showError}}" hint-placeholder-val="{{ false }}">
+                <div class="alert err" role="alert">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="7.5" x2="12" y2="13"></line><line x1="12" y1="16.5" x2="12" y2="16.6"></line></svg>
+                  {{errorText}}
+                </div>
+              </sc-if>
+              <sc-if value="{{showSent}}" hint-placeholder-val="{{ false }}">
+                <div class="alert ok" role="status">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>
+                  Si hay una cuenta con ese email, te hemos enviado un enlace para cambiar la contraseña.
+                </div>
+              </sc-if>
+
+              <button type="button" class="submit" disabled="{{busy}}" onClick="{{submit}}">
+                <sc-if value="{{busy}}" hint-placeholder-val="{{ false }}"><span class="spinner" aria-hidden="true"></span></sc-if>
+                {{submitText}}
+              </button>
+            </form>
+
+            <sc-if value="{{isLogin}}" hint-placeholder-val="{{ true }}">
+              <p class="switch">¿Aún no tienes cuenta? <button type="button" class="link" onClick="{{toRegister}}">Créala gratis</button></p>
+            </sc-if>
+            <sc-if value="{{isRegister}}" hint-placeholder-val="{{ false }}">
+              <p class="switch">¿Ya tienes cuenta? <button type="button" class="link" onClick="{{toLogin}}">Inicia sesión</button></p>
+              <p class="fine">Al crear una cuenta aceptas nuestra <a href="https://grietameta.vercel.app/privacidad">política de privacidad</a>.</p>
+            </sc-if>
+          </sc-if>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <span>© 2026 GrietaMeta</span>
+      <span><a href="https://grietameta.vercel.app/contacto">Contacto</a><a href="https://grietameta.vercel.app/privacidad">Privacidad</a></span>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb on" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"modo":{"editor":"enum","options":["iniciar sesión","crear cuenta","recuperar"],"default":"iniciar sesión"},"estado":{"editor":"enum","options":["normal","error","cargando","conectado"],"default":"normal"},"$preview":{"width":1440,"height":1110}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const P = this.props || {};
+    const MAP = { 'iniciar sesión': 'login', 'crear cuenta': 'register', 'recuperar': 'reset' };
+    const mode = S.mode || MAP[P.modo] || 'login';
+    const estado = S.estado || P.estado || 'normal';
+    const login = mode === 'login', reg = mode === 'register', reset = mode === 'reset';
+    const done = estado === 'conectado';
+    const busy = estado === 'cargando';
+    const shown = !!S.show;
+    const score = reg ? (S.score || 0) : 0;
+    const LABELS = ['Mínimo 6 caracteres', 'Muy corta', 'Aceptable', 'Buena', 'Fuerte'];
+    const go = (m) => () => this.setState({ mode: m, estado: 'normal', sent: false, score: 0 });
+    const ERR = {
+      login: 'Email o contraseña incorrectos.',
+      register: 'Ya hay una cuenta con ese email. Prueba a iniciar sesión.',
+      reset: 'Ese email no es válido.'
+    };
+    return {
+      motionClass: (P.animaciones ?? true) ? '' : 'still',
+      isDone: done, notDone: !done,
+      isLogin: login, isRegister: reg, isReset: reset, notReset: !reset,
+      thumb: reg ? 'r' : '',
+      loginOn: login ? 'on' : '', regOn: reg ? 'on' : '',
+      loginSel: login ? 'true' : 'false', regSel: reg ? 'true' : 'false',
+      toLogin: go('login'), toRegister: go('register'), toReset: go('reset'),
+      pwType: shown ? 'text' : 'password',
+      pwShown: shown, pwHidden: !shown,
+      eyeLabel: shown ? 'Ocultar contraseña' : 'Mostrar contraseña',
+      toggleEye: () => this.setState({ show: !shown }),
+      pwAuto: reg ? 'new-password' : 'current-password',
+      pwHint: reg ? 'Mínimo 6 caracteres' : 'Tu contraseña',
+      onPw: (e) => {
+        const v = (e && e.target && e.target.value) || '';
+        let s = 0;
+        if (v.length) s = v.length < 6 ? 1 : 2;
+        if (v.length >= 10) s++;
+        if (v.length >= 6 && /\d/.test(v) && /[^A-Za-z0-9]/.test(v)) s++;
+        this.setState({ score: Math.min(4, s) });
+      },
+      meterClass: 's' + score,
+      meterLabel: LABELS[score],
+      showError: estado === 'error',
+      errorText: ERR[mode],
+      badClass: estado === 'error' && !reset ? 'bad' : '',
+      showSent: reset && !!S.sent,
+      busy: busy,
+      submitText: busy ? 'Un momento…' : (login ? 'Iniciar sesión' : reg ? 'Crear cuenta' : 'Enviar enlace'),
+      submit: () => reset ? this.setState({ sent: true, estado: 'normal' }) : this.setState({ estado: 'conectado' }),
+      logout: () => this.setState({ estado: 'normal', mode: 'login' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Black Ops III · Zombis</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&amp;family=Saira+Condensed:wght@500;600;700;800&amp;family=Chakra+Petch:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0A0A0B}
+a{color:#FFB066}a:hover{color:#FFE0C2}
+.cdp{position:relative;background:#0A0A0B;color:#ECE8E1;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.cdp *,.cdp *::before,.cdp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sc{font-family:'Saira Condensed',sans-serif;font-variant-numeric:lining-nums}
+.serif{font-family:'Saira Condensed',sans-serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,26,.7)}70%{box-shadow:0 0 0 14px rgba(255,122,26,0)}100%{box-shadow:0 0 0 0 rgba(255,122,26,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(236,228,214,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE8E1;justify-self:start}
+.brand:hover{color:#ECE8E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#A19B92;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(236,228,214,.14);background:rgba(236,228,214,.04);color:#ECE8E1;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8A847B}
+.search input:focus{border-color:rgba(255,122,26,.6);box-shadow:0 0 0 4px rgba(255,122,26,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#A19B92;padding:5px 8px;border-radius:6px;border:1px solid rgba(236,228,214,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(236,228,214,.18);color:#ECE8E1;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#ECE8E1;background:rgba(236,228,214,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(236,228,214,.07);background:rgba(20,19,18,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(236,228,214,.14);color:#ECE8E1;text-decoration:none;font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#B0AA9F;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#ECE8E1}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#FF7A1A;box-shadow:0 0 12px rgba(255,122,26,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#ECE8E1}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#141414;border:1px solid rgba(236,228,214,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#ECE8E1;transition:background .2s}
+.mapo:hover{background:rgba(236,228,214,.06);color:#ECE8E1}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(236,228,214,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Saira Condensed',sans-serif;font-size:14px}
+.mapo span{font-size:12px;color:#9A948A}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#8A847B}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#ECE8E1;transition:background .2s}
+.io:hover{background:rgba(236,228,214,.06);color:#ECE8E1}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(255,122,26,.1);border:1px solid rgba(255,122,26,.25);color:#FFB066;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#9A948A}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+.foot{margin-top:64px;border-top:1px solid rgba(236,228,214,.1);padding:32px 0 36px;font-size:13px;color:#9A948A}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(236,228,214,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .cdp *,.cdp *::before,.cdp *::after{animation:none !important;transition:none !important}
+}
+.cdp.still *,.cdp.still *::before,.cdp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+
+
+.cdp .slink{color:#B0AA9F}
+.cdp .slink:hover,.cdp .slink.on{color:#FFF}
+.cdp .slink.on::after{background:#FF7A1A;box-shadow:0 0 12px rgba(255,122,26,.8)}
+.gchip{font-family:'Saira Condensed',sans-serif;font-size:17px;letter-spacing:.04em;text-transform:uppercase}
+.gchip img{width:46px;height:28px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,122,26,.4)}
+.slink svg{opacity:.8}
+.slink.on{color:#FFF}
+.status{border-color:rgba(255,122,26,.4);background:rgba(255,122,26,.1);color:#FFB066}
+.status i{background:#FF7A1A;box-shadow:0 0 10px rgba(255,122,26,.8)}
+.cdm{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:470px}
+.cdo{display:flex;gap:12px;align-items:center;padding:10px;border-radius:13px;color:#ECE8E1 !important;text-decoration:none;transition:background .2s}
+.cdo:hover{background:rgba(255,122,26,.08)}
+.cdo .th{flex-shrink:0;width:72px;height:44px;border-radius:9px;overflow:hidden;border:1px solid rgba(236,228,214,.14);display:grid;place-items:center;background:linear-gradient(135deg,#2A1A0C,#0F0F10)}
+.cdo .th img{width:100%;height:100%;object-fit:cover}
+.cdo .th i{font:400 22px/1 'Saira Stencil One',sans-serif;font-style:normal;color:#FF7A1A}
+.cdo b{display:block;font:700 17px/1.1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.cdo small{display:block;margin-top:2px;font-size:12px;color:#9A948A}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FF7A1A}
+.kicker::before{content:"";width:22px;height:2px;background:currentColor}
+.sec{padding:72px 0 0;scroll-margin-top:118px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
+.h2{margin:8px 0 0;font:800 46px/1 'Saira Condensed',sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.sec-h p{margin:8px 0 0;color:#B0AA9F;max-width:660px}
+.btn-r{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,#FF8A2E,#E05A00);color:#160A00 !important;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(255,122,26,.85),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .2s;border:0;cursor:pointer}
+.btn-r:hover{transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:12px;border:1px solid rgba(236,228,214,.3);color:#ECE8E1 !important;font-weight:600;font-size:14.5px;text-decoration:none;background:rgba(10,10,11,.4);transition:background .2s,border-color .2s;cursor:pointer}
+.btn-o:hover{background:rgba(236,228,214,.08);border-color:rgba(236,228,214,.55)}
+.stencil{font-family:'Saira Stencil One',sans-serif;font-weight:400;letter-spacing:.01em}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.08;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes flick{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.4}50%{opacity:1}72%{opacity:.85}}
+
+
+/* hero del juego */
+.gh{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(236,228,214,.1)}
+.gh-bg{position:absolute;inset:0;z-index:-1}
+.gh-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.85) brightness(.5)}
+.gh-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0A0A0B 18%,rgba(10,10,11,.7) 50%,rgba(10,10,11,.25)),linear-gradient(0deg,#0A0A0B,rgba(10,10,11,0) 45%)}
+.gh.bo4 .gh-bg{background:radial-gradient(50% 80% at 78% 40%,rgba(201,164,92,.35),transparent 70%),radial-gradient(40% 60% at 92% 90%,rgba(226,54,75,.25),transparent 70%),#0E0C0A}
+.gh.bo4 .gh-bg::before{content:"IIII";position:absolute;right:4%;top:50%;transform:translateY(-50%);font:400 360px/1 'Saira Stencil One',sans-serif;letter-spacing:-.04em;color:rgba(201,164,92,.13)}
+.gh-in{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:48px;padding-top:88px;padding-bottom:64px;min-height:500px}
+.gh-t{animation:gmFade .7s cubic-bezier(.2,.8,.2,1) both}
+.gh h1{margin:14px 0 0;font-size:104px;line-height:.9;color:#FFF;text-shadow:0 0 40px rgba(255,122,26,.25)}
+.lead{margin:18px 0 0;font-size:18px;color:#DCD6CB;max-width:56ch;text-wrap:pretty}
+.packs{margin:18px 0 0;max-width:72ch;font-size:13px;color:#A19B92}
+.packs b{display:block;margin-bottom:4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#FFB066}
+.gh-st{display:flex;gap:10px;margin:0}
+.gh-st div{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;width:150px;height:120px;padding:16px;border-radius:16px;background:rgba(14,14,15,.72);border:1px solid rgba(236,228,214,.14);backdrop-filter:blur(8px)}
+.gh-st dt{font-size:54px;font-weight:800;line-height:.9;color:#FF7A1A}
+.gh-st dd{margin:0;font-size:12.5px;color:#B0AA9F}
+.hz{position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(-45deg,#FF7A1A 0 14px,#0A0A0B 14px 28px);opacity:.75}
+
+/* selector de mapas */
+.rail{display:grid;gap:10px}
+.rail.c6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.rail.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rc{position:relative;display:flex;flex-direction:column;padding:0;border-radius:16px;overflow:hidden;background:#121213;border:1px solid rgba(236,228,214,.1);color:#ECE8E1;text-align:left;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .3s}
+.rc:hover{transform:translateY(-3px);border-color:rgba(236,228,214,.28)}
+.rc.on{border-color:var(--mc);box-shadow:0 0 0 1px var(--mc),0 24px 50px -24px var(--mc)}
+.rc-img{position:relative;display:grid;place-items:center;aspect-ratio:16/9;overflow:hidden;background:radial-gradient(90% 120% at 30% 0%,color-mix(in srgb,var(--mc) 35%,transparent),transparent 70%),repeating-linear-gradient(135deg,rgba(236,228,214,.035) 0 8px,transparent 8px 16px),#141415}
+.rc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.8);transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .3s}
+.rc:hover .rc-img img,.rc.on .rc-img img{transform:scale(1.06);filter:none}
+.rc-img i{font-style:normal;font-size:38px;color:var(--mc);opacity:.85;text-shadow:0 0 24px color-mix(in srgb,var(--mc) 60%,transparent)}
+.rc-t{display:flex;flex-direction:column;gap:2px;padding:10px 12px 12px}
+.rc-n{font-size:12px;font-weight:700;letter-spacing:.12em;color:#8A847B}
+.rc.on .rc-n{color:var(--mc)}
+.rc b{font:700 18px/1.05 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.rc small{font-size:11.5px;color:#9A948A}
+
+/* ficha */
+.md-s{padding-top:40px}
+.anc{position:absolute;margin-top:-118px}
+.md.fa{animation:mdA .45s cubic-bezier(.2,.8,.2,1) both}
+.md.fb{animation:mdB .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes mdA{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mdB{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.md-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:stretch;padding:18px;border-radius:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--mc) 10%,#121213),#101011 60%);border:1px solid rgba(236,228,214,.12)}
+.md-fig{position:relative;margin:0;min-height:380px;border-radius:16px;overflow:hidden;background:#0E0E0F;border:1px solid rgba(236,228,214,.1)}
+.md-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.md-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,0) 55%,rgba(10,10,11,.85));pointer-events:none}
+.md-ph{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(70% 90% at 35% 20%,color-mix(in srgb,var(--mc) 40%,transparent),transparent 70%),repeating-linear-gradient(135deg,rgba(236,228,214,.04) 0 12px,transparent 12px 24px),#121213}
+.md-ph::before{content:"";position:absolute;left:50%;top:50%;width:520px;height:520px;transform:translate(-50%,-50%);border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 58px,rgba(236,228,214,.06) 58px 59px);pointer-events:none}
+.md-ph::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(236,228,214,.1),transparent)}
+.md-ph i{position:relative;z-index:1;font-style:normal;font-size:150px;line-height:1;color:var(--mc);opacity:.8;text-shadow:0 0 60px color-mix(in srgb,var(--mc) 55%,transparent);animation:flick 6s infinite}
+.md-k{position:absolute;left:14px;top:12px;z-index:2;padding:4px 10px;border-radius:999px;background:rgba(10,10,11,.75);border:1px solid rgba(236,228,214,.18);font-size:13px;font-weight:700;letter-spacing:.1em;color:#ECE8E1}
+.md-fig figcaption{position:absolute;left:16px;bottom:12px;right:16px;z-index:2;font-size:12px;color:#CFC9BE}
+.md-info{display:flex;flex-direction:column;gap:12px;padding:6px 8px 4px 0}
+.md-dlc{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mc)}
+.md-dlc i{width:8px;height:8px;border-radius:2px;background:var(--mc);transform:rotate(45deg)}
+.md-h{margin:0;font-size:60px;line-height:.92;color:#FFF}
+.md-d{margin:0;font-size:16px;color:#DCD6CB;text-wrap:pretty}
+.md-dl{display:grid;grid-template-columns:100px 1fr;gap:7px 14px;margin:4px 0 0;padding:14px 0 0;border-top:1px solid rgba(236,228,214,.1);font-size:14px}
+.md-dl dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A847B;padding-top:3px}
+.md-dl dd{margin:0;color:#ECE8E1}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.pill{padding:5px 11px;border-radius:999px;background:rgba(236,228,214,.05);border:1px solid rgba(236,228,214,.14);font-size:12.5px;color:#CFC9BE}
+
+.md-g{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:14px;margin-top:14px;align-items:start}
+.md-g .col{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pap-f{display:flex;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.pap-f li{flex:1;display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:rgba(10,10,11,.45);border:1px solid rgba(255,122,26,.2);font-size:12.5px;color:#B0AA9F}
+.pap-f b{font-size:20px;font-weight:800;line-height:1;color:#FFB066}
+.wt.nocost .wr{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+.wt.nocost .wr > :nth-child(3){display:none}
+.md-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.cd{position:relative;padding:20px 22px 22px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1)}
+.cd header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.cd header > div{flex:1;min-width:0}
+.ci{display:grid;place-items:center;flex-shrink:0;width:42px;height:42px;border-radius:12px;background:rgba(255,122,26,.1);border:1px solid rgba(255,122,26,.3);color:#FFB066}
+.kk{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A847B}
+.cd h3{margin:2px 0 0;font:800 25px/1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.cnt{font-size:30px;font-weight:800;color:rgba(236,228,214,.25)}
+.cost{padding:6px 12px;border-radius:10px;background:#FF7A1A;color:#160A00;font-size:20px;font-weight:800;letter-spacing:.02em}
+.pap{background:linear-gradient(140deg,rgba(255,122,26,.16),#121213 55%);border-color:rgba(255,122,26,.35)}
+.pap::before{content:"";position:absolute;left:22px;right:22px;top:0;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,#FF7A1A,#FFB066,#4FD8FF)}
+.pap-t{margin:0;font-size:16px;line-height:1.6;color:#ECE8E1;text-wrap:pretty}
+.pl{display:flex;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none}
+.pl li{display:flex;align-items:flex-start;gap:12px;padding:8px 10px;border-radius:11px;transition:background .2s}
+.pl li:hover{background:rgba(236,228,214,.04)}
+.pl li i{flex-shrink:0;width:12px;height:22px;margin-top:2px;border-radius:4px 4px 3px 3px;background:var(--pc);box-shadow:0 0 14px color-mix(in srgb,var(--pc) 60%,transparent)}
+.pl b{display:block;font-size:14.5px;color:#ECE8E1}
+.pl small{display:block;font-size:12.5px;color:#9A948A}
+.wt{display:flex;flex-direction:column;border-radius:12px;overflow:hidden;border:1px solid rgba(236,228,214,.08)}
+.wr{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 76px;gap:12px;align-items:center;padding:9px 14px;font-size:14px;color:#CFC9BE}
+.wr:nth-child(even){background:rgba(236,228,214,.03)}
+.wr b{color:#FFF}
+.wr span.sc{font-weight:700;color:#FFB066;text-align:right}
+.wh{background:rgba(236,228,214,.06) !important;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A847B}
+.wh span:last-child{text-align:right}
+.empty{margin:0;padding:14px 16px;border-radius:12px;border:1px dashed rgba(236,228,214,.18);font-size:14px;color:#A19B92}
+.wl{display:flex;flex-direction:column;gap:8px}
+.wi{padding:12px 14px;border-radius:12px;background:rgba(236,228,214,.035);border:1px solid rgba(236,228,214,.07);border-left:3px solid var(--mc)}
+.wi b{font:700 17px/1.1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase;color:#FFF}
+.wi p{margin:4px 0 0;font-size:13.5px;color:#B0AA9F}
+
+/* easter egg */
+.ee{margin-top:14px;border-radius:24px;overflow:hidden;border:1px solid rgba(79,216,255,.25);background:radial-gradient(60% 120% at 0% 0%,rgba(79,216,255,.1),transparent 60%),radial-gradient(50% 90% at 100% 100%,rgba(255,122,26,.08),transparent 70%),#0F1112}
+.ee-in{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:0}
+.ee-l{padding:26px 28px 28px}
+.ee .kk{color:#7FE3FF}
+.ee h3{margin:8px 0 0;font-size:46px;line-height:.95;color:#FFF}
+.ee-goal{margin:12px 0 0;max-width:70ch;font-size:15.5px;color:#DCD6CB}
+.ee-goal b{color:#7FE3FF}
+.ee-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 12px;flex-wrap:wrap}
+.ee-prog{display:flex;flex-direction:column;gap:6px;min-width:220px}
+.ee-prog span{font-size:13px;color:#A19B92}
+.ee-prog i{display:block;height:6px;border-radius:6px;background:rgba(236,228,214,.08);overflow:hidden}
+.ee-prog i b{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#4FD8FF,#FF7A1A);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.ee-btns{display:flex;gap:8px}
+.sm{height:38px !important;padding:0 14px !important;font-size:13.5px !important;border-radius:10px !important}
+.btn-r.dis{opacity:.45;pointer-events:none}
+.steps{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:flex;align-items:flex-start;gap:14px;padding:12px 14px;border-radius:14px;background:rgba(236,228,214,.03);border:1px solid rgba(236,228,214,.07);transition:border-color .3s,background .3s}
+.steps li.open{background:rgba(79,216,255,.06);border-color:rgba(79,216,255,.25);animation:gmFade .35s cubic-bezier(.2,.8,.2,1) both}
+.steps li.next{border-color:rgba(255,122,26,.35)}
+.sn{display:grid;place-items:center;flex-shrink:0;width:32px;height:32px;border-radius:9px;background:rgba(236,228,214,.07);font-size:17px;font-weight:800;color:#CFC9BE}
+.steps li.open .sn{background:#4FD8FF;color:#04161C}
+.steps li.next .sn{background:#FF7A1A;color:#160A00}
+.steps p{margin:5px 0 0;font-size:15px;line-height:1.55;color:#ECE8E1}
+.lock{position:relative;flex:1;display:flex;align-items:center;min-height:32px;padding:0;border:0;background:transparent;cursor:pointer;color:#A19B92;text-align:left}
+.bars{display:flex;flex-direction:column;gap:6px;flex:1;opacity:.6}
+.bars i{display:block;height:9px;border-radius:5px;background:repeating-linear-gradient(90deg,rgba(236,228,214,.14) 0 46px,transparent 46px 54px)}
+.bars i:last-child{width:62%}
+.lk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#18191A;border:1px solid rgba(236,228,214,.18);font-size:13px;font-weight:600;color:#ECE8E1;white-space:nowrap;transition:border-color .2s,color .2s}
+.lock:hover .lk{border-color:#FF7A1A;color:#FFB066}
+.ee-soon{margin-top:18px;padding:16px 18px;border-radius:14px;border:1px dashed rgba(79,216,255,.3);background:rgba(79,216,255,.04)}
+.ee-soon b{font-size:15px;color:#FFF}
+.ee-soon p{margin:4px 0 0;font-size:14px;color:#B0AA9F}
+.ee-r{display:flex;flex-direction:column;gap:12px;padding:26px 24px;background:rgba(10,10,11,.5);border-left:1px solid rgba(236,228,214,.08)}
+.rw,.end,.tip{padding:14px 16px;border-radius:14px;background:rgba(236,228,214,.035);border:1px solid rgba(236,228,214,.08)}
+.rw p,.end p,.tip p{margin:6px 0 0;font-size:14px;color:#DCD6CB;text-wrap:pretty}
+.tip b{font-size:13.5px;color:#FFB066}
+.tip p{color:#A19B92;font-size:13px}
+.spoil{display:inline-flex;align-items:center;gap:8px;margin-top:10px;height:36px;padding:0 13px;border-radius:10px;border:1px solid rgba(255,122,26,.45);background:rgba(255,122,26,.08);color:#FFB066;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s}
+.spoil:hover{background:rgba(255,122,26,.16)}
+.spoil.ghost{border-color:rgba(236,228,214,.18);background:transparent;color:#A19B92}
+.ee-none{display:flex;align-items:center;gap:16px;padding:22px 26px}
+.ee-none b{font-size:17px;color:#FFF}
+.ee-none p{margin:4px 0 0;font-size:14px;color:#A19B92}
+.sname{margin:0;font:700 22px/1.15 'Saira Condensed',sans-serif;letter-spacing:.02em;color:#FFF}
+.ss{margin:10px 0 0;padding-left:20px;font-size:14px;color:#DCD6CB}
+.ss li{margin:4px 0}
+.ss li::marker{color:#FF7A1A;font-weight:700}
+.xl{margin:0;padding-left:18px;font-size:14px;color:#DCD6CB}
+.xl li{margin:4px 0}
+.xl li::marker{color:var(--mc)}
+.en{margin:12px 0 0;font-size:14px;color:#B0AA9F}
+.en b{color:#ECE8E1}
+.md-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;margin-top:18px}
+.mn{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;border:1px solid rgba(236,228,214,.12);background:#121213;color:#ECE8E1;cursor:pointer;text-align:left;font:inherit;text-decoration:none;transition:border-color .2s,transform .25s}
+.mn:hover{border-color:rgba(255,122,26,.5);transform:translateY(-2px)}
+.mn small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A847B}
+.mn b{display:block;font:700 20px/1.1 'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.mn.next{justify-content:flex-end;text-align:right}
+.mn.up{justify-content:center;font-size:14px;font-weight:600;color:#B0AA9F !important}
+.ar{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(255,122,26,.12);color:#FFB066}
+
+/* historia y personajes */
+.chs{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:12px}
+.ch{position:relative;padding:22px 24px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1);overflow:hidden}
+.ch::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:3px;background:linear-gradient(180deg,#4FD8FF,#FF7A1A)}
+.ch h3{margin:0;font-size:28px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.ch p{margin:8px 0 0;font-size:15px;color:#DCD6CB;max-width:75ch}
+.ch .chsp{padding:12px 14px;border-radius:12px;background:rgba(255,122,26,.07);border:1px solid rgba(255,122,26,.25);color:#FFE0C2}
+.crews{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:12px;margin-top:12px;scroll-margin-top:130px}
+.crew{padding:20px 22px;border-radius:20px;background:#121213;border:1px solid rgba(236,228,214,.1);border-top:3px solid var(--cc)}
+.crew header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.crew h3{margin:0;font-size:26px;font-weight:800;text-transform:uppercase;color:var(--cc)}
+.crew header span{font-size:12.5px;color:#8A847B}
+.crew ul{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0;list-style:none}
+.crew li{padding:10px 12px;border-radius:12px;background:rgba(236,228,214,.035)}
+.crew li b{display:block;font-size:14.5px;color:#FFF}
+.crew li small{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cc)}
+.crew li p{margin:4px 0 0;font-size:13px;color:#A19B92}
+
+/* otros juegos */
+.og{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ogc{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:200px;padding:20px;border-radius:20px;overflow:hidden;isolation:isolate;text-decoration:none;color:#ECE8E1 !important;border:1px solid rgba(236,228,214,.12);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.ogc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.55) saturate(.85);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.ogc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,11,.05),rgba(10,10,11,.92))}
+.ogc.noimg{background:radial-gradient(70% 90% at 80% 10%,rgba(201,164,92,.3),transparent 70%),#141312}
+.ogc:hover{transform:translateY(-3px);border-color:rgba(255,122,26,.5)}
+.ogc:hover img{transform:scale(1.05)}
+.ogc small{font-size:12px;font-weight:700;letter-spacing:.14em;color:#FFB066}
+.ogc b{font:400 34px/1 'Saira Stencil One',sans-serif;margin-top:4px}
+.ogc span{margin-top:6px;font-size:13px;color:#B0AA9F}
+
+</style>
+</helmet>
+
+<div class="cdp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Call of Duty Zombies">
+      <div class="wrap sub-in">
+        <a class="gchip" href="CodZombies.dc.html"><img src="../assets/call-of-duty/cod-hero.webp" alt="">CoD Zombis</a>
+        <a class="slink" href="CodZombies.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>Portada</a>
+        <div class="dd">
+          <a class="slink" href="CodZombies.dc.html#juegos" aria-haspopup="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a8 8 0 0 0-8 8c0 2.6 1.2 4.4 3 5.5V20h10v-3.5c1.8-1.1 3-2.9 3-5.5a8 8 0 0 0-8-8z"></path><circle cx="9" cy="11.5" r="1.6"></circle><circle cx="15" cy="11.5" r="1.6"></circle><path d="M10 20v-2M14 20v-2"></path></svg>Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="cdm"><a class="cdo" href="CodBO1.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo1.webp" alt=""></span><span><b>Black Ops</b><small>2010</small></span></a><a class="cdo" href="CodBO2.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo2.webp" alt=""></span><span><b>Black Ops II</b><small>2012</small></span></a><a class="cdo" href="CodBO3.dc.html"><span class="th"><img src="../assets/call-of-duty/cod-bo3.webp" alt=""></span><span><b>Black Ops III</b><small>2015</small></span></a><a class="cdo" href="CodBO4.dc.html"><span class="th"><i>4</i></span><span><b>Black Ops 4</b><small>2018</small></span></a></div></div>
+        </div>
+        <a class="slink" href="CodBO1.dc.html">Black Ops</a><a class="slink" href="CodBO2.dc.html">Black Ops II</a><a class="slink on" href="CodBO3.dc.html">Black Ops III</a><a class="slink" href="CodBO4.dc.html">Black Ops 4</a>
+        <a class="slink" href="CodZombies.dc.html#historia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path></svg>Historia</a>
+        <a class="slink" href="CodZombies.dc.html#personajes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0"></path><path d="M17 4a4 4 0 0 1 0 8"></path><path d="M22 21a6 6 0 0 0-4-5.6"></path></svg>Personajes</a>
+        <span class="status"><i></i>Nuevo</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="gh bo3" id="inicio" style="--gc: #E2364B">
+    <div class="gh-bg" aria-hidden="true"><img src="../assets/call-of-duty/cod-bo3.webp" alt=""><span class="grain"></span></div>
+    <div class="wrap gh-in">
+      <div class="gh-t">
+        <span class="kicker">Call of Duty · Zombis · 2015</span>
+        <h1 class="stencil">Black Ops III</h1>
+        <p class="lead">Los Primis recorren el multiverso con la Llave de la Invocación para arreglar el plan de Richtofen, de Morg City a Agartha.</p>
+        <p class="packs"><b>Mapas por contenido</b>Juego base (Shadows of Evil) · The Giant (bonificación) · Awakening (Der Eisendrache) · Eclipse (Zetsubou No Shima) · Descent (Gorod Krovi) · Salvation (Revelations) · Zombies Chronicles (8 mapas clásicos remasterizados)</p>
+      </div>
+      <dl class="gh-st">
+        <div><dt class="sc">6</dt><dd>mapas en la guía</dd></div>
+        <div><dt class="sc">6</dt><dd>Easter eggs principales</dd></div>
+        <div><dt class="sc">14</dt><dd>armas especiales</dd></div>
+      </dl>
+    </div>
+    <span class="hz" aria-hidden="true"></span>
+  </section>
+
+  <!-- MAPAS -->
+  <section class="sec" id="mapas">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Elige mapa</span><h2 class="h2">Los mapas de Black Ops III</h2><p>Cada ficha reúne la Pack-a-Punch, las ventajas, las armas y el Easter egg paso a paso. Los pasos y los finales se quedan ocultos hasta que los pidas.</p></div></div>
+      <div class="rail c6" role="tablist" aria-label="Mapas">
+        <sc-for list="{{rail}}" as="r" hint-placeholder-count="6">
+          <button type="button" role="tab" class="rc {{r.cls}}" style="--mc: {{r.c}}" onClick="{{r.pick}}">
+            <span class="rc-img"><sc-if value="{{r.hasImg}}" hint-placeholder-val="true"><img src="{{r.img}}" alt=""></sc-if><sc-if value="{{r.noImg}}" hint-placeholder-val="false"><i class="stencil">{{r.ini}}</i></sc-if></span>
+            <span class="rc-t"><span class="rc-n sc">{{r.k}}</span><b>{{r.n}}</b><small>{{r.dlc}}</small></span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHA DEL MAPA -->
+  <section class="sec md-s" id="mapa">
+    <span id="soe" class="anc"></span><span id="giant" class="anc"></span><span id="de" class="anc"></span><span id="zns" class="anc"></span><span id="gk" class="anc"></span><span id="rev" class="anc"></span>
+    <div class="wrap md {{anim}}" style="--mc: {{mColor}}">
+      <div class="md-top">
+        <figure class="md-fig">
+          <sc-if value="{{mHasImg}}" hint-placeholder-val="true"><img src="{{mImg}}" alt="{{mName}}"></sc-if>
+          <sc-if value="{{mNoImg}}" hint-placeholder-val="false"><div class="md-ph" aria-hidden="true"><i class="stencil">{{mIni}}</i><span class="hz"></span></div></sc-if>
+          <span class="grain"></span>
+          <span class="md-k sc">Mapa {{mK}} / 6</span>
+          <figcaption>{{mCap}}</figcaption>
+        </figure>
+        <div class="md-info">
+          <span class="md-dlc"><i></i>{{mDlc}}</span>
+          <h2 class="md-h stencil">{{mName}}</h2>
+          <p class="md-d">{{mDesc}}</p>
+          <dl class="md-dl">
+            <dt>Dónde</dt><dd>{{mSetting}}</dd>
+            <dt>Época</dt><dd>{{mYear}}</dd>
+            <dt>Personajes</dt><dd>{{mCrew}}</dd>
+            <dt>Enemigos</dt><dd>{{mEnemies}}</dd>
+          </dl>
+          <div class="pills"><sc-for list="{{pills}}" as="p" hint-placeholder-count="5"><span class="pill">{{p.t}}</span></sc-for></div>
+        </div>
+      </div>
+
+      <div class="md-g">
+        <div class="col">
+        <article class="cd pap">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span><div><span class="kk">Mejora tus armas</span><h3>Pack-a-Punch</h3></div><span class="cost sc">5.000</span></header>
+          <p class="pap-t">{{mPap}}</p>
+          <ul class="pap-f"><li><b class="sc">5.000</b>por arma</li><li><b class="sc">+</b>daño y munición</li><li><b class="sc">Aa</b>el arma cambia de nombre</li></ul>
+        </article>
+        <article class="cd walls">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 12h7l2-2h2"></path><path d="M9 12v3"></path></svg></span><div><span class="kk">Tiza en la pared</span><h3>Armas de pared</h3></div></header>
+          <sc-if value="{{hasWalls}}" hint-placeholder-val="true">
+            <div class="wt {{wCls}}">
+              <div class="wr wh"><span>Arma</span><span>Dónde está</span><span>Precio</span></div>
+              <sc-for list="{{walls}}" as="w" hint-placeholder-count="6"><div class="wr"><b>{{w.w}}</b><span>{{w.loc}}</span><span class="sc">{{w.cost}}</span></div></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{noWalls}}" hint-placeholder-val="false"><p class="empty">Todavía no hemos comprobado una por una las armas de pared de este mapa. Las añadiremos en la próxima actualización de la guía.</p></sc-if>
+        </article>
+        </div>
+        <div class="col">
+        <article class="cd perks">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3v4l-3 4v9a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-9l-3-4V3"></path><path d="M7 14h10"></path></svg></span><div><span class="kk">Perk-a-Cola</span><h3>Ventajas</h3></div><span class="cnt sc">{{nPerks}}</span></header>
+          <ul class="pl"><sc-for list="{{perks}}" as="p" hint-placeholder-count="6"><li style="--pc: {{p.c}}"><i></i><span><b>{{p.n}}</b><sc-if value="{{p.hasLoc}}" hint-placeholder-val="true"><small>{{p.loc}}</small></sc-if></span></li></sc-for></ul>
+        </article>
+        <article class="cd ww">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"></path></svg></span><div><span class="kk">Caja, construibles y secretos</span><h3>Armas especiales</h3></div><span class="cnt sc">{{nWw}}</span></header>
+          <div class="wl"><sc-for list="{{ww}}" as="w" hint-placeholder-count="3"><div class="wi"><b>{{w.n}}</b><p>{{w.d}}</p></div></sc-for></div>
+        </article>
+        </div>
+      </div>
+
+      <article class="ee">
+        <sc-if value="{{hasEe}}" hint-placeholder-val="true">
+          <div class="ee-in">
+            <div class="ee-l">
+              <span class="kk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3.6 0-6.5 5.2-6.5 9.5S8.4 21 12 21s6.5-4.2 6.5-8.5S15.6 3 12 3z"></path><path d="M8 13l2-1.5L12 13l2-1.5L16 13"></path></svg> Easter egg principal</span>
+              <h3 class="stencil">{{eeName}}</h3>
+              <p class="ee-goal"><b>Objetivo.</b> {{eeGoal}}</p>
+              <sc-if value="{{eeHasSteps}}" hint-placeholder-val="true">
+                <div class="ee-bar">
+                  <div class="ee-prog"><span>{{eeCount}}</span><i><b style="width: {{eePct}}"></b></i></div>
+                  <div class="ee-btns">
+                    <button type="button" class="btn-r sm {{eeNextDis}}" onClick="{{eeNext}}">{{eeNextTxt}}</button>
+                    <button type="button" class="btn-o sm" onClick="{{eeAll}}">Mostrar todos</button>
+                    <button type="button" class="btn-o sm" onClick="{{eeHide}}">Ocultar</button>
+                  </div>
+                </div>
+                <ol class="steps">
+                  <sc-for list="{{eeSteps}}" as="s" hint-placeholder-count="5">
+                    <li class="{{s.cls}}">
+                      <span class="sn sc">{{s.i}}</span>
+                      <sc-if value="{{s.shown}}" hint-placeholder-val="false"><p>{{s.t}}</p></sc-if>
+                      <sc-if value="{{s.hid}}" hint-placeholder-val="true"><button type="button" class="lock" onClick="{{s.reveal}}"><span class="bars" aria-hidden="true"><i></i><i></i></span><span class="lk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Revelar el paso {{s.i}}</span></button></sc-if>
+                    </li>
+                  </sc-for>
+                </ol>
+              </sc-if>
+              <sc-if value="{{eeNoSteps}}" hint-placeholder-val="false">
+                <div class="ee-soon"><b>Paso a paso en preparación</b><p>Es un Easter egg largo y preferimos comprobar cada paso antes de publicarlo. De momento tienes el objetivo y, si quieres, cómo termina.</p></div>
+              </sc-if>
+            </div>
+            <aside class="ee-r">
+              <sc-if value="{{hasReward}}" hint-placeholder-val="true"><div class="rw"><span class="kk">Recompensa</span><p>{{eeReward}}</p></div></sc-if>
+              <sc-if value="{{hasEnding}}" hint-placeholder-val="true">
+                <div class="end">
+                  <span class="kk">Cómo termina</span>
+                  <sc-if value="{{endShown}}" hint-placeholder-val="false"><p>{{eeEnding}}</p><button type="button" class="spoil ghost" onClick="{{toggleEnd}}">Ocultar el final</button></sc-if>
+                  <sc-if value="{{endHid}}" hint-placeholder-val="true"><button type="button" class="spoil" onClick="{{toggleEnd}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Mostrar el final (spoiler)</button></sc-if>
+                </div>
+              </sc-if>
+              <div class="tip"><b>Antes de empezar</b><p>Algunos Easter eggs piden cuatro jugadores, sobre todo en Black Ops II. Abre los pasos de uno en uno para no destriparte la sorpresa.</p></div>
+            </aside>
+          </div>
+        </sc-if>
+        <sc-if value="{{noEe}}" hint-placeholder-val="false">
+          <div class="ee-none"><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3.6 0-6.5 5.2-6.5 9.5S8.4 21 12 21s6.5-4.2 6.5-8.5S15.6 3 12 3z"></path><path d="M8 13l2-1.5L12 13l2-1.5L16 13"></path></svg></span><div><b>Sin Easter egg principal</b><p>Este mapa no tiene una misión secreta con final propio. Merece la pena igualmente por sus secretos pequeños: mira «A tener en cuenta».</p></div></div>
+        </sc-if>
+      </article>
+
+      <div class="md-g2">
+        <article class="cd song">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span><div><span class="kk">Easter egg musical</span><h3>Canción secreta</h3></div></header>
+          <sc-if value="{{hasSong}}" hint-placeholder-val="true">
+            <p class="sname">{{songName}}</p>
+            <sc-if value="{{songHasSteps}}" hint-placeholder-val="true">
+              <sc-if value="{{songShown}}" hint-placeholder-val="false"><ol class="ss"><sc-for list="{{songSteps}}" as="t" hint-placeholder-count="3"><li>{{t.t}}</li></sc-for></ol></sc-if>
+              <button type="button" class="spoil" onClick="{{toggleSong}}">{{songBtn}}</button>
+            </sc-if>
+            <sc-if value="{{songNoSteps}}" hint-placeholder-val="false"><p class="empty">Las ubicaciones para activarla llegarán en la próxima actualización.</p></sc-if>
+          </sc-if>
+          <sc-if value="{{noSong}}" hint-placeholder-val="false"><p class="empty">No tenemos todavía la canción de este mapa en la guía.</p></sc-if>
+        </article>
+        <article class="cd extra">
+          <header><span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg></span><div><span class="kk">Lo que conviene saber</span><h3>A tener en cuenta</h3></div></header>
+          <sc-if value="{{hasExtra}}" hint-placeholder-val="true"><ul class="xl"><sc-for list="{{extra}}" as="x" hint-placeholder-count="2"><li>{{x.t}}</li></sc-for></ul></sc-if>
+          <p class="en"><b>Enemigos especiales.</b> {{mEnemies}}</p>
+        </article>
+      </div>
+
+      <nav class="md-nav" aria-label="Cambiar de mapa">
+        <button type="button" class="mn prev" onClick="{{goPrev}}"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline></svg></span><span><small>Mapa anterior</small><b>{{prevName}}</b></span></button>
+        <a class="mn up" href="#mapas">Todos los mapas</a>
+        <button type="button" class="mn next" onClick="{{goNext}}"><span><small>Siguiente mapa</small><b>{{nextName}}</b></span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span></button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="sec" id="historia">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">La historia</span><h2 class="h2">Qué pasa en Black Ops III</h2><p>El resumen se lee sin miedo; los giros importantes están tapados hasta que los pidas.</p></div><a class="btn-o" href="CodZombies.dc.html#historia">Toda la historia del Aether <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></div>
+      <div class="chs">
+        <sc-for list="{{chapters}}" as="c" hint-placeholder-count="1">
+          <article class="ch">
+            <h3 class="sc">{{c.t}}</h3>
+            <p>{{c.b}}</p>
+            <sc-if value="{{c.shown}}" hint-placeholder-val="false"><p class="chsp">{{c.sp}}</p></sc-if>
+            <button type="button" class="spoil" onClick="{{c.tog}}">{{c.btn}}</button>
+          </article>
+        </sc-for>
+      </div>
+      <div class="crews" id="personajes">
+        <sc-for list="{{crews}}" as="g" hint-placeholder-count="2">
+          <article class="crew" style="--cc: {{g.c}}">
+            <header><h3 class="sc">{{g.n}}</h3><span>{{g.w}}</span></header>
+            <ul><sc-for list="{{g.p}}" as="p" hint-placeholder-count="4"><li><b>{{p.n}}</b><small>{{p.r}}</small><p>{{p.d}}</p></li></sc-for></ul>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTROS JUEGOS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Sigue jugando</span><h2 class="h2">Los otros Black Ops</h2></div></div>
+      <div class="og"><a class="ogc" href="CodBO1.dc.html"><img src="../assets/call-of-duty/cod-bo1.webp" alt=""><small>2010 · 6 mapas</small><b>Black Ops</b><span>Kino der Toten, «Five», Ascension, Call of the Dead…</span></a><a class="ogc" href="CodBO2.dc.html"><img src="../assets/call-of-duty/cod-bo2.webp" alt=""><small>2012 · 6 mapas</small><b>Black Ops II</b><span>TranZit, Nuketown Zombies, Die Rise, Mob of the Dead…</span></a><a class="ogc noimg" href="CodBO4.dc.html"><small>2018 · 8 mapas</small><b>Black Ops 4</b><span>IX, Voyage of Despair, Blood of the Dead, Classified…</span></a></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Activision ni a Treyarch. Call of Duty, Black Ops y sus imágenes son marcas y material de Activision. Datos de mapas, armas y Easter eggs: Call of Duty Wiki (Fandom) y guías de SegmentNext, Shacknews y Gfinity; capturas oficiales de Steam.</p>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4065}}'>
+
+const D = {"maps": [{"id": "soe", "n": "Shadows of Evil", "dlc": "Juego base", "year": "Años 40", "setting": "Morg City, una ciudad ficticia de cine negro.", "crew": "Nero Blackstone, Jessica Rose, Jack Vincent y Floyd Campbell", "desc": "Un mago, una bailarina, un policía corrupto y un boxeador atrapados por el Hombre Sombra. Debuta el modo Bestia.", "c": "#B9A3E8", "img": "", "cap": "Sin captura oficial todavía", "ini": "SOE", "pap": "Completa los cuatro rituales (uno por personaje) y coloca los cuatro gusanos de portal en el lugar sagrado para abrir la piedra del rift con la Pack-a-Punch.", "perks": [{"n": "Juggernog, Speed Cola y Double Tap", "loc": "aparecen en barrios aleatorios; una botella rota en el cruce indica cuál", "hasLoc": true, "c": "#E2364B"}, {"n": "Quick Revive", "loc": "inicio", "hasLoc": true, "c": "#4FA3FF"}, {"n": "El resto, repartidas por la ciudad", "loc": "", "hasLoc": false, "c": "#FF7A1A"}], "ww": [{"n": "Apothicon Servant", "d": "Arma maravilla del mapa: abre un agujero que absorbe a los zombis."}, {"n": "Li'l Arnie", "d": "Táctico: un calamar que atrae y destroza a los zombis."}, {"n": "Rocket Shield", "d": "Escudo propulsado que lanza zombis."}], "walls": [], "enemies": "Margwa, Meatballs y Parasites.", "extra": ["Modo Bestia: electrifica paneles para encender ventajas y abre caminos."], "ee": {"name": "«Apocalypse Averted»", "goal": "Detener al Hombre Sombra.", "steps": [], "reward": "", "ending": "Un rayo destruye a la bestia apothicona sobre la ciudad. Llega un Guardián con la Llave de la Invocación, pero Richtofen la coge, dice que tiene «un universo que arreglar» y desaparece por un portal."}, "song": {"name": "«Snakeskin Boots»", "steps": []}}, {"id": "giant", "n": "The Giant", "dlc": "Bonificación (edición especial)", "year": "—", "setting": "Una fábrica nevada del Grupo 935: el regreso de Der Riese.", "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)", "desc": "El clásico de los teletransportadores, rehecho. Empieza con el Richtofen Primis matando a su yo Ultimis.", "c": "#BCD0F2", "img": "", "cap": "Sin captura oficial todavía", "ini": "TG", "pap": "Enlaza los tres teletransportadores (A, B y C) con el ordenador central: entonces se abre la Pack-a-Punch.", "perks": [{"n": "Juggernog, Quick Revive, Speed Cola y otras", "loc": "posiciones aleatorias", "hasLoc": true, "c": "#E2364B"}, {"n": "Una sexta máquina oculta: Stamin-Up o Deadshot Daiquiri", "loc": "", "hasLoc": false, "c": "#F5D90A"}], "ww": [{"n": "Wunderwaffe DG-2", "d": "Caja misteriosa."}, {"n": "Annihilator", "d": "Revólver de un solo uso por recarga: se consigue en el horno del mapa."}], "walls": [], "enemies": "Perros infernales.", "extra": [], "ee": {"name": "«Fly Trap» y la baliza", "goal": "Repetir la trampa para moscas de Der Riese y encender la baliza del mapa.", "steps": [], "reward": "", "ending": ""}, "song": {"name": "«Beauty of Annihilation» (remezcla)", "steps": []}}, {"id": "de", "n": "Der Eisendrache", "dlc": "Awakening", "year": "—", "setting": "Un castillo en los Alpes austriacos.", "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)", "desc": "Dragones, un castillo con cohetes y el arco Wrath of the Ancients con cuatro mejoras elementales.", "c": "#F28FA0", "img": "", "cap": "Sin captura oficial todavía", "ini": "DE", "pap": "Enciende la corriente y activa las tres plataformas de aterrizaje del castillo (una está junto a la plataforma del cohete). Con las tres activas, la Pack-a-Punch sale de la pirámide de la cripta (Undercroft).", "perks": [{"n": "Juggernog, Quick Revive, Speed Cola, Double Tap, Stamin-Up y Mule Kick", "loc": "por el castillo", "hasLoc": true, "c": "#E2364B"}], "ww": [{"n": "Wrath of the Ancients", "d": "Alimenta con 8 zombis a cada uno de los tres dragones; luego mejóralo a una de sus cuatro versiones elementales."}, {"n": "Ragnarok DG-4", "d": "Se construye; en modo trampa también mueve el reloj de la torre."}], "walls": [], "enemies": "Panzersoldat.", "extra": ["Secreto: el desatascador, un arma cuerpo a cuerpo que se consigue con un puzle del reloj de la torre."], "ee": {"name": "«My Brother's Keeper»", "goal": "Atrapar el alma del Dempsey Ultimis.", "steps": [], "reward": "", "ending": "Dempsey insiste en hacerlo él: apaga el soporte vital de su yo Ultimis, y Richtofen guarda su alma en la Llave de la Invocación."}, "song": null}, {"id": "zns", "n": "Zetsubou No Shima", "dlc": "Eclipse", "year": "—", "setting": "Una isla del Pacífico con laboratorios abandonados de la División 9.", "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)", "desc": "Plantas mutantes, arañas y agua de Elemento 115. Takeo viene a por su yo Ultimis.", "c": "#7FE0A3", "img": "", "cap": "Sin captura oficial todavía", "ini": "ZNS", "pap": "Está sumergida bajo el búnker principal. Enciende la corriente, reúne sus tres piezas (el asa, bajo el agua del búnker; el manómetro, dentro de un capullo de la sala oeste; y la rueda, en el agua junto a Mule Kick) y usa las tres bombas del terminal para vaciar el agua.", "perks": [{"n": "Las ventajas habituales, más botellas vacías que dan huecos extra para ventajas", "loc": "", "hasLoc": false, "c": "#FF7A1A"}], "ww": [{"n": "KT-4", "d": "Se construye con ingredientes del mapa; mejorado se llama Masamune."}], "walls": [], "enemies": "Thrashers, arañas y zombis bajo el agua.", "extra": ["Semillas que se riegan con agua de colores: azul da objetos; verde, morado e iridiscente, otras plantas."], "ee": {"name": "«Seeds of Doubt»", "goal": "Salvar a Takeo.", "steps": [], "reward": "", "ending": "El Takeo Ultimis revela que las órdenes de matarlo venían del Emperador y se hace el seppuku; el Primis le corta la cabeza y la Llave captura su alma."}, "song": {"name": "«Dead Again»", "steps": []}}, {"id": "gk", "n": "Gorod Krovi", "dlc": "Descent", "year": "—", "setting": "Una Stalingrado alternativa en plena guerra, con dragones.", "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)", "desc": "Dragones, mechas soviéticos y el regreso de Gersh y Sophia. Aparece el doctor Monty.", "c": "#E2364B", "img": "", "cap": "Sin captura oficial todavía", "ini": "GK", "pap": "Está en el criadero: llega montado en el dragón rojo tras construir el controlador de la red de dragones y conseguir las alas.", "perks": [{"n": "Las ventajas habituales de Black Ops III", "loc": "", "hasLoc": false, "c": "#FF7A1A"}], "ww": [{"n": "GKZ-45 Mk3", "d": "Caja misteriosa: pistola doble con el Ray Gun Mark III."}, {"n": "Guard of Fafnir", "d": "Escudo dragón inmune al fuego; mejorado, Tiamat's Maw."}, {"n": "Dragon Strike", "d": "Ataque aéreo de dragón; mejorado, Draconite Controller."}, {"n": "Gauntlet of Siegfried", "d": "Arma de especialista: incuba un huevo de dragón."}], "walls": [], "enemies": "Manglers y Valkyrie drones.", "extra": [], "ee": {"name": "«Love and War»", "goal": "Encontrar al Nikolai de la Fractura Agonía y asegurar su alma.", "steps": [], "reward": "", "ending": "El Nikolai Primis mata al Ultimis. Richtofen libera las almas reunidas y Monty se presenta: pronto tendrán que ir a «la Casa»."}, "song": null}, {"id": "rev", "n": "Revelations", "dlc": "Salvation", "year": "—", "setting": "Agartha, «la Casa», hecha con fragmentos de mapas anteriores.", "crew": "Primis: Dempsey, Nikolai, Takeo y Richtofen (versiones de 1918)", "desc": "El final de los Primis en Black Ops III: Kino, Shangri-La, Origins y otros mapas flotando en el Aether.", "c": "#8FB2F2", "img": "", "cap": "Sin captura oficial todavía", "ini": "REV", "pap": "Está dentro del Apothicon que sobrevuela el mapa. Activa los cuatro motores de corrupción desde la mesa del templo (500 puntos cada uno), aturde al Apothicon con el terminal de control de la parte alta de Nacht der Untoten, entra por su boca y dispara a los orbes amarillos que sujetan el corazón.", "perks": [{"n": "Las ventajas habituales de Black Ops III", "loc": "", "hasLoc": false, "c": "#FF7A1A"}], "ww": [{"n": "Apothicon Servant", "d": "Vuelve en este mapa."}, {"n": "Thundergun", "d": "Caja misteriosa."}], "walls": [], "enemies": "El Hombre Sombra como jefe final, Margwas y Fury.", "extra": [], "ee": {"name": "«Revelations»", "goal": "Derrotar al Hombre Sombra y cerrar la historia de los Primis.", "steps": [], "reward": "", "ending": ""}, "song": {"name": "«Dead Ended»", "steps": []}}], "chapters": [{"t": "El multiverso", "b": "Los Primis, con la Llave de la Invocación, persiguen a sus versiones Ultimis por distintos universos para arreglar el plan de Richtofen.", "sp": "Cada mapa termina con un Ultimis muerto y su alma en la llave. En Revelations derrotan al Hombre Sombra."}], "crews": [{"n": "Morg City", "w": "Shadows of Evil", "c": "#B9A3E8", "p": [{"n": "Nero Blackstone", "r": "Mago", "d": "Un ilusionista venido a menos con un crimen en la conciencia."}, {"n": "Jessica Rose", "r": "Bailarina", "d": "Estrella del burlesque de Morg City."}, {"n": "Jack Vincent", "r": "Policía corrupto", "d": "Detective con muchos pecados."}, {"n": "Floyd Campbell", "r": "Boxeador", "d": "Un púgil que perdió una pelea que no debía."}]}, {"n": "Primis", "w": "Origins · Black Ops III · Black Ops 4", "c": "#E8C98A", "p": [{"n": "Dempsey", "r": "1918", "d": "La versión de la Gran Guerra, sacada de Origins. Sigue siendo el más bruto del grupo."}, {"n": "Nikolai", "r": "1918", "d": "Más joven y aún casado. Viaja por el multiverso para corregir el plan de Richtofen."}, {"n": "Takeo", "r": "1918", "d": "Busca respuestas sobre su otro yo y sobre el Imperio al que sirve."}, {"n": "Richtofen", "r": "1918", "d": "Lleva la Llave de la Invocación y sabe más de lo que cuenta a sus compañeros."}]}]};
+const N = D.maps.length;
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const motion = this.props.animaciones !== false;
+    const set = (o) => this.setState(o);
+    let mi = S.m;
+    if (mi === undefined) {
+      mi = 0;
+      try { const h = (window.location.hash || '').slice(1); const k = D.maps.findIndex(x => x.id === h); if (k >= 0) mi = k; } catch (e) {}
+    }
+    const k = S.k || 0;
+    const go = (i, scroll) => {
+      set({ m: (i + N) % N, k: k + 1 });
+      if (scroll) { try { const el = document.getElementById('mapa'); if (el) el.scrollIntoView({ behavior: motion ? 'smooth' : 'auto', block: 'start' }); } catch (e) {} }
+    };
+    const m = D.maps[mi];
+    const rv = S.rv || {}; const sp = S.sp || {};
+    const nRev = Math.min(rv[m.id] || 0, m.ee ? m.ee.steps.length : 0);
+    const setRev = (n) => { const o = Object.assign({}, rv); o[m.id] = n; set({ rv: o }); };
+    const togg = (key) => { const o = Object.assign({}, sp); o[key] = !o[key]; set({ sp: o }); };
+    const ee = m.ee; const steps = ee ? ee.steps : [];
+    const song = m.song; const songSteps = song ? song.steps : [];
+    const rail = D.maps.map((x, i) => ({
+      n: x.n, dlc: x.dlc, c: x.c, img: x.img, hasImg: !!x.img, noImg: !x.img, ini: x.ini,
+      k: String(i + 1).padStart(2, '0'), cls: i === mi ? 'on' : '', pick: () => go(i, false)
+    }));
+    const pills = [
+      { t: m.perks.length + (m.perks.length === 1 ? ' ventaja' : ' ventajas') },
+      { t: m.ww.length + (m.ww.length === 1 ? ' arma especial' : ' armas especiales') },
+      { t: m.walls.length ? m.walls.length + ' armas de pared' : 'Paredes: pendiente' },
+      { t: ee ? (steps.length ? 'Easter egg · ' + steps.length + ' pasos' : 'Easter egg principal') : 'Sin Easter egg principal' },
+      { t: song ? 'Canción secreta' : 'Sin canción en la guía' }
+    ];
+    const chapters = D.chapters.map((c, i) => ({ t: c.t, b: c.b, sp: c.sp, shown: !!sp['ch' + i], hid: !sp['ch' + i], tog: () => togg('ch' + i), btn: sp['ch' + i] ? 'Ocultar' : 'Mostrar el giro (spoiler)' }));
+    return {
+      motionClass: motion ? '' : 'still',
+      rail: rail, anim: k % 2 ? 'fa' : 'fb',
+      mK: String(mi + 1).padStart(2, '0'), mName: m.n, mDlc: m.dlc, mYear: m.year, mSetting: m.setting, mCrew: m.crew, mDesc: m.desc,
+      mColor: m.c, mImg: m.img, mHasImg: !!m.img, mNoImg: !m.img, mCap: m.cap, mIni: m.ini, mEnemies: m.enemies, mPap: m.pap,
+      pills: pills,
+      perks: m.perks, nPerks: m.perks.length,
+      walls: m.walls, hasWalls: m.walls.length > 0, noWalls: m.walls.length === 0, wCls: m.walls.some(w => w.cost !== '—') ? '' : 'nocost',
+      ww: m.ww, nWw: m.ww.length,
+      extra: m.extra.map(t => ({ t: t })), hasExtra: m.extra.length > 0,
+      hasEe: !!ee, noEe: !ee,
+      eeName: ee ? ee.name : '', eeGoal: ee ? ee.goal : '',
+      eeHasSteps: steps.length > 0, eeNoSteps: !!ee && steps.length === 0,
+      eeSteps: steps.map((t, i) => ({ i: i + 1, t: t, shown: i < nRev, hid: i >= nRev, cls: i < nRev ? 'open' : (i === nRev ? 'next' : ''), reveal: () => setRev(i + 1) })),
+      eeCount: nRev + ' de ' + steps.length + ' pasos a la vista',
+      eePct: steps.length ? Math.round(nRev / steps.length * 100) + '%' : '0%',
+      eeNext: () => setRev(Math.min(nRev + 1, steps.length)), eeNextTxt: nRev >= steps.length ? 'Todo a la vista' : 'Ver el paso ' + (nRev + 1),
+      eeNextDis: nRev >= steps.length ? 'dis' : '',
+      eeAll: () => setRev(steps.length), eeHide: () => setRev(0),
+      hasReward: !!(ee && ee.reward), eeReward: ee ? ee.reward : '',
+      hasEnding: !!(ee && ee.ending), eeEnding: ee ? ee.ending : '',
+      endShown: !!sp['end' + m.id], endHid: !sp['end' + m.id], toggleEnd: () => togg('end' + m.id),
+      hasSong: !!song, noSong: !song, songName: song ? song.name : '',
+      songHasSteps: songSteps.length > 0, songNoSteps: !!song && songSteps.length === 0,
+      songSteps: songSteps.map(t => ({ t: t })), songShown: !!sp['song' + m.id], songHid: !sp['song' + m.id], toggleSong: () => togg('song' + m.id),
+      songBtn: sp['song' + m.id] ? 'Ocultar los pasos' : 'Ver cómo activarla',
+      prevName: D.maps[(mi - 1 + N) % N].n, nextName: D.maps[(mi + 1) % N].n,
+      goPrev: () => go(mi - 1, true), goNext: () => go(mi + 1, true),
+      chapters: chapters, crews: D.crews
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Propuesta B, Grieta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05070A}
+a{color:#F3C878}a:hover{color:#FFD995}
+.root{position:relative;width:620px;height:760px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px;background:#05070A;color:#ECE9E1;font-family:'IBM Plex Sans',system-ui,sans-serif;overflow:hidden;isolation:isolate}
+.root::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 42%,rgba(255,140,80,.1),transparent 45%)}
+.mark{position:relative;width:300px;height:300px}
+.mark svg,.mark .sparks{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.glow{filter:blur(9px);animation:pulse 4s ease-in-out infinite}
+.half{transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.h-l{animation:splitL 4s ease-in-out infinite}
+.h-r{animation:splitR 4s ease-in-out infinite}
+.mark:hover .h-l{animation:none;transform:translate(-18px,-4px) rotate(-3deg)}
+.mark:hover .h-r{animation:none;transform:translate(18px,4px) rotate(3deg)}
+.mark:hover .glow{animation:none;opacity:1}
+.face-l{fill:#161B25;stroke:rgba(255,255,255,.22);stroke-width:1.4;stroke-linejoin:round}
+.face-r{fill:#0E121A;stroke:rgba(255,255,255,.16);stroke-width:1.4;stroke-linejoin:round}
+.edge{fill:none;stroke-width:1.2;opacity:.55}
+.ltr{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:62px;fill:rgba(255,255,255,.06);stroke-width:1.2}
+.crack{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;animation:flick 2.6s steps(1) infinite}
+.c1{stroke:#F3C878}.c2{stroke:#FF6A3D}.c3{stroke:#4FE0B6}
+.g1{stroke:#F3C878}.g2{stroke:#FF6A3D}.g3{stroke:#4FE0B6}
+.glow polyline{fill:none;stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.sp{position:absolute;width:5px;height:5px;border-radius:50%;animation:fly 2.8s ease-out infinite}
+.sp.a{left:44%;top:30%;background:#F3C878;box-shadow:0 0 10px 2px rgba(243,200,120,.8);--dx:-60px;--dy:-30px}
+.sp.b{left:56%;top:42%;background:#FF6A3D;box-shadow:0 0 10px 2px rgba(255,106,61,.8);--dx:70px;--dy:-10px;animation-delay:-.9s}
+.sp.c{left:44%;top:60%;background:#FF8A5F;box-shadow:0 0 10px 2px rgba(255,106,61,.8);--dx:-70px;--dy:20px;animation-delay:-1.6s}
+.sp.d{left:52%;top:72%;background:#4FE0B6;box-shadow:0 0 10px 2px rgba(79,224,182,.8);--dx:60px;--dy:40px;animation-delay:-2.2s}
+@keyframes splitL{0%,100%{transform:translateX(-3px)}50%{transform:translate(-9px,-2px) rotate(-1deg)}}
+@keyframes splitR{0%,100%{transform:translateX(3px)}50%{transform:translate(9px,2px) rotate(1deg)}}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes flick{0%,100%{opacity:1}62%{opacity:.6}64%{opacity:1}80%{opacity:.75}}
+@keyframes fly{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:0}}
+.lockup{display:flex;align-items:center;gap:14px}
+.word{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:34px;letter-spacing:.06em;line-height:1}
+.word span{color:#F3C878}
+.mini{width:44px;height:44px}
+</style>
+</helmet>
+
+<div class="root">
+  <div class="mark" role="img" aria-label="Logo Grieta: hexágono partido por una grieta de luz">
+    <svg class="glow" viewBox="0 0 240 240" aria-hidden="true">
+      <polyline class="g1" points="132,34.9 114,78 136,104"></polyline>
+      <polyline class="g2" points="136,104 106,146"></polyline>
+      <polyline class="g3" points="106,146 127,170 108,205.1"></polyline>
+    </svg>
+    <svg class="half h-l" viewBox="0 0 240 240" aria-hidden="true">
+      <polygon class="face-l" points="120,28 132,34.9 114,78 136,104 106,146 127,170 108,205.1 40.3,166 40.3,74"></polygon>
+      <polyline class="edge" points="40.3,166 40.3,74 120,28" stroke="#F3C878"></polyline>
+      <text class="ltr" x="58" y="142" stroke="rgba(243,200,120,.45)">G</text>
+    </svg>
+    <svg class="half h-r" viewBox="0 0 240 240" aria-hidden="true">
+      <polygon class="face-r" points="132,34.9 199.7,74 199.7,166 120,212 108,205.1 127,170 106,146 136,104 114,78"></polygon>
+      <polyline class="edge" points="132,34.9 199.7,74 199.7,166 120,212" stroke="#4FE0B6"></polyline>
+      <text class="ltr" x="138" y="142" stroke="rgba(79,224,182,.45)">M</text>
+    </svg>
+    <svg viewBox="0 0 240 240" aria-hidden="true">
+      <polyline class="crack c1" points="132,34.9 114,78 136,104"></polyline>
+      <polyline class="crack c2" points="136,104 106,146"></polyline>
+      <polyline class="crack c3" points="106,146 127,170 108,205.1"></polyline>
+    </svg>
+    <div class="sparks" aria-hidden="true"><span class="sp a"></span><span class="sp b"></span><span class="sp c"></span><span class="sp d"></span></div>
+  </div>
+
+  <div class="lockup">
+    <svg class="mini" viewBox="0 0 240 240" aria-hidden="true">
+      <polygon class="face-l" points="120,28 132,34.9 114,78 136,104 106,146 127,170 108,205.1 40.3,166 40.3,74" transform="translate(-6 0)"></polygon>
+      <polygon class="face-r" points="132,34.9 199.7,74 199.7,166 120,212 108,205.1 127,170 106,146 136,104 114,78" transform="translate(6 0)"></polygon>
+      <polyline class="crack c1" points="132,34.9 114,78 136,104" style="stroke-width: 10px; animation: none"></polyline>
+      <polyline class="crack c2" points="136,104 106,146" style="stroke-width: 10px; animation: none"></polyline>
+      <polyline class="crack c3" points="106,146 127,170 108,205.1" style="stroke-width: 10px; animation: none"></polyline>
+    </svg>
+    <div class="word">GRIETA<span>META</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":620,"height":760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

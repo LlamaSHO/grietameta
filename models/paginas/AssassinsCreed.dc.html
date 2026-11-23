@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Assassin&#x27;s Creed · La saga</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Cormorant+SC:wght@600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0B0A09}
+a{color:#F0D8A8}a:hover{color:#FFF1D6}
+.acp{position:relative;background:#0B0A09;color:#EFE9DD;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.acp *,.acp *::before,.acp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cg{font-family:'Cormorant Garamond',Georgia,serif;font-variant-numeric:lining-nums}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,54,75,.7)}70%{box-shadow:0 0 0 14px rgba(226,54,75,0)}100%{box-shadow:0 0 0 0 rgba(226,54,75,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,9,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(232,226,208,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#EFE9DD;justify-self:start}
+.brand:hover{color:#EFE9DD}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#A39C90;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(232,226,208,.14);background:rgba(232,226,208,.04);color:#EFE9DD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8C857A}
+.search input:focus{border-color:rgba(226,54,75,.6);box-shadow:0 0 0 4px rgba(226,54,75,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#A39C90;padding:5px 8px;border-radius:6px;border:1px solid rgba(232,226,208,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(232,226,208,.18);color:#EFE9DD;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#EFE9DD;background:rgba(232,226,208,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(232,226,208,.07);background:rgba(22,18,15,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(232,226,208,.14);color:#EFE9DD;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#B3AB9E;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#EFE9DD}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#E2364B;box-shadow:0 0 12px rgba(226,54,75,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#EFE9DD}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#15120F;border:1px solid rgba(232,226,208,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#EFE9DD;transition:background .2s}
+.mapo:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(232,226,208,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Cormorant Garamond',Georgia,serif;font-size:14px}
+.mapo span{font-size:12px;color:#9A9387}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#8C857A}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#EFE9DD;transition:background .2s}
+.io:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.25);color:#F0D8A8;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#9A9387}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+.foot{margin-top:64px;border-top:1px solid rgba(232,226,208,.1);padding:32px 0 36px;font-size:13px;color:#9A9387}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(232,226,208,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .acp *,.acp *::before,.acp *::after{animation:none !important;transition:none !important}
+}
+.acp.still *,.acp.still *::before,.acp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+
+
+.gchip{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;letter-spacing:.01em}
+.gchip img{width:46px;height:28px;object-fit:cover;border-radius:6px;border:1px solid rgba(232,226,208,.25)}
+.slink svg{opacity:.8}
+.status i{background:#E2364B;box-shadow:0 0 10px rgba(226,54,75,.8)}
+.acm{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:560px}
+.acmo{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:13px;color:#EFE9DD;text-decoration:none;transition:background .2s}
+.acmo:hover{background:rgba(232,226,208,.06);color:#EFE9DD}
+.acmo .ic{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;border-radius:12px;background:rgba(226,54,75,.1);border:1px solid rgba(226,54,75,.3);color:#F2A0AB}
+.acmo b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.15}
+.acmo small{display:block;margin-top:2px;font-size:12px;color:#9A9387}
+
+
+.status{border-color:rgba(226,54,75,.4);background:rgba(226,54,75,.1);color:#F2A0AB}
+.acp a{color:#F0D8A8}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E2364B}
+.kicker::before{content:"";width:22px;height:1px;background:currentColor}
+.sec{padding:72px 0 0;scroll-margin-top:118px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
+.h2{margin:8px 0 0;font-size:44px;font-weight:700;line-height:1.02;letter-spacing:-.01em}
+.sec-h p{margin:8px 0 0;color:#B3AB9E;max-width:640px}
+.btn-r{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;background:linear-gradient(180deg,#E2364B,#B00E28);color:#FFF4F0 !important;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(226,54,75,.9),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .2s}
+.btn-r:hover{transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(232,226,208,.35);color:#EFE9DD !important;font-weight:600;font-size:14.5px;text-decoration:none;background:rgba(11,10,9,.35);transition:background .2s,border-color .2s}
+.btn-o:hover{background:rgba(232,226,208,.08);border-color:rgba(232,226,208,.6)}
+
+/* hero */
+.sh{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(232,226,208,.1)}
+.sh-bg{position:absolute;inset:-40px;z-index:-1}
+.sh-bg img{width:100%;height:100%;object-fit:cover;filter:blur(28px) saturate(.6) brightness(.32);transform:scale(1.1)}
+.sh-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 75% 40%,rgba(200,16,46,.12),transparent 70%),linear-gradient(0deg,#0B0A09,rgba(11,10,9,0) 40%)}
+.sh-in{display:grid;grid-template-columns:minmax(0,1fr) 640px;align-items:center;gap:48px;padding-top:64px;padding-bottom:72px}
+.sh-t{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.kick{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E2364B}
+.sh h1{margin:12px 0 0;font-size:84px;font-weight:700;line-height:.92;letter-spacing:-.02em}
+.lead{margin:20px 0 0;font-size:17.5px;color:#D3CCBF;max-width:50ch;text-wrap:pretty}
+.lead b{color:#FFF}
+.cta{display:flex;gap:12px;margin-top:28px}
+.stats{display:flex;gap:28px;margin:34px 0 0;padding-top:22px;border-top:1px solid rgba(232,226,208,.12)}
+.stats div{display:flex;flex-direction:column;gap:2px}
+.stats dt{font-size:34px;font-weight:700;line-height:1;color:#F3E6C8}
+.stats dd{margin:0;font-size:12.5px;color:#9A9387}
+.sh-art{margin:0;animation:rise .9s .12s cubic-bezier(.2,.8,.2,1) both}
+.fr{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(232,226,208,.2);box-shadow:0 50px 100px -40px rgba(0,0,0,.95),0 0 0 6px rgba(232,226,208,.03);aspect-ratio:16/9}
+.fr img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.fr:hover img{transform:scale(1.04)}
+.fr::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,0) 60%,rgba(11,10,9,.55));pointer-events:none}
+.scan{position:absolute;left:0;right:0;top:-30%;height:30%;background:linear-gradient(180deg,transparent,rgba(232,226,208,.16),transparent);animation:scan 5.5s cubic-bezier(.4,0,.2,1) infinite;pointer-events:none;mix-blend-mode:screen}
+@keyframes scan{0%{top:-30%}60%,100%{top:110%}}
+.sh-art figcaption{margin-top:10px;font-size:12px;color:#8C857A;text-align:right}
+
+/* saga */
+.seg{display:flex;padding:4px;border-radius:13px;background:rgba(232,226,208,.05);border:1px solid rgba(232,226,208,.1)}
+.seg button{height:38px;padding:0 15px;border:0;border-radius:10px;background:transparent;color:#A39C90;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.seg button.on{background:#EFE9DD;color:#0B0A09}
+.seg button:not(.on):hover{color:#EFE9DD}
+.eras{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.ec{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 13px;border-radius:999px;border:1px solid rgba(232,226,208,.12);background:transparent;color:#B3AB9E;font:600 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.ec i{width:8px;height:8px;border-radius:50%;background:var(--ec)}
+.ec:hover{color:#EFE9DD;border-color:rgba(232,226,208,.3)}
+.ec.on{color:#0B0A09;background:var(--ec);border-color:var(--ec)}
+.ec.on i{background:#0B0A09}
+.cnt{margin-left:auto;font-size:13px;color:#8C857A}
+.games{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gc{position:relative;display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:18px;background:#13100D;border:1px solid rgba(232,226,208,.1);overflow:hidden;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;animation:gmFade .4s cubic-bezier(.2,.8,.2,1) both}
+.gc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--ec);opacity:.85}
+.gc::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,var(--ec),transparent 70%);opacity:.08;z-index:-1;transition:opacity .3s}
+.gc:hover{transform:translateY(-4px);border-color:rgba(232,226,208,.25);box-shadow:0 30px 50px -30px rgba(0,0,0,.9)}
+.gc:hover::after{opacity:.18}
+.gc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.gc-n{font-size:40px;font-weight:700;line-height:.9;color:rgba(239,233,221,.16);letter-spacing:-.03em}
+.gc-y{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+.gc-y b{font-size:15px;color:#EFE9DD;font-variant-numeric:tabular-nums}
+.gc-y small{font-size:11.5px;color:#8C857A}
+.gc-e{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B3AB9E}
+.gc-e i{width:7px;height:7px;border-radius:50%;background:var(--ec)}
+.gc h3{margin:0;font-size:27px;line-height:1.02}
+.gc dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:13px}
+.gc dt{color:#8C857A}
+.gc dd{margin:0;color:#D3CCBF}
+.gc p{margin:0;font-size:13px;color:#A39C90;text-wrap:pretty}
+.gc-s{margin-top:auto;align-self:flex-start;padding:5px 10px;border-radius:999px;border:1px solid rgba(232,226,208,.14);font-size:11.5px;font-weight:600;color:#9A9387}
+.gc.x .gc-s{border-color:rgba(226,54,75,.4);color:#F2A0AB}
+.gc.u{background:linear-gradient(160deg,rgba(200,16,46,.22),#13100D 55%);border-color:rgba(226,54,75,.5);box-shadow:0 0 0 1px rgba(226,54,75,.25),0 30px 60px -30px rgba(200,16,46,.6)}
+.gc.u .gc-n{color:rgba(255,227,231,.4)}
+.gc-go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;height:38px;padding:0 14px;border-radius:11px;background:#E2364B;color:#FFF !important;font-size:13.5px;font-weight:700;text-decoration:none;transition:gap .2s,background .2s}
+.gc-go:hover{gap:12px;background:#F04A5E}
+
+/* destacada */
+.feat{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 520px;align-items:center;gap:30px;min-height:420px;padding:40px;border-radius:26px;overflow:hidden;isolation:isolate;text-decoration:none;color:#EFE9DD !important;border:1px solid rgba(226,54,75,.35);background:#120F0C;transition:border-color .3s,box-shadow .3s}
+.feat:hover{border-color:rgba(226,54,75,.7);box-shadow:0 40px 90px -40px rgba(200,16,46,.6)}
+.ft-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 25%;z-index:-2;opacity:.42;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.feat:hover .ft-bg{transform:scale(1.04)}
+.feat::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0B0A09 25%,rgba(11,10,9,.82) 55%,rgba(11,10,9,.9))}
+.ft-t p{margin:12px 0 0;color:#D3CCBF;max-width:50ch}
+.ft-t ul{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:20px 0 26px;padding:0;list-style:none;font-size:14px;color:#CFC8BA}
+.ft-t li{display:flex;align-items:baseline;gap:8px}
+.ft-t li::before{content:"";flex-shrink:0;width:6px;height:6px;transform:rotate(45deg) translateY(-2px);background:#E2364B}
+.ft-t li b{font-family:'Cormorant Garamond',serif;font-size:22px;color:#FFF;font-variant-numeric:lining-nums}
+.ft-m{position:relative;padding:14px;border-radius:20px;background:rgba(20,17,13,.85);border:1px solid rgba(232,226,208,.14)}
+.mini{display:block;width:100%;height:auto}
+.mw{fill:#1C1813;stroke:#8E7448;stroke-width:3;stroke-dasharray:10 5}
+.mdz path{fill:rgba(232,226,208,.03);stroke:rgba(232,226,208,.22);stroke-width:1.4;transition:fill .3s}
+.feat:hover .mdz path{fill:rgba(232,226,208,.05)}
+.mr{fill:#1D4262;stroke:#2E5A80}
+.mrt{fill:none;stroke:#E2364B;stroke-width:3;stroke-dasharray:9 7;stroke-linejoin:round;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.md{fill:#C8102E;stroke:#FFE3E7;stroke-width:3}
+.ft-c{position:absolute;left:24px;bottom:20px;font-family:'Cormorant SC',serif;font-size:14px;font-weight:700;letter-spacing:.12em;color:#CFC8BA}
+
+/* empezar */
+.starts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.st{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:18px;background:#13100D;border:1px solid rgba(232,226,208,.1);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.st:hover{transform:translateY(-3px);border-color:rgba(232,226,208,.25)}
+.st-n{font-size:30px;font-weight:700;color:#E2364B;line-height:1}
+.st h3{margin:0;font-size:24px;line-height:1.08}
+.st p{margin:0;font-size:14px;color:#CFC8BA;text-wrap:pretty}
+.st-g{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.st-g span{padding:4px 9px;border-radius:999px;background:rgba(232,226,208,.06);border:1px solid rgba(232,226,208,.12);font-size:12px;color:#EFE9DD}
+
+/* novedades */
+.news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.nw{position:relative;padding:22px 22px 22px 26px;border-radius:18px;background:#13100D;border:1px solid rgba(232,226,208,.1);overflow:hidden}
+.nw::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:3px;background:linear-gradient(180deg,#2F5FA7,#EFE9DD,#C8102E)}
+.nw time{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E2364B}
+.nw h3{margin:8px 0 0;font-size:24px;line-height:1.1}
+.nw p{margin:8px 0 0;font-size:14px;color:#CFC8BA}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.gc{padding-top:0 !important}
+.gc-img{position:relative;margin:0 -18px 4px;aspect-ratio:2/1;background-image:url(../assets/assassins-creed/juegos.webp);background-size:400% 400%;background-repeat:no-repeat;border-bottom:1px solid rgba(232,226,208,.1);transition:filter .4s}
+.gc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,16,13,0) 55%,rgba(19,16,13,.85))}
+.gc-img span{display:none}
+.gc-img.noimg{background:radial-gradient(80% 90% at 50% 0%,rgba(140,133,122,.25),transparent 70%),repeating-linear-gradient(135deg,rgba(232,226,208,.04) 0 10px,transparent 10px 20px),#15120F;display:grid;place-items:center}
+.gc-img.noimg span{display:block;font:700 22px/1 'Cormorant SC',serif;letter-spacing:.2em;color:rgba(239,233,221,.45)}
+.gc:hover .gc-img{filter:saturate(1.15) brightness(1.08)}
+.gc-top{position:relative;margin-top:-30px;z-index:1}
+.gc-n{color:rgba(239,233,221,.55) !important;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.ft-m{padding:0 !important;overflow:hidden}
+.ft-map{display:block;width:100%;height:auto;border-radius:20px}
+.mini{position:absolute;inset:0;width:100%;height:100%}
+.mrt{stroke-width:9 !important}
+.md{r:16}
+
+</style>
+</helmet>
+
+<div class="acp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Assassin's Creed">
+      <div class="wrap sub-in">
+        <a class="gchip" href="AssassinsCreed.dc.html"><img src="../assets/juegos/ac-saga.webp" alt="">Assassin's Creed</a>
+        <a class="slink on" href="AssassinsCreed.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><circle cx="4" cy="6" r="1"></circle><circle cx="4" cy="12" r="1"></circle><circle cx="4" cy="18" r="1"></circle></svg>La saga</a>
+        <div class="dd">
+          <a class="slink" href="ACUnity.dc.html" aria-haspopup="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>Guía de Unity <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="menu"><div class="acm"><a class="acmo" href="ACUnity.dc.html#mapa"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span><span><b>Mapa de París</b><small>22 barrios, lugares y memorias</small></span></a><a class="acmo" href="ACUnity.dc.html#historia"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path></svg></span><span><b>Historia paso a paso</b><small>Prólogo y 12 secuencias</small></span></a><a class="acmo" href="ACUnity.dc.html#actividades"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg></span><span><b>Actividades y coleccionables</b><small>Enigmas, cofres, cooperativo…</small></span></a><a class="acmo" href="ACUnity.dc.html#personajes"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0"></path><path d="M17 4a4 4 0 0 1 0 8"></path><path d="M22 21a6 6 0 0 0-4-5.6"></path></svg></span><span><b>Personajes y datos</b><small>Quién es quién, sin spoilers</small></span></a></div></div>
+        </div>
+        <a class="slink" href="AssassinsCreed.dc.html#empezar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"></path><path d="M5 4h12l-2 4 2 4H5"></path></svg>Por dónde empezar</a>
+        <a class="slink" href="AssassinsCreed.dc.html#novedades"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>Novedades</a>
+        <span class="status"><i></i>Nuevo</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="sh" id="inicio">
+    <div class="sh-bg" aria-hidden="true"><img src="../assets/juegos/ac-saga.webp" alt=""></div>
+    <div class="wrap sh-in">
+      <div class="sh-t">
+        <span class="kick">La saga · 2007–2026</span>
+        <h1 class="cg">Assassin's Creed</h1>
+        <p class="lead">Catorce juegos principales, de la Grecia de Kassandra al Japón de Naoe y Yasuke. Aquí tienes la saga en orden, por dónde empezar y nuestra primera guía completa: <b>Unity</b>.</p>
+        <div class="cta"><a class="btn-r" href="ACUnity.dc.html">Guía de Unity <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a><a class="btn-o" href="#saga">Ver la saga</a></div>
+        <dl class="stats">
+          <div><dt class="cg">14</dt><dd>juegos principales</dd></div>
+          <div><dt class="cg">431 a. C.</dt><dd>la historia más antigua (Odyssey)</dd></div>
+          <div><dt class="cg">1868</dt><dd>la más moderna (Syndicate)</dd></div>
+        </dl>
+      </div>
+      <figure class="sh-art">
+        <div class="fr"><img src="../assets/juegos/ac-saga.webp" alt="Los protagonistas de la saga Assassin's Creed"><span class="scan" aria-hidden="true"></span></div>
+        <figcaption>Arte oficial de Ubisoft con los asesinos de la saga</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SAGA -->
+  <section class="sec" id="saga">
+    <div class="wrap">
+      <div class="sec-h">
+        <div><span class="kicker">La saga en orden</span><h2 class="h2 cg">Todos los juegos</h2><p>{{ordTxt}}</p></div>
+        <div class="seg" role="radiogroup" aria-label="Orden">
+          <button type="button" role="radio" class="{{oL}}" onClick="{{setL}}">Por lanzamiento</button>
+          <button type="button" role="radio" class="{{oC}}" onClick="{{setC}}">Por época de la historia</button>
+        </div>
+      </div>
+      <div class="eras" role="group" aria-label="Época">
+        <sc-for list="{{eras}}" as="e" hint-placeholder-count="6"><button type="button" class="ec {{e.cls}}" style="--ec: {{e.c}}" onClick="{{e.pick}}"><i></i>{{e.n}}</button></sc-for>
+        <span class="cnt">{{count}} juegos</span>
+      </div>
+      <div class="games" data-pane>
+        <sc-for list="{{cards}}" as="g" hint-placeholder-count="16">
+          <article class="gc {{g.cls}}" style="--ec: {{g.c}}">
+            <div class="gc-img {{g.imgCls}}" style="background-position: {{g.bp}}"><span>Codename Hexe</span></div>
+            <div class="gc-top"><span class="gc-n cg">{{g.n}}</span><span class="gc-y"><b>{{g.top}}</b><small>{{g.sub}}</small></span></div>
+            <span class="gc-e"><i></i>{{g.era}}</span>
+            <h3 class="cg">{{g.t}}</h3>
+            <dl><dt>Protagonista</dt><dd>{{g.who}}</dd><dt>Dónde</dt><dd>{{g.where}}</dd></dl>
+            <p>{{g.note}}</p>
+            <sc-if value="{{g.isU}}" hint-placeholder-val="false"><a class="gc-go" href="ACUnity.dc.html">Abrir la guía completa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></sc-if>
+            <sc-if value="{{g.notU}}" hint-placeholder-val="true"><span class="gc-s">{{g.tag}}</span></sc-if>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNITY DESTACADA -->
+  <section class="sec">
+    <div class="wrap">
+      <a class="feat" href="ACUnity.dc.html">
+        <img class="ft-bg" src="../assets/juegos/hero-ac.webp" alt="">
+        <div class="ft-t">
+          <span class="kicker">Guía completa</span>
+          <h2 class="h2 cg">Unity, París al completo</h2>
+          <p>Nuestra primera guía de la saga: el París de 1789 dibujado barrio a barrio y la historia de Arno memoria a memoria, con tu progreso guardado.</p>
+          <ul>
+            <li><b>22</b> barrios en un mapa ilustrado</li>
+            <li><b>34</b> memorias paso a paso</li>
+            <li><b>11</b> tipos de actividades explicadas</li>
+            <li>Spoilers ocultos por defecto</li>
+          </ul>
+          <span class="btn-r">Abrir la guía <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+        </div>
+        <div class="ft-m"><img class="ft-map" src="../assets/assassins-creed/paris-1790-mini.webp" alt="Plano de París de 1790 de la guía"><svg class="mini" viewBox="0 0 2928 2016" preserveAspectRatio="none" aria-hidden="true"><polyline class="mrt" points="2077,860 1418,1077 1575,1105 1263,497 1222,800 1389,817 1395,962 590,925 1643,452"></polyline><circle class="md" cx="2077" cy="860" r="16"></circle><circle class="md" cx="1418" cy="1077" r="16"></circle><circle class="md" cx="1575" cy="1105" r="16"></circle><circle class="md" cx="1263" cy="497" r="16"></circle><circle class="md" cx="1222" cy="800" r="16"></circle><circle class="md" cx="1389" cy="817" r="16"></circle><circle class="md" cx="1395" cy="962" r="16"></circle><circle class="md" cx="590" cy="925" r="16"></circle><circle class="md" cx="1643" cy="452" r="16"></circle></svg><span class="ft-c">París, 1790 · mapa de la guía</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EMPEZAR -->
+  <section class="sec" id="empezar">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Para recién llegados</span><h2 class="h2 cg">¿Por dónde empiezo?</h2><p>Cada juego se entiende por separado, pero según lo que busques hay mejores puertas de entrada.</p></div></div>
+      <div class="starts">
+        <article class="st">
+          <span class="st-n cg">01</span>
+          <h3 class="cg">Quiero la historia desde el principio</h3>
+          <p>Empieza por el primer Assassin&#x27;s Creed y sigue con la trilogía de Ezio (II, Brotherhood y Revelations). La Ezio Collection reúne los tres.</p>
+          <div class="st-g"><span>Assassin&#x27;s Creed</span><span>Assassin&#x27;s Creed II</span><span>Brotherhood</span><span>Revelations</span></div>
+        </article>
+        <article class="st">
+          <span class="st-n cg">02</span>
+          <h3 class="cg">Quiero parkour y una ciudad viva</h3>
+          <p>Unity: el París de la Revolución a escala real, con el mejor parkour de la saga y cooperativo para cuatro. Tienes la guía completa aquí.</p>
+          <div class="st-g"><span>Unity</span></div>
+        </article>
+        <article class="st">
+          <span class="st-n cg">03</span>
+          <h3 class="cg">Prefiero un RPG de mundo abierto</h3>
+          <p>Origins, Odyssey y Valhalla: mapas enormes, niveles, equipo y decenas de horas por juego.</p>
+          <div class="st-g"><span>Origins</span><span>Odyssey</span><span>Valhalla</span></div>
+        </article>
+        <article class="st">
+          <span class="st-n cg">04</span>
+          <h3 class="cg">Quiero lo más nuevo</h3>
+          <p>Shadows (2025), con Naoe y Yasuke en Japón, y Black Flag Resynced (2026), el remake de las aventuras piratas de Edward Kenway.</p>
+          <div class="st-g"><span>Shadows</span><span>Black Flag Resynced</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVEDADES -->
+  <section class="sec" id="novedades">
+    <div class="wrap">
+      <div class="sec-h"><div><span class="kicker">Novedades</span><h2 class="h2 cg">Qué se mueve en la saga</h2></div></div>
+      <div class="news">
+        <article class="nw"><time>9 jul 2026</time><h3 class="cg">Black Flag Resynced ya está a la venta</h3><p>Ubisoft rehízo Black Flag desde cero: combate revisado, misiones nuevas y la historia de Edward Kenway con gráficos actuales.</p></article>
+        <article class="nw"><time>5 mar 2026</time><h3 class="cg">Unity, a 60 FPS en PS5 y Xbox Series</h3><p>La actualización 1.06 desbloquea los 60 FPS en consolas actuales. Buen momento para volver a París (o empezar con nuestra guía).</p></article>
+        <article class="nw"><time>2026</time><h3 class="cg">Hexe sigue sin fecha</h3><p>El siguiente gran Assassin&#x27;s Creed aún no tiene fecha oficial. Las filtraciones hablan de 2027.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Ubisoft. Assassin's Creed, Unity y sus imágenes son marcas y material de Ubisoft Entertainment. Fechas de lanzamiento según Ubisoft; la información de Hexe procede de filtraciones no confirmadas.</p>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4160}}'>
+
+const D = {"games": [{"id": "ac1", "t": "Assassin's Creed", "y": 2007, "date": "13 nov 2007", "who": "Altaïr Ibn-La'Ahad", "where": "Tierra Santa: Acre, Damasco y Jerusalén", "per": "1191", "hy": 1191, "era": "med", "note": "Tercera Cruzada. El origen de todo.", "tag": "", "bp": "0.000% 0.000%"}, {"id": "ac2", "t": "Assassin's Creed II", "y": 2009, "date": "17 nov 2009", "who": "Ezio Auditore", "where": "Florencia, Venecia y la Toscana", "per": "1476–1499", "hy": 1476, "era": "ren", "note": "Empieza la trilogía de Ezio.", "tag": "", "bp": "33.333% 0.000%"}, {"id": "acb", "t": "Brotherhood", "y": 2010, "date": "16 nov 2010", "who": "Ezio Auditore", "where": "Roma", "per": "1499–1507", "hy": 1499, "era": "ren", "note": "Ezio reconstruye la Hermandad.", "tag": "", "bp": "66.667% 0.000%"}, {"id": "acr", "t": "Revelations", "y": 2011, "date": "15 nov 2011", "who": "Ezio y Altaïr", "where": "Constantinopla", "per": "1511–1512", "hy": 1511, "era": "ren", "note": "Cierra las historias de Ezio y Altaïr.", "tag": "", "bp": "100.000% 0.000%"}, {"id": "ac3", "t": "Assassin's Creed III", "y": 2012, "date": "30 oct 2012", "who": "Connor (Ratonhnhaké:ton)", "where": "Boston, Nueva York y la frontera", "per": "1754–1783", "hy": 1754, "era": "s18", "note": "Revolución americana.", "tag": "", "bp": "0.000% 33.333%"}, {"id": "ac4", "t": "IV Black Flag", "y": 2013, "date": "29 oct 2013", "who": "Edward Kenway", "where": "El Caribe", "per": "1715–1722", "hy": 1715, "era": "s18", "note": "Piratas y combate naval.", "tag": "", "bp": "33.333% 33.333%"}, {"id": "acrg", "t": "Rogue", "y": 2014, "date": "11 nov 2014", "who": "Shay Cormac", "where": "Atlántico Norte y Nueva York", "per": "1752–1776", "hy": 1752, "era": "s18", "note": "La historia desde el lado templario.", "tag": "", "bp": "66.667% 33.333%"}, {"id": "acu", "t": "Unity", "y": 2014, "date": "11 nov 2014", "who": "Arno Dorian", "where": "París y Versalles", "per": "1789–1794", "hy": 1789, "era": "s18", "note": "Revolución francesa. Guía completa aquí.", "tag": "", "bp": "100.000% 33.333%"}, {"id": "acs", "t": "Syndicate", "y": 2015, "date": "23 oct 2015", "who": "Jacob y Evie Frye", "where": "Londres", "per": "1868", "hy": 1868, "era": "s19", "note": "Revolución industrial.", "tag": "", "bp": "0.000% 66.667%"}, {"id": "aco", "t": "Origins", "y": 2017, "date": "27 oct 2017", "who": "Bayek de Siwa", "where": "Egipto ptolemaico", "per": "49–43 a. C.", "hy": -49, "era": "ant", "note": "El nacimiento de la Hermandad. Primer RPG.", "tag": "", "bp": "33.333% 66.667%"}, {"id": "acod", "t": "Odyssey", "y": 2018, "date": "5 oct 2018", "who": "Kassandra o Alexios", "where": "Grecia y el Egeo", "per": "431–422 a. C.", "hy": -431, "era": "ant", "note": "Guerra del Peloponeso.", "tag": "", "bp": "66.667% 66.667%"}, {"id": "acv", "t": "Valhalla", "y": 2020, "date": "10 nov 2020", "who": "Eivor", "where": "Noruega e Inglaterra", "per": "873–878", "hy": 873, "era": "med", "note": "Vikingos y asentamientos.", "tag": "", "bp": "100.000% 66.667%"}, {"id": "acm", "t": "Mirage", "y": 2023, "date": "5 oct 2023", "who": "Basim Ibn Ishaq", "where": "Bagdad", "per": "861", "hy": 861, "era": "med", "note": "Vuelta al sigilo clásico.", "tag": "", "bp": "0.000% 100.000%"}, {"id": "acsh", "t": "Shadows", "y": 2025, "date": "20 mar 2025", "who": "Naoe y Yasuke", "where": "Japón feudal", "per": "1579–1580", "hy": 1579, "era": "ren", "note": "Dos protagonistas: shinobi y samurái.", "tag": "", "bp": "33.333% 100.000%"}, {"id": "ac4r", "t": "Black Flag Resynced", "y": 2026, "date": "9 jul 2026", "who": "Edward Kenway", "where": "El Caribe", "per": "1715–1722", "hy": 1715, "era": "s18", "note": "Remake de Black Flag rehecho desde cero.", "tag": "Remake", "bp": "66.667% 100.000%"}, {"id": "hexe", "t": "Codename Hexe", "y": 9999, "date": "Sin fecha", "who": "—", "where": "Sin confirmar", "per": "—", "hy": 9999, "era": "fut", "note": "Anunciado en 2022. Sin fecha oficial; las filtraciones apuntan a 2027.", "tag": "En desarrollo", "bp": ""}], "eras": [["ant", "Antigüedad", "#D9A55B"], ["med", "Edad Media", "#B9895A"], ["ren", "Siglos XV–XVI", "#C8102E"], ["s18", "Siglo XVIII", "#5E86C9"], ["s19", "Siglo XIX", "#9AA3AE"], ["fut", "Próximamente", "#8C857A"]]};
+const EC = {}; D.eras.forEach(e => { EC[e[0]] = e; });
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const motion = this.props.animaciones !== false;
+    const ord = S.ord || 'lanz';
+    const era = S.era || 'all';
+    const set = (o) => this.setState(o);
+    let list = D.games.slice();
+    if (ord === 'crono') list.sort((a, b) => a.hy - b.hy || a.y - b.y);
+    else list.sort((a, b) => a.y - b.y || 0);
+    if (era !== 'all') list = list.filter(g => g.era === era);
+    const cards = list.map((g, i) => {
+      const e = EC[g.era]; const isU = g.id === 'acu';
+      return {
+        n: String(i + 1).padStart(2, '0'), t: g.t, who: g.who, where: g.where, per: g.per, note: g.note,
+        top: ord === 'crono' ? g.per : (g.y < 9000 ? String(g.y) : 'Próximamente'),
+        sub: ord === 'crono' ? (g.y < 9000 ? 'Salió en ' + g.y : 'Sin fecha') : g.date,
+        era: e[1], c: e[2], cls: (isU ? 'u' : '') + (g.tag ? ' x' : ''),
+        isU: isU, notU: !isU, tag: g.tag || 'Guía próximamente', hasTag: !!g.tag, bp: g.bp || 'center', imgCls: g.bp ? '' : 'noimg'
+      };
+    });
+    const eras = [['all', 'Todas', '#EFE9DD']].concat(D.eras.filter(e => e[0] !== 'fut')).map(e => ({ n: e[1], c: e[2], cls: era === e[0] ? 'on' : '', pick: () => set({ era: e[0] }) }));
+    return {
+      motionClass: motion ? '' : 'still',
+      cards: cards, eras: eras, count: cards.length,
+      oL: ord === 'lanz' ? 'on' : '', oC: ord === 'crono' ? 'on' : '',
+      setL: () => set({ ord: 'lanz' }), setC: () => set({ ord: 'crono' }),
+      ordTxt: ord === 'crono' ? 'Ordenados por la época en la que transcurre cada historia, de la Antigüedad al siglo XIX.' : 'Ordenados por fecha de lanzamiento, de 2007 a hoy.'
+    };
+  }
+}
+
+</script>
+</body>
+</html>

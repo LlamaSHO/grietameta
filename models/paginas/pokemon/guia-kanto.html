@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de Kanto · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  body { --accent: #9BBC0F; --accent-hi: #C4D96A; --accent-ink: #0F2A12; --accent-soft: rgba(155, 188, 15, 0.12); }
+  .g-top { padding-block: 40px 0; display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+  .g-top h1 { font-size: clamp(32px, 4.4vw, 52px); }
+  .tabs { display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+  .tabs button { height: 38px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; color: var(--ink-dim); font-weight: 600; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--panel-2); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
+  .opts { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+
+  .guide { display: grid; grid-template-columns: 260px 1fr; gap: 40px; padding-block: 28px 72px; align-items: start; }
+  .toc { position: sticky; top: calc(var(--nav-h) + var(--sub-h) + 20px); }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+  .toc a { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 7px 8px; border-radius: 9px; text-decoration: none; font-size: 14px; color: var(--ink-dim); }
+  .toc a:hover { background: rgba(255, 255, 255, 0.04); color: var(--ink); }
+  .toc a .n { font: 600 12px var(--font-pixel); color: var(--ink-mute); padding-top: 2px; }
+  .toc a.done { color: var(--ink-mute); text-decoration: line-through; text-decoration-color: rgba(255, 255, 255, 0.25); }
+  .toc a.done .n { color: var(--gb-2); }
+  .toc a.cur { background: var(--accent-soft); color: var(--ink); }
+
+  .leg { padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
+  .leg-h { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .leg-h .n { font: 600 14px var(--font-pixel); color: var(--gb-2); }
+  .leg-h h2 { font-size: 26px; }
+  .leg-h .prog { margin-left: auto; color: var(--ink-mute); font-size: 13px; }
+  .leg > p { color: var(--ink-dim); max-width: 68ch; margin: 10px 0 16px; }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .steps label { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--line); cursor: pointer; max-width: 76ch; }
+  .steps input { appearance: none; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--line-strong); display: grid; place-items: center; cursor: pointer; }
+  .steps input:checked { background: var(--gb-2); border-color: var(--gb-2); }
+  .steps input:checked::after { content: ""; width: 10px; height: 6px; border: 2.5px solid var(--gb-0); border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
+  .steps input:checked + span { color: var(--ink-mute); }
+  .steps small { display: block; color: var(--ink-mute); font-size: 13px; margin-top: 2px; }
+  .team { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: var(--panel); font-size: 14px; }
+  .team b { font-weight: 600; margin-right: 4px; }
+  .spoil { margin-top: 12px; }
+  .spoil summary { cursor: pointer; color: var(--accent-hi); font-weight: 600; font-size: 14px; list-style: none; }
+  .spoil summary::-webkit-details-marker { display: none; }
+  .spoil p { color: var(--ink-dim); margin: 8px 0 0; max-width: 68ch; }
+  .leg.closed > *:not(.leg-h) { display: none; }
+  .leg.closed { padding-bottom: 18px; margin-bottom: 18px; }
+  .leg.closed .leg-h h2 { font-size: 20px; color: var(--ink-dim); }
+
+  /* 100 % */
+  .cien { padding-block: 28px 72px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+  .cat h2 { font-size: 22px; display: flex; justify-content: space-between; align-items: baseline; }
+  .cat h2 span { font: 600 15px var(--font-pixel); color: var(--gb-3); }
+  .meter { height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.06); margin: 10px 0 14px; overflow: hidden; }
+  .meter i { display: block; height: 100%; background: var(--gb-2); border-radius: 5px; }
+  .cat .steps label { padding: 8px 0; }
+  .cat .more { display: inline-block; margin-top: 10px; }
+  [hidden] { display: none !important; }
+
+  @media (max-width: 860px) {
+    .guide { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .toc ol { display: flex; overflow-x: auto; gap: 6px; scrollbar-width: none; }
+    .toc a { white-space: nowrap; border: 1px solid var(--line); }
+    .cien { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="guia">
+<main class="wrap">
+  <div class="g-top">
+    <div>
+      <h1>Guía de Kanto</h1>
+      <p class="muted" style="margin:6px 0 0">Pokémon Rojo y Azul · lo que cambia en Amarillo va marcado</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="historia">Historia</button>
+      <button role="tab" aria-selected="false" data-tab="cien">100 %</button>
+    </div>
+  </div>
+  <div class="opts">
+    <button class="chip" aria-pressed="true">Rojo / Azul</button>
+    <button class="chip" aria-pressed="false">Amarillo</button>
+    <button class="chip" aria-pressed="false">Ocultar lo que ya hice</button>
+  </div>
+
+  <div id="historia" class="guide">
+    <nav class="toc" aria-label="Tramos"><ol id="toc"></ol></nav>
+    <div id="legs"></div>
+  </div>
+
+  <div id="cien" class="cien" hidden></div>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  const LEGS = [
+    { t: "Pueblo Paleta y Ciudad Verde", p: "Tu primer Pokémon, el primer combate con tu rival y la Pokédex.", steps: [
+      ["Elige tu inicial en el laboratorio del Prof. Oak", "Bulbasaur y Squirtle hacen más fácil el principio; Charmander, más difícil"],
+      ["Gana (o pierde) el primer combate contra tu rival", "Perderlo no cuenta: la historia sigue igual"],
+      ["Recoge el paquete de Oak en la tienda de Ciudad Verde"],
+      ["Entrégaselo a Oak y recibe la Pokédex y 5 Poké Balls"],
+    ], team: [[1, 7], "Captura un Pidgey en la Ruta 1"] },
+    { t: "Bosque Verde y Brock", p: "Cruza el bosque hasta Ciudad Plateada y gana la primera medalla.", steps: [
+      ["Atraviesa el Bosque Verde", "Pikachu sale con un 5 %: si eres Charmander, te viene muy bien"],
+      ["Visita el museo de Ciudad Plateada (opcional)", "El Ámbar Viejo está en la parte de atrás: hace falta Corte"],
+      ["Gana a Brock", "Onix Nv. 14. Agua y Planta le hacen ×4"],
+    ], team: [[7, 1, 25], "Agua o Planta contra Roca/Tierra"] },
+    { t: "Mt. Moon y Misty", p: "La primera cueva grande, el Team Rocket y el gimnasio de agua.", steps: [
+      ["Cruza Mt. Moon y elige un fósil", "Hélix → Omanyte o Domo → Kabuto"],
+      ["Llega a Ciudad Celeste y gana a tu rival en el Puente Pepita"],
+      ["Ayuda a Bill en la Ruta 25", "Te da el billete del S.S. Anne"],
+      ["Gana a Misty", "Starmie Nv. 21 es rápido: Planta o Eléctrico"],
+    ], team: [[1, 25, 43], "Oddish (Rojo) o Bellsprout (Azul) en la Ruta 24"], spoil: "Si vas con Charmander y sin eléctricos, sube a Butterfree: Somnífero y Paralizador ayudan mucho contra Starmie." },
+    { t: "S.S. Anne y Teniente Surge", p: "El barco, la MO01 Corte y el gimnasio eléctrico de Carmín.", steps: [
+      ["Sube al S.S. Anne y habla con el capitán", "Te da la MO01 Corte"],
+      ["Captura un Diglett en la cueva de la Ruta 11"],
+      ["Corta el arbusto del gimnasio y resuelve el puzle de los cubos de basura", "Los interruptores cambian de sitio al fallar"],
+      ["Gana a Surge", "Raichu Nv. 24. Tierra no recibe daño eléctrico"],
+    ], team: [[50, 1, 7], "Diglett o Dugtrio con Excavar"] },
+    { t: "Túnel Roca, Lavanda y Erika", steps: [1, 2, 3, 4] },
+    { t: "El Casino, la Torre Pokémon y la Poké Flauta", steps: [1, 2, 3, 4, 5] },
+    { t: "Zona Safari y Koga", steps: [1, 2, 3] },
+    { t: "Silph S.A. y Sabrina", steps: [1, 2, 3, 4] },
+    { t: "Isla Canela y Blaine", steps: [1, 2, 3] },
+    { t: "Giovanni en Ciudad Verde", steps: [1, 2] },
+    { t: "Calle Victoria y el Alto Mando", steps: [1, 2, 3, 4, 5, 6] },
+  ];
+  const doneLegs = 2, curLeg = 2;
+
+  document.getElementById("toc").innerHTML = LEGS.map((l, i) => `<li><a href="#tramo-${i + 1}" class="${i < doneLegs ? "done" : i === curLeg ? "cur" : ""}"><span class="n">${String(i + 1).padStart(2, "0")}</span>${l.t}</a></li>`).join("");
+  document.getElementById("legs").innerHTML = LEGS.map((l, i) => {
+    const full = typeof l.steps[0] !== "number";
+    const total = l.steps.length, hecho = i < doneLegs ? total : i === curLeg ? 1 : 0;
+    return `<article class="leg${full ? "" : " closed"}" id="tramo-${i + 1}">
+      <div class="leg-h"><span class="n">${String(i + 1).padStart(2, "0")}</span><h2>${l.t}</h2><span class="prog num">${hecho}/${total} pasos</span></div>
+      ${full ? `<p>${l.p}</p>
+      <ol class="steps">${l.steps.map(([s, sm], j) => `<li><label><input type="checkbox" ${i < doneLegs || (i === curLeg && j === 0) ? "checked" : ""}><span>${s}${sm ? `<small>${sm}</small>` : ""}</span></label></li>`).join("")}</ol>
+      <div class="team"><b>Equipo recomendado</b>${l.team[0].map((id) => typeChip(PK.DEX[id - 1].types[0]).replace(PK.TYPES[PK.DEX[id - 1].types[0]].n, PK.DEX[id - 1].name)).join("")}<span class="muted">· ${l.team[1]}</span></div>
+      ${l.spoil ? `<details class="spoil"><summary>Ver consejo (puede tener spoilers)</summary><p>${l.spoil}</p></details>` : ""}` : ""}
+    </article>`;
+  }).join("");
+
+  const CATS = [
+    { t: "Pokédex", n: 12, of: 151, items: [["Capturar los 151", "Con intercambios entre Rojo y Azul"], ["Diploma del Game Freak", "En Ciudad Azulona, con la Pokédex completa (sin Mew)"]] },
+    { t: "Medallas", n: 2, of: 8, items: [["Medalla Roca", ""], ["Medalla Cascada", ""], ["Medalla Trueno", "Siguiente"]] },
+    { t: "MT y MO", n: 9, of: 55, items: [["MO01 Corte", "S.S. Anne"], ["MO02 Vuelo", "Ruta 16"], ["MO03 Surf", "Zona Safari"]] },
+    { t: "Legendarios", n: 0, of: 5, items: [["Articuno", "Islas Espuma · Nv. 50"], ["Zapdos", "Central Energía · Nv. 50"], ["Moltres", "Calle Victoria · Nv. 50"], ["Mewtwo", "Cueva Celeste · Nv. 70"], ["Mew", "Solo por evento oficial"]] },
+    { t: "Regalos y Pokémon únicos", n: 1, of: 8, items: [["Magikarp", "Lo vende un señor en la Ruta 4"], ["Eevee", "Azotea de la mansión de Ciudad Azulona"], ["Hitmonlee o Hitmonchan", "Dojo Karate de Azafrán"], ["Lapras", "Silph S.A., planta 7"], ["Porygon", "Premio del Casino"]] },
+    { t: "Fósiles", n: 0, of: 2, items: [["Omanyte o Kabuto", "Mt. Moon, se revive en Isla Canela"], ["Aerodactyl", "Ámbar Viejo del museo"]] },
+  ];
+  document.getElementById("cien").innerHTML = CATS.map((c) => `<div class="cat">
+    <h2>${c.t}<span class="num">${c.n}/${c.of}</span></h2>
+    <div class="meter"><i style="width:${(c.n / c.of) * 100}%"></i></div>
+    <ol class="steps">${c.items.map(([s, sm], j) => `<li><label><input type="checkbox" ${j < Math.min(c.n, 1) ? "checked" : ""}><span>${s}${sm ? `<small>${sm}</small>` : ""}</span></label></li>`).join("")}</ol>
+    <a class="more" href="#">Ver todo</a></div>`).join("");
+
+  document.querySelectorAll("[role=tab]").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("[role=tab]").forEach((x) => x.setAttribute("aria-selected", x === b));
+    document.getElementById("historia").hidden = b.dataset.tab !== "historia";
+    document.getElementById("cien").hidden = b.dataset.tab !== "cien";
+  }));
+  if (location.hash === "#cien") document.querySelector('[data-tab="cien"]').click();
+  document.querySelectorAll(".opts .chip").forEach((c) => c.addEventListener("click", () => c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") !== "true")));
+</script>
+</body>
+</html>

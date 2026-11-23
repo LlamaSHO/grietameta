@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Yasuo · Build, runas y counters</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#07090D}
+a{color:#E2B566}a:hover{color:#F3C878}
+.lp{position:relative;background:#07090D;color:#ECE9E1;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.45;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.lp *,.lp *::before,.lp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disp{font-family:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes kb{from{transform:scale(1.06)}to{transform:scale(1.14) translateX(-2%)}}
+@keyframes shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 1px rgba(242,169,59,.6),0 0 24px -4px rgba(242,169,59,.6)}50%{box-shadow:0 0 0 1px rgba(242,169,59,.9),0 0 36px -2px rgba(242,169,59,.85)}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.8);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1;justify-self:start}
+.brand:hover{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8A93A0;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:#ECE9E1;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7C8592}
+.search input:focus{border-color:rgba(226,181,102,.6);box-shadow:0 0 0 4px rgba(226,181,102,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8A93A0;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.1)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(255,255,255,.12);color:#ECE9E1;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#ECE9E1;background:rgba(255,255,255,.06)}
+.sub{border-top:1px solid rgba(255,255,255,.05);background:rgba(13,16,23,.6)}
+.sub-in{display:flex;align-items:center;gap:6px;height:48px}
+.gchip{display:flex;align-items:center;gap:9px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(255,255,255,.08);color:#ECE9E1;text-decoration:none;font-weight:600;font-size:14px;flex-shrink:0}
+.gchip img{width:24px;height:24px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:6px;height:48px;padding:0 12px;color:#A0A8B4;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover,.slink.on{color:#ECE9E1}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+.dd{position:relative;display:flex;align-items:center;height:48px}
+.dd>.slink svg{transition:transform .25s}
+.dd:hover>.slink svg,.dd:focus-within>.slink svg{transform:rotate(180deg)}
+.mega{position:absolute;top:100%;left:-12px;z-index:60;width:640px;padding:18px;border-radius:18px;background:#0F131B;border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .mega,.dd:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mega-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.mega-h b{font-family:'Bricolage Grotesque',sans-serif;font-size:17px}
+.mega-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.mc{display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 2px;border-radius:10px;text-decoration:none;color:#C6CBD2;font-size:11.5px;transition:background .2s}
+.mc:hover{background:rgba(255,255,255,.06);color:#ECE9E1}
+.mc img{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.1)}
+.mc span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mega-f{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8F98A5}
+.mega-f a{color:#F3C878;text-decoration:none;font-weight:600}
+
+/* iconos oficiales de posición */
+.pi{display:inline-block;width:18px;height:18px;flex-shrink:0;background:currentColor;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.pi-mid{-webkit-mask-image:url(../assets/lol/posiciones/middle.png);mask-image:url(../assets/lol/posiciones/middle.png)}
+.pi-top{-webkit-mask-image:url(../assets/lol/posiciones/top.png);mask-image:url(../assets/lol/posiciones/top.png)}
+.pi-jungle{-webkit-mask-image:url(../assets/lol/posiciones/jungle.png);mask-image:url(../assets/lol/posiciones/jungle.png)}
+.pi-bot{-webkit-mask-image:url(../assets/lol/posiciones/bottom.png);mask-image:url(../assets/lol/posiciones/bottom.png)}
+.pi-sup{-webkit-mask-image:url(../assets/lol/posiciones/utility.png);mask-image:url(../assets/lol/posiciones/utility.png)}
+
+/* cabecera del campeón */
+.chead{position:relative;margin-top:24px;border-radius:20px;overflow:hidden;isolation:isolate;background:#0D1017;border:1px solid rgba(255,255,255,.08);animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.chead-bg{position:absolute;right:0;top:0;width:66%;height:100%;object-fit:cover;object-position:50% 18%;z-index:-2;opacity:.5;animation:kb 20s ease-in-out infinite alternate}
+.chead::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0D1017 30%,rgba(13,16,23,.78) 55%,rgba(13,16,23,.3))}
+.ch-in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 28px}
+.portrait{position:relative;width:120px;height:120px;flex-shrink:0}
+.portrait img{width:100%;height:100%;border-radius:22px;object-fit:cover;animation:glow 3s ease-in-out infinite}
+.portrait .tier{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%)}
+.ch-main{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:#8F98A5}
+.crumbs a{color:#A0A8B4;text-decoration:none}
+.crumbs a:hover{color:#ECE9E1}
+.h1{margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.h1 span{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:500;letter-spacing:0;color:#A6AEB9}
+.ch-sub{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:#C6CBD2}
+.ch-sub .chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:rgba(7,9,13,.6);border:1px solid rgba(255,255,255,.1);font-size:12.5px}
+.abil{display:flex;gap:8px;flex-wrap:wrap}
+.ab{position:relative;width:46px;height:46px;border-radius:11px;overflow:visible;cursor:default}
+.ab img{width:100%;height:100%;border-radius:11px;border:1px solid rgba(226,181,102,.45);display:block;transition:transform .2s}
+.ab:hover img{transform:translateY(-3px)}
+.ab b{position:absolute;right:-5px;bottom:-5px;min-width:20px;height:20px;padding:0 4px;display:grid;place-items:center;border-radius:6px;background:#0D1017;border:1px solid rgba(226,181,102,.55);font-size:11px;font-weight:700;color:#F3C878}
+.ab .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translate(-50%,4px);white-space:nowrap;padding:6px 10px;border-radius:8px;background:#151A23;border:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#ECE9E1;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:5}
+.ab:hover .tip{opacity:1;transform:translate(-50%,0)}
+.tabs{display:flex;gap:4px;padding:0 20px;border-top:1px solid rgba(255,255,255,.06);background:rgba(7,9,13,.4)}
+.tab{position:relative;display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 14px;border:0;background:transparent;color:#A0A8B4;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;transition:color .2s}
+.tab:hover,.tab.on{color:#ECE9E1}
+.tab.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+.soon{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.14);color:#7FE9DE}
+
+/* filtros */
+.fbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding:8px;border-radius:16px;background:#0D1017;border:1px solid rgba(255,255,255,.07)}
+.rolebox{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:11px;background:rgba(226,181,102,.14);color:#F3C878;font-size:14px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(226,181,102,.35)}
+.rolebox small{color:#C6CBD2;font-weight:500}
+.ddw{position:relative}
+.ddb{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 10px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#ECE9E1;font:inherit;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,background .2s}
+.ddb:hover,.ddb.on{border-color:rgba(226,181,102,.45);background:rgba(226,181,102,.08)}
+.ddb img{width:24px;height:24px;object-fit:contain}
+.ddb .chev{color:#8A93A0;transition:transform .2s}
+.ddb.on .chev{transform:rotate(180deg)}
+.stack{display:flex;align-items:center}
+.stack img{width:20px;height:20px;object-fit:contain;margin-left:-8px}
+.stack img:first-child{margin-left:0}
+.panel{position:absolute;top:calc(100% + 8px);left:0;z-index:70;padding:8px;border-radius:16px;background:#11151D;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 70px -20px rgba(0,0,0,.95);animation:pop .18s ease-out}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:312px}
+.rt{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px 8px;border-radius:11px;border:1px solid transparent;background:rgba(255,255,255,.03);color:#A0A8B4;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.rt:hover{background:rgba(255,255,255,.07);color:#ECE9E1}
+.rt.on{background:rgba(226,181,102,.12);border-color:rgba(226,181,102,.45);color:#F3C878}
+.rt img{width:32px;height:32px;object-fit:contain}
+.rt.all{grid-column:1 / -1;flex-direction:row;justify-content:center;gap:10px;padding:10px}
+.tag{display:inline-flex;align-items:center;height:40px;padding:0 12px;border-radius:11px;border:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:600;color:#A0A8B4}
+
+/* estadísticas */
+.stats{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));margin-top:16px;border-radius:18px;background:#0D1017;border:1px solid rgba(255,255,255,.07);overflow:hidden}
+.stats::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+.st{padding:20px 16px 22px;text-align:center;border-right:1px solid rgba(255,255,255,.05)}
+.st:last-child{border-right:0}
+.st .v{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.st .v small{font-size:18px;color:#A6AEB9;font-weight:600}
+.st .v.hi{color:#62D99C}
+.st .v.lo{color:#F08A7A}
+.st .k{margin-top:4px;font-size:12px;color:#8F98A5}
+
+/* layout */
+.layout{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;padding:20px 0 48px}
+.main{flex:999 1 640px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.aside{flex:1 1 300px;max-width:100%;display:flex;flex-direction:column;gap:16px}
+.card{border-radius:18px;background:#0D1017;border:1px solid rgba(255,255,255,.07);animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px 12px}
+.card-h h2,.card-h h3{margin:0;font-size:18px;font-weight:700}
+.card-h .meta{font-size:13px;color:#8F98A5}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px}
+
+/* runas */
+.tree{padding:0 20px 20px;display:flex;flex-direction:column;gap:16px}
+.tree-h{display:flex;align-items:center;gap:10px;font-weight:600}
+.tree-h img{width:28px;height:28px}
+.ks{display:flex;gap:12px;flex-wrap:wrap}
+.k1{display:flex;flex-direction:column;align-items:center;gap:6px;width:72px;font-size:11.5px;text-align:center;color:#7C8592}
+.k1 img{width:52px;height:52px;border-radius:50%;padding:3px;background:#0A0C10;border:1px solid rgba(255,255,255,.08);filter:grayscale(1) brightness(.55);transition:filter .2s}
+.k1:hover img{filter:grayscale(.3) brightness(.85)}
+.k1.on{color:#F3C878;font-weight:600}
+.k1.on img{filter:none;border-color:rgba(226,181,102,.7);box-shadow:0 0 22px -4px rgba(226,181,102,.8)}
+.sec{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-size:13.5px;color:#C6CBD2}
+.sec img{width:30px;height:30px}
+.sec b{color:#ECE9E1}
+
+/* objetos */
+.path{padding:0 20px 20px;display:flex;flex-direction:column;gap:14px}
+.prow{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:12px}
+.prow h4{margin:0;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.items{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.item{position:relative;width:48px;height:48px;border-radius:11px;overflow:visible;transition:transform .2s}
+.item img{width:100%;height:100%;border-radius:11px;border:1px solid rgba(226,181,102,.4);display:block}
+.item:hover{transform:translateY(-3px)}
+.item i{position:absolute;top:-6px;left:-6px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#E2B566;color:#17120A;font-style:normal;font-size:10.5px;font-weight:800}
+.item .tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;padding:5px 9px;border-radius:7px;background:#151A23;border:1px solid rgba(255,255,255,.12);font-size:12px;color:#ECE9E1;opacity:0;pointer-events:none;transition:opacity .15s;z-index:5}
+.item:hover .tip{opacity:1}
+.arrow{color:#7C8592}
+.or{font-size:12px;color:#7C8592}
+.bnote{margin:0;padding:0 20px 18px;font-size:12.5px;color:#8F98A5}
+
+/* por rango */
+.tscroll{overflow-x:auto}
+.rtab{min-width:700px}
+.rr{display:grid;grid-template-columns:minmax(150px,1.4fr) minmax(150px,1.6fr) repeat(3,minmax(70px,1fr)) 64px 90px;align-items:center;gap:8px;padding:0 20px;height:58px;border-bottom:1px solid rgba(255,255,255,.045)}
+.rr.th{height:40px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.rr.on{background:rgba(226,181,102,.08);box-shadow:inset 3px 0 0 #E2B566}
+.rn{display:flex;align-items:center;gap:10px;font-weight:600}
+.rn img{width:30px;height:30px;object-fit:contain}
+.wr{display:flex;align-items:center;gap:10px}
+.wr b{font-weight:600;min-width:52px}
+.wr.hi b{color:#62D99C}
+.wr.lo b{color:#F08A7A}
+.bar{flex:1;height:6px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden;max-width:100px}
+.bar i{display:block;height:100%;border-radius:6px;background:#A6AEB9}
+.wr.hi .bar i{background:linear-gradient(90deg,#2FA36C,#62D99C)}
+.wr.lo .bar i{background:linear-gradient(90deg,#B4554A,#F08A7A)}
+.num{font-size:14px;color:#C6CBD2}
+
+.tier{display:inline-grid;place-items:center;min-width:36px;height:28px;padding:0 6px;border-radius:8px;font-weight:800;font-size:13px;font-family:'Bricolage Grotesque',sans-serif;border:1px solid}
+.t-sp{color:#1B1204;border-color:transparent;background:linear-gradient(110deg,#FFD27A 0%,#F2A93B 40%,#FFE7AE 50%,#F2A93B 60%,#FFD27A 100%);background-size:250% 100%;animation:shine 3.5s ease-in-out infinite}
+.t-s{color:#F5B64A;background:rgba(245,182,74,.12);border-color:rgba(245,182,74,.4)}
+.t-a{color:#5FD6C8;background:rgba(95,214,200,.1);border-color:rgba(95,214,200,.35)}
+.t-b{color:#8DB3EE;background:rgba(141,179,238,.1);border-color:rgba(141,179,238,.32)}
+.t-c{color:#A6AEB9;background:rgba(166,174,185,.08);border-color:rgba(166,174,185,.25)}
+.t-d{color:#EE8A7A;background:rgba(238,138,122,.08);border-color:rgba(238,138,122,.3)}
+
+/* matchups (sin datos aún) */
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:48px 24px}
+.empty .ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:rgba(10,200,185,.1);border:1px solid rgba(10,200,185,.3);color:#7FE9DE}
+.empty h3{margin:6px 0 0;font-size:20px}
+.empty p{margin:0;max-width:440px;color:#A6AEB9;font-size:14.5px}
+
+/* lateral */
+.w-list{display:flex;flex-direction:column;padding:0 12px 12px}
+.wl{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;text-decoration:none;color:#ECE9E1;transition:background .2s}
+.wl:hover{background:rgba(255,255,255,.04);color:#ECE9E1}
+.wl img{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1)}
+.wl .tx{flex:1;min-width:0}
+.wl .tx b{display:block;font-size:14px;font-weight:600}
+.wl .tx span{font-size:12px;color:#8F98A5}
+.wl .rv{font-size:13.5px;font-weight:600;color:#C6CBD2}
+.wl .rv.hi{color:#62D99C}
+.wl .rv.lo{color:#F08A7A}
+.premini{padding:20px;border-radius:18px;background:linear-gradient(160deg,rgba(226,181,102,.16),#0D1017 60%);border:1px solid rgba(226,181,102,.3)}
+.premini h3{margin:0;font-size:18px}
+.premini p{margin:6px 0 14px;font-size:13.5px;color:#C6CBD2}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:0;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font:inherit;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-gold:hover{color:#17120A}
+.ad{display:grid;place-items:center;height:250px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:#7C8592;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+
+.foot{border-top:1px solid rgba(255,255,255,.07);padding:32px 0 36px;font-size:13px;color:#8F98A5}
+.foot p{margin:10px 0 0;max-width:640px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .mega{display:none}
+  .chead-bg{width:100%;opacity:.25}
+  .prow{grid-template-columns:1fr}
+  .st{border-right:0;border-bottom:1px solid rgba(255,255,255,.05)}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .lp *,.lp *::before,.lp *::after{animation:none !important;transition:none !important}
+}
+.lp.still *,.lp.still *::before,.lp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:640px){
+  .ch-in{flex-direction:column;align-items:flex-start;gap:18px;padding:22px 18px}
+  .ch-main{width:100%}
+  .portrait{width:92px;height:92px}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+.sp{display:block;background-repeat:no-repeat}
+.cs{background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%}
+.ms{background-image:url(../assets/lol/iconos.webp);background-size:1000% 700%}
+
+.ic{position:relative;display:inline-block;flex-shrink:0;outline:none}
+.ic .sp{width:100%;height:100%;border-radius:inherit}
+.tt{position:absolute;bottom:calc(100% + 12px);left:50%;z-index:80;width:300px;padding:12px 14px;border-radius:14px;background:#141922;border:1px solid rgba(226,181,102,.35);box-shadow:0 24px 50px -16px rgba(0,0,0,.95);color:#ECE9E1;text-align:left;font:400 12.5px/1.5 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;white-space:normal;opacity:0;visibility:hidden;transform:translate(-50%,6px);transition:opacity .16s,transform .16s,visibility .16s;pointer-events:none}
+.tt::after{content:"";position:absolute;top:100%;left:50%;margin-left:-7px;border:7px solid transparent;border-top-color:#141922}
+.ic:hover .tt,.ic:focus .tt,.ic:focus-within .tt{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.tt-n{display:block;font:700 14.5px/1.25 'Bricolage Grotesque',sans-serif;color:#F3C878}
+.tt-m{display:block;margin-top:2px;font-size:11.5px;color:#8F98A5}
+.tt-s{display:flex;flex-direction:column;gap:1px;margin-top:8px;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,.04);font-size:12px;color:#BFE9C9}
+.tt-d{display:block;margin-top:8px;color:#C6CBD2}
+.tt-d b{color:#ECE9E1}
+.tt.l{left:0;transform:translate(0,6px)}
+.ic:hover .tt.l,.ic:focus .tt.l{transform:none}
+.tt.l::after{left:24px}
+.tt.r{left:auto;right:0;transform:translate(0,6px)}
+.ic:hover .tt.r,.ic:focus .tt.r{transform:none}
+.tt.r::after{left:auto;right:18px}
+.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+/* cabecera v2 */
+.chead{overflow:visible;z-index:6}
+.ch-clip{position:absolute;inset:0;z-index:-2;border-radius:20px;overflow:hidden}
+.chead::before{border-radius:20px}
+.chead-bg{z-index:0}
+.portrait .pimg{width:120px;height:120px;border-radius:22px;animation:glow 3s ease-in-out infinite}
+.ch-sub .dif{color:#F08A7A}
+.ab2{width:48px;height:48px;border-radius:12px;cursor:help}
+.ab2 > .sp{border:1px solid rgba(226,181,102,.5);transition:transform .2s}
+.ab2:hover > .sp,.ab2:focus > .sp{transform:translateY(-3px)}
+.ab2 > b{position:absolute;right:-5px;bottom:-5px;min-width:20px;height:20px;padding:0 4px;display:grid;place-items:center;border-radius:6px;background:#0D1017;border:1px solid rgba(226,181,102,.55);font-size:11px;font-weight:700;color:#F3C878}
+.tt.dn{bottom:auto;top:calc(100% + 12px);transform:translate(-50%,-6px)}
+.tt.dn::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#141922}
+.ab2:first-child .tt.dn{left:0;transform:translate(0,-6px)}
+.ab2:first-child .tt.dn::after{left:24px}
+.ic:hover .tt.dn,.ic:focus .tt.dn{transform:translate(-50%,0)}
+.ab2:first-child:hover .tt.dn,.ab2:first-child:focus .tt.dn{transform:none}
+.qf{display:grid;grid-template-columns:repeat(3,112px);gap:8px;margin-left:auto}
+.qf-i{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 8px;border-radius:14px;background:rgba(7,9,13,.72);border:1px solid rgba(255,255,255,.1);text-align:center;backdrop-filter:blur(6px)}
+.qf-i small{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.qf-i > .sp{width:46px;height:46px;border-radius:12px}
+.qf-i b{font-size:13.5px}
+.qf-i em{font-style:normal;font-size:11.5px;color:#A6AEB9}
+.qf-i.good{border-color:rgba(98,217,156,.4)}
+.qf-i.good em{color:#62D99C}
+.qf-i.bad{border-color:rgba(240,138,122,.4)}
+.qf-i.bad em{color:#F08A7A}
+.qf-it{display:flex;gap:4px;height:46px;align-items:center}
+.tab .cnt{padding:1px 7px;border-radius:999px;background:rgba(255,255,255,.08);font-size:11px;color:#C6CBD2}
+/* filtros */
+.roles{display:flex;gap:4px;padding:3px;border-radius:12px;background:rgba(255,255,255,.03)}
+.rl{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 12px;border-radius:9px;border:0;background:transparent;color:#A0A8B4;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.rl small{font-size:11.5px;font-weight:500;color:#7C8592}
+.rl.on{background:rgba(226,181,102,.16);color:#F3C878;box-shadow:inset 0 0 0 1px rgba(226,181,102,.4)}
+.rl.on small{color:#E2C48C}
+.tier.big{min-width:54px;height:40px;font-size:20px;border-radius:11px}
+/* build */
+.bcard .card-h .meta{font-size:12.5px}
+.bc{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,1fr);gap:0;border-top:1px solid rgba(255,255,255,.05)}
+.bc > div{padding:18px 20px 20px;border-right:1px solid rgba(255,255,255,.05)}
+.bc > div:last-child{border-right:0}
+.bc-runes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tree{display:flex;flex-direction:column;gap:10px;padding:0}
+.tr-h{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.tr-h .sp{width:26px;height:26px}
+.tr-r{display:flex;justify-content:space-around;gap:6px}
+.tr-r.kst{padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+.rn{width:34px;height:34px;border-radius:50%;cursor:help}
+.rn > .sp{border-radius:50%;filter:grayscale(1) brightness(.5);opacity:.75;transition:filter .2s,opacity .2s}
+.rn:hover > .sp,.rn:focus > .sp{filter:grayscale(.2) brightness(.9);opacity:1}
+.rn.on > .sp{filter:none;opacity:1;box-shadow:0 0 0 2px rgba(226,181,102,.85),0 0 18px -2px rgba(226,181,102,.8)}
+.rn.big{width:46px;height:46px}
+.rn.sm{width:24px;height:24px}
+.rn.sm > .sp{background-color:#11151D}
+.t2 .tr-h{margin-bottom:2px}
+.shards{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)}
+.blk{margin-bottom:16px}
+.blk:last-child{margin-bottom:0}
+.blk h4{margin:0 0 8px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8F98A5}
+.blk .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sq{width:42px;height:42px;border-radius:10px;cursor:help}
+.sq > .sp{border:1px solid rgba(255,255,255,.14)}
+.sk > b{position:absolute;right:-4px;bottom:-4px;width:18px;height:18px;display:grid;place-items:center;border-radius:5px;background:#0D1017;border:1px solid rgba(226,181,102,.55);font-size:10.5px;color:#F3C878}
+.arw{color:#7C8592;flex-shrink:0}
+.it{border-radius:10px;cursor:help}
+.it > .sp{border:1px solid rgba(226,181,102,.42);transition:transform .2s}
+.it:hover > .sp,.it:focus > .sp{transform:translateY(-2px)}
+.it.xs{width:30px;height:30px;border-radius:8px}
+.it.md{width:42px;height:42px}
+.it.lg{width:52px;height:52px;border-radius:12px}
+.it > i{position:absolute;top:-7px;left:-7px;z-index:2;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#E2B566;color:#17120A;font-style:normal;font-size:10.5px;font-weight:800}
+.mini{margin:8px 0 0;font-size:12px;color:#8F98A5}
+/* orden de habilidades */
+.sgrid{padding:0 20px 20px;overflow-x:auto}
+.sg-head,.sg-row{display:grid;grid-template-columns:190px repeat(18,minmax(28px,1fr));gap:4px;align-items:center;min-width:760px}
+.sg-head{margin-bottom:6px;font-size:11px;color:#7C8592;text-align:center}
+.sg-row{margin-bottom:4px}
+.sg-row > span:not(.sg-k){height:30px;display:grid;place-items:center;border-radius:7px;background:rgba(255,255,255,.035);font:700 12.5px/1 'Bricolage Grotesque',sans-serif}
+.sg-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sg-k .sp{width:28px;height:28px;border-radius:7px;flex-shrink:0}
+.sg-row.kQ > span.on{background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A}
+.sg-row.kW > span.on{background:rgba(10,200,185,.28);color:#BFF5EE}
+.sg-row.kE > span.on{background:rgba(141,179,238,.3);color:#DCE7FB}
+.sg-row.kR > span.on{background:linear-gradient(180deg,#F08A7A,#C9573F);color:#1B0A06}
+/* qué comprar después */
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 20px 20px}
+.slt{padding:10px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.slt h4{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5;text-align:center}
+.opt{display:flex;align-items:center;gap:8px;padding:5px 0}
+.ow b{display:block;font-size:13.5px;font-weight:700;color:#C6CBD2}
+.ow b.hi{color:#62D99C}
+.ow small{font-size:11px;color:#7C8592}
+.stack2{display:flex;flex-direction:column;gap:20px}
+.reco .tips{list-style:none;margin:0;padding:0 20px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tips li{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.tn{display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border-radius:9px;background:rgba(226,181,102,.16);color:#F3C878;font-weight:700}
+.tips b{font-size:14px}
+.tips p{margin:3px 0 0;font-size:13px;color:#B4BBC5}
+.tips p b{font-size:13px;color:#ECE9E1}
+/* winrate por objeto */
+.iw{padding:0 20px 8px}
+.iw-r{display:grid;grid-template-columns:42px minmax(0,1.4fr) minmax(0,1.3fr) 90px 130px;gap:14px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.iw-r.th{padding:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7C8592}
+.iw-n b{display:block;font-size:14px}
+.iw-n small{font-size:12px;color:#8F98A5}
+.iw-w{display:flex;align-items:center;gap:10px}
+.iw-w b{min-width:58px;font-size:14px;color:#C6CBD2}
+.iw-w b.hi{color:#62D99C}
+.wbar{flex:1;height:7px;border-radius:7px;background:rgba(255,255,255,.06);overflow:hidden}
+.wbar i{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#2FA36C,#62D99C)}
+.iw-g{font-size:13.5px;color:#C6CBD2}
+.tg2{justify-self:start;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.tg2.most{background:rgba(226,181,102,.15);color:#F3C878}
+.tg2.late{background:rgba(141,179,238,.12);color:#AFC6EE}
+.hint{margin:6px 20px 18px;padding:10px 14px;border-radius:12px;background:rgba(141,179,238,.07);border:1px solid rgba(141,179,238,.2);font-size:13px;color:#C6CBD2}
+.hint b{color:#AFC6EE}
+/* matchups resumen */
+.mu-w{display:grid;grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr);gap:16px;padding:0 20px 20px;align-items:stretch}
+.mu-g h4{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.mu-g.good h4{color:#7DA6FF}
+.mu-g.bad h4{color:#F08A7A;text-align:right}
+.mu-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.mc2{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 0 10px;border-radius:14px;background:#11151D;border:1px solid rgba(255,255,255,.07);overflow:hidden;text-align:center;transition:transform .2s,border-color .2s}
+.mc2:hover{transform:translateY(-3px)}
+.mc2 > .sp{width:100%;aspect-ratio:1;border-radius:0;margin-bottom:4px}
+.mc2 .nm{max-width:92%;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc2 .dl{font-size:19px;font-weight:700;line-height:1.1}
+.mc2.g .dl{color:#7DA6FF}
+.mc2.b .dl{color:#F08A7A}
+.mc2.g:hover{border-color:rgba(125,166,255,.5)}
+.mc2.b:hover{border-color:rgba(240,138,122,.5)}
+.wr2{font-size:12px;font-weight:600;color:#C6CBD2}
+.mc2 small{font-size:11px;color:#7C8592}
+.mu-all{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin-top:28px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#ECE9E1;font:inherit;cursor:pointer;transition:background .2s}
+.mu-all:hover{background:rgba(255,255,255,.07)}
+.mu-all b{font-size:14px}
+.mu-all small{font-size:12px;color:#8F98A5}
+/* matchups lista */
+.mu-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 20px 14px}
+.msrch{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#8A93A0;min-width:240px}
+.msrch input{flex:1;min-width:0;border:0;background:transparent;color:#ECE9E1;font:inherit;font-size:14px;outline:none}
+.seg2{display:flex;gap:3px;padding:3px;border-radius:11px;background:rgba(255,255,255,.04)}
+.seg2 button{height:34px;padding:0 12px;border-radius:8px;border:0;background:transparent;color:#A0A8B4;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.seg2 button.on{background:rgba(226,181,102,.16);color:#F3C878}
+.chip2{height:40px;padding:0 14px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#A0A8B4;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.chip2.on{border-color:rgba(10,200,185,.5);background:rgba(10,200,185,.1);color:#7FE9DE}
+.ml{padding:0 20px 16px}
+.ml-r{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) 110px 100px;gap:14px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.ml-r.th{padding:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7C8592}
+.ml-n{display:flex;align-items:center;gap:10px;min-width:0}
+.ml-n .sp{width:36px;height:36px;border-radius:9px;flex-shrink:0}
+.ml-n b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml-w{display:flex;align-items:center;gap:10px}
+.ml-w b{min-width:60px;font-size:14px}
+.cbar{position:relative;flex:1;height:8px;border-radius:8px;background:rgba(255,255,255,.06)}
+.cbar i{position:absolute;top:0;bottom:0;border-radius:8px}
+.cbar em{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:rgba(255,255,255,.3)}
+.ml-r.g .cbar i{background:linear-gradient(90deg,#3D6BD6,#7DA6FF)}
+.ml-r.b .cbar i{background:linear-gradient(90deg,#F08A7A,#B4554A)}
+.ml-r.g .ml-w b,.ml-r.g .ml-d{color:#7DA6FF}
+.ml-r.b .ml-w b,.ml-r.b .ml-d{color:#F08A7A}
+.ml-d{font-weight:700;font-size:14px}
+.ml-g{font-size:13.5px;color:#C6CBD2}
+.srcnote{margin:0;padding:12px 16px;border-radius:14px;border:1px dashed rgba(255,255,255,.12);font-size:12.5px;color:#8F98A5;line-height:1.6}
+.srcnote b{color:#C6CBD2}
+.wl .wimg{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1);flex-shrink:0}
+@media (max-width:1100px){.bc{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bc-runes{grid-column:1 / -1}.qf{margin-left:0}.mu-w{grid-template-columns:minmax(0,1fr)}.mu-all{margin-top:0;flex-direction:row;padding:12px}.mu-g.bad h4{text-align:left}}
+@media (max-width:860px){.reco .tips{grid-template-columns:minmax(0,1fr)}.bc{grid-template-columns:minmax(0,1fr)}.bc > div{border-right:0;border-bottom:1px solid rgba(255,255,255,.05)}.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.iw-r{grid-template-columns:42px minmax(0,1fr) 110px}.iw-g,.tg2,.iw-r.th span:nth-child(4),.iw-r.th span:nth-child(5){display:none}.mu-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.ml-r{grid-template-columns:minmax(0,1fr) 120px 70px}.ml-g,.ml-r.th span:nth-child(4){display:none}.ml-w .cbar{display:none}}
+
+/* === LF1: estadísticas, sinergias y animaciones === */
+.chg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 20px 20px}
+.chs{background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 14px 10px}
+.chs-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.chs-h small{color:#8F98A5;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.chs-h b{font-family:'Chakra Petch',sans-serif;font-size:22px}
+.chs-h em{font-style:normal;font-size:12.5px;margin-left:6px}
+.chs-h em.up,.sg-i em.up,.l15 b.up{color:#62D99C}
+.chs-h em.dn,.sg-i em.dn,.l15 b.dn{color:#F08A7A}
+.chs svg{display:block;width:100%;height:86px;overflow:visible}
+.chs .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chs .ar{opacity:.16}
+.chs .gl{stroke:rgba(255,255,255,.06);stroke-width:1}
+.chs .ax{display:flex;justify-content:space-between;color:#5E6673;font-size:11.5px;margin-top:4px}
+.dur{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end;height:180px;padding:8px 20px 0}
+.dur-c{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.dur-c b{font-family:'Chakra Petch',sans-serif;font-size:14px}
+.dur-c b.hi{color:#62D99C}.dur-c b.lo{color:#F08A7A}
+.dur-c i{display:block;width:100%;max-width:56px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#E2B566,#8A6A33);transform-origin:bottom}
+.dur-c i.lo{background:linear-gradient(180deg,#F08A7A,#7A3B33)}
+.dur-c i.hi{background:linear-gradient(180deg,#62D99C,#2C6B4C)}
+.dur-x{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:8px 20px 18px;color:#8F98A5;font-size:12.5px;text-align:center}
+.sg,.l15{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 20px 20px}
+.sg-i{background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
+.sg-i small{display:block;color:#8F98A5;font-size:12px;margin-bottom:4px}
+.sg-i b{font-family:'Chakra Petch',sans-serif;font-size:20px}
+.sg-i em{font-style:normal;font-size:12px;color:#8F98A5;margin-left:6px}
+.syn{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0 20px 20px}
+.syn-c{display:flex;flex-direction:column;align-items:center;gap:6px;background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 8px;color:#ECE9E1;text-decoration:none;transition:transform .2s ease,border-color .2s ease}
+.syn-c:hover{transform:translateY(-3px);border-color:rgba(226,181,102,.45);color:#ECE9E1}
+.syn-c img{width:52px;height:52px;border-radius:12px}
+.syn-c b{font-size:14px}
+.syn-c .w{font-family:'Chakra Petch',sans-serif;color:#62D99C;font-size:15px}
+.syn-c small{color:#8F98A5;font-size:11.5px;text-align:center}
+.syn-c .rl{font-size:11px;color:#E2B566;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:900px){.chg{grid-template-columns:1fr}.sg,.l15{grid-template-columns:repeat(2,1fr)}.syn{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.dur{gap:6px;height:150px;padding:8px 12px 0}.dur-x{gap:6px;padding:8px 12px 16px;font-size:11px}.syn{grid-template-columns:repeat(2,1fr)}}
+
+/* === LF1 ronda 2 === */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.demo{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;border:1px dashed rgba(226,181,102,.55);color:#E2B566;font-size:11px;font-weight:600;letter-spacing:.04em;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.card-h .meta .demo{margin-left:0}
+.chs .ax{position:relative;height:16px;color:#8F98A5}
+.chs .ax span{position:absolute;top:0}
+.chs .ax .a0{left:0}.chs .ax .a2{right:0}
+.chs .ax .a1{transform:translateX(-50%)}
+.chs .rng{display:flex;justify-content:space-between;color:#8F98A5;font-size:11.5px;margin:-2px 0 4px}
+.dur-wrap{position:relative;padding:8px 20px 0}
+.dur{padding:0;height:190px}
+.dur-ref{position:absolute;left:20px;right:20px;border-top:1px dashed rgba(255,255,255,.28);pointer-events:none}
+.dur-ref span{position:absolute;right:0;top:-17px;font-size:11.5px;color:#A0A8B4}
+.dur-c small{color:#8F98A5;font-size:11px}
+.dur-x span small{display:block;color:#7C8592;font-size:11px}
+.ml-r{width:100%;font:inherit;color:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;border-radius:8px}
+.ml-r.th{cursor:default}
+.ml-r:not(.th):hover,.ml-r:not(.th):focus-visible{background:rgba(255,255,255,.04)}
+.ml-r.sel{background:rgba(226,181,102,.10);box-shadow:inset 0 0 0 1px rgba(226,181,102,.45)}
+.mud{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;margin:0 20px 16px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(226,181,102,.10),rgba(13,16,23,.6));border:1px solid rgba(226,181,102,.28)}
+.mud .vs{display:flex;align-items:center;gap:10px;font-weight:700}
+.mud .vs .sp{width:48px;height:48px;border-radius:12px}
+.mud .vs em{font-style:normal;color:#8F98A5;font-size:12px;font-weight:600}
+.mud-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mud-k div{background:rgba(7,9,13,.55);border-radius:12px;padding:8px 10px}
+.mud-k small{display:block;color:#8F98A5;font-size:11.5px}
+.mud-k b{font-family:'Chakra Petch',sans-serif;font-size:18px}
+.mud-k b.up{color:#62D99C}.mud-k b.dn{color:#F08A7A}
+.mud p{grid-column:1 / -1;margin:0;color:#C6CBD2;font-size:13.5px}
+.mud .x{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#ECE9E1;cursor:pointer}
+.nodata{margin:0 20px 20px;padding:18px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:#A0A8B4;font-size:14px}
+.syn-c{cursor:default}
+.syn-c .sp{width:52px;height:52px;border-radius:12px}
+.syn-c .w small{color:#62D99C;font-size:12px}
+.sg-i em.nt{color:#8F98A5}
+.bv{display:grid;gap:10px;padding:0 20px 20px}
+.bv-r{display:grid;grid-template-columns:28px minmax(0,1.3fr) minmax(0,1.6fr) 120px 96px;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:#0A0D13;border:1px solid rgba(255,255,255,.06)}
+.bv-r.top{border-color:rgba(226,181,102,.45);background:linear-gradient(135deg,rgba(226,181,102,.10),#0A0D13 60%)}
+.bv-r .n{font-family:'Chakra Petch',sans-serif;color:#8F98A5;font-size:15px}
+.bv-r .t b{display:block}.bv-r .t small{color:#8F98A5;font-size:12px}
+.bv-its{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bv-its img{width:38px;height:38px;border-radius:9px;border:1px solid rgba(255,255,255,.12)}
+.bv-its .bt{opacity:.85}
+.bv-its .ks{width:34px;height:34px;border-radius:50%;background-color:#07090D}
+.bv-its svg{color:#5E6673}
+.bv-w b{font-family:'Chakra Petch',sans-serif;font-size:20px;color:#62D99C}
+.bv-w .wbar{display:block;height:5px;border-radius:3px;background:rgba(255,255,255,.08);margin-top:5px;overflow:hidden}
+.bv-w .wbar i{display:block;height:100%;background:linear-gradient(90deg,#3D8F6A,#62D99C)}
+.bv-g{color:#A0A8B4;font-size:13px;text-align:right}
+.bv-g small{display:block;color:#7C8592;font-size:11.5px}
+@media (max-width:860px){
+  .ml-r{grid-template-columns:minmax(0,1.3fr) minmax(0,1.6fr) 84px 72px;gap:10px}
+  .ml-r .ml-g{display:block}
+  .qf{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none}
+  .mud{grid-template-columns:auto minmax(0,1fr)}
+  .mud .x{grid-column:2;justify-self:end;grid-row:1}
+  .mud-k{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bv-r{grid-template-columns:28px minmax(0,1fr) 96px;row-gap:10px}
+  .bv-its{grid-column:2 / -1}
+  .bv-g{grid-column:3;grid-row:1}
+  .bv-w{grid-column:2}
+}
+@media (max-width:560px){
+  .ml-r:not(.th){grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n n" "w d";row-gap:6px;padding:10px 8px}
+  .ml-r:not(.th) .ml-n{grid-area:n}
+  .ml-r:not(.th) .ml-w{grid-area:w}
+  .ml-r:not(.th) .ml-d{grid-area:d;text-align:right}
+  .ml-r:not(.th) .ml-g{grid-area:n;justify-self:end;align-self:center;color:#8F98A5;font-size:12px}
+  .ml-r.th{display:none}
+  .qf-i{padding:8px 4px}
+  .qf-i small{font-size:10.5px}
+  .mud-k b{font-size:16px}
+}
+
+/* === LF1 ronda 3 === */
+.ml-gl{display:none}
+.tp:focus-visible{outline:2px solid #E2B566;outline-offset:6px;border-radius:12px}
+.l15-sub{margin:0 20px 8px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.l15.one{grid-template-columns:minmax(0,1fr)}
+@media (max-width:860px){.ml-r.th .ml-g,.ml-r.th span:last-child{display:block}}
+@media (max-width:560px){.ml-gl{display:inline;margin-left:3px}}
+
+/* === Transición de página de LoL: barrido dorado === */
+.gm-wipe{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;overflow:hidden}
+.gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
+.gm-wipe b{position:absolute;inset:0;background:#07090D}
+</style>
+</helmet>
+<div class="gm-wipe" aria-hidden="true"><b></b><i></i></div>
+  
+
+<div class="lp {{motionClass}}">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego o campeón</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego o un campeón…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de League of Legends">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">League of Legends</a>
+        <a class="slink" href="Lol.dc.html">Tier list</a>
+        <div class="dd">
+          <a class="slink on" href="LolCampeon.dc.html" aria-haspopup="true">Campeones
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="mega">
+            <div class="mega-h"><b>Campeones</b></div>
+            <div class="mega-grid">
+              <sc-for list="{{mega}}" as="m" hint-placeholder-count="24">
+                <a class="mc" href="LolCampeon.dc.html"><img src="{{m.i}}" alt=""><span>{{m.n}}</span></a>
+              </sc-for>
+            </div>
+            <div class="mega-f"><span>Build, runas y estadísticas por rango de cada campeón</span><a href="Lol.dc.html#campeones">Ver los 173 →</a></div>
+          </div>
+        </div>
+        <a class="slink" href="LolCampeon.dc.html">Builds</a>
+        <a class="slink" href="LolEsports.dc.html">eSports <span class="nw">Mundial</span></a>
+        <a class="slink" href="LolNoticias.dc.html">Noticias</a>
+        <a class="slink" href="Premium.dc.html">Premium</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="wrap">
+
+    <!-- CABECERA DEL CAMPEÓN -->
+    <section class="chead">
+      <div class="ch-clip" aria-hidden="true"><img class="chead-bg" src="../assets/lol/yasuo-splash.webp" alt=""></div>
+      <div class="ch-in">
+        <div class="portrait"><span class="sp cs pimg" style="background-position: 46.154% 91.667%" role="img" aria-label="Yasuo"></span><span class="tier {{tierCls}}">{{tier}}</span></div>
+        <div class="ch-main">
+          <div class="crumbs"><a href="Lol.dc.html">League of Legends</a><span aria-hidden="true">/</span><a href="Lol.dc.html#campeones">Campeones</a><span aria-hidden="true">/</span><span>Yasuo</span></div>
+          <h1 class="h1 disp">Yasuo <span>Build, runas y counters · 16.23</span></h1>
+          <div class="ch-sub">
+            <span>La Espada sin Honor</span>
+            <span class="chip"><span class="pi pi-mid" aria-hidden="true"></span>Mid</span>
+            <span class="chip">Luchador · Asesino</span>
+            <span class="chip">Dificultad <b class="dif">10/10</b></span>
+          </div>
+          <div class="abil" aria-label="Habilidades: pasa el ratón para ver qué hacen"><span class="ic ab2" tabindex="0" aria-label="Pasiva: Camino del alma errante"><span class="sp ms" style="background-position: 77.778% 83.333%"></span><b>P</b><span class="tt dn" role="tooltip"><b class="tt-n">Camino del alma errante</b><small class="tt-m">Pasiva</small><span class="tt-d">Aumenta la probabilidad de impacto crítico de Yasuo. Además, Yasuo va acumulando su escudo mientras se mueve. El escudo se activa cuando recibe daño de un campeón o monstruo.</span></span></span><span class="ic ab2" tabindex="0" aria-label="Q: Tempestad de acero"><span class="sp ms" style="background-position: 88.889% 83.333%"></span><b>Q</b><span class="tt dn" role="tooltip"><b class="tt-n">Tempestad de acero</b><small class="tt-m">Habilidad Q · Enfriamiento: 4 s · Sin coste</small><span class="tt-d">Lanza una estocada al frente que inflige daño a los enemigos en una línea.<br>Al golpear, otorga una acumulación de Tormenta inminente durante unos cuantos segundos. Con 2 acumulaciones, Tempestad de acero inicia un remolino que lanza al objetivo por el aire.<br>Tempestad de acero se comporta como un ataque básico y progresa del mismo modo.</span></span></span><span class="ic ab2" tabindex="0" aria-label="W: Muro de viento"><span class="sp ms" style="background-position: 0.000% 100.000%"></span><b>W</b><span class="tt dn" role="tooltip"><b class="tt-n">Muro de viento</b><small class="tt-m">Habilidad W · Enfriamiento: 25/23/21/19/17 s · Sin coste</small><span class="tt-d">Crea un muro móvil que bloquea todos los proyectiles enemigos durante 4 s.</span></span></span><span class="ic ab2" tabindex="0" aria-label="E: Hoja cortante"><span class="sp ms" style="background-position: 66.667% 83.333%"></span><b>E</b><span class="tt dn" role="tooltip"><b class="tt-n">Hoja cortante</b><small class="tt-m">Habilidad E · Enfriamiento: 0,5/0,4/0,3/0,2/0,1 s · Sin coste</small><span class="tt-d">Se desliza a través del enemigo seleccionado, al que inflige daño mágico. Cada vez que se usa, aumenta el daño del siguiente uso hasta alcanzar un máximo.<br>No se puede emplear más de una vez contra el mismo enemigo durante unos cuantos segundos.<br>Si Tempestad de acero se utiliza durante un deslizamiento, golpeará de forma circular.</span></span></span><span class="ic ab2" tabindex="0" aria-label="R: Último aliento"><span class="sp ms" style="background-position: 100.000% 83.333%"></span><b>R</b><span class="tt dn" role="tooltip"><b class="tt-n">Último aliento</b><small class="tt-m">Habilidad R · Enfriamiento: 70/50/30 s · Sin coste</small><span class="tt-d">Yasuo aparece junto al campeón enemigo que esté en el aire y le inflige daño físico. Además, todos los enemigos que estén en el aire permanecen suspendidos. Otorga flujo máximo, pero reinicia todas las acumulaciones de Tormenta inminente.<br>Después, durante un breve periodo de tiempo, los golpes críticos de Yasuo obtienen una cantidad importante de penetración de armadura adicional.</span></span></span></div>
+        </div>
+        <div class="qf">
+          <div class="qf-i good"><small>Mejor duelo</small><span class="sp cs" style="background-position: 92.308% 41.667%"></span><b>Mel</b><em>57,8 % de victorias</em></div>
+          <div class="qf-i bad"><small>Peor duelo</small><span class="sp cs" style="background-position: 61.538% 75.000%"></span><b>Taliyah</b><em>45,5 % de victorias</em></div>
+          <div class="qf-i"><small>Pico de poder</small><span class="qf-it"><span class="ic it xs" tabindex="0" aria-label="Arcoescudo inmortal"><span class="sp ms" style="background-position: 55.556% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Arcoescudo inmortal</b><small class="tt-m">3000 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Salvavidas</b><br>Al recibir daño que reduzca la vida por debajo del 30%, otorga un escudo durante 3 s.</span></span></span><span class="ic it xs" tabindex="0" aria-label="Filo infinito"><span class="sp ms" style="background-position: 55.556% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Filo infinito</b><small class="tt-m">3500 de oro</small><span class="tt-s"><span>75 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span><span>30% de daño de impacto crítico</span></span></span></span></span><b>2 objetos</b><em>Arcoescudo + Filo</em></div>
+        </div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Secciones del campeón" onKeyDown="{{tabKeys}}">
+        <button type="button" id="tab-build" class="tab {{tabBuild}}" role="tab" aria-selected="{{selBuild}}" aria-controls="panel-build" tabindex="{{tiBuild}}" onClick="{{goBuild}}">Build</button>
+        <button type="button" id="tab-mu" class="tab {{tabMu}}" role="tab" aria-selected="{{selMu}}" aria-controls="panel-mu" tabindex="{{tiMu}}" onClick="{{goMu}}">Matchups <span class="cnt">{{muTotal}}</span></button>
+        <button type="button" id="tab-rank" class="tab {{tabRank}}" role="tab" aria-selected="{{selRank}}" aria-controls="panel-rank" tabindex="{{tiRank}}" onClick="{{goRank}}">Por rango</button>
+        <button type="button" id="tab-stats" class="tab {{tabStats}}" role="tab" aria-selected="{{selStats}}" aria-controls="panel-stats" tabindex="{{tiStats}}" onClick="{{goStats}}">Estadísticas</button>
+      </div>
+    </section>
+
+    <!-- FILTROS -->
+    <div class="fbar">
+      <div class="roles" role="group" aria-label="Posición">
+        <sc-for list="{{roles}}" as="r" hint-placeholder-count="3">
+          <button type="button" class="rl {{r.on}}" onClick="{{r.pick}}" aria-pressed="{{r.pr}}"><span class="pi pi-{{r.k}}" aria-hidden="true"></span><span>{{r.n}}</span><small>{{r.p}}</small></button>
+        </sc-for>
+      </div>
+      <div class="ddw" onMouseLeave="{{closeDD}}">
+        <button type="button" class="ddb {{rankOn}}" onClick="{{toggleRank}}" aria-haspopup="true" aria-expanded="{{rankExp}}" aria-label="Rango: {{rankBtn}}">
+          <sc-if value="{{isAll}}" hint-placeholder-val="{{ true }}">
+            <span class="stack" aria-hidden="true"><img src="../assets/lol/rangos/iron.png" alt=""><img src="../assets/lol/rangos/gold.png" alt=""><img src="../assets/lol/rangos/diamond.png" alt=""></span>
+          </sc-if>
+          <sc-if value="{{notAll}}" hint-placeholder-val="{{ false }}">
+            <img src="{{curImg}}" alt="">
+          </sc-if>
+          <span>{{rankBtn}}</span>
+          <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <sc-if value="{{rankOpen}}" hint-placeholder-val="{{ false }}">
+          <div class="panel">
+            <div class="rgrid">
+              <sc-for list="{{rankItems}}" as="t" hint-placeholder-count="8">
+                <button type="button" class="rt {{t.on}}" onClick="{{t.pick}}" aria-pressed="{{t.chk}}"><img src="{{t.img}}" alt=""><span>{{t.l}}</span></button>
+              </sc-for>
+              <button type="button" class="rt all {{allOn}}" onClick="{{pickAll}}" aria-pressed="{{allChk}}">
+                <span class="stack" aria-hidden="true"><img src="../assets/lol/rangos/iron.png" alt=""><img src="../assets/lol/rangos/gold.png" alt=""><img src="../assets/lol/rangos/diamond.png" alt=""></span>
+                <span>Todos los rangos</span>
+              </button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <span class="tag">EUW</span>
+      <span class="tag">16.23</span>
+    </div>
+
+    <!-- ESTADÍSTICAS -->
+    <div class="stats">
+      <div class="st"><div class="v"><span class="tier {{tierCls}} big">{{tier}}</span></div><div class="k">Tier</div></div>
+      <div class="st"><div class="v">#{{s.pos}} <small>/ {{s.of}}</small></div><div class="k">Puesto en {{roleName}}</div></div>
+      <div class="st"><div class="v {{s.wc}}">{{s.wr}}</div><div class="k">Winrate</div></div>
+      <div class="st"><div class="v">{{s.pr}}</div><div class="k">Pickrate</div></div>
+      <div class="st"><div class="v">{{s.br}}</div><div class="k">Banrate</div></div>
+      <div class="st"><div class="v">{{s.games}}</div><div class="k">Partidas</div></div>
+    </div>
+
+    <div class="layout">
+      <main class="main">
+
+        <sc-if value="{{showBuild}}" hint-placeholder-val="{{ true }}">
+        <div role="tabpanel" id="panel-build" aria-labelledby="tab-build" class="tp" tabindex="0">
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Builds con más winrate</h2><span class="meta">{{roleName}} · {{rankBtn}} · <span class="demo">Datos de ejemplo</span></span></div>
+            <sc-if value="{{noBv}}" hint-placeholder-val="{{ false }}">
+              <p class="nodata">{{bvEmpty}}</p>
+            </sc-if>
+            <div class="bv">
+              <sc-for list="{{bvars}}" as="b" hint-placeholder-count="4">
+                <div class="bv-r {{b.top}}" data-row>
+                  <span class="n">{{b.k}}</span>
+                  <span class="t"><b>{{b.n}}</b><small>{{b.sub}}</small></span>
+                  <span class="bv-its">
+                    <span class="sp ms ks" style="background-position: {{b.ks}}" role="img" aria-label="{{b.ksn}}"></span>
+                    <img src="{{b.i1}}" alt="{{b.n1}}" title="{{b.n1}}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                    <img src="{{b.i2}}" alt="{{b.n2}}" title="{{b.n2}}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                    <img src="{{b.i3}}" alt="{{b.n3}}" title="{{b.n3}}">
+                    <img class="bt" src="{{b.ib}}" alt="{{b.nb}}" title="{{b.nb}}">
+                  </span>
+                  <span class="bv-w"><b data-count="{{b.raw}}" data-dec="1" data-suf=" %">{{b.w}}</b><span class="wbar"><i style="width: {{b.wd}}"></i></span></span>
+                  <span class="bv-g">{{b.g}}<small>partidas</small></span>
+                </div>
+              </sc-for>
+            </div>
+            <p class="hint">Builds con 1.000 partidas o más, con la misma muestra que «Builds por campeón». La de arriba es la que más gana; la «Build más usada» de abajo es la más popular.</p>
+          </section>
+
+          <!-- ORDEN DE HABILIDADES -->
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Orden de habilidades</h2><span class="meta">Nivel 1 a 18</span></div>
+            <div class="sgrid"><div class="sg-head"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div><div class="sg-row kQ"><span class="sg-k"><span class="sp ms" style="background-position: 88.889% 83.333%"></span>Tempestad de acero</span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div><div class="sg-row kW"><span class="sg-k"><span class="sp ms" style="background-position: 0.000% 100.000%"></span>Muro de viento</span><span class=""></span><span class=""></span><span class=""></span><span class="on">W</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">W</span><span class="on">W</span><span class=""></span><span class="on">W</span><span class="on">W</span></div><div class="sg-row kE"><span class="sg-k"><span class="sp ms" style="background-position: 66.667% 83.333%"></span>Hoja cortante</span><span class=""></span><span class="on">E</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">E</span><span class=""></span><span class="on">E</span><span class=""></span><span class="on">E</span><span class="on">E</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div><div class="sg-row kR"><span class="sg-k"><span class="sp ms" style="background-position: 100.000% 83.333%"></span>Último aliento</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span></div></div>
+          </section>
+
+          <!-- MATCHUPS (RESUMEN) -->
+          <section class="card mu">
+            <div class="card-h"><h2 class="disp">Matchups de Yasuo</h2><span class="meta">Duelos con 1.000 partidas o más</span></div>
+            <div class="mu-w">
+              <div class="mu-g good">
+                <h4>Fuerte contra</h4>
+                <div class="mu-cards"><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 41.667%"></span><b class="nm">Mel</b><span class="dl disp">+7,1 pp</span><span class="wr2">57,8 %</span><small>1.086 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 30.769% 41.667%"></span><b class="nm">Locke</b><span class="dl disp">+6,1 pp</span><span class="wr2">56,1 %</span><small>3.824 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 38.462% 75.000%"></span><b class="nm">Sylas</b><span class="dl disp">+5,3 pp</span><span class="wr2">55,2 %</span><small>4.407 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 53.846% 41.667%"></span><b class="nm">Lux</b><span class="dl disp">+7,3 pp</span><span class="wr2">54,9 %</span><small>2.379 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 8.333%"></span><b class="nm">Diana</b><span class="dl disp">+7,7 pp</span><span class="wr2">54,8 %</span><small>2.213 partidas</small></div></div>
+              </div>
+              <button type="button" class="mu-all" onClick="{{goMu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><b>Lista completa</b><small>90 rivales</small></button>
+              <div class="mu-g bad">
+                <h4>Débil contra</h4>
+                <div class="mu-cards"><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 75.000%"></span><b class="nm">Taliyah</b><span class="dl disp">-3,1 pp</span><span class="wr2">45,5 %</span><small>2.196 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 0.000% 91.667%"></span><b class="nm">Vladimir</b><span class="dl disp">-1,1 pp</span><span class="wr2">45,6 %</span><small>3.919 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 0.000%"></span><b class="nm">Annie</b><span class="dl disp">-1,2 pp</span><span class="wr2">46,0 %</span><small>1.905 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 23.077% 41.667%"></span><b class="nm">Lissandra</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>5.352 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 84.615% 0.000%"></span><b class="nm">Aurelion Sol</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>1.594 partidas</small></div></div>
+              </div>
+            </div>
+          </section>
+          <!-- BUILD COMPLETA -->
+          <section class="card bcard">
+            <div class="card-h"><h2 class="disp">Build más usada</h2><span class="meta">Pasa el ratón por cualquier icono para ver qué hace</span></div>
+            <div class="bc">
+              <div class="bc-runes">
+                <div class="tree"><div class="tr-h"><span class="sp ms" style="background-position: 88.889% 16.667%"></span><b>Precisión</b></div><div class="tr-r kst"><span class="ic rn  big" tabindex="0" aria-label="Ataque intensificado"><span class="sp ms" style="background-position: 100.000% 16.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Ataque intensificado</b><small class="tt-m">Precisión</small><span class="tt-d">Golpear a un campeón enemigo 3 veces consecutivas inflige daño adicional y potencia tu daño hasta que abandonas el combate con campeones.</span></span></span><span class="ic rn on big" tabindex="0" aria-label="Compás letal (elegida)"><span class="sp ms" style="background-position: 0.000% 33.333%"></span><span class="tt " role="tooltip"><b class="tt-n">Compás letal</b><small class="tt-m">Precisión · elegida</small><span class="tt-d">Atacar a un campeón enemigo te otorga velocidad de ataque, hasta 6 acumulaciones. Con el máximo de acumulaciones, inflige daño adaptable adicional al atacar.</span></span></span><span class="ic rn  big" tabindex="0" aria-label="Pies veloces"><span class="sp ms" style="background-position: 55.556% 33.333%"></span><span class="tt " role="tooltip"><b class="tt-n">Pies veloces</b><small class="tt-m">Precisión</small><span class="tt-d">Atacar y moverse genera acumulaciones de energía. A las 100 acumulaciones, tu siguiente ataque te cura y te otorga velocidad de movimiento adicional.</span></span></span><span class="ic rn  big" tabindex="0" aria-label="Conquistador"><span class="sp ms" style="background-position: 22.222% 33.333%"></span><span class="tt r" role="tooltip"><b class="tt-n">Conquistador</b><small class="tt-m">Precisión</small><span class="tt-d">Otorga acumulaciones de fuerza adaptable al atacar a campeones enemigos. Tras conseguir 12 acumulaciones, te curas una porción del daño que inflijas a campeones.</span></span></span></div><div class="tr-r "><span class="ic rn  " tabindex="0" aria-label="Absorber vida"><span class="sp ms" style="background-position: 0.000% 66.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Absorber vida</b><small class="tt-m">Precisión</small><span class="tt-d">Asesinar a un objetivo te cura.</span></span></span><span class="ic rn on " tabindex="0" aria-label="Triunfo (elegida)"><span class="sp ms" style="background-position: 44.444% 66.667%"></span><span class="tt " role="tooltip"><b class="tt-n">Triunfo</b><small class="tt-m">Precisión · elegida</small><span class="tt-d">Los asesinatos y asistencias restauran un 5% de la vida que te falte y otorgan 20 de oro adicional.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Claridad mental"><span class="sp ms" style="background-position: 11.111% 33.333%"></span><span class="tt r" role="tooltip"><b class="tt-n">Claridad mental</b><small class="tt-m">Precisión</small><span class="tt-d">Restaura una pequeña cantidad de maná o energía al infligir daño a un campeón enemigo. Los asesinatos o asistencias restauran maná o energía.</span></span></span></div><div class="tr-r "><span class="ic rn on " tabindex="0" aria-label="Leyenda: Presteza (elegida)"><span class="sp ms" style="background-position: 22.222% 66.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Leyenda: Presteza</b><small class="tt-m">Precisión · elegida</small><span class="tt-d">Los asesinatos y asistencias otorgan velocidad de ataque permanente.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Leyenda: Velocidad"><span class="sp ms" style="background-position: 33.333% 66.667%"></span><span class="tt " role="tooltip"><b class="tt-n">Leyenda: Velocidad</b><small class="tt-m">Precisión</small><span class="tt-d">Los asesinatos y asistencias otorgan velocidad de habilidades básica permanente.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Leyenda: Linaje"><span class="sp ms" style="background-position: 11.111% 66.667%"></span><span class="tt r" role="tooltip"><b class="tt-n">Leyenda: Linaje</b><small class="tt-m">Precisión</small><span class="tt-d">Los asesinatos y asistencias otorgan robo de vida permanente, hasta un máximo. Cuando lo alcanzas, aumenta tu vida máxima. Es más débil al principio, pero más fuerte que otras runas de Leyenda cuando avanza la partida.</span></span></span></div><div class="tr-r "><span class="ic rn  " tabindex="0" aria-label="Golpe de gracia"><span class="sp ms" style="background-position: 33.333% 33.333%"></span><span class="tt l" role="tooltip"><b class="tt-n">Golpe de gracia</b><small class="tt-m">Precisión</small><span class="tt-d">Infliges más daño a los campeones enemigos con poca vida.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Derribado"><span class="sp ms" style="background-position: 44.444% 33.333%"></span><span class="tt " role="tooltip"><b class="tt-n">Derribado</b><small class="tt-m">Precisión</small><span class="tt-d">Infliges más daño a los campeones enemigos con mucha vida.</span></span></span><span class="ic rn on " tabindex="0" aria-label="Último esfuerzo (elegida)"><span class="sp ms" style="background-position: 77.778% 33.333%"></span><span class="tt r" role="tooltip"><b class="tt-n">Último esfuerzo</b><small class="tt-m">Precisión · elegida</small><span class="tt-d">Infliges más daño a campeones cuando tienes poca vida.</span></span></span></div></div>
+                <div class="tree t2"><div class="tr-h"><span class="sp ms" style="background-position: 88.889% 33.333%"></span><b>Valor</b></div><div class="tr-r "><span class="ic rn  " tabindex="0" aria-label="Demoler"><span class="sp ms" style="background-position: 44.444% 50.000%"></span><span class="tt l" role="tooltip"><b class="tt-n">Demoler</b><small class="tt-m">Valor</small><span class="tt-d">Tu tercer ataque contra torretas inflige daño adicional.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Fuente de vida"><span class="sp ms" style="background-position: 77.778% 50.000%"></span><span class="tt " role="tooltip"><b class="tt-n">Fuente de vida</b><small class="tt-m">Valor</small><span class="tt-d">Reducir la movilidad de un campeón enemigo cura a los campeones aliados cercanos.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Golpe de escudo"><span class="sp ms" style="background-position: 100.000% 33.333%"></span><span class="tt r" role="tooltip"><b class="tt-n">Golpe de escudo</b><small class="tt-m">Valor</small><span class="tt-d">Siempre que obtengas un escudo, tu siguiente ataque básico contra un campeón inflige daño adaptable adicional.</span></span></span></div><div class="tr-r "><span class="ic rn  " tabindex="0" aria-label="Condicionamiento"><span class="sp ms" style="background-position: 0.000% 50.000%"></span><span class="tt l" role="tooltip"><b class="tt-n">Condicionamiento</b><small class="tt-m">Valor</small><span class="tt-d">Pasados 12 min, obtienes +8 de armadura y +8 de resistencia mágica. Además, tu armadura y resistencia mágica aumentan un 3 %.</span></span></span><span class="ic rn on " tabindex="0" aria-label="Fuerzas renovadas (elegida)"><span class="sp ms" style="background-position: 33.333% 50.000%"></span><span class="tt " role="tooltip"><b class="tt-n">Fuerzas renovadas</b><small class="tt-m">Valor · elegida</small><span class="tt-d">Tras recibir daño de un campeón enemigo, recuperas algo de la vida que te falte a lo largo del tiempo.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Revestimiento de huesos"><span class="sp ms" style="background-position: 100.000% 50.000%"></span><span class="tt r" role="tooltip"><b class="tt-n">Revestimiento de huesos</b><small class="tt-m">Valor</small><span class="tt-d">Tras recibir daño de un campeón enemigo, los siguientes 3 hechizos o ataques dirigidos a ti infligen 30-60 menos de daño (en función del nivel).<br>Duración: 1.5 s<br>Enfriamiento: 55 s</span></span></span></div><div class="tr-r "><span class="ic rn  " tabindex="0" aria-label="Sobrecrecimiento"><span class="sp ms" style="background-position: 55.556% 50.000%"></span><span class="tt l" role="tooltip"><b class="tt-n">Sobrecrecimiento</b><small class="tt-m">Valor</small><span class="tt-d">Obtienes vida máxima permanente cuando súbditos o monstruos mueren cerca de ti.</span></span></span><span class="ic rn  " tabindex="0" aria-label="Revitalizar"><span class="sp ms" style="background-position: 66.667% 50.000%"></span><span class="tt " role="tooltip"><b class="tt-n">Revitalizar</b><small class="tt-m">Valor</small><span class="tt-d">Obtienes un 5% de poder de curaciones y escudos.<br>Las curaciones y los escudos que lanzas o recibes son un 10% más potentes para objetivos que se encuentren por debajo del 40% de vida.</span></span></span><span class="ic rn on " tabindex="0" aria-label="Inquebrantable (elegida)"><span class="sp ms" style="background-position: 66.667% 33.333%"></span><span class="tt r" role="tooltip"><b class="tt-n">Inquebrantable</b><small class="tt-m">Valor · elegida</small><span class="tt-d">Obtienes armadura y resistencia mágica al recibir efectos de control de adversario.</span></span></span></div><div class="shards"><div class="tr-r sh"><span class="ic rn sm " tabindex="0" aria-label="Fuerza adaptable"><span class="sp ms" style="background-position: 55.556% 66.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Fuerza adaptable</b><small class="tt-m">Fragmento</small><span class="tt-d">+9 de fuerza adaptable.</span></span></span><span class="ic rn sm on" tabindex="0" aria-label="Velocidad de ataque"><span class="sp ms" style="background-position: 66.667% 66.667%"></span><span class="tt " role="tooltip"><b class="tt-n">Velocidad de ataque</b><small class="tt-m">Fragmento · elegido</small><span class="tt-d">+10 % de velocidad de ataque.</span></span></span><span class="ic rn sm " tabindex="0" aria-label="Velocidad de habilidades"><span class="sp ms" style="background-position: 77.778% 66.667%"></span><span class="tt r" role="tooltip"><b class="tt-n">Velocidad de habilidades</b><small class="tt-m">Fragmento</small><span class="tt-d">+8 de velocidad de habilidades.</span></span></span></div><div class="tr-r sh"><span class="ic rn sm on" tabindex="0" aria-label="Fuerza adaptable"><span class="sp ms" style="background-position: 55.556% 66.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Fuerza adaptable</b><small class="tt-m">Fragmento · elegido</small><span class="tt-d">+9 de fuerza adaptable.</span></span></span><span class="ic rn sm " tabindex="0" aria-label="Velocidad de movimiento"><span class="sp ms" style="background-position: 0.000% 83.333%"></span><span class="tt " role="tooltip"><b class="tt-n">Velocidad de movimiento</b><small class="tt-m">Fragmento</small><span class="tt-d">+2 % de velocidad de movimiento.</span></span></span><span class="ic rn sm " tabindex="0" aria-label="Vida escalable"><span class="sp ms" style="background-position: 100.000% 66.667%"></span><span class="tt r" role="tooltip"><b class="tt-n">Vida escalable</b><small class="tt-m">Fragmento</small><span class="tt-d">+10 a 180 de vida, según el nivel.</span></span></span></div><div class="tr-r sh"><span class="ic rn sm " tabindex="0" aria-label="Vida"><span class="sp ms" style="background-position: 88.889% 66.667%"></span><span class="tt l" role="tooltip"><b class="tt-n">Vida</b><small class="tt-m">Fragmento</small><span class="tt-d">+65 de vida.</span></span></span><span class="ic rn sm " tabindex="0" aria-label="Tenacidad y resistencia a ralentizaciones"><span class="sp ms" style="background-position: 11.111% 83.333%"></span><span class="tt " role="tooltip"><b class="tt-n">Tenacidad y resistencia a ralentizaciones</b><small class="tt-m">Fragmento</small><span class="tt-d">+15 % de tenacidad y de resistencia a ralentizaciones.</span></span></span><span class="ic rn sm on" tabindex="0" aria-label="Vida escalable"><span class="sp ms" style="background-position: 100.000% 66.667%"></span><span class="tt r" role="tooltip"><b class="tt-n">Vida escalable</b><small class="tt-m">Fragmento · elegido</small><span class="tt-d">+10 a 180 de vida, según el nivel.</span></span></span></div></div></div>
+              </div>
+              <div class="bc-mid">
+                <div class="blk"><h4>Hechizos</h4><div class="row"><span class="ic sq" tabindex="0" aria-label="Destello"><span class="sp ms" style="background-position: 44.444% 83.333%"></span><span class="tt" role="tooltip"><b class="tt-n">Destello</b><small class="tt-m">Hechizo de invocador · 300 s de enfriamiento</small><span class="tt-d">Te teleporta a una corta distancia hacia el cursor.</span></span></span><span class="ic sq" tabindex="0" aria-label="Extenuación"><span class="sp ms" style="background-position: 33.333% 83.333%"></span><span class="tt" role="tooltip"><b class="tt-n">Extenuación</b><small class="tt-m">Hechizo de invocador · 240 s de enfriamiento</small><span class="tt-d">Ralentiza al campeón enemigo objetivo y reduce el daño que inflige.</span></span></span></div></div>
+                <div class="blk"><h4>Orden de mejora</h4><div class="row so"><span class="ic sq sk" tabindex="0" aria-label="Q: Tempestad de acero"><span class="sp ms" style="background-position: 88.889% 83.333%"></span><b>Q</b><span class="tt" role="tooltip"><b class="tt-n">Tempestad de acero</b><small class="tt-m">Habilidad Q · Enfriamiento: 4 s · Sin coste</small><span class="tt-d">Lanza una estocada al frente que inflige daño a los enemigos en una línea.<br>Al golpear, otorga una acumulación de Tormenta inminente durante unos cuantos segundos. Con 2 acumulaciones, Tempestad de acero inicia un remolino que lanza al objetivo por el aire.<br>Tempestad de acero se comporta como un ataque básico y progresa del mismo modo.</span></span></span><svg class="arw" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg><span class="ic sq sk" tabindex="0" aria-label="E: Hoja cortante"><span class="sp ms" style="background-position: 66.667% 83.333%"></span><b>E</b><span class="tt" role="tooltip"><b class="tt-n">Hoja cortante</b><small class="tt-m">Habilidad E · Enfriamiento: 0,5/0,4/0,3/0,2/0,1 s · Sin coste</small><span class="tt-d">Se desliza a través del enemigo seleccionado, al que inflige daño mágico. Cada vez que se usa, aumenta el daño del siguiente uso hasta alcanzar un máximo.<br>No se puede emplear más de una vez contra el mismo enemigo durante unos cuantos segundos.<br>Si Tempestad de acero se utiliza durante un deslizamiento, golpeará de forma circular.</span></span></span><svg class="arw" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg><span class="ic sq sk" tabindex="0" aria-label="W: Muro de viento"><span class="sp ms" style="background-position: 0.000% 100.000%"></span><b>W</b><span class="tt" role="tooltip"><b class="tt-n">Muro de viento</b><small class="tt-m">Habilidad W · Enfriamiento: 25/23/21/19/17 s · Sin coste</small><span class="tt-d">Crea un muro móvil que bloquea todos los proyectiles enemigos durante 4 s.</span></span></span></div><p class="mini">Sube Q primero, luego E. W al final.</p></div>
+                <div class="blk"><h4>Inicio</h4><div class="row"><span class="ic it md" tabindex="0" aria-label="Arco de Doran"><span class="sp ms" style="background-position: 11.111% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Arco de Doran</b><small class="tt-m">400 de oro</small><span class="tt-s"><span>7 de daño de ataque</span><span>15% de velocidad de ataque</span><span>1.5% de omnisucción</span></span></span></span><span class="or">o</span><span class="ic it md" tabindex="0" aria-label="Espada de Doran"><span class="sp ms" style="background-position: 0.000% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Espada de Doran</b><small class="tt-m">450 de oro</small><span class="tt-s"><span>10 de daño de ataque</span><span>80 de vida</span><span>2.5% de omnisucción</span></span></span></span><span class="ic it md" tabindex="0" aria-label="Poción de vida"><span class="sp ms" style="background-position: 22.222% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Poción de vida</b><small class="tt-m">50 de oro</small><span class="tt-d"><b>Utilizar</b><br>Restaura 120 de vida a lo largo de 15 s.</span></span></span></div></div>
+                <div class="blk"><h4>Botas</h4><div class="row"><span class="ic it md" tabindex="0" aria-label="Grebas de berserker"><span class="sp ms" style="background-position: 33.333% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Grebas de berserker</b><small class="tt-m">1100 de oro</small><span class="tt-s"><span>30% de velocidad de ataque</span><span>45 de velocidad de movimiento</span></span></span></span></div></div>
+              </div>
+              <div class="bc-items">
+                <div class="blk"><h4>Núcleo · orden real de compra</h4><div class="row core"><span class="ic it lg" tabindex="0" aria-label="Arcoescudo inmortal"><i>1</i><span class="sp ms" style="background-position: 55.556% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Arcoescudo inmortal</b><small class="tt-m">3000 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Salvavidas</b><br>Al recibir daño que reduzca la vida por debajo del 30%, otorga un escudo durante 3 s.</span></span></span><svg class="arw" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg><span class="ic it lg" tabindex="0" aria-label="Filo infinito"><i>2</i><span class="sp ms" style="background-position: 55.556% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Filo infinito</b><small class="tt-m">3500 de oro</small><span class="tt-s"><span>75 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span><span>30% de daño de impacto crítico</span></span></span></span><svg class="arw" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg><span class="ic it lg" tabindex="0" aria-label="Baile de la muerte"><i>3</i><span class="sp ms" style="background-position: 44.444% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Baile de la muerte</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>60 de daño de ataque</span><span>50 de armadura</span><span>15 de velocidad de habilidades</span></span><span class="tt-d"><b>Ignora el dolor</b><br>Un porcentaje del daño que recibas te afecta a lo largo de 3 s.<br><b>Reto</b><br>Cuando muere un campeón al que has infligido daño en los últimos 3 s, se elimina el daño restante de <b>Ignora el dolor</b> y te curas a lo largo de 2 s.</span></span></span></div></div>
+                <div class="blk"><h4>Situacional</h4><div class="row"><span class="ic it md" tabindex="0" aria-label="Hoja del rey arruinado"><span class="sp ms" style="background-position: 33.333% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Hoja del rey arruinado</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>40 de daño de ataque</span><span>25% de velocidad de ataque</span><span>10% de robo de vida</span></span><span class="tt-d"><b>Filo de la niebla</b><br>Los ataques infligen un porcentaje de la vida actual del objetivo como daño físico adicional al impactar.<br><b>Zarpazo sombrío</b><br>Atacar a un campeón tres veces lo ralentiza un 30% durante 1 s.</span></span></span><span class="ic it md" tabindex="0" aria-label="Recuerdos de lord Dominik"><span class="sp ms" style="background-position: 77.778% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Recuerdos de lord Dominik</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>35 de daño de ataque</span><span>35% de penetración de armadura</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Verdugo de gigantes</b><br>Infliges hasta un 15% de daño adicional a campeones, según su vida adicional. El máximo de daño adicional se alcanza con 1500 de vida adicional.</span></span></span><span class="ic it md" tabindex="0" aria-label="Ángel de la guarda"><span class="sp ms" style="background-position: 44.444% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Ángel de la guarda</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>45 de armadura</span></span><span class="tt-d"><b>Renacimiento</b><br>Al sufrir daño letal, restaura un 50% de la vida básica y un 100% del maná máximo tras 4 s de estasis.</span></span></span><span class="ic it md" tabindex="0" aria-label="Cimitarra mercurial"><span class="sp ms" style="background-position: 22.222% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Cimitarra mercurial</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>50 de daño de ataque</span><span>35 de resistencia mágica</span><span>10% de robo de vida</span></span><span class="tt-d"><b>ACTIVA</b><br><b>Fajín de mercurio</b><br>Elimina todos los efectos de control de adversario (menos los levantamientos en el aire) y otorga velocidad de movimiento.</span></span></span></div></div>
+                <p class="mini">Núcleo y situacionales: 1.582 partidas de Yasuo de tu muestra.</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="stack2">
+            <!-- OBJETOS POR POSICIÓN -->
+            <section class="card">
+              <div class="card-h"><h2 class="disp">Qué comprar después</h2><span class="meta">Winrate por posición del objeto</span></div>
+              <div class="slots"><div class="slt"><h4>1.er objeto</h4><div class="opt"><span class="ic it md" tabindex="0" aria-label="Arcoescudo inmortal"><span class="sp ms" style="background-position: 55.556% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Arcoescudo inmortal</b><small class="tt-m">3000 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Salvavidas</b><br>Al recibir daño que reduzca la vida por debajo del 30%, otorga un escudo durante 3 s.</span></span></span><span class="ow"><b class="">55,6 %</b><small>43.970 partidas</small></span></div></div><div class="slt"><h4>2.º objeto</h4><div class="opt"><span class="ic it md" tabindex="0" aria-label="Baile de la muerte"><span class="sp ms" style="background-position: 44.444% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Baile de la muerte</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>60 de daño de ataque</span><span>50 de armadura</span><span>15 de velocidad de habilidades</span></span><span class="tt-d"><b>Ignora el dolor</b><br>Un porcentaje del daño que recibas te afecta a lo largo de 3 s.<br><b>Reto</b><br>Cuando muere un campeón al que has infligido daño en los últimos 3 s, se elimina el daño restante de <b>Ignora el dolor</b> y te curas a lo largo de 2 s.</span></span></span><span class="ow"><b class="hi">57,7 %</b><small>29.751 partidas</small></span></div><div class="opt"><span class="ic it md" tabindex="0" aria-label="Recuerdos de lord Dominik"><span class="sp ms" style="background-position: 77.778% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Recuerdos de lord Dominik</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>35 de daño de ataque</span><span>35% de penetración de armadura</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Verdugo de gigantes</b><br>Infliges hasta un 15% de daño adicional a campeones, según su vida adicional. El máximo de daño adicional se alcanza con 1500 de vida adicional.</span></span></span><span class="ow"><b class="hi">57,6 %</b><small>8.181 partidas</small></span></div></div><div class="slt"><h4>3.er objeto</h4><div class="opt"><span class="ic it md" tabindex="0" aria-label="Ángel de la guarda"><span class="sp ms" style="background-position: 44.444% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Ángel de la guarda</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>45 de armadura</span></span><span class="tt-d"><b>Renacimiento</b><br>Al sufrir daño letal, restaura un 50% de la vida básica y un 100% del maná máximo tras 4 s de estasis.</span></span></span><span class="ow"><b class="hi">60,8 %</b><small>5.246 partidas</small></span></div><div class="opt"><span class="ic it md" tabindex="0" aria-label="Sanguinaria"><span class="sp ms" style="background-position: 0.000% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Sanguinaria</b><small class="tt-m">3400 de oro</small><span class="tt-s"><span>80 de daño de ataque</span><span>15% de robo de vida</span></span><span class="tt-d"><b>Escudo de icor</b><br>Convierte el exceso de curación de tu robo de vida en un escudo.</span></span></span><span class="ow"><b class="hi">59,9 %</b><small>2.107 partidas</small></span></div><div class="opt"><span class="ic it md" tabindex="0" aria-label="Recuerdos de lord Dominik"><span class="sp ms" style="background-position: 77.778% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Recuerdos de lord Dominik</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>35 de daño de ataque</span><span>35% de penetración de armadura</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Verdugo de gigantes</b><br>Infliges hasta un 15% de daño adicional a campeones, según su vida adicional. El máximo de daño adicional se alcanza con 1500 de vida adicional.</span></span></span><span class="ow"><b class="hi">57,0 %</b><small>3.011 partidas</small></span></div></div><div class="slt"><h4>4.º objeto</h4><div class="opt"><span class="ic it md" tabindex="0" aria-label="Ángel de la guarda"><span class="sp ms" style="background-position: 44.444% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Ángel de la guarda</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>45 de armadura</span></span><span class="tt-d"><b>Renacimiento</b><br>Al sufrir daño letal, restaura un 50% de la vida básica y un 100% del maná máximo tras 4 s de estasis.</span></span></span><span class="ow"><b class="hi">59,5 %</b><small>2.222 partidas</small></span></div><div class="opt"><span class="ic it md" tabindex="0" aria-label="Cimitarra mercurial"><span class="sp ms" style="background-position: 22.222% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Cimitarra mercurial</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>50 de daño de ataque</span><span>35 de resistencia mágica</span><span>10% de robo de vida</span></span><span class="tt-d"><b>ACTIVA</b><br><b>Fajín de mercurio</b><br>Elimina todos los efectos de control de adversario (menos los levantamientos en el aire) y otorga velocidad de movimiento.</span></span></span><span class="ow"><b class="hi">57,5 %</b><small>400 partidas</small></span></div><div class="opt"><span class="ic it md" tabindex="0" aria-label="Baile de la muerte"><span class="sp ms" style="background-position: 44.444% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Baile de la muerte</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>60 de daño de ataque</span><span>50 de armadura</span><span>15 de velocidad de habilidades</span></span><span class="tt-d"><b>Ignora el dolor</b><br>Un porcentaje del daño que recibas te afecta a lo largo de 3 s.<br><b>Reto</b><br>Cuando muere un campeón al que has infligido daño en los últimos 3 s, se elimina el daño restante de <b>Ignora el dolor</b> y te curas a lo largo de 2 s.</span></span></span><span class="ow"><b class="">56,5 %</b><small>735 partidas</small></span></div></div></div>
+            </section>
+            <!-- RECOMENDACIONES -->
+            <section class="card reco">
+              <div class="card-h"><h2 class="disp">Cómo jugarlo</h2><span class="meta">Recomendaciones</span></div>
+              <ol class="tips"><li><span class="tn disp">1</span><div><b>Fase de líneas</b><p>Usa <b>Hoja cortante (E)</b> sobre súbditos para acercarte y <b>Tempestad de acero (Q)</b> para cargar el tornado. Con 2 acumulaciones, la Q lanza por el aire: ese es tu enganche.</p></div></li><li><span class="tn disp">2</span><div><b>Tu combo</b><p>Q en mitad de una E golpea en círculo. Tornado (Q3) + <b>Último aliento (R)</b>: la R solo funciona sobre enemigos en el aire, así que el tornado o el control de un aliado la activan.</p></div></li><li><span class="tn disp">3</span><div><b>Muro de viento</b><p>Bloquea <b>todos los proyectiles</b> enemigos durante 4 s. Guárdalo para lo que decide la pelea: definitivas de Ezreal o Jinx, la Q de Lux o el enganche de un soporte.</p></div></li><li><span class="tn disp">4</span><div><b>Picos de poder</b><p>Su pasiva le da más probabilidad de crítico, así que con <b>Arcoescudo inmortal + Filo infinito</b> ya pega muy fuerte. Ahí es cuando debes buscar peleas.</p></div></li></ol>
+            </section>
+          </div>
+
+          <!-- WINRATE POR OBJETO -->
+          <section class="card">
+            <div class="card-h"><h2 class="disp">Winrate con cada objeto</h2><span class="meta">Partidas en las que lo completó</span></div>
+            <div class="iw">
+              <div class="iw-r th"><span></span><span>Objeto</span><span>Winrate</span><span>Partidas</span><span></span></div>
+              <div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Ángel de la guarda"><span class="sp ms" style="background-position: 44.444% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Ángel de la guarda</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>45 de armadura</span></span><span class="tt-d"><b>Renacimiento</b><br>Al sufrir daño letal, restaura un 50% de la vida básica y un 100% del maná máximo tras 4 s de estasis.</span></span></span><span class="iw-n"><b>Ángel de la guarda</b><small>3.º–4.º objeto · 3200 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 90%"></i></span><b class="hi">60,8 %</b></span><span class="iw-g">5.246</span><span class="tg2 late">Objeto tardío</span></div><div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Sanguinaria"><span class="sp ms" style="background-position: 0.000% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Sanguinaria</b><small class="tt-m">3400 de oro</small><span class="tt-s"><span>80 de daño de ataque</span><span>15% de robo de vida</span></span><span class="tt-d"><b>Escudo de icor</b><br>Convierte el exceso de curación de tu robo de vida en un escudo.</span></span></span><span class="iw-n"><b>Sanguinaria</b><small>3.º objeto · 3400 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 82%"></i></span><b class="hi">59,9 %</b></span><span class="iw-g">2.107</span><span class="tg2 late">Objeto tardío</span></div><div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Baile de la muerte"><span class="sp ms" style="background-position: 44.444% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Baile de la muerte</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>60 de daño de ataque</span><span>50 de armadura</span><span>15 de velocidad de habilidades</span></span><span class="tt-d"><b>Ignora el dolor</b><br>Un porcentaje del daño que recibas te afecta a lo largo de 3 s.<br><b>Reto</b><br>Cuando muere un campeón al que has infligido daño en los últimos 3 s, se elimina el daño restante de <b>Ignora el dolor</b> y te curas a lo largo de 2 s.</span></span></span><span class="iw-n"><b>Baile de la muerte</b><small>2.º objeto · 3300 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 64%"></i></span><b class="hi">57,7 %</b></span><span class="iw-g">29.751</span></div><div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Recuerdos de lord Dominik"><span class="sp ms" style="background-position: 77.778% 0.000%"></span><span class="tt" role="tooltip"><b class="tt-n">Recuerdos de lord Dominik</b><small class="tt-m">3300 de oro</small><span class="tt-s"><span>35 de daño de ataque</span><span>35% de penetración de armadura</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Verdugo de gigantes</b><br>Infliges hasta un 15% de daño adicional a campeones, según su vida adicional. El máximo de daño adicional se alcanza con 1500 de vida adicional.</span></span></span><span class="iw-n"><b>Recuerdos de lord Dominik</b><small>2.º–3.º objeto · 3300 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 63%"></i></span><b class="hi">57,6 %</b></span><span class="iw-g">8.181</span></div><div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Cimitarra mercurial"><span class="sp ms" style="background-position: 22.222% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Cimitarra mercurial</b><small class="tt-m">3200 de oro</small><span class="tt-s"><span>50 de daño de ataque</span><span>35 de resistencia mágica</span><span>10% de robo de vida</span></span><span class="tt-d"><b>ACTIVA</b><br><b>Fajín de mercurio</b><br>Elimina todos los efectos de control de adversario (menos los levantamientos en el aire) y otorga velocidad de movimiento.</span></span></span><span class="iw-n"><b>Cimitarra mercurial</b><small>4.º objeto · 3200 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 62%"></i></span><b class="hi">57,5 %</b></span><span class="iw-g">400</span><span class="tg2 late">Objeto tardío</span></div><div class="iw-r"><span class="ic it md" tabindex="0" aria-label="Arcoescudo inmortal"><span class="sp ms" style="background-position: 55.556% 16.667%"></span><span class="tt" role="tooltip"><b class="tt-n">Arcoescudo inmortal</b><small class="tt-m">3000 de oro</small><span class="tt-s"><span>55 de daño de ataque</span><span>25% de probabilidad de impacto crítico</span></span><span class="tt-d"><b>Salvavidas</b><br>Al recibir daño que reduzca la vida por debajo del 30%, otorga un escudo durante 3 s.</span></span></span><span class="iw-n"><b>Arcoescudo inmortal</b><small>1.º objeto · 3000 de oro</small></span><span class="iw-w"><span class="wbar"><i style="width: 47%"></i></span><b class="">55,6 %</b></span><span class="iw-g">43.970</span><span class="tg2 most">El más comprado</span></div>
+            </div>
+            <p class="hint"><b>Ojo al leerlo:</b> los objetos tardíos (Ángel de la guarda, Sanguinaria) salen con winrate alto porque solo se completan en partidas largas que ya vas ganando. Para decidir tu build, fíjate sobre todo en el 1.º y el 2.º objeto.</p>
+          </section>
+
+                </div>
+        </sc-if>
+
+        <sc-if value="{{showMu}}" hint-placeholder-val="{{ false }}">
+        <div role="tabpanel" id="panel-mu" aria-labelledby="tab-mu" class="tp" tabindex="0">
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Mejores compañeros</h2><span class="meta">Winrate de Yasuo con ese aliado · <span class="demo">Datos de ejemplo</span></span></div>
+            <sc-if value="{{hasMu}}" hint-placeholder-val="{{ true }}">
+              <div class="syn">
+                <sc-for list="{{syn}}" as="a" hint-placeholder-count="5">
+                  <div class="syn-c"><span class="sp cs" style="background-position: {{a.p}}" aria-hidden="true"></span><span class="rl">{{a.r}}</span><b>{{a.n}}</b><span class="w">{{a.w}} <small>{{a.d}}</small></span><small>{{a.g}} partidas juntos</small></div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{noMu}}" hint-placeholder-val="{{ false }}">
+              <p class="nodata">Todavía no hay datos de ejemplo de compañeros para Yasuo en {{roleName}}. Cuando el script de Riot los calcule, saldrán aquí.</p>
+            </sc-if>
+          </section>
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Todos los matchups en {{roleNameLow}}</h2><span class="meta">{{muCount}} · <span class="demo">Datos de ejemplo</span></span></div>
+            <sc-if value="{{noMu}}" hint-placeholder-val="{{ false }}">
+              <p class="nodata">Yasuo se juega poco en {{roleName}} ({{rolePct}} de sus partidas) y no hay matchups de ejemplo para esa línea. Cambia a Mid para verlos.</p>
+            </sc-if>
+            <sc-if value="{{hasMu}}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{muOpen}}" hint-placeholder-val="{{ false }}">
+              <div class="mud" role="region" aria-live="polite" aria-label="Detalle del duelo">
+                <span class="vs"><span class="sp cs" style="background-position: {{md.p}}" aria-hidden="true"></span><span>Yasuo <em>contra</em> {{md.n}}</span></span>
+                <div class="mud-k">
+                  <div><small>Winrate de Yasuo</small><b class="{{md.wc}}">{{md.w}}</b></div>
+                  <div><small>Oro al minuto 15</small><b class="{{md.gc}}">{{md.gold}}</b></div>
+                  <div><small>CS al minuto 15</small><b class="{{md.cc}}">{{md.cs}}</b></div>
+                  <div><small>Experiencia al 15</small><b class="{{md.xc}}">{{md.xp}}</b></div>
+                </div>
+                <button type="button" class="x" onClick="{{closeMu}}" aria-label="Cerrar el detalle del duelo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+                <p>{{md.tip}} <span class="demo">{{md.gp}}</span></p>
+              </div>
+            </sc-if>
+            <div class="mu-bar">
+              <label class="msrch"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span class="sr">Buscar rival</span><input id="q-mu" type="search" placeholder="Busca un rival" value="{{q}}" onInput="{{onQ}}" autocomplete="off"></label>
+              <div class="seg2"><sc-for list="{{sorts}}" as="o" hint-placeholder-count="3"><button type="button" class="{{o.on}}" onClick="{{o.pick}}">{{o.n}}</button></sc-for></div>
+              <button type="button" class="chip2 {{bigOn}}" onClick="{{toggleBig}}" aria-pressed="{{bigPr}}">Solo con 1.000+ partidas</button>
+            </div>
+            <div class="ml">
+              <div class="ml-r th"><span>Rival</span><span>Winrate de Yasuo</span><span>Diferencia</span><span>Partidas</span></div>
+              <sc-for list="{{mus}}" as="m" hint-placeholder-count="12">
+                <button type="button" class="ml-r {{m.c}} {{m.sel}}" onClick="{{m.pick}}" aria-pressed="{{m.pr}}" aria-label="Ver el duelo contra {{m.n}}: {{m.w}} de winrate, {{m.g}} partidas" data-row><span class="ml-n"><span class="sp cs" style="background-position: {{m.p}}" aria-hidden="true"></span><b>{{m.n}}</b></span>
+                  <span class="ml-w" aria-hidden="true"><span class="cbar"><i style="left: {{m.l}}; width: {{m.wd}}"></i><em></em></span><b>{{m.w}}</b></span>
+                  <span class="ml-d" aria-hidden="true">{{m.d}}</span><span class="ml-g" aria-hidden="true">{{m.g}}<span class="ml-gl">partidas</span></span></button>
+              </sc-for>
+            </div>
+            </sc-if>
+          </section>
+                </div>
+        </sc-if>
+
+        <sc-if value="{{showRank}}" hint-placeholder-val="{{ false }}">
+        <div role="tabpanel" id="panel-rank" aria-labelledby="tab-rank" class="tp" tabindex="0">
+          <section data-pane class="card" aria-labelledby="pr-h">
+            <div class="card-h"><h2 id="pr-h" class="disp">Yasuo por rango</h2><span class="meta">El rango elegido aparece resaltado</span></div>
+            <div class="tscroll">
+              <div class="rtab" role="table" aria-label="Estadísticas de Yasuo por rango">
+                <div class="rr th" role="row">
+                  <span role="columnheader">Rango</span>
+                  <span role="columnheader">Winrate</span>
+                  <span role="columnheader">Pickrate</span>
+                  <span role="columnheader">Banrate</span>
+                  <span role="columnheader">Partidas</span>
+                  <span role="columnheader">Tier</span>
+                  <span role="columnheader">Puesto Mid</span>
+                </div>
+                <sc-for list="{{byRank}}" as="b" hint-placeholder-count="9">
+                  <div class="rr {{b.on}}" role="row">
+                    <span role="cell" class="rn"><img src="{{b.img}}" alt="">{{b.l}}</span>
+                    <span role="cell" class="wr {{b.wc}}"><b>{{b.wr}}</b><span class="bar"><i style="width: {{b.w}}"></i></span></span>
+                    <span role="cell" class="num">{{b.pr}}</span>
+                    <span role="cell" class="num">{{b.br}}</span>
+                    <span role="cell" class="num">{{b.games}}</span>
+                    <span role="cell"><span class="tier {{b.tc}}">{{b.t}}</span></span>
+                    <span role="cell" class="num">#{{b.pos}} de {{b.of}}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </section>
+                </div>
+        </sc-if>
+
+        <sc-if value="{{showStats}}" hint-placeholder-val="{{ false }}">
+        <div role="tabpanel" id="panel-stats" aria-labelledby="tab-stats" class="tp" tabindex="0">
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Evolución en los últimos 30 días</h2><span class="meta">{{roleName}} · {{rankBtn}} · <span class="demo">Datos de ejemplo</span></span></div>
+            <div class="chg">
+              <sc-for list="{{charts}}" as="c" hint-placeholder-count="3">
+                <div class="chs">
+                  <div class="chs-h"><small>{{c.k}}</small><span><b data-count="{{c.raw}}" data-dec="1" data-suf=" %">{{c.v}}</b><em class="{{c.dc}}">{{c.d}}</em></span></div>
+                  <div class="rng"><span>Máx. {{c.max}}</span><span>Mín. {{c.min}}</span></div>
+                  <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
+                    <line class="gl" x1="0" y1="21" x2="300" y2="21"></line><line class="gl" x1="0" y1="43" x2="300" y2="43"></line><line class="gl" x1="0" y1="65" x2="300" y2="65"></line>
+                    <line x1="{{c.px}}" y1="0" x2="{{c.px}}" y2="86" stroke="rgba(255,255,255,.18)" stroke-dasharray="3 3"></line>
+                    <path class="ar" d="{{c.area}}" fill="{{c.col}}"></path>
+                    <path class="ln" d="{{c.line}}" stroke="{{c.col}}" data-anim="draw"></path>
+                  </svg>
+                  <div class="ax"><span class="a0">Hace 30 días</span><span class="a1" style="left: {{c.pxp}}">16.23</span><span class="a2">Hoy</span></div>
+                  <p class="sr-only">{{c.sr}}</p>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Winrate según la duración</h2><span class="meta">{{durTitle}}</span></div>
+            <div class="dur-wrap">
+              <div class="dur">
+                <sc-for list="{{dur}}" as="d" hint-placeholder-count="6">
+                  <div class="dur-c"><b class="{{d.c}}">{{d.w}}</b><i class="{{d.c}}" style="height: {{d.h}}" data-anim="grow"></i></div>
+                </sc-for>
+              </div>
+              <div class="dur-ref" style="bottom: {{durRef}}"><span>50 %</span></div>
+            </div>
+            <div class="dur-x"><sc-for list="{{dur}}" as="d" hint-placeholder-count="6"><span>{{d.l}}<small>{{d.g}} partidas</small></span></sc-for></div>
+          </section>
+
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Fase de líneas</h2><span class="meta">Frente al rival directo en {{roleNameLow}} · <span class="demo">Datos de ejemplo</span></span></div>
+            <p class="l15-sub">Diferencia al minuto 15</p>
+            <div class="l15">
+              <sc-for list="{{lane}}" as="x" hint-placeholder-count="3">
+                <div class="sg-i"><small>{{x.k}}</small><b class="{{x.c}}" data-count="{{x.raw}}" data-dec="{{x.dec}}" data-pre="{{x.pre}}" data-suf="{{x.suf}}">{{x.v}}</b></div>
+              </sc-for>
+            </div>
+            <p class="l15-sub">Primeros minutos</p>
+            <div class="l15 one">
+              <div class="sg-i"><small>Alcanza el nivel 2 antes que su rival</small><b data-count="{{lvl2.raw}}" data-dec="1" data-suf=" % de partidas">{{lvl2.v}}</b></div>
+            </div>
+          </section>
+
+          <section data-pane class="card">
+            <div class="card-h"><h2 class="disp">Estadísticas medias por partida</h2><span class="meta">Comparadas con la media de {{roleNameLow}} · <span class="demo">Datos de ejemplo</span></span></div>
+            <div class="sg">
+              <sc-for list="{{avg}}" as="x" hint-placeholder-count="12">
+                <div class="sg-i"><small>{{x.k}}</small><b data-count="{{x.raw}}" data-dec="{{x.dec}}" data-suf="{{x.suf}}">{{x.v}}</b><em class="{{x.c}}">{{x.d}}</em></div>
+              </sc-for>
+            </div>
+          </section>
+                </div>
+        </sc-if>
+
+        <p class="srcnote"><b>Datos de este diseño.</b> Todo es de ejemplo y está en un mismo parche (EUW · 16.23). La cabecera, el puesto y la tabla por rango salen de la muestra de partidas de Riot; las builds, los matchups, los compañeros y la pestaña Estadísticas son datos de ejemplo de lo que calculará el script de Riot (`tools/fetch-riot-stats.mjs`). Descripciones: Data Dragon (es_ES).</p>
+      </main>
+
+      <aside class="aside" aria-label="Más campeones">
+        <section class="card">
+          <div class="card-h"><h3 class="disp">Otros campeones de Mid</h3><span class="meta">Todos los rangos</span></div>
+          <div class="w-list"><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 38.462% 33.333%"></span><span class="tx"><b>Katarina</b><span>Asesina</span></span><span class="tier t-sp">S+</span><span class="rv hi">53,9 %</span></a><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 53.846% 16.667%"></span><span class="tx"><b>Fizz</b><span>Asesino</span></span><span class="tier t-s">S</span><span class="rv hi">52,3 %</span></a><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 38.462% 75.000%"></span><span class="tx"><b>Sylas</b><span>Luchador</span></span><span class="tier t-s">S</span><span class="rv ">50,3 %</span></a><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 53.846% 91.667%"></span><span class="tx"><b>Yone</b><span>Luchador</span></span><span class="tier t-s">S</span><span class="rv ">49,9 %</span></a><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 7.692% 100.000%"></span><span class="tx"><b>Ziggs</b><span>Mago</span></span><span class="tier t-a">A</span><span class="rv hi">53,5 %</span></a><a class="wl" href="LolCampeon.dc.html"><span class="sp cs wimg" style="background-position: 15.385% 25.000%"></span><span class="tx"><b>Heimerdinger</b><span>Mago</span></span><span class="tier t-a">A</span><span class="rv hi">52,9 %</span></a></div>
+        </section>
+        <div class="premini">
+          <h3 class="disp">Navega sin anuncios</h3>
+          <p>Premium quita la publicidad y te avisa de los cambios de parche antes que nadie.</p>
+          <a class="btn-gold" href="Premium.dc.html" style="width: 100%">Probar 7 días gratis</a>
+        </div>
+        <div class="ad" aria-label="Espacio publicitario">Publicidad · 300×250</div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta no está afiliado a Riot Games. League of Legends y Riot Games son marcas registradas o marcas comerciales de Riot Games, Inc. GrietaMeta se avala en los "Legal Jibber Jabber" de Riot Games con contenido creado bajo la política de terceros.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb on" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3150}}'>
+class Component extends DCLogic {
+  // Entrada de página propia de LoL: una hoja dorada barre la pantalla y el contenido sube detrás.
+  entradaPagina(enabled) {
+    if (this.entradaHecha || !enabled || typeof window === 'undefined') return;
+    this.entradaHecha = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        const w = document.querySelector('.gm-wipe');
+        if (!w || document.querySelector('.still')) return;
+        const blade = w.querySelector('i'), veil = w.querySelector('b');
+        w.style.opacity = '1';
+        lib.animate(veil, { opacity: [1, 0], duration: 520, delay: 160, ease: 'outQuad' });
+        lib.animate(blade, { left: ['-40%', '120%'], duration: 760, ease: 'inOutCubic', onComplete: () => { w.style.opacity = '0'; } });
+        const body = document.querySelectorAll('main, .layout, .wrap > .hero, .stats');
+        if (body.length) lib.animate(body, { opacity: [0, 1], y: [14, 0], duration: 560, delay: 200, ease: 'outQuart' });
+      });
+    });
+  }
+
+  // Aparición de cada parte de la página al entrar en pantalla (anime.js). Una sola vez por bloque.
+  revelarSecciones(selector, enabled) {
+    if (!enabled || typeof window === 'undefined' || !window.IntersectionObserver) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        this.revealSeen ??= new WeakSet();
+        this.revealObs ??= new IntersectionObserver((entries) => {
+          const vis = entries.filter((e) => e.isIntersecting).map((e) => e.target);
+          vis.forEach((n) => this.revealObs.unobserve(n));
+          if (!vis.length || document.querySelector('.still')) return;
+          lib.animate(vis, { opacity: [0, 1], y: [28, 0], scale: [0.985, 1], duration: 620, delay: lib.stagger(90), ease: 'outQuart' });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        document.querySelectorAll(selector).forEach((n) => {
+          if (this.revealSeen.has(n)) return;
+          this.revealSeen.add(n);
+          const r = n.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92) return; // lo que ya se ve al cargar no se esconde
+          n.style.opacity = '0';
+          this.revealObs.observe(n);
+        });
+      });
+    });
+  }
+
+  // LF1 · anime.js (como prepareMotion de Lol.dc.html): al cambiar de pestaña, filas escalonadas,
+  // contadores, líneas que se dibujan y barras que crecen. Sin CDN o con movimiento reducido, todo queda quieto.
+  animarPestana(key, enabled) {
+    if (!enabled || typeof window === 'undefined' || this.ultimaClave === key) return;
+    this.ultimaClave = key;
+    const token = (this.animToken = (this.animToken || 0) + 1);
+    this.motionLibrary ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.motionLibrary.then((lib) => {
+      if (!lib || token !== this.animToken || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (token !== this.animToken) return;
+        const panel = document.querySelector('.tp');
+        if (!panel || panel.closest('.still')) return;
+        lib.animate(panel, { opacity: [0, 1], x: [22, 0], duration: 380, ease: 'outQuart' });
+        const fmtN = (v, dec) => Number(v).toFixed(dec).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        this.animObserver?.disconnect();
+        this.animObserver = new IntersectionObserver((entries) => {
+          const vis = entries.filter((e) => e.isIntersecting).map((e) => e.target);
+          vis.forEach((n) => this.animObserver.unobserve(n));
+          if (!vis.length || token !== this.animToken) return;
+          const rows = vis.filter((n) => n.matches('[data-row], .sg-i, .chs, .syn-c'));
+          if (rows.length) lib.animate(rows, { opacity: [0, 1], y: [10, 0], delay: lib.stagger(26), duration: 360, ease: 'outCubic' });
+          vis.forEach((n) => {
+            n.querySelectorAll('[data-anim="draw"]').forEach((p) => lib.animate(lib.svg.createDrawable(p), { draw: ['0 0', '0 1'], duration: 1000, ease: 'inOutQuad' }));
+            if (n.matches('.dur')) lib.animate(n.querySelectorAll('[data-anim="grow"]'), { scaleY: [0, 1], delay: lib.stagger(70), duration: 600, ease: 'outBack(1.4)' });
+            n.querySelectorAll('[data-count]').forEach((el) => {
+              const end = parseFloat(el.dataset.count);
+              if (!isFinite(end)) return;
+              const dec = +(el.dataset.dec || 0), pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+              const o = { v: 0 };
+              lib.animate(o, { v: end, duration: 850, ease: 'outExpo', onUpdate: () => { if (el.isConnected && token === this.animToken) el.textContent = pre + fmtN(o.v, dec) + suf; } });
+            });
+          });
+        }, { rootMargin: '0px 0px -40px 0px' });
+        panel.querySelectorAll('[data-row], .sg-i, .chs, .syn-c, .dur').forEach((n) => this.animObserver.observe(n));
+      }));
+    });
+  }
+
+  renderVals() {
+    this.entradaPagina((this.props && this.props.animaciones) ?? true);
+    this.revelarSecciones('.aside > section, .aside > div, .foot', (this.props && this.props.animaciones) ?? true);
+    const S = this.state || {};
+    const tab = S.tab || 'build';
+    const rank = S.rank || 'ALL';
+    const rankOpen = !!S.rankOpen;
+    const motion = this.props.animaciones ?? true;
+
+    const Y = {
+      ALL: [52.5, 15.71, 28.35, 4060, 'S+', 1, 38],
+      IRON: [49.4, 18.74, 23.33, 391, 'A', 9, 36],
+      BRONZE: [53.8, 20.56, 23.65, 286, 'S', 4, 31],
+      SILVER: [47.2, 18.94, 23.98, 301, 'B', 15, 33],
+      GOLD: [53.1, 17.04, 25.77, 320, 'S', 3, 37],
+      PLATINUM: [53.6, 17.66, 24.12, 375, 'S+', 2, 38],
+      EMERALD: [53.1, 16.53, 26.2, 422, 'S+', 2, 38],
+      DIAMOND: [53, 13.82, 30.92, 508, 'S+', 2, 38],
+      MASTER_PLUS: [53.3, 13.82, 31.56, 1457, 'S+', 2, 38]
+    };
+    const RANKS = [
+      { k: 'ALL', l: 'Todos' }, { k: 'IRON', l: 'Hierro' }, { k: 'BRONZE', l: 'Bronce' }, { k: 'SILVER', l: 'Plata' },
+      { k: 'GOLD', l: 'Oro' }, { k: 'PLATINUM', l: 'Platino' }, { k: 'EMERALD', l: 'Esmeralda' },
+      { k: 'DIAMOND', l: 'Diamante' }, { k: 'MASTER_PLUS', l: 'Master+' }
+    ];
+    const IMG = {
+      IRON: '../assets/lol/rangos/iron.png', BRONZE: '../assets/lol/rangos/bronze.png',
+      SILVER: '../assets/lol/rangos/silver.png', GOLD: '../assets/lol/rangos/gold.png',
+      PLATINUM: '../assets/lol/rangos/platinum.png', EMERALD: '../assets/lol/rangos/emerald.png',
+      DIAMOND: '../assets/lol/rangos/diamond.png', MASTER_PLUS: '../assets/lol/rangos/master.png',
+      ALL: '../assets/lol/posiciones/fill.png'
+    };
+    const TCLS = { 'S+': 't-sp', 'S': 't-s', 'A': 't-a', 'B': 't-b', 'C': 't-c', 'D': 't-d' };
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const pct = (v) => v.toFixed(1).replace('.', ',') + '%';
+    const wc = (w) => (w >= 51.5 ? 'hi' : (w < 49 ? 'lo' : ''));
+    const cur = RANKS.find((r) => r.k === rank) || RANKS[0];
+    const y = Y[rank];
+
+    const byRank = RANKS.map((r) => {
+      const v = Y[r.k];
+      return {
+        l: r.k === 'ALL' ? 'Todos los rangos' : r.l, img: IMG[r.k], on: r.k === rank ? 'on' : '',
+        wr: pct(v[0]), wc: wc(v[0]), w: Math.max(6, Math.min(100, (v[0] - 44) / 14 * 100)).toFixed(0) + '%',
+        pr: pct(v[1]), br: pct(v[2]), games: fmt(v[3]), t: v[4], tc: TCLS[v[4]], pos: v[5], of: v[6]
+      };
+    });
+
+    const others = [
+      { n: 'Katarina', cls: 'Asesina', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Katarina.png', t: 'S+', wr: 53.9 },
+      { n: 'Fizz', cls: 'Asesino', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fizz.png', t: 'S', wr: 52.3 },
+      { n: 'Sylas', cls: 'Luchador', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Sylas.png', t: 'S', wr: 50.3 },
+      { n: 'Yone', cls: 'Luchador', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yone.png', t: 'S', wr: 49.9 },
+      { n: 'Ziggs', cls: 'Mago', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ziggs.png', t: 'A', wr: 53.5 },
+      { n: 'Heimerdinger', cls: 'Mago', i: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Heimerdinger.png', t: 'A', wr: 52.9 }
+    ].map((o) => ({ ...o, tc: TCLS[o.t], wc: wc(o.wr), wr: pct(o.wr) }));
+
+    const mega = [
+      ['Alistar', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Alistar.png'], ['Amumu', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Amumu.png'],
+      ["Bel'Veth", 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Belveth.png'], ['Blitzcrank', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Blitzcrank.png'],
+      ['Caitlyn', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Caitlyn.png'], ["Cho'Gath", 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Chogath.png'],
+      ['Darius', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Darius.png'], ['Draven', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Draven.png'],
+      ['Ekko', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Ekko.png'], ['Fiora', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fiora.png'],
+      ['Fizz', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Fizz.png'], ['Garen', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Garen.png'],
+      ['Heimerdinger', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Heimerdinger.png'], ['Illaoi', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Illaoi.png'],
+      ['Janna', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Janna.png'], ['Jarvan IV', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/JarvanIV.png'],
+      ['Jhin', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jhin.png'], ['Jinx', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Jinx.png'],
+      ["Kai'Sa", 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kaisa.png'], ['Kalista', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kalista.png'],
+      ['Katarina', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Katarina.png'], ['Kayle', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Kayle.png'],
+      ['Leona', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Leona.png'], ['Yasuo', 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yasuo.png']
+    ].map((m) => ({ n: m[0], i: m[1] }));
+
+
+    const MU = [["Varus", "46.154% 83.333%", 68.25, 15.24, 126], ["Ezreal", "30.769% 16.667%", 66.21, 10.76, 219], ["Lucian", "38.462% 41.667%", 62.63, 7.54, 190], ["Karma", "15.385% 33.333%", 62.39, 10.36, 117], ["Smolder", "7.692% 75.000%", 62.04, 9.02, 245], ["Maestro Yi", "84.615% 41.667%", 58.18, 9.06, 110], ["Mel", "92.308% 41.667%", 57.83, 7.13, 1086], ["Jhin", "84.615% 25.000%", 57.8, 5.69, 109], ["Kai'Sa", "0.000% 33.333%", 57.44, 4.21, 195], ["Zilean", "15.385% 100.000%", 56.45, 11.61, 124], ["K'Sante", "100.000% 25.000%", 56.25, 4.14, 112], ["Locke", "30.769% 41.667%", 56.15, 6.11, 3824], ["Briar", "38.462% 8.333%", 55.65, 7.27, 124], ["Naafiri", "30.769% 50.000%", 55.47, 7.31, 548], ["Kog'Maw", "92.308% 33.333%", 55.44, 7.36, 377], ["Sylas", "38.462% 75.000%", 55.18, 5.32, 4407], ["Lux", "53.846% 41.667%", 54.94, 7.28, 2379], ["Diana", "92.308% 8.333%", 54.77, 7.72, 2213], ["Ryze", "15.385% 66.667%", 54.35, 2.96, 1299], ["Tristana", "100.000% 75.000%", 54.25, 2.39, 341], ["Corki", "76.923% 8.333%", 54.04, 0.81, 272], ["Akshan", "23.077% 0.000%", 53.74, 5.43, 1003], ["Syndra", "46.154% 75.000%", 53.62, 4.71, 5524], ["Orianna", "0.000% 58.333%", 53.41, 2.39, 3327], ["Irelia", "38.462% 25.000%", 53.3, 3.92, 1865], ["Morgana", "23.077% 50.000%", 53.25, 5.22, 231], ["LeBlanc", "100.000% 33.333%", 53.21, 5.76, 3503], ["Zoe", "23.077% 100.000%", 53.11, 5.34, 1862], ["Twisted Fate", "15.385% 83.333%", 52.81, 5.45, 2842], ["Talon", "69.231% 75.000%", 52.69, 4.43, 1171], ["Katarina", "38.462% 33.333%", 52.5, 5.54, 4476], ["Fizz", "53.846% 16.667%", 52.31, 5.64, 3468], ["Brand", "23.077% 8.333%", 52.31, 4.94, 390], ["Akali", "15.385% 0.000%", 52.28, 2.81, 6934], ["Zed", "100.000% 91.667%", 52.25, 3.69, 7165], ["Qiyana", "38.462% 58.333%", 52.23, 2.64, 1612], ["Vel'Koz", "69.231% 83.333%", 52.09, 5.49, 743], ["Xerath", "30.769% 91.667%", 52.08, 5.06, 2335], ["Hwei", "23.077% 25.000%", 51.73, 4.91, 2113], ["Galio", "61.538% 16.667%", 51.45, 1.77, 2342], ["Anivia", "53.846% 0.000%", 51.28, 2.66, 1568], ["Xin Zhao", "38.462% 91.667%", 51.24, 2.06, 121], ["Cassiopeia", "61.538% 8.333%", 51.02, 0.3, 1033], ["Ambessa", "38.462% 0.000%", 50.85, 0.48, 236], ["Jayce", "76.923% 25.000%", 50.63, 0.55, 553], ["Ahri", "7.692% 0.000%", 50.5, 3.48, 7760], ["Veigar", "61.538% 83.333%", 50.12, 3.2, 2069], ["Jax", "69.231% 25.000%", 50.0, -2.0, 194], ["Ekko", "7.692% 16.667%", 49.68, 3.63, 3595], ["Renekton", "92.308% 58.333%", 49.34, 0.83, 1295], ["Ziggs", "7.692% 100.000%", 49.17, 1.47, 362], ["Mordekaiser", "15.385% 50.000%", 48.89, 0.31, 180], ["Viktor", "100.000% 83.333%", 48.71, -0.37, 4833], ["Kayle", "46.154% 33.333%", 48.67, 1.43, 489], ["Neeko", "61.538% 50.000%", 48.6, 1.99, 179], ["Yone", "53.846% 91.667%", 48.53, 0.27, 7643], ["Cho'Gath", "69.231% 8.333%", 48.28, -0.59, 437], ["Swain", "30.769% 75.000%", 48.25, 0.44, 599], ["Malzahar", "69.231% 41.667%", 48.23, 0.08, 3753], ["Vex", "76.923% 83.333%", 48.21, 2.05, 3053], ["Kassadin", "30.769% 33.333%", 48.18, 0.6, 2011], ["Gragas", "92.308% 16.667%", 48.11, 1.38, 424], ["Azir", "100.000% 0.000%", 48.08, -2.51, 1589], ["Aurora", "92.308% 0.000%", 48.05, 0.27, 1561], ["Sion", "92.308% 66.667%", 47.76, 0.73, 379], ["Gwen", "0.000% 25.000%", 47.64, 2.3, 296], ["Kennen", "61.538% 33.333%", 47.61, 2.39, 355], ["Malphite", "61.538% 41.667%", 47.37, -0.82, 1083], ["Riven", "0.000% 66.667%", 47.13, -0.5, 558], ["Tryndamere", "7.692% 83.333%", 46.94, 1.17, 294], ["Twitch", "23.077% 83.333%", 46.61, -3.32, 118], ["Pantheon", "15.385% 58.333%", 46.46, -0.21, 1285], ["Nasus", "46.154% 50.000%", 46.45, -1.66, 521], ["Volibear", "7.692% 91.667%", 46.2, -5.47, 329], ["Aurelion Sol", "84.615% 0.000%", 46.11, -1.41, 1594], ["Lissandra", "23.077% 41.667%", 46.06, -1.45, 5352], ["Annie", "61.538% 0.000%", 46.04, -1.23, 1905], ["Sett", "53.846% 66.667%", 45.96, -2.76, 322], ["Heimerdinger", "15.385% 25.000%", 45.86, -0.04, 157], ["Vladimir", "0.000% 91.667%", 45.65, -1.07, 3919], ["Taliyah", "61.538% 75.000%", 45.49, -3.06, 2196], ["Viego", "92.308% 83.333%", 45.04, -4.35, 131], ["Darius", "84.615% 8.333%", 44.95, -1.58, 198], ["Singed", "84.615% 66.667%", 44.44, -3.49, 180], ["Garen", "76.923% 16.667%", 43.68, -3.62, 451], ["Rumble", "7.692% 66.667%", 43.45, -6.78, 145], ["Gangplank", "69.231% 16.667%", 43.4, -6.29, 318], ["Nunu y Willump", "92.308% 50.000%", 42.24, -5.69, 161], ["Quinn", "46.154% 58.333%", 39.76, -7.62, 166], ["Zac", "92.308% 91.667%", 39.0, -9.63, 100]];
+    const q = (S.q || '').trim().toLowerCase(); const sort = S.sort || 'wd'; const big = S.big ?? true;
+    const MUr = MU.map((m) => { const sh = ((Y[rank] || Y.ALL)[0] - 52.5); return [m[0], m[1], Math.max(30, Math.min(70, m[2] + sh)), m[3], Math.round(m[4] * ((Y[rank] || Y.ALL)[3] / 4060))]; });
+    let mus = MUr.filter((m) => (!big || m[4] >= 1000) && (!q || m[0].toLowerCase().includes(q)));
+    mus = mus.slice().sort((a, b) => (sort === 'wd' ? b[2] - a[2] : sort === 'wa' ? a[2] - b[2] : b[4] - a[4]));
+    const pc2 = (v) => v.toFixed(1).replace('.', ',') + ' %';
+    const fmt2 = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const muView = mus.map((m) => { const off = (m[2] - 50) / 20 * 50; return { sel: S.mu === m[0] ? 'sel' : '', pr: S.mu === m[0] ? 'true' : 'false', pick: () => this.setState({ mu: S.mu === m[0] ? null : m[0] }), n: m[0], p: m[1], w: pc2(m[2]), d: (m[3] > 0 ? '+' : '') + m[3].toFixed(1).replace('.', ',') + ' pp', g: fmt2(m[4]),
+      c: m[3] >= 0 ? 'g' : 'b', l: (off >= 0 ? 50 : 50 + Math.max(-50, off)).toFixed(1) + '%', wd: Math.min(50, Math.abs(off)).toFixed(1) + '%' }; });
+    const ROLES = [['mid', 'Mid', '60,2 %'], ['top', 'Top', '24,2 %'], ['bot', 'ADC', '15,1 %']];
+    const role = S.role || 'mid';
+    const go = (t) => () => this.setState({ tab: t });
+
+    // --- LF1 · Datos de ejemplo que cambian con la línea y el rango elegidos ---
+    const ROLE_NAMES = { mid: ['Mid', 'mid', '60,2 %'], top: ['Top', 'top', '24,2 %'], bot: ['ADC', 'ADC', '15,1 %'] };
+    const RN = ROLE_NAMES[role] || ROLE_NAMES.mid;
+    const ROLE_SHARE = { mid: 1, top: 24.2 / 60.2, bot: 15.1 / 60.2 };
+    const G = Math.round(y[3] * (ROLE_SHARE[role] || 1));
+    const RANK_KEYS = RANKS.map((r) => r.k);
+    const seed = (['mid', 'top', 'bot'].indexOf(role) + 1) * 3.7 + RANK_KEYS.indexOf(rank) * 1.3;
+    const wrBase = y[0], prBase = y[1], brBase = y[2];
+    const shift = wrBase - 52.5;
+    const es1 = (v, d = 1) => v.toFixed(d).replace('.', ',');
+    const series = (end, amp, n, sd) => {
+      const raw = Array.from({ length: n }, (_, i) => Math.sin(i / 3.1 + sd) * amp * 0.6 + Math.cos(i / 1.7 + sd * 2) * amp * 0.4 + (i > 18 ? amp * 0.5 : 0));
+      const off = end - raw[n - 1];
+      return raw.map((v) => v + off);
+    };
+    const chart = (k, arr, col) => {
+      const min = Math.min(...arr), max = Math.max(...arr), span = (max - min) || 1;
+      const pts = arr.map((v, i) => [i / (arr.length - 1) * 300, 78 - (v - min) / span * 68]);
+      const line = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+      const last = arr[arr.length - 1], d = last - arr[0];
+      const pxp = (19 / (arr.length - 1) * 100).toFixed(1) + '%';
+      return { k, line, area: line + ' L300 86 L0 86 Z', col, px: (19 / (arr.length - 1) * 300).toFixed(1), pxp,
+        raw: last.toFixed(1), v: es1(last) + ' %', min: es1(min) + ' %', max: es1(max) + ' %',
+        d: (d >= 0 ? '▲ ' : '▼ ') + es1(Math.abs(d)) + ' pp', dc: k === 'Banrate' ? 'nt' : (d >= 0 ? 'up' : 'dn'),
+        sr: k + ' en los últimos 30 días: empezó en ' + es1(arr[0]) + ' % y hoy está en ' + es1(last) + ' %, con un mínimo de ' + es1(min) + ' % y un máximo de ' + es1(max) + ' %.' };
+    };
+    const charts = [chart('Winrate', series(wrBase, 1.1, 30, 1 + seed), '#62D99C'), chart('Pickrate', series(prBase, 0.9, 30, 4 + seed), '#E2B566'), chart('Banrate', series(brBase, 1.6, 30, 7 + seed), '#F08A7A')];
+    const DUR = [['< 20 min', 46.8, 1820], ['20–25', 50.2, 6340], ['25–30', 52.7, 9915], ['30–35', 54.1, 7210], ['35–40', 55.0, 3105], ['40+ min', 53.4, 1260]]
+      .map((d, _, all) => [d[0], Math.max(40, Math.min(62, d[1] + shift)), d[2] / all.reduce((t, x) => t + x[2], 0)]);
+    { let acc = 0; DUR.forEach((d, i) => { const v = i === DUR.length - 1 ? G - acc : Math.round(d[2] * G); d[2] = v; acc += v; }); }
+    const DMIN = 44, DMAX = 58, dh = (v) => Math.max(4, (v - DMIN) / (DMAX - DMIN) * 100);
+    const dur = DUR.map((d) => ({ l: d[0], w: es1(d[1]) + ' %', g: fmt(Math.max(1, d[2])), h: dh(d[1]).toFixed(0) + '%', c: d[1] >= 51.5 ? 'hi' : (d[1] < 49 ? 'lo' : '') }));
+    const best = DUR.reduce((a, b) => (b[1] > a[1] ? b : a));
+    const durTitle = 'Su mejor tramo: ' + (best[0].includes('min') ? best[0] : 'de ' + best[0].replace('–', ' a ') + ' min') + ' (' + es1(best[1]) + ' %)';
+    const durRef = dh(50).toFixed(0) + '%';
+    const k15 = 1 + shift / 20;
+    const LANE = [['Oro', 142 * k15, 0, ' de oro'], ['CS', 3.1 * k15, 1, ''], ['Experiencia', 88 * k15, 0, ' de XP']];
+    const lane3 = LANE.map((x) => ({ k: x[0], raw: Math.abs(x[1]).toFixed(x[2]), dec: x[2], pre: x[1] >= 0 ? '+' : '−', suf: x[3], v: (x[1] >= 0 ? '+' : '−') + es1(Math.abs(x[1]), x[2]) + x[3], c: x[1] >= 0 ? 'up' : 'dn' }))
+;
+    const lane = lane3;
+    const lvl2 = { raw: (54.2 + shift).toFixed(1), v: es1(54.2 + shift) + ' % de partidas' };
+    // dir: 1 = cuanto más, mejor; -1 = cuanto menos, mejor; 0 = depende
+    const AVG = [['Asesinatos', 7.1, 1, '', 0.6, 1], ['Muertes', 6.4, 1, '', 0.5, -1], ['Asistencias', 5.9, 1, '', -0.8, 1], ['KDA', 2.03, 2, '', 0.07, 1],
+      ['Participación en asesinatos', 48, 0, ' %', -2, 1], ['Daño por minuto', 712, 0, '', 38, 1], ['Oro por minuto', 431, 0, '', 12, 1], ['CS por minuto', 7.8, 1, '', 0.4, 1],
+      ['Visión por minuto', 0.71, 2, '', -0.09, 1], ['% del daño del equipo', 26, 0, ' %', 2, 0], ['Asesinatos en solitario', 1.9, 1, '', 0.6, 1], ['Primera sangre', 11.2, 1, ' %', 1.4, 1]];
+    const avg = AVG.map((x) => {
+      const v = x[1] * (1 + shift / 60);
+      const good = x[5] === 0 ? null : x[4] * x[5] >= 0;
+      const unit = x[3] === ' %' ? ' pp' : '';
+      return { k: x[0], raw: v.toFixed(x[2]), dec: x[2], suf: x[3], v: es1(v, x[2]) + x[3], d: (x[4] >= 0 ? '+' : '−') + es1(Math.abs(x[4]), x[2]) + unit, c: good === null ? 'nt' : (good ? 'up' : 'dn') };
+    });
+    const SYN = [['Malphite', 'Top', 4.4, 612], ['Diana', 'Jungla', 2.8, 845], ['JarvanIV', 'Jungla', 2.3, 1203], ['Alistar', 'Support', 2.1, 498], ['Gragas', 'Jungla', 1.6, 731]];
+    const SPOS = {"Malphite": "61.538% 41.667%", "Diana": "92.308% 8.333%", "JarvanIV": "61.538% 25.000%", "Alistar": "30.769% 0.000%", "Gragas": "92.308% 16.667%"};
+    const syn = SYN.map((a) => ({ n: a[0] === 'JarvanIV' ? 'Jarvan IV' : a[0], r: a[1], p: SPOS[a[0]], w: es1(wrBase + a[2]) + ' %', d: '+' + es1(a[2]) + ' pp', g: fmt(Math.round(a[3] * (y[3] / 4060))) }));
+    const IT = '../assets/lol/objetos/';
+    const BV = [
+      ['Crítico clásico', 'Compás letal · Precisión + Valor', '0.000% 33.333%', 'Compás letal', [6673, 'Arcoescudo inmortal'], [3031, 'Filo infinito'], [6333, 'Baile de la muerte'], [3006, 'Grebas de berserker'], 55.4, 9812],
+      ['Al golpe', 'Conquistador · Precisión + Brujería', '22.222% 33.333%', 'Conquistador', [3153, 'Hoja del rey arruinado'], [6672, 'Matakrakens'], [6333, 'Baile de la muerte'], [3047, 'Botas de acero reforzado'], 54.6, 3420],
+      ['Crítico con penetración', 'Compás letal · Precisión + Dominación', '0.000% 33.333%', 'Compás letal', [6673, 'Arcoescudo inmortal'], [3031, 'Filo infinito'], [3036, 'Recuerdos de lord Dominik'], [3006, 'Grebas de berserker'], 53.9, 6105],
+      ['Aguante contra AP', 'Conquistador · Precisión + Valor', '22.222% 33.333%', 'Conquistador', [6673, 'Arcoescudo inmortal'], [3156, 'Fauces de Malmortius'], [3031, 'Filo infinito'], [3111, 'Botas de mercurio'], 53.1, 1388]
+    ];
+    const bvAll = BV.map((b, k) => {
+      const w = b[8] + shift;
+      return { k: k + 1, top: k === 0 ? 'top' : '', n: b[0], sub: b[1], ks: b[2], ksn: b[3],
+        i1: IT + b[4][0] + '.png', n1: b[4][1], i2: IT + b[5][0] + '.png', n2: b[5][1], i3: IT + b[6][0] + '.png', n3: b[6][1], ib: IT + b[7][0] + '.png', nb: b[7][1],
+        raw: w.toFixed(1), w: es1(w) + ' %', wd: Math.max(0, Math.min(100, (w - 45) / 15 * 100)).toFixed(0) + '%', gn: Math.round(b[9] * (y[3] / 4060)), g: fmt(Math.round(b[9] * (y[3] / 4060))) };
+    });
+    const bvars = role === 'mid' ? bvAll.filter((b) => b.gn >= 1000).map((b, k) => ({ ...b, k: k + 1, top: k === 0 ? 'top' : '' })) : [];
+    const bvEmpty = role !== 'mid'
+      ? 'Todavía no hay builds de ejemplo de Yasuo en ' + RN[0] + '. Cambia a Mid para verlas.'
+      : 'En ' + (rank === 'ALL' ? 'todos los rangos' : (RANKS.find((r) => r.k === rank) || {}).l) + ' ninguna build de Yasuo llega a 1.000 partidas. Prueba con «Todos» o con un rango con más muestra.';
+    const hasMu = role === 'mid';
+    const sel = S.mu || null;
+    const MUi = hasMu ? mus.find((m) => m[0] === sel) : null;
+    const md = MUi ? (() => {
+      const dlt = (MUi[2] - 50) / 4;
+      const sgn = (v, d, suf) => (v >= 0 ? '+' : '−') + es1(Math.abs(v), d) + suf;
+      const gold = Math.round(dlt * 90), cs = dlt * 1.6, xp = Math.round(dlt * 55);
+      const tip = MUi[2] >= 52 ? 'Duelo a favor: busca intercambios cortos con la Q cargada y presiona antes del nivel 6.'
+        : MUi[2] >= 48 ? 'Duelo igualado: juega la oleada y guarda el Muro de viento para su habilidad clave.'
+        : 'Duelo en contra: farmea seguro, no gastes la E sin súbditos cerca y espera a tu jungla.';
+      return { n: MUi[0], p: MUi[1], w: pc2(MUi[2]), wc: MUi[2] >= 50 ? 'up' : 'dn', g: fmt2(MUi[4]), gp: fmt2(MUi[4]) + ' partidas',
+        gold: sgn(gold, 0, ''), gc: gold >= 0 ? 'up' : 'dn', cs: sgn(cs, 1, ''), cc: cs >= 0 ? 'up' : 'dn', xp: sgn(xp, 0, ''), xc: xp >= 0 ? 'up' : 'dn', tip };
+    })() : null;
+    const TABS = ['build', 'mu', 'rank', 'stats'];
+    const tabKeys = (e) => {
+      const i = TABS.indexOf(tab);
+      let n = null;
+      if (e.key === 'ArrowRight') n = TABS[(i + 1) % TABS.length];
+      else if (e.key === 'ArrowLeft') n = TABS[(i + TABS.length - 1) % TABS.length];
+      else if (e.key === 'Home') n = TABS[0];
+      else if (e.key === 'End') n = TABS[TABS.length - 1];
+      if (!n) return;
+      e.preventDefault();
+      this.setState({ tab: n });
+      requestAnimationFrame(() => document.getElementById('tab-' + n)?.focus());
+    };
+    this.animarPestana([tab, role, rank, sel].join('|'), motion);
+    return {
+      motionClass: motion ? '' : 'still',
+      tier: y[4], tierCls: TCLS[y[4]],
+      s: { wr: pct(y[0]), wc: wc(y[0]), pr: pct(y[1]), br: pct(y[2]), games: fmt(Math.round(y[3] * ({ mid: 1, top: 24.2 / 60.2, bot: 15.1 / 60.2 }[S.role || 'mid'] || 1))), pos: y[5], of: y[6] },
+      byRank, others, mega, charts, dur, lane, avg, syn, bvars, durTitle, durRef, tabKeys,
+      roleName: RN[0], roleNameLow: RN[1], lvl2, bvEmpty, noBv: bvars.length === 0, rolePct: RN[2], hasMu, noMu: !hasMu, muOpen: hasMu && !!md, md: md || {}, closeMu: () => this.setState({ mu: null }),
+      muTotal: hasMu ? MU.length : 0,
+      tiBuild: tab === 'build' ? '0' : '-1', tiMu: tab === 'mu' ? '0' : '-1', tiRank: tab === 'rank' ? '0' : '-1', tiStats: tab === 'stats' ? '0' : '-1',
+      mus: muView, muCount: role !== 'mid' ? 'Sin datos en ' + ({ top: 'Top', bot: 'ADC' }[role] || role) : mus.length + (mus.length === 1 ? ' rival' : ' rivales'), q: S.q || '', onQ: (e) => this.setState({ q: e.target.value }),
+      sorts: [['wd', 'Mejores primero'], ['wa', 'Peores primero'], ['g', 'Más jugados']].map((o) => ({ n: o[1], on: sort === o[0] ? 'on' : '', pick: () => this.setState({ sort: o[0] }) })),
+      bigOn: big ? 'on' : '', bigPr: big ? 'true' : 'false', toggleBig: () => this.setState({ big: !big }),
+      roles: ROLES.map((r) => ({ k: r[0], n: r[1], p: r[2], on: role === r[0] ? 'on' : '', pr: role === r[0] ? 'true' : 'false', pick: () => this.setState({ role: r[0] }) })),
+
+      tabBuild: tab === 'build' ? 'on' : '', tabRank: tab === 'rank' ? 'on' : '', tabMu: tab === 'mu' ? 'on' : '', tabStats: tab === 'stats' ? 'on' : '',
+      selBuild: tab === 'build' ? 'true' : 'false', selRank: tab === 'rank' ? 'true' : 'false', selMu: tab === 'mu' ? 'true' : 'false', selStats: tab === 'stats' ? 'true' : 'false',
+      showBuild: tab === 'build', showRank: tab === 'rank', showMu: tab === 'mu', showStats: tab === 'stats',
+      goBuild: go('build'), goRank: go('rank'), goMu: go('mu'), goStats: go('stats'),
+      rankBtn: cur.k === 'ALL' ? 'Todos' : cur.l,
+      isAll: cur.k === 'ALL', notAll: cur.k !== 'ALL', curImg: IMG[cur.k],
+      rankOpen, rankOn: rankOpen ? 'on' : '', rankExp: rankOpen ? 'true' : 'false',
+      toggleRank: () => this.setState({ rankOpen: !rankOpen }),
+      closeDD: () => { if (rankOpen) this.setState({ rankOpen: false }); },
+      rankItems: ['MASTER_PLUS', 'DIAMOND', 'EMERALD', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON'].map((k) => {
+        const r = RANKS.find((x) => x.k === k);
+        return { l: r.l, img: IMG[k], on: rank === k ? 'on' : '', chk: rank === k ? 'true' : 'false', pick: () => this.setState({ rank: k, rankOpen: false }) };
+      }),
+      allOn: rank === 'ALL' ? 'on' : '', allChk: rank === 'ALL' ? 'true' : 'false',
+      pickAll: () => this.setState({ rank: 'ALL', rankOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

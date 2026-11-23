@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa de Kanto · Pokémon · GrietaMeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Pixelify+Sans:wght@500;600&display=swap">
+<link rel="stylesheet" href="pokemon.css">
+<style>
+  body { --accent: #9BBC0F; --accent-hi: #C4D96A; --accent-ink: #0F2A12; --accent-soft: rgba(155, 188, 15, 0.12); }
+  .mapview { display: grid; grid-template-columns: 1fr 380px; height: calc(100vh - var(--nav-h) - var(--sub-h)); min-height: 560px; }
+  .stage { position: relative; overflow: hidden; background: #08100A; cursor: grab; touch-action: none; }
+  .stage.drag { cursor: grabbing; }
+  .stage svg { width: 100%; height: 100%; }
+  .sea { fill: #08100A; }
+  .land { fill: #0E1C10; stroke: #1C3A1D; stroke-width: 2; }
+  .road { stroke: #2E5A2A; stroke-width: 9; stroke-linecap: round; fill: none; }
+  .road.water { stroke: #1D3B52; stroke-dasharray: 2 14; }
+  .rlabel { font: 600 13px var(--font-pixel); fill: #4C7A3D; }
+  .pin { cursor: pointer; }
+  .pin text { font: 600 14px var(--font-body); fill: var(--ink); paint-order: stroke; stroke: #08100A; stroke-width: 5px; }
+  .pin:hover text, .pin.sel text { fill: var(--gb-3); }
+  .pin.sel .ring { stroke: var(--gb-3); stroke-width: 3; }
+  .pin.done { opacity: 0.45; }
+  .pin.hidden { display: none; }
+
+  .tools { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; gap: 8px; flex-wrap: wrap; pointer-events: none; }
+  .tools > * { pointer-events: auto; }
+  .layer { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(9, 13, 10, 0.88); backdrop-filter: blur(8px); font-size: 13px; cursor: pointer; color: var(--ink-dim); }
+  .layer i { width: 10px; height: 10px; border-radius: 3px; }
+  .layer[aria-pressed="false"] { opacity: 0.5; }
+  .layer[aria-pressed="false"] i { background: transparent !important; outline: 1.5px solid currentColor; }
+  .zoom { position: absolute; right: 14px; bottom: 14px; display: grid; border-radius: 12px; overflow: hidden; border: 1px solid var(--line-strong); background: rgba(9, 13, 10, 0.9); }
+  .zoom button { width: 40px; height: 40px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+  .zoom button + button { border-top: 1px solid var(--line); }
+  .zoom button:hover { background: rgba(255, 255, 255, 0.06); }
+  .hint { position: absolute; left: 14px; bottom: 14px; font-size: 12px; color: var(--ink-mute); background: rgba(9, 13, 10, 0.8); padding: 6px 10px; border-radius: 8px; }
+
+  .panel { border-left: 1px solid var(--line); background: var(--bg-raised); overflow-y: auto; scrollbar-width: thin; }
+  .p-head { padding: 22px 22px 16px; border-bottom: 1px solid var(--line); }
+  .p-head .kind { font: 600 12px var(--font-pixel); color: var(--gb-2); }
+  .p-head h2 { font-size: 28px; margin: 4px 0 6px; }
+  .p-head p { margin: 0; color: var(--ink-dim); font-size: 14px; }
+  .p-blk { padding: 16px 22px; border-bottom: 1px solid var(--line); }
+  .p-blk h3 { font: 600 13px var(--font-body); color: var(--ink-mute); margin-bottom: 10px; }
+  .mons { display: grid; gap: 6px; }
+  .mon { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .mon .sprite { width: 34px; border-radius: 8px; }
+  .mon b { font-weight: 500; flex: 1; }
+  .mon .lv { color: var(--ink-mute); font-size: 12.5px; }
+  .check { display: flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 14px; cursor: pointer; }
+  .check input { appearance: none; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--line-strong); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; }
+  .check input:checked { background: var(--gb-2); border-color: var(--gb-2); }
+  .check input:checked::after { content: ""; width: 10px; height: 6px; border: 2.5px solid var(--gb-0); border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
+  .check input:checked + span { color: var(--ink-mute); text-decoration: line-through; }
+  .check .muted { margin-left: auto; font-size: 12.5px; }
+  .gym { display: flex; gap: 12px; align-items: center; }
+  .gym b { font-size: 16px; }
+  .p-empty { padding: 28px 22px; color: var(--ink-mute); }
+
+  @media (max-width: 860px) {
+    .mapview { grid-template-columns: 1fr; grid-template-rows: 62vh auto; height: auto; }
+    .panel { border-left: 0; border-top: 1px solid var(--line); padding-bottom: 64px; }
+    .tools { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body data-page="mapa">
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Mapa de Kanto</h1>
+<main class="mapview">
+  <div class="stage" id="stage">
+    <svg id="svg" viewBox="0 0 1000 760" aria-label="Mapa esquemático de Kanto">
+      <rect class="sea" x="-2000" y="-2000" width="5000" height="5000"/>
+      <g id="world">
+        <path class="land" d="M30 70 Q40 40 120 40 L620 30 Q700 20 760 60 L930 90 Q970 110 960 200 L940 520 Q930 600 860 620 L560 650 Q520 700 470 700 L470 640 L400 640 Q360 600 330 580 L260 580 L230 600 L140 600 Q100 590 100 540 L100 300 Q40 290 30 220 Z"/>
+        <path class="land" d="M150 660 h70 v60 h-70z M280 665 h55 v50 h-55z"/>
+        <g id="roads"></g>
+        <g id="rlabels"></g>
+        <g id="pins"></g>
+      </g>
+    </svg>
+    <div class="tools" id="layers" role="group" aria-label="Capas"></div>
+    <div class="zoom">
+      <button id="zin" aria-label="Acercar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button id="zout" aria-label="Alejar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg></button>
+      <button id="zreset" aria-label="Ver todo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+    <span class="hint">Arrastra para moverte · rueda o pellizco para el zoom</span>
+  </div>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+</main>
+
+<script src="data.js"></script>
+<script src="shell.js"></script>
+<script>
+  // Esquema propio de Kanto (no es el mapa del juego): ciudades, rutas y lugares.
+  const P = {
+    paleta: [180, 560], verde: [180, 420], bosque: [180, 300], plateada: [180, 170], mtmoon: [340, 150], celeste: [520, 150],
+    cuevac: [450, 80], pepita: [600, 70], tunel: [770, 180], central: [880, 140], lavanda: [770, 330], torre: [830, 300],
+    azafran: [520, 330], silph: [560, 290], azulona: [380, 330], carmin: [520, 470], diglett: [650, 470], snorlax12: [770, 450],
+    fucsia: [430, 610], safari: [470, 560], snorlax16: [250, 360], espuma: [310, 690], canela: [185, 690], victoria: [60, 250], meseta: [60, 110],
+  };
+  const ROADS = [
+    ["paleta", "verde", "1"], ["verde", "bosque", "2"], ["bosque", "plateada"], ["plateada", "mtmoon", "3"], ["mtmoon", "celeste", "4"],
+    ["celeste", "pepita", "24"], ["celeste", "azafran", "5"], ["azafran", "carmin", "6"], ["azulona", "azafran", "7"], ["azafran", "lavanda", "8"],
+    ["celeste", "tunel", "9"], ["tunel", "lavanda", "10"], ["tunel", "central"], ["carmin", "diglett", "11"], ["lavanda", "snorlax12", "12"],
+    ["snorlax12", "fucsia", "13–15"], ["azulona", "snorlax16", "16"], ["snorlax16", "fucsia", "17–18"], ["verde", "victoria", "22–23"], ["victoria", "meseta"],
+    ["fucsia", "espuma", "19–20", true], ["espuma", "canela", "20", true], ["canela", "paleta", "21", true], ["fucsia", "safari"], ["lavanda", "torre"], ["azafran", "silph"], ["celeste", "cuevac"],
+  ];
+
+  const LAYERS = {
+    city: { n: "Ciudades", c: "#ECE9E1" },
+    gym: { n: "Gimnasios", c: "#9BBC0F" },
+    place: { n: "Lugares", c: "#8DB6FF" },
+    item: { n: "Objetos y MT", c: "#FFD35C" },
+    legend: { n: "Legendarios", c: "#FF5A4E" },
+  };
+
+  const g = (i) => PK.GYMS[i];
+  const LOC = [
+    { id: "paleta", k: "city", n: "Pueblo Paleta", d: "Donde empieza todo: el laboratorio del Prof. Oak, tu inicial y la Pokédex.", mons: [[72, "Surf · Nv. 5–40"]] },
+    { id: "verde", k: "gym", n: "Ciudad Verde", d: "El gimnasio está cerrado hasta el final. Lleva el paquete de la tienda al Prof. Oak.", gym: 7 },
+    { id: "bosque", k: "place", n: "Bosque Verde", d: "Laberinto de hierba alta entre Ciudad Verde y Plateada.", mons: [[10, "Nv. 3–5"], [13, "Nv. 3–5"], [25, "Nv. 3–5 · 5 %"]], items: ["Antídoto", "Poción", "Poké Ball"] },
+    { id: "plateada", k: "gym", n: "Ciudad Plateada", d: "Primer gimnasio. El museo guarda el Ámbar Viejo.", gym: 0 },
+    { id: "mtmoon", k: "place", n: "Mt. Moon", d: "Cueva de tres plantas. Al final eliges el fósil Hélix o el Domo.", mons: [[41, "Nv. 7–12"], [74, "Nv. 7–10"], [46, "Nv. 8–12"], [35, "Nv. 8–12 · 6 %"]], items: ["MT01 Megapuño", "MT12 Pistola Agua", "Fósil Hélix o Domo"] },
+    { id: "celeste", k: "gym", n: "Ciudad Celeste", d: "Segundo gimnasio. En la casa robada recuperas la MT28 Excavar.", gym: 1, items: ["MT28 Excavar"] },
+    { id: "cuevac", k: "legend", n: "Cueva Celeste", d: "Solo se abre tras ser campeón. Al fondo espera Mewtwo.", mons: [[150, "Nv. 70"]] },
+    { id: "tunel", k: "place", n: "Túnel Roca", d: "Totalmente a oscuras: conviene llevar la MO05 Destello.", mons: [[66, "Nv. 15–17"], [95, "Nv. 13–17"]] },
+    { id: "central", k: "legend", n: "Central Energía", d: "Se llega haciendo Surf por la Ruta 10. Zapdos está al fondo.", mons: [[145, "Nv. 50"], [25, "Nv. 20–24"], [81, "Nv. 21–23"], [125, "Nv. 33–36 · Rojo"]] },
+    { id: "lavanda", k: "city", n: "Pueblo Lavanda", d: "Pueblo sin gimnasio. La Torre Pokémon necesita el Scope Silph." },
+    { id: "torre", k: "place", n: "Torre Pokémon", d: "Fantasmas que no puedes identificar sin el Scope Silph.", mons: [[92, "Nv. 18–30"], [93, "Nv. 20–29"]] },
+    { id: "azulona", k: "gym", n: "Ciudad Azulona", d: "Cuarto gimnasio, el centro comercial y el Casino con la guarida Rocket.", gym: 3 },
+    { id: "azafran", k: "gym", n: "Ciudad Azafrán", d: "Sexto gimnasio. Antes, libera Silph S.A. del Team Rocket.", gym: 5 },
+    { id: "silph", k: "place", n: "Silph S.A.", d: "Once plantas tomadas por el Team Rocket. Premio: la Master Ball y un Lapras.", mons: [[131, "Regalo · Nv. 15"]], items: ["Master Ball"] },
+    { id: "carmin", k: "gym", n: "Ciudad Carmín", d: "Tercer gimnasio. En el S.S. Anne consigues la MO01 Corte.", gym: 2, items: ["MO01 Corte"] },
+    { id: "diglett", k: "place", n: "Cueva Diglett", d: "Atajo de Carmín a Ciudad Verde lleno de Diglett.", mons: [[50, "Nv. 15–22"], [51, "Nv. 29–31 · raro"]] },
+    { id: "snorlax12", k: "legend", n: "Snorlax (Ruta 12)", d: "Bloquea el camino. Despiértalo con la Poké Flauta.", mons: [[143, "Nv. 30"]] },
+    { id: "snorlax16", left: true, k: "legend", n: "Snorlax (Ruta 16)", d: "El segundo Snorlax, junto a la Ruta Ciclista.", mons: [[143, "Nv. 30"]] },
+    { id: "fucsia", k: "gym", n: "Ciudad Fucsia", d: "Quinto gimnasio y la entrada a la Zona Safari.", gym: 4 },
+    { id: "safari", k: "place", n: "Zona Safari", d: "Se captura con Safari Balls y cebos. Dentro: la MO03 Surf y el Diente de Oro.", items: ["MO03 Surf", "Diente de Oro (→ MO04 Fuerza)"], mons: [[128, "Nv. 21–28 · raro"], [113, "Nv. 23–26 · raro"], [123, "Nv. 25 · Rojo"], [127, "Nv. 25 · Azul"]] },
+    { id: "espuma", k: "legend", n: "Islas Espuma", d: "Cueva helada con corrientes que se mueven con Fuerza. Articuno espera al fondo.", mons: [[144, "Nv. 50"]] },
+    { id: "canela", k: "gym", n: "Isla Canela", d: "Séptimo gimnasio (necesitas la Llave Secreta de la Mansión). El laboratorio revive fósiles.", gym: 6 },
+    { id: "victoria", k: "legend", n: "Calle Victoria", d: "Cueva de puzles de Fuerza antes de la Liga. Moltres está dentro.", mons: [[146, "Nv. 50"]] },
+    { id: "meseta", k: "city", n: "Meseta Añil", d: "El Alto Mando: Lorelei, Bruno, Agatha, Lance y, al final, tu rival." },
+  ];
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const done = new Set(["paleta", "verde", "bosque", "plateada"]);
+  const on = new Set(Object.keys(LAYERS));
+  let sel = "celeste";
+  let k = 1, tx = 0, ty = 0;
+
+  document.getElementById("roads").innerHTML = ROADS.map(([a, b, , w]) => `<line class="road${w ? " water" : ""}" x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}"/>`).join("");
+  document.getElementById("rlabels").innerHTML = ROADS.filter((r) => r[2]).map(([a, b, n]) => `<text class="rlabel" x="${(P[a][0] + P[b][0]) / 2 + 8}" y="${(P[a][1] + P[b][1]) / 2 - 8}">R${n}</text>`).join("");
+
+  function shape(kind) {
+    const c = LAYERS[kind].c;
+    if (kind === "city") return `<rect class="ring" x="-10" y="-10" width="20" height="20" rx="4" fill="#0E1C10" stroke="${c}" stroke-width="2.5"/>`;
+    if (kind === "gym") return `<circle class="ring" r="13" fill="${c}" stroke="#0F2A12" stroke-width="2"/><circle r="5" fill="#0F2A12"/>`;
+    if (kind === "place") return `<path class="ring" d="M0 -12 L12 9 H-12 Z" fill="#0E1C10" stroke="${c}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    return `<path class="ring" d="M0 -13 L3.8 -4 L13 -4 L5.6 2 L8.4 12 L0 6 L-8.4 12 L-5.6 2 L-13 -4 L-3.8 -4 Z" fill="${c}" stroke="#2A0806" stroke-width="1.5" stroke-linejoin="round"/>`;
+  }
+
+  function drawPins() {
+    document.getElementById("pins").innerHTML = LOC.map((l) => {
+      const [x, y] = P[l.id];
+      const hasItems = l.items && on.has("item");
+      const vis = on.has(l.k) || hasItems;
+      return `<g class="pin${l.id === sel ? " sel" : ""}${done.has(l.id) ? " done" : ""}${vis ? "" : " hidden"}" data-id="${l.id}" transform="translate(${x} ${y}) scale(${1.35 / Math.sqrt(k)})" tabindex="0" role="button" aria-label="${l.n}">
+        ${shape(l.k)}${hasItems ? `<circle cx="13" cy="-12" r="6" fill="${LAYERS.item.c}" stroke="#08100A" stroke-width="2"/>` : ""}
+        <text ${l.left ? 'x="-18" text-anchor="end"' : 'x="18"'} y="5">${l.n}</text></g>`;
+    }).join("");
+  }
+
+  function panel() {
+    const l = LOC.find((x) => x.id === sel);
+    const gym = l.gym != null ? g(l.gym) : null;
+    document.getElementById("panel").innerHTML = `
+      <div class="p-head"><span class="kind">${LAYERS[l.k].n.toUpperCase()}</span><h2>${l.n}</h2><p>${l.d}</p></div>
+      ${gym ? `<div class="p-blk"><h3>Gimnasio ${l.gym + 1} de 8</h3><div class="gym"><div><b>${gym.leader}</b> ${typeChip(gym.type)}<div class="muted" style="font-size:13px">${gym.medal} · as: ${gym.ace} Nv. ${gym.lvl}</div></div></div></div>` : ""}
+      ${l.mons ? `<div class="p-blk"><h3>Pokémon</h3><div class="mons">${l.mons.map(([id, t]) => `<div class="mon">${spriteSlot()}<b>${PK.DEX[id - 1].name}</b><span class="lv">${t}</span></div>`).join("")}</div></div>` : ""}
+      ${l.items ? `<div class="p-blk"><h3>Objetos y MT</h3>${l.items.map((it, i) => `<label class="check"><input type="checkbox" ${i === 0 && done.has(l.id) ? "checked" : ""}><span>${it}</span></label>`).join("")}</div>` : ""}
+      <div class="p-blk"><label class="check"><input type="checkbox" id="locdone" ${done.has(l.id) ? "checked" : ""}><span>Lugar completado</span><span class="muted">Se guarda en tu progreso</span></label></div>`;
+  }
+
+  document.getElementById("layers").innerHTML = Object.entries(LAYERS).map(([id, l]) => `<button class="layer" data-l="${id}" aria-pressed="true"><i style="background:${l.c}"></i>${l.n}</button>`).join("");
+  document.getElementById("layers").addEventListener("click", (e) => {
+    const b = e.target.closest(".layer"); if (!b) return;
+    const id = b.dataset.l; on.has(id) ? on.delete(id) : on.add(id);
+    b.setAttribute("aria-pressed", on.has(id)); drawPins();
+  });
+
+  // Zoom y arrastre
+  const world = document.getElementById("world");
+  const svg = document.getElementById("svg");
+  const apply = () => { world.setAttribute("transform", `translate(${tx} ${ty}) scale(${k})`); drawPins(); };
+  const toSvg = (cx, cy) => { const p = svg.createSVGPoint(); p.x = cx; p.y = cy; return p.matrixTransform(svg.getScreenCTM().inverse()); };
+  function zoomAt(f, px, py) {
+    const nk = Math.min(4, Math.max(1, k * f)); if (nk === k) return;
+    tx = px - (px - tx) * (nk / k); ty = py - (py - ty) * (nk / k); k = nk; clamp(); apply();
+  }
+  function clamp() { const m = 1000 * (k - 1); tx = Math.min(0, Math.max(-m, tx)); ty = Math.min(0, Math.max(-760 * (k - 1), ty)); }
+  svg.addEventListener("wheel", (e) => { e.preventDefault(); const p = toSvg(e.clientX, e.clientY); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, p.x, p.y); }, { passive: false });
+  let drag = null;
+  const stage = document.getElementById("stage");
+  stage.addEventListener("pointerdown", (e) => { if (e.target.closest(".pin, .tools, .zoom")) return; drag = { x: e.clientX, y: e.clientY, tx, ty }; stage.classList.add("drag"); });
+  addEventListener("pointermove", (e) => { if (!drag) return; const r = svg.getScreenCTM().a; tx = drag.tx + (e.clientX - drag.x) / r; ty = drag.ty + (e.clientY - drag.y) / r; clamp(); world.setAttribute("transform", `translate(${tx} ${ty}) scale(${k})`); });
+  addEventListener("pointerup", () => { drag = null; stage.classList.remove("drag"); });
+  document.getElementById("zin").onclick = () => zoomAt(1.4, 500, 380);
+  document.getElementById("zout").onclick = () => zoomAt(1 / 1.4, 500, 380);
+  document.getElementById("zreset").onclick = () => { k = 1; tx = ty = 0; apply(); };
+
+  document.getElementById("pins").addEventListener("click", (e) => { const p = e.target.closest(".pin"); if (p) { sel = p.dataset.id; drawPins(); panel(); } });
+  document.getElementById("pins").addEventListener("keydown", (e) => { const p = e.target.closest(".pin"); if (p && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); sel = p.dataset.id; drawPins(); panel(); } });
+  document.getElementById("panel").addEventListener("change", (e) => { if (e.target.id === "locdone") { e.target.checked ? done.add(sel) : done.delete(sel); drawPins(); } });
+
+  apply(); panel();
+</script>
+</body>
+</html>

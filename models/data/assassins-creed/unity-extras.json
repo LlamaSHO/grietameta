@@ -1,0 +1,176 @@
+{
+ "actividades": [
+  {
+   "icono": "sync",
+   "nombre": "Puntos de sincronización",
+   "queEs": "Escala los edificios más altos para revelar la zona en el mapa y termina con un salto de fe.",
+   "recompensa": "El mapa y las actividades del barrio.",
+   "consejo": "Hazlos al llegar a cada barrio: te ahorran mucho tiempo."
+  },
+  {
+   "icono": "chest",
+   "nombre": "Cofres",
+   "queEs": "Repartidos por toda la ciudad. Algunos están cerrados y necesitan ganzúa.",
+   "recompensa": "Dinero y equipo.",
+   "consejo": "Compra pronto la habilidad de ganzúa para abrir los cerrados."
+  },
+  {
+   "icono": "cockade",
+   "nombre": "Escarapelas",
+   "queEs": "Coleccionables revolucionarios escondidos por los barrios de París.",
+   "recompensa": "Cuentan para completar la ciudad.",
+   "consejo": "Los puntos de sincronización revelan muchos coleccionables cercanos."
+  },
+  {
+   "icono": "enigma",
+   "nombre": "Enigmas de Nostradamus",
+   "queEs": "18 acertijos (6 planetas y 12 signos del zodiaco) que llevan a símbolos ocultos en monumentos de París.",
+   "recompensa": "Fragmentos de llave para la sala bajo el Café Théâtre con la armadura de Thomas de Carneillon.",
+   "consejo": "Usa la Vista de Águila para ver los símbolos. Cada enigma se resuelve en orden."
+  },
+  {
+   "icono": "murder",
+   "nombre": "Misterios de asesinato",
+   "queEs": "Casos de detective: examina pistas, interroga a testigos y acusa al culpable.",
+   "recompensa": "Dinero y equipo.",
+   "consejo": "Revisa todas las pistas antes de acusar a nadie."
+  },
+  {
+   "icono": "story",
+   "nombre": "Historias de París",
+   "queEs": "Misiones secundarias con personajes de la época.",
+   "recompensa": "Dinero, equipo y algún que otro guiño histórico.",
+   "consejo": "Aparecen al avanzar en la historia principal: vuelve a mirar el mapa tras cada secuencia."
+  },
+  {
+   "icono": "rift",
+   "nombre": "Fallos del Helix",
+   "queEs": "Saltos a otras épocas de París para recoger datos antes de que se acabe el tiempo.",
+   "recompensa": "Progreso de los fallos del Helix.",
+   "consejo": "Hay tiempo límite: ve primero a por los datos más cercanos."
+  },
+  {
+   "icono": "cafe",
+   "nombre": "Café Théâtre y clubes sociales",
+   "queEs": "Tu base de operaciones. Renuévala junto a los clubes sociales de cada barrio.",
+   "recompensa": "Ingresos que se acumulan solos y misiones nuevas.",
+   "consejo": "Renuévalos pronto: cuanto antes inviertas, más dinero acumulas."
+  },
+  {
+   "icono": "coop",
+   "nombre": "Cooperativo y atracos",
+   "queEs": "Misiones para hasta cuatro jugadores. Los atracos premian que nadie dé la alarma.",
+   "recompensa": "Mucho dinero y equipo de nivel alto.",
+   "consejo": "Coordinaos por voz y repartíos los objetivos."
+  },
+  {
+   "icono": "crowd",
+   "nombre": "Eventos de multitud",
+   "queEs": "Robos, peleas y abusos en plena calle.",
+   "recompensa": "Pequeñas recompensas mientras exploras.",
+   "consejo": "Atiéndelos de camino a otras misiones."
+  },
+  {
+   "icono": "dlc",
+   "nombre": "Dead Kings",
+   "queEs": "DLC gratuito ambientado tras la historia, en Franciade (Saint-Denis), en 1794.",
+   "recompensa": "Una zona nueva, equipo y una historia corta.",
+   "consejo": "Su historia sucede después del final: mejor al terminar Unity."
+  }
+ ],
+ "consejos": [
+  {
+   "titulo": "Unity no tiene niveles de personaje",
+   "texto": "Tu fuerza depende del equipo y de las habilidades. Mejora espada, capucha y armadura antes de las misiones difíciles."
+  },
+  {
+   "titulo": "Habilidades primero",
+   "texto": "Con los puntos de sincronización que ganas en la historia, prioriza la doble ejecución, la ganzúa y la salud."
+  },
+  {
+   "titulo": "Usa el sigilo",
+   "texto": "Agáchate, ponte a cubierto y evita las peleas contra grupos grandes: en Unity son muy duras."
+  },
+  {
+   "titulo": "Misiones de caja negra",
+   "texto": "Antes de cada gran asesinato, revisa las oportunidades: llaves, distracciones y entradas secretas."
+  }
+ ],
+ "personajes": [
+  {
+   "nombre": "Arno Dorian",
+   "rol": "Protagonista",
+   "descripcion": "Hijo de un asesino, criado por la familia De la Serre en Versalles."
+  },
+  {
+   "nombre": "Élise de la Serre",
+   "rol": "Templaria",
+   "descripcion": "Hija de François y amiga de la infancia de Arno."
+  },
+  {
+   "nombre": "François de la Serre",
+   "rol": "Gran Maestre templario",
+   "descripcion": "Padre adoptivo de Arno."
+  },
+  {
+   "nombre": "Pierre Bellec",
+   "rol": "Asesino veterano",
+   "descripcion": "El preso que Arno conoce en la Bastilla."
+  },
+  {
+   "nombre": "Mirabeau",
+   "rol": "Mentor de los Asesinos",
+   "descripcion": "Líder de la Hermandad de París y gran orador de la Asamblea."
+  },
+  {
+   "nombre": "François-Thomas Germain",
+   "rol": "Platero",
+   "descripcion": "Artesano parisino ligado a la historia templaria. Pieza clave de la trama."
+  },
+  {
+   "nombre": "Maximilien Robespierre",
+   "rol": "Jacobino",
+   "descripcion": "El rostro del Terror."
+  },
+  {
+   "nombre": "Napoleón Bonaparte",
+   "rol": "Oficial de artillería",
+   "descripcion": "Un joven militar con el que Arno se cruza."
+  },
+  {
+   "nombre": "Marqués de Sade",
+   "rol": "Aliado incómodo",
+   "descripcion": "Escritor libertino que conoce bien los bajos fondos."
+  }
+ ],
+ "ficha": [
+  {
+   "dato": "Lanzamiento",
+   "valor": "11 nov 2014 (EE. UU.) · 13 nov 2014 (Europa)"
+  },
+  {
+   "dato": "Estudio",
+   "valor": "Ubisoft Montreal"
+  },
+  {
+   "dato": "Plataformas",
+   "valor": "PS4, Xbox One y PC · Stadia (2020) · juega en PS5 y Xbox Series por retrocompatibilidad"
+  },
+  {
+   "dato": "Ambientación",
+   "valor": "París y Versalles, 1789–1794"
+  },
+  {
+   "dato": "Cooperativo",
+   "valor": "Hasta 4 jugadores"
+  },
+  {
+   "dato": "DLC",
+   "valor": "Dead Kings (gratuito): Franciade, 1794"
+  },
+  {
+   "dato": "60 FPS",
+   "valor": "Actualización 1.06 del 5 de marzo de 2026 para PS5 y Xbox Series X|S"
+  }
+ ]
+}
