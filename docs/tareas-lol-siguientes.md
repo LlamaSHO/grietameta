@@ -39,7 +39,7 @@ Todo sale de partidas que **ya se descargan**: ver «Qué sale de las partidas»
 |---|---|---|---|---|
 | B1 | Guardar la **línea** de cada jugador y los **matchups** (rival de la misma línea) | `tools/fetch-riot-stats.mjs` | `champion-stats.json` incluye `roles` y `matchups` por campeón | — |
 | B2 | **Hechizos, orden de habilidades y runas completas** | `tools/fetch-riot-stats.mjs` | Builds con hechizos, orden de habilidades y las 9 runas | B1 |
-| B3 | **Winrate por objeto** y por posición de compra, y **builds por variante** con un mínimo de 1.000 partidas | `tools/fetch-riot-stats.mjs` | Lo que necesitan «Builds con más winrate» y «Builds por campeón» | B1 |
+| B3 | **Winrate por objeto** y por posición de compra, y **builds por variante** con un mínimo de 1.000 partidas | `tools/fetch-riot-stats.mjs` | Lo que necesitan las pestañas de builds de la ficha y «Builds por campeón»: por variante, runas completas, botas, núcleo, situacionales y winrate y % de uso de cada pareja de hechizos (Destello + Extenuación / Prender / Teleportar) | B1 |
 | B4 | **Estadísticas medias**, diferencias al minuto 15 y WR por duración | `tools/fetch-riot-stats.mjs` | La pestaña Estadísticas con datos reales | B1 |
 | B5 | **Región KR** (host `kr.api.riotgames.com` y `asia.api.riotgames.com`) | `tools/fetch-riot-stats.mjs`, `.github/workflows/update-riot-stats.yml` | Un archivo por región; la tier list cambia con EUW/KR | B1 |
 | B6 | **Histórico diario** de WR, PR y BR (30 días) | `tools/fetch-riot-stats.mjs` | Gráficas de 30 días con datos reales | B1 |

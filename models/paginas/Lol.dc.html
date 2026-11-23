@@ -223,9 +223,9 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 
 /* spotlight */
 .spot{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#0D1017}
-.spot-bg{position:absolute;right:-6%;top:0;width:78%;height:100%;object-fit:cover;object-position:50% 20%;z-index:-2;opacity:.5;transition:transform 1.4s cubic-bezier(.2,.8,.2,1),opacity .6s}
-.spot:hover .spot-bg{transform:scale(1.06);opacity:.62}
-.spot::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0D1017 34%,rgba(13,17,23,.82) 58%,rgba(13,17,23,.4))}
+.spot-bg{position:absolute;right:0;top:0;width:82%;height:100%;object-fit:cover;object-position:60% 18%;z-index:-2;opacity:.72;transition:transform 1.4s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.spot:hover .spot-bg{transform:scale(1.06);opacity:.85}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0D1017 26%,rgba(13,17,23,.78) 50%,rgba(13,17,23,.15) 100%),linear-gradient(0deg,#0D1017 0%,transparent 40%)}
 .spot-in{padding:24px;display:flex;flex-direction:column;gap:20px}
 .kicker{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E2B566}
 .kicker::before{content:"";width:20px;height:2px;border-radius:2px;background:#E2B566}
@@ -465,8 +465,8 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 }
 
 .menu-champ{position:absolute;inset:0 0 0 auto;width:96px;z-index:-2;background:url(../assets/lol/campeones.webp) 7.6923% 0/1400% 1300% no-repeat;opacity:.65}.mc .lf-portrait{width:44px;height:44px;border-radius:10px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%}
-.lhead-bg,.spot-bg{background:repeating-linear-gradient(123deg,transparent 0 34px,rgba(226,181,102,.13) 35px,transparent 36px 74px),radial-gradient(ellipse at 65% 58%,#615134,transparent 67%);animation:none}
-.lhead-bg::after,.spot-bg::after{content:"";position:absolute;inset:6% 10% 4% auto;aspect-ratio:1;background:url(../assets/games/logo-lol.png) center/contain no-repeat;opacity:.5;transform:rotate(-9deg)}
+.lhead-bg{background:repeating-linear-gradient(123deg,transparent 0 34px,rgba(226,181,102,.13) 35px,transparent 36px 74px),radial-gradient(ellipse at 65% 58%,#615134,transparent 67%);animation:none}
+.lhead-bg::after{content:"";position:absolute;inset:6% 10% 4% auto;aspect-ratio:1;background:url(../assets/games/logo-lol.png) center/contain no-repeat;opacity:.5;transform:rotate(-9deg)}
 .spot-top .lf-portrait{width:72px;height:72px;border:2px solid #BA9755;border-radius:18px}
 .gc .lf-portrait{width:52px;height:52px}.wl .lf-portrait{width:38px;height:38px}.ban .lf-portrait{width:32px;height:32px}
 .filters .fbar{display:grid;grid-template-columns:auto auto auto auto minmax(136px,1fr);gap:8px}.filters .fsep{display:none}
@@ -726,7 +726,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 
       <!-- Campeón destacado -->
       <a class="spot" id="destacado" href="LolCampeon.dc.html" aria-labelledby="spot-h">
-        <div class="spot-bg" aria-hidden="true"></div>
+        <img class="spot-bg" src="../assets/lol/yasuo-splash.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <div class="spot-in">
           <div class="kicker">Campeón del parche</div>
           <div class="spot-top">
