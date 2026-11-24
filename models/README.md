@@ -24,8 +24,12 @@ models/
 │   ├── LolCampeon.dc.html   → Ficha de campeón al estilo dpm.lol (Yasuo): build completa, orden de habilidades, winrate por objeto, matchups y descripciones al pasar el ratón
 │   ├── LolEsports.dc.html   → eSports: final del Mundial 2026 con cuenta atrás, calendario y resultados por liga, cuadro final, historias y jugadores
 │   ├── Zelda.dc.html        → Hub de Zelda TotK: mapa interactivo + información (/zelda)
+│   ├── ZeldaGuia.dc.html    → Guías de Zelda (/zelda/:guia): santuarios, raíces de luz, semillas por zona, misiones, armaduras y conjuntos
 │   ├── Arc.dc.html          → Hub de ARC Raiders (estilo arcraidershub)
 │   ├── ArcMapa.dc.html      → Mapa de ARC con misiones y enemigos por mapa
+│   ├── ArcObjetos.dc.html   → Objetos de ARC (/arc-raiders/objetos): los 581 con recomendación, filtros y ficha
+│   ├── ArcEnemigos.dc.html  → Enemigos de ARC (/arc-raiders/enemigos): filtros, punto débil, botín y armas
+│   ├── ArcMisiones.dc.html  → Misiones de ARC (/arc-raiders/misiones): progreso por comerciante, objetivos y recompensas
 │   ├── Premium.dc.html      → Planes Gratis / Premium (mensual o anual), comparativa y preguntas
 │   ├── MiPremium.dc.html    → Panel de la suscripción: estado, avisos por juego y pagos
 │   ├── PremiumExito.dc.html → Pantalla tras pagar en Stripe (/exito)
@@ -134,6 +138,13 @@ pasa a la pantalla de Game Boy (`#8BAC0F`, `#C4D96A`, `#0F2A12`) y los números
 usan Pixelify Sans. Los sprites son un hueco (`.sprite`) hasta decidir qué
 imágenes se pueden usar (PK12 en `docs/plan-nuevos-juegos.md`).
 
+## Accesibilidad y móvil (pasada del 2026-11-25)
+
+- Todas las páginas llevan un bloque `/* gm-a11y */`: anillo de foco visible con el color de cada juego, color de selección, `prefers-reduced-motion` global y el botón Premium sin cambiar de color al pasar el ratón.
+- Letra mínima de 11 px (8 px solo en la fuente pixelada de Kanto). Grises y botones rojos ajustados a contraste AA.
+- Assassin's Creed y CoD Zombis tienen un bloque `/* gm-responsive */` con cortes a 1100, 860 y 560 px.
+- **Ojo con el runtime**: cada `{{valor}}` se pinta dentro de un `<span>`. Una regla como `.h1 span{font-size:.5em}` se aplica dos veces y deja el texto diminuto. Usa el hijo directo (`.h1>span`). En Vue no pasa, pero conviene copiar el CSS ya corregido.
+
 ## Cómo leer un `.dc.html`
 
 Son HTML del lienzo de diseño. Usan un runtime propio (`support.js`, `<x-dc>`), así que **no se abren solos con doble clic**: úsalos como referencia de maquetación, CSS y lógica.
@@ -200,11 +211,23 @@ Rutas de imágenes ya convertidas:
 - Los pines usan `mask-image` con los SVG de `assets/zelda/iconos/` y se contra-escalan con el zoom (`.zl0`…`.zl4`).
 - Componentes: `ZeldaMap.vue` (pan/zoom), `MapPin.vue`, `MapLegend.vue`, `ProgressCard.vue`. Progreso → Firestore (usuario con sesión) y `localStorage` como respaldo.
 
+### ZeldaGuia → `/zelda/:guia` (`ZeldaGuideView.vue`)
+- Una pestaña por guía: **Santuarios** (152), **Raíces de luz** (120), **Semillas kolog** (por zona), **Misiones** (178), **Armaduras** y **Conjuntos** (57). La pestaña inicial se puede elegir con `#santuarios`, `#raices`…
+- **Raíces de luz** es nueva: cada una está justo debajo de un santuario de la superficie (mismas x, y) y se llama como él escrito al revés (Tajikats → Stakijat). Se calculan desde `src/data/zelda.js`, sin datos nuevos. El mapa de las Profundidades es un esquema: el de la superficie invertido con un filtro CSS.
+- Lista + ficha lateral con miniatura del mapa y el punto, coordenadas, «Marcar como hecho» y «Ver en el mapa». Progreso de santuarios, raíces y semillas en la cabecera (en Vue: el mismo progreso que el mapa).
+- En móvil la ficha queda debajo de la lista: en Vue, ábrela como hoja inferior.
+- El hub enlaza aquí desde «Ver las guías», las tarjetas de Información y el submenú; la capa **Profundidades** del menú Mapas lleva a Raíces de luz.
+
 ### Arc → hub de ARC Raiders
 - Sub-menús, hero, KPIs, rejilla de mapas, acciones de objetos (vender / reciclar / guardar / usar), comerciantes y "ARC peligrosos".
 - Recuperado el bloque **«¿Cómo se calcula la recomendación?»** con las 4 reglas, el aviso de guía orientativa y el total de 581 objetos.
 - Comerciantes con su retrato (`assets/arc/comerciantes/`).
 - Sugerencia de rutas: `/arc-raiders` como hub y `/arc-raiders/objetos`, `/arc-raiders/misiones`, `/arc-raiders/enemigos`, `/arc-raiders/mapas/:mapa`. Deja redirecciones desde `/arc-misiones` y `/arc-enemigos` para no perder SEO.
+
+### ArcObjetos, ArcEnemigos y ArcMisiones → `/arc-raiders/objetos`, `/enemigos` y `/misiones`
+- **Objetos** (Claude): las cuatro acciones (guardar, reciclar, vender, usar) son a la vez resumen y filtro; buscador que también busca por material de reciclaje, rareza, categoría, orden y ficha con la recomendación y su motivo, lo que da al reciclarlo, quién lo pide, receta y efectos. Datos: `public/data/arc-raiders/items.json` (los 581).
+- **Enemigos** y **Misiones** (Codex, revisadas por Claude): filtros de amenaza/tipo/mapa, punto débil, botín y armas; progreso por comerciante, objetivos paso a paso y recompensas.
+- Imágenes de objetos y ARC con rutas `/images/arc-raiders/...` (en el lienzo habría que subirlas como recursos).
 
 ### ArcMapa → `/arc-raiders/mapas/:mapa`
 - Pestañas de mapa, plantas (Stella Montis), visor con arrastre y zoom (1 · 1.5 · 2.2 · 3), panel lateral con Misiones (filtro por comerciante) y Enemigos.

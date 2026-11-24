@@ -112,3 +112,7 @@ Se han resuelto los puntos parciales de la segunda revisión de Codex:
 - eSports: «Cuartos de final» ya no se parte; transición al cambiar de partido destacado (los equipos entran por los lados, los escudos aparecen con un pequeño rebote y el calendario entra fila a fila).
 - Las cuatro páginas: cada bloque aparece suavemente al llegar a él con el scroll (anime.js, una vez por bloque, respetando el movimiento reducido).
 - Subido al lienzo (versión 37) y comprobado en Chrome. Pendiente: que Jorge lo apruebe.
+
+## Versión final del diseño (2026-11-25)
+
+Sin cambios de contenido: se da por cerrada tras las tres rondas de revisión. Solo recibe la pasada común de accesibilidad (foco visible, letra mínima de 11 px y contraste AA). Falta la aprobación de Jorge.

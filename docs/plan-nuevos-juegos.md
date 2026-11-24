@@ -95,7 +95,7 @@ todos los juegos.
 
 | # | Apartado | Qué incluye | Tipo | Estado |
 |---|---|---|---|---|
-| PK·D | **Diseño de todas las páginas** | Portada, ficha de juego/región, Pokédex y ficha de Pokémon, habilidades, naturalezas, movimientos, tabla de tipos/matchups, competitivo, guía 100 %, mapa. **Hecho para Gen I** en `models/paginas/pokemon/` (8 páginas); falta revisarlo y aprobarlo. Movimientos, sin diseño todavía | 📐 | 🟨 |
+| PK·D | **Diseño de todas las páginas** | Portada, ficha de juego/región, Pokédex y ficha de Pokémon, habilidades, naturalezas, movimientos, tabla de tipos/matchups, competitivo, guía 100 %, mapa. **Hecho para Gen I** en `models/paginas/pokemon/` (8 páginas); falta revisarlo y aprobarlo. Los `.dc.html` nuevos ya incluyen Movimientos (919) y Naturalezas con recomendador como pestañas de `PokemonHabilidades.dc.html` (comprobado el 2026-11-25) | 📐 | 🟨 |
 | PK0 | Alcance | Por generaciones, de la 1.ª a la última. Se empieza por **Rojo, Azul y Amarillo** (Kanto, 151 Pokémon) | ❓ | ✅ |
 | PK1 | Portada | Novedades (juego, evento, temporada), resumen de cada apartado, bloque de meta competitivo (top uso, equipos destacados) | ✨ | ⬜ |
 | PK2 | Pokédex | Todos los Pokémon con filtros (tipo, generación, juego, estadística); ficha con stats, tipos, habilidades, evoluciones, movimientos y dónde capturarlo en cada juego | ⚙️ ✨ | ⬜ |
@@ -184,7 +184,7 @@ secundarias, coleccionables y mapa interactivo.
 
 | # | Apartado | Qué incluye | Tipo | Estado |
 |---|---|---|---|---|
-| AC·D | **Diseño de todas las páginas** | Portada de la saga, portada de un juego, mapa, guía de historia, lista de coleccionables, equipo | 📐 | ⬜ |
+| AC·D | **Diseño de todas las páginas** | Portada de la saga, portada de un juego, mapa, guía de historia, lista de coleccionables, equipo. Hechas la saga y Unity (`AssassinsCreed.dc.html`, `ACUnity.dc.html`), adaptadas a móvil el 2026-11-25; falta la aprobación de Jorge | 📐 | 🟨 |
 | AC0 | Alcance | **Unity primero**; después, del más antiguo (2007) al más reciente. La portada lista todos desde el principio | ❓ | ✅ |
 | AC1 | Portada de la saga | Juegos por orden de lanzamiento y cronológico, con acceso a cada uno | ✨ | ⬜ |
 | AC2 | Unity: portada | Resumen, distritos de París, accesos a historia, secundarias, coleccionables y mapa | ✨ | ⬜ |
@@ -206,7 +206,7 @@ Untoten, Verrückt, Shi No Numa, Der Riese), luego Black Ops, etc.
 
 | # | Apartado | Qué incluye | Tipo | Estado |
 |---|---|---|---|---|
-| CD·D | **Diseño de todas las páginas** | Portada, portada de Zombies por entrega, mapa Zombies con Easter egg, armas y ventajas, y el bloque «Historia: próximamente» | 📐 | ⬜ |
+| CD·D | **Diseño de todas las páginas** | Portada, portada de Zombies por entrega, mapa Zombies con Easter egg, armas y ventajas, y el bloque «Historia: próximamente». Hechas la portada y BO1–BO4 (`CodZombies`, `CodBO1`…`CodBO4`), adaptadas a móvil el 2026-11-25; falta la aprobación de Jorge | 📐 | 🟨 |
 | CD0 | Alcance | **Zombies primero**, desde World at War hasta el último; la historia después | ❓ | ✅ |
 | CD1 | Portada | Entregas y mapas Zombies, lo más buscado y el aviso de la historia | ✨ | ⬜ |
 | CD2 | Zombies: página por entrega | Mapas de esa entrega, mecánicas propias, novedades | ✨ | ⬜ |
