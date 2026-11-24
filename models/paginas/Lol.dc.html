@@ -259,7 +259,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .gc{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px 8px;border-radius:12px;text-decoration:none;color:#C6CBD2;font-size:12px;font-weight:500;transition:background .2s,transform .2s}
 .gc:hover{background:rgba(255,255,255,.05);color:#ECE9E1;transform:translateY(-2px)}
 .gc img{width:52px;height:52px;border-radius:12px;border:1px solid rgba(255,255,255,.1)}
-.gc .tier{position:absolute;top:4px;right:8px;min-width:24px;height:18px;font-size:10.5px;border-radius:6px;padding:0 4px}
+.gc .tier{position:absolute;top:4px;right:8px;min-width:24px;height:18px;font-size:11px;border-radius:6px;padding:0 4px}
 .gc span.n{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* aside */
@@ -388,7 +388,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
 .gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
 .gm-t small{font-size:11.5px;color:#C2C8D0}
-.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
 .gm-t.off{cursor:default}
 .gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
 .gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
@@ -397,7 +397,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
 @media (max-width:860px){.gdd{display:none}}
 
-@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
 .sp{display:block;background-repeat:no-repeat}
 .cs{background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%}
 .ms{background-image:url(../assets/lol/iconos.webp);background-size:1000% 700%}
@@ -418,7 +418,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .tt.r{left:auto;right:0;transform:translate(0,6px)}
 .ic:hover .tt.r,.ic:focus .tt.r{transform:none}
 .tt.r::after{left:auto;right:18px}
-.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 
 .spot .it{border-radius:10px;cursor:help}
 .spot .it.md{width:40px;height:40px}
@@ -481,7 +481,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
   .filters .fbar{grid-template-columns:auto auto auto auto minmax(100px,1fr);gap:5px}
 }
 @media(max-width:720px){
-  .filters .lf-select{display:grid;align-content:center;justify-items:center;gap:0;padding:2px;font-size:10px}
+  .filters .lf-select{display:grid;align-content:center;justify-items:center;gap:0;padding:2px;font-size:11px}
   .filters .lf-select select{height:24px;font-size:13px}.filters .ddb{gap:4px;padding:0 4px;font-size:12px;letter-spacing:0}
   .filters .ddw{min-width:0}.filters .ddb .stack{display:none}.filters .ddb{min-height:44px}
 }
@@ -490,6 +490,12 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .gm-wipe{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;overflow:hidden}
 .gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
 .gm-wipe b{position:absolute;inset:0;background:#07090D}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F3C878 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </helmet>
 <div class="gm-wipe" aria-hidden="true"><b></b><i></i></div>

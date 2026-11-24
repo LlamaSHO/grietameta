@@ -177,7 +177,7 @@ html,body{margin:0;background:#07090D}
 .gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
 .gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
 .gm-t small{font-size:11.5px;color:#C2C8D0}
-.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
 .gm-t.off{cursor:default}
 .gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
 .gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
@@ -185,7 +185,7 @@ html,body{margin:0;background:#07090D}
 .gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
 .gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
 @media (max-width:860px){.gdd{display:none}}
-.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .lf-portrait{display:block;flex:none;width:42px;height:42px;border-radius:11px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%;overflow:hidden}
 .lf-tier .lf-portrait img{display:block;width:100%;height:100%}
 @media(max-width:680px){
@@ -218,7 +218,7 @@ html,body{margin:0;background:#07090D}
 .pos{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:22px;border-radius:6px;background:var(--raised);color:#d9dde4;font-size:11px;font-weight:700;letter-spacing:.04em;margin-right:8px}
 .mv{display:flex;align-items:center;gap:8px;white-space:nowrap}
 .tm{display:inline-flex;align-items:center;gap:6px;font-weight:600}
-.tm i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;font-style:normal;font-size:10px;font-weight:800;color:#fff;background:linear-gradient(160deg,var(--c1),var(--c2))}
+.tm i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;font-style:normal;font-size:11px;font-weight:800;color:#fff;background:linear-gradient(160deg,var(--c1),var(--c2))}
 .mv svg{color:var(--muted)}
 .st{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700}
 .st.of{background:rgba(117,221,169,.14);color:#8ff0bd}
@@ -259,6 +259,12 @@ html,body{margin:0;background:#07090D}
 .gm-wipe{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;overflow:hidden}
 .gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
 .gm-wipe b{position:absolute;inset:0;background:#07090D}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F3C878 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </helmet>
 <div class="gm-wipe" aria-hidden="true"><b></b><i></i></div>

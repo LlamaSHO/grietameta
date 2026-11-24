@@ -51,7 +51,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .search{position:relative;display:flex;align-items:center}
 .search svg{position:absolute;left:14px;color:#9A938A;pointer-events:none}
 .search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(242,235,221,.1);background:rgba(242,235,221,.04);color:#F2EBDD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
-.search input::placeholder{color:#857E75}
+.search input::placeholder{color:#8B847C}
 .search input:focus{border-color:rgba(245,192,42,.6)}
 .search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#9A938A;padding:5px 8px;border-radius:6px;border:1px solid rgba(242,235,221,.12)}
 .nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
@@ -136,7 +136,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .e b{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1}
 .e .ty{font-size:12px;color:#ABA49A}
 .e .wk{font-size:12.5px;color:#C8C1B6}
-.thr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
+.thr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
 .thr::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .t-ext{color:#FF6B5B;background:rgba(229,55,43,.16)}
 .t-cri{color:#FFA24A;background:rgba(242,138,30,.16)}
@@ -249,7 +249,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
 .gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
 .gm-t small{font-size:11.5px;color:#C2C8D0}
-.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
 .gm-t.off{cursor:default}
 .gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
 .gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
@@ -258,13 +258,19 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
 @media (max-width:860px){.gdd{display:none}}
 
-@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
 
 /* gm-rueda */
 .vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
 .vp::-webkit-scrollbar{display:none}
 .vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
 .vp-pad{height:3000px}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F5C02A;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F5C02A 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </helmet>
 
@@ -506,23 +512,23 @@ class Component extends DCLogic {
 
     // [nombre, tipo, amenaza, imagen, mapas, punto débil]
     const E = [
-      ['The Queen', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_the_queen.webp', [0, 2, 3], 'Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.'],
-      ['Matriarch', 'Jefe', 'Extrema', '/images/arc-raiders/bots/arc_matriarch.webp', [0], 'Núcleo central brillante, expuesto cuando ataca. También las articulaciones de las patas y las zonas rojas de la corona.'],
-      ['Bastion', 'Asalto pesado', 'Crítica', '/images/arc-raiders/bots/arc_bastion.webp', [0, 2, 3, 1, 4], 'Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.'],
-      ['Bombardier', 'Artillería pesada', 'Crítica', '/images/arc-raiders/bots/arc_bombardier.webp', [0, 2, 3, 1], 'Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.'],
-      ['Leaper', 'Máquina de asedio', 'Crítica', '/images/arc-raiders/bots/arc_leaper.webp', [0, 2, 3, 1], 'El fuego es lo más eficaz. También puedes dispararle al ojo.'],
-      ['Rocketeer', 'Artillería voladora', 'Crítica', '/images/arc-raiders/bots/arc_rocketeer.webp', [0, 2, 3, 1], 'Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.'],
-      ['Fireball', 'Denegación de zona', 'Alta', '/images/arc-raiders/bots/arc_fireball.webp', [0, 2, 3, 1, 4], 'Su núcleo queda expuesto cuando usa el lanzallamas.'],
-      ['Hornet', 'Dron medio', 'Alta', '/images/arc-raiders/bots/arc_hornet.webp', [0, 2, 3, 1], 'Propulsores traseros sin blindaje.'],
-      ['Sentinel', 'Torreta francotiradora', 'Alta', '/images/arc-raiders/bots/arc_sentinel.webp', [0, 2, 3, 1], 'El bidón amarillo sin blindaje será tu objetivo principal.'],
-      ['Shredder', 'Denegación de zona', 'Alta', '/images/arc-raiders/bots/arc_shredder.webp', [4], 'La «barra-ojo» de la cabeza. También el núcleo naranja que se ve entre sus placas.'],
-      ['Spotter', 'Dron explorador', 'Alta', '/images/arc-raiders/bots/arc_spotter.webp', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
-      ['Pop', 'Explosivo', 'Moderada', '/images/arc-raiders/bots/arc_pop.webp', [0, 2, 3, 1, 4], 'Simplemente dispárale.'],
-      ['Snitch', 'Dron explorador', 'Moderada', '/images/arc-raiders/bots/arc_snitch.webp', [0, 2, 3, 1], 'Propulsores o placa inferior.'],
-      ['Tick', 'Depredador de emboscada', 'Moderada', '/images/arc-raiders/bots/arc_tick.webp', [0, 2, 3, 1, 4], 'Simplemente dispárale. También cae de un golpe cuerpo a cuerpo.'],
-      ['Turret', 'Sistema de defensa', 'Moderada', '/images/arc-raiders/bots/arc_turret.webp', [0, 2, 3, 1, 4], 'Sin blindaje: con dispararle basta.'],
-      ['Wasp', 'Dron volador', 'Moderada', '/images/arc-raiders/bots/arc_wasp.webp', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
-      ['Surveyor', 'Reconocimiento', 'Baja', '/images/arc-raiders/bots/arc_surveyor.webp', [0, 2, 3, 1], 'Expone su núcleo de energía cuando dispara su rayo azul al cielo.']
+      ['The Queen', 'Jefe', 'Extrema', '0da8ab2afe46af1d42c38bb1fa5d2592', [0, 2, 3], 'Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.'],
+      ['Matriarch', 'Jefe', 'Extrema', '9ee3e93a4010c241c8b71972173caab6', [0], 'Núcleo central brillante, expuesto cuando ataca. También las articulaciones de las patas y las zonas rojas de la corona.'],
+      ['Bastion', 'Asalto pesado', 'Crítica', '220bdcc4bc265103cf5822fa0217a3da', [0, 2, 3, 1, 4], 'Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.'],
+      ['Bombardier', 'Artillería pesada', 'Crítica', '3b8aaac286523aa69311ecfb6c234c86', [0, 2, 3, 1], 'Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.'],
+      ['Leaper', 'Máquina de asedio', 'Crítica', '862eeb3f64d7b3a3c3be7c8afec0b225', [0, 2, 3, 1], 'El fuego es lo más eficaz. También puedes dispararle al ojo.'],
+      ['Rocketeer', 'Artillería voladora', 'Crítica', '531932e7137a6217de32bc5b027c06a7', [0, 2, 3, 1], 'Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.'],
+      ['Fireball', 'Denegación de zona', 'Alta', '46ef7c6e366e09f99712944a0b7c155f', [0, 2, 3, 1, 4], 'Su núcleo queda expuesto cuando usa el lanzallamas.'],
+      ['Hornet', 'Dron medio', 'Alta', 'ba5ad11d5046af7abc647ddefe835e47', [0, 2, 3, 1], 'Propulsores traseros sin blindaje.'],
+      ['Sentinel', 'Torreta francotiradora', 'Alta', '53feedaae582810ebd7f86bcdca2ad9d', [0, 2, 3, 1], 'El bidón amarillo sin blindaje será tu objetivo principal.'],
+      ['Shredder', 'Denegación de zona', 'Alta', '5ade4722ea486a91be09eec6804f0094', [4], 'La «barra-ojo» de la cabeza. También el núcleo naranja que se ve entre sus placas.'],
+      ['Spotter', 'Dron explorador', 'Alta', '3255148c77b9f326c8effbf6ef5aff75', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
+      ['Pop', 'Explosivo', 'Moderada', 'f309f5af96038f40bb3fd7f32ee9863d', [0, 2, 3, 1, 4], 'Simplemente dispárale.'],
+      ['Snitch', 'Dron explorador', 'Moderada', '42b46ae47b68826899471139d05627a9', [0, 2, 3, 1], 'Propulsores o placa inferior.'],
+      ['Tick', 'Depredador de emboscada', 'Moderada', '4674ab2c5eb80278c76b1e069dde5e1f', [0, 2, 3, 1, 4], 'Simplemente dispárale. También cae de un golpe cuerpo a cuerpo.'],
+      ['Turret', 'Sistema de defensa', 'Moderada', 'eb94e5909bfb4e9db8cdb948c8875439', [0, 2, 3, 1, 4], 'Sin blindaje: con dispararle basta.'],
+      ['Wasp', 'Dron volador', 'Moderada', '9dffb20e800df24e9cab3a27197016ad', [0, 2, 3, 1], 'Propulsores sin blindaje.'],
+      ['Surveyor', 'Reconocimiento', 'Baja', '44e6891974f2e533bdd2f7c7f8077a24', [0, 2, 3, 1], 'Expone su núcleo de energía cuando dispara su rayo azul al cielo.']
     ];
     const TC = { Extrema: 't-ext', 'Crítica': 't-cri', Alta: 't-alt', Moderada: 't-mod', Baja: 't-baj' };
     const TRC = { Shani: 'c-y', Celeste: 'c-c', 'Tian Wen': 'c-r', Apollo: 'c-o', Lance: 'c-g' };
@@ -567,7 +573,7 @@ class Component extends DCLogic {
     const foes = E.filter((e) => e[4].indexOf(m) >= 0 || (SP[e[0]] || {})[m]).map((e) => {
       const z = zonesOf(e[0]), on = foe === e[0];
       return {
-        n: e[0], ty: e[1], t: e[2], tc: TC[e[2]], img: e[3], wk: e[5],
+        n: e[0], ty: e[1], t: e[2], tc: TC[e[2]], img: '/_blob/' + e[3], wk: e[5],
         has: z.length > 0, zn: z.length ? (on ? 'Zonas en el mapa · ' : 'Ver zonas · ') + z.length + (z.length === 1 ? ' punto' : ' puntos') : (lower ? 'Zonas en la planta superior' : 'Sin ubicaciones conocidas'),
         znCls: z.length ? '' : 'no', cls: on ? 'sel' : '', pr: on ? 'true' : 'false',
         pick: () => this.setState(on ? { foe: null } : { foe: e[0], qs: null, pin: null, zi: 0, px: 0, py: 0 })

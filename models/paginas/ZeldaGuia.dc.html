@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Zelda: Tears of the Kingdom · Guías</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#050C0B}
+a{color:#7FEBCB}a:hover{color:#A8F5DE}
+.zp{position:relative;background:#050C0B;color:#E6EEEA;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.zp *,.zp *::before,.zp *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.serif{font-family:'Cinzel',Georgia,serif}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,224,182,.7)}70%{box-shadow:0 0 0 14px rgba(79,224,182,0)}100%{box-shadow:0 0 0 0 rgba(79,224,182,0)}}
+@keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(5,12,11,.82);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(127,235,203,.1)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#E6EEEA;justify-self:start}
+.brand:hover{color:#E6EEEA}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8FA8A1;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(127,235,203,.14);background:rgba(127,235,203,.04);color:#E6EEEA;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7F978F}
+.search input:focus{border-color:rgba(79,224,182,.6);box-shadow:0 0 0 4px rgba(79,224,182,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8FA8A1;padding:5px 8px;border-radius:6px;border:1px solid rgba(127,235,203,.16)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(127,235,203,.18);color:#E6EEEA;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#E6EEEA;background:rgba(127,235,203,.06)}
+
+/* submenú de Zelda */
+.sub{border-top:1px solid rgba(127,235,203,.07);background:rgba(8,22,20,.7)}
+.sub-in{display:flex;align-items:center;gap:6px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(127,235,203,.14);color:#E6EEEA;text-decoration:none;font-family:'Cinzel',serif;font-weight:700;font-size:14px;flex-shrink:0}
+.gchip img{width:40px;height:30px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 13px;border:0;background:transparent;color:#A4B9B2;text-decoration:none;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.slink:hover,.slink.on{color:#E6EEEA}
+.slink.on::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:2px;border-radius:2px;background:#4FE0B6;box-shadow:0 0 12px rgba(79,224,182,.8)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#E6EEEA}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:10px;border-radius:18px;background:#0A1816;border:1px solid rgba(127,235,203,.16);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mapsm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:540px}
+.mapo{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:13px;text-decoration:none;color:#E6EEEA;transition:background .2s}
+.mapo:hover{background:rgba(127,235,203,.06);color:#E6EEEA}
+.mapo .th{position:relative;height:84px;border-radius:10px;overflow:hidden;border:1px solid rgba(127,235,203,.14)}
+.mapo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mapo:hover .th img{transform:scale(1.08)}
+.mapo b{font-family:'Cinzel',serif;font-size:14px}
+.mapo span{font-size:12px;color:#93AAA3}
+.mapo.off{opacity:.55;cursor:default}
+.mapo.off .th{display:grid;place-items:center;background:repeating-linear-gradient(135deg,#0C1D1A 0 8px,#0A1715 8px 16px);color:#7F978F}
+.infom{display:flex;flex-direction:column;gap:2px;width:340px}
+.io{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:#E6EEEA;transition:background .2s}
+.io:hover{background:rgba(127,235,203,.06);color:#E6EEEA}
+.io .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(79,224,182,.1);border:1px solid rgba(79,224,182,.25);color:#7FEBCB;flex-shrink:0}
+.io b{display:block;font-size:14px;font-weight:600}
+.io span{font-size:12px;color:#93AAA3}
+.status{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(242,195,107,.35);background:rgba(242,195,107,.08);color:#F2C36B;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:#F2C36B}
+
+/* hero */
+.hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(127,235,203,.08)}
+.hero-bg{position:absolute;right:-4%;top:-10%;width:62%;height:120%;object-fit:cover;z-index:-3;opacity:.32;filter:saturate(.5) hue-rotate(95deg);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 60% 50%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 70% at 60% 50%,#000 30%,transparent 75%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(600px 400px at 75% 40%,rgba(79,224,182,.14),transparent 70%),radial-gradient(500px 300px at 10% 0%,rgba(216,194,122,.07),transparent 70%)}
+.rings{position:absolute;right:12%;top:50%;width:440px;height:440px;margin-top:-220px;z-index:-1;pointer-events:none}
+.rings span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(127,235,203,.18)}
+.rings span:nth-child(2){inset:44px;border-style:dashed;border-color:rgba(127,235,203,.24);animation:spin 60s linear infinite}
+.rings span:nth-child(3){inset:96px;border-color:rgba(216,194,122,.22);animation:spinr 40s linear infinite;border-top-color:rgba(216,194,122,.6)}
+.rings span:nth-child(4){inset:150px;border:2px dotted rgba(127,235,203,.35);animation:spin 24s linear infinite}
+.hero-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;padding:56px 0 52px}
+.htx{flex:1 1 520px;max-width:640px;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#7FEBCB}
+.kick::before{content:"";width:22px;height:1px;background:#7FEBCB}
+.h1{margin:16px 0 0;font-size:clamp(38px,5vw,62px);font-weight:700;line-height:1.06;letter-spacing:.01em}
+.h1 em{font-style:normal;color:#4FE0B6;text-shadow:0 0 30px rgba(79,224,182,.45)}
+.lead{margin:18px 0 0;color:#A9BDB6;font-size:17px;max-width:560px;text-wrap:pretty}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-z{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;background:linear-gradient(180deg,#5DE8C1,#2FBF97);color:#04211A;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 14px 34px -14px rgba(79,224,182,.8),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s}
+.btn-z:hover{color:#04211A;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(216,194,122,.45);color:#E9DCAF;font-weight:600;font-size:14.5px;text-decoration:none;transition:background .2s}
+.btn-o:hover{color:#E9DCAF;background:rgba(216,194,122,.08)}
+.hstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;flex:0 1 420px;animation:rise .8s .15s cubic-bezier(.2,.8,.2,1) both}
+.hs{position:relative;padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(12,30,27,.85),rgba(7,18,16,.85));border:1px solid rgba(127,235,203,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden}
+.hs:nth-child(2),.hs:nth-child(3){animation:drift 7s ease-in-out infinite}
+.hs:nth-child(3){animation-delay:-3.5s}
+.hs .ic{color:#7FEBCB}
+.hs b{display:block;margin-top:10px;font-family:'Cinzel',serif;font-size:34px;font-weight:700;line-height:1;color:#F1E7C8}
+.hs span{display:block;margin-top:6px;font-size:13px;color:#A9BDB6}
+.hs small{display:block;margin-top:2px;font-size:12px;color:#7F978F}
+
+/* sección mapa */
+.sec{padding:52px 0 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:20px}
+.h2{margin:8px 0 0;font-size:clamp(28px,3vw,38px);font-weight:700;line-height:1.1}
+.sec-h p{margin:6px 0 0;color:#A9BDB6;max-width:620px}
+.layers{display:inline-flex;gap:4px;padding:4px;border-radius:14px;background:#0A1816;border:1px solid rgba(127,235,203,.12)}
+.ly{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:11px;border:0;background:transparent;color:#A4B9B2;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
+.ly:hover{color:#E6EEEA;background:rgba(127,235,203,.05)}
+.ly.on{background:rgba(79,224,182,.15);color:#7FEBCB;box-shadow:inset 0 0 0 1px rgba(79,224,182,.4)}
+.ly.off{opacity:.5;cursor:not-allowed}
+.ly small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;background:rgba(242,195,107,.12);color:#F2C36B}
+.mapcard{display:flex;flex-wrap:wrap;gap:0;border-radius:22px;background:#081412;border:1px solid rgba(127,235,203,.14);overflow:hidden}
+.side{flex:1 1 300px;max-width:340px;display:flex;flex-direction:column;gap:18px;padding:20px;border-right:1px solid rgba(127,235,203,.1);background:linear-gradient(180deg,#0A1A17,#081412)}
+.fld{position:relative;display:flex;align-items:center}
+.fld svg{position:absolute;left:12px;color:#8FA8A1;pointer-events:none}
+.fld input{width:100%;height:42px;border-radius:11px;border:1px solid rgba(127,235,203,.16);background:rgba(127,235,203,.04);color:#E6EEEA;font:inherit;font-size:14px;padding:0 12px 0 36px;outline:none;-webkit-appearance:none;appearance:none}
+.fld input::placeholder{color:#7F978F}
+.fld input:focus{border-color:rgba(79,224,182,.55)}
+.res{display:flex;flex-direction:column;gap:2px;margin-top:-8px}
+.rs{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:9px;border:0;background:transparent;color:#E6EEEA;font:inherit;font-size:13.5px;text-align:left;cursor:pointer}
+.rs:hover{background:rgba(127,235,203,.07)}
+.rs small{font-size:11px;color:#93AAA3}
+.gl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7F978F;margin-bottom:-8px}
+.cat{display:flex;align-items:center;gap:12px;width:100%;padding:10px;border-radius:12px;border:1px solid rgba(127,235,203,.1);background:rgba(127,235,203,.03);color:#E6EEEA;font:inherit;font-size:14px;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.cat:hover{background:rgba(127,235,203,.07)}
+.cat.offc{opacity:.5}
+.cat .sw{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0}
+.cat .nm{flex:1}
+.cat .ct{font-size:13px;color:#A9BDB6}
+.tg{position:relative;width:34px;height:20px;border-radius:999px;background:rgba(255,255,255,.12);flex-shrink:0;transition:background .2s}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#E6EEEA;transition:transform .2s}
+.cat.onc .tg{background:#2FBF97}
+.cat.onc .tg::after{transform:translateX(14px)}
+.prog{padding:14px;border-radius:14px;background:rgba(216,194,122,.06);border:1px solid rgba(216,194,122,.22)}
+.prog .row{display:flex;justify-content:space-between;font-size:13.5px}
+.prog .row b{color:#F1E7C8}
+.prog .pb{height:8px;margin-top:10px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden}
+.prog .pb i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#D8C27A,#F1E7C8);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.prog p{margin:8px 0 0;font-size:12px;color:#93AAA3}
+.selc{padding:16px;border-radius:16px;background:linear-gradient(180deg,rgba(79,224,182,.12),rgba(79,224,182,.03));border:1px solid rgba(79,224,182,.35);animation:pop .25s ease-out}
+.selc .t{font-family:'Cinzel',serif;font-size:19px;font-weight:700}
+.selc .m{margin-top:2px;font-size:12.5px;color:#A9BDB6}
+.coords{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
+.coords span{padding:8px;border-radius:9px;background:rgba(5,12,11,.6);text-align:center;font-size:11px;color:#93AAA3}
+.coords b{display:block;font-size:15px;color:#E6EEEA}
+.btn-done{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;margin-top:12px;border-radius:11px;border:1px solid rgba(216,194,122,.5);background:transparent;color:#F1E7C8;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-done:hover{background:rgba(216,194,122,.1)}
+.btn-done.is{background:linear-gradient(180deg,#E9DCAF,#C9B571);color:#1E1906;border-color:transparent}
+.hintc{padding:16px;border-radius:16px;border:1px dashed rgba(127,235,203,.2);font-size:13.5px;color:#A9BDB6}
+
+.vp{position:relative;flex:999 1 560px;min-width:0;height:720px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,#0B1F1B,#050C0B 75%);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.vp:active{cursor:grabbing}
+.vp::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(127,235,203,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(127,235,203,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.mapin{position:relative;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.mapin.surf,.mapin.sky{aspect-ratio:6/5}
+.mapimg{position:absolute;inset:0;width:100%;height:100%;display:block;filter:saturate(.9) brightness(.9);border-radius:6px}
+.mapin.sky .mapimg{filter:saturate(.8) brightness(1)}
+.mapin.drag{transition:none}
+.m{position:absolute;transform:translate(-50%,-50%) scale(var(--s,1));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.mapin.drag .m{transition:none}
+.zl1 .m{--s:.65}
+.zl2 .m{--s:.45}
+.zl3 .m{--s:.32}
+.zl4 .m{--s:.24}
+.zl0 .m{--s:.85}
+.zl0 .m.p-sd,.zl0 .m.p-sd2{--s:.6}
+.zl1 .m.p-sd,.zl1 .m.p-sd2{--s:.5}
+.m .tip{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);min-width:180px;max-width:240px;padding:9px 12px;border-radius:12px;background:rgba(6,18,16,.96);border:1px solid rgba(127,235,203,.28);box-shadow:0 14px 30px -8px rgba(0,0,0,.8);text-align:left;white-space:normal;pointer-events:none;z-index:9}
+.m .tip::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;margin-left:-5px;transform:rotate(45deg);background:rgba(6,18,16,.96);border-right:1px solid rgba(127,235,203,.28);border-bottom:1px solid rgba(127,235,203,.28)}
+.m .tip b{display:block;font:600 13px/1.25 'IBM Plex Sans',sans-serif;color:#E6EEEA}
+.m .tip small{display:block;margin-top:3px;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#93AAA3}
+.m .tip em{display:inline-block;margin-top:6px;padding:2px 7px;border-radius:6px;font:600 11px/1.4 'IBM Plex Sans',sans-serif;font-style:normal;background:rgba(127,235,203,.1);color:#7FEBCB}
+.m .tip em.ok{background:rgba(241,231,200,.14);color:#F1E7C8}
+.m:hover .tip,.m:focus-visible .tip{display:block;animation:fade .18s ease-out both}
+.m:hover,.m:focus-visible{z-index:8}
+@keyframes fade{from{opacity:0;transform:translate(-50%,4px)}to{opacity:1;transform:translate(-50%,0)}}
+.stf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border-radius:12px;background:rgba(5,12,11,.6);border:1px solid rgba(127,235,203,.12)}
+.stf button{height:36px;border:0;border-radius:9px;background:transparent;color:#A4B9B2;font:600 12.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.stf button:hover{color:#E6EEEA}
+.stf button.on{background:rgba(79,224,182,.16);color:#E6EEEA;box-shadow:inset 0 0 0 1px rgba(79,224,182,.35)}
+.stf button small{display:block;margin-top:2px;font-size:11px;font-weight:500;color:#7F978F}
+
+/* iconos del mapa (propios): círculo de color + glifo con máscara */
+.pin{display:grid;place-items:center;width:24px;height:24px;padding:0;border-radius:50%;border:2px solid #04130F;background:var(--pc);box-shadow:0 2px 8px rgba(0,0,0,.6);cursor:pointer;z-index:2}
+.pin::after{content:"";width:62%;height:62%;background:#04211A;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.pin:hover{z-index:6;filter:brightness(1.15)}
+.pin.sel{z-index:7;animation:pulse 1.6s infinite;border-color:#F1E7C8}
+.p-sh{--pc:#4FE0B6;--ic:url(../assets/zelda/iconos/santuario.svg)}
+.mapin.sky .p-sh{--pc:#E9CF7E}
+.p-tw{--pc:#A78BFA;--ic:url(../assets/zelda/iconos/torre.svg)}
+.p-cv{--pc:#E8A15A;--ic:url(../assets/zelda/iconos/cueva.svg)}
+.p-sd{--pc:#B5E86E;--ic:url(../assets/zelda/iconos/semilla.svg);width:16px;height:16px;border-width:1.5px;box-shadow:0 1px 4px rgba(0,0,0,.6);z-index:1}
+.p-sd2{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/semilla.svg);width:18px;height:18px;border-width:1.5px;z-index:1}
+.p-fr{width:11px;height:11px;border-radius:50%;border:2px dashed #F1E7C8;background:rgba(5,12,11,.5);pointer-events:none;z-index:1}
+.pin.done{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/hecho.svg)}
+.pin.lg::after{width:62%;height:62%}
+.pin.lg{position:static;width:20px;height:20px;transform:none;cursor:default;pointer-events:none;box-shadow:none;animation:none;flex-shrink:0}
+.pin.lg.p-sd{width:16px;height:16px}
+.allrow{display:flex;gap:8px;margin-top:-6px}
+.allrow button{flex:1;height:34px;border-radius:9px;border:1px solid rgba(127,235,203,.14);background:transparent;color:#A4B9B2;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.allrow button:hover{color:#E6EEEA;background:rgba(127,235,203,.06)}
+.prog .row+.row{margin-top:12px}
+.prog .pb.tw i{background:linear-gradient(90deg,#8B6CF0,#C7B5FF)}
+.prog .pb.sd i{background:linear-gradient(90deg,#8DCB45,#D4F59A)}
+.zoom{position:absolute;top:14px;right:14px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.zoom button{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;border:1px solid rgba(127,235,203,.2);background:rgba(8,20,18,.88);color:#E6EEEA;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s}
+.zoom button:hover{background:rgba(79,224,182,.18)}
+.vtag{position:absolute;top:14px;left:14px;z-index:5;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:10px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.2);font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:#E6EEEA}
+.legend{position:absolute;left:14px;bottom:14px;z-index:5;display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-radius:11px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.16);font-size:12px;color:#C3D3CD}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend .pin.lg{width:16px;height:16px;border-width:1.5px}
+.coordtag{position:absolute;right:14px;bottom:14px;z-index:5;padding:8px 12px;border-radius:10px;background:rgba(8,20,18,.88);border:1px solid rgba(127,235,203,.16);font-size:12px;color:#C3D3CD}
+
+/* información */
+.igrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px}
+.icard{position:relative;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:20px;background:linear-gradient(180deg,#0B1C19,#081412);border:1px solid rgba(127,235,203,.12);text-decoration:none;color:#E6EEEA;overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.icard::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;border:1px dashed rgba(127,235,203,.14);transition:transform .8s}
+.icard:hover{color:#E6EEEA;transform:translateY(-4px);border-color:rgba(79,224,182,.45);box-shadow:0 30px 60px -30px rgba(79,224,182,.5)}
+.icard:hover::after{transform:rotate(90deg) scale(1.1)}
+.icard .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(79,224,182,.1);border:1px solid rgba(79,224,182,.3);color:#7FEBCB}
+.icard h3{margin:0;font-family:'Cinzel',serif;font-size:19px;font-weight:700}
+.icard .n{font-size:13px;color:#F1E7C8;font-weight:600}
+.icard p{margin:0;font-size:13.5px;color:#A9BDB6;text-wrap:pretty}
+.prev{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;background:rgba(5,12,11,.55);font-size:12.5px;color:#C3D3CD}
+.prev div{display:flex;justify-content:space-between;gap:8px}
+.prev span{color:#93AAA3}
+.go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#7FEBCB;transition:gap .2s}
+.icard:hover .go{gap:12px}
+
+.foot{margin-top:64px;border-top:1px solid rgba(127,235,203,.1);padding:32px 0 36px;font-size:13px;color:#93AAA3}
+.foot p{margin:10px 0 0;max-width:660px;line-height:1.7}
+
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .menu,.status{display:none}
+  .rings{display:none}
+  .side{max-width:none;border-right:0;border-bottom:1px solid rgba(127,235,203,.1)}
+  .vp{height:440px}
+}
+@media (max-width:480px){.brand-name{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .zp *,.zp *::before,.zp *::after{animation:none !important;transition:none !important}
+}
+.zp.still *,.zp.still *::before,.zp.still *::after{animation:none !important;transition:none !important}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:860px){
+  .vp{order:-1;height:auto;aspect-ratio:6/5;place-items:stretch}
+  .mapin{height:auto;width:100%}
+  .legend{display:none}
+  .coordtag{display:none}
+  .zl0 .m{--s:.55}
+  .zl0 .m.p-sd,.zl0 .m.p-sd2{--s:.36}
+  .zl1 .m{--s:.45}
+  .zl1 .m.p-sd,.zl1 .m.p-sd2{--s:.3}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
+
+/* gm-rueda */
+.vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
+.vp::-webkit-scrollbar{display:none}
+.vp-in{position:sticky;top:0;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
+.vp-pad{height:3000px}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #4FE0B6;outline-offset:2px}
+::selection{background:color-mix(in srgb,#4FE0B6 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* ===== guías (ZeldaGuia) ===== */
+.gh{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(127,235,203,.08)}
+.gh .hero-bg{opacity:.22}
+.gh-in{display:flex;align-items:flex-end;justify-content:space-between;gap:28px 48px;flex-wrap:wrap;padding-top:30px;padding-bottom:30px}
+.crumbs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:#93AAA3}
+.crumbs a{color:#A9BDB6;text-decoration:none}.crumbs a:hover{color:#E6EEEA}
+.crumbs span[aria-current]{color:#E6EEEA}
+.gh h1{margin:12px 0 0;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.08;color:#F1E7C8}
+.gh .lead{font-size:16px;margin-top:12px;max-width:600px}
+.gprog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;flex:0 1 460px}
+.gp{padding:14px 16px;border-radius:16px;background:rgba(8,20,18,.8);border:1px solid rgba(127,235,203,.13)}
+.gpv{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.gpv b{font-family:'Cinzel',serif;font-size:26px;line-height:1;color:#F1E7C8}
+.gpv small{font-size:13px;font-weight:600;color:#93AAA3}
+.gp>span{display:block;margin-top:6px;font-size:12.5px;color:#A9BDB6}
+.bar{height:5px;margin-top:10px;border-radius:999px;background:rgba(127,235,203,.1);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#2FBF97,#7FEBCB);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+
+.gtabs{position:sticky;top:116px;z-index:40;background:rgba(5,12,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(127,235,203,.1)}
+.gtabs-in{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.gtab{flex-shrink:0;display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 15px;border-radius:12px;border:1px solid transparent;background:transparent;color:#A4B9B2;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.gtab:hover{color:#E6EEEA;background:rgba(127,235,203,.05)}
+.gtab.on{color:#E6EEEA;background:rgba(79,224,182,.12);border-color:rgba(79,224,182,.38)}
+.gtab .n{font-size:12px;font-weight:700;color:#93AAA3;padding:2px 7px;border-radius:999px;background:rgba(127,235,203,.08)}
+.gtab.on .n{color:#04211A;background:#7FEBCB}
+.gtab.deep.on{background:rgba(242,195,107,.12);border-color:rgba(242,195,107,.45)}
+.gtab.deep.on .n{background:#F2C36B;color:#231B0E}
+
+.gbody{display:flex;flex-wrap:wrap;align-items:flex-start;gap:24px;padding-top:26px}
+.gmain{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.gside{flex:1 1 320px;max-width:380px;display:flex;flex-direction:column;gap:14px}
+@media (min-width:1000px){.gside{position:sticky;top:186px}}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.tools .fld{flex:1 1 260px}
+.seg{display:inline-flex;gap:3px;padding:3px;border-radius:12px;background:#0A1816;border:1px solid rgba(127,235,203,.12)}
+.sg{height:36px;padding:0 12px;border-radius:9px;border:0;background:transparent;color:#A4B9B2;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.sg:hover{color:#E6EEEA}
+.sg.on{background:rgba(79,224,182,.15);color:#7FEBCB}
+.zones{display:flex;flex-wrap:wrap;gap:6px}
+.zc{height:32px;padding:0 11px;border-radius:999px;border:1px solid rgba(127,235,203,.14);background:transparent;color:#A9BDB6;font:inherit;font-size:13px;cursor:pointer}
+.zc:hover{color:#E6EEEA;border-color:rgba(127,235,203,.3)}
+.zc.on{color:#04211A;background:#7FEBCB;border-color:#7FEBCB;font-weight:600}
+.count{font-size:13px;color:#93AAA3}
+.count b{color:#E6EEEA}
+
+.tbl{border-radius:18px;border:1px solid rgba(127,235,203,.12);background:#081412;overflow:hidden}
+.tr{display:grid;grid-template-columns:44px minmax(0,1.6fr) minmax(0,1fr) 120px 78px;align-items:center;gap:12px;padding:0 14px;min-height:52px;border-top:1px solid rgba(127,235,203,.07)}
+.tr:first-child{border-top:0}
+.tr.th{min-height:40px;background:rgba(127,235,203,.04);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#93AAA3}
+.tr.th .lh{justify-self:start}
+.tr.row{cursor:pointer;transition:background .15s}
+.tr.row:hover{background:rgba(127,235,203,.05)}
+.tr.row.sel{background:rgba(79,224,182,.1);box-shadow:inset 0 0 0 1px rgba(79,224,182,.3)}
+.tr.row.done .nm b{color:#93AAA3;text-decoration:line-through;text-decoration-color:rgba(127,235,203,.5)}
+.ck{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(127,235,203,.35);background:transparent;color:#04211A;cursor:pointer;padding:0}
+.ck:hover{border-color:#7FEBCB}
+.ck.on{background:#4FE0B6;border-color:#4FE0B6}
+.ck svg{opacity:0}.ck.on svg{opacity:1}
+.nm{display:flex;flex-direction:column;min-width:0;text-align:left;border:0;background:transparent;color:inherit;font:inherit;padding:8px 0;cursor:pointer}
+.nm b{font-size:14.5px;font-weight:600;color:#E6EEEA;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm small{font-size:12px;color:#93AAA3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zn{font-size:13px;color:#C3D3CD}
+.co{font:500 12.5px 'IBM Plex Sans',sans-serif;color:#A9BDB6;font-variant-numeric:tabular-nums}
+.lay{justify-self:start;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:rgba(127,235,203,.1);color:#7FEBCB}
+.lay.k{background:rgba(160,180,255,.12);color:#B9C6FF}
+.lay.d{background:rgba(242,195,107,.12);color:#F2C36B}
+.more{align-self:center;height:40px;padding:0 18px;border-radius:11px;border:1px solid rgba(127,235,203,.2);background:transparent;color:#E6EEEA;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.more:hover{background:rgba(127,235,203,.06)}
+.empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 20px;text-align:center;color:#A9BDB6;border-radius:18px;border:1px dashed rgba(127,235,203,.18)}
+.empty b{color:#E6EEEA;font-size:15px}
+.empty button{margin-top:6px}
+
+/* panel lateral */
+.card{border-radius:18px;border:1px solid rgba(127,235,203,.13);background:linear-gradient(180deg,#0B1B18,#081412);padding:16px}
+.mini{position:relative;aspect-ratio:6/5;border-radius:12px;overflow:hidden;border:1px solid rgba(127,235,203,.14);background:#0A1715}
+.mini img{width:100%;height:100%;object-fit:cover;display:block}
+.mini.deep img{filter:grayscale(1) invert(1) brightness(.32) contrast(1.6) sepia(.35)}
+.mini .pin{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:#4FE0B6;border:3px solid #04211A;box-shadow:0 0 0 2px #4FE0B6,0 6px 14px rgba(0,0,0,.6)}
+.mini.deep .pin{background:#F2C36B;box-shadow:0 0 0 2px #F2C36B,0 0 22px rgba(242,195,107,.7)}
+.mini .pin2{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #04211A;background:#C9F27A}
+.mini .tag{position:absolute;left:8px;top:8px;padding:4px 8px;border-radius:7px;background:rgba(5,12,11,.85);font:700 11px 'Cinzel',serif;color:#E6EEEA}
+.side-h{margin:14px 0 0;font-size:22px;font-weight:700;line-height:1.15;color:#F1E7C8}
+.side-en{margin-top:2px;font-size:13px;color:#93AAA3}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:14px 0 0}
+.facts div{padding:9px 10px;border-radius:10px;background:rgba(127,235,203,.05)}
+.facts dt{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#93AAA3}
+.facts dd{margin:3px 0 0;font-size:15px;font-weight:600;color:#E6EEEA;font-variant-numeric:tabular-nums}
+.side-p{margin:12px 0 0;font-size:13.5px;color:#C3D3CD;text-wrap:pretty}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.acts .btn-z,.acts .btn-o{height:42px;font-size:14px;padding:0 14px}
+.note{font-size:13px;color:#A9BDB6;line-height:1.6}
+.note b{color:#F2C36B}
+
+/* semillas */
+.zgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.zt{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:14px;border:1px solid rgba(127,235,203,.12);background:#081412;color:#E6EEEA;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.zt:hover{border-color:rgba(127,235,203,.32)}
+.zt.on{border-color:#4FE0B6;background:rgba(79,224,182,.08)}
+.zt b{font-family:'Cinzel',serif;font-size:15px}
+.zt>span{font-size:12.5px;color:#A9BDB6}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}
+.kk{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:11px;border:1px solid rgba(127,235,203,.1);background:#081412;color:#E6EEEA;font:inherit;text-align:left;cursor:pointer}
+.kk:hover{border-color:rgba(127,235,203,.3)}
+.kk.sel{border-color:#4FE0B6;background:rgba(79,224,182,.08)}
+.kk.done{opacity:.6}
+.kk i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(201,242,122,.14);color:#C9F27A;font:700 12px 'IBM Plex Sans',sans-serif;font-style:normal;flex-shrink:0}
+.kk.two i{background:rgba(242,195,107,.16);color:#F2C36B}
+.kk>span{display:flex;flex-direction:column;min-width:0}
+.kk b{font-size:13px;font-weight:600}
+.kk small{font-size:12px;color:#93AAA3;font-variant-numeric:tabular-nums}
+
+/* misiones */
+.qlist{display:flex;flex-direction:column;gap:8px}
+.qi{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:start;padding:14px;border-radius:16px;border:1px solid rgba(127,235,203,.11);background:#081412;transition:border-color .2s}
+.qi:hover{border-color:rgba(127,235,203,.26)}
+.qi.sel{border-color:rgba(79,224,182,.55)}
+.qi .ck{margin-top:2px}
+.qi .nm{padding:0}
+.qi .nm b{white-space:normal;font-size:15px}
+.qi p{margin:6px 0 0;font-size:13.5px;color:#C3D3CD;text-wrap:pretty}
+.qk{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:6px;white-space:nowrap}
+.qk.p{background:rgba(242,195,107,.14);color:#F2C36B}
+.qk.a{background:rgba(127,235,203,.12);color:#7FEBCB}
+.qk.s{background:rgba(185,198,255,.12);color:#B9C6FF}
+.qi.done .nm b{color:#93AAA3;text-decoration:line-through}
+
+/* armaduras */
+.arm{display:flex;flex-direction:column;gap:8px}
+.ai{display:grid;grid-template-columns:44px minmax(0,1fr) minmax(160px,240px);gap:14px;align-items:center;padding:14px 16px;border-radius:16px;border:1px solid rgba(127,235,203,.11);background:#081412}
+.ai .rk{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:#93AAA3;text-align:center}
+.ai:first-child .rk{color:#F2C36B}
+.ai h3{margin:0;font-size:15.5px;font-weight:600;color:#E6EEEA;font-family:'IBM Plex Sans',sans-serif}
+.ai h3 small{font-weight:400;color:#93AAA3;font-size:12.5px;margin-left:6px}
+.ai p{margin:4px 0 0;font-size:13px;color:#C3D3CD;text-wrap:pretty}
+.dbar{display:flex;align-items:center;gap:10px}
+.dbar .bar{flex:1;height:8px;margin:0}
+.dbar b{font-family:'Cinzel',serif;font-size:20px;color:#F1E7C8;min-width:34px;text-align:right}
+
+/* conjuntos */
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.st{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:16px;border:1px solid rgba(127,235,203,.11);background:#081412;color:#E6EEEA;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s}
+.st:hover{border-color:rgba(127,235,203,.3)}
+.st.sel{border-color:#4FE0B6;background:rgba(79,224,182,.07)}
+.st b{font-size:15px;font-weight:600}
+.st>span{font-size:12.5px;color:#A9BDB6}
+.st>.ty{align-self:flex-start;align-self:flex-start;margin-bottom:4px}
+.lv{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.lv div{padding:10px 12px;border-radius:12px;background:rgba(127,235,203,.05)}
+.lv dt{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7FEBCB}
+.lv dd{margin:4px 0 0;font-size:13.5px;color:#C3D3CD}
+.mats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mats>span{padding:5px 9px;border-radius:8px;background:rgba(242,195,107,.1);color:#F1E7C8;font-size:12.5px}
+.mats>span b{color:#F2C36B}
+
+/* anterior / siguiente */
+.pn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:34px}
+.pn button{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:16px;border:1px solid rgba(127,235,203,.13);background:#081412;color:#E6EEEA;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s}
+.pn button:hover{border-color:rgba(127,235,203,.35)}
+.pn button.nx{text-align:right;align-items:flex-end}
+.pn small{font-size:12.5px;color:#93AAA3}
+.pn b{font-family:'Cinzel',serif;font-size:18px}
+.mapo .th-deep img{filter:grayscale(1) invert(1) brightness(.32) contrast(1.6) sepia(.35)}
+
+@media (max-width:860px){
+  .tr .lh{display:none}
+  .gtabs{top:0;position:relative}
+  .gprog{grid-template-columns:repeat(3,minmax(0,1fr));flex-basis:100%}
+  .tr{grid-template-columns:36px minmax(0,1fr) auto;gap:10px}
+  .tr .co{font-size:12px;text-align:right;white-space:nowrap}
+  .tr .zn,.tr .lay{display:none}
+  .gside{max-width:none}
+  .ai{grid-template-columns:36px minmax(0,1fr)}
+  .ai .dbar{grid-column:2}
+  .qi{grid-template-columns:36px minmax(0,1fr)}
+  .qi .qk{grid-column:2;justify-self:start}
+}
+@media (max-width:560px){
+  .gp{padding:10px 12px}
+  .gpv b{font-size:20px}
+  .gpv{flex-wrap:wrap;gap:2px 5px}
+  .gp>span{font-size:12px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pn{grid-template-columns:minmax(0,1fr)}
+  .pn button.nx{text-align:left;align-items:flex-start}
+}
+</style>
+</helmet>
+
+<div class="zp {{motionClass}}">
+
+    <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+
+    <nav class="sub" aria-label="Secciones de Zelda: Tears of the Kingdom">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Tears of the Kingdom</a>
+        <a class="slink" href="Zelda.dc.html">Inicio</a>
+
+        <div class="dd">
+          <a class="slink" href="Zelda.dc.html#mapa" aria-haspopup="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+            Mapas
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="mapsm">
+              <a class="mapo" href="Zelda.dc.html#mapa">
+                <span class="th"><img src="/images/zelda/mapa-superficie.jpg" alt=""></span>
+                <b>Superficie</b><span>120 santuarios · 838 semillas</span>
+              </a>
+              <a class="mapo" href="Zelda.dc.html#mapa">
+                <span class="th"><img src="/images/zelda/mapa-cielo.jpg" alt=""></span>
+                <b>Cielo</b><span>32 santuarios · 37 semillas</span>
+              </a>
+              <a class="mapo" href="#guias" onClick="{{go_raices}}">
+                <span class="th th-deep"><img src="/images/zelda/mapa-superficie.jpg" alt=""></span>
+                <b>Profundidades</b><span>120 raíces de luz</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dd">
+          <a class="slink on" href="#guias" aria-current="page" aria-haspopup="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6M8 11h6"></path></svg>
+            Información
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="menu">
+            <div class="infom">
+              <a class="io" href="#guias" onClick="{{go_santuarios}}"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11"></path><path d="M9 21v-6a3 3 0 0 1 6 0v6"></path><path d="M3 21h18"></path></svg></span><span><b>Santuarios</b><span>Los 152, con coordenadas y altitud</span></span></a>
+              <a class="io" href="#guias" onClick="{{go_semillas}}"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span><b>Semillas kolog</b><span>875 semillas en superficie y cielo</span></span></a>
+              <a class="io" href="#guias" onClick="{{go_misiones}}"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11a2 2 0 0 1 2 2v2h-4"></path><path d="M17 7v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h11"></path><path d="M8 3a2 2 0 0 0-2 2v12"></path><path d="M10 8h4M10 12h4"></path></svg></span><span><b>Misiones</b><span>23 principales, 50 aventuras y 105 secundarias</span></span></a>
+              <a class="io" href="#guias" onClick="{{go_armaduras}}"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span><span><b>Armaduras</b><span>Las de más defensa, de mayor a menor</span></span></a>
+              <a class="io" href="#guias" onClick="{{go_conjuntos}}"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5z"></path><path d="M3 12l9 5 9-5"></path><path d="M3 16.5l9 5 9-5"></path></svg></span><span><b>Conjuntos</b><span>57 sets y sus materiales de mejora</span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <span class="status"><i></i>En construcción</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CABECERA DE LAS GUÍAS -->
+  <section class="gh" id="guias">
+    <img class="hero-bg" src="/images/zelda/hyrule.jpg" alt="">
+    <div class="wrap gh-in">
+      <div>
+        <nav class="crumbs" aria-label="Migas de pan">
+          <a href="Zelda.dc.html">Tears of the Kingdom</a><span aria-hidden="true">/</span>
+          <a href="#guias">Guías</a><span aria-hidden="true">/</span>
+          <span aria-current="page">{{cur.title}}</span>
+        </nav>
+        <h1 class="serif">{{cur.h1}}</h1>
+        <p class="lead">{{cur.desc}}</p>
+      </div>
+      <div class="gprog" aria-label="Tu progreso">
+        <sc-for list="{{prog}}" as="p" hint-placeholder-count="3">
+          <div class="gp"><div class="gpv"><b>{{p.v}}</b><small>de {{p.t}}</small></div><span>{{p.l}}</span><div class="bar"><i style="width: {{p.w}}"></i></div></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div class="gtabs">
+    <div class="wrap gtabs-in" role="tablist" aria-label="Guías de Tears of the Kingdom">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+        <button type="button" role="tab" class="{{t.cls}}" aria-selected="{{t.on}}" onClick="{{t.go}}">{{t.title}} <span class="n">{{t.n}}</span></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <main class="wrap" data-pane="{{tab}}">
+    <div class="gbody">
+      <div class="gmain">
+
+        <!-- herramientas comunes -->
+        <sc-if value="{{showTools}}" hint-placeholder-val="{{ true }}">
+          <div class="tools">
+            <div class="fld">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <label class="sr" for="q-guia">{{cur.search}}</label>
+              <input id="q-guia" type="search" placeholder="{{cur.search}}" value="{{q}}" onChange="{{onQ}}" autocomplete="off">
+            </div>
+            <sc-if value="{{showLayer}}" hint-placeholder-val="{{ true }}">
+              <div class="seg" role="group" aria-label="Capa">
+                <sc-for list="{{layers}}" as="o" hint-placeholder-count="3"><button type="button" class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.go}}">{{o.l}}</button></sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{showKinds}}" hint-placeholder-val="{{ false }}">
+              <div class="seg" role="group" aria-label="Tipo de misión">
+                <sc-for list="{{kinds}}" as="o" hint-placeholder-count="4"><button type="button" class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.go}}">{{o.l}}</button></sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{showTypes}}" hint-placeholder-val="{{ false }}">
+              <div class="seg" role="group" aria-label="Tipo de conjunto">
+                <sc-for list="{{types}}" as="o" hint-placeholder-count="5"><button type="button" class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.go}}">{{o.l}}</button></sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{showStatus}}" hint-placeholder-val="{{ true }}">
+              <div class="seg" role="group" aria-label="Estado">
+                <sc-for list="{{states}}" as="o" hint-placeholder-count="3"><button type="button" class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.go}}">{{o.l}}</button></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+        <sc-if value="{{showZones}}" hint-placeholder-val="{{ true }}">
+          <div class="zones" role="group" aria-label="Zona">
+            <sc-for list="{{zones}}" as="z" hint-placeholder-count="10"><button type="button" class="{{z.cls}}" aria-pressed="{{z.on}}" onClick="{{z.go}}">{{z.l}}</button></sc-for>
+          </div>
+        </sc-if>
+
+        <!-- SANTUARIOS y RAÍCES DE LUZ: tabla -->
+        <sc-if value="{{isTable}}" hint-placeholder-val="{{ true }}">
+          <p class="count" aria-live="polite"><b>{{nShown}}</b> de {{nTotal}} {{cur.unit}}</p>
+          <sc-if value="{{hasRows}}" hint-placeholder-val="{{ true }}">
+            <div class="tbl">
+              <div class="tr th" aria-hidden="true"><span></span><span>Nombre</span><span class="zn">Zona</span><span class="co">Coordenadas</span><span class="lh">Capa</span></div>
+              <sc-for list="{{rows}}" as="r" hint-placeholder-count="12">
+                <div class="{{r.cls}}">
+                  <button type="button" class="{{r.ckc}}" aria-pressed="{{r.done}}" aria-label="{{r.ckl}}" onClick="{{r.toggle}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></button>
+                  <button type="button" class="nm" onClick="{{r.pick}}"><b>{{r.n}}</b><small>{{r.sub}}</small></button>
+                  <span class="zn">{{r.zone}}</span>
+                  <span class="co">{{r.co}}</span>
+                  <span class="{{r.layc}}">{{r.lay}}</span>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{canMore}}" hint-placeholder-val="{{ true }}">
+              <button type="button" class="more" onClick="{{more}}">Ver {{moreN}} más</button>
+            </sc-if>
+          </sc-if>
+        </sc-if>
+
+        <!-- SEMILLAS -->
+        <sc-if value="{{isSeeds}}" hint-placeholder-val="{{ false }}">
+          <p class="count">Elige una zona: <b>{{seedZoneLabel}}</b> · {{seedZoneInfo}}</p>
+          <div class="zgrid">
+            <sc-for list="{{seedZones}}" as="z" hint-placeholder-count="9">
+              <button type="button" class="{{z.cls}}" aria-pressed="{{z.on}}" onClick="{{z.go}}"><b>{{z.l}}</b><span>{{z.k}} kologs · {{z.s}} semillas</span><div class="bar"><i style="width: {{z.w}}"></i></div></button>
+            </sc-for>
+          </div>
+          <sc-if value="{{hasRows}}" hint-placeholder-val="{{ true }}">
+            <div class="kgrid">
+              <sc-for list="{{rows}}" as="r" hint-placeholder-count="24">
+                <button type="button" class="{{r.cls}}" aria-pressed="{{r.selp}}" onClick="{{r.pick}}"><i>{{r.seeds}}</i><span><b>{{r.n}}</b><small>{{r.co}}</small></span></button>
+              </sc-for>
+            </div>
+            <sc-if value="{{canMore}}" hint-placeholder-val="{{ true }}">
+              <button type="button" class="more" onClick="{{more}}">Ver {{moreN}} más</button>
+            </sc-if>
+          </sc-if>
+        </sc-if>
+
+        <!-- MISIONES -->
+        <sc-if value="{{isQuests}}" hint-placeholder-val="{{ false }}">
+          <p class="count" aria-live="polite"><b>{{nShown}}</b> de {{nTotal}} misiones</p>
+          <sc-if value="{{hasRows}}" hint-placeholder-val="{{ true }}">
+            <div class="qlist">
+              <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+                <article class="{{r.cls}}">
+                  <button type="button" class="{{r.ckc}}" aria-pressed="{{r.done}}" aria-label="{{r.ckl}}" onClick="{{r.toggle}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></button>
+                  <div><button type="button" class="nm" onClick="{{r.pick}}"><b>{{r.n}}</b><small>{{r.sub}}</small></button><sc-if value="{{r.hasBody}}" hint-placeholder-val="{{ true }}"><p>{{r.body}}</p></sc-if></div>
+                  <span class="{{r.kc}}">{{r.kl}}</span>
+                </article>
+              </sc-for>
+            </div>
+            <sc-if value="{{canMore}}" hint-placeholder-val="{{ true }}">
+              <button type="button" class="more" onClick="{{more}}">Ver {{moreN}} más</button>
+            </sc-if>
+          </sc-if>
+        </sc-if>
+
+        <!-- ARMADURAS -->
+        <sc-if value="{{isArmor}}" hint-placeholder-val="{{ false }}">
+          <div class="arm">
+            <sc-for list="{{armors}}" as="a" hint-placeholder-count="9">
+              <div class="ai">
+                <span class="rk">{{a.rank}}</span>
+                <div><h3>{{a.es}}<small>{{a.en}}</small></h3><p>{{a.text}}</p></div>
+                <div class="dbar"><div class="bar"><i style="width: {{a.w}}"></i></div><b>{{a.def}}</b></div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- CONJUNTOS -->
+        <sc-if value="{{isSets}}" hint-placeholder-val="{{ false }}">
+          <p class="count" aria-live="polite"><b>{{nShown}}</b> de {{nTotal}} conjuntos</p>
+          <sc-if value="{{hasRows}}" hint-placeholder-val="{{ true }}">
+            <div class="sets">
+              <sc-for list="{{rows}}" as="r" hint-placeholder-count="12">
+                <button type="button" class="{{r.cls}}" aria-pressed="{{r.selp}}" onClick="{{r.pick}}"><span class="{{r.tyc}}">{{r.ty}}</span><b>{{r.n}}</b><span>{{r.bonus}}</span></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}">
+          <div class="empty" role="status"><b>No hay nada con esos filtros</b><span>Prueba con otra zona, otra capa o borra la búsqueda.</span><button type="button" class="more" onClick="{{reset}}">Quitar filtros</button></div>
+        </sc-if>
+      </div>
+
+      <!-- PANEL LATERAL -->
+      <aside class="gside" aria-label="Detalle">
+        <sc-if value="{{hasSel}}" hint-placeholder-val="{{ true }}">
+          <div class="card">
+            <sc-if value="{{sel.hasMap}}" hint-placeholder-val="{{ true }}">
+              <div class="{{sel.miniCls}}">
+                <img src="{{sel.img}}" alt="">
+                <span class="tag">{{sel.layL}}</span>
+                <sc-if value="{{sel.hasPin2}}" hint-placeholder-val="{{ false }}"><span class="pin2" style="left: {{sel.fx}}; top: {{sel.fy}}"></span></sc-if>
+                <span class="pin" style="left: {{sel.px}}; top: {{sel.py}}" role="img" aria-label="Posición en el mapa"></span>
+              </div>
+            </sc-if>
+            <h2 class="side-h serif">{{sel.n}}</h2>
+            <div class="side-en">{{sel.en}}</div>
+            <sc-if value="{{sel.hasFacts}}" hint-placeholder-val="{{ true }}">
+              <dl class="facts">
+                <sc-for list="{{sel.facts}}" as="f" hint-placeholder-count="3"><div><dt>{{f.l}}</dt><dd>{{f.v}}</dd></div></sc-for>
+              </dl>
+            </sc-if>
+            <sc-if value="{{sel.hasP}}" hint-placeholder-val="{{ true }}"><p class="side-p">{{sel.p}}</p></sc-if>
+            <sc-if value="{{sel.hasLv}}" hint-placeholder-val="{{ false }}">
+              <dl class="lv"><sc-for list="{{sel.lv}}" as="l" hint-placeholder-count="3"><div><dt>{{l.l}}</dt><dd>{{l.v}}</dd></div></sc-for></dl>
+              <p class="side-p">Total para mejorar el conjunto al máximo:</p>
+              <div class="mats"><sc-for list="{{sel.tot}}" as="m" hint-placeholder-count="5"><span><b>{{m.q}}×</b> {{m.n}}</span></sc-for></div>
+            </sc-if>
+            <div class="acts">
+              <sc-if value="{{sel.canDone}}" hint-placeholder-val="{{ true }}">
+                <button type="button" class="btn-z" aria-pressed="{{sel.done}}" onClick="{{sel.toggle}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> {{sel.doneL}}</button>
+              </sc-if>
+              <sc-if value="{{sel.hasMap}}" hint-placeholder-val="{{ true }}">
+                <a class="btn-o" href="Zelda.dc.html#mapa"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg> Ver en el mapa</a>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+        <div class="card note">{{cur.note}}</div>
+      </aside>
+    </div>
+
+    <nav class="pn" aria-label="Otras guías">
+      <button type="button" onClick="{{prev.go}}"><small>Anterior</small><b>{{prev.title}}</b></button>
+      <button type="button" class="nx" onClick="{{next.go}}"><small>Siguiente</small><b>{{next.title}}</b></button>
+    </nav>
+  </main>
+
+    <footer class="foot">
+    <div class="wrap">
+      <span class="brand-name">GRIETA<span>META</span></span>
+      <p>GrietaMeta es un sitio de fans y no está afiliado a Nintendo. The Legend of Zelda y Tears of the Kingdom son marcas de Nintendo. Guía no oficial con datos de la versión 1.2.1 contrastados con varias guías.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb on" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"pestaña":{"editor":"enum","options":["santuarios","raices","semillas","misiones","armaduras","conjuntos"],"default":"santuarios"},"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {};
+    const set = (o) => this.setState(o);
+    const D = {"SH":[["Tajikats",0,344,-1009,42,"Centro"],["Jochi-iu",0,4347,2876,188,"Noreste"],["Sitsum",0,2369,2596,802,"Noreste"],["Oromuwak",0,-3079,1617,264,"Noroeste"],["Mayachin",0,-706,-869,57,"Centro"],["Musanokir",0,408,2134,167,"Norte"],["Ren-iz",0,756,824,106,"Centro"],["Sahirow",0,-3354,2386,380,"Noroeste"],["Rotsumamu",0,-3407,-1363,355,"Suroeste"],["Mayamats",0,-4638,-1513,470,"Suroeste"],["Serutabomac",0,-179,1170,301,"Centro"],["Mogawak",0,3300,424,136,"Este"],["Zanmik",0,3470,-2181,171,"Sureste"],["Jiukoum",0,868,-2278,165,"Sur"],["Iun-orok",0,-3539,851,-105,"Oeste"],["Soryotanog",0,-3882,-2963,147,"Suroeste"],["Mayak",0,1270,3733,130,"Noreste"],["Gemimik",0,4513,2116,27,"Noreste"],["Orochium",0,-1637,2642,261,"Noroeste"],["Sinakawak",0,-1415,757,113,"Oeste"],["Tauyosipun",0,-4539,2880,283,"Noroeste"],["Tukarok",0,915,-251,59,"Centro"],["Sikukuu",0,699,2793,248,"Norte"],["Siwakama",0,-2446,-3344,67,"Suroeste"],["Turakawak",0,-3498,-197,90,"Oeste"],["Riogok",0,-1441,-1616,113,"Suroeste"],["Anedamimik",0,4232,-2178,13,"Sureste"],["Mayausiy",0,-1167,2602,-57,"Norte"],["Ishodag",0,-879,423,74,"Centro"],["Kiuyoyou",0,-1107,2088,128,"Norte"],["Ekochiu",0,1063,1280,71,"Norte"],["Tadarok",0,-1082,-2187,152,"Sur"],["Karahatag",0,-3728,-3625,68,"Suroeste"],["Kisinona",0,2568,1246,196,"Noreste"],["Oshozan-u",0,-1404,3678,308,"Noroeste"],["Gasas",0,-4153,98,66,"Oeste"],["Turakamik",0,-2657,-2237,92,"Suroeste"],["Gatakis",0,-3652,1806,191,"Noroeste"],["Ihen-a",0,3786,578,503,"Este"],["Tsutsu-um",0,-1423,-1351,92,"Suroeste"],["Kamatukis",0,3431,3357,95,"Noreste"],["Sepapa",0,222,1085,53,"Centro"],["Mayatat",0,-3291,-2512,50,"Suroeste"],["Susuyai",0,-785,-434,44,"Centro"],["Apogek",0,3887,-217,187,"Este"],["Domizuin",0,3305,1443,444,"Noreste"],["Kikakin",0,-396,2736,308,"Norte"],["Sibajitak",0,2400,3275,421,"Noreste"],["Utsushok",0,670,-3358,96,"Sur"],["Jikais",0,4267,-1673,204,"Sureste"],["Kitawak",0,-1530,-2929,341,"Suroeste"],["Sonapan",0,-1922,-359,250,"Oeste"],["Marakuguc",0,1762,2510,455,"Noreste"],["Runakit",0,-2530,1170,200,"Oeste"],["Wao-os",0,-4058,1990,206,"Noroeste"],["Kyokugon",0,-709,-1551,32,"Sur"],["Nouda",0,-2318,2201,196,"Noroeste"],["Eutoum",0,-3507,3570,406,"Noroeste"],["Isisim",0,1842,2842,383,"Noreste"],["Mayachideg",0,3061,1824,238,"Noreste"],["Otutsum",0,-4469,-671,526,"Oeste"],["Utojis",0,1218,-2543,121,"Sureste"],["Kamizun",0,-178,-1558,48,"Sur"],["Suariwak",0,-2524,-1770,155,"Suroeste"],["Rakakudaj",0,-2037,-1853,89,"Suroeste"],["Rasitakiwak",0,4167,1323,251,"Noreste"],["Zakusu",0,3526,-1482,190,"Sureste"],["Jojon",0,1202,330,52,"Este"],["Sifumim",0,2826,-3270,102,"Sureste"],["Otak",0,-4391,3714,234,"Noroeste"],["Miryotanog",0,-4680,-3086,79,"Suroeste"],["Kimayat",0,2864,3638,262,"Noreste"],["Momosik",0,2960,2758,541,"Noreste"],["Igashuk",0,4655,3714,154,"Noreste"],["Taki-ihaban",0,-1830,1195,171,"Oeste"],["En-oma",0,103,-2518,-61,"Sur"],["Yomizuk",0,4413,-613,60,"Este"],["Mayahisik",0,3729,-2059,211,"Sureste"],["Motsusis",0,-1795,-3487,70,"Suroeste"],["Maoikes",0,2276,147,103,"Este"],["Moshapin",0,2679,1904,154,"Noreste"],["Usazum",0,-2139,-874,118,"Oeste"],["Joniu",0,2918,507,178,"Este"],["Jiotak",0,1834,3180,279,"Noreste"],["Ikatak",0,-3951,1139,135,"Oeste"],["Chichim",0,-3211,-3007,-24,"Suroeste"],["Ninjis",0,355,1892,201,"Norte"],["Tokiy",0,2304,-2378,-3,"Sureste"],["Sakunbomar",0,167,2320,202,"Norte"],["Rutafu-um",0,-2998,3102,531,"Noroeste"],["O-ogim",0,2756,-1089,124,"Este"],["Jogou",0,3346,-1187,82,"Este"],["Marari-in",0,4631,-3712,44,"Sureste"],["Pupunke",0,621,2211,187,"Norte"],["Bamitok",0,3094,-3210,106,"Sureste"],["Irasak",0,-4159,-3825,53,"Suroeste"],["Kurakat",0,2361,-511,179,"Este"],["Susub",0,349,-2052,-1,"Sur"],["Eshos",0,1566,-1945,180,"Sureste"],["Yamiyo",0,333,470,54,"Centro"],["Teniten",0,-75,-1116,46,"Centro"],["Mayaotaki",0,-825,3535,256,"Norte"],["Makurukis",0,-2847,630,255,"Oeste"],["Sinatanika",0,3842,2300,73,"Noreste"],["Jochisiu",0,931,-1903,55,"Sur"],["Ishokin",0,-565,-3524,152,"Sur"],["Sisuran",0,-2559,3354,266,"Noroeste"],["Tenmaten",0,-595,1551,11,"Norte"],["Jochi-ihiga",0,3811,1219,115,"Noreste"],["Makasura",0,1770,-1052,189,"Este"],["Kyononis",0,-205,451,46,"Centro"],["Timawak",0,1800,1640,332,"Noreste"],["Jonsau",0,1744,18,51,"Este"],["Rasiwak",0,4664,3263,27,"Noreste"],["Kudanisar",0,-4167,-2143,75,"Suroeste"],["Joju-u-u",0,1515,-3577,165,"Sureste"],["Jiosin",0,-241,-371,52,"Centro"],["Gatanisis",0,4498,826,119,"Este"],["Morok",0,1182,-779,157,"Centro"],["Minetak",0,394,3485,93,"Norte"],["Rakashog",1,-1715,-2119,1155,"Suroeste"],["Tenbez",1,-970,3535,1019,"Norte"],["Ijo-o",1,-3861,2682,716,"Noroeste"],["Mayaumekis",1,-2948,3051,907,"Noroeste"],["Jirutagumac",1,2916,534,960,"Este"],["Kadaunar",1,1882,1203,1255,"Noreste"],["Mogisari",1,4655,3500,1018,"Noreste"],["Siyamotsus",1,-1795,-3295,1019,"Suroeste"],["Ukouh",1,275,-913,1460,"Centro"],["Gutanbac",1,709,-1383,1582,"Sur"],["In-isa",1,26,-1504,1409,"Sur"],["Nachoyah",1,390,-1661,2284,"Sur"],["Mayanas",1,4613,-947,1784,"Este"],["Igoshon",1,3481,666,1328,"Este"],["Joku-usin",1,1075,-3348,798,"Sur"],["Simosiwak",1,162,1972,771,"Norte"],["Yansamin",1,2351,-1783,1475,"Sureste"],["Kumamayn",1,2857,-2856,1216,"Sureste"],["Gikaku",1,4506,2166,1160,"Noreste"],["Kahatanaum",1,-3296,3432,1349,"Noroeste"],["Joku-u",1,1376,-3340,447,"Sureste"],["Natak",1,3671,1484,1163,"Noreste"],["Ganos",1,-3370,467,1691,"Oeste"],["Taunhiy",1,-2402,825,630,"Oeste"],["Josiu",1,1758,-1208,933,"Sureste"],["Ga-ahisas",1,-3596,961,1694,"Oeste"],["Jinodok",1,-1257,-1487,1016,"Suroeste"],["Sihajog",1,4546,-846,1127,"Este"],["Mayasiar",1,-3547,-321,1956,"Oeste"],["Mayam",1,340,2815,1814,"Norte"],["Ukoojisi",1,1469,-2169,601,"Sureste"],["Taninoud",1,-1802,3407,958,"Noroeste"]],"LR":[["A-nehi","Ihen-a",3786,578,"Este"],["Aduon","Nouda",-2318,2201,"Noroeste"],["Agihi-ihcoj","Jochi-ihiga",3811,1219,"Noreste"],["Akinatanis","Sinatanika",3842,2300,"Noreste"],["Amakawis","Siwakama",-2446,-3344,"Suroeste"],["Amo-ne","En-oma",103,-2518,"Sur"],["Anonisik","Kisinona",2568,1246,"Noreste"],["Apapes","Sepapa",222,1085,"Centro"],["Arusakam","Makasura",1770,-1052,"Este"],["Busus","Susub",349,-2052,"Sur"],["Camobatures","Serutabomac",-179,1170,"Centro"],["Cugukaram","Marakuguc",1762,2510,"Noreste"],["Eknupup","Pupunke",621,2211,"Norte"],["Gadohsi","Ishodag",-879,423,"Centro"],["Gataharak","Karahatag",-3728,-3625,"Suroeste"],["Gedihcayam","Mayachideg",3061,1824,"Noreste"],["Gonatoyrim","Miryotanog",-4680,-3086,"Suroeste"],["Gonatoyros","Soryotanog",-3882,-2963,"Suroeste"],["Iayusus","Susuyai",-785,-434,"Centro"],["Ikatoayam","Mayaotaki",-825,3535,"Norte"],["Jadukakar","Rakakudaj",-2037,-1853,"Suroeste"],["Kasari","Irasak",-4159,-3825,"Suroeste"],["Kataki","Ikatak",-3951,1139,"Oeste"],["Katenim","Minetak",394,3485,"Norte"],["Katijabis","Sibajitak",2400,3275,"Noreste"],["Kato","Otak",-4391,3714,"Noroeste"],["Katoij","Jiotak",1834,3180,"Noreste"],["Kawagom","Mogawak",3300,424,"Este"],["Kawakanis","Sinakawak",-1415,757,"Oeste"],["Kawakarut","Turakawak",-3498,-197,"Oeste"],["Kawamit","Timawak",1800,1640,"Noreste"],["Kawatik","Kitawak",-1530,-2929,"Suroeste"],["Kawikatisar","Rasitakiwak",4167,1323,"Noreste"],["Kawiraus","Suariwak",-2524,-1770,"Suroeste"],["Kawisar","Rasiwak",4664,3263,"Noreste"],["Kawumoro","Oromuwak",-3079,1617,"Noroeste"],["Kayam","Mayak",1270,3733,"Noreste"],["Kegopa","Apogek",3887,-217,"Este"],["Kimakarut","Turakamik",-2657,-2237,"Suroeste"],["Kimimadena","Anedamimik",4232,-2178,"Sureste"],["Kimimeg","Gemimik",4513,2116,"Noreste"],["Kimnaz","Zanmik",3470,-2181,"Sureste"],["Kisihayam","Mayahisik",3729,-2059,"Sureste"],["Kisomom","Momosik",2960,2758,"Noreste"],["Kogoir","Riogok",-1441,-1616,"Suroeste"],["Kohsustu","Utsushok",670,-3358,"Sur"],["Koradat","Tadarok",-1082,-2187,"Sur"],["Korakut","Tukarok",915,-251,"Centro"],["Koro-nui","Iun-orok",-3539,851,"Oeste"],["Korom","Morok",1182,-779,"Centro"],["Kotimab","Bamitok",3094,-3210,"Sureste"],["Kuhsagi","Igashuk",4655,3714,"Noreste"],["Kuzimoy","Yomizuk",4413,-613,"Este"],["Migo-o","O-ogim",2756,-1089,"Este"],["Mihcihc","Chichim",-3211,-3007,"Suroeste"],["Mimufis","Sifumim",2826,-3270,"Sureste"],["Misisi","Isisim",1842,2842,"Noreste"],["Mu-ufatur","Rutafu-um",-2998,3102,"Noroeste"],["Mu-ustust","Tsutsu-um",-1423,-1351,"Suroeste"],["Muihcoro","Orochium",-1637,2642,"Noroeste"],["Muokuij","Jiukoum",868,-2278,"Sur"],["Muotue","Eutoum",-3507,3570,"Noroeste"],["Mustis","Sitsum",2369,2596,"Noreste"],["Mustuto","Otutsum",-4469,-671,"Oeste"],["Muzasu","Usazum",-2139,-874,"Oeste"],["Nabahi-ikat","Taki-ihaban",-1830,1195,"Oeste"],["Napanos","Sonapan",-1922,-359,"Oeste"],["Narusis","Sisuran",-2559,3354,"Noroeste"],["Netamnet","Tenmaten",-595,1551,"Norte"],["Netinet","Teniten",-75,-1116,"Centro"],["Ni-iraram","Marari-in",4631,-3712,"Sureste"],["Nihcayam","Mayachin",-706,-869,"Centro"],["Nikakik","Kikakin",-396,2736,"Norte"],["Nikohsi","Ishokin",-565,-3524,"Sur"],["Nipahsom","Moshapin",2679,1904,"Noreste"],["Nisoij","Jiosin",-241,-371,"Centro"],["Niuzimod","Domizuin",3305,1443,"Noreste"],["Nogukoyk","Kyokugon",-709,-1551,"Sur"],["Nojoj","Jojon",1202,330,"Este"],["Nupisoyuat","Tauyosipun",-4539,2880,"Noroeste"],["Nuzimak","Kamizun",-178,-1558,"Sur"],["Oyimay","Yamiyo",333,470,"Centro"],["Ramobnukas","Sakunbomar",167,2320,"Norte"],["Rasinaduk","Kudanisar",-4167,-2143,"Suroeste"],["Rikonasum","Musanokir",408,2134,"Norte"],["Sasag","Gasas",-4153,98,"Oeste"],["Sekioam","Maoikes",2276,147,"Este"],["Siakij","Jikais",4267,-1673,"Sureste"],["Sijnin","Ninjis",355,1892,"Norte"],["Sijotu","Utojis",1218,-2543,"Sureste"],["Sikatag","Gatakis",-3652,1806,"Noroeste"],["Sikurukam","Makurukis",-2847,630,"Oeste"],["Sikutamak","Kamatukis",3431,3357,"Noreste"],["Sinonoyk","Kyononis",-205,451,"Centro"],["Sisinatag","Gatanisis",4498,826,"Este"],["Sisustom","Motsusis",-1795,-3487,"Suroeste"],["So-oaw","Wao-os",-4058,1990,"Noroeste"],["Sohse","Eshos",1566,-1945,"Sureste"],["Stakijat","Tajikats",344,-1009,"Centro"],["Stamayam","Mayamats",-4638,-1513,"Suroeste"],["Takaruk","Kurakat",2361,-511,"Este"],["Tatayam","Mayatat",-3291,-2512,"Suroeste"],["Tayamik","Kimayat",2864,3638,"Noreste"],["Tikanur","Runakit",-2530,1170,"Oeste"],["U-nazohso","Oshozan-u",-1404,3678,"Noroeste"],["U-u-ujoj","Joju-u-u",1515,-3577,"Sureste"],["Uasnoj","Jonsau",1744,18,"Este"],["Ui-ihcoj","Jochi-iu",4347,2876,"Noreste"],["Uihcoke","Ekochiu",1063,1280,"Norte"],["Uinoj","Joniu",2918,507,"Este"],["Uisihcoj","Jochisiu",931,-1903,"Sur"],["Umamustor","Rotsumamu",-3407,-1363,"Suroeste"],["Uogoj","Jogou",3346,-1187,"Este"],["Uoyoyuik","Kiuyoyou",-1107,2088,"Norte"],["Usukaz","Zakusu",3526,-1482,"Sureste"],["Uukukis","Sikukuu",699,2793,"Norte"],["Worihas","Sahirow",-3354,2386,"Noroeste"],["Yikot","Tokiy",2304,-2378,"Sureste"],["Yisuayam","Mayausiy",-1167,2602,"Norte"],["Zi-ner","Ren-iz",756,824,"Centro"]],"KO":[[-3674,-799,1,0],[-254,426,1,0],[1776,-984,1,0],[-589,-559,1,0],[2490,-2123,1,0],[-3609,358,1,0],[1118,229,1,0],[2061,2756,1,0],[-313,324,1,0],[-3853,-2864,1,0],[-1771,-1243,1,0],[2700,1748,1,0],[4395,-535,1,0],[657,1371,1,0],[4314,2518,1,0],[-381,996,1,0],[-3552,595,1,0],[-1795,-3579,1,0],[1476,-3264,1,0],[2638,-368,1,0],[-273,746,1,0],[333,-1283,1,0],[1936,-2777,1,0],[2746,202,1,0],[-889,-1908,1,0],[-4323,-1090,1,0],[4524,-1005,1,0],[-428,249,1,0],[-242,-3919,1,0],[52,3147,1,0],[3151,3092,1,0],[3768,2690,1,0],[653,-1770,1,0],[-4124,1935,1,0],[3678,450,1,0],[-3806,-1475,1,0],[-3584,-1991,1,0],[-4170,1696,1,0],[4335,-1871,1,0],[-344,786,1,0],[-675,861,1,0],[2547,-585,1,0],[3014,-2537,1,0],[-2821,-2832,1,0],[290,-247,1,0],[-18,-2975,1,0],[133,600,1,0],[3933,-2480,1,0],[1252,-1856,1,0],[-3549,1752,1,0],[1611,-3802,1,0],[3232,1787,1,0],[2011,-3957,1,0],[2725,-2122,1,0],[786,2953,1,0],[4272,137,1,0],[-2914,240,1,0],[567,-2384,1,0],[3220,282,1,0],[-4438,-2114,1,0],[-2486,-2055,1,0],[543,-1266,1,0],[2752,1374,1,0],[-2506,-1590,1,0],[-3413,3506,1,0],[-1295,-2214,1,0],[-4062,1794,1,0],[1671,1981,1,0],[2335,274,1,0],[1023,-3228,1,0],[-472,-2039,1,0],[3453,3581,1,0],[-1452,-3638,1,0],[-4635,2819,1,0],[3772,3377,1,0],[1182,380,1,0],[-797,559,1,0],[1326,-1963,1,0],[-4038,3365,1,0],[-1557,-824,1,0],[-3753,2798,1,0],[2472,151,1,0],[2406,3328,1,0],[-2352,-742,1,0],[-3589,-3030,1,0],[-995,-3254,1,0],[3285,339,1,0],[1115,-732,1,0],[1375,2844,1,0],[-1811,2198,1,0],[2306,15,1,0],[-128,814,1,0],[-2635,2056,1,0],[4084,-2974,1,0],[1452,1746,1,0],[4506,-1521,1,0],[-511,-1177,1,0],[1741,2330,1,0],[-2436,512,1,0],[-2221,1580,1,0],[3529,-1684,1,0],[3192,227,1,0],[2713,-2961,1,0],[-1153,-3304,1,0],[-1146,-381,1,0],[4592,-2160,1,0],[4492,3148,1,0],[919,410,1,0],[3896,-1684,1,0],[-3899,-1644,1,0],[-3201,343,1,0],[2295,-1511,1,0],[-3818,834,1,0],[2397,-1847,1,0],[1794,-3580,1,0],[4118,3286,1,0],[785,-2764,1,0],[390,-3609,1,0],[-3982,931,1,0],[-2298,1908,1,0],[1701,1756,1,0],[2269,1837,1,0],[-4332,2602,1,0],[-790,-2230,1,0],[4189,-812,1,0],[-360,885,1,0],[3186,3459,1,0],[-2200,-799,1,0],[-477,3133,1,0],[-2221,-693,1,0],[2513,-1866,1,0],[821,-330,1,0],[4134,1495,1,0],[-1052,2617,1,0],[268,-2215,1,0],[2976,-2025,1,0],[889,-2394,1,0],[959,-944,1,0],[63,-1753,1,0],[276,3120,1,0],[-2075,2078,1,0],[-254,257,1,0],[4459,-357,1,0],[1533,-3261,1,0],[-3508,3836,1,0],[-964,-1607,1,0],[-664,-1222,1,0],[-3532,488,1,0],[2546,-1077,1,0],[-812,-1964,1,0],[-3611,-2844,1,0],[-311,-550,1,0],[-668,-1780,1,0],[3322,516,1,0],[-931,-2208,1,0],[-1969,-595,1,0],[967,1027,1,0],[-1968,-1091,1,0],[4395,-2415,1,0],[4561,941,1,0],[-1598,-1016,1,0],[-2385,2137,1,0],[1320,716,1,0],[-4059,774,1,0],[-1202,-1691,1,0],[-2244,-1740,1,0],[2804,-1851,1,0],[3914,-2101,1,0],[1982,-449,1,0],[-398,-2560,1,0],[3267,3397,1,0],[-4067,2505,1,0],[2239,2363,1,0],[-681,3535,1,0],[4135,406,1,0],[3064,-3395,1,0],[-282,-1576,1,0],[1372,-2764,1,0],[4271,2827,1,0],[-1316,-1261,1,0],[-2713,-2356,1,0],[2234,3677,1,0],[3350,3074,1,0],[-2715,-497,1,0],[617,754,1,0],[814,-3705,1,0],[2283,-2657,1,0],[3676,-2193,1,0],[-3162,2466,1,0],[-4247,3125,1,0],[1775,-2767,1,0],[-10,-2587,1,0],[-4419,3181,1,0],[-3696,1685,1,0],[-4431,3683,1,0],[4325,-142,1,0],[2510,-1573,1,0],[297,-1497,1,0],[206,-2639,1,0],[-1227,1578,1,0],[-4910,-3778,1,0],[1537,-1302,1,0],[4220,159,1,0],[3649,1798,1,0],[3645,1460,1,0],[1940,-2564,1,0],[-4592,-2349,1,0],[-333,1747,1,0],[4045,1285,1,0],[-3285,1341,1,0],[4073,2453,1,0],[272,-3906,1,0],[-2078,2590,1,0],[1241,-1850,1,0],[3666,-3277,1,0],[116,-2961,1,0],[4038,-2309,1,0],[-1147,2535,1,0],[459,-1699,1,0],[859,3356,1,0],[-3941,3162,1,0],[-225,-3341,1,0],[-2819,-1652,1,0],[399,1174,1,0],[164,-1940,1,0],[-1589,229,1,0],[4277,2947,1,0],[3286,-2180,1,0],[1847,-3343,1,0],[-2937,-2214,1,0],[-3793,2319,1,0],[-3466,3476,1,0],[-2262,-2341,1,0],[3237,-1545,1,0],[3997,-2996,1,0],[1999,-2282,1,0],[3330,533,1,0],[2413,-2269,1,0],[-4481,1945,1,0],[-3565,2257,1,0],[1926,-1490,1,0],[-3964,-609,1,0],[3715,-1949,1,0],[2783,198,1,0],[3796,-3615,1,0],[-2437,-554,1,0],[4231,-311,1,0],[2142,-2604,1,0],[-3226,579,1,0],[3589,416,1,0],[4635,566,1,0],[-3666,-1565,1,0],[2635,-2855,1,0],[3742,-1685,1,0],[-2962,-1400,1,0],[4142,-557,1,0],[1719,2422,1,0],[3160,1426,1,0],[-1730,1162,1,0],[3415,-2381,1,0],[-3845,-1895,1,0],[-2921,-482,1,0],[-3737,-996,1,0],[-2061,769,1,0],[527,-3666,1,0],[-1112,-571,1,0],[-4013,1637,1,0],[-2531,1855,1,0],[-4148,-1932,1,0],[-4420,-352,1,0],[-3779,1866,1,0],[-1816,-972,1,0],[2314,1133,1,0],[-2604,3236,1,0],[-254,1059,1,0],[3078,3683,1,0],[-1956,-410,1,0],[-2207,2091,1,0],[-1428,-1298,1,0],[-1653,2437,1,0],[2563,-3599,1,0],[-2012,-2470,1,0],[2528,-1750,1,0],[-3716,1039,1,0],[1373,-3509,1,0],[1274,-3191,1,0],[1373,-1680,1,0],[-4692,-1236,1,0],[3527,-368,1,0],[-2640,-323,1,0],[-2428,-3264,1,0],[-1153,-1012,1,0],[2172,3036,1,0],[-3547,578,1,0],[-4389,-715,1,0],[-3582,-1985,1,0],[1637,-3676,1,0],[-1763,3554,1,0],[-1938,-2822,1,0],[4491,-3396,1,0],[-4273,3499,1,0],[2156,3056,1,0],[-3772,3344,1,0],[2955,256,1,0],[1598,-1395,1,0],[4022,1622,1,0],[4599,1857,1,0],[-3600,111,1,0],[1400,3782,1,0],[-3575,-1852,1,0],[-945,348,1,0],[-1017,569,1,0],[843,-1291,1,0],[3782,-2123,1,0],[-2920,546,1,0],[-4687,-1962,1,0],[1483,443,1,0],[4119,-2574,1,0],[-124,1193,1,0],[-427,891,1,0],[-1688,-1600,1,0],[1522,-1845,1,0],[-4363,-1846,1,0],[716,368,1,0],[-2342,939,1,0],[3432,-3325,1,0],[-2265,-2163,1,0],[3562,-1113,1,0],[762,11,1,0],[-2436,1139,1,0],[966,628,1,0],[-1461,2366,1,0],[3327,2169,1,0],[-1945,-3185,1,0],[1291,-1331,1,0],[-3974,3734,1,0],[-1075,1277,1,0],[1594,2474,1,0],[1946,-2382,1,0],[895,-2218,1,0],[4078,821,1,0],[-3148,1107,1,0],[4394,2721,1,0],[2012,-1896,1,0],[1467,678,1,0],[3274,1398,1,0],[-2031,88,1,0],[-3565,-733,1,0],[-1764,-1449,1,0],[3074,1140,1,0],[-87,401,1,0],[-2688,1662,1,0],[-237,632,1,0],[-66,-2441,1,0],[-2801,1948,1,0],[-4003,-969,1,0],[3321,-475,1,0],[-997,3084,1,0],[4175,699,1,0],[-297,1119,1,0],[-3293,2442,1,0],[-3677,2467,1,0],[1767,1537,1,0],[691,625,1,0],[3100,-2951,1,0],[1793,-3179,1,0],[-3827,-2860,1,0],[-3601,-916,1,0],[-3249,-1464,1,0],[986,1805,1,0],[-53,971,1,0],[2580,488,1,0],[-2672,-1357,1,0],[211,-886,1,0],[2363,-3438,1,0],[4598,-3562,1,0],[-1863,-94,1,0],[-1093,3402,1,0],[-2202,356,1,0],[-3133,-113,1,0],[1695,-929,1,0],[3869,1086,1,0],[2674,-11,1,0],[-1146,3086,1,0],[423,-2884,1,0],[-218,-383,1,0],[-1610,-3084,1,0],[542,510,1,0],[2460,-41,1,0],[2555,767,1,0],[1245,-1037,1,0],[-3794,3027,1,0],[243,-2875,1,0],[1334,1318,1,0],[-1086,-2050,1,0],[3011,-786,1,0],[172,3037,1,0],[2232,3042,1,0],[-1659,-1322,1,0],[-952,-1720,1,0],[4028,-1095,1,0],[1758,-984,1,0],[-103,-2292,1,0],[-3002,3220,1,0],[-2025,1304,1,0],[-3765,3845,1,0],[2878,-2685,1,0],[3119,-3720,1,0],[2720,1163,1,0],[-3011,-1501,1,0],[-287,840,1,0],[2951,-79,1,0],[1738,-3468,1,0],[-1089,-514,1,0],[-39,1691,1,0],[4794,3757,1,0],[1791,-853,1,0],[3944,-413,1,0],[1892,-151,1,0],[-1053,-1328,1,0],[-530,694,1,0],[1777,-2991,1,0],[-4710,-2162,1,0],[-3969,-324,1,0],[-1433,-1953,1,0],[2326,-1829,1,0],[-2140,-1486,1,0],[-3921,-1591,1,0],[1997,-959,1,0],[2300,-1357,1,0],[3168,586,1,0],[-830,-1964,1,0],[1858,786,1,0],[4113,471,1,0],[-84,907,1,0],[-612,-1525,1,0],[2921,-1392,1,0],[1250,2293,1,0],[-254,1062,1,0],[573,-3853,1,0],[-1370,-3724,1,0],[-3442,1313,1,0],[-1720,2557,1,0],[352,-2000,1,0],[-468,-2899,1,0],[-942,820,1,0],[954,-3476,1,0],[1397,128,1,0],[1449,-3532,1,0],[2674,1074,1,0],[-1186,2482,1,0],[2030,-1167,1,0],[-3614,1880,1,0],[297,-1834,1,0],[3012,1203,1,0],[2294,-3020,1,0],[1626,-781,1,0],[-886,-2271,1,0],[1433,1953,1,0],[2425,-3403,1,0],[2780,2525,1,0],[-3435,708,1,0],[-438,1116,1,0],[-3599,1538,1,0],[-2547,-3953,1,0],[-1149,222,1,0],[1806,2530,1,0],[-1969,3113,1,0],[-3945,1969,1,0],[-61,867,1,0],[2294,943,1,0],[1154,-1704,1,0],[-1517,-1923,1,0],[-3320,-2275,1,0],[-1409,-465,1,0],[-2654,1283,1,0],[4274,510,1,0],[-1700,-1826,1,0],[-3060,-1286,1,0],[2240,-726,1,0],[-3749,-2287,1,0],[2810,-2248,1,0],[637,-2315,1,0],[1999,2122,1,0],[-2825,704,1,0],[-1651,-688,1,0],[-2340,-1104,1,0],[-415,-3374,1,0],[2559,-2485,1,0],[4543,3162,1,0],[3358,1300,1,0],[1473,2220,1,0],[1581,-3034,1,0],[1568,2946,1,0],[2083,2330,1,0],[617,-76,1,0],[770,1416,1,0],[4102,474,1,0],[-665,547,1,0],[3818,76,1,0],[-3976,732,1,0],[589,-1233,1,0],[1368,-2273,1,0],[2834,-1119,1,0],[-151,-3068,1,0],[1282,-834,1,0],[-1344,-689,1,0],[-2234,1070,1,0],[-765,-674,1,0],[1096,-3833,1,0],[2961,-53,1,0],[3112,1298,1,0],[-1972,3796,1,0],[-874,3313,1,0],[3749,-2629,1,0],[-3064,2856,1,0],[-637,-2382,1,0],[-3193,-1745,1,0],[-1646,-13,1,0],[759,1644,1,0],[-4254,2146,1,0],[-1178,-3511,1,0],[4157,3168,1,0],[3544,3024,1,0],[1280,-1963,1,0],[-1164,666,1,0],[1960,-2628,1,0],[-1742,-401,1,0],[-2677,892,1,0],[-125,-938,1,0],[-351,828,1,0],[1581,723,1,0],[2141,-2223,1,0],[2441,1242,1,0],[-1943,-2131,1,0],[609,-1468,1,0],[1235,-3217,1,0],[1575,-1045,1,0],[459,-2142,1,0],[-1702,-84,1,0],[-3351,2993,1,0],[3264,-2226,1,0],[-1385,-3493,1,0],[3013,933,1,0],[-3468,-168,1,0],[-3848,1327,1,0],[2579,-2729,1,0],[-3103,1316,1,0],[-3840,3417,1,0],[3135,-433,1,0],[206,-3313,1,0],[-2868,-1124,1,0],[628,-1162,1,0],[-1210,3601,1,0],[-2395,-1034,1,0],[2851,-28,1,0],[-2601,-669,1,0],[1825,-459,1,0],[192,897,1,0],[-4377,-525,1,0],[589,-3740,1,0],[-3118,235,1,0],[-4005,3623,1,0],[-1131,18,1,0],[-3820,178,1,0],[3712,-622,1,0],[-4911,-1243,1,0],[-4132,-2593,1,0],[2540,-3291,1,0],[4389,612,1,0],[4435,3190,1,0],[-2244,-2212,1,0],[4441,-480,1,0],[1033,-1306,1,0],[2308,133,1,0],[3273,-13,1,0],[-3087,2120,1,0],[4106,1377,1,0],[-3576,3267,1,0],[-666,963,1,0],[3032,2289,1,0],[3440,-2517,1,0],[1425,1534,1,0],[340,-2832,1,0],[-595,-1415,1,0],[1442,-537,1,0],[1692,-3324,1,0],[2426,1723,1,0],[-2268,2284,1,0],[3011,-371,1,0],[2211,50,1,0],[-3812,-790,1,0],[1755,2225,1,0],[-3208,-1855,1,0],[-2477,2748,1,0],[2201,-1373,1,0],[-2498,-568,1,0],[3801,856,1,0],[3366,-1979,1,0],[-284,609,1,0],[3539,2637,1,0],[-3975,3714,1,0],[1602,2827,1,0],[-3542,752,1,0],[-1352,-192,1,0],[75,-327,1,0],[1652,-1908,1,0],[-3958,2036,1,0],[-1440,-847,1,0],[-3316,-2164,1,0],[3388,742,1,0],[-1428,-2976,1,0],[2495,-892,1,0],[-1557,-2626,1,0],[-1706,-1707,1,0],[2672,3442,1,0],[3496,-3311,1,0],[-3158,2689,1,0],[1308,-178,1,0],[-3654,-392,1,0],[-951,-1840,1,0],[313,-1766,1,0],[-3163,-1038,1,0],[270,701,1,0],[-3850,2738,1,0],[-4191,3374,1,0],[-3935,-2941,1,0],[-3431,-3128,1,0],[-238,-1919,1,0],[3070,457,1,0],[3250,-1336,1,0],[-3757,-2443,1,0],[101,-3842,1,0],[4463,-844,1,0],[-2280,-402,1,0],[3547,965,1,0],[-712,-2625,1,0],[735,-1504,1,0],[-2620,-2198,1,0],[-2818,1599,1,0],[1775,-2933,1,0],[850,793,1,0],[48,-1694,2,0],[523,-2196,2,0],[2859,-1913,2,0],[-3345,-3056,2,0],[-323,3159,2,0],[-4261,2175,2,0],[2240,245,2,0],[1723,2611,2,0],[434,484,2,0],[-4136,-2260,2,0],[3687,-3318,2,0],[-2833,2840,2,0],[2544,639,2,0],[-1708,-2341,2,0],[-2962,88,2,0],[2646,-2118,2,0],[4356,2536,2,0],[-307,-3290,2,0],[1769,-1868,2,0],[-1434,1476,2,0],[67,-3762,2,0],[794,-511,2,0],[-4614,-3197,2,0],[-4538,-1344,2,0],[2807,183,2,0],[-2892,3494,2,0],[535,1108,2,0],[-1799,-321,2,0],[-3671,3386,2,0],[1534,1606,2,0],[3654,-605,2,0],[-1384,3630,2,0],[3350,3668,2,0],[2638,1111,2,0],[-696,-1574,2,0],[3092,1755,2,0],[3500,-1458,2,0],[1981,2040,2,0],[1877,-806,2,0],[3781,446,2,0],[-2985,-2326,2,0],[-1018,-2632,2,0],[1542,1809,2,0],[4000,-187,2,0],[1817,2642,2,0],[3542,-3458,2,0],[-2873,497,2,0],[4293,1609,2,0],[-2083,480,2,0],[2372,1405,2,0],[3528,-61,2,0],[223,-3531,2,0],[2477,-1743,2,0],[629,-965,2,0],[3245,-2283,2,0],[-2337,2957,2,0],[-455,-1648,2,0],[2178,2780,2,0],[3959,3119,2,0],[2243,-3469,2,0],[1025,3674,2,0],[-1356,-1310,2,0],[-3584,14,2,0],[523,3399,2,0],[-42,-1112,2,0],[1172,-1885,2,0],[-546,2226,2,0],[3748,2305,2,0],[-1130,-1971,2,0],[770,-2141,2,0],[-190,-2249,2,0],[1397,-3641,2,0],[2453,-2912,2,0],[520,-3484,2,0],[4053,945,2,0],[2828,-3884,2,0],[-3820,-3126,2,0],[-779,-500,2,0],[1505,-336,2,0],[-2794,2308,2,0],[-2434,-2119,2,0],[3727,-2161,2,0],[1535,510,2,0],[290,-1205,2,0],[-3197,-1170,2,0],[-2494,-3348,2,0],[-1984,-2079,2,0],[2689,-544,2,0],[1612,-3493,2,0],[1249,3005,2,0],[-1548,-1002,2,0],[4282,3268,2,0],[4202,2742,2,0],[-3613,985,2,0],[958,-203,2,0],[-1540,2554,2,0],[-776,939,2,0],[489,3055,2,0],[464,-881,1,1],[-3645,1048,1,1],[313,-1436,1,1],[3234,462,1,1],[-1684,3573,1,1],[2440,-1722,1,1],[-1714,-3578,1,1],[2345,-1753,1,1],[2430,-1783,1,1],[377,-1732,1,1],[424,-1504,1,1],[113,-1081,1,1],[-3917,2880,1,1],[4818,-822,1,1],[3662,1408,1,1],[967,-3185,1,1],[285,1960,1,1],[622,-1658,1,1],[524,2748,1,1],[631,-1531,1,1],[4654,2137,1,1],[542,-1581,1,1],[2332,-1827,1,1],[-3369,-51,1,1],[513,-1318,1,1],[2933,-2992,1,1],[343,-1756,1,1],[4796,3756,1,1],[-682,3535,1,1],[-1403,-1523,1,1],[1337,-2062,1,1],[-2367,865,1,1],[1677,-1898,1,1],[17,-1262,2,1],[471,-1695,2,1]],"QU":[["p","The Closed Door","Principal 1","Gran Isla del Cielo","Empieza tras el prólogo, donde aprendes Ultramano, Fusión, Ascenso y Retroceso. Examina la puerta del Templo del Tiempo y completa los cuatro santuarios de la isla (Ukouh, In-isa, Gutanbac y Nachoyah) para abrirla."],["p","To the Kingdom of Hyrule","Principal 2","Gran Isla del Cielo","Se activa al ofrecer la Espada Maestra deteriorada a la luz sobre el altar. Después bajas de las islas del cielo hasta el reino."],["p","Crisis at Hyrule Castle","Principal 3","Lookout Landing","Habla con Purah en Lookout Landing. Tienes que encontrar a Hoz y hacer frente a las fuerzas de monstruos que rodean el castillo."],["p","Regional Phenomena","Principal 4","Lookout Landing","Tras registrar el mapa en Lookout Landing, habla con Purah y su equipo. Investigas los fenómenos de cuatro regiones: Rito, Goron, Zora y Gerudo. El orden es libre."],["p","Camera Work in the Depths","Principal 5","Lookout Landing","Habla con Josha en Lookout Landing. Es fácil pasarla por alto y te da la cámara para el Compendio."],["p","Tulin of Rito Village","Principal 6","Hebra","Habla con Tulin en el pueblo Rito. Arregla el puente roto, llega al Templo del Viento, encuentra sus cinco cerraduras y vence al jefe Colgera."],["p","Yunobo of Goron City","Principal 7","Eldin","Habla con Yunobo en Goron City. Consigue la armadura ignífuga, escala el Monte Muerte, halla el Templo del Fuego en las Profundidades, abre sus cinco candados y vence a Marbled Gohma."],["p","The Sludge-Covered Statue","Principal 8","Dominio Zora","Habla con Yona en el Dominio Zora. Es el comienzo de la región Zora y desbloquea las misiones de la armadura Zora y de Sidon."],["p","The Broken Slate","Principal 9","Lago Toto","Habla con Jiahto en el Lago Toto. Al terminarla se abre Clues to the Sky."],["p","Restoring the Zora Armor","Principal 10","Dominio Zora","Se abre al terminar The Sludge-Covered Statue: vuelve a hablar con Yona. Te lleva a conseguir la armadura Zora."],["p","Clues to the Sky","Principal 11","Lago Toto","Se abre al completar The Broken Slate. Sigues pistas hacia el cielo, entre ellas el Pez del Cielo."],["p","Sidon of the Zora","Principal 12","Dominio Zora","Se abre al completar The Sludge-Covered Statue. Recorres el Ancient Zora Waterworks y Wellspring Island, abres los cuatro grifos del Templo del Agua y vences a Mucktorok."],["p","Riju of Gerudo Town","Principal 13","Gerudo","Llega a Gerudo Town. Defiende la ciudad, encuentra el Templo del Rayo, recoge sus cuatro baterías y vence a Queen Gibdo."],["p","Find the Fifth Sage","Principal 14","Lookout Landing","Tras los cuatro templos y la batalla contra Phantom Ganon, habla con Purah. Hay que completarla para ver el final completo."],["p","Trail of the Master Sword","Principal 15","Templo del Espíritu","Habla con Mineru en el Templo del Espíritu, una vez superados los cuatro templos. Sigue el rastro de la Espada Maestra."],["p","Recovering the Hero's Sword","Principal 16","Bosque Kolog","Se abre al terminar Trail of the Master Sword. Es la misión con la que recuperas la Espada Maestra."],["p","Secret of the Ring Ruins","Principal 17","Ring Ruins","Habla con Paya en Ring Ruins. Es el inicio del camino hacia el Templo del Espíritu."],["p","Guidance from Ages Past","Principal 18","Dragonhead Island","Examina la reliquia Zonai en Dragonhead Island. Te lleva a abrir la Fábrica de Constructos y a montar el robot."],["p","A Mystery in the Depths","Principal 19","Lookout Landing","Tras investigar las cuatro regiones, habla con Josha en Lookout Landing."],["p","Impa and the Geoglyphs","Principal 20","Cresta de Hyrule","Impa te guía por los geoglifos repartidos por el reino. Cada uno te lleva a un recuerdo."],["p","The Dragon's Tears","Principal 21","Hyrule","Reúne las lágrimas del dragón repartidas por Hyrule para ver los recuerdos de la historia."],["p","Find Princess Zelda","Principal 22","Gran Isla del Cielo","Habla con el Constructo Mayordomo de la Gran Isla del Cielo. Es una misión que dura todo el juego y se completa al terminarlo."],["p","Destroy Ganondorf","Principal 23","Lookout Landing","Tras conseguir la Espada Maestra, habla con Purah. Ganondorf está en las Profundidades. Prepárate con la mejor armadura y comida."],["a","Hateno Village Research Lab","Aventura secundaria","Lookout Landing","Guía paso a paso en Gamer Guides (en inglés)."],["a","Who Goes There?","Aventura secundaria","Lookout Landing","Guía paso a paso en Gamer Guides (en inglés)."],["a","A Deal with the Statue","Aventura secundaria","Lookout Landing","Guía paso a paso en Gamer Guides (en inglés)."],["a","Lucky Clover Gazette (todas)","Aventura secundaria","Gaceta del Trébol","Guía paso a paso en Gamer Guides (en inglés)."],["a","Bring Peace to Hyrule Field","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","Bring Peace to Necluda!","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","A Call from the Depths","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Beast and the Princess","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","Serenade to Kaysa","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Beckoning Woman","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","Gourmets Gone Missing","Aventura secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["a","Hestu's Concerns","Aventura secundaria","Cresta de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Hornist's Dramatic Escape","Aventura secundaria","Cresta de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","White Goats Gone Missing","Aventura secundaria","Cresta de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","Serenade to Mija","Aventura secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["a","Zelda's Golden Horse","Aventura secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Hunt for Bubbul Gems!","Aventura secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Search for Koltin","Aventura secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["a","Serenade to a Great Fairy","Aventura secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["a","For Our Princess","Aventura secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["a","Honey, Bee Mine","Aventura secundaria","Humedales de Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Missing Farm Tools","Aventura secundaria","Humedales de Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["a","Team Cece or Team Reede?","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","A Letter to Koyin","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","A New Signature Food","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","Reede's Secret","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","Cece's Secret","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Mayoral Election","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","Serenade to Cotera","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","Princess Zelda Kidnapped?!","Aventura secundaria","Necluda","Guía paso a paso en Gamer Guides (en inglés)."],["a","Mattison's Independence","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","The All-Clucking Cucco","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","Presenting: The Travel Medallion","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","Presenting: Hero's Path Mode","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","Presenting: Sensor +!","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","A Monstrous Collection (I a V)","Aventura secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Flute Player's Plan","Aventura secundaria","Faron","Guía paso a paso en Gamer Guides (en inglés)."],["a","An Eerie Voice","Aventura secundaria","Faron","Guía paso a paso en Gamer Guides (en inglés)."],["a","Ruffian-Infested Village","Aventura secundaria","Faron","Guía paso a paso en Gamer Guides (en inglés)."],["a","Lurelin Village Restoration Project","Aventura secundaria","Faron","Guía paso a paso en Gamer Guides (en inglés)."],["a","Infiltrating the Yiga Clan","Aventura secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Yiga Clan Exam","Aventura secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Blocked Well","Aventura secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["a","Investigate the Thyphlo Ruins","Aventura secundaria","Gran Bosque de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Owl Protected by Dragons","Aventura secundaria","Gran Bosque de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Corridor Between the Two Dragons","Aventura secundaria","Gran Bosque de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Six Dragons","Aventura secundaria","Gran Bosque de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","The Long Dragon","Aventura secundaria","Gran Bosque de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["a","Master Kohga of the Yiga Clan","Aventura secundaria","Las Profundidades","Guía paso a paso en Gamer Guides (en inglés)."],["a","Legend of the Great Sky Island","Aventura secundaria","Gran Isla del Cielo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Mother Goddess (White Sword of the Sky)","Misión secundaria","Reino de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Incomplete Stable","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","Spotting Spot","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","President Hudson's Sign","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","President Hudson's Sign: Road to Rito","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Treasure Hunters","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","WANTED: Hinox","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","WANTED: Stone Talus","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","WANTED: Molduga","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","Unknown Sky Giant","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","Village Attacked by Pirates","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Horse Guard's Request","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","Fell into a Well!","Misión secundaria","Hyrule Central","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Blocked Cave","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Crossing the Cold Pool","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","The North Lomei Prophecy","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Open the Door","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Duchess Who Disappeared","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Genli's Home Cooking","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Legacy of the Rito","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Molli the Fletcher's Quest","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Treasure of the Secret Springs","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Rito Rope Bridge","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Fish for Fletching","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Cave Mushrooms That Glow","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Captured Tent","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Who Finds the Haven?","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Hebra's Colossal Fossil","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Supply-Eyeing Fliers","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Kaneli's Flight Training","Misión secundaria","Hebra","Guía paso a paso en Gamer Guides (en inglés)."],["s","Homegrown in Hateno","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Bottled Cry for Help","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Photographing a Chuchu","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Teach Me a Lesson","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Uma's Garden","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Manny's Beloved","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Dantz's Prize Cows","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","A New Champion's Tunic","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Lurelin Resort Project","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Dad's Blue Shirt","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Way to Trade, Washed Away","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Rattled Ralera","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Seeking the Pirate Hideout","Misión secundaria","Necluda Este","Guía paso a paso en Gamer Guides (en inglés)."],["s","Home on Arrange","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Lomei Labyrinth Island Prophecy","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","Master the Vehicle Prototype","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Tarrey Town Race Is On!","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","Secrets Within","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Gathering Pirates","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","One-Hit Wonder!","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","Strongest in the World","Misión secundaria","Akkala","Guía paso a paso en Gamer Guides (en inglés)."],["s","Mired in Muck (rescue Bazz)","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Never-Ending Lecture","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Token of Friendship","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Crabulous Deal","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Wife Wafted Away","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Moonlit Princess","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Fort at Ja'Abu Ridge","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Blue Stone","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","Glory of the Zora","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","True Treasure","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","Secret Treasure Under the Great Fish","Misión secundaria","Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","Gloom-Borne Illness","Misión secundaria","Necluda Oeste","Guía paso a paso en Gamer Guides (en inglés)."],["s","Codgers' Quarrel","Misión secundaria","Necluda Oeste","Guía paso a paso en Gamer Guides (en inglés)."],["s","Follow the Cuccos","Misión secundaria","Necluda Oeste","Guía paso a paso en Gamer Guides (en inglés)."],["s","Out of the Inn","Misión secundaria","Necluda Oeste","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Trip Through History","Misión secundaria","Necluda Oeste","Guía paso a paso en Gamer Guides (en inglés)."],["s","The South Lomei Prophecy","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Heroines' Secret","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Mysterious Eighth","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Dalia's Game","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Lost in the Dunes","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Iceless Icehouse","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Decorate with Passion","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Missing Owner","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Pride of the Gerudo","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","To the Ruins!","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Piaffe, Packed Away","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Picture for the Closed Stable I","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Picture for the Closed Stable II","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Gerudo's Colossal Fossil","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Disaster in Gerudo Canyon","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Great Tumbleweed Purge","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Heat and Cold Endurance Tests","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","Gleeok Guts","Misión secundaria","Gerudo","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Ultimate Dish","Misión secundaria","Humedales de Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","An Uninvited Guest","Misión secundaria","Humedales de Lanayru","Guía paso a paso en Gamer Guides (en inglés)."],["s","Misko's Cave of Chests","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Meat for Meat","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Rock, Roast or Dust","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Cash in on Ripened Flint","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Amber Dealer","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Ancient City Gorondia","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Simmerstone Springs","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Mine-Cart Land Courses","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Moon-Gazing Gorons","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Soul of the Gorons","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Hidden Treasure at Lizard Lakes","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Eldin's Colossal Fossil","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","The Abandoned Laborer","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Picture for Foothill Stable","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Picture for Woodland Stable","Misión secundaria","Eldin","Guía paso a paso en Gamer Guides (en inglés)."],["s","Ousting the Giants","Misión secundaria","Faron","Guía paso a paso en Gamer Guides (en inglés)."],["s","A Picture for Tabantha Bridge Stable","Misión secundaria","Cresta de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."],["s","Horse-Drawn Dreams","Misión secundaria","Cresta de Hyrule","Guía paso a paso en Gamer Guides (en inglés)."]],"AR":[["Aspecto del Héroe Antiguo","Ancient Hero's Aspect",84,"Recompensa final por completar los 152 santuarios. Defensa por nivel con el set: 24, 36, 54 y 84. Mejora el rayo de la Espada Maestra.","Set completo"],["Set de soldado","Soldier's Armor",84,"28 por pieza al máximo. No tiene bonus de set, pero es de lo más defensivo del juego.","Set completo (3 × 28)"],["Set Zonaite","Zonaite Armor",84,"28 por pieza al máximo. Reduce el gasto de energía de los aparatos Zonai, ideal si construyes mucho.","Set completo (3 × 28)"],["Armadura de lo Salvaje","Armor of the Wild",84,"El aspecto clásico de Link, con bonus de ataque. Según las guías llega a 84 con todo mejorado.","Set completo"],["Guardia Real","Royal Guard",72,"Tres piezas de 24 cada una al máximo. Se consigue dentro del castillo de Hyrule.","Set completo (3 × 24)"],["Bárbaro, Deidad feroz y Despertar","Barbarian, Fierce Deity, Awakening",60,"Tres piezas de 20 cada una al máximo. Su fuerte es la bonificación de ataque, no la defensa.","Set completo (3 × 20)"],["Set de escarcha","Frostbite",48,"16 por pieza al máximo. Aumenta el daño con frío y es de las mejores para zonas heladas.","Set completo (3 × 16)"],["Cuero de campeón","Champion's Leathers",32,"La pieza suelta con más defensa de las que hemos contrastado. Muy fácil de encontrar.","Pieza única"],["Túnica de los recuerdos","Tunic of Memories",28,"Recompensa por encontrar todas las estatuas de Barganier. Sube de 4 a 28 con las mejoras.","Pieza única"]],"SE":[["Hylian","Normal","Solo defensa",[[[5,"Bokoblin Horn"]],[[5,"Blue Bokoblin Horn"],[3,"Bokoblin Fang"]],[[20,"Amber"],[3,"Bokoblin Guts"],[5,"Black Bokoblin Horn"]]],[[20,"Amber"],[5,"Bokoblin Horn"],[5,"Blue Bokoblin Horn"],[5,"Black Bokoblin Horn"],[3,"Bokoblin Fang"],[3,"Bokoblin Guts"]]],["Armor of the Wild","Normal","Bonus de ataque",[[[10,"Acorn"],[2,"Farosh's Scale"]],[[5,"Courser Bee Honey"],[2,"Farosh's Claw"]],[[3,"Energetic Rhino Beetle"],[2,"Shard of Farosh's Fang"],[5,"Shard of Farosh's Spike"]]],[[10,"Acorn"],[5,"Courser Bee Honey"],[5,"Shard of Farosh's Spike"],[3,"Energetic Rhino Beetle"],[2,"Farosh's Scale"],[2,"Farosh's Claw"],[2,"Shard of Farosh's Fang"]]],["Soldier's","Normal","Solo defensa",[[[5,"Chuchu Jelly"],[3,"Bokoblin Guts"]],[[5,"Keese Eyeball"],[3,"Moblin Guts"]],[[30,"Flint"],[3,"Lizalfos Tail"],[3,"Hinox Guts"]]],[[30,"Flint"],[5,"Chuchu Jelly"],[5,"Keese Eyeball"],[3,"Bokoblin Guts"],[3,"Moblin Guts"],[3,"Lizalfos Tail"],[3,"Hinox Guts"]]],["Awakening","Normal","Bonus de ataque",[[[10,"Luminous Stone"],[1,"Star Fragment"]],[[15,"Luminous Stone"],[1,"Star Fragment"]],[[20,"Luminous Stone"],[1,"Star Fragment"]]],[[45,"Luminous Stone"],[3,"Star Fragment"]]],["Champion's Leathers","Normal","Pieza suelta",[[[3,"Silent Princess"],[2,"Light Dragon's Scale"]],[[3,"Silent Princess"],[2,"Light Dragon's Talon"],[10,"Sundelion"]],[[5,"Silent Princess"],[2,"Shard of Light Dragon's Fang"],[15,"Sundelion"]]],[[25,"Sundelion"],[11,"Silent Princess"],[2,"Light Dragon's Scale"],[2,"Light Dragon's Talon"],[2,"Shard of Light Dragon's Fang"]]],["Tunic of Memories","Normal","Pieza suelta",[[[3,"Silent Princess"],[1,"Light Dragon's Scale"]],[[3,"Silent Princess"],[1,"Light Dragon's Talon"],[2,"Farosh's Horn"]],[[5,"Silent Princess"],[1,"Shard of Light Dragon's Fang"],[2,"Naydra's Horn"]]],[[11,"Silent Princess"],[2,"Farosh's Horn"],[2,"Naydra's Horn"],[1,"Light Dragon's Scale"],[1,"Light Dragon's Talon"],[1,"Shard of Light Dragon's Fang"]]],["Royal Guard","Normal","Solo defensa",[[[3,"Bokoblin Guts"],[3,"Boss Bokoblin Horn"]],[[3,"Blue Boss Bokoblin Horn"],[3,"Bokoblin Fang"]],[[3,"Black Boss Bokoblin Horn"],[3,"Hinox Guts"]]],[[3,"Bokoblin Guts"],[3,"Boss Bokoblin Horn"],[3,"Blue Boss Bokoblin Horn"],[3,"Bokoblin Fang"],[3,"Black Boss Bokoblin Horn"],[3,"Hinox Guts"]]],["Time","Normal","Aspecto clásico",[[[10,"Amber"],[1,"Star Fragment"]],[[20,"Amber"],[1,"Star Fragment"]],[[30,"Amber"],[1,"Star Fragment"]]],[[60,"Amber"],[3,"Star Fragment"]]],["Wind","Normal","Aspecto clásico",[[[5,"Opal"],[1,"Star Fragment"]],[[10,"Opal"],[1,"Star Fragment"]],[[15,"Opal"],[1,"Star Fragment"]]],[[30,"Opal"],[3,"Star Fragment"]]],["Twilight","Normal","Aspecto clásico",[[[1,"Topaz"],[1,"Star Fragment"]],[[4,"Topaz"],[1,"Star Fragment"]],[[6,"Topaz"],[1,"Star Fragment"]]],[[11,"Topaz"],[3,"Star Fragment"]]],["Sky","Normal","Aspecto clásico",[[[1,"Sapphire"],[1,"Star Fragment"]],[[4,"Sapphire"],[1,"Star Fragment"]],[[6,"Sapphire"],[1,"Star Fragment"]]],[[11,"Sapphire"],[3,"Star Fragment"]]],["Archaic","Normal","Solo aspecto",[],[]],["Desert Voe","Elemento","Resistencia al calor",[[[3,"White Chuchu Jelly"]],[[5,"White Chuchu Jelly"],[3,"Cool Safflina"]],[[5,"Chillshroom"],[5,"Ice Keese Wing"],[3,"Ice-Breath Lizalfos Tail"]]],[[8,"White Chuchu Jelly"],[5,"Chillshroom"],[5,"Ice Keese Wing"],[3,"Cool Safflina"],[3,"Ice-Breath Lizalfos Tail"]]],["Snowquill","Elemento","Resistencia al frío",[[[3,"Red Chuchu Jelly"]],[[5,"Red Chuchu Jelly"],[3,"Warm Safflina"]],[[5,"Sunshroom"],[5,"Fire Keese Wing"],[3,"Fire-Breath Lizalfos Tail"]]],[[8,"Red Chuchu Jelly"],[5,"Sunshroom"],[5,"Fire Keese Wing"],[3,"Warm Safflina"],[3,"Fire-Breath Lizalfos Tail"]]],["Flamebreaker","Elemento","Guardia de llamas",[[[3,"Moblin Horn"]],[[5,"Moblin Fang"],[5,"Fireproof Lizard"]],[[5,"Blue Moblin Horn"],[15,"Flint"],[3,"Smotherwing Butterfly"]]],[[15,"Flint"],[5,"Moblin Fang"],[5,"Fireproof Lizard"],[5,"Blue Moblin Horn"],[3,"Moblin Horn"],[3,"Smotherwing Butterfly"]]],["Rubber","Elemento","Resistencia a la electricidad",[[[3,"Yellow Chuchu Jelly"],[1,"Electric Lizalfos Horn"]],[[8,"Yellow Chuchu Jelly"],[5,"Voltfruit"]],[[5,"Zapshroom"],[5,"Electric Lizalfos Tail"],[8,"Electric Safflina"]]],[[11,"Yellow Chuchu Jelly"],[8,"Electric Safflina"],[5,"Voltfruit"],[5,"Zapshroom"],[5,"Electric Lizalfos Tail"],[1,"Electric Lizalfos Horn"]]],["Froggy","Elemento","Antideslizante",[[[3,"Sticky Lizard"]],[[5,"Sticky Lizard"],[5,"Horriblin Horn"]],[[5,"Blue Horriblin Horn"],[5,"Sticky Frog"]]],[[8,"Sticky Lizard"],[5,"Horriblin Horn"],[5,"Blue Horriblin Horn"],[5,"Sticky Frog"]]],["Depths","Elemento","Resistencia a la malicia",[[[3,"Deep Firefly"]],[[5,"Dark Clump"],[3,"Frox Fang"]],[[20,"Zonaite"],[3,"Frox Fingernail"],[3,"Obsidian Frox Fang"]]],[[20,"Zonaite"],[5,"Dark Clump"],[3,"Deep Firefly"],[3,"Frox Fang"],[3,"Frox Fingernail"],[3,"Obsidian Frox Fang"]]],["Ruby Circlet","Elemento","Resistencia al frío",[[[2,"Ruby"],[3,"Flint"]],[[4,"Ruby"],[5,"Flint"]],[[6,"Ruby"],[1,"Star Fragment"]]],[[12,"Ruby"],[8,"Flint"],[1,"Star Fragment"]]],["Sapphire Circlet","Elemento","Resistencia al calor",[[[2,"Sapphire"],[3,"Flint"]],[[4,"Sapphire"],[5,"Flint"]],[[6,"Sapphire"],[1,"Star Fragment"]]],[[12,"Sapphire"],[8,"Flint"],[1,"Star Fragment"]]],["Topaz Earrings","Elemento","Resistencia a la electricidad",[[[2,"Topaz"],[3,"Flint"]],[[4,"Topaz"],[5,"Flint"]],[[6,"Topaz"],[1,"Star Fragment"]]],[[12,"Topaz"],[8,"Flint"],[1,"Star Fragment"]]],["Cah Medoh Divine Helm","Elemento","Resistencia al frío",[[[1,"Sapphire"],[5,"Zonaite"]],[[4,"Sapphire"],[10,"Zonaite"]],[[6,"Sapphire"],[5,"Zonaite"],[5,"Dazzlefruit"]]],[[20,"Zonaite"],[11,"Sapphire"],[5,"Dazzlefruit"]]],["Vah Rudania Divine Helm","Elemento","Guardia de llamas",[[[5,"Zonaite"],[1,"Ruby"]],[[10,"Zonaite"],[4,"Ruby"]],[[6,"Ruby"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],[[15,"Zonaite"],[11,"Ruby"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],["Vah Naboris Divine Helm","Elemento","Resistencia a la electricidad",[[[1,"Topaz"],[5,"Zonaite"]],[[4,"Topaz"],[10,"Zonaite"]],[[6,"Topaz"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],[[15,"Zonaite"],[11,"Topaz"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],["Vah Ruta Divine Helm","Habilidad","Velocidad al nadar",[[[5,"Zonaite"],[5,"Opal"]],[[10,"Zonaite"],[5,"Opal"]],[[15,"Opal"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],[[25,"Opal"],[15,"Zonaite"],[5,"Large Zonaite"],[5,"Dazzlefruit"]]],["Lightning Helm","Elemento","A prueba de rayos",[],[]],["Island Lobster Shirt","Elemento","Resistencia al calor",[],[]],["Midna's Helmet","Elemento","Resistencia a la malicia",[],[]],["Zant's Helmet","Elemento","Anticongelación",[],[]],["Zora","Habilidad","Velocidad al nadar",[[[3,"Lizalfos Horn"]],[[5,"Hyrule Bass"],[5,"Lizalfos Talon"]],[[3,"Hearty Bass"],[3,"Lizalfos Tail"],[5,"Blue Lizalfos Horn"]]],[[5,"Hyrule Bass"],[5,"Lizalfos Talon"],[5,"Blue Lizalfos Horn"],[3,"Lizalfos Horn"],[3,"Hearty Bass"],[3,"Lizalfos Tail"]]],["Stealth","Habilidad","Sigilo",[[[3,"Blue Nightshade"]],[[5,"Sunset Firefly"],[5,"Blue Nightshade"]],[[8,"Silent Shroom"],[5,"Sneaky River Snail"]]],[[8,"Blue Nightshade"],[8,"Silent Shroom"],[5,"Sunset Firefly"],[5,"Sneaky River Snail"]]],["Climbing","Habilidad","Velocidad al trepar",[[[3,"Keese Wing"],[3,"Rushroom"]],[[5,"Electric Keese Wing"],[5,"Hightail Lizard"]],[[10,"Hot-Footed Frog"],[8,"Keese Wing"]]],[[11,"Keese Wing"],[10,"Hot-Footed Frog"],[5,"Electric Keese Wing"],[5,"Hightail Lizard"],[3,"Rushroom"]]],["Diamond Circlet","Habilidad","Bonus de ataque",[[[2,"Diamond"],[3,"Flint"]],[[3,"Diamond"],[5,"Flint"]],[[5,"Diamond"],[1,"Star Fragment"]]],[[10,"Diamond"],[8,"Flint"],[1,"Star Fragment"]]],["Opal Earrings","Habilidad","Velocidad al nadar",[[[6,"Opal"],[5,"Flint"]],[[12,"Opal"],[10,"Flint"]],[[18,"Opal"],[15,"Flint"]]],[[36,"Opal"],[30,"Flint"]]],["Barbarian","Habilidad","Bonus de ataque",[[[3,"Mighty Thistle"]],[[5,"Razorshroom"],[2,"Lynel Saber Horn"],[2,"Lynel Mace Horn"]],[[3,"Blue-Maned Lynel Saber Horn"],[3,"Blue-Maned Lynel Mace Horn"],[3,"Razorclaw"]]],[[5,"Razorshroom"],[3,"Mighty Thistle"],[3,"Blue-Maned Lynel Saber Horn"],[3,"Blue-Maned Lynel Mace Horn"],[3,"Razorclaw"],[2,"Lynel Saber Horn"],[2,"Lynel Mace Horn"]]],["Sand Boots","Habilidad","Velocidad en la arena",[[[3,"Hightail Lizard"]],[[20,"Gibdo Bone"],[5,"Swift Carrot"]],[[5,"Gibdo Guts"],[10,"Rushroom"],[5,"Molduga Fin"]]],[[20,"Gibdo Bone"],[10,"Rushroom"],[5,"Swift Carrot"],[5,"Gibdo Guts"],[5,"Molduga Fin"],[3,"Hightail Lizard"]]],["Snow Boots","Habilidad","Velocidad en la nieve",[[[3,"Hightail Lizard"]],[[5,"Octorok Tentacle"],[5,"Swift Carrot"]],[[5,"Octo Balloon"],[20,"Rushroom"]]],[[20,"Rushroom"],[5,"Octorok Tentacle"],[5,"Swift Carrot"],[5,"Octo Balloon"],[3,"Hightail Lizard"]]],["Glide","Habilidad","Movilidad en caída libre",[[[3,"Keese Wing"]],[[5,"Aerocuda Wing"],[6,"Aerocuda Eyeball"]],[[6,"Aerocuda Wing"],[8,"Aerocuda Eyeball"]]],[[14,"Aerocuda Eyeball"],[11,"Aerocuda Wing"],[3,"Keese Wing"]]],["Ember","Habilidad","Ataque con calor",[[[3,"Fire Fruit"]],[[5,"Fire-Breath Lizalfos Horn"],[5,"Summerwing Butterfly"]],[[5,"Fire Like Stone"],[5,"Warm Darner"],[5,"Large Zonai Charge"]]],[[5,"Fire-Breath Lizalfos Horn"],[5,"Summerwing Butterfly"],[5,"Fire Like Stone"],[5,"Warm Darner"],[5,"Large Zonai Charge"],[3,"Fire Fruit"]]],["Charged","Habilidad","Ataque en tormentas",[[[3,"Shock Fruit"]],[[3,"Thunderwing Butterfly"],[5,"Electric Lizalfos Horn"]],[[5,"Shock Like Stone"],[5,"Electric Darner"],[3,"Zonai Charge"]]],[[5,"Electric Lizalfos Horn"],[5,"Shock Like Stone"],[5,"Electric Darner"],[3,"Shock Fruit"],[3,"Thunderwing Butterfly"],[3,"Zonai Charge"]]],["Frostbite","Habilidad","Ataque con frío",[[[3,"Ice Fruit"]],[[5,"Ice-Breath Lizalfos Horn"],[5,"Winterwing Butterfly"]],[[5,"Ice Like Stone"],[5,"Cold Darner"],[5,"Large Zonai Charge"]]],[[5,"Ice-Breath Lizalfos Horn"],[5,"Winterwing Butterfly"],[5,"Ice Like Stone"],[5,"Cold Darner"],[5,"Large Zonai Charge"],[3,"Ice Fruit"]]],["Zonaite","Habilidad","Energía Zonai",[[[5,"Soldier Construct Horn"]],[[5,"Soldier Construct II Horn"],[5,"Zonaite"],[5,"Captain Construct I Horn"]],[[5,"Large Zonaite"],[5,"Captain Construct II Horn"],[5,"Soldier Construct III Horn"]]],[[5,"Soldier Construct Horn"],[5,"Soldier Construct II Horn"],[5,"Zonaite"],[5,"Captain Construct I Horn"],[5,"Large Zonaite"],[5,"Captain Construct II Horn"],[5,"Soldier Construct III Horn"]]],["Yiga","Habilidad","Sigilo",[[[2,"Octorok Eyeball"]],[[3,"Puffshroom"],[3,"Fire-Breath Lizalfos Tail"]],[[5,"Ice-Breath Lizalfos Tail"],[5,"Keese Eyeball"]]],[[5,"Ice-Breath Lizalfos Tail"],[5,"Keese Eyeball"],[3,"Puffshroom"],[3,"Fire-Breath Lizalfos Tail"],[2,"Octorok Eyeball"]]],["Sheik's Mask","Habilidad","Sigilo",[[[1,"Silent Princess"]],[[2,"Silent Princess"],[2,"Star Fragment"]],[[4,"Silent Princess"],[3,"Star Fragment"]]],[[7,"Silent Princess"],[5,"Star Fragment"]]],["Fierce Deity","Habilidad","Bonus de ataque",[[[5,"Hinox Toenail"],[1,"Dinraal's Scale"]],[[5,"Hinox Tooth"],[1,"Dinraal's Scale"]],[[2,"Hinox Guts"],[1,"Shard of Dinraal's Fang"]]],[[5,"Hinox Toenail"],[5,"Hinox Tooth"],[2,"Dinraal's Scale"],[2,"Hinox Guts"],[1,"Shard of Dinraal's Fang"]]],["Hero","Habilidad","Bonus de ataque",[[[1,"Ruby"],[1,"Star Fragment"]],[[4,"Ruby"],[1,"Star Fragment"]],[[6,"Ruby"],[1,"Star Fragment"]]],[[11,"Ruby"],[3,"Star Fragment"]]],["Miner's","Habilidad","Brillo",[[[10,"Brightbloom Seed"]],[[20,"Brightbloom Seed"],[5,"Brightcap"]],[[15,"Giant Brightbloom Seed"],[10,"Deep Firefly"],[5,"Glowing Cave Fish"]]],[[30,"Brightbloom Seed"],[15,"Giant Brightbloom Seed"],[10,"Deep Firefly"],[5,"Brightcap"],[5,"Glowing Cave Fish"]]],["Mystic","Habilidad","Más rupias",[],[]],["Phantom","Habilidad","Bonus de ataque",[],[]],["Evil Spirit","Habilidad","Sigilo",[],[]],["Dark","Habilidad","Velocidad de noche",[],[]],["Tingle's","Habilidad","Velocidad de noche",[],[]],["Ravio's Hood","Habilidad","Trepa lateral más rápida",[],[]],["Radiant","Enemigos","Los Staal no te atacan",[[[10,"Luminous Stone"],[1,"Bokoblin Guts"]],[[15,"Luminous Stone"],[2,"Moblin Guts"]],[[20,"Luminous Stone"],[3,"Horriblin Guts"],[10,"Gibdo Bone"]]],[[45,"Luminous Stone"],[10,"Gibdo Bone"],[3,"Horriblin Guts"],[2,"Moblin Guts"],[1,"Bokoblin Guts"]]],["Máscaras de enemigos (Bokoblin, Moblin, Lizalfos, Lynel, Horriblin)","Enemigos","Ese enemigo no te ataca",[],[]],["Majora's Mask","Enemigos","Menos detección",[],[]],["Korok Mask","Enemigos","Vibra cerca de un kolog",[],[]]],"TIP":"Las Grandes Hadas mejoran las piezas por niveles. El bonus de set se activa con piezas del mismo set mejoradas al nivel 2. Algunos sets, como el oscuro, lo activan sin mejorar."};
+    const IMG = { s: '../assets/zelda/mapas/superficie-hd.webp', k: '../assets/zelda/mapas/cielo-hd.webp' };
+    const motion = this.props.animaciones ?? true;
+    const hashTab = (typeof location !== 'undefined' && /^#(santuarios|raices|semillas|misiones|armaduras|conjuntos)$/.test(location.hash)) ? location.hash.slice(1) : '';
+    const tab = S.tab || hashTab || this.props['pestaña'] || 'santuarios';
+    const q = S.q || '';
+    const done = S.done || {};
+    const lim = S.lim || 40;
+    const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]/g, '');
+    const words = norm(q).split(' ').filter(Boolean);
+    const match = (...f) => { const h = norm(f.join(' ')); return words.every((w) => h.includes(w)); };
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.').replace('-.', '-');
+    const pc = (x, y) => [((x + 6000) / 120).toFixed(2) + '%', ((5000 - y) / 100).toFixed(2) + '%'];
+    const ZONES = ['Norte', 'Noreste', 'Este', 'Sureste', 'Sur', 'Suroeste', 'Oeste', 'Noroeste', 'Centro'];
+    const zoneOf = (x, y) => {
+      const ns = Math.abs(y) >= 1200 ? (y > 0 ? 'Nor' : 'Sur') : '';
+      const ew = Math.abs(x) >= 1200 ? (x > 0 ? 'este' : 'oeste') : '';
+      if (ns && ew) return ns + ew;
+      return ns ? (y > 0 ? 'Norte' : 'Sur') : ew ? (x > 0 ? 'Este' : 'Oeste') : 'Centro';
+    };
+    const toggle = (k) => () => { const n = Object.assign({}, done); if (n[k]) delete n[k]; else n[k] = 1; set({ done: n }); };
+    const cntDone = (pre) => Object.keys(done).filter((k) => k.indexOf(pre) === 0).length;
+
+    const TABS = [
+      { key: 'santuarios', title: 'Santuarios', h1: 'Los 152 santuarios', n: 152, unit: 'santuarios', search: 'Busca un santuario (Ukouh, Tajikats…)', desc: '120 en la superficie y 32 en el cielo, con coordenadas (x, y, altitud) y zona. Márcalos al completarlos: tu progreso es el mismo que el del mapa.', note: 'Cada santuario completado da una bendición; cuatro bendiciones se cambian por un contenedor de corazón o un recipiente de energía en una estatua de la Diosa.' },
+      { key: 'raices', title: 'Raíces de luz', h1: 'Las 120 raíces de luz', n: 120, unit: 'raíces de luz', search: 'Busca una raíz (Stakijat…) o su santuario', desc: 'Iluminan las Profundidades. Cada una está justo debajo de un santuario de la superficie y se llama como él escrito al revés: Tajikats arriba, Stakijat abajo.', note: 'Truco: si ya tienes el santuario de arriba, baja por el abismo más cercano y busca su raíz en las mismas coordenadas. El mapa de las Profundidades es un esquema: su relieve es el inverso del de la superficie.' },
+      { key: 'semillas', title: 'Semillas kolog', h1: 'Semillas kolog', n: 875, unit: 'kologs', search: '', desc: '875 semillas de 775 kologs: 838 en la superficie y 37 en el cielo. Los 100 kologs que te piden llevarlos con su amigo dan dos semillas.', note: 'Las semillas se cambian a Hestu por espacio en el inventario. Con 441 semillas tienes todas las ampliaciones; el resto es para el 100 %.' },
+      { key: 'misiones', title: 'Misiones', h1: 'Misiones', n: 178, unit: 'misiones', search: 'Busca una misión o región', desc: '23 principales, 50 aventuras secundarias y 105 misiones secundarias. Los nombres van en inglés para que las encuentres aunque juegues en otro idioma.', note: 'Las principales siguen el orden de la historia. Las aventuras suelen dar armaduras y mejoras; las secundarias, rupias y materiales.' },
+      { key: 'armaduras', title: 'Armaduras', h1: 'Las armaduras con más defensa', n: D.AR.length, unit: 'armaduras', search: '', desc: 'Defensa al máximo nivel, de mayor a menor, indicando si es el conjunto completo o una pieza.', note: D.TIP },
+      { key: 'conjuntos', title: 'Conjuntos', h1: 'Conjuntos y sus materiales', n: D.SE.length, unit: 'conjuntos', search: 'Busca un conjunto o material', desc: 'Los 57 conjuntos con lo que pide la Gran Hada en cada nivel y el total de materiales para llevarlos al máximo.', note: 'Elige un conjunto para ver los materiales por nivel. Los nombres de materiales van en inglés, como en las guías de referencia.' }
+    ];
+    const ix = Math.max(0, TABS.findIndex((t) => t.key === tab));
+    const cur = TABS[ix];
+    const goTab = (k) => () => set({ tab: k, q: '', zone: '', sel: null, lim: 40, kind: '', ty: '', st: 'all', szone: '' });
+
+    // ----- progreso en la cabecera -----
+    const nSh = cntDone('sh:'), nLr = cntDone('lr:'), nSd = Object.keys(done).filter((k) => k.indexOf('sd:') === 0).reduce((a, k) => a + D.KO[Number(k.slice(3))][2], 0);
+    const P = (v, t, l) => ({ v, t: fmt(t), l, w: (t ? Math.round(v / t * 1000) / 10 : 0) + '%' });
+    const prog = [P(nSh, 152, 'Santuarios'), P(nLr, 120, 'Raíces de luz'), P(nSd, 875, 'Semillas')];
+
+    const tabs = TABS.map((t) => ({ title: t.title, n: fmt(t.n), on: t.key === tab ? 'true' : 'false', cls: 'gtab' + (t.key === tab ? ' on' : '') + (t.key === 'raices' ? ' deep' : ''), go: goTab(t.key) }));
+    const opt = (cur, val, l, field) => ({ l, on: cur === val ? 'true' : 'false', cls: 'sg' + (cur === val ? ' on' : ''), go: () => set({ [field]: val, lim: 40 }) });
+
+    const lay = S.lay || 'all';
+    const st = S.st || 'all';
+    const zone = S.zone || '';
+    let rows = [], nTotal = 0, nShown = 0, sel = null;
+    const selId = S.sel;
+
+    if (tab === 'santuarios' || tab === 'raices') {
+      const isLR = tab === 'raices';
+      const all = isLR
+        ? D.LR.map((a, i) => ({ id: 'lr:' + i, n: a[0], sub: 'Bajo el santuario ' + a[1], en: a[0] + ' Lightroot', x: a[2], y: a[3], z: null, zone: a[4], l: 'd' }))
+        : D.SH.map((a, i) => ({ id: 'sh:' + i, n: a[0], sub: a[0] + ' Shrine', en: a[0] + ' Shrine', x: a[2], y: a[3], z: a[4], zone: a[5], l: a[1] ? 'k' : 's' }));
+      nTotal = all.length;
+      const f = all.filter((r) => (isLR || lay === 'all' || (lay === 'k') === (r.l === 'k')) && (!zone || r.zone === zone) && (st === 'all' || (st === 'done') === !!done[r.id]) && match(r.n, r.sub, r.zone));
+      nShown = f.length;
+      rows = f.slice(0, lim).map((r) => ({
+        cls: 'tr row' + (done[r.id] ? ' done' : '') + (selId === r.id ? ' sel' : ''), n: r.n, sub: r.sub, zone: r.zone,
+        co: fmt(r.x) + ', ' + fmt(r.y) + (r.z == null ? '' : ' · ' + fmt(r.z)),
+        lay: r.l === 'k' ? 'Cielo' : (r.l === 'd' ? 'Profund.' : 'Superficie'), layc: 'lay ' + r.l,
+        done: done[r.id] ? 'true' : 'false', ckc: 'ck' + (done[r.id] ? ' on' : ''), ckl: (done[r.id] ? 'Desmarcar ' : 'Marcar como hecho ') + r.n,
+        toggle: toggle(r.id), pick: () => set({ sel: r.id })
+      }));
+      const s = all.find((r) => r.id === selId) || f[0];
+      if (s) {
+        const p = pc(s.x, s.y);
+        sel = { n: s.n, en: s.en, hasMap: true, img: s.l === 'k' ? IMG.k : IMG.s, miniCls: 'mini' + (s.l === 'd' ? ' deep' : ''), layL: s.l === 'k' ? 'Cielo' : (s.l === 'd' ? 'Profundidades' : 'Superficie'), px: p[0], py: p[1], hasPin2: false,
+          facts: [{ l: 'x', v: fmt(s.x) }, { l: 'y', v: fmt(s.y) }, { l: s.z == null ? 'Zona' : 'Altitud', v: s.z == null ? s.zone : fmt(s.z) }],
+          hasFacts: true, p: isLR ? 'Está justo debajo del santuario ' + s.sub.replace('Bajo el santuario ', '') + ', en la zona ' + s.zone.toLowerCase() + ' de Hyrule.' : 'Zona ' + s.zone.toLowerCase() + '. ' + (s.l === 'k' ? 'Está en las islas del cielo: necesitarás subir desde una torre o con un aparato Zonai.' : 'Está en la superficie.'),
+          hasP: true, canDone: true, done: done[s.id] ? 'true' : 'false', doneL: done[s.id] ? 'Hecho' : 'Marcar como hecho', toggle: toggle(s.id), hasLv: false };
+      }
+    } else if (tab === 'semillas') {
+      const sz = S.szone || 'Centro';
+      const all = D.KO.map((a, i) => ({ id: 'sd:' + i, i, x: a[0], y: a[1], seeds: a[2], l: a[3] ? 'k' : 's', zone: zoneOf(a[0], a[1]) }));
+      nTotal = all.length;
+      const byZ = {};
+      ZONES.forEach((z) => (byZ[z] = { k: 0, s: 0 }));
+      all.forEach((r) => { byZ[r.zone].k++; byZ[r.zone].s += r.seeds; });
+      const maxS = Math.max(...ZONES.map((z) => byZ[z].s));
+      var seedZones = ZONES.map((z) => ({ l: z, k: byZ[z].k, s: byZ[z].s, w: Math.round(byZ[z].s / maxS * 100) + '%', on: sz === z ? 'true' : 'false', cls: 'zt' + (sz === z ? ' on' : ''), go: () => set({ szone: z, lim: 48, sel: null }) }));
+      const f = all.filter((r) => r.zone === sz);
+      nShown = f.length;
+      rows = f.slice(0, lim < 48 ? 48 : lim).map((r, j) => ({
+        cls: 'kk' + (r.seeds > 1 ? ' two' : '') + (selId === r.id ? ' sel' : '') + (done[r.id] ? ' done' : ''), selp: selId === r.id ? 'true' : 'false',
+        seeds: r.seeds, n: (r.seeds > 1 ? 'Kolog con amigo' : 'Kolog') + (r.l === 'k' ? ' · cielo' : ''), co: fmt(r.x) + ', ' + fmt(r.y), pick: () => set({ sel: r.id })
+      }));
+      var seedZoneLabel = sz, seedZoneInfo = byZ[sz].k + ' kologs y ' + byZ[sz].s + ' semillas';
+      const s = all.find((r) => r.id === selId) || f[0];
+      if (s) {
+        const p = pc(s.x, s.y);
+        sel = { n: s.seeds > 1 ? 'Kolog con amigo' : 'Semilla kolog', en: 'Zona ' + s.zone.toLowerCase() + ' · ' + (s.l === 'k' ? 'cielo' : 'superficie'), hasMap: true, img: s.l === 'k' ? IMG.k : IMG.s, miniCls: 'mini', layL: s.l === 'k' ? 'Cielo' : 'Superficie', px: p[0], py: p[1], hasPin2: false,
+          facts: [{ l: 'x', v: fmt(s.x) }, { l: 'y', v: fmt(s.y) }, { l: 'Semillas', v: s.seeds }], hasFacts: true,
+          p: s.seeds > 1 ? 'Este kolog se ha separado de su amigo: llévalo hasta él (en el mapa interactivo verás el destino) y te dará dos semillas.' : 'Busca algo fuera de lugar: una piedra suelta, una flor que se mueve, un círculo de piedras…', hasP: true,
+          canDone: true, done: done[s.id] ? 'true' : 'false', doneL: done[s.id] ? 'Recogida' : 'Marcar como recogida', toggle: toggle(s.id), hasLv: false };
+      }
+    } else if (tab === 'misiones') {
+      const kind = S.kind || '';
+      const KL = { p: 'Principal', a: 'Aventura', s: 'Secundaria' };
+      var kinds = [opt(kind, '', 'Todas', 'kind'), opt(kind, 'p', 'Principales', 'kind'), opt(kind, 'a', 'Aventuras', 'kind'), opt(kind, 's', 'Secundarias', 'kind')];
+      const all = D.QU.map((a, i) => ({ id: 'q:' + i, k: a[0], n: a[1], tag: a[2], region: a[3], body: a[4] }));
+      nTotal = all.length;
+      const f = all.filter((r) => (!kind || r.k === kind) && (st === 'all' || (st === 'done') === !!done[r.id]) && match(r.n, r.region, r.tag));
+      nShown = f.length;
+      rows = f.slice(0, lim).map((r) => ({
+        cls: 'qi' + (done[r.id] ? ' done' : '') + (selId === r.id ? ' sel' : ''), n: r.n, sub: r.region + (r.tag ? ' · ' + r.tag : ''), hasBody: !!r.body && selId === r.id, body: r.body,
+        kc: 'qk ' + r.k, kl: KL[r.k], done: done[r.id] ? 'true' : 'false', ckc: 'ck' + (done[r.id] ? ' on' : ''), ckl: (done[r.id] ? 'Desmarcar ' : 'Marcar como hecha ') + r.n,
+        toggle: toggle(r.id), pick: () => set({ sel: r.id })
+      }));
+      const s = all.find((r) => r.id === selId) || f[0];
+      if (s) sel = { n: s.n, en: KL[s.k] + ' · ' + s.region, hasMap: false, facts: [{ l: 'Tipo', v: KL[s.k] }, { l: 'Región', v: s.region }], hasFacts: false, p: s.body || 'Sin descripción todavía: consulta la guía enlazada en la versión web.', hasP: true, canDone: true, done: done[s.id] ? 'true' : 'false', doneL: done[s.id] ? 'Hecha' : 'Marcar como hecha', toggle: toggle(s.id), hasLv: false };
+    } else if (tab === 'conjuntos') {
+      const ty = S.ty || '';
+      var types = [opt(ty, '', 'Todos', 'ty')].concat(['Normal', 'Elemento', 'Habilidad', 'Enemigos'].map((t) => opt(ty, t, t, 'ty')));
+      const all = D.SE.map((a, i) => ({ id: 'set:' + i, n: a[0], ty: a[1], bonus: a[2], lv: a[3], tot: a[4] }));
+      nTotal = all.length;
+      const f = all.filter((r) => (!ty || r.ty === ty) && match(r.n, r.bonus, r.tot.map((m) => m[1]).join(' ')));
+      nShown = f.length;
+      rows = f.map((r) => ({ cls: 'st' + (selId === r.id ? ' sel' : ''), selp: selId === r.id ? 'true' : 'false', n: r.n, ty: r.ty, tyc: 'lay ty', bonus: r.bonus, pick: () => set({ sel: r.id }) }));
+      const s = all.find((r) => r.id === selId) || f[0];
+      if (s) sel = { n: s.n, en: s.ty + ' · ' + s.bonus, hasMap: false, hasFacts: false, hasP: false, canDone: false,
+        hasLv: true, lv: s.lv.map((l, j) => ({ l: 'Nivel ' + (j + 1), v: l.map((m) => m[0] + '× ' + m[1]).join(' · ') })), tot: s.tot.map((m) => ({ q: m[0], n: m[1] })) };
+    }
+    const max = Math.max(...D.AR.map((a) => a[2]));
+    const armors = D.AR.map((a, i) => ({ rank: i + 1, es: a[0], en: a[1], def: a[2], text: a[3], w: Math.round(a[2] / max * 100) + '%' }));
+
+    const isTable = tab === 'santuarios' || tab === 'raices';
+    const zones = [{ l: 'Todas las zonas', on: !zone ? 'true' : 'false', cls: 'zc' + (!zone ? ' on' : ''), go: () => set({ zone: '', lim: 40 }) }]
+      .concat(ZONES.map((z) => ({ l: z, on: zone === z ? 'true' : 'false', cls: 'zc' + (zone === z ? ' on' : ''), go: () => set({ zone: z, lim: 40 }) })));
+    const shownRows = rows.length;
+    return {
+      motionClass: motion ? '' : 'still', tab, cur, prog, tabs, q, onQ: (e) => set({ q: e.target.value, lim: 40 }),
+      showTools: tab !== 'semillas' && tab !== 'armaduras', showLayer: tab === 'santuarios', showKinds: tab === 'misiones', showTypes: tab === 'conjuntos', showStatus: tab === 'santuarios' || tab === 'raices' || tab === 'misiones', showZones: isTable,
+      layers: [opt(lay, 'all', 'Todas', 'lay'), opt(lay, 's', 'Superficie', 'lay'), opt(lay, 'k', 'Cielo', 'lay')],
+      states: [opt(st, 'all', 'Todos', 'st'), opt(st, 'todo', 'Pendientes', 'st'), opt(st, 'done', 'Hechos', 'st')],
+      kinds: kinds || [], types: types || [], zones,
+      isTable, isSeeds: tab === 'semillas', isQuests: tab === 'misiones', isArmor: tab === 'armaduras', isSets: tab === 'conjuntos',
+      seedZones: seedZones || [], seedZoneLabel: seedZoneLabel || '', seedZoneInfo: seedZoneInfo || '',
+      rows, hasRows: shownRows > 0, nShown: fmt(nShown), nTotal: fmt(nTotal), armors,
+      isEmpty: tab !== 'armaduras' && shownRows === 0,
+      canMore: tab !== 'conjuntos' && nShown > shownRows, moreN: Math.min(40, nShown - shownRows), more: () => set({ lim: (tab === 'semillas' ? Math.max(lim, 48) : lim) + 40 }),
+      reset: () => set({ q: '', zone: '', lay: 'all', st: 'all', kind: '', ty: '', lim: 40 }),
+      hasSel: !!sel, sel: sel || {},
+      prev: { title: TABS[(ix + TABS.length - 1) % TABS.length].title, go: goTab(TABS[(ix + TABS.length - 1) % TABS.length].key) },
+      next: { title: TABS[(ix + 1) % TABS.length].title, go: goTab(TABS[(ix + 1) % TABS.length].key) },
+      go_santuarios: goTab('santuarios'), go_semillas: goTab('semillas'), go_misiones: goTab('misiones'), go_armaduras: goTab('armaduras'), go_conjuntos: goTab('conjuntos'), go_raices: goTab('raices')
+    };
+  }
+}
+</script>
+</body>
+</html>
