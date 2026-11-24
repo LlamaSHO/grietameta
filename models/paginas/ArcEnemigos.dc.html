@@ -51,7 +51,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .search{position:relative;display:flex;align-items:center}
 .search svg{position:absolute;left:14px;color:#9A938A;pointer-events:none}
 .search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(242,235,221,.1);background:rgba(242,235,221,.04);color:#F2EBDD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
-.search input::placeholder{color:#857E75}
+.search input::placeholder{color:#8B847C}
 .search input:focus{border-color:rgba(245,192,42,.6)}
 .search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#9A938A;padding:5px 8px;border-radius:6px;border:1px solid rgba(242,235,221,.12)}
 .nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
@@ -136,7 +136,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .e b{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1}
 .e .ty{font-size:12px;color:#ABA49A}
 .e .wk{font-size:12.5px;color:#C8C1B6}
-.thr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
+.thr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
 .thr::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .t-ext{color:#FF6B5B;background:rgba(229,55,43,.16)}
 .t-cri{color:#FFA24A;background:rgba(242,138,30,.16)}
@@ -249,7 +249,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
 .gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
 .gm-t small{font-size:11.5px;color:#C2C8D0}
-.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 10px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
 .gm-t.off{cursor:default}
 .gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
 .gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
@@ -258,7 +258,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
 @media (max-width:860px){.gdd{display:none}}
 
-@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:10.5px}}
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
 
 /* gm-rueda */
 .vp{overflow-y:scroll !important;overflow-x:hidden !important;scrollbar-width:none;display:block !important;overscroll-behavior:contain}
@@ -339,6 +339,12 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 @media(max-width:640px){.ap .wrap{padding-left:18px;padding-right:18px}.ap .guide{padding-top:30px}.ap .guide-head{align-items:flex-start;flex-direction:column;gap:14px}.ap .guide-head p{font-size:14px}.ap .filter-panel{gap:12px}.ap .filter-group{align-items:flex-start}.ap .quest-layout{grid-template-columns:minmax(0,1fr)}.ap .trader-list{grid-template-columns:repeat(auto-fill,minmax(135px,1fr))}.ap .quest-detail{grid-column:auto}.ap .enemy-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr))}.ap .result-line{font-size:12px}}
 @media(max-width:560px){.ap .wrap{padding-left:14px;padding-right:14px}.ap .guide-head h1{font-size:44px}.ap .enemy-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}.ap .enemy-art{height:96px}.ap .enemy-art img{height:88px}.ap .filter-group{width:100%}.ap .filter-label{width:100%}.ap .filter-btn{min-height:36px}.ap .total-tag{font-size:13px}.ap .detail-panel{padding:14px}.ap .quest-tools{gap:8px}.ap .quest-row{padding:10px}.ap .quest-name{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.ap .enemy-card,.ap .enemy-card:hover{transition:none;transform:none}}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F5C02A;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F5C02A 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </helmet>
 
