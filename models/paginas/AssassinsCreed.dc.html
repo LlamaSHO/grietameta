@@ -311,6 +311,10 @@ a{color:#F0D8A8}a:hover{color:#FFF1D6}
 .md{r:16}
 
 
+/* gm-responsive: saga */
+@media (max-width:1100px){.sh-in{grid-template-columns:minmax(0,1fr) minmax(0,44%);gap:32px}.feat{grid-template-columns:minmax(0,1fr) minmax(0,42%)}.games,.starts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.sh-in{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:36px;padding-bottom:44px}.feat{grid-template-columns:minmax(0,1fr);padding:22px;min-height:0;gap:20px}.games,.starts{grid-template-columns:repeat(2,minmax(0,1fr))}.news{grid-template-columns:minmax(0,1fr)}.ft-t ul{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.games,.starts{grid-template-columns:minmax(0,1fr)}}
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #EFE9DD;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#EFE9DD 38%,transparent);color:#fff}

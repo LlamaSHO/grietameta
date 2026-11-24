@@ -306,6 +306,11 @@ a{color:#FFB066}a:hover{color:#FFE0C2}
 .gl p{margin:6px 0 0;font-size:13.5px;color:#B0AA9F}
 
 
+/* gm-responsive: portada de Zombis */
+@media (max-width:1100px){.zh h1{font-size:clamp(72px,12vw,168px)}.gls{grid-template-columns:repeat(3,minmax(0,1fr))}.fd-in{width:min(560px,100%)}}
+@media (max-width:860px){.zh-in{min-height:0;padding-top:64px;padding-bottom:48px}.zh h1{font-size:clamp(58px,17vw,120px)}.zh .lead{font-size:16px}
+.gks{grid-template-columns:minmax(0,1fr)}.fd-g{grid-template-columns:repeat(2,minmax(0,1fr))}.fd-h{flex-direction:column;align-items:stretch}.fd-in{width:100%}.keys{grid-template-columns:repeat(2,minmax(0,1fr))}.crews{grid-template-columns:minmax(0,1fr)}.gls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.stats{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}.keys,.gls{grid-template-columns:minmax(0,1fr)}.gk-tt b{font-size:42px}.gk-top{height:210px}}
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #FF9A3D;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#FF9A3D 38%,transparent);color:#fff}

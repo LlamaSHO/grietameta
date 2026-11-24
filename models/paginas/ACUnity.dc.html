@@ -507,6 +507,12 @@ a{color:#F0D8A8}a:hover{color:#FFF1D6}
 .facts dt{color:#8C857A;font-weight:600}
 .facts dd{margin:0;color:#E6DFD2}
 
+/* gm-responsive: Unity */
+@media (max-width:1100px){.pdx{grid-template-columns:minmax(0,1fr)}.tips ol{grid-template-columns:repeat(2,minmax(0,1fr))}.deck{grid-template-columns:240px minmax(0,1fr)}}
+@media (max-width:860px){.uh{min-height:0}.uh-in{flex-direction:column;align-items:stretch;gap:24px}.uh h1{font-size:clamp(44px,12vw,76px)}.uh-cta{flex-wrap:wrap}.prog{width:auto;align-self:stretch}
+.mgrid{grid-template-columns:minmax(0,1fr)}.deck{grid-template-columns:minmax(0,1fr);min-height:0}.dk-side{border-right:0;border-bottom:1px solid rgba(232,226,208,.12)}.dk-big{font-size:180px}
+.tl{grid-template-columns:repeat(13,44px);overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.acts,.chars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.acts,.chars,.tips ol,.dcol{grid-template-columns:minmax(0,1fr)}.dk-nav button{padding:12px 14px}}
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #EFE9DD;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#EFE9DD 38%,transparent);color:#fff}
