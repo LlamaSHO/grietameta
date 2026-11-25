@@ -1,0 +1,177 @@
+/* GrietaMeta · barra de CoD Zombis (components/nav/games/CodZombiesNav.vue).
+   Diseño: .sub de models/paginas/CodZombies.dc.html. Todo bajo [data-zone="cod"]. */
+
+[data-zone="cod"] {
+  --accent: #ff7a1a;
+  --accent-hi: #ffb066;
+}
+
+[data-zone="cod"] .site-nav .sub {
+  border-top-color: rgba(236, 228, 214, 0.07);
+  background: rgba(20, 19, 18, 0.7);
+}
+[data-zone="cod"] .site-nav .gchip {
+  border-right-color: rgba(236, 228, 214, 0.14);
+  color: #ece8e1;
+  font-family: "Saira Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+[data-zone="cod"] .site-nav .gchip img {
+  width: 46px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 122, 26, 0.4);
+}
+[data-zone="cod"] .site-nav .slink {
+  color: #b0aa9f;
+}
+[data-zone="cod"] .site-nav .slink svg {
+  opacity: 0.8;
+}
+[data-zone="cod"] .site-nav .slink:hover,
+[data-zone="cod"] .site-nav .slink.on {
+  color: #fff;
+}
+[data-zone="cod"] .site-nav .slink.on::after {
+  background: #ff7a1a;
+  box-shadow: 0 0 12px rgba(255, 122, 26, 0.8);
+}
+
+/* Distintivo «Nuevo» */
+[data-zone="cod"] .site-nav .status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 7px;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 122, 26, 0.4);
+  background: rgba(255, 122, 26, 0.1);
+  color: #ffb066;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+[data-zone="cod"] .site-nav .status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff7a1a;
+  box-shadow: 0 0 10px rgba(255, 122, 26, 0.8);
+}
+
+/* Menú «Juegos»: la saga y los próximamente, en tres columnas */
+[data-zone="cod"] .site-nav .mega.cdmega {
+  left: -8px;
+  width: min(920px, calc(100vw - 300px));
+  min-width: 560px;
+  padding: 10px;
+  border-radius: 18px;
+  background: #141414;
+  border-color: rgba(236, 228, 214, 0.16);
+}
+[data-zone="cod"] .site-nav .cdm {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px 14px;
+}
+[data-zone="cod"] .site-nav .cdg {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+[data-zone="cod"] .site-nav .cdg > p {
+  margin: 4px 10px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ff9a4d;
+}
+[data-zone="cod"] .site-nav .cdg > p small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #8f897f;
+}
+[data-zone="cod"] .site-nav .cdo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 13px;
+  color: #ece8e1;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+[data-zone="cod"] .site-nav .cdo:hover {
+  background: rgba(255, 122, 26, 0.08);
+  color: #ece8e1;
+}
+[data-zone="cod"] .site-nav .cdo.on {
+  background: rgba(255, 122, 26, 0.12);
+}
+[data-zone="cod"] .site-nav .cdo.off {
+  opacity: 0.55;
+  cursor: default;
+}
+[data-zone="cod"] .site-nav .cdo.off:hover {
+  background: none;
+}
+[data-zone="cod"] .site-nav .cdo .th {
+  flex-shrink: 0;
+  width: 72px;
+  height: 44px;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 228, 214, 0.14);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2a1a0c, #0f0f10);
+}
+[data-zone="cod"] .site-nav .cdo .th img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-zone="cod"] .site-nav .cdo .th i {
+  font: 400 18px/1 "Saira Stencil One", sans-serif;
+  font-style: normal;
+  color: #ff7a1a;
+}
+[data-zone="cod"] .site-nav .cdo b {
+  display: block;
+  font: 700 17px/1.1 "Saira Condensed", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+[data-zone="cod"] .site-nav .cdo small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #9a948a;
+}
+
+@media (max-width: 1100px) {
+  [data-zone="cod"] .site-nav .mega.cdmega {
+    min-width: 0;
+    width: min(660px, calc(100vw - 280px));
+  }
+  [data-zone="cod"] .site-nav .cdm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 860px) {
+  [data-zone="cod"] .site-nav .status {
+    display: none;
+  }
+}

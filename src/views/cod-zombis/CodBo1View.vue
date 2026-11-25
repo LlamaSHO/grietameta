@@ -1,7 +1,8 @@
 <template>
-  <!-- PROVISIONAL: vista por hacer a partir de models/paginas/CodBO1.dc.html -->
-  <section class="wrap" style="padding: 80px 0; min-height: 60vh">
-    <h1>Black Ops · Zombis</h1>
-    <p>Página en preparación.</p>
-  </section>
+  <!-- Black Ops · Zombis. Diseño: models/paginas/CodBO1.dc.html -->
+  <CodGameGuide slug="bo1" />
 </template>
+
+<script setup>
+import CodGameGuide from "@/components/cod-zombis/CodGameGuide.vue";
+</script>

@@ -1,0 +1,189 @@
+/* Planos de los mapas. Diseño: CodMapas.dc.html */
+
+@media (prefers-reduced-motion:reduce){.cdp [data-pane],.cdp .tabpane{animation:none}}
+
+/* marca GM mini */
+
+
+/* hero del juego */
+
+/* selector de mapas */
+
+/* ficha */
+
+/* easter egg */
+
+/* historia y personajes */
+
+/* otros juegos */
+
+
+/* gm-responsive: página de juego */
+
+/* planos de los mapas */
+.cdp .pl-hero{padding:56px 28px 8px}
+.cdp .pl-hero h1{margin:10px 0 0;font:400 clamp(34px,6vw,84px)/.95 'Saira Stencil One',sans-serif;text-transform:uppercase;color:#ECE4D6}
+.cdp .pl-hero p{max-width:680px;margin:14px 0 0;font-size:16px;line-height:1.6;color:#BDB4A6}
+.cdp .pl-pick{display:flex;flex-direction:column;gap:12px;margin:28px 0 18px}
+.cdp .pl-games{display:flex;gap:6px;flex-wrap:wrap}
+.cdp .pl-game{min-height:44px;padding:0 18px;border:1px solid rgba(236,228,214,.14);border-radius:10px;background:#111012;color:#BDB4A6;font:700 16px/1 'Saira Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.cdp .pl-game[aria-pressed="true"]{border-color:#FF7A1A;background:rgba(255,122,26,.12);color:#FFD0A8}
+.cdp .pl-maps{display:flex;gap:6px;flex-wrap:wrap}
+.cdp .pl-map{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid rgba(236,228,214,.12);border-radius:999px;background:#111012;color:#ECE4D6;font-size:14px;font-weight:600;cursor:pointer}
+.cdp .pl-map i{width:8px;height:8px;border-radius:50%;background:var(--mc,#FF7A1A)}
+.cdp .pl-map[aria-pressed="true"]{border-color:var(--mc,#FF7A1A);background:color-mix(in srgb,var(--mc,#FF7A1A) 14%,#111012)}
+.cdp .pl-map.off{cursor:not-allowed;color:#8C8478;border-style:dashed}
+.cdp .pl-map.off i{background:#4A453E}
+.cdp .pl-map small{font-size:11px;font-weight:600;color:#8C8478}
+.cdp .pl-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.cdp .pl-card{border:1px solid rgba(236,228,214,.1);border-radius:16px;background:#0E0D0F;overflow:hidden}
+.cdp .pl-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid rgba(236,228,214,.08)}
+.cdp .pl-top h2{margin:0;font:400 30px/1 'Saira Stencil One',sans-serif;text-transform:uppercase;color:var(--mc)}
+.cdp .pl-top small{display:block;margin-top:4px;font-size:12px;color:#8C8478}
+.cdp .pl-layers{display:flex;gap:6px;flex-wrap:wrap}
+.cdp .pl-layer{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px;border:1px solid rgba(236,228,214,.14);border-radius:8px;background:transparent;color:#8C8478;font-size:12.5px;font-weight:600;cursor:pointer}
+.cdp .pl-layer i{width:10px;height:10px;border-radius:3px;background:var(--lc)}
+.cdp .pl-layer[aria-pressed="true"]{color:#ECE4D6;border-color:rgba(236,228,214,.3);background:#18161A}
+.cdp .pl-stage{position:relative;aspect-ratio:100/62;margin:14px;border-radius:12px;background:linear-gradient(rgba(255,122,26,.05) 1px,transparent 1px) 0 0/4% 6.45%,linear-gradient(90deg,rgba(255,122,26,.05) 1px,transparent 1px) 0 0/4% 6.45%,radial-gradient(80% 90% at 50% 40%,#17130F,#0A0A0B);border:1px solid rgba(255,122,26,.15);overflow:hidden}
+.cdp .pl-svg{position:absolute;inset:0;width:100%;height:100%}
+.cdp .pl-svg line{stroke:rgba(236,228,214,.28);stroke-width:3;vector-effect:non-scaling-stroke}
+.cdp .pl-svg line.e-puerta{stroke:#FF7A1A;stroke-dasharray:0}
+.cdp .pl-svg line.e-tp{stroke:#4FD8FF;stroke-dasharray:6 6}
+.cdp .pl-svg line.e-bus{stroke:#F2B33D;stroke-width:5}
+.cdp .pl-svg line.e-ascensor,.cdp .pl-svg line.e-escalera{stroke:#B9C2CC;stroke-dasharray:2 5}
+.cdp .pl-door{position:absolute;z-index:2;width:14px;height:14px;margin:-7px 0 0 -7px;transform:rotate(45deg);border:2px solid #FF7A1A;background:#0A0A0B}
+.cdp .pl-door.k-abierto,.cdp .pl-door.k-bus,.cdp .pl-door.k-escalera,.cdp .pl-door.k-ascensor{display:none}
+.cdp .pl-door.k-tp{border-color:#4FD8FF;border-radius:50%}
+.cdp .pl-zone{position:absolute;z-index:3;display:flex;flex-direction:column;justify-content:space-between;gap:4px;padding:8px 10px;border:1.5px solid rgba(236,228,214,.22);border-radius:10px;background:#111012;color:#ECE4D6;text-align:left;cursor:pointer;transition:border-color .2s,background .2s;box-sizing:border-box}
+.cdp .pl-zone:hover{border-color:rgba(255,122,26,.7)}
+.cdp .pl-zone[aria-pressed="true"]{border-color:var(--mc);box-shadow:0 0 0 3px color-mix(in srgb,var(--mc) 25%,transparent)}
+.cdp .pl-zone.spawn{border-style:double;border-width:4px}
+.cdp .pl-zn{font:700 14px/1.1 'Saira Condensed',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.cdp .pl-ic{display:flex;gap:4px;flex-wrap:wrap}
+.cdp .pl-ic b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 4px;border-radius:6px;font:700 10.5px/1 'IBM Plex Sans',sans-serif;color:#0A0A0B}
+.cdp .ic-perk{background:var(--pc)}
+.cdp .ic-wall{background:#ECE4D6}
+.cdp .ic-power{background:#F2B33D}
+.cdp .ic-pap{background:linear-gradient(90deg,#FF7A1A,#4FD8FF)}
+.cdp .ic-spawn{background:#7FD9A0}
+.cdp .ic-tp{background:#4FD8FF}
+.cdp .pl-stage.no-perks .ic-perk,.cdp .pl-stage.no-walls .ic-wall,.cdp .pl-stage.no-obj .ic-power,.cdp .pl-stage.no-obj .ic-pap,.cdp .pl-stage.no-obj .ic-tp,.cdp .pl-stage.no-obj .ic-spawn{display:none}
+.cdp .pl-stage.no-doors .pl-door{display:none}
+.cdp .pl-legend{display:flex;gap:14px;flex-wrap:wrap;padding:0 16px 16px;font-size:12px;color:#8C8478}
+.cdp .pl-legend span{display:inline-flex;align-items:center;gap:6px}
+.cdp .pl-legend b{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 3px;border-radius:5px;font-size:10px;color:#0A0A0B}
+.cdp .pl-legend .ln{width:22px;height:3px;border-radius:2px;background:#FF7A1A}
+.cdp .pl-legend .ln.tp{background:repeating-linear-gradient(90deg,#4FD8FF 0 5px,transparent 5px 9px)}
+.cdp .pl-legend .ln.bus{background:#F2B33D;height:5px}
+.cdp .pl-side{position:sticky;top:128px;display:flex;flex-direction:column;gap:14px}
+.cdp .pl-panel{padding:18px;border:1px solid rgba(236,228,214,.1);border-radius:16px;background:#0E0D0F}
+.cdp .pl-panel .kk{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mc)}
+.cdp .pl-panel h3{margin:6px 0 8px;font:800 28px/1 'Saira Condensed',sans-serif;text-transform:uppercase}
+.cdp .pl-panel p{margin:0;font-size:14px;line-height:1.6;color:#BDB4A6}
+.cdp .pl-list{display:grid;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.cdp .pl-list li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;background:#151316;font-size:13.5px}
+.cdp .pl-list li em{margin-left:auto;font-style:normal;font-family:'Saira Condensed',sans-serif;font-weight:700;color:#FFB066}
+.cdp .pl-list b{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 4px;border-radius:6px;font-size:11px;color:#0A0A0B}
+.cdp .pl-conn{margin-top:14px;font-size:13px;color:#8C8478}
+.cdp .pl-conn span{color:#ECE4D6}
+.cdp .pl-route{margin:0;padding:0;list-style:none;counter-reset:r;display:grid;gap:10px}
+.cdp .pl-route li{counter-increment:r;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.5;color:#D8D0C2}
+.cdp .pl-route li::before{content:counter(r);display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:rgba(255,122,26,.14);color:#FF9D55;font:800 15px/1 'Saira Condensed',sans-serif}
+.cdp .pl-panel h4{margin:0 0 12px;font:800 20px/1 'Saira Condensed',sans-serif;text-transform:uppercase}
+.cdp .pl-note{margin:16px 0 0;font-size:12.5px;color:#8C8478}
+@media (max-width:1100px){.cdp .pl-grid{grid-template-columns:minmax(0,1fr)}.cdp .pl-side{position:static;display:grid;grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  .cdp .pl-stage{aspect-ratio:auto;height:auto;display:flex;flex-direction:column;gap:6px;padding:10px;background:#0E0D0F}
+  .cdp .pl-svg,.cdp .pl-door{display:none}
+  .cdp .pl-zone{position:static;width:auto!important;height:auto!important;min-height:52px}
+  .cdp .pl-side{grid-template-columns:1fr}
+}
+
+/* gm-ruina: fondo derruido de Zombis */
+/* gm-lava: grietas con lava y separadores agrietados */
+/* gm-grietas: las tarjetas se agrietan y sale lava por la esquina */
+/* gm-aerea: los planos como vista aérea */
+.cdp .pl-stage{background:radial-gradient(90% 90% at 50% 45%,rgba(0,0,0,0),rgba(0,0,0,.65)),url(/images/cod-zombis/fondo-ruinas.webp) center/cover,#0B0A09;border-color:rgba(255,122,26,.22);box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
+.cdp .pl-stage.open{background:radial-gradient(90% 90% at 50% 45%,rgba(60,42,22,.15),rgba(0,0,0,.7)),repeating-radial-gradient(circle at 30% 40%,rgba(90,70,40,.10) 0 2px,transparent 2px 9px),url(/images/cod-zombis/fondo-ruinas.webp) center/cover,#15110C}
+.cdp .pl-svg line{stroke:#1A1715;stroke-width:12;stroke-linecap:round}
+.cdp .pl-svg line.e-puerta,.cdp .pl-svg line.e-abierto{stroke:#2A2522}
+.cdp .pl-svg line.e-bus{stroke:#24211E;stroke-width:16}
+.cdp .pl-svg line.e-tp{stroke:#4FD8FF;stroke-width:2.5;stroke-dasharray:6 6}
+.cdp .pl-svg line.e-ascensor,.cdp .pl-svg line.e-escalera{stroke:#3B3530;stroke-width:8;stroke-dasharray:3 4}
+.cdp .pl-door{width:18px;height:8px;margin:-4px 0 0 -9px;transform:none;border:0;border-radius:2px;background:linear-gradient(#FF9A4D,#C4561A);box-shadow:0 0 0 2px #0A0908,0 0 10px rgba(255,122,26,.6)}
+.cdp .pl-door.k-tp{width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(#BFF4FF,#2BB5E0);box-shadow:0 0 0 2px #0A0908,0 0 14px rgba(79,216,255,.8)}
+.cdp .pl-door.k-bus{display:block;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#F2B33D;box-shadow:0 0 0 3px #24211E}
+.cdp .pl-zone{border:0;border-radius:4px;padding:10px 12px;box-shadow:inset 0 0 0 4px #0B0908,inset 0 0 0 5px rgba(236,228,214,.14),inset 0 10px 18px rgba(0,0,0,.45),0 10px 22px rgba(0,0,0,.65)}
+.cdp .pl-zone.out{border-radius:14px;box-shadow:inset 0 0 0 1.5px rgba(236,228,214,.12),inset 0 0 26px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.45)}
+.cdp .pl-zone:hover{box-shadow:inset 0 0 0 4px #0B0908,inset 0 0 0 6px rgba(255,122,26,.75),0 10px 22px rgba(0,0,0,.65)}
+.cdp .pl-zone[aria-pressed="true"]{background-blend-mode:normal;box-shadow:inset 0 0 0 4px #0B0908,inset 0 0 0 7px var(--mc),0 0 26px color-mix(in srgb,var(--mc) 45%,transparent),0 10px 22px rgba(0,0,0,.65)}
+.cdp .pl-zone.spawn{border:0}
+.cdp .pl-zone.spawn .pl-zn::before{content:"INICIO · ";color:#7FD9A0}
+.cdp .pl-zn{align-self:flex-start;padding:2px 7px;border-radius:4px;background:rgba(8,7,6,.82);text-shadow:0 1px 0 #000}
+.cdp .tx-wood{background:repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,transparent 1px 22px),repeating-linear-gradient(0deg,#4A3220 0 9px,#53392A 9px 10px,#45301F 10px 19px,#3E2A1B 19px 20px)}
+.cdp .tx-tile{background:conic-gradient(#2E2A26 25%,#3A3530 0 50%,#2E2A26 0 75%,#3A3530 0) 0 0/22px 22px}
+.cdp .tx-carpet{background:radial-gradient(circle at 50% 50%,rgba(255,200,120,.08) 0 2px,transparent 3px) 0 0/14px 14px,linear-gradient(#5A1F22,#46171A)}
+.cdp .tx-concrete{background:radial-gradient(120% 120% at 30% 20%,rgba(255,255,255,.05),transparent 60%),url(/images/cod-zombis/fondo-ruinas.webp) center/260% auto,#2A2724}
+.cdp .tx-metal{background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 3px,transparent 3px 9px),repeating-linear-gradient(-45deg,rgba(0,0,0,.25) 0 3px,transparent 3px 9px),#3A3D40}
+.cdp .tx-grass{background:radial-gradient(circle at 20% 30%,rgba(120,150,60,.25) 0 6px,transparent 7px) 0 0/26px 26px,radial-gradient(circle at 70% 60%,rgba(40,60,20,.45) 0 8px,transparent 9px) 0 0/34px 34px,#25301A}
+.cdp .tx-asphalt{background:linear-gradient(90deg,transparent 48%,rgba(242,179,61,.55) 48% 52%,transparent 52%) center/100% 26px repeat-y,radial-gradient(circle,rgba(255,255,255,.05) 0 1px,transparent 1px) 0 0/6px 6px,#1E1C1B}
+.cdp .tx-lava{background:url(/images/cod-zombis/grietas/grieta-2.svg) 70% 80%/60% auto no-repeat,url(/images/cod-zombis/grietas/grieta-1.svg) 0 0/55% auto no-repeat,radial-gradient(circle at 30% 70%,rgba(255,90,20,.25),transparent 40%),#2B2119}
+.cdp .ic-box{background:#4FA3FF}
+.cdp .ic-ee{background:#B98CFF}
+.cdp .ic-part{background:#7FE0A3}
+.cdp .pl-stage.no-box .ic-box,.cdp .pl-stage.no-ee .ic-ee,.cdp .pl-stage.no-parts .ic-part{display:none}
+.cdp .pl-ic b{box-shadow:0 0 0 1.5px rgba(8,7,6,.9),0 2px 6px rgba(0,0,0,.6)}
+/* gm-planos2: iconos reales, pasos enlazados y mapas nuevos */
+.cdp .pl-ic b.img,.cdp .pl-list b.img{width:24px;min-width:24px;height:24px;padding:0;color:transparent;background-color:transparent;background-image:url(/images/cod-zombis/ventajas.webp);background-size:800% 200%;background-position:var(--bp);background-repeat:no-repeat}
+.cdp .pl-list b.img{width:28px;min-width:28px;height:28px}
+.cdp .ic-pap.img,.cdp .ic-box.img{border-radius:6px;background-color:#0A0908!important}
+.cdp .pl-step{align-self:flex-start;margin-top:3px;padding:1px 7px;border-radius:999px;background:#FF7A1A;color:#0A0908;font:700 11px/1.5 'IBM Plex Sans',sans-serif}
+.cdp .pl-zone.step-on{box-shadow:inset 0 0 0 4px #0B0908,inset 0 0 0 7px #FF7A1A,0 0 30px rgba(255,122,26,.55),0 10px 22px rgba(0,0,0,.65)}
+.cdp .pl-hint{margin:-4px 0 8px;font-size:12px;color:#8C8478}
+.cdp .pl-route{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;counter-reset:none}
+.cdp .pl-route li{display:block!important;padding:0!important;margin:0;counter-increment:none}
+.cdp .pl-route li::before{content:none!important;display:none!important}
+.cdp .pl-route li button{display:flex;gap:10px;align-items:flex-start;width:100%;padding:8px 10px;border:1px solid rgba(236,228,214,.1);border-radius:10px;background:rgba(236,228,214,.03);color:#DCD6CB;font:500 13.5px/1.4 'IBM Plex Sans',sans-serif;text-align:left;cursor:pointer}
+.cdp .pl-route li button:hover{border-color:rgba(255,122,26,.5)}
+.cdp .pl-route li.on button{border-color:#FF7A1A;background:rgba(255,122,26,.1);color:#FFF}
+.cdp .pl-route li b{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#2A2522;color:#FF9A4D;font-size:12px}
+.cdp .pl-route li.on b{background:#FF7A1A;color:#0A0908}
+.cdp .pl-pap{display:flex;gap:12px;align-items:center;margin-top:12px;padding:10px;border-radius:12px;background:linear-gradient(135deg,rgba(79,216,255,.08),rgba(185,140,255,.08));border:1px solid rgba(79,216,255,.25)}
+.cdp .pl-papimg{flex:none;width:64px;height:64px;background:url(/images/cod-zombis/ventajas.webp) 85.714% 100%/800% 200% no-repeat;filter:drop-shadow(0 0 10px rgba(79,216,255,.45))}
+.cdp .pl-pap p{margin:0;font-size:13px;color:#CFC9BE}
+.cdp .pl-pap b{display:block;font:700 12px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7FE3FF}
+.cdp .pl-aprox{display:inline-block;margin-left:10px;padding:3px 9px;border-radius:999px;border:1px dashed rgba(236,228,214,.35);color:#B8B0A4;font:600 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:none;vertical-align:middle}
+.cdp .tx-mud{background:radial-gradient(circle at 30% 40%,rgba(120,90,50,.25) 0 5px,transparent 6px) 0 0/22px 22px,radial-gradient(circle at 70% 70%,rgba(30,20,10,.5) 0 7px,transparent 8px) 0 0/30px 30px,#3A2C1D}
+.cdp .pl-svg line.e-tiro{stroke:#4FD8FF;stroke-width:2;stroke-dasharray:10 5}
+.cdp .pl-svg line.e-tanque{stroke:#24211E;stroke-width:14}
+.cdp .pl-door.k-tiro,.cdp .pl-door.k-tanque{display:none}
+/* gm-carga: pantalla de carga de CoD Zombis (pistolero o iniciales) */
+/* gm-a11y */
+/* gm-orbital: el plano como escena 3D que se gira, inclina y acerca */
+.cdp .pl-view{position:relative;margin:14px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#1A1410,#070606 70%);border:1px solid rgba(255,122,26,.18);perspective:1500px;perspective-origin:50% 40%;touch-action:none;cursor:grab;user-select:none}
+.cdp .pl-view.drag{cursor:grabbing}
+.cdp .pl-orb{position:relative;aspect-ratio:100/60;display:grid;place-items:center;transform-style:preserve-3d}
+.cdp .pl-view .pl-stage{width:90%;margin:0;overflow:visible;transform-style:preserve-3d;transform:translateY(-2%) rotateX(calc(var(--tilt)*1deg)) rotateZ(calc(var(--spin)*1deg)) scale(calc(var(--z)*.9)) translate(var(--fx),var(--fy));transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 40px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,122,26,.25)}
+.cdp .pl-view.drag .pl-stage{transition:none}
+.cdp .pl-view .pl-zone{transform-style:preserve-3d;transform:translateZ(16px);transition:transform .25s,box-shadow .2s}
+.cdp .pl-view .pl-zone::before{content:"";position:absolute;inset:0;border-radius:inherit;transform:translateZ(-16px);background:#050404;box-shadow:0 0 0 1px rgba(255,122,26,.18);pointer-events:none}
+.cdp .pl-view .pl-zone[aria-pressed="true"]{transform:translateZ(30px)}
+.cdp .pl-view .pl-zn,.cdp .pl-view .pl-ic,.cdp .pl-view .pl-step{transform-origin:0 100%;transform:translateZ(1px) rotateZ(calc(var(--spin)*-1deg)) rotateX(calc(var(--tilt)*-1deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.cdp .pl-view.drag .pl-zn,.cdp .pl-view.drag .pl-ic,.cdp .pl-view.drag .pl-step{transition:none}
+.cdp .pl-view .pl-door{transform:translateZ(2px)}
+.cdp .pl-ctl{position:relative;z-index:9;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid rgba(255,122,26,.18);background:#0B0A09;cursor:auto}
+.cdp .pl-ctl>*{pointer-events:auto}
+.cdp .pl-cg{display:flex;align-items:center;gap:2px;padding:3px;border-radius:10px;background:#141210;box-shadow:0 0 0 1px rgba(236,228,214,.14)}
+.cdp .pl-cb,.cdp .pl-cv,.cdp .pl-reset{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:38px;height:38px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#ECE4D6;font:700 14px/1 'Saira Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.cdp .pl-cb:hover,.cdp .pl-cv:hover{background:rgba(255,122,26,.16);color:#FFC08A}
+.cdp .pl-cv[aria-pressed="true"]{background:#FF7A1A;color:#0A0908}
+.cdp .pl-zv{min-width:44px;text-align:center;font:600 12px/1 'IBM Plex Sans',sans-serif;color:#B9A48C}
+.cdp .pl-reset{margin-left:auto;background:#FF7A1A;color:#0A0908}
+.cdp .pl-reset:hover{background:#FF9A4D}
+.cdp .pl-cb:focus-visible,.cdp .pl-cv:focus-visible,.cdp .pl-reset:focus-visible{outline:3px solid #FFC08A;outline-offset:2px}
+.cdp .pl-help{position:absolute;top:10px;right:14px;z-index:9;margin:0;padding:4px 9px;border-radius:999px;background:rgba(10,9,8,.8);color:#B9A48C;font:500 11.5px/1.4 'IBM Plex Sans',sans-serif;pointer-events:none}
+.cdp .still .pl-view .pl-stage,.cdp .still .pl-view .pl-zn,.cdp .still .pl-view .pl-ic,.cdp .still .pl-view .pl-step{transition:none}
+@media (max-width:720px){.cdp .pl-view{perspective:none;cursor:auto;touch-action:auto;margin:10px}.cdp .pl-orb{aspect-ratio:auto;display:block}.cdp .pl-view .pl-stage{width:auto;transform:none!important;box-shadow:none}.cdp .pl-view .pl-zone,.cdp .pl-view .pl-zone[aria-pressed="true"],.cdp .pl-view .pl-zn,.cdp .pl-view .pl-ic,.cdp .pl-view .pl-step{transform:none!important}.cdp .pl-view .pl-zone::before{display:none}.cdp .pl-ctl,.cdp .pl-help{display:none}}
+
+.cdp .pl-card,.cdp .pl-side{min-width:0}
+@media (max-width:860px){.cdp .pl-hero{padding:40px 16px 8px}}

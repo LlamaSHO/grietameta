@@ -345,6 +345,9 @@ const router = createRouter({
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
     // El nav es fijo: se deja su alto de margen (scroll-padding-top de base.css).
+    // Planos y mapas: al cambiar de mapa (cambia el parámetro de la ruta) no se
+    // vuelve arriba, para que el plano siga a la vista.
+    if (from.name && to.name === from.name && ["cod-maps", "arc-map"].includes(to.name)) return false;
     if (to.hash) {
       const navOffset = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop, 10) || 0;
       return { el: to.hash, top: navOffset, behavior: "smooth" };
