@@ -18,7 +18,7 @@ models/
 │   ├── Main.dc.html         → Portada (/): los 9 juegos en «¿A qué juegas hoy?», en filas de 3
 │   ├── AssassinsCreed.dc.html → Saga de Assassin's Creed: los 16 juegos con su imagen, por lanzamiento o por época, por dónde empezar, guía destacada y novedades
 │   ├── ACUnity.dc.html      → Guía de AC Unity: mapa de París sobre el plano de 1790 (zoom con la rueda, filtro por secuencia, coleccionables y misiones por barrio), «La revolución de Arno» en diapositivas, actividades, personajes y ficha
-│   ├── CodZombies.dc.html   → Portada de Call of Duty Zombies: los 4 Black Ops, buscador de mapas, historia del Aether con spoilers ocultos, personajes clave, tripulaciones y glosario
+│   ├── CodZombies.dc.html   → Portada de Call of Duty Zombies: los 4 Black Ops, buscador de mapas, la saga del Aether mapa a mapa (26 mapas por capítulos, con su pantalla y el giro oculto, más los 4 de Caos), personajes clave y tripulaciones con retrato y biografía, y glosario. Fondo derruido en todas las páginas de Zombis
 │   ├── CodBO1.dc.html … CodBO4.dc.html → Una página por juego: selector de mapas y ficha de cada mapa (Pack-a-Punch, ventajas, armas de pared, armas especiales, Easter egg paso a paso, canción secreta), historia y personajes
 │   ├── Lol.dc.html          → Hub de LoL: tier list, filtros, campeón del parche (/lol)
 │   ├── LolCampeon.dc.html   → Ficha de campeón al estilo dpm.lol (Yasuo): build completa, orden de habilidades, winrate por objeto, matchups y descripciones al pasar el ratón
@@ -36,7 +36,7 @@ models/
 │   ├── Login.dc.html        → Iniciar sesión, crear cuenta y recuperar contraseña
 │   ├── Contacto.dc.html     → Formulario de contacto con envío de email (/contacto)
 │   ├── Pokemon.dc.html            → Portada de Pokémon: meta competitivo, novedades, regiones y herramientas
-│   ├── PokemonDex.dc.html         → Pokédex de los 1025 con selector de generación y ficha lateral
+│   ├── PokemonDex.dc.html         → Pokédex de los 1025 con selector de generación y ficha lateral; cada mega lleva su megapiedra y la ficha completa añade «Mecánicas de combate» (cristal Z, Gigamax/Dinamax y teratipo con sus objetos)
 │   ├── PokemonTipos.dc.html       → Tabla de tipos (15/17/18) con calculadora de debilidades
 │   ├── PokemonHabilidades.dc.html → Tres pestañas: habilidades por tipo con chips de efecto, 919 movimientos con tipo/categoría/potencia, y naturalezas con recomendador
 │   ├── PokemonCompetitivo.dc.html → Pokémon Champions (oficial): uso en dobles e individuales con sets, equipos de torneo, parejas, arquetipos, megas y Mundial
@@ -67,13 +67,20 @@ models/
     │                 artwork.webp (212 ilustraciones, 15×15 celdas de 200 px) y art-<id>.webp grandes,
 │                 artwork-meta.webp (125 ilustraciones de Competitivo con formas y megas, 12×11 celdas de 128 px),
 │                 artwork-megas.webp (las 97 megaevoluciones con su ilustración oficial, 10×10 de 128 px);
-│                 sprites-gen1.png rehecho: cada sprite de Rojo/Azul ocupa su celda de 56 px entera (antes salía cortado)
+│                 sprites-gen1.png rehecho: cada sprite de Rojo/Azul ocupa su celda de 56 px entera (antes salía cortado),
+│                 objetos-mecanicas.webp (173 objetos de PokeAPI en celdas de 64 px, 16×11: 92 megapiedras, 35 cristales Z, 18 teralitos,
+│                 objetos clave como Megapulsera, Pulsera Z, Maximuñequera, Maxiseta y Orbe Teracristal, y los 19 iconos de teratipo de Showdown)
+│                 y gigamax.webp (35 formas Gigamax/Dinamax Infinito, ilustración oficial, 6×6 de 160 px)
     ├── juegos/       hero-*.webp y logo-*.webp/png de ARK, Assassin's Creed, Call of Duty, Resident Evil y Rust;
     │                 ac-saga.webp (arte oficial de Ubisoft con todos los asesinos, portada de la saga) y hero-ac.webp (arte de Unity)
     ├── assassins-creed/ paris-1790.webp (2400×1652, plano de 1790 recoloreado: fondo del mapa de Unity), paris-1790-mini.webp (miniatura),
     │                 juegos.webp (hoja de 15 portadas de 520×260 en 4×4: posiciones en la página de la saga)
     └── call-of-duty/ cod-hero.webp (Ascension, fondo de la portada), cod-bo1/2/3.webp (portadas de cada juego) y
-                      capturas de mapas: cod-cotd, cod-shangri, cod-tranzit, cod-mob, cod-buried, cod-origins (1280×720)
+                      capturas de mapas: cod-cotd, cod-shangri, cod-tranzit, cod-mob, cod-buried, cod-origins (1280×720);
+                      mapas-aether.webp (pantallas de los 30 mapas, de Nacht der Untoten a Tag der Toten y los 4 de Caos, 6×5 de 480×270),
+                      personajes-aether.webp (28 retratos de la wiki de CoD, 7×4 de 240×300) y
+                      fondo-ruinas.webp (textura propia de hormigón agrietado y sangre seca para el fondo de todas las páginas de Zombis)
+                      y grietas/grieta-1..3.svg (grietas con lava para las esquinas de las tarjetas)
 data/
 ├── arc-calibracion-mapas.json  → cómo pasar lat/lng de MetaForge a píxeles de cada mapa
 ├── arc-zonas-enemigos.json     → puntos de aparición por enemigo y mapa (en %)
@@ -144,6 +151,25 @@ imágenes se pueden usar (PK12 en `docs/plan-nuevos-juegos.md`).
 - Letra mínima de 11 px (8 px solo en la fuente pixelada de Kanto). Grises y botones rojos ajustados a contraste AA.
 - Assassin's Creed y CoD Zombis tienen un bloque `/* gm-responsive */` con cortes a 1100, 860 y 560 px.
 - **Ojo con el runtime**: cada `{{valor}}` se pinta dentro de un `<span>`. Una regla como `.h1 span{font-size:.5em}` se aplica dos veces y deja el texto diminuto. Usa el hijo directo (`.h1>span`). En Vue no pasa, pero conviene copiar el CSS ya corregido.
+
+## Rendimiento y pantallas de carga (pasada del 2026-11-25, tarde)
+
+Lo que se arregló en el diseño y **hay que respetar al pasarlo a Vue**:
+
+- **Sin `backdrop-filter`** en barras, modales ni chapas: el desenfoque se recalcula en cada fotograma si debajo se mueve algo. Con la ficha completa de la Pokédex abierta la página bajaba a ~16 fps; sin desenfoques, ~45–53. Ahora esos fondos son casi opacos (alfa ≥ 0,95; los velos de modal, 0,9).
+- **Animaciones solo con `transform` y `opacity`**. La hélice de ADN y la franja de escaneo de Assassin's Creed animaban `left` y `top` (recalculaban el diseño de la página entera en cada fotograma). El halo de las megas giraba con `filter: blur()`: ahora es un brillo fijo que late en opacidad.
+- **Nada infinito cuando no se ve**: las animaciones de las pantallas de carga son finitas, y en Mecánicas los brillos de Gigamax y teratipos solo corren al pasar el ratón.
+- **Mapas arrastrables** (Unity): al arrastrar o hacer zoom se mueve la capa directamente (`style.transform`) y el estado se guarda al soltar o al parar la rueda. `will-change: transform` solo mientras se mueve; al parar, el navegador repinta nítido. Zoom máximo ×3, que es lo que aguanta el plano de 2400 px. En Vue: lo mismo con un `ref` y `requestAnimationFrame`, sin reactividad en cada `pointermove`.
+- **Pantallas de carga que bloquean**: `.pk-load` (Pokémon: una Poké Ball lanzada hacia la cámara que se abre en un destello) y `.an-boot` (Animus) cubren la página y no dejan hacer clic hasta que desaparecen. En la saga de AC pone «Cargando antepasados…»; en Unity, «Cargando la memoria de Arno Dorian». En la web real, la carga debe durar lo que tarden los datos (mínimo ~1 s) y los datos pesados (Pokédex completa, movimientos, mapas) se piden por partes, no todos al entrar.
+- **Ver los diseños en local**: copia el runtime del lienzo (`artifact-type/dc-runtime.js`) como `models/paginas/support.js` (no se sube: está en `.git/info/exclude`) y sirve `models/` con `python -m http.server 5180`.
+
+## CoD Zombis: estética y planos (2026-11-25)
+
+- **Menú «Juegos»** (en todas las páginas de CoD): tres grupos, saga del Aether (World at War a Black Ops 4), saga del Aether Oscuro (Cold War, Vanguard, MW III, Black Ops 6 y 7) y otros zombis (Advanced Warfare, Infinite Warfare, WWII). Los que no tienen página salen como «Próximamente». Los Black Ops ya no van sueltos en la barra.
+- **Fondo**: `fondo-ruinas.webp` (2400×1500) con una capa SVG fija de grietas de lava (`.lava`): unas en los márgenes y otras encima de las grietas del propio fondo (mismo encuadre, proporción 1,6). Las tarjetas llevan una grieta con lava en una esquina (`grietas/grieta-1..3.svg`) y los títulos de sección, una raya agrietada.
+- **Cabecera**: cuatro supervivientes en silueta huyen de un zombi que sale por la izquierda (`.zh-run`, solo `transform`).
+- **Planos** (`CodMapas`): vista aérea propia, sin fotos de la wiki (no hay planos oficiales). Cada zona tiene suelo (`tex`: madera, baldosa, moqueta, hormigón, metal, hierba, asfalto o lava) y puede ser exterior (`out`); `marks` añade cajas misteriosas, Easter eggs y piezas con su explicación. Hecho para 12 mapas: Kino der Toten, «Five», Ascension, Call of the Dead, TranZit, Nuketown Zombies, Origins, The Giant, Zetsubou No Shima, IX, Blood of the Dead y Alpha Omega. Los 8 últimos llevan `aprox: true` (se ven con la etiqueta «Distribución aproximada»): sus ventajas van sin zona, en «En todo el mapa», hasta verificar dónde está cada máquina. Iconos reales de ventajas, Pack-a-Punch y caja en `ventajas.webp` (hoja 8×2 de 96 px, de la wiki de CoD). «Cómo abrir el mapa» tiene cada paso enlazado a su zona (`route: [[texto, zona]]`): al pulsarlo se marca en el plano.
+- **Pantalla de carga** (`.cz-load`, en las 6 páginas): dos opciones en el ajuste «carga» del lienzo: «Pistolero» (silueta con dos pistolas que aparece con contorno naranja) o «Iniciales» (C, O y D se encienden una a una). Bloquea los clics hasta que termina.
 
 ## Cómo leer un `.dc.html`
 

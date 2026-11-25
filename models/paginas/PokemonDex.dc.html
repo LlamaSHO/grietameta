@@ -48,7 +48,7 @@ body{margin:0;background:#07090D}
 .mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
 
 /* nav global */
-.nav{position:sticky;top:0;z-index:50;background:rgba(9,11,16,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,11,16,0.95);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav-in{display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;align-items:center;gap:24px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1}
 .pk a.brand{color:#ECE9E1}
@@ -201,7 +201,7 @@ body{margin:0;background:#07090D}
   .menu{display:none}
   .dd>.slink svg.chev{display:none}
   .slink{height:50px;padding:0 10px;font-size:13.5px}
-  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.95);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,0.95);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
   .pk a.tb,.tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;text-decoration:none}
   .tb svg{width:22px;height:22px}
   .tb .spr{width:30px;height:30px;margin:-4px 0 -3px}
@@ -268,7 +268,7 @@ body{margin:0;background:#07090D}
 .pf-more small{font:500 12px/1.3 'IBM Plex Sans',sans-serif;color:#A3ACBA}
 .pf-more:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px color-mix(in srgb,var(--tc) 80%,transparent)}
 .mdl{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px}
-.mdl-bg{position:absolute;inset:0;border:0;background:rgba(4,6,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer}
+.mdl-bg{position:absolute;inset:0;border:0;background:rgba(4,6,10,0.9);cursor:pointer}
 .mdl-d{position:relative;display:grid;grid-template-columns:360px minmax(0,1fr);width:min(1120px,100%);max-height:calc(100vh - 48px);overflow:auto;border-radius:28px;background:#0E121B;border:1.5px solid color-mix(in srgb,var(--tc) 45%,transparent);box-shadow:0 60px 120px -40px rgba(0,0,0,.95);animation:pop2 .25s cubic-bezier(.2,.8,.2,1) both}
 @keyframes pop2{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
 .md-l{padding:20px;background:radial-gradient(90% 50% at 50% 0%,color-mix(in srgb,var(--tc) 40%,transparent),transparent 70%);border-right:1px solid rgba(255,255,255,.06)}
@@ -517,20 +517,44 @@ body{background:#0B0E1A}
 .mc-z{background:linear-gradient(135deg,#FFE36B,#F2A93B)}
 .mc-dx{background:linear-gradient(135deg,#FF4D6D,#B5179E)}
 .mc-tera{background:linear-gradient(135deg,#9BE7FF,#7C5CFF,#FF9DE2)}
-.pk-load{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(600px 400px at 50% 45%,rgba(255,90,78,.18),transparent 70%),#0B0E1A;color:#F1F3F8;font:600 14px 'IBM Plex Sans',sans-serif;letter-spacing:.06em;animation:pkOut .45s ease 1.25s forwards;pointer-events:none}
-.pk-ball{position:relative;width:84px;height:84px;border-radius:50%;background:linear-gradient(#EE3B36 0 46%,#151820 46% 54%,#F4F4F6 54%);box-shadow:inset -8px -10px 0 rgba(0,0,0,.18),0 18px 40px -12px rgba(238,59,54,.6);animation:pkWobble 1.1s ease-in-out infinite}
-.pk-ball i{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:#F4F4F6;border:5px solid #151820;box-sizing:border-box;animation:pkBlink 1.1s ease-in-out infinite}
-@keyframes pkWobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-18deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
-@keyframes pkBlink{0%,60%{background:#F4F4F6}70%,90%{background:#FFE36B;box-shadow:0 0 14px #FFE36B}}
+.pk-load{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;overflow:hidden;background:radial-gradient(600px 400px at 50% 45%,rgba(255,90,78,.18),transparent 70%),#0B0E1A;color:#F1F3F8;font:600 14px 'IBM Plex Sans',sans-serif;letter-spacing:.06em;animation:pkOut .45s ease 1.7s forwards;pointer-events:auto;cursor:progress}
+.pk-load::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,#FFF 0,#FFF6D8 30%,rgba(255,246,216,0) 70%);opacity:0;animation:pkFlash .5s ease-out 1.25s forwards;pointer-events:none}
+.pk-shadow{position:absolute;left:50%;top:calc(50% + 70px);width:120px;height:18px;margin-left:-60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);animation:pkShadow 1.3s cubic-bezier(.5,0,.75,.4) both}
+.pk-throw{position:relative;z-index:1;animation:pkThrow 1.3s cubic-bezier(.5,0,.75,.4) both}
+.pk-ball{display:block;width:84px;height:84px;overflow:visible;filter:drop-shadow(0 16px 22px rgba(0,0,0,.45));animation:pkSpin 1.3s cubic-bezier(.3,.1,.3,1) both}
+.pk-btn{animation:pkBlink .3s ease-in 1.05s forwards}
+.pk-load>span{position:absolute;left:0;right:0;bottom:16vh;text-align:center;animation:pkTxt 1.2s ease both}
+@keyframes pkThrow{0%{transform:translate(-30vw,22vh) scale(.14)}35%{transform:translate(-14vw,-24vh) scale(.42)}62%{transform:translate(-4vw,-10vh) scale(.95)}100%{transform:translate(0,0) scale(3.4)}}
+@keyframes pkSpin{from{transform:rotate(-360deg)}to{transform:rotate(720deg)}}
+@keyframes pkShadow{0%{transform:translate(-30vw,0) scale(.15);opacity:.2}60%{opacity:.5}100%{transform:translate(0,0) scale(2.6);opacity:0}}
+@keyframes pkBlink{to{fill:#FFE36B}}
+@keyframes pkFlash{0%{opacity:0}40%{opacity:1}100%{opacity:.85}}
+@keyframes pkTxt{0%,20%{opacity:0;transform:translateY(6px)}40%,100%{opacity:1;transform:none}}
 @keyframes pkOut{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){.pk-load{display:none}}
 .still .pk-load{display:none}
 
 .pf-scr .mgs.big{position:relative;z-index:1;width:250px;height:250px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:megaIn .7s cubic-bezier(.2,.9,.2,1)}
 .md-scr .mgs.big{width:240px;height:240px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:megaIn .7s cubic-bezier(.2,.9,.2,1)}
-.md-scr.is-mega::before{content:"";position:absolute;left:50%;top:50%;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:50%;background:conic-gradient(from 0deg,#FFCB3D,#FF5AA5,#5B8CFF,#73CEC0,#FFCB3D);filter:blur(26px);opacity:.45;animation:megaSpin 6s linear infinite}
+.md-scr.is-mega::before{content:"";position:absolute;left:50%;top:50%;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,90,165,.5),rgba(91,140,255,.28) 55%,rgba(255,203,61,.12) 75%,transparent);opacity:.75;animation:megaPulse 2.6s ease-in-out infinite alternate}
 @keyframes megaIn{0%{transform:scale(.6);filter:brightness(4) drop-shadow(0 0 30px #fff)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
 @keyframes megaSpin{to{transform:rotate(360deg)}}
+@keyframes megaPulse{from{opacity:.55}to{opacity:.9}}
+.itm{display:inline-block;flex:none;width:32px;height:32px;background-image:url(../assets/pokemon/objetos-mecanicas.webp);background-size:1600% 1100%;background-repeat:no-repeat}
+.itm.lg{width:46px;height:46px}
+.gxa{display:block;flex:none;width:84px;height:84px;background-image:url(../assets/pokemon/gigamax.webp);background-size:600% 600%;background-repeat:no-repeat;filter:drop-shadow(0 8px 10px rgba(0,0,0,.5))}
+.mst-st{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;color:#FFE7A3}
+.mst-st .itm{width:30px;height:30px}
+.pf-stone{display:flex;align-items:center;justify-content:center;gap:8px;margin:-2px 0 10px;font-size:13px;color:#DDE3EE}
+.pf-stone b{color:#FFE7A3}
+.mech{display:grid;gap:8px}
+.mech-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.mech-r>div{min-width:0;flex:1 1 160px}
+.mech-k{display:block;font:700 11px/1.2 'Fredoka',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#FFCB3D}
+.mech-r b{display:block;font:600 14px/1.3 'IBM Plex Sans',sans-serif;color:#F1F3F8}
+.mech-r small{display:block;margin-top:2px;color:#A9B1C2;font-size:12.5px;line-height:1.4}
+.mech-its{display:flex;flex-wrap:wrap;gap:4px;width:100%}
+.mech-its .itm{border-radius:10px;background-color:rgba(255,255,255,.05)}
 .fsw{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:4px 0 10px}
 .fsw-b{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#DDE3EE;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
 .fsw-b.on{border-color:transparent;background:linear-gradient(90deg,#FFCB3D,#FF5AA5,#5B8CFF);color:#0B0E1A}
@@ -544,7 +568,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 </helmet>
 
 <div class="pk {{motionClass}}">
-<div class="pk-load" aria-hidden="true"><div class="pk-ball"><i></i></div><span>Atrapando datos…</span></div>
+<div class="pk-load" aria-hidden="true"><i class="pk-shadow"></i><div class="pk-throw"><svg class="pk-ball" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="pkR" cx="38%" cy="28%" r="75%"><stop offset="0" stop-color="#FF8A7A"></stop><stop offset=".45" stop-color="#EE3B36"></stop><stop offset="1" stop-color="#A3161C"></stop></radialGradient><radialGradient id="pkW" cx="40%" cy="70%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".6" stop-color="#E9ECF2"></stop><stop offset="1" stop-color="#A9AFBC"></stop></radialGradient><radialGradient id="pkB" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#D5D9E2"></stop></radialGradient></defs><path d="M3 50a47 47 0 0 1 94 0z" fill="url(#pkR)"></path><path d="M3 50a47 47 0 0 0 94 0z" fill="url(#pkW)"></path><rect x="2" y="45.5" width="96" height="9" fill="#14161D"></rect><circle cx="50" cy="50" r="47" fill="none" stroke="#14161D" stroke-width="3.4"></circle><circle cx="50" cy="50" r="15.5" fill="#14161D"></circle><circle cx="50" cy="50" r="10.5" fill="url(#pkB)" stroke="#9AA1AE" stroke-width="1.2"></circle><circle class="pk-btn" cx="50" cy="50" r="6" fill="#F4F5F8"></circle><ellipse cx="33" cy="22" rx="13" ry="6.5" fill="#FFFFFF" opacity=".45" transform="rotate(-28 33 22)"></ellipse><ellipse cx="62" cy="83" rx="18" ry="5" fill="#FFFFFF" opacity=".35"></ellipse></svg></div><span>Atrapando datos…</span></div>
 
   <header class="nav">
     <div class="wrap nav-in">
@@ -708,7 +732,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             <span class="{{p.artCls}}" style="background-position: {{p.ap}}"></span>
             <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><span class="pf-mega">{{p.megaN}}</span></sc-if>
           </div>
-          <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if>
+          <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if><sc-if value="{{p.isMegaForm}}" hint-placeholder-val="false"><p class="pf-stone"><span class="itm" style="background-position: {{p.stoneBp}}" aria-hidden="true"></span>Lleva la <b>{{p.stoneN}}</b></p></sc-if>
           <div class="pf-b">
             <div class="pf-h">
               <div><h2 class="fd">{{p.n}}</h2><span class="genus">{{p.genus}}</span></div>
@@ -735,7 +759,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
           <div class="mdl-d">
             <div class="md-l">
               <div class="md-scr {{p.scrCls}}"><span class="{{p.artCls}}" style="background-position: {{p.ap}}"></span><span class="pf-num fd">#{{p.num}}</span></div>
-              <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if>
+              <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if><sc-if value="{{p.isMegaForm}}" hint-placeholder-val="false"><p class="pf-stone"><span class="itm" style="background-position: {{p.stoneBp}}" aria-hidden="true"></span>Lleva la <b>{{p.stoneN}}</b></p></sc-if>
               <h2 class="fd">{{p.n}}</h2><span class="genus">{{p.genus}} · Gen {{p.gen}}</span>
               <div class="tys"><sc-for list="{{p.t}}" as="t" hint-placeholder-count="2"><span class="ty t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></div>
               <div class="facts"><span><small>Altura</small><b>{{p.h}}</b></span><span><small>Peso</small><b>{{p.w}}</b></span><span><small>Categoría</small><b>{{p.cat}}</b></span></div>
@@ -748,10 +772,15 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
                   <div class="megs"><sc-for list="{{p.megas}}" as="m" hint-placeholder-count="2">
                     <article class="mg4" style="--c1: {{m.c1}}; --c2: {{m.c2}}">
                       <div class="mg4-t"><span class="mgs" style="background-position: {{m.bp}}" role="img" aria-label="{{m.n}}"></span>
-                        <div><b class="fd">{{m.n}}</b><span class="tys"><sc-for list="{{m.t}}" as="t" hint-placeholder-count="2"><span class="ty sm t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></span><span class="mab">{{m.ab}}</span></div></div>
+                        <div><b class="fd">{{m.n}}</b><span class="tys"><sc-for list="{{m.t}}" as="t" hint-placeholder-count="2"><span class="ty sm t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></span><span class="mab">{{m.ab}}</span><span class="mst-st"><span class="itm" style="background-position: {{m.sbp}}" aria-hidden="true"></span>{{m.stone}}</span></div></div>
                       <div class="mst"><sc-for list="{{m.st}}" as="x" hint-placeholder-count="6"><span><small>{{x.n}}</small><b class="{{x.d}}">{{x.v}}</b></span></sc-for><span class="tot"><small>Total</small><b>{{m.tot}}</b></span></div>
                     </article>
                   </sc-for></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{p.hasMech}}" hint-placeholder-val="true">
+                <div class="blk"><h4 aria-level="3">Mecánicas de combate <small>{{p.mechN}}</small></h4>
+                  <div class="mech"><sc-for list="{{p.mech}}" as="x" hint-placeholder-count="2"><div class="mech-r"><sc-if value="{{x.gx}}" hint-placeholder-val="false"><span class="gxa" style="background-position: {{x.gxp}}" role="img" aria-label="{{x.gxl}}"></span></sc-if><div><span class="mech-k">{{x.k}}</span><b>{{x.t}}</b><small>{{x.d}}</small></div><span class="mech-its"><sc-for list="{{x.its}}" as="i" hint-placeholder-count="1"><span class="itm lg" style="background-position: {{i.bp}}" role="img" aria-label="{{i.n}}" title="{{i.n}}"></span></sc-for></span></div></sc-for></div>
                 </div>
               </sc-if>
               <sc-if value="{{p.megaLate}}" hint-placeholder-val="false"><p class="muted mnote">Tiene megaevolución, pero llegaron en la Gen VI (X e Y). Cambia de generación para verla.</p></sc-if>
@@ -920,6 +949,14 @@ const natFor = (s) => {
 };
 const fmtGen = { 1: 'Gen I', 2: 'Gen II', 3: 'Gen III', 4: 'Gen IV', 5: 'Gen V', 6: 'Gen VI', 7: 'Gen VII', 8: 'Gen VIII', 9: 'Gen IX' };
 
+const OBJ_MS = {"10033": [3, "Venusaurita"], "10034": [4, "Charizardita X"], "10035": [22, "Charizardita Y"], "10036": [5, "Blastoisita"], "10037": [23, "Alakazamita"], "10038": [0, "Gengarita"], "10039": [19, "Kangaskhanita"], "10040": [15, "Pinsirita"], "10041": [20, "Gyaradosita"], "10042": [16, "Aerodactylita"], "10043": [6, "Mewtwoita X"], "10044": [7, "Mewtwoita Y"], "10045": [2, "Ampharosita"], "10046": [14, "Scizorita"], "10047": [24, "Heracrossita"], "10048": [10, "Houndoomita"], "10049": [13, "Tyranitarita"], "10050": [8, "Blazikenita"], "10051": [1, "Gardevoirita"], "10052": [25, "Mawilita"], "10053": [11, "Aggronita"], "10054": [9, "Medichamita"], "10055": [26, "Manectricita"], "10056": [12, "Banettita"], "10057": [21, "Absolita"], "10307": [79, "Absolita Z"], "10058": [27, "Garchompita"], "10309": [81, "Garchompita Z"], "10059": [17, "Lucarita"], "10310": [82, "Lucarita Z"], "10060": [18, "Abomasnowita"], "10062": [28, "Latiasita"], "10063": [29, "Latiosita"], "10064": [30, "Swampertita"], "10065": [31, "Sceptilita"], "10066": [32, "Sableynita"], "10067": [33, "Altarianita"], "10068": [34, "Galladita"], "10069": [35, "Audinita"], "10070": [37, "Sharpedonita"], "10071": [38, "Slowbronita"], "10072": [39, "Steelixita"], "10073": [40, "Pidgeotita"], "10074": [41, "Glalita"], "10075": [42, "Diancita"], "10076": [36, "Metagrossita"], "10087": [43, "Cameruptita"], "10088": [44, "Lopunnita"], "10089": [45, "Salamencita"], "10090": [46, "Beedrillita"], "10278": [47, "Clefablita"], "10279": [48, "Victreebelita"], "10280": [49, "Starmita"], "10281": [50, "Dragonitita"], "10282": [51, "Meganiumita"], "10283": [52, "Feraligatrita"], "10284": [53, "Skarmorita"], "10285": [54, "Froslassita"], "10286": [57, "Emboarita"], "10287": [58, "Excadrillita"], "10288": [59, "Scolipedita"], "10289": [60, "Scraftita"], "10290": [61, "Eelektrossita"], "10291": [62, "Chandelurita"], "10292": [63, "Chesnaughtita"], "10293": [64, "Delphoxita"], "10294": [65, "Greninjanita"], "10295": [66, "Pyroarita"], "10296": [67, "Floettita"], "10297": [68, "Malamarita"], "10298": [69, "Barbaraclita"], "10299": [70, "Dragalgita"], "10300": [71, "Hawluchanita"], "10301": [72, "Zygardita"], "10302": [73, "Drampanita"], "10303": [75, "Falinksita"], "10304": [76, "Raichunita X"], "10305": [77, "Raichunita Y"], "10306": [78, "Chimechita"], "10308": [80, "Staraptorita"], "10311": [55, "Heatranita"], "10312": [56, "Darkrainita"], "10313": [83, "Golurkita"], "10314": [84, "Meowsticita"], "10326": [84, "Meowsticita"], "10315": [85, "Crabominablita"], "10316": [86, "Golisopodita"], "10317": [87, "Magearnita"], "10318": [87, "Magearnita"], "10319": [74, "Zeraoranita"], "10320": [88, "Scovillainita"], "10321": [91, "Glimmoranita"], "10322": [90, "Tatsugirita"], "10323": [90, "Tatsugirita"], "10324": [90, "Tatsugirita"], "10325": [89, "Baxcaliburita"]};
+const OBJ_ZT = {"normal": [92, "Normastal Z"], "fire": [93, "Pirostal Z"], "water": [94, "Hidrostal Z"], "electric": [95, "Electrostal Z"], "grass": [96, "Fitostal Z"], "ice": [97, "Criostal Z"], "fighting": [98, "Lizastal Z"], "poison": [99, "Toxistal Z"], "ground": [100, "Geostal Z"], "flying": [101, "Aerostal Z"], "psychic": [102, "Psicostal Z"], "bug": [103, "Insectostal Z"], "rock": [104, "Litostal Z"], "ghost": [105, "Espectrostal Z"], "dragon": [106, "Dracostal Z"], "dark": [107, "Nictostal Z"], "steel": [108, "Metalostal Z"], "fairy": [109, "Feeristal Z"]};
+const OBJ_ZE = {"25": [110, "Pikastal Z", "Catastropika"], "26": [116, "Alo-Raistal Z", "Stoked Sparksurfer"], "133": [118, "Eeveestal Z", "Extreme Evoboost"], "143": [117, "Snorlastal Z", "Pulverizing Pancake"], "151": [119, "Mewstal Z", "Genesis Supernova"], "724": [111, "Dueyestal Z", "Sinister Arrow Raid"], "727": [112, "Incinostal Z", "Malicious Moonsault"], "730": [113, "Primastal Z", "Oceanic Operetta"], "785": [114, "Tapistal Z", "Guardian of Alola"], "786": [114, "Tapistal Z", "Guardian of Alola"], "787": [114, "Tapistal Z", "Guardian of Alola"], "788": [114, "Tapistal Z", "Guardian of Alola"], "802": [115, "Marshastal Z", "Soul-Stealing 7-Star Strike"], "784": [150, "Kommostal Z", "Clangorous Soulblaze"], "745": [148, "Lycanrostal Z", "Splintered Stormshards"], "778": [149, "Mimikyustal Z", "Let's Snuggle Forever"], "791": [151, "Solgaleostal Z", "Searing Sunraze Smash"], "792": [152, "Lunalastal Z", "Menacing Moonraze Maelstrom"], "800": [153, "Ultranecrostal Z", "Light That Burns the Sky"]};
+const OBJ_GX = {"3": [[0, "Venusaur Gigamax"]], "6": [[1, "Charizard Gigamax"]], "9": [[2, "Blastoise Gigamax"]], "12": [[3, "Butterfree Gigamax"]], "25": [[4, "Pikachu Gigamax"]], "52": [[5, "Meowth Gigamax"]], "68": [[6, "Machamp Gigamax"]], "94": [[7, "Gengar Gigamax"]], "99": [[8, "Kingler Gigamax"]], "131": [[9, "Lapras Gigamax"]], "133": [[10, "Eevee Gigamax"]], "143": [[11, "Snorlax Gigamax"]], "569": [[12, "Garbodor Gigamax"]], "809": [[13, "Melmetal Gigamax"]], "812": [[14, "Rillaboom Gigamax"]], "815": [[15, "Cinderace Gigamax"]], "818": [[16, "Inteleon Gigamax"]], "823": [[17, "Corviknight Gigamax"]], "826": [[18, "Orbeetle Gigamax"]], "834": [[19, "Drednaw Gigamax"]], "839": [[20, "Coalossal Gigamax"]], "841": [[21, "Flapple Gigamax"]], "842": [[22, "Appletun Gigamax"]], "844": [[23, "Sandaconda Gigamax"]], "849": [[24, "Toxtricity Gigamax (forma Aguda)"], [33, "Toxtricity Gigamax (forma Grave)"]], "851": [[25, "Centiskorch Gigamax"]], "858": [[26, "Hatterene Gigamax"]], "861": [[27, "Grimmsnarl Gigamax"]], "869": [[28, "Alcremie Gigamax"]], "879": [[29, "Copperajah Gigamax"]], "884": [[30, "Duraludon Gigamax"]], "892": [[31, "Urshifu Gigamax (estilo Brusco)"], [32, "Urshifu Gigamax (estilo Fluido)"]], "890": [[34, "Eternatus Dinamax Infinito"]]};
+const OBJ_TE = {"normal": [154, 121, "Teralito Normal"], "fire": [163, 122, "Teralito Fuego"], "water": [164, 123, "Teralito Agua"], "electric": [166, 124, "Teralito Eléctrico"], "grass": [165, 125, "Teralito Planta"], "ice": [168, 126, "Teralito Hielo"], "fighting": [155, 127, "Teralito Lucha"], "poison": [157, 128, "Teralito Veneno"], "ground": [158, 129, "Teralito Tierra"], "flying": [156, 130, "Teralito Volador"], "psychic": [167, 131, "Teralito Psíquico"], "bug": [160, 132, "Teralito Bicho"], "rock": [159, 133, "Teralito Roca"], "ghost": [161, 134, "Teralito Fantasma"], "dragon": [169, 135, "Teralito Dragón"], "dark": [170, 136, "Teralito Siniestro"], "steel": [162, 137, "Teralito Acero"], "fairy": [171, 138, "Teralito Hada"], "stellar": [172, -1, ""]};
+const OBJ_KEY = {"mega": [145, "Megapulsera"], "z": [141, "Pulsera Z"], "dmax": [143, "Maximuñequera"], "maxi": [147, "Maxiseta"], "tera": [144, "Orbe Teracristal"]};
+const obp = (i) => ((i % 16) / 15 * 100).toFixed(3) + '% ' + (Math.floor(i / 16) / 10 * 100).toFixed(3) + '%';
+const gxp = (i) => ((i % 6) / 5 * 100).toFixed(3) + '% ' + (Math.floor(i / 6) / 5 * 100).toFixed(3) + '%';
 class Component extends DCLogic {
   constructor(p) {
     super(p);
@@ -982,7 +1019,7 @@ class Component extends DCLogic {
     const recIn = ab.some((a) => a.n === recAb);
     const abWhy = !recIn ? '' : rc.ab[1] ? 'La lleva el ' + rc.ab[1] + ' % de los ' + d[1] + ' en ' + rc.ab[2] + ' (Pokémon Showdown, octubre de 2026).' : 'Elegida por lo que hace cada habilidad con sus estadísticas y su tipo.';
     const megs = (MEG[d[0]] || []).filter((m) => g >= 6 && (m[0] < 10100 || g >= 9));
-    const megas = megs.map((m) => { const tt = m[3].reduce((a, b) => a + b, 0); return { n: m[1], bp: mgp(m[0]), t: m[2].map((k) => ({ k, n: TN[TK.indexOf(k)] })), c1: TC[TK.indexOf(m[2][0])], c2: TC[TK.indexOf(m[2][1] || m[2][0])], ab: m[4] || '—', tot: tt,
+    const megas = megs.map((m) => { const tt = m[3].reduce((a, b) => a + b, 0); const ms = OBJ_MS[m[0]]; return { n: m[1], bp: mgp(m[0]), stone: ms ? ms[1] : 'Sin piedra: necesita Ascenso del Dragón', sbp: obp(ms ? ms[0] : OBJ_KEY.mega[0]), t: m[2].map((k) => ({ k, n: TN[TK.indexOf(k)] })), c1: TC[TK.indexOf(m[2][0])], c2: TC[TK.indexOf(m[2][1] || m[2][0])], ab: m[4] || '—', tot: tt,
       st: m[3].map((v, i) => ({ n: ['PS', 'Atq', 'Def', 'AtE', 'DfE', 'Vel'][i], v, d: v > d[4][i] ? 'up' : v < d[4][i] ? 'dn' : '' })) }; });
     const kanto = d[0] <= 151;
     const ver = S.ver;
@@ -991,13 +1028,22 @@ class Component extends DCLogic {
       return { n: LOC[l[0]] || l[0], mt: m[0], mc: m[1], lv: l[1] === 'npc-trade' ? 'Intercambio con un NPC' : (l[2] === l[3] ? 'Nv. ' + l[2] : 'Nv. ' + l[2] + '–' + l[3]), r: Math.min(100, l[4]) + ' %', w: Math.min(100, l[4]) + '%' };
     }) : [];
     const evoNote = kanto && !locs.length && d[10] ? 'Evoluciona de ' + BY[d[10]][1] : '';
+    const tk = t.map((x) => TK[x - 1]);
+    const it = (e) => ({ bp: obp(e[0]), n: e[1] });
+    const mech = [];
+    if (megas.length) mech.push({ k: 'Megaevolución · Gen VI', t: megas.length === 1 ? 'Megapiedra: ' + megas[0].stone : megas.length + ' megapiedras: ' + Array.from(new Set(megas.map((m) => m.stone))).join(', '), d: 'Equípasela y megaevoluciona una vez por combate con la Megapulsera.', its: megas.filter((m, i, a) => a.findIndex((x) => x.stone === m.stone) === i).map((m) => ({ bp: m.sbp, n: m.stone })) });
+    if (g >= 7) { const ze = OBJ_ZE[d[0]]; mech.push(ze ? { k: 'Movimiento Z · Gen VII', t: ze[1] + ' → ' + ze[2], d: 'Cristal Z exclusivo. Con la Pulsera Z, su movimiento propio se convierte en este movimiento Z.', its: [it(ze)] }
+      : { k: 'Movimiento Z · Gen VII', t: tk.map((k) => OBJ_ZT[k][1]).join(' o '), d: 'Cristal Z de su tipo: con la Pulsera Z, un movimiento de ese tipo pasa a ser su movimiento Z una vez por combate.', its: tk.map((k) => it(OBJ_ZT[k])) }); }
+    if (g >= 8) { const gx = OBJ_GX[d[0]]; mech.push(gx ? { k: 'Gigamax · Gen VIII', t: gx.map((x) => x[1]).join(' · '), d: 'Tiene forma Gigamax con su propio movimiento G-Max. En Espada y Escudo se le da con la Maxiseta.', gx: true, gxp: gxp(gx[0][0]), gxl: gx[0][1], its: [it(OBJ_KEY.dmax), it(OBJ_KEY.maxi)] }
+      : { k: 'Dinamax · Gen VIII', t: 'Dinamax con la Maximuñequera', d: 'No tiene forma Gigamax, pero puede dinamizarse 3 turnos: dobla sus PS y usa movimientos Max.', its: [it(OBJ_KEY.dmax)] }); }
+    if (g >= 9) mech.push({ k: 'Teracristalización · Gen IX', t: 'Teratipo natural: ' + tk.map((k) => TN[TK.indexOf(k)]).join(' o '), d: 'Con el Orbe Teracristal cambia a su teratipo. Con 50 teralitos de otro tipo puedes cambiárselo.', its: tk.map((k) => ({ bp: obp(OBJ_TE[k][0]), n: 'Teratipo ' + TN[TK.indexOf(k)] })).concat(tk.map((k) => ({ bp: obp(OBJ_TE[k][1]), n: OBJ_TE[k][2] }))) });
     const p = {
       num: pad(d[0]), n: d[1], genus: d[5], gen: GR[d[2] - 1], t: t.map(ty), c: TC[t[0] - 1], c2: TC[(t[1] || t[0]) - 1], tx: TX[t[0] - 1],
       artCls: hasArt ? 'art' : (useG1 && kanto ? 'g1s big' : 'spr big'), ap: hasArt ? ap(ARTI[d[0]]) : (useG1 && kanto ? g1p(d[0]) : sp(d[0])),
       st: rows.map((r) => ({ n: r[0], v: r[1], w: Math.min(100, r[1] / 180 * 100).toFixed(1) + '%', c: r[2] })), tot: total,
       stNote: g === 1 ? 'Gen I: Ataque Especial y Defensa Especial eran una sola estadística, Especial.' : '',
       weak: [4, 2].flatMap((m) => groups[m].map((a) => ({ k: TK[a - 1], n: TN[a - 1], m: m === 4 ? '×4' : '×2' }))).slice(0, 7),
-      recAb: recIn ? recAb : (ab[0] ? ab[0].n : ''), abWhy, hasMega: megas.length > 0, megas, megaLate: megas.length === 0 && (MEG[d[0]] || []).length > 0 && g < 6, megaN: megas.length === 1 ? '1 mega' : megas.length + ' megas', megaTxt: megas.length ? ' y megaevoluciones' : '',
+      recAb: recIn ? recAb : (ab[0] ? ab[0].n : ''), abWhy, hasMega: megas.length > 0, megas, megaLate: megas.length === 0 && (MEG[d[0]] || []).length > 0 && g < 6, megaN: megas.length === 1 ? '1 mega' : megas.length + ' megas', megaTxt: megas.length ? ' y megaevoluciones' : '', mech, hasMech: mech.length > 0, mechN: mech.length === 1 ? '1 mecánica' : mech.length + ' mecánicas',
       rmv: (rc.mv || []).map((m) => ({ n: m[0], k: m[1], tn: TN[TK.indexOf(m[1])] })), mvSrc: rc.src === 'uso' ? 'los más usados en competitivo (Showdown)' : 'según su tipo, sus estadísticas y lo que aprende',
       wk, ab, hasAb: g >= 3 && ab.length > 0, noAb: g < 3, hasNat: g >= 3, noNat: g < 3,
       nat: natFor(st).map((x) => ({ n: x[0], k: x[1] })), evo,
@@ -1058,7 +1104,7 @@ class Component extends DCLogic {
     for (let a = 1; a <= nt; a++) { const k = ti.reduce((x, dt) => x * eff(a, dt, g), 1); if (groups[k]) groups[k].push(a); }
     const wk = [[4, '×4', 'x4'], [2, '×2', 'x2'], [0.5, '×½', 'x05'], [0.25, '×¼', 'x025'], [0, '×0', 'x0']].filter((x) => groups[x[0]].length).map((x) => ({ m: x[1], cls: x[2], t: groups[x[0]].map(ty) }));
     const weak = [4, 2].flatMap((k) => groups[k].map((a) => ({ k: TK[a - 1], n: TN[a - 1], m: k === 4 ? '×4' : '×2' }))).slice(0, 7);
-    const mp = { ...p, n: m.n, t: m.t, c: m.c1, c2: m.c2, artCls: 'mgs big', ap: m.bp, scrCls: 'is-mega',
+    const mp = { ...p, n: m.n, t: m.t, c: m.c1, c2: m.c2, artCls: 'mgs big', ap: m.bp, scrCls: 'is-mega', isMegaForm: true, stoneN: m.stone, stoneBp: m.sbp,
       st: SN.map((n, i) => ({ n, v: sv[i], w: Math.min(100, sv[i] / 180 * 100).toFixed(1) + '%', c: SC[i] })), tot: m.tot, stNote: 'Estadísticas de ' + m.n + '.',
       weak, wk, ab: [{ n: m.ab, k: 'Mega', cls: 'rec', rec: '★ Habilidad de la mega', d: 'La megaevolución cambia la habilidad por esta durante el combate.' }], recAb: m.ab, abWhy: 'Al megaevolucionar, el Pokémon pasa a tener siempre esta habilidad.',
       nat: natFor(sv).map((x) => ({ n: x[0], k: x[1] })) };

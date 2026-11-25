@@ -44,7 +44,7 @@ a{color:#E2B566}a:hover{color:#F3C878}
 .mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.8);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,0.95);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1;justify-self:start}
 .brand:hover{color:#ECE9E1}
@@ -87,7 +87,7 @@ a{color:#E2B566}a:hover{color:#F3C878}
 /* barra inferior en móvil */
 .tabbar{display:none}
 @media (max-width:860px){
-  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,0.95);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
   .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
   .tb:hover{color:#ECE9E1}
   .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
@@ -230,7 +230,7 @@ a{color:#E2B566}a:hover{color:#F3C878}
 .h-top{margin-top:18px}
 .h-bottom{align-items:end;margin-top:22px;padding-top:18px;border-top:1px solid #ffffff1a}
 .h-bottom .h-act{margin:0;padding:0;border:0}
-.h-corner{width:min(100%,380px);padding:12px 14px 10px;border-radius:14px;background:#07090dB3;border:1px solid #ffffff17;backdrop-filter:blur(6px)}
+.h-corner{width:min(100%,380px);padding:12px 14px 10px;border-radius:14px;background:#07090dB3;border:1px solid #ffffff17}
 .h-corner.tl{border-color:color-mix(in srgb,var(--left) 45%,#ffffff17)}
 .h-corner.br{justify-self:end;border-color:color-mix(in srgb,var(--right) 45%,#ffffff17)}
 .h-corner.tr{justify-self:end}

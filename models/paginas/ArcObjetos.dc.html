@@ -43,7 +43,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
 
 /* nav global */
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,14,.84);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(242,235,221,.08)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,14,0.95);border-bottom:1px solid rgba(242,235,221,.08)}
 .nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#F2EBDD;justify-self:start}
 .brand:hover{color:#F2EBDD}
@@ -117,7 +117,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .shot .hud i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
 .shot .hud i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
 .shot .hud i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
-.shot .tagx{position:absolute;left:24px;bottom:22px;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(11,10,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(242,235,221,.12)}
+.shot .tagx{position:absolute;left:24px;bottom:22px;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(11,10,14,0.95);border:1px solid rgba(242,235,221,.12)}
 .shot .tagx b{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;line-height:1}
 .shot .tagx span{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#C8C1B6}
 .thr{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
@@ -150,7 +150,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .mc .sl{position:absolute;left:0;right:0;height:60px;top:-30%;background:linear-gradient(180deg,transparent,rgba(59,201,232,.14),transparent);opacity:0}
 .mc:hover .sl{opacity:1;animation:scan 2.4s linear infinite}
 .mc .chips{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:7px;background:rgba(11,10,14,.75);border:1px solid rgba(242,235,221,.14);font-size:12px;font-weight:600;color:#E2DBCE;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:7px;background:rgba(11,10,14,0.95);border:1px solid rgba(242,235,221,.14);font-size:12px;font-weight:600;color:#E2DBCE}
 .mc .bot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .mc h3{margin:0;font-size:34px;font-weight:800;line-height:.95}
 .mc p{margin:6px 0 0;font-size:13.5px;color:#C8C1B6}
@@ -240,7 +240,7 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 /* barra inferior en móvil */
 .tabbar{display:none}
 @media (max-width:860px){
-  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,0.95);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
   .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
   .tb:hover{color:#ECE9E1}
   .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}

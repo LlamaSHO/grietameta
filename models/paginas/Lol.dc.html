@@ -44,7 +44,7 @@ a{color:#E2B566}a:hover{color:#F3C878}
 .mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
 
 /* ---- nav ---- */
-.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.8);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,0.95);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1;justify-self:start}
 .brand:hover{color:#ECE9E1}
@@ -147,7 +147,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .h1 em{font-style:normal;color:#E2B566}
 .lead{margin:6px 0 0;color:#A6AEB9;font-size:15px;max-width:620px}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:rgba(13,16,23,.75);border:1px solid rgba(255,255,255,.09);font-size:13px;color:#C6CBD2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:rgba(13,16,23,0.95);border:1px solid rgba(255,255,255,.09);font-size:13px;color:#C6CBD2}
 .pill strong{color:#ECE9E1;font-weight:600}
 .pill .dot{width:7px;height:7px;border-radius:50%;background:#19D3C5;color:#19D3C5;animation:ping 2.2s infinite}
 .pill.patch{border-color:rgba(10,200,185,.45);color:#7FE9DE}
@@ -234,12 +234,12 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .spot-top h3{margin:0;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1}
 .spot-top .sb{font-size:14px;color:#A6AEB9;margin-top:4px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(120px,100%),1fr));gap:10px;max-width:620px}
-.stat{padding:12px 14px;border-radius:12px;background:rgba(7,9,13,.6);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.stat{padding:12px 14px;border-radius:12px;background:rgba(7,9,13,0.95);border:1px solid rgba(255,255,255,.07)}
 .stat .k{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
 .stat .v{margin-top:2px;font-size:22px;font-weight:700;font-family:'Bricolage Grotesque',sans-serif}
 .stat .v.hi{color:#62D99C}
 .build{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px;max-width:760px}
-.bblock{padding:14px;border-radius:14px;background:rgba(7,9,13,.66);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.bblock{padding:14px;border-radius:14px;background:rgba(7,9,13,0.95);border:1px solid rgba(255,255,255,.07)}
 .bblock h4{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8F98A5}
 .items{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .item{position:relative;width:44px;height:44px;border-radius:10px;overflow:hidden;border:1px solid rgba(226,181,102,.4);transition:transform .25s}
@@ -349,7 +349,7 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 /* barra inferior en móvil */
 .tabbar{display:none}
 @media (max-width:860px){
-  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,.94);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,0.95);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
   .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
   .tb:hover{color:#ECE9E1}
   .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
