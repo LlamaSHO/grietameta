@@ -1,0 +1,500 @@
+{
+  "juego": "ARK: Survival Evolved",
+  "total": 46,
+  "fuentes": [
+    "https://ark.wiki.gg/wiki/Gathering_and_Weight_Reduction",
+    "https://ark.wiki.gg/wiki/Resource_Map_(The_Island)",
+    "https://ark.wiki.gg/wiki/Kibble",
+    "https://ark.wiki.gg/wiki/Simple_Kibble",
+    "https://ark.wiki.gg/wiki/Taming"
+  ],
+  "nota": "La cantidad depende de criatura, nivel, herramienta y ajustes del servidor. Receta de pasta de cemento y localizaciones de perlas contrastadas con wikitext local.",
+  "recursos": [
+    {
+      "id": "re-001",
+      "tipo": "básico",
+      "nombre": "Madera",
+      "obtencion": "Árboles; en todos los mapas.",
+      "mejor": "Hacha; Castoroides y Mammoth para grandes cantidades.",
+      "uso": "Estructuras, herramientas y combustible.",
+      "mapas": "Bosques de todos los mapas.",
+      "fuente": "https://ark.wiki.gg/wiki/Madera"
+    },
+    {
+      "id": "re-002",
+      "tipo": "básico",
+      "nombre": "Paja",
+      "obtencion": "Golpea árboles con pico o usa criaturas recolectoras.",
+      "mejor": "Brontosaurio y Mammoth.",
+      "uso": "Construcción temprana, narcótico y cemento.",
+      "mapas": "Común donde hay árboles.",
+      "fuente": "https://ark.wiki.gg/wiki/Paja"
+    },
+    {
+      "id": "re-003",
+      "tipo": "básico",
+      "nombre": "Piedra",
+      "obtencion": "Rocas del suelo y nodos grandes.",
+      "mejor": "Doedicurus; hacha para rocas sueltas.",
+      "uso": "Cimientos, mortero, munición y cemento.",
+      "mapas": "Laderas y montañas.",
+      "fuente": "https://ark.wiki.gg/wiki/Piedra"
+    },
+    {
+      "id": "re-004",
+      "tipo": "básico",
+      "nombre": "Pedernal",
+      "obtencion": "Golpea rocas con pico.",
+      "mejor": "Ankylosaurus o pico de metal.",
+      "uso": "Chispas y munición.",
+      "mapas": "Rocas en casi todos los mapas.",
+      "fuente": "https://ark.wiki.gg/wiki/Pedernal"
+    },
+    {
+      "id": "re-005",
+      "tipo": "básico",
+      "nombre": "Fibra",
+      "obtencion": "Arbustos a mano.",
+      "mejor": "Therizinosaurio, ataque de fibra.",
+      "uso": "Ropa, cuerda, herramientas y kibble.",
+      "mapas": "Vegetación.",
+      "fuente": "https://ark.wiki.gg/wiki/Fibra"
+    },
+    {
+      "id": "re-006",
+      "tipo": "básico",
+      "nombre": "Cuero",
+      "obtencion": "Cosecha cadáveres.",
+      "mejor": "Hacha o Therizinosaurio.",
+      "uso": "Armaduras, monturas y gasolina.",
+      "mapas": "Zonas con fauna.",
+      "fuente": "https://ark.wiki.gg/wiki/Cuero"
+    },
+    {
+      "id": "re-007",
+      "tipo": "básico",
+      "nombre": "Quitina",
+      "obtencion": "Insectos, trilobites y criaturas de cuevas.",
+      "mejor": "Megatherium en cuevas; hacha.",
+      "uso": "Cemento y equipo de quitina.",
+      "mapas": "Cuevas, playas y humedales.",
+      "fuente": "https://ark.wiki.gg/wiki/Quitina"
+    },
+    {
+      "id": "re-008",
+      "tipo": "básico",
+      "nombre": "Queratina",
+      "obtencion": "Cuernos, caparazones y cadáveres.",
+      "mejor": "Hacha o Therizinosaurio.",
+      "uso": "Cemento y armaduras.",
+      "mapas": "Fauna de varios mapas.",
+      "fuente": "https://ark.wiki.gg/wiki/Queratina"
+    },
+    {
+      "id": "re-009",
+      "tipo": "básico",
+      "nombre": "Metal",
+      "obtencion": "Nodos grises en montañas y cuevas.",
+      "mejor": "Ankylosaurus reduce peso y recolecta eficazmente.",
+      "uso": "Lingotes para herramientas, armas, estructuras y tecnología.",
+      "mapas": "Cimas de The Island, The Center, Fjordur y Ragnarok.",
+      "fuente": "https://ark.wiki.gg/wiki/Metal"
+    },
+    {
+      "id": "re-010",
+      "tipo": "básico",
+      "nombre": "Cristal",
+      "obtencion": "Nodos transparentes en montañas y cuevas.",
+      "mejor": "Ankylosaurus o pico de metal.",
+      "uso": "Catalejo, electricidad y fabricación avanzada.",
+      "mapas": "Cimas; abundante en Crystal Isles y Ragnarok.",
+      "fuente": "https://ark.wiki.gg/wiki/Cristal"
+    },
+    {
+      "id": "re-011",
+      "tipo": "básico",
+      "nombre": "Obsidiana",
+      "obtencion": "Nodos negros en cumbres y volcanes.",
+      "mejor": "Ankylosaurus o pico de metal.",
+      "uso": "Polímero y objetos avanzados.",
+      "mapas": "The Center, Ragnarok y zonas volcánicas.",
+      "fuente": "https://ark.wiki.gg/wiki/Obsidiana"
+    },
+    {
+      "id": "re-012",
+      "tipo": "básico",
+      "nombre": "Petróleo",
+      "obtencion": "Nodos submarinos, playas árticas y cuevas.",
+      "mejor": "Ankylosaurus; Dunkleosteus bajo el agua.",
+      "uso": "Gasolina, polímero y recetas.",
+      "mapas": "Océano, nieve y pozos de Scorched Earth.",
+      "fuente": "https://ark.wiki.gg/wiki/Petr%C3%83%C2%B3leo"
+    },
+    {
+      "id": "re-013",
+      "tipo": "básico",
+      "nombre": "Perlas de sílice",
+      "obtencion": "Fondos marinos, orillas nevadas, cuevas submarinas, presas de castor y cadáveres de trilobites.",
+      "mejor": "Anglerfish.",
+      "uso": "Electrónica.",
+      "mapas": "Océanos y costas nevadas; cuevas y presas de castor en mapas con esos biomas.",
+      "fuente": "https://ark.wiki.gg/wiki/Perlas_de_s%C3%83%C2%ADlice"
+    },
+    {
+      "id": "re-014",
+      "tipo": "básico",
+      "nombre": "Perlas negras",
+      "obtencion": "Trilobites, criaturas de aguas profundas y nodos especiales.",
+      "mejor": "Tusoteuthis o Mosasaurio.",
+      "uso": "Fabricación Tek.",
+      "mapas": "Océano profundo y mapas DLC.",
+      "fuente": "https://ark.wiki.gg/wiki/Perlas_negras"
+    },
+    {
+      "id": "re-015",
+      "tipo": "básico",
+      "nombre": "Polímero orgánico",
+      "obtencion": "Cadáveres de Kairuku, Mantis y Hesperornis.",
+      "mejor": "Motosierra, garrote o espada.",
+      "uso": "Sustituto perecedero del polímero.",
+      "mapas": "Pingüineras y zonas de Mantis.",
+      "fuente": "https://ark.wiki.gg/wiki/Pol%C3%83%C2%ADmero_org%C3%83%C2%A1nico"
+    },
+    {
+      "id": "re-016",
+      "tipo": "básico",
+      "nombre": "Polvo de chispa",
+      "obtencion": "Mortero con pedernal y piedra.",
+      "mejor": "Mortero y maja.",
+      "uso": "Munición, explosivos y combustible.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Polvo_de_chispa"
+    },
+    {
+      "id": "re-017",
+      "tipo": "elaborado",
+      "nombre": "Lingote de metal",
+      "obtencion": "Funde metal en horno o forja industrial.",
+      "mejor": "Forja industrial.",
+      "uso": "Herramientas, armas, estructuras y aparatos.",
+      "mapas": "Se fabrica donde hay metal.",
+      "fuente": "https://ark.wiki.gg/wiki/Lingote_de_metal"
+    },
+    {
+      "id": "re-018",
+      "tipo": "elaborado",
+      "nombre": "Pasta de cemento",
+      "obtencion": "Mortero: 4 quitina/queratina + 8 piedra; también aparece en presas de castor.",
+      "mejor": "Beelzebufo contra insectos; Castoroides en presas.",
+      "uso": "Polímero, armas, estructuras y tecnología.",
+      "mapas": "Presas; The Island, Ragnarok, The Center.",
+      "fuente": "https://ark.wiki.gg/wiki/Pasta_de_cemento",
+      "receta": [
+        {
+          "nombre": "Quitina, queratina o fragmento de caparazón",
+          "cantidad": 4
+        },
+        {
+          "nombre": "Piedra",
+          "cantidad": 8
+        }
+      ]
+    },
+    {
+      "id": "re-019",
+      "tipo": "elaborado",
+      "nombre": "Polímero",
+      "obtencion": "Fabricator con obsidiana y pasta de cemento.",
+      "mejor": "Fabricator.",
+      "uso": "Armas, electrónica y equipo avanzado.",
+      "mapas": "Se fabrica; orgánico en nieve.",
+      "fuente": "https://ark.wiki.gg/wiki/Pol%C3%83%C2%ADmero"
+    },
+    {
+      "id": "re-020",
+      "tipo": "elaborado",
+      "nombre": "Electrónica",
+      "obtencion": "Fabricator con perlas de sílice y lingotes.",
+      "mejor": "Fabricator.",
+      "uso": "Generadores, neveras, armas y defensas.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Electr%C3%83%C2%B3nica"
+    },
+    {
+      "id": "re-021",
+      "tipo": "elaborado",
+      "nombre": "Pólvora",
+      "obtencion": "Mortero con carbón y polvo de chispa.",
+      "mejor": "Mortero o Chemistry Bench.",
+      "uso": "Munición y explosivos.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/P%C3%83%C2%B3lvora"
+    },
+    {
+      "id": "re-022",
+      "tipo": "elaborado",
+      "nombre": "Carbón",
+      "obtencion": "Madera quemada en fogata o forja.",
+      "mejor": "Fogata o forja.",
+      "uso": "Pólvora y tintes.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carb%C3%83%C2%B3n"
+    },
+    {
+      "id": "re-023",
+      "tipo": "elaborado",
+      "nombre": "Gasolina",
+      "obtencion": "Forja con petróleo y cuero.",
+      "mejor": "Forja industrial.",
+      "uso": "Generador, motosierra y taladro.",
+      "mapas": "Se fabrica; pozos en Scorched Earth.",
+      "fuente": "https://ark.wiki.gg/wiki/Gasolina"
+    },
+    {
+      "id": "re-024",
+      "tipo": "elaborado",
+      "nombre": "Narcótico",
+      "obtencion": "Mortero con carne podrida y narcobayas.",
+      "mejor": "Chemistry Bench en volumen.",
+      "uso": "Munición tranquilizante y domas.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Narc%C3%83%C2%B3tico"
+    },
+    {
+      "id": "re-025",
+      "tipo": "elaborado",
+      "nombre": "Carne seca",
+      "obtencion": "Carne cocinada, aceite y pólvora en Preserving Bin.",
+      "mejor": "Preserving Bin.",
+      "uso": "Conservación y Regular Kibble.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_seca"
+    },
+    {
+      "id": "re-026",
+      "tipo": "elaborado",
+      "nombre": "Carne seca premium",
+      "obtencion": "Carne premium cocinada, aceite y pólvora.",
+      "mejor": "Preserving Bin.",
+      "uso": "Ingrediente de Superior Kibble.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_seca_premium"
+    },
+    {
+      "id": "re-027",
+      "tipo": "comida",
+      "nombre": "Carne cruda",
+      "obtencion": "Cosecha cadáveres de criaturas.",
+      "mejor": "Carnotaurus o hacha de metal.",
+      "uso": "Alimento carnívoro y carne seca.",
+      "mapas": "Toda región con fauna.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_cruda"
+    },
+    {
+      "id": "re-028",
+      "tipo": "comida",
+      "nombre": "Carne cocinada",
+      "obtencion": "Cocina carne cruda en fogata o parrilla.",
+      "mejor": "Parrilla industrial.",
+      "uso": "Comida y recetas.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_cocinada"
+    },
+    {
+      "id": "re-029",
+      "tipo": "comida",
+      "nombre": "Carne cruda premium",
+      "obtencion": "Cosecha criaturas grandes y depredadores.",
+      "mejor": "Hacha; carnívoro recolector.",
+      "uso": "Doma mejor que carne normal; menos que kibble preferido.",
+      "mapas": "Fauna grande.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_cruda_premium"
+    },
+    {
+      "id": "re-030",
+      "tipo": "comida",
+      "nombre": "Carne premium cocinada",
+      "obtencion": "Cocina carne cruda premium.",
+      "mejor": "Fogata o parrilla.",
+      "uso": "Comida nutritiva; peor para doma que cruda.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_premium_cocinada"
+    },
+    {
+      "id": "re-031",
+      "tipo": "comida",
+      "nombre": "Carne de pescado cruda",
+      "obtencion": "Peces y fauna acuática.",
+      "mejor": "Pico; Ichthyornis mejora botín.",
+      "uso": "Comida y Simple Kibble.",
+      "mapas": "Ríos y océanos.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_de_pescado_cruda"
+    },
+    {
+      "id": "re-032",
+      "tipo": "comida",
+      "nombre": "Carne de pescado cocinada",
+      "obtencion": "Cocina pescado crudo.",
+      "mejor": "Fogata o parrilla.",
+      "uso": "Comida duradera y Simple Kibble.",
+      "mapas": "Se fabrica.",
+      "fuente": "https://ark.wiki.gg/wiki/Carne_de_pescado_cocinada"
+    },
+    {
+      "id": "re-033",
+      "tipo": "comida",
+      "nombre": "Mejoberry",
+      "obtencion": "Arbustos, cultivos y recolectores.",
+      "mejor": "Brontosaurio o Triceratops.",
+      "uso": "Baya preferida de muchas domas herbívoras.",
+      "mapas": "Vegetación.",
+      "fuente": "https://ark.wiki.gg/wiki/Mejoberry"
+    },
+    {
+      "id": "re-034",
+      "tipo": "comida",
+      "nombre": "Narcoberry",
+      "obtencion": "Arbustos y cultivos.",
+      "mejor": "Brontosaurio o Triceratops.",
+      "uso": "Narcótico y torpor durante domas.",
+      "mapas": "Vegetación.",
+      "fuente": "https://ark.wiki.gg/wiki/Narcoberry"
+    },
+    {
+      "id": "re-035",
+      "tipo": "comida",
+      "nombre": "Stimberry",
+      "obtencion": "Arbustos y cultivos.",
+      "mejor": "Brontosaurio.",
+      "uso": "Reduce torpor; evitar durante una doma.",
+      "mapas": "Vegetación.",
+      "fuente": "https://ark.wiki.gg/wiki/Stimberry"
+    },
+    {
+      "id": "re-036",
+      "tipo": "comida",
+      "nombre": "Rockarrot",
+      "obtencion": "Cultivo en parcela grande.",
+      "mejor": "Recolección de cultivo.",
+      "uso": "Simple Kibble y domas concretas.",
+      "mapas": "Cultivo.",
+      "fuente": "https://ark.wiki.gg/wiki/Rockarrot"
+    },
+    {
+      "id": "re-037",
+      "tipo": "comida",
+      "nombre": "Savoroot",
+      "obtencion": "Cultivo en parcela grande.",
+      "mejor": "Recolección de cultivo.",
+      "uso": "Regular Kibble y recetas.",
+      "mapas": "Cultivo.",
+      "fuente": "https://ark.wiki.gg/wiki/Savoroot"
+    },
+    {
+      "id": "re-038",
+      "tipo": "comida",
+      "nombre": "Longrass",
+      "obtencion": "Cultivo en parcela grande.",
+      "mejor": "Recolección de cultivo.",
+      "uso": "Regular Kibble y recetas.",
+      "mapas": "Cultivo.",
+      "fuente": "https://ark.wiki.gg/wiki/Longrass"
+    },
+    {
+      "id": "re-039",
+      "tipo": "comida",
+      "nombre": "Citronal",
+      "obtencion": "Cultivo en parcela grande.",
+      "mejor": "Recolección de cultivo.",
+      "uso": "Superior Kibble y recetas.",
+      "mapas": "Cultivo.",
+      "fuente": "https://ark.wiki.gg/wiki/Citronal"
+    },
+    {
+      "id": "re-040",
+      "tipo": "comida",
+      "nombre": "Kibble básico",
+      "obtencion": "Huevo extra pequeño, bayas y carne cocinada en olla.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Dodo, Dilophosaur, Parasaur, Phiomia y otros.",
+      "mapas": "Huevos de criaturas pequeñas.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_b%C3%83%C2%A1sico"
+    },
+    {
+      "id": "re-041",
+      "tipo": "comida",
+      "nombre": "Kibble simple",
+      "obtencion": "Huevo pequeño, Rockarrot, pescado cocido, fibra y Mejoberry.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Raptor, Trike, Iguanodon, Pachy y otros.",
+      "mapas": "Huevos pequeños.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_simple"
+    },
+    {
+      "id": "re-042",
+      "tipo": "comida",
+      "nombre": "Kibble regular",
+      "obtencion": "Huevo mediano, Longrass, Savoroot y carne seca cocinada.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Baryonyx, Doedicurus, Equus y otros.",
+      "mapas": "Huevos medianos.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_regular"
+    },
+    {
+      "id": "re-043",
+      "tipo": "comida",
+      "nombre": "Kibble superior",
+      "obtencion": "Huevo grande, Citronal, seta rara, carne seca premium y savia.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Argentavis, Mammoth y otros.",
+      "mapas": "Huevos grandes.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_superior"
+    },
+    {
+      "id": "re-044",
+      "tipo": "comida",
+      "nombre": "Kibble excepcional",
+      "obtencion": "Huevo extra grande, Mejoberry, flor rara y Focal Chili.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Rex, Spino y Giganotosaurus.",
+      "mapas": "Huevos extra grandes.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_excepcional"
+    },
+    {
+      "id": "re-045",
+      "tipo": "comida",
+      "nombre": "Kibble extraordinario",
+      "obtencion": "Huevo especial, miel gigante y Lazarus Chowder.",
+      "mejor": "Olla o Industrial Cooker.",
+      "uso": "Griffin, Yutyrannus y criaturas especiales.",
+      "mapas": "Huevos especiales.",
+      "fuente": "https://ark.wiki.gg/wiki/Kibble_extraordinario"
+    },
+    {
+      "id": "re-046",
+      "tipo": "comida",
+      "nombre": "Miel de abeja gigante",
+      "obtencion": "Colmenas; lleva ghillie y repelente.",
+      "mejor": "A mano; abeja domesticada produce colmena.",
+      "uso": "Extraordinary Kibble y doma pasiva.",
+      "mapas": "Bosques de The Island y Fjordur.",
+      "fuente": "https://ark.wiki.gg/wiki/Miel_de_abeja_gigante"
+    }
+  ],
+  "fuentesLocales": [
+    ".claude/tmp/ark-wiki/Resources.html",
+    ".claude/tmp/ark-wiki/Resources.wikitext",
+    ".claude/tmp/ark-wiki/Kibble.html",
+    ".claude/tmp/ark-wiki/Kibble.wikitext",
+    ".claude/tmp/ark-wiki/Structures.html",
+    ".claude/tmp/ark-wiki/Food.html",
+    ".claude/tmp/ark-wiki/Consumables.html",
+    ".claude/tmp/ark-wiki/Taming.html",
+    ".claude/tmp/ark-wiki/Metal.wikitext",
+    ".claude/tmp/ark-wiki/Oil.wikitext",
+    ".claude/tmp/ark-wiki/Crystal.wikitext",
+    ".claude/tmp/ark-wiki/Silica_Pearls.wikitext",
+    ".claude/tmp/ark-wiki/Organic_Polymer.wikitext",
+    ".claude/tmp/ark-wiki/Cementing_Paste.wikitext"
+  ]
+}

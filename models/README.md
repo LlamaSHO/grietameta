@@ -26,10 +26,13 @@ models/
 │   ├── Zelda.dc.html        → Hub de Zelda TotK: mapa interactivo + información (/zelda)
 │   ├── ZeldaGuia.dc.html    → Guías de Zelda (/zelda/:guia): santuarios, raíces de luz, semillas por zona, misiones, armaduras y conjuntos
 │   ├── Arc.dc.html          → Hub de ARC Raiders (estilo arcraidershub)
+│   ├── ArkEngramas.dc.html → Engramas ARK: búsqueda, filtros de categoría/nivel, ruta recomendada y ficha con requisitos y coste cuando se conoce
+│   ├── ArkRecursos.dc.html → Recursos ARK: buscador, filtros básico/elaborado/comida y ficha de obtención, recolector, uso y mapas
 │   ├── ArcMapa.dc.html      → Mapa de ARC con misiones y enemigos por mapa
 │   ├── ArcObjetos.dc.html   → Objetos de ARC (/arc-raiders/objetos): los 581 con recomendación, filtros y ficha
 │   ├── ArcEnemigos.dc.html  → Enemigos de ARC (/arc-raiders/enemigos): filtros, punto débil, botín y armas
 │   ├── ArcMisiones.dc.html  → Misiones de ARC (/arc-raiders/misiones): progreso por comerciante, objetivos y recompensas
+│   ├── ArkGuias.dc.html      → Guías de ARK: Survival Evolved: primeros pasos, doma, bases, granjas y sistemas
 │   ├── Premium.dc.html      → Planes Gratis / Premium (mensual o anual), comparativa y preguntas
 │   ├── MiPremium.dc.html    → Panel de la suscripción: estado, avisos por juego y pagos
 │   ├── PremiumExito.dc.html → Pantalla tras pagar en Stripe (/exito)
@@ -169,6 +172,9 @@ Lo que se arregló en el diseño y **hay que respetar al pasarlo a Vue**:
 - **Fondo**: `fondo-ruinas.webp` (2400×1500) con una capa SVG fija de grietas de lava (`.lava`): unas en los márgenes y otras encima de las grietas del propio fondo (mismo encuadre, proporción 1,6). Las tarjetas llevan una grieta con lava en una esquina (`grietas/grieta-1..3.svg`) y los títulos de sección, una raya agrietada.
 - **Cabecera**: cuatro supervivientes en silueta huyen de un zombi que sale por la izquierda (`.zh-run`, solo `transform`).
 - **Planos** (`CodMapas`): vista aérea propia, sin fotos de la wiki (no hay planos oficiales). Cada zona tiene suelo (`tex`: madera, baldosa, moqueta, hormigón, metal, hierba, asfalto o lava) y puede ser exterior (`out`); `marks` añade cajas misteriosas, Easter eggs y piezas con su explicación. Hecho para 12 mapas: Kino der Toten, «Five», Ascension, Call of the Dead, TranZit, Nuketown Zombies, Origins, The Giant, Zetsubou No Shima, IX, Blood of the Dead y Alpha Omega. Los 8 últimos llevan `aprox: true` (se ven con la etiqueta «Distribución aproximada»): sus ventajas van sin zona, en «En todo el mapa», hasta verificar dónde está cada máquina. Iconos reales de ventajas, Pack-a-Punch y caja en `ventajas.webp` (hoja 8×2 de 96 px, de la wiki de CoD). «Cómo abrir el mapa» tiene cada paso enlazado a su zona (`route: [[texto, zona]]`): al pulsarlo se marca en el plano.
+- **CodPlanoPropuesta1**: «Vista de campo», axonometría CSS 3D con zonas elevadas, ficha interactiva y giro en pasos de 90 grados.
+- **CodPlanoPropuesta2**: «Vista orbital», escena CSS 3D rotatoria con zoom ajustable, sin librerías externas.
+- **CodPlanoPropuesta3**: «Carta de operaciones», plano técnico de retícula y conexiones para seguir la ruta de apertura.
 - **Pantalla de carga** (`.cz-load`, en las 6 páginas): dos opciones en el ajuste «carga» del lienzo: «Pistolero» (silueta con dos pistolas que aparece con contorno naranja) o «Iniciales» (C, O y D se encienden una a una). Bloquea los clics hasta que termina.
 
 ## Cómo leer un `.dc.html`

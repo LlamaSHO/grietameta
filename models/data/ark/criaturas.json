@@ -1,0 +1,3768 @@
+{
+ "cols": 12,
+ "rows": 11,
+ "mapas": [
+  "The Island",
+  "The Center",
+  "Scorched Earth",
+  "Ragnarok",
+  "Aberration",
+  "Extinction",
+  "Valguero",
+  "Genesis: Part 1",
+  "Crystal Isles",
+  "Genesis: Part 2",
+  "Lost Island",
+  "Fjordur"
+ ],
+ "criaturas": [
+  {
+   "n": "Achatina",
+   "k": "achatina",
+   "g": "Invertebrados",
+   "diet": "Herbívoro",
+   "temp": "Pasivo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Pastel dulce de verduras"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Produce pasta de cemento sola si le das azúcar.",
+   "nota": "",
+   "i": 0
+  },
+  {
+   "n": "Allosaurus",
+   "k": "allosaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Social y agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Allosaurus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate en manada: tres o más se potencian.",
+   "nota": "",
+   "i": 1
+  },
+  {
+   "n": "Anglerfish",
+   "k": "angler",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Agresivo con los pequeños, asustadizo con el resto",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Angler Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 2
+  },
+  {
+   "n": "Ankylosaurus",
+   "k": "ankylosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Ankylo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "El mejor para metal, pedernal y cristal.",
+   "nota": "",
+   "i": 3
+  },
+  {
+   "n": "Araneo",
+   "k": "araneomorphus",
+   "g": "Invertebrados",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Carne podrida"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Araneo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Trepa paredes y suelta tela que ralentiza.",
+   "nota": "",
+   "i": 4
+  },
+  {
+   "n": "Archaeopteryx",
+   "k": "archaeopteryx",
+   "g": "Aves",
+   "diet": "Carnívoro",
+   "temp": "Miedoso",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Quitina"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Archaeopteryx Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 5
+  },
+  {
+   "n": "Argentavis",
+   "k": "argentavis",
+   "g": "Aves",
+   "diet": "Carroñero",
+   "temp": "Irascible",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Argentavis Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Transporte aéreo: lleva criaturas medianas y mucha carga.",
+   "nota": "",
+   "i": 6
+  },
+  {
+   "n": "Arthropluera",
+   "k": "arthropluera",
+   "g": "Invertebrados",
+   "diet": "Carroñero",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Broth of Enlightenment"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Arthropluera Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta petróleo; su ácido daña estructuras.",
+   "nota": "",
+   "i": 7
+  },
+  {
+   "n": "Astrocetus",
+   "k": "astrocetus",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble extraordinario",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 1",
+    "Genesis: Part 2"
+   ],
+   "dlc": "Genesis: Part 1, Genesis: Part 2",
+   "uso": "Nave de combate de Genesis.",
+   "nota": "",
+   "i": 8
+  },
+  {
+   "n": "Astrodelphis",
+   "k": "astrodelphis",
+   "g": "",
+   "diet": "Carnívoro",
+   "temp": "Curioso",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 2"
+   ],
+   "dlc": "Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 9
+  },
+  {
+   "n": "Baryonyx",
+   "k": "baryonyx",
+   "g": "Dinosaurios",
+   "diet": "Piscívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Pescado de primera crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Baryonyx Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Caza en agua y tierra y aturde a otras criaturas.",
+   "nota": "",
+   "i": 10
+  },
+  {
+   "n": "Basilisk",
+   "k": "basilisk",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Fertilized Rock Drake Egg",
+    "Fertilized Magmasaur Egg",
+    "Fertilized Wyvern Egg",
+    "Fertilized Voidwyrm Egg"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Basilisk Egg",
+   "maps": [
+    "Aberration",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Genesis: Part 1, Crystal Isles, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 11
+  },
+  {
+   "n": "Basilosaurus",
+   "k": "basilosaurus",
+   "g": "Mamíferos",
+   "diet": "Piscívoro",
+   "temp": "Pasivo",
+   "met": "Pasiva",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura marina inmune a sanguijuelas y al frío.",
+   "nota": "",
+   "i": 12
+  },
+  {
+   "n": "Beelzebufo",
+   "k": "beelzebufo",
+   "g": "Anfibios",
+   "diet": "Carnívoro",
+   "temp": "Lánguido",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Beelzebufo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Caza insectos y los convierte en pasta de cemento.",
+   "nota": "",
+   "i": 13
+  },
+  {
+   "n": "Bloodstalker",
+   "k": "bloodstalker",
+   "g": "Invertebrados",
+   "diet": "Hematófago",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "Bloodstalker Egg",
+   "maps": [
+    "Genesis: Part 1",
+    "Genesis: Part 2"
+   ],
+   "dlc": "Genesis: Part 1, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 14
+  },
+  {
+   "n": "Brontosaurus",
+   "k": "brontosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Bronto Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Plataforma enorme; recolecta bayas y paja.",
+   "nota": "",
+   "i": 15
+  },
+  {
+   "n": "Bulbdog",
+   "k": "bulbdog",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Pasivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Semilla de planta Z"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 16
+  },
+  {
+   "n": "Carbonemys",
+   "k": "carbonemys",
+   "g": "Reptiles",
+   "diet": "Herbívoro",
+   "temp": "Defensivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Turtle Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Tanque para los primeros niveles.",
+   "nota": "",
+   "i": 17
+  },
+  {
+   "n": "Carnotaurus",
+   "k": "carnotaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Carno Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 18
+  },
+  {
+   "n": "Castoroides",
+   "k": "castoroides",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Amistoso",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta madera y paja; su silla funciona como herrería.",
+   "nota": "",
+   "i": 19
+  },
+  {
+   "n": "Chalicotherium",
+   "k": "chalicotherium",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Territorial",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Jarra de cerveza"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 20
+  },
+  {
+   "n": "Chalk Golem",
+   "k": "chalkgolem",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Valguero"
+   ],
+   "dlc": "Valguero",
+   "uso": "",
+   "nota": "",
+   "i": 21
+  },
+  {
+   "n": "Compy",
+   "k": "compsognathus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Curioso",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Compy Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Mascota pequeña que se potencia en grupo.",
+   "nota": "",
+   "i": 22
+  },
+  {
+   "n": "Crystal Wyvern",
+   "k": "crystalwyvern",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Dócil",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Cristal primordial"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "Blood Crystal Wyvern Egg, Ember Crystal Wyvern Egg, Tropical Crystal Wyvern Egg",
+   "maps": [
+    "Crystal Isles"
+   ],
+   "dlc": "Crystal Isles",
+   "uso": "Volador de combate de Crystal Isles.",
+   "nota": "",
+   "i": 23
+  },
+  {
+   "n": "Daeodon",
+   "k": "daeodon",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Cura a las criaturas cercanas a cambio de comida.",
+   "nota": "",
+   "i": 24
+  },
+  {
+   "n": "Deinonychus",
+   "k": "deinonychus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "Deinonychus Egg",
+   "maps": [
+    "Valguero",
+    "Fjordur"
+   ],
+   "dlc": "Valguero, Fjordur",
+   "uso": "Se lanza sobre las presas y se agarra a ellas.",
+   "nota": "Se cría desde un huevo robado de su nido.",
+   "i": 25
+  },
+  {
+   "n": "Desert Titan",
+   "k": "deserttitan",
+   "g": "Titans",
+   "diet": "",
+   "temp": "Muy agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Extinction"
+   ],
+   "dlc": "Extinction",
+   "uso": "",
+   "nota": "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar.",
+   "i": 26
+  },
+  {
+   "n": "Dilophosaur",
+   "k": "dilophosaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble básico",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Dilo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 27
+  },
+  {
+   "n": "Dimetrodon",
+   "k": "dimetrodon",
+   "g": "Sinápsidos",
+   "diet": "Carnívoro",
+   "temp": "Reactivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Dimetrodon Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Da calor a los huevos para incubarlos.",
+   "nota": "",
+   "i": 28
+  },
+  {
+   "n": "Dimorphodon",
+   "k": "dimorphodon",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Reactivo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Dimorph Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 29
+  },
+  {
+   "n": "Diplocaulus",
+   "k": "diplocaulus",
+   "g": "Anfibios",
+   "diet": "Piscívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Diplocaulus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Da oxígeno bajo el agua.",
+   "nota": "",
+   "i": 30
+  },
+  {
+   "n": "Diplodocus",
+   "k": "diplodocus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Ingenuo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Diplo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Plataforma para llevar pasajeros.",
+   "nota": "",
+   "i": 31
+  },
+  {
+   "n": "Dire Bear",
+   "k": "direbear",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Miel de abeja gigante"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta miel y bayas; buen luchador.",
+   "nota": "",
+   "i": 32
+  },
+  {
+   "n": "Dire Polar Bear",
+   "k": "direpolarbear",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Ragnarok",
+    "Valguero"
+   ],
+   "dlc": "Ragnarok, Valguero",
+   "uso": "",
+   "nota": "",
+   "i": 33
+  },
+  {
+   "n": "Direwolf",
+   "k": "direwolf",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate en manada y detecta criaturas.",
+   "nota": "",
+   "i": 34
+  },
+  {
+   "n": "Dodo",
+   "k": "dodo",
+   "g": "Aves",
+   "diet": "Herbívoro",
+   "temp": "Despistado",
+   "met": "Noqueo",
+   "kib": "Kibble básico",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Dodo Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Sus huevos sirven para el kibble básico.",
+   "nota": "",
+   "i": 35
+  },
+  {
+   "n": "Doedicurus",
+   "k": "doedicurus",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "El mejor para piedra.",
+   "nota": "",
+   "i": 36
+  },
+  {
+   "n": "Dung Beetle",
+   "k": "dungbeetle",
+   "g": "Invertebrados",
+   "diet": "Coprófago",
+   "temp": "Neutral",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Heces grandes"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Convierte heces en fertilizante y petróleo.",
+   "nota": "",
+   "i": 37
+  },
+  {
+   "n": "Dunkleosteus",
+   "k": "dunkleosteus",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta metal, petróleo y perlas en el mar.",
+   "nota": "",
+   "i": 38
+  },
+  {
+   "n": "Electrophorus",
+   "k": "electrophorus",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Muy territorial",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Biotoxina"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Eel Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 39
+  },
+  {
+   "n": "Equus",
+   "k": "equus",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Leal",
+   "met": "Pasiva",
+   "kib": "Kibble simple",
+   "fav": [
+    "Rocazanahoria"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura rápida; recolecta paja.",
+   "nota": "",
+   "i": 40
+  },
+  {
+   "n": "Featherlight",
+   "k": "featherlight",
+   "g": "Aves",
+   "diet": "Herbívoro",
+   "temp": "Pasivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Semilla de planta Z"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Featherlight Egg",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 41
+  },
+  {
+   "n": "Ferox",
+   "k": "ferox",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Reactivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Elemento"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 1",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Genesis: Part 1, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 42
+  },
+  {
+   "n": "Forest Titan",
+   "k": "foresttitan",
+   "g": "Titans",
+   "diet": "",
+   "temp": "Muy agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Extinction"
+   ],
+   "dlc": "Extinction",
+   "uso": "",
+   "nota": "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar.",
+   "i": 43
+  },
+  {
+   "n": "Gacha",
+   "k": "gacha",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Dócil",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Bola de búho nival"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Extinction",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Extinction, Genesis: Part 2",
+   "uso": "Fabrica objetos con lo que come.",
+   "nota": "",
+   "i": 44
+  },
+  {
+   "n": "Gallimimus",
+   "k": "gallimimus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Gallimimus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura muy rápida para tres jugadores.",
+   "nota": "",
+   "i": 45
+  },
+  {
+   "n": "Gasbags",
+   "k": "gasbags",
+   "g": "Invertebrados",
+   "diet": "Omnívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Extinction",
+    "Genesis: Part 1",
+    "Fjordur"
+   ],
+   "dlc": "Extinction, Genesis: Part 1, Genesis: Part 2",
+   "uso": "Transporte ligero que flota.",
+   "nota": "",
+   "i": 46
+  },
+  {
+   "n": "Giant Queen Bee",
+   "k": "giantqueenbee",
+   "g": "Invertebrados",
+   "diet": "Herbívoro",
+   "temp": "Territorial",
+   "met": "Pasiva",
+   "kib": "Kibble simple",
+   "fav": [
+    "Flor rara"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 1",
+    "Crystal Isles"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 47
+  },
+  {
+   "n": "Giganotosaurus",
+   "k": "giganotosaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Furioso",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Giganotosaurus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "El depredador terrestre más fuerte, pero se enfurece.",
+   "nota": "",
+   "i": 48
+  },
+  {
+   "n": "Glowtail",
+   "k": "glowtail",
+   "g": "Reptiles",
+   "diet": "Herbívoro",
+   "temp": "Pasivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Semilla de planta Z"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Glowtail Egg",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 49
+  },
+  {
+   "n": "Griffin",
+   "k": "griffin",
+   "g": "Birds, Mammals",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble extraordinario",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Ragnarok",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Ragnarok, Crystal Isles",
+   "uso": "",
+   "nota": "",
+   "i": 50
+  },
+  {
+   "n": "Hesperornis",
+   "k": "hesperornis",
+   "g": "Aves",
+   "diet": "Piscívoro",
+   "temp": "Insolente",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Pez muerto"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Hesperornis Egg, Golden Hesperornis Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 51
+  },
+  {
+   "n": "Hyaenodon",
+   "k": "hyaenodon",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Oportunista",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 52
+  },
+  {
+   "n": "Ice Golem",
+   "k": "icegolem",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Valguero",
+    "Genesis: Part 1"
+   ],
+   "dlc": "Valguero, Genesis: Part 1",
+   "uso": "",
+   "nota": "",
+   "i": 53
+  },
+  {
+   "n": "Ice Titan",
+   "k": "icetitan",
+   "g": "Titans",
+   "diet": "",
+   "temp": "Muy agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Extinction"
+   ],
+   "dlc": "Extinction",
+   "uso": "",
+   "nota": "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar.",
+   "i": 54
+  },
+  {
+   "n": "Ichthyornis",
+   "k": "ichthyornis",
+   "g": "Aves",
+   "diet": "Piscívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Pescado de primera crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Ichthyornis Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 55
+  },
+  {
+   "n": "Ichthyosaurus",
+   "k": "ichthyosaurus",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Curioso",
+   "met": "Pasiva",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura marina rápida para explorar.",
+   "nota": "",
+   "i": 56
+  },
+  {
+   "n": "Iguanodon",
+   "k": "iguanodon",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Reactivo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Iguanodon Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Convierte bayas en semillas.",
+   "nota": "",
+   "i": 57
+  },
+  {
+   "n": "Jerboa",
+   "k": "jerboa",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Cobarde",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Semilla de planta Y"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Valguero, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "Avisa del clima.",
+   "nota": "",
+   "i": 58
+  },
+  {
+   "n": "Kairuku",
+   "k": "kairuku",
+   "g": "Aves",
+   "diet": "Piscívoro",
+   "temp": "Amistoso",
+   "met": "Noqueo",
+   "kib": "Kibble básico",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Kairuku Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Da calor en zonas frías.",
+   "nota": "",
+   "i": 59
+  },
+  {
+   "n": "Kaprosuchus",
+   "k": "kaprosuchus",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Paciente",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Kaprosuchus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Agarra criaturas y derriba jinetes.",
+   "nota": "",
+   "i": 60
+  },
+  {
+   "n": "Karkinos",
+   "k": "karkinos",
+   "g": "Invertebrados",
+   "diet": "Omnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2",
+   "uso": "Agarra y lanza criaturas.",
+   "nota": "",
+   "i": 61
+  },
+  {
+   "n": "Kentrosaurus",
+   "k": "kentrosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Irascible",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Kentro Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 62
+  },
+  {
+   "n": "Lamprey",
+   "k": "lamprey",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 63
+  },
+  {
+   "n": "Liopleurodon",
+   "k": "liopleurodon",
+   "g": "Reptiles",
+   "diet": "Goloso",
+   "temp": "Esquivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Miel de abeja gigante"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 64
+  },
+  {
+   "n": "Lymantria",
+   "k": "lymantria",
+   "g": "Invertebrados",
+   "diet": "Herbívoro",
+   "temp": "Esquivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Moth Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 65
+  },
+  {
+   "n": "Lystrosaurus",
+   "k": "lystrosaurus",
+   "g": "Sinápsidos",
+   "diet": "Herbívoro",
+   "temp": "Leal",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Flor rara"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Lystro Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Aumenta la experiencia de quien lo acaricia.",
+   "nota": "",
+   "i": 66
+  },
+  {
+   "n": "Maewing",
+   "k": "maewing",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "Maewing Egg",
+   "maps": [
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Genesis: Part 2, Lost Island",
+   "uso": "Amamanta a las crías.",
+   "nota": "",
+   "i": 67
+  },
+  {
+   "n": "Magmasaur",
+   "k": "magmasaur",
+   "g": "Reptiles",
+   "diet": "Omnívoro",
+   "temp": "Territorial",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "Magmasaur Egg",
+   "maps": [
+    "Genesis: Part 1",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Genesis: Part 1, Genesis: Part 2, Lost Island",
+   "uso": "Funde metal y aguanta la lava.",
+   "nota": "Se cría desde un huevo.",
+   "i": 68
+  },
+  {
+   "n": "Mammoth",
+   "k": "woollymammoth",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta madera y paja y da calor.",
+   "nota": "",
+   "i": 69
+  },
+  {
+   "n": "Managarmr",
+   "k": "managarmr",
+   "g": "",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Extinction",
+    "Genesis: Part 2",
+    "Lost Island"
+   ],
+   "dlc": "Extinction, Genesis: Part 1, Genesis: Part 2, Lost Island",
+   "uso": "Volador de hielo muy rápido.",
+   "nota": "",
+   "i": 70
+  },
+  {
+   "n": "Manta",
+   "k": "manta",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Gel de rape"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura marina muy rápida.",
+   "nota": "",
+   "i": 71
+  },
+  {
+   "n": "Mantis",
+   "k": "mantis",
+   "g": "Invertebrados",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Cuerno de gusano de la muerte"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Mantis Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 72
+  },
+  {
+   "n": "Megalania",
+   "k": "megalania",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble extraordinario",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Megalania Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 73
+  },
+  {
+   "n": "Megaloceros",
+   "k": "megaloceros",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 74
+  },
+  {
+   "n": "Megalodon",
+   "k": "megalodon",
+   "g": "Peces",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate en el mar; recolecta pescado.",
+   "nota": "",
+   "i": 75
+  },
+  {
+   "n": "Megalosaurus",
+   "k": "megalosaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo de noche",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Megalosaurus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 76
+  },
+  {
+   "n": "Megatherium",
+   "k": "megatherium",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Neutral",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Miel de abeja gigante"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 77
+  },
+  {
+   "n": "Mesopithecus",
+   "k": "mesopithecus",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Curioso",
+   "met": "Pasiva",
+   "kib": "Kibble básico",
+   "fav": [
+    "Mejobaya"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Mascota de hombro que recoge objetos.",
+   "nota": "",
+   "i": 78
+  },
+  {
+   "n": "Microraptor",
+   "k": "microraptor",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Flor rara"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Microraptor Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Derriba a los jinetes.",
+   "nota": "",
+   "i": 79
+  },
+  {
+   "n": "Morellatops",
+   "k": "morellatops",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Defensivo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Morellatops Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Crystal Isles",
+    "Lost Island"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Extinction, Crystal Isles, Lost Island",
+   "uso": "Guarda agua; ideal en el desierto.",
+   "nota": "",
+   "i": 80
+  },
+  {
+   "n": "Mosasaurus",
+   "k": "mosasaurus",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Plataforma marina y combate.",
+   "nota": "",
+   "i": 81
+  },
+  {
+   "n": "Moschops",
+   "k": "moschops",
+   "g": "Sinápsidos",
+   "diet": "Omnívoro",
+   "temp": "Cobarde",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Sap",
+    "Leech Blood",
+    "Organic Polymer"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "Moschops Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta un recurso según cómo lo domes.",
+   "nota": "",
+   "i": 82
+  },
+  {
+   "n": "Noglin",
+   "k": "noglin",
+   "g": "",
+   "diet": "",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Live Creatures (Noglin)"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 2"
+   ],
+   "dlc": "Genesis: Part 2",
+   "uso": "Controla a otras criaturas.",
+   "nota": "",
+   "i": 83
+  },
+  {
+   "n": "Onyc",
+   "k": "onychonycteris",
+   "g": "Mamíferos",
+   "diet": "Omnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 84
+  },
+  {
+   "n": "Otter",
+   "k": "otter",
+   "g": "Mamíferos",
+   "diet": "Piscívoro",
+   "temp": "Amistoso",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Pez muerto"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Pesca perlas y da aislamiento.",
+   "nota": "",
+   "i": 85
+  },
+  {
+   "n": "Oviraptor",
+   "k": "oviraptor",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Giganotosaurus Egg"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Oviraptor Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Hace que las criaturas cercanas pongan más huevos.",
+   "nota": "",
+   "i": 86
+  },
+  {
+   "n": "Ovis",
+   "k": "ovis",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Torpe",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Pastel dulce de verduras"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Da lana y cordero crudo.",
+   "nota": "",
+   "i": 87
+  },
+  {
+   "n": "Pachy",
+   "k": "pachycephalosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Pasivo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Pachy Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 88
+  },
+  {
+   "n": "Pachyrhinosaurus",
+   "k": "pachyrhinosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Neutral",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Repelente de insectos"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Pachyrhino Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Sus feromonas calman o enfurecen.",
+   "nota": "",
+   "i": 89
+  },
+  {
+   "n": "Paraceratherium",
+   "k": "paraceratherium",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Plataforma grande para transportar.",
+   "nota": "",
+   "i": 90
+  },
+  {
+   "n": "Parasaur",
+   "k": "parasaurolophus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble básico",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Parasaur Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura temprana que avisa de enemigos.",
+   "nota": "",
+   "i": 91
+  },
+  {
+   "n": "Pegomastax",
+   "k": "pegomastax",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Mejobaya"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Pegomastax Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 92
+  },
+  {
+   "n": "Pelagornis",
+   "k": "pelagornis",
+   "g": "Aves",
+   "diet": "Piscívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Pescado de primera crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Pelagornis Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Vuela, nada y pesca.",
+   "nota": "",
+   "i": 93
+  },
+  {
+   "n": "Phiomia",
+   "k": "phiomia",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble básico",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Produce heces para el fertilizante.",
+   "nota": "",
+   "i": 94
+  },
+  {
+   "n": "Phoenix",
+   "k": "phoenix",
+   "g": "Aves",
+   "diet": "Come fuego",
+   "temp": "Esquivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Scorched Earth"
+   ],
+   "dlc": "Scorched Earth, Genesis: Part 1",
+   "uso": "Funde metal mientras vuela.",
+   "nota": "",
+   "i": 95
+  },
+  {
+   "n": "Plesiosaur",
+   "k": "plesiosaur",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Plataforma marina.",
+   "nota": "",
+   "i": 96
+  },
+  {
+   "n": "Procoptodon",
+   "k": "procoptodon",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Reactivo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Seta rara"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Lleva a un jugador en la bolsa y salta muy alto.",
+   "nota": "",
+   "i": 97
+  },
+  {
+   "n": "Pteranodon",
+   "k": "pteranodon",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Pteranodon Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Volador rápido para explorar.",
+   "nota": "",
+   "i": 98
+  },
+  {
+   "n": "Pulmonoscorpius",
+   "k": "pulmonoscorpius",
+   "g": "Invertebrados",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Carne podrida"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Pulmonoscorpius Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Su aguijón narcotiza.",
+   "nota": "",
+   "i": 99
+  },
+  {
+   "n": "Purlovia",
+   "k": "purlovia",
+   "g": "Sinápsidos",
+   "diet": "Carnívoro",
+   "temp": "Paciente",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "",
+   "nota": "",
+   "i": 100
+  },
+  {
+   "n": "Quetzal",
+   "k": "quetzalcoatlus",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Quetzal Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Volador gigante y plataforma para construir.",
+   "nota": "",
+   "i": 101
+  },
+  {
+   "n": "Raptor",
+   "k": "raptor",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Raptor Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura rápida de los primeros niveles.",
+   "nota": "",
+   "i": 102
+  },
+  {
+   "n": "Ravager",
+   "k": "ravager",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 103
+  },
+  {
+   "n": "Reaper",
+   "k": "reaper",
+   "g": "",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Aberration"
+   ],
+   "dlc": "Aberration, Extinction, Genesis: Part 1, Genesis: Part 2",
+   "uso": "",
+   "nota": "La reina segadora te implanta una cría, que nace de ti.",
+   "i": 104
+  },
+  {
+   "n": "Rex",
+   "k": "rex",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Rex Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate y jefes.",
+   "nota": "",
+   "i": 105
+  },
+  {
+   "n": "Rock Drake",
+   "k": "rockdrake",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "Rock Drake Egg",
+   "maps": [
+    "Aberration",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Extinction, Genesis: Part 1",
+   "uso": "Trepa y planea en Aberration.",
+   "nota": "Se cría desde un huevo robado en Aberration; la cría come veneno de los Sin Nombre.",
+   "i": 106
+  },
+  {
+   "n": "Rock Elemental",
+   "k": "icegolem",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island"
+   ],
+   "dlc": "Valguero, Genesis: Part 1",
+   "uso": "",
+   "nota": "",
+   "i": 107
+  },
+  {
+   "n": "Roll Rat",
+   "k": "rollrat",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Neutral",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Miel de abeja gigante"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Valguero",
+    "Genesis: Part 1",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Valguero, Genesis: Part 1, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 108
+  },
+  {
+   "n": "Sabertooth",
+   "k": "sabertooth",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta pieles y cuero.",
+   "nota": "",
+   "i": 109
+  },
+  {
+   "n": "Sarco",
+   "k": "sarcosuchus",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Paciente",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Pescado de primera crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Sarco Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate en ríos y recolecta pescado.",
+   "nota": "",
+   "i": 110
+  },
+  {
+   "n": "Shadowmane",
+   "k": "shadowmane",
+   "g": "",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Pescado"
+   ],
+   "ride": true,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 111
+  },
+  {
+   "n": "Shinehorn",
+   "k": "shinehorn",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Pasivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Semilla de planta Z"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "",
+   "maps": [
+    "Aberration",
+    "Genesis: Part 1",
+    "Genesis: Part 2",
+    "Fjordur"
+   ],
+   "dlc": "Aberration, Genesis: Part 1, Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 112
+  },
+  {
+   "n": "Snow Owl",
+   "k": "snowowl",
+   "g": "Aves",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Snow Owl Egg",
+   "maps": [
+    "Extinction",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Extinction, Genesis: Part 1, Genesis: Part 2, Lost Island",
+   "uso": "Cura, congela y ve el calor.",
+   "nota": "",
+   "i": 113
+  },
+  {
+   "n": "Spino",
+   "k": "spinosaurus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Pescado de primera crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Spino Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Combate en agua y tierra.",
+   "nota": "",
+   "i": 114
+  },
+  {
+   "n": "Stegosaurus",
+   "k": "stegosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Stego Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta bayas; sus placas cambian de modo.",
+   "nota": "",
+   "i": 115
+  },
+  {
+   "n": "Tapejara",
+   "k": "tapejara",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Asustadizo",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Tapejara Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Vuela con tres jugadores y se pega a las paredes.",
+   "nota": "",
+   "i": 116
+  },
+  {
+   "n": "Terror Bird",
+   "k": "terrorbird",
+   "g": "Aves",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Terror Bird Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Montura rápida que planea.",
+   "nota": "",
+   "i": 117
+  },
+  {
+   "n": "Therizinosaur",
+   "k": "therizinosaurus",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Therizino Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta de todo: madera, fibra, paja y bayas.",
+   "nota": "",
+   "i": 118
+  },
+  {
+   "n": "Thorny Dragon",
+   "k": "thornydragon",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Thorny Dragon Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Extinction, Genesis: Part 1, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 119
+  },
+  {
+   "n": "Thylacoleo",
+   "k": "thylacoleo",
+   "g": "Mamíferos",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble extraordinario",
+   "fav": [
+    "Chuleta de cordero cocinada"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Trepa árboles y embosca.",
+   "nota": "",
+   "i": 120
+  },
+  {
+   "n": "Titanosaur",
+   "k": "titanosaur",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Crystal Isles",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Base móvil; no se puede criar.",
+   "nota": "",
+   "i": 121
+  },
+  {
+   "n": "Triceratops",
+   "k": "triceratops",
+   "g": "Dinosaurios",
+   "diet": "Herbívoro",
+   "temp": "Dócil",
+   "met": "Noqueo",
+   "kib": "Kibble simple",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Trike Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Recolecta bayas y combate al principio.",
+   "nota": "",
+   "i": 122
+  },
+  {
+   "n": "Troodon",
+   "k": "troodon",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo de noche",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Criaturas vivas"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Troodon Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Caza de noche con veneno.",
+   "nota": "",
+   "i": 123
+  },
+  {
+   "n": "Tropeognathus",
+   "k": "tropeognathus",
+   "g": "Reptiles",
+   "diet": "Piscívoro",
+   "temp": "Neutral",
+   "met": "Pasiva",
+   "kib": "Kibble excepcional",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Tropeognathus Egg",
+   "maps": [
+    "Crystal Isles",
+    "Fjordur"
+   ],
+   "dlc": "Crystal Isles",
+   "uso": "Volador a reacción.",
+   "nota": "",
+   "i": 124
+  },
+  {
+   "n": "Tusoteuthis",
+   "k": "tusoteuthis",
+   "g": "Invertebrados",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Perla negra"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Tusoteuthis Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Valguero",
+    "Genesis: Part 1",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Agarra presas en el mar; da petróleo.",
+   "nota": "",
+   "i": 125
+  },
+  {
+   "n": "Velonasaur",
+   "k": "velonasaur",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Territorial",
+   "met": "Noqueo",
+   "kib": "Kibble normal",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Velonasaur Egg",
+   "maps": [
+    "Extinction",
+    "Fjordur"
+   ],
+   "dlc": "Extinction, Genesis: Part 2",
+   "uso": "Dispara púas como una torreta.",
+   "nota": "",
+   "i": 126
+  },
+  {
+   "n": "Voidwyrm",
+   "k": "voidwyrm",
+   "g": "",
+   "diet": "",
+   "temp": "",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [],
+   "ride": true,
+   "silla": false,
+   "egg": "Tek Wyvern Egg",
+   "maps": [
+    "Genesis: Part 2"
+   ],
+   "dlc": "Genesis: Part 2",
+   "uso": "",
+   "nota": "",
+   "i": 127
+  },
+  {
+   "n": "Vulture",
+   "k": "vulture",
+   "g": "Aves",
+   "diet": "Carroñero",
+   "temp": "Neutral",
+   "met": "Pasiva",
+   "kib": "",
+   "fav": [
+    "Carne podrida"
+   ],
+   "ride": false,
+   "silla": false,
+   "egg": "Vulture Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Crystal Isles, Genesis: Part 2, Lost Island",
+   "uso": "",
+   "nota": "",
+   "i": 128
+  },
+  {
+   "n": "Woolly Rhino",
+   "k": "woollyrhinoceros",
+   "g": "Mamíferos",
+   "diet": "Herbívoro",
+   "temp": "Amistoso",
+   "met": "Noqueo",
+   "kib": "Kibble superior",
+   "fav": [
+    "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Embiste y recolecta paja.",
+   "nota": "",
+   "i": 129
+  },
+  {
+   "n": "Wyvern",
+   "k": "wyvern",
+   "g": "Reptiles",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Especial",
+   "kib": "",
+   "fav": [],
+   "ride": false,
+   "silla": false,
+   "egg": "Fire Wyvern Egg, Ice Wyvern Egg, Lightning Wyvern Egg, Poison Wyvern Egg",
+   "maps": [
+    "Scorched Earth",
+    "Ragnarok",
+    "Valguero",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "Scorched Earth, Ragnarok, Valguero, Genesis: Part 1",
+   "uso": "Volador de combate con aliento.",
+   "nota": "Se cría desde un huevo robado de su nido; la cría bebe leche de wyvern.",
+   "i": 130
+  },
+  {
+   "n": "Yutyrannus",
+   "k": "yutyrannus",
+   "g": "Dinosaurios",
+   "diet": "Carnívoro",
+   "temp": "Agresivo",
+   "met": "Noqueo",
+   "kib": "Kibble extraordinario",
+   "fav": [
+    "Cordero crudo"
+   ],
+   "ride": true,
+   "silla": true,
+   "egg": "Yutyrannus Egg",
+   "maps": [
+    "The Island",
+    "The Center",
+    "Scorched Earth",
+    "Ragnarok",
+    "Extinction",
+    "Valguero",
+    "Crystal Isles",
+    "Genesis: Part 2",
+    "Lost Island",
+    "Fjordur"
+   ],
+   "dlc": "",
+   "uso": "Su rugido potencia a los aliados.",
+   "nota": "",
+   "i": 131
+  }
+ ]
+}
