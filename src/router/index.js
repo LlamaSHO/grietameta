@@ -82,7 +82,7 @@ const routes = [
     // Direcciones antiguas: /zelda#semillas, #santuarios… son ahora guías propias.
     beforeEnter: (to) => {
       const guia = to.hash.slice(1);
-      if (["santuarios", "semillas", "misiones", "armaduras", "conjuntos"].includes(guia)) {
+      if (["santuarios", "semillas", "raices", "misiones", "armaduras", "conjuntos"].includes(guia)) {
         return { name: "zelda-guide", params: { guia }, replace: true };
       }
       return true;
@@ -94,7 +94,7 @@ const routes = [
     },
   },
   {
-    path: "/zelda/:guia(santuarios|semillas|misiones|armaduras|conjuntos)",
+    path: "/zelda/:guia(santuarios|semillas|raices|misiones|armaduras|conjuntos)",
     name: "zelda-guide",
     component: () => import("@/views/zelda/ZeldaGuideView.vue"),
     meta: { game: "zelda-totk", title: "Zelda: Tears of the Kingdom · Guía | GrietaMeta" },
