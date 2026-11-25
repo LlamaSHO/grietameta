@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Propuesta C · Bioluz · ARK · GrietaMeta</title><script src="./support.js"></script></head><body><x-dc><helmet>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* gm-transiciones */
+@view-transition{navigation:auto}
+html{background:#07090D}
+::view-transition-old(root){animation:gmOut .22s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:gmIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes gmOut{to{opacity:0;transform:translateY(-6px)}}
+@keyframes gmIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes gmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+[data-pane],.tabpane{animation:gmFade .32s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),[data-pane],.tabpane{animation:none}}
+
+body{margin:0;background:#0B0A0E}
+a{color:#F5C02A}a:hover{color:#FFD45A}
+.ap{position:relative;background:#0B0A0E;color:#F2EBDD;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.ap *,.ap *::before,.ap *::after{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cond{font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes slide{from{background-position:0 0}to{background-position:120px 0}}
+@keyframes scan{0%{top:-10%}100%{top:110%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.stripes{height:6px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+
+/* marca GM mini */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+
+/* nav global */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,10,14,0.95);border-bottom:1px solid rgba(242,235,221,.08)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#F2EBDD;justify-self:start}
+.brand:hover{color:#F2EBDD}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#9A938A;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(242,235,221,.1);background:rgba(242,235,221,.04);color:#F2EBDD;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8B847C}
+.search input:focus{border-color:rgba(245,192,42,.6);box-shadow:0 0 0 4px rgba(245,192,42,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#9A938A;padding:5px 8px;border-radius:6px;border:1px solid rgba(242,235,221,.12)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(242,235,221,.14);color:#F2EBDD;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#F2EBDD;background:rgba(242,235,221,.06)}
+
+/* submenú ARC */
+.sub{border-top:1px solid rgba(242,235,221,.06);background:rgba(20,18,25,.75)}
+.sub-in{display:flex;align-items:center;gap:4px;height:50px}
+.gchip{display:flex;align-items:center;gap:10px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(242,235,221,.1);color:#F2EBDD;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+.gchip img{width:28px;height:28px;border-radius:50%}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;gap:7px;height:50px;padding:0 12px;color:#ABA49A;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover,.slink.on{color:#F2EBDD}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
+.dd{position:relative;display:flex;align-items:center;height:50px}
+.dd>.slink svg.chev{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#F2EBDD}
+.dd:hover>.slink svg.chev,.dd:focus-within>.slink svg.chev{transform:rotate(180deg)}
+.menu{position:absolute;top:100%;left:-8px;z-index:60;padding:12px;border-radius:16px;background:#15131A;border:1px solid rgba(242,235,221,.1);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:600px}
+.mo{display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:12px;text-decoration:none;color:#F2EBDD;transition:background .2s}
+.mo:hover{background:rgba(242,235,221,.05);color:#F2EBDD}
+.mo .th{height:70px;border-radius:9px;overflow:hidden;border:1px solid rgba(242,235,221,.1)}
+.mo .th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mo:hover .th img{transform:scale(1.1)}
+.mo b{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.mo span{font-size:11.5px;color:#9A938A}
+.mm-f{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;padding:10px 6px 2px;border-top:1px solid rgba(242,235,221,.08);font-size:13px;color:#9A938A}
+.mm-f a{font-weight:600;text-decoration:none}
+.gl{display:flex;flex-direction:column;gap:2px;width:320px}
+.gi{display:flex;flex-direction:column;padding:10px 12px;border-radius:10px;text-decoration:none;color:#F2EBDD;transition:background .2s}
+.gi:hover{background:rgba(242,235,221,.05);color:#F2EBDD}
+.gi b{font-size:14px}
+.gi span{font-size:12px;color:#9A938A}
+
+/* barra inferior en móvil */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{position:sticky;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:8px 10px 10px;background:rgba(9,11,15,0.95);border-top:1px solid rgba(255,255,255,.09);box-shadow:0 -14px 30px -18px rgba(0,0,0,.9)}
+  .tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:52px;border-radius:13px;color:#8F98A5;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;transition:background .2s,color .2s}
+  .tb:hover{color:#ECE9E1}
+  .tb img{width:24px;height:24px;object-fit:contain;filter:grayscale(.7) brightness(.85)}
+  .tb svg{width:22px;height:22px}
+  .tb.on{color:#F3C878;background:rgba(212,160,74,.12)}
+  .tb.on img{filter:none}
+}
+
+@media (max-width:640px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi{padding:14px 16px;border-right:1px solid rgba(242,235,221,.06)}
+  .maps{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .mc{height:170px;border-radius:14px}
+  .mc h3{font-size:22px}
+  .mc p,.mc .go,.mc .chips{display:none}
+  .mc .bot{left:12px;right:12px;bottom:12px}
+}
+
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+
+@media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
+
+/* gm-a11y */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F5C02A;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F5C02A 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* propuesta */
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.ark-ed{margin-left:auto;padding:4px 10px;border-radius:99px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ln)}
+.ark{position:relative;min-height:100vh;color:var(--tx);background:var(--bg);font:15px/1.55 'IBM Plex Sans',sans-serif;overflow-x:clip}
+.ark *{box-sizing:border-box}
+.blk{position:relative;z-index:1;margin-top:56px}
+.bh{margin-bottom:18px}.bh h2{margin:4px 0 6px}.bh p{margin:0;max-width:70ch;color:var(--mu)}
+.sxs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.sx{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:230px;padding:16px;overflow:hidden;text-decoration:none;color:#fff;isolation:isolate}
+.sx img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s}
+.sx::after{content:"";position:absolute;inset:0;z-index:-1}
+.sx:hover img{transform:scale(1.06)}
+.sx b{font-size:22px;line-height:1.1}.sx small{color:rgba(255,255,255,.8);font-size:13px;line-height:1.35;margin-top:4px}
+.flt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px}
+.fb{cursor:pointer;font:600 14px/1 'IBM Plex Sans',sans-serif;padding:10px 16px}
+.cnt{margin-left:auto;color:var(--mu);font-size:13px}
+.cri{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:22px;align-items:start}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cc{position:relative;display:flex;flex-direction:column;text-align:left;cursor:pointer;padding:0;overflow:hidden;font:inherit;color:inherit}
+.cc img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 40%}
+.det{position:sticky;top:130px}
+.det img{display:block;width:100%}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:14px 0 0;font-size:14px}.dl dt{color:var(--mu)}.dl dd{margin:0}
+.sts{display:grid;gap:8px;margin-top:14px}.sr2{display:grid;grid-template-columns:64px 1fr 48px;align-items:center;gap:10px;font-size:13px}.sr2 i{display:block;height:8px;border-radius:99px;background:var(--trk)}.sr2 i b{display:block;height:100%;border-radius:inherit;background:var(--ac)}.sr2 span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.mps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.mp{display:flex;flex-direction:column;gap:8px;padding:8px;cursor:pointer;font:600 13px/1.2 'IBM Plex Sans',sans-serif;color:inherit;text-align:left}
+.mp i{display:block;aspect-ratio:1;background-image:url(../assets/ark/mapas.webp);background-size:400% 300%;background-repeat:no-repeat}
+.mpd{margin:14px 0 0;color:var(--mu)}.mpd b{color:var(--tx)}
+.foot{position:relative;z-index:1;margin-top:80px;padding:36px 0 110px;border-top:1px solid var(--ln);color:var(--mu);font-size:13px}.foot p{max-width:80ch}
+.fb:focus-visible,.cc:focus-visible,.mp:focus-visible,.sx:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+@media (max-width:1100px){.sxs{grid-template-columns:repeat(3,minmax(0,1fr))}.cri{grid-template-columns:1fr}.det{position:static}.mps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:720px){.wrap{padding:0 16px}.sxs{grid-template-columns:repeat(2,minmax(0,1fr))}.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.mps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.sx img{transition:none}}
+
+.ark.bioluz{--bg:#04100E;--tx:#E4FFF6;--mu:#8FB8AC;--ac:#5CFFB0;--ac2:#2FD6E0;--ln:rgba(92,255,176,.2);--pn:rgba(6,22,20,.9);--trk:rgba(92,255,176,.12)}
+.bioluz::before{content:"";position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,rgba(2,10,9,.35),rgba(2,10,9,.9) 60%,#030B0A),url(../assets/ark/fondos/bioluz.webp) center/cover no-repeat}
+.bioluz .kk{font:600 12px/1 'Rajdhani',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--ac)}
+.bioluz h1,.bioluz h2,.bioluz h3{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.bioluz .bh h2{font-size:36px}
+.hero-c{position:relative;z-index:1;min-height:560px;display:flex;align-items:flex-end;padding:60px 0 40px;overflow:hidden}
+.beam{position:absolute;top:-10%;width:90px;height:120%;background:linear-gradient(180deg,transparent,rgba(92,255,176,.35) 40%,transparent);filter:blur(18px);opacity:0;animation:bm 2.4s ease-out .3s forwards}
+.beam.b2{background:linear-gradient(180deg,transparent,rgba(47,214,224,.35) 40%,transparent);animation-delay:.7s}
+.beam.b3{background:linear-gradient(180deg,transparent,rgba(255,90,140,.28) 40%,transparent);animation-delay:1.1s}
+@keyframes bm{from{opacity:0;transform:scaleY(.6)}to{opacity:1;transform:none}}
+.spore{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--ac);box-shadow:0 0 12px var(--ac);opacity:0;animation:sp 3s ease-out forwards}
+@keyframes sp{0%{opacity:0;transform:translateY(30px)}30%{opacity:1}100%{opacity:.5;transform:translateY(-40px)}}
+.hero-c h1{margin:10px 0 12px;font-size:clamp(56px,8vw,112px);line-height:.88;text-shadow:0 0 30px rgba(92,255,176,.45)}
+.hero-c p{max-width:56ch;font-size:17px;color:#BFE6DA;margin:0}
+.hud{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.hud span{display:flex;flex-direction:column;min-width:130px;padding:10px 14px;border:1px solid var(--ln);background:var(--pn);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.hud b{font:700 30px/1 'Rajdhani',sans-serif;color:var(--ac)}.hud small{color:var(--mu);font-size:12px}
+.bioluz .sx{border:1px solid var(--ln);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.bioluz .sx img{filter:saturate(1.2) hue-rotate(-10deg)}
+.bioluz .sx::after{background:linear-gradient(180deg,rgba(2,10,9,.1),rgba(2,10,9,.95))}
+.bioluz .sx-n{align-self:flex-start;margin-bottom:auto;color:var(--ac);font:600 12px/1 'Rajdhani',sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.bioluz .sx b{font-family:'Rajdhani',sans-serif;text-transform:uppercase}
+.bioluz .sx:hover{box-shadow:0 0 0 1px var(--ac),0 0 30px rgba(92,255,176,.25)}
+.bioluz .fb{border:1px solid var(--ln);background:var(--pn);color:var(--tx);font-family:'Rajdhani',sans-serif;font-size:15px;text-transform:uppercase;letter-spacing:.08em}
+.bioluz .fb[aria-pressed="true"]{border-color:var(--ac);color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac),0 0 18px rgba(92,255,176,.2)}
+.bioluz .cc{border:1px solid var(--ln);background:var(--pn)}
+.bioluz .cc img{background:radial-gradient(circle at 50% 60%,rgba(92,255,176,.14),transparent 70%);filter:grayscale(1) brightness(1.6) sepia(1) hue-rotate(95deg) saturate(1.4);mix-blend-mode:screen;object-fit:contain}
+.bioluz .cc .ct{padding:8px 10px 10px}.bioluz .cc b{display:block;font:700 17px/1 'Rajdhani',sans-serif;text-transform:uppercase}.bioluz .cc small{color:var(--mu);font-size:12px}
+.bioluz .cc[aria-pressed="true"]{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 0 26px rgba(92,255,176,.3)}
+.bioluz .cc[aria-pressed="true"] img{filter:none;mix-blend-mode:normal;background:radial-gradient(circle at 50% 60%,#E6DDC4,#BCAF8C)}
+.bioluz .det{border:1px solid var(--ac);background:var(--pn);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);box-shadow:0 0 40px rgba(92,255,176,.15)}
+.bioluz .det img{background:radial-gradient(circle at 50% 60%,#E6DDC4,#BCAF8C)}
+.bioluz .det .dx{padding:14px 18px 20px}.bioluz .det h3{margin:2px 0 0;font-size:34px;color:var(--ac)}.bioluz .det em{font-style:normal;color:var(--ac2);font:600 12px 'Rajdhani',sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.bioluz .det .uso{margin:8px 0 0;color:#BFE6DA}
+.bioluz .sr2 i b{background:linear-gradient(90deg,var(--ac2),var(--ac));box-shadow:0 0 10px rgba(92,255,176,.5)}
+.bioluz .mp{border:1px solid var(--ln);background:var(--pn)}.bioluz .mp i{filter:saturate(1.3)}
+.bioluz .mp[aria-pressed="true"]{border-color:var(--ac);color:var(--ac);box-shadow:0 0 20px rgba(92,255,176,.2)}
+@media (prefers-reduced-motion:reduce){.beam,.spore{animation:none;opacity:.6}}
+
+</style></helmet>
+<div class="ark bioluz">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="Main.dc.html" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><img class="bg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt=""><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="/images/arc-raiders/bots/arc_the_queen.webp" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="/images/zelda/hyrule.jpg" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<a class="gm-t" href="Ark.dc.html" style="--ga: #F2A541"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Nuevo</span><b>ARK</b><small>Dinos, mapas y bases</small></a>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de ARK">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Ark.dc.html"><img src="../assets/juegos/logo-ark.webp" alt="">ARK</a>
+        <a class="slink on" href="Ark.dc.html">Portada</a>
+        <a class="slink" href="ArkCriaturas.dc.html">Criaturas</a>
+        <a class="slink" href="ArkEngramas.dc.html">Engramas</a>
+        <a class="slink" href="ArkRecursos.dc.html">Recursos</a>
+        <a class="slink" href="ArkGuias.dc.html">Guías</a>
+        <span class="ark-ed">Survival Evolved</span>
+      </div>
+    </nav>
+  </header>
+  <section class="hero-c"><i class="beam" style="left:18%"></i><i class="beam b2" style="left:52%"></i><i class="beam b3" style="left:82%"></i><i class="spore" style="left:12%;top:60%;animation-delay:0.4s"></i><i class="spore" style="left:24%;top:40%;animation-delay:0.9s"></i><i class="spore" style="left:38%;top:70%;animation-delay:1.3s"></i><i class="spore" style="left:55%;top:50%;animation-delay:0.6s"></i><i class="spore" style="left:68%;top:62%;animation-delay:1.6s"></i><i class="spore" style="left:80%;top:36%;animation-delay:1.0s"></i><i class="spore" style="left:90%;top:66%;animation-delay:1.9s"></i><i class="spore" style="left:47%;top:30%;animation-delay:2.2s"></i>
+    <div class="wrap"><span class="kk">ARK · Survival Evolved</span><h1>Sobrevive<br>al ARK</h1>
+      <p>Una guía con el pulso del juego: estadísticas de cada criatura, mapas, engramas y granjas, con la estética de los obeliscos y las cavernas de Aberration.</p>
+      <div class="hud"><span><b>835</b><small>criaturas</small></span><span><b>12</b><small>mapas</small></span><span><b>150</b><small>domables</small></span><span><b>3</b><small>obeliscos por mapa</small></span></div></div></section>
+  <section class="wrap blk" aria-labelledby="h-sec">
+    <header class="bh"><span class="kk">Explora</span><h2 id="h-sec">Todo ARK en un sitio</h2></header>
+    <div class="sxs"><a class="sx" href="ArkCriaturas.dc.html"><img src="../assets/ark/fondos/raptores.webp" alt="" loading="lazy"><span class="sx-n">835 en la wiki</span><b>Criaturas</b><small>Doma, comida, montura y en qué mapa vive cada una</small></a><a class="sx" href="#mapas"><img src="../assets/ark/fondos/secuoyas.webp" alt="" loading="lazy"><span class="sx-n">12 mapas</span><b>Mapas</b><small>Biomas, cuevas, recursos y criaturas exclusivas</small></a><a class="sx" href="ArkEngramas.dc.html"><img src="../assets/ark/fondos/superviviente.webp" alt="" loading="lazy"><span class="sx-n">Por nivel</span><b>Engramas</b><small>Qué aprender primero y qué cuesta fabricarlo</small></a><a class="sx" href="ArkRecursos.dc.html"><img src="../assets/ark/fondos/pradera.webp" alt="" loading="lazy"><span class="sx-n">Dónde farmear</span><b>Recursos</b><small>Metal, cristal, perla, aceite… y con qué criatura</small></a><a class="sx" href="ArkGuias.dc.html"><img src="../assets/ark/fondos/jinetes.webp" alt="" loading="lazy"><span class="sx-n">Bases y granjas</span><b>Guías</b><small>Cría, granjas automáticas y sistemas útiles</small></a></div>
+  </section>
+  <section class="wrap blk" aria-labelledby="h-cri">
+    <header class="bh"><span class="kk">Criaturas destacadas</span><h2 id="h-cri">Elige tu próxima doma</h2>
+      <p>Una muestra con 16 criaturas y su dosier. La página completa tendrá las 835 de la wiki, con variantes (Aberrantes, X, R, Tek…) y filtros por mapa.</p></header>
+    <div class="flt" role="group" aria-label="Filtrar criaturas"><sc-for list="{{filters}}" as="x" hint-placeholder-count="4"><button type="button" class="fb" aria-pressed="{{x.pressed}}" onClick="{{x.pick}}">{{x.n}}</button></sc-for><span class="cnt">{{count}} criaturas</span></div>
+    <div class="cri">
+      <div class="cgrid"><sc-for list="{{cards}}" as="c" hint-placeholder-count="12"><button type="button" class="cc" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}"><img src="{{c.img}}" alt="" loading="lazy"><span class="ct"><b>{{c.n}}</b><small>{{c.diet}} · {{c.mont}}</small></span></button></sc-for></div>
+      <aside class="det" aria-live="polite"><img src="{{sel.img}}" alt="Dosier de {{sel.n}}"><div class="dx"><em>{{sel.g}} · {{sel.diet}}</em><h3>{{sel.n}}</h3><p class="uso">{{sel.uso}}</p>
+        <dl class="dl"><dt>Dieta</dt><dd>{{sel.diet}}</dd><dt>Carácter</dt><dd>{{sel.temp}}</dd><dt>Doma</dt><dd>{{sel.met}}</dd><dt>Comida</dt><dd>{{sel.fav}}</dd><dt>Montura</dt><dd>{{sel.mont}}</dd><dt>Mapas</dt><dd>{{sel.nmaps}} · {{sel.mapsTxt}}</dd></dl>
+        <div class="sts"><sc-for list="{{sel.stats}}" as="s" hint-placeholder-count="4"><div class="sr2"><span>{{s.n}}</span><i><b style="{{s.w}}"></b></i><span>{{s.v}}</span></div></sc-for></div>
+      </div></aside>
+    </div>
+  </section>
+  <section class="wrap blk" id="mapas" aria-labelledby="h-map">
+    <header class="bh"><span class="kk">Los mapas</span><h2 id="h-map">Doce ARK para sobrevivir</h2></header>
+    <div class="mps"><sc-for list="{{maps}}" as="m" hint-placeholder-count="12"><button type="button" class="mp" aria-pressed="{{m.on}}" onClick="{{m.pick}}"><i style="background-position: {{m.bp}}"></i><b>{{m.n}}</b></button></sc-for></div>
+    <p class="mpd"><b>{{mapSel.n}}</b> · {{mapSel.d}}</p>
+  </section>
+
+  <footer class="foot"><div class="wrap"><span class="brand-name">GRIETA<span>META</span></span><p>GrietaMeta es un sitio de fans y no está afiliado a Studio Wildcard. ARK: Survival Evolved y sus imágenes son material de Studio Wildcard. Datos y dosieres: ARK Official Community Wiki (ark.wiki.gg); capturas oficiales de Steam.</p></div></footer>
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
+    <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
+    <a class="tb" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC</a>
+    <a class="tb" href="Zelda.dc.html"><img src="../assets/games/logo-zelda.png" alt="">Zelda</a>
+    <a class="tb tb-pk" href="Pokemon.dc.html"><img src="../assets/pokemon/art-25.webp" alt="">Pokémon</a>
+    <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
+  </nav>
+</div>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+const FEAT = [{"k": "rex", "n": "Rex", "img": "../assets/ark/dosieres/rex.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate y jefes.", "sp": "Tyrannosaurus dominum", "time": "Late Cretaceous", "st": [1100.0, 420.0, 500.0, 60.0]}, {"k": "raptor", "n": "Raptor", "img": "../assets/ark/dosieres/raptor.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Montura rápida de los primeros niveles.", "sp": "Utahraptor prime", "time": "Early Cretaceous", "st": [200.0, 150.0, 140.0, 15.0]}, {"k": "argentavis", "n": "Argentavis", "img": "../assets/ark/dosieres/argentavis.webp", "g": "Aves", "diet": "Carroñero", "temp": "Irascible", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Transporte aéreo: lleva criaturas medianas y mucha carga.", "sp": "Argentavis atrocollum", "time": "Late Miocene", "st": [365.0, 750.0, 350.0, 20.0]}, {"k": "ankylosaurus", "n": "Ankylosaurus", "img": "../assets/ark/dosieres/ankylosaurus.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "El mejor para metal, pedernal y cristal.", "sp": "Ankylosaurus crassacutis", "time": "Late Cretaceous", "st": [700.0, 175.0, 250.0, 50.0]}, {"k": "doedicurus", "n": "Doedicurus", "img": "../assets/ark/dosieres/doedicurus.webp", "g": "Mamíferos", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "El mejor para piedra.", "sp": "Doedicurus custosaxum", "time": "Pleistocene - Holocene", "st": [850.0, 300.0, 250.0, 32.0]}, {"k": "pteranodon", "n": "Pteranodon", "img": "../assets/ark/dosieres/pteranodon.webp", "g": "Reptiles", "diet": "Carnívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Volador rápido para explorar.", "sp": "Pteranodon wyvernus", "time": "Late Cretaceous", "st": [210.0, 300.0, 150.0, 15.0]}, {"k": "triceratops", "n": "Triceratops", "img": "../assets/ark/dosieres/triceratops.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta bayas y combate al principio.", "sp": "Triceratops styrax", "time": "Late Cretaceous", "st": [375.0, 150.0, 365.0, 32.0]}, {"k": "spinosaurus", "n": "Spino", "img": "../assets/ark/dosieres/spinosaurus.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Territorial", "met": "Noqueo", "fav": "Pescado de primera crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate en agua y tierra.", "sp": "Spinosaurus aquareliga", "time": "Early-Late Cretaceous", "st": [700.0, 350.0, 350.0, 50.0]}, {"k": "quetzalcoatlus", "n": "Quetzal", "img": "../assets/ark/dosieres/quetzal.webp", "g": "Reptiles", "diet": "Carnívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Volador gigante y plataforma para construir.", "sp": "Quetzalcoatlus conchapicem", "time": "Late Cretaceous", "st": [1200.0, 750.0, 780.0, 32.0]}, {"k": "therizinosaurus", "n": "Therizinosaur", "img": "../assets/ark/dosieres/therizinosaur.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Territorial", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta de todo: madera, fibra, paja y bayas.", "sp": "", "time": "", "st": [870.0, 300.0, 365.0, 52.0]}, {"k": "megalodon", "n": "Megalodon", "img": "../assets/ark/dosieres/megalodon.webp", "g": "Peces", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate en el mar; recolecta pescado.", "sp": "Carcharodon ultramegalodon", "time": "Miocene - Pliocene", "st": [600.0, 320.0, 250.0, 40.0]}, {"k": "thylacoleo", "n": "Thylacoleo", "img": "../assets/ark/dosieres/thylacoleo.webp", "g": "Mamíferos", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Chuleta de cordero cocinada", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Lost Island", "Fjordur"], "uso": "Trepa árboles y embosca.", "sp": "Thylacoleo furtimorsus", "time": "Late Pliocene - Late Pleistocene", "st": [700.0, 400.0, 400.0, 0.0]}, {"k": "direwolf", "n": "Direwolf", "img": "../assets/ark/dosieres/direwolf.webp", "g": "Mamíferos", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Lost Island", "Fjordur"], "uso": "Combate en manada y detecta criaturas.", "sp": "Canis maxdirus", "time": "Pleistocene", "st": [330.0, 260.0, 170.0, 33.0]}, {"k": "stegosaurus", "n": "Stegosaurus", "img": "../assets/ark/dosieres/stegosaurus.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta bayas; sus placas cambian de modo.", "sp": "Stegosaurus regium", "time": "Late Jurassic", "st": [650.0, 300.0, 500.0, 42.0]}, {"k": "parasaurolophus", "n": "Parasaur", "img": "../assets/ark/dosieres/parasaur.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Montura temprana que avisa de enemigos.", "sp": "Parasaurolophus amphibio", "time": "Late Cretaceous", "st": [200.0, 200.0, 280.0, 12.0]}, {"k": "woollymammoth", "n": "Mammoth", "img": "../assets/ark/dosieres/mammoth.webp", "g": "Mamíferos", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta madera y paja y da calor.", "sp": "Mammuthus steincaput", "time": "Early Pliocene", "st": [850.0, 330.0, 500.0, 42.0]}];
+const MAPS = [{"n": "The Island", "d": "El mapa original: selva, nieve y tres cuevas de artefactos", "bp": "0.0% 0%"}, {"n": "The Center", "d": "Una isla flotante con un mundo bajo tierra", "bp": "33.333% 0%"}, {"n": "Scorched Earth", "d": "Desierto abrasador con wyverns y tormentas", "bp": "66.667% 0%"}, {"n": "Ragnarok", "d": "Volcán, castillos y la mayor de las comunidades", "bp": "100.0% 0%"}, {"n": "Aberration", "d": "Un ARK roto: cavernas luminosas y radiación", "bp": "0.0% 50%"}, {"n": "Extinction", "d": "La Tierra en ruinas tras la corrupción", "bp": "33.333% 50%"}, {"n": "Valguero", "d": "Cañones profundos y la Zona Profunda", "bp": "66.667% 50%"}, {"n": "Genesis: Part 1", "d": "Una simulación con cinco biomas y misiones", "bp": "100.0% 50%"}, {"n": "Crystal Isles", "d": "Islas de cristal y wyverns de cristal", "bp": "0.0% 100%"}, {"n": "Genesis: Part 2", "d": "La nave colonia Rockwell y el final", "bp": "33.333% 100%"}, {"n": "Lost Island", "d": "Selva enorme con Dinopithecus y Amargasaurus", "bp": "66.667% 100%"}, {"n": "Fjordur", "d": "Fiordos nórdicos y cuatro reinos", "bp": "100.0% 100%"}];
+const MX = [1200.0, 750.0, 780.0, 60.0];
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.state || {}; const set = (o) => this.setState(o);
+    const F = [['all', 'Todas'], ['car', 'Carnívoras'], ['her', 'Herbívoras'], ['ride', 'Se montan']];
+    const f = S.f || 'all';
+    const ok = (c) => f === 'all' || (f === 'car' && c.diet === 'Carnívoro') || (f === 'her' && c.diet === 'Herbívoro') || (f === 'ride' && c.ride);
+    const list = FEAT.filter(ok);
+    const sel = list.find((c) => c.k === S.sel) || list[0] || FEAT[0];
+    const pct = (v, i) => Math.max(4, Math.round(v / MX[i] * 100));
+    const SN = ['Vida', 'Energía', 'Peso', 'Ataque'];
+    return {
+      filters: F.map(([k, n]) => ({ n, pressed: k === f ? 'true' : 'false', pick: () => set({ f: k, sel: null }) })),
+      cards: list.map((c) => ({ ...c, pressed: c.k === sel.k ? 'true' : 'false', mont: c.ride ? 'Montura' : 'Sin silla', pick: () => set({ sel: c.k }) })),
+      count: String(list.length),
+      sel: { ...sel, mont: sel.ride ? 'Sí, con silla' : 'No se monta', nmaps: String(sel.maps.length), mapsTxt: sel.maps.join(' · '),
+        stats: sel.st.map((v, i) => ({ n: SN[i], v: String(Math.round(v)), w: 'width:' + pct(v, i) + '%' })) },
+      maps: MAPS.map((m, i) => ({ ...m, on: (S.map || 0) === i ? 'true' : 'false', pick: () => set({ map: i }) })),
+      mapSel: MAPS[S.map || 0],
+    };
+  }
+}
+</script>
+</x-dc></body></html>
