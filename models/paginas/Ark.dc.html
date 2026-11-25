@@ -1,14 +1,6 @@
 <!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<title>GrietaMeta · ARK</title>
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARK: Survival Evolved · GrietaMeta</title><script src="./support.js"></script></head><body><x-dc><helmet>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 /* gm-transiciones */
 @view-transition{navigation:auto}
@@ -91,152 +83,6 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 .gi b{font-size:14px}
 .gi span{font-size:12px;color:#9A938A}
 
-/* hero */
-.hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(242,235,221,.06)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(700px 420px at 78% 40%,rgba(242,138,30,.13),transparent 70%),radial-gradient(500px 300px at 0% 0%,rgba(59,201,232,.07),transparent 70%)}
-.hero-in{display:flex;align-items:center;gap:48px;flex-wrap:wrap;padding:56px 0 48px}
-.htx{flex:1 1 480px;max-width:600px;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
-.kick{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#F5C02A}
-.kick i{display:block;width:26px;height:6px;background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
-.h1{margin:14px 0 0;font-size:clamp(46px,6vw,82px);font-weight:800;line-height:.92}
-.h1 span{display:block;color:#F5C02A}
-.lead{margin:20px 0 0;color:#B8B1A6;font-size:17px;max-width:540px;text-wrap:pretty}
-.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn-y{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:12px;background:#F5C02A;color:#141007;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 34px -14px rgba(245,192,42,.8);transition:transform .2s}
-.btn-y:hover{color:#141007;transform:translateY(-2px)}
-.btn-c{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:12px;border:1px solid rgba(242,235,221,.25);color:#F2EBDD;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
-.btn-c:hover{color:#F2EBDD;background:rgba(242,235,221,.06)}
-.shot{position:relative;flex:1 1 520px;max-width:640px;aspect-ratio:16/10;animation:rise .8s .15s cubic-bezier(.2,.8,.2,1) both}
-.shot .rays{position:absolute;right:-60px;top:-40px;width:280px;height:120%;transform:skewX(-24deg);background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%);opacity:.85;z-index:-1}
-.shot .frame{position:absolute;inset:0;border-radius:18px;overflow:hidden;border:1px solid rgba(242,235,221,.14);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
-.shot img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
-.shot .scan{position:absolute;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,rgba(242,138,30,.16),transparent);animation:scan 4s linear infinite}
-.shot .hud{position:absolute;inset:14px;pointer-events:none}
-.shot .hud i{position:absolute;width:22px;height:22px;border:0 solid #F5C02A}
-.shot .hud i:nth-child(1){top:0;left:0;border-top-width:2px;border-left-width:2px}
-.shot .hud i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
-.shot .hud i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
-.shot .hud i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
-.shot .tagx{position:absolute;left:24px;bottom:22px;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(11,10,14,0.95);border:1px solid rgba(242,235,221,.12)}
-.shot .tagx b{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;line-height:1}
-.shot .tagx span{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#C8C1B6}
-.thr{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.thr::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 1.4s infinite}
-.t-ext{color:#FF6B5B;background:rgba(229,55,43,.16)}
-.t-cri{color:#FFA24A;background:rgba(242,138,30,.16)}
-.t-alt{color:#F5C02A;background:rgba(245,192,42,.14)}
-.t-mod{color:#7FD9A0;background:rgba(47,180,90,.14)}
-.t-baj{color:#7FD6F0;background:rgba(59,201,232,.14)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));border-top:1px solid rgba(242,235,221,.06)}
-.kpi{display:flex;align-items:baseline;gap:12px;padding:20px 28px;border-right:1px solid rgba(242,235,221,.06)}
-.kpi:last-child{border-right:0}
-.kpi b{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:800;line-height:1;color:#F2EBDD}
-.kpi span{font-size:14px;color:#ABA49A}
-
-/* secciones */
-.sec{padding:56px 0 0}
-.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
-.h2{margin:8px 0 0;font-size:clamp(34px,3.6vw,48px);font-weight:800;line-height:1}
-.sec-h p{margin:6px 0 0;color:#B8B1A6;max-width:620px}
-.more{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;text-decoration:none}
-
-/* mapas */
-.maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:16px}
-.mc{position:relative;display:block;height:270px;border-radius:18px;overflow:hidden;isolation:isolate;border:1px solid rgba(242,235,221,.1);text-decoration:none;color:#F2EBDD;transition:border-color .3s,transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.mc:hover{color:#F2EBDD;transform:translateY(-4px);border-color:rgba(245,192,42,.6);box-shadow:0 30px 60px -30px rgba(242,138,30,.6)}
-.mc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.8) brightness(.75);transform:scale(1.15);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
-.mc:hover img{transform:scale(1.32);filter:saturate(1) brightness(.95)}
-.mc::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,10,14,.2),rgba(11,10,14,.15) 40%,rgba(11,10,14,.95))}
-.mc .sl{position:absolute;left:0;right:0;height:60px;top:-30%;background:linear-gradient(180deg,transparent,rgba(59,201,232,.14),transparent);opacity:0}
-.mc:hover .sl{opacity:1;animation:scan 2.4s linear infinite}
-.mc .chips{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:7px;background:rgba(11,10,14,0.95);border:1px solid rgba(242,235,221,.14);font-size:12px;font-weight:600;color:#E2DBCE}
-.mc .bot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-.mc h3{margin:0;font-size:34px;font-weight:800;line-height:.95}
-.mc p{margin:6px 0 0;font-size:13.5px;color:#C8C1B6}
-.mc .go{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border-radius:50%;background:rgba(242,235,221,.1);border:1px solid rgba(242,235,221,.2);transition:background .3s,color .3s,transform .4s}
-.mc:hover .go{background:#F5C02A;color:#141007;transform:rotate(-45deg)}
-.mc .bar{position:absolute;left:0;right:0;bottom:0;height:4px;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,#E5372B 0 20%,#F28A1E 20% 40%,#F5C02A 40% 60%,#2FB45A 60% 80%,#3BC9E8 80%)}
-.mc:hover .bar{transform:scaleX(1)}
-
-/* objetos */
-.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:14px}
-.act{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:18px;background:#141219;border:1px solid rgba(242,235,221,.08);border-top:3px solid var(--ac)}
-.a-g{--ac:#2FB45A}.a-c{--ac:#3BC9E8}.a-y{--ac:#F5C02A}.a-o{--ac:#F28A1E}
-.c-y{--tc:#F5C02A}.c-c{--tc:#3BC9E8}.c-r{--tc:#E5372B}.c-o{--tc:#F28A1E}.c-g{--tc:#2FB45A}
-.act-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.act-h b{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;text-transform:uppercase;color:var(--ac);line-height:1}
-.act-h span{font-size:13px;color:#ABA49A}
-.act p{margin:0;font-size:13.5px;color:#B8B1A6}
-.it{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;background:rgba(242,235,221,.03);transition:background .2s}
-.it:hover{background:rgba(242,235,221,.06)}
-.it .ic{width:46px;height:46px;flex-shrink:0;border-radius:10px;padding:4px;border:1px solid var(--rc);background:radial-gradient(circle at 50% 30%,var(--rb),#100E14 75%)}
-.it .ic img{width:100%;height:100%;object-fit:contain}
-.it .tx{flex:1;min-width:0}
-.it .tx b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.it .tx span{font-size:12px;color:var(--rt)}
-.it .v{font-size:13px;font-weight:600;color:#E2DBCE}
-.r-leg{--rc:rgba(245,192,42,.6);--rb:rgba(245,192,42,.35);--rt:#F5C02A}
-.r-epi{--rc:rgba(196,120,255,.55);--rb:rgba(196,120,255,.32);--rt:#D3A2FF}
-.r-rar{--rc:rgba(59,201,232,.55);--rb:rgba(59,201,232,.3);--rt:#7FD6F0}
-.how{margin-top:16px;padding:20px 22px;border-radius:18px;background:#141219;border:1px solid rgba(242,235,221,.08)}
-.how-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.how-h h3{margin:0;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
-.how-n{font-size:14px;color:#ABA49A}
-.how-n b{font-family:'Barlow Condensed',sans-serif;font-size:24px;color:#F5C02A;margin-right:4px}
-.how-l{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
-.how-l li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:rgba(242,235,221,.03);border-left:3px solid var(--ac);font-size:13.5px;color:#C9C2B6;line-height:1.45}
-.how-l b{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;text-transform:uppercase;color:var(--ac)}
-.how-f{margin:14px 0 0;font-size:13px;color:#9A938A}
-.isearch{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px;padding:14px;border-radius:16px;background:#141219;border:1px solid rgba(242,235,221,.08)}
-.isearch .search{flex:1 1 320px}
-
-/* comerciantes */
-.traders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
-.tr{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:16px;background:#141219;border:1px solid rgba(242,235,221,.08);text-decoration:none;color:#F2EBDD;transition:border-color .2s,transform .2s}
-.tr:hover{color:#F2EBDD;border-color:rgba(245,192,42,.45);transform:translateY(-2px)}
-.tr .tt{display:flex;align-items:center;gap:12px}
-.tr .av{position:relative;flex-shrink:0;width:58px;height:58px;border-radius:16px;overflow:hidden;background:var(--tc);padding:2px}
-.tr .av img{display:block;width:100%;height:100%;object-fit:cover;border-radius:14px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-.tr:hover .av img{transform:scale(1.08)}
-.tr .role{display:block;margin-top:3px;font-size:12px;color:#9A938A}
-.tr b{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;line-height:1}
-.tr span{font-size:13px;color:#ABA49A}
-.tr .pb{height:6px;border-radius:6px;background:rgba(242,235,221,.08);overflow:hidden}
-.tr .pb i{display:block;height:100%;background:var(--tc)}
-
-/* enemigos */
-.foes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px}
-.foe{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#141219;border:1px solid rgba(242,235,221,.08);transition:border-color .3s,transform .3s}
-.foe:hover{border-color:rgba(242,138,30,.5);transform:translateY(-3px)}
-.foe .im{position:relative;height:150px;overflow:hidden}
-.foe .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
-.foe:hover .im img{transform:scale(1.08)}
-.foe .im .thr{position:absolute;top:12px;left:12px}
-.foe .bd{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px}
-.foe h3{margin:0;font-size:26px;font-weight:800;line-height:1}
-.foe .ty{font-size:13px;color:#ABA49A}
-.foe .wk{margin-top:4px;padding:10px 12px;border-radius:10px;background:rgba(245,192,42,.06);border:1px solid rgba(245,192,42,.18);font-size:13px;color:#E2DBCE}
-.foe .wk b{color:#F5C02A;font-weight:600}
-
-.foot{margin-top:72px;border-top:1px solid rgba(242,235,221,.08);padding:32px 0 36px;font-size:13px;color:#9A938A}
-.foot p{margin:10px 0 0;max-width:680px;line-height:1.7}
-
-@media (max-width:860px){
-  .wrap{padding:0 16px}
-  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
-  .nav .search{grid-column:1 / -1;grid-row:2}
-  .nav .search kbd,.btn-ghost{display:none}
-  .sub-in{overflow-x:auto;scrollbar-width:none}
-  .menu{display:none}
-  .kpi{border-right:0;border-bottom:1px solid rgba(242,235,221,.06)}
-}
-@media (max-width:480px){.brand-name{display:none}}
-@media (prefers-reduced-motion:reduce){
-  .ap *,.ap *::before,.ap *::after{animation:none !important;transition:none !important}
-}
-.ap.still *,.ap.still *::before,.ap.still *::after{animation:none !important;transition:none !important}
-
 /* barra inferior en móvil */
 .tabbar{display:none}
 @media (max-width:860px){
@@ -290,126 +136,117 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 
 @media (max-width:860px){.tabbar{padding-left:6px;padding-right:6px;gap:2px}.tb{font-size:11px}}
 
-/* gm-ark: estilo de ARK (Survival Evolved) */
-.ap.ark{background:#0B0F0C;color:#E8EDE6}
-.ark .slink.on::after{background:linear-gradient(90deg,#F2A541,#46C2B0)}
-.ark .slink.on,.ark .slink:hover{color:#F7F3E8}
-.ark .gchip img{border-radius:8px;background:#121914}
-.ark-ed{margin-left:auto;padding:4px 10px;border-radius:999px;border:1px solid rgba(242,165,65,.4);color:#F2C27A;font:600 11.5px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.ark .kk{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2A541}
-.ark .kk::before{content:"";width:22px;height:2px;background:currentColor}
-.ark h1,.ark h2,.ark h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:.01em;text-transform:uppercase}
-.ark-sec{padding:64px 0 0}
-.ark-sec>.wrap>header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;margin-bottom:22px}
-.ark-sec h2{margin:8px 0 0;font-size:44px;line-height:1}
-.ark-sec header p{margin:8px 0 0;max-width:640px;color:#A9B5AA}
-.ark-hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid rgba(232,237,230,.08)}
-.ark-hero img.bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:60% 35%;filter:saturate(.95) brightness(.62)}
-.ark-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(11,15,12,.95) 12%,rgba(11,15,12,.55) 52%,rgba(11,15,12,.15)),linear-gradient(0deg,#0B0F0C 2%,rgba(11,15,12,0) 45%)}
-.ark-hero .wrap{min-height:560px;display:flex;flex-direction:column;justify-content:flex-end;padding-top:110px;padding-bottom:64px}
-.ark-hero h1{margin:14px 0 0;font-size:96px;line-height:.9;max-width:760px}
-.ark-hero h1 em{font-style:normal;color:#F2A541}
-.ark-hero p.lead{margin:18px 0 0;max-width:600px;font-size:18px;color:#D3DBD2}
-.ark-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
-.ark-btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:12px;background:#F2A541;color:#1A1206;font:700 15px/1 'IBM Plex Sans',sans-serif;text-decoration:none;border:0;cursor:pointer}
-.ark-btn:hover{background:#FFB95C}
-.ark-btn.o{background:transparent;color:#E8EDE6;border:1px solid rgba(232,237,230,.25)}
-.ark-btn.o:hover{border-color:#46C2B0;color:#FFF}
-.ark-stats{display:flex;gap:34px;flex-wrap:wrap;margin:36px 0 0;padding:0}
-.ark-stats div{display:flex;flex-direction:column}
-.ark-stats dt{font:800 38px/1 'Barlow Condensed',sans-serif;color:#F2A541}
-.ark-stats dd{margin:4px 0 0;font-size:13px;color:#A9B5AA}
-.mp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.mp{position:relative;display:flex;flex-direction:column;gap:10px;padding:10px;border-radius:18px;border:1px solid rgba(232,237,230,.1);background:#121914;color:#E8EDE6;text-align:left;cursor:pointer;transition:border-color .2s,transform .2s}
-.mp:hover{border-color:rgba(242,165,65,.5);transform:translateY(-2px)}
-.mp[aria-pressed="true"]{border-color:#F2A541;box-shadow:0 0 0 3px rgba(242,165,65,.18)}
-.mp-img{display:block;aspect-ratio:1;border-radius:12px;background-image:url(../assets/ark/mapas.webp);background-size:400% 300%;background-repeat:no-repeat}
-.mp b{font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
-.mp small{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:#A9B5AA}
-.tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:rgba(232,237,230,.07);color:#D3DBD2}
-.tag.dlc{background:rgba(70,194,176,.14);color:#7FE0D2}
-.tag.free{background:rgba(242,165,65,.14);color:#F7C27A}
-.tag.base{background:rgba(232,237,230,.12);color:#FFF}
-.mp-det{display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px;margin-top:16px;padding:18px;border-radius:20px;border:1px solid rgba(242,165,65,.3);background:linear-gradient(160deg,rgba(242,165,65,.07),#121914 50%)}
-.mp-det .mp-img{width:100%}
-.mp-det h3{margin:0;font-size:40px;line-height:1}
-.mp-det p{margin:8px 0 0;color:#D3DBD2}
-.ex{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.ex a{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:rgba(232,237,230,.06);color:#E8EDE6;text-decoration:none;font-size:13px}
-.ico{display:inline-block;flex:none;width:44px;height:44px;background-image:url(../assets/ark/criaturas.webp);background-size:var(--bs);background-repeat:no-repeat}
-.ex .ico{width:34px;height:34px;border-radius:50%;background-color:#0B0F0C}
-.hist{display:flex;gap:0;flex-wrap:wrap;counter-reset:h;margin:0;padding:0;list-style:none}
-.hist li{flex:1 1 150px;position:relative;padding:14px 16px;border:1px solid rgba(232,237,230,.1);background:#121914;margin:0 -1px -1px 0}
-.hist li:first-child{border-radius:16px 0 0 16px}.hist li:last-child{border-radius:0 16px 16px 0}
-.hist li::before{counter-increment:h;content:counter(h);display:block;font:800 30px/1 'Barlow Condensed',sans-serif;color:#46C2B0}
-.hist b{display:block;margin-top:6px;font:800 19px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase}
-.hist small{display:block;margin-top:4px;color:#A9B5AA;font-size:12.5px}
-.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.tool{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:18px;border:1px solid rgba(232,237,230,.1);background:#121914;color:#E8EDE6;text-decoration:none;transition:border-color .2s}
-.tool:hover{border-color:#46C2B0}
-.tool b{font:800 26px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:#F2A541}
-.tool span{color:#A9B5AA;font-size:14px}
-.ark-note{margin-top:22px;padding:14px 16px;border-radius:14px;border:1px dashed rgba(70,194,176,.4);color:#BFD8D2;font-size:14px}
-/* criaturas */
-.cr-head{padding:56px 0 8px}
-.cr-head h1{margin:10px 0 0;font-size:72px;line-height:.95}
-.cr-head p{margin:10px 0 0;max-width:680px;color:#A9B5AA}
-.cr-bar{position:sticky;top:116px;z-index:20;display:flex;flex-direction:column;gap:10px;padding:14px 0;background:rgba(11,15,12,.97);border-bottom:1px solid rgba(232,237,230,.08)}
-.cr-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.cr-q{flex:1 1 260px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid rgba(232,237,230,.15);background:#121914;color:#E8EDE6;font:500 15px 'IBM Plex Sans',sans-serif}
-.cr-q:focus{outline:2px solid #F2A541;outline-offset:1px}
-.chip{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(232,237,230,.14);background:#121914;color:#D3DBD2;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
-.chip[aria-pressed="true"]{background:#F2A541;border-color:#F2A541;color:#1A1206}
-.chip.t{border-color:rgba(70,194,176,.35)}
-.chip.t[aria-pressed="true"]{background:#46C2B0;border-color:#46C2B0;color:#06201C}
-.cr-lbl{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7F8C80;margin-right:4px}
-.cr-main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:22px;align-items:start;margin-top:18px}
-.cr-count{margin:0 0 10px;color:#A9B5AA;font-size:14px}
-.cr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px}
-.cr{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 10px;border-radius:16px;border:1px solid rgba(232,237,230,.1);background:#121914;color:#E8EDE6;cursor:pointer;text-align:center;transition:border-color .2s,transform .2s}
-.cr:hover{border-color:rgba(242,165,65,.5);transform:translateY(-2px)}
-.cr[aria-pressed="true"]{border-color:#F2A541;background:linear-gradient(180deg,rgba(242,165,65,.12),#121914 60%)}
-.cr .ico{width:84px;height:84px}
-.cr b{font:800 18px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase}
-.cr small{font-size:12px;color:#A9B5AA}
-.mt{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700}
-.mt.ko{background:rgba(226,86,75,.16);color:#FF9C92}
-.mt.pa{background:rgba(70,194,176,.16);color:#7FE0D2}
-.mt.es{background:rgba(185,140,255,.16);color:#D1B8FF}
-.more{display:block;margin:16px auto 0}
-.det{position:sticky;top:292px;max-height:calc(100vh - 310px);overflow:auto;display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:20px;border:1px solid rgba(242,165,65,.28);background:#121914}
-.det-top{display:flex;gap:14px;align-items:center}
-.det .ico{width:96px;height:96px;border-radius:18px;background-color:#0B0F0C}
-.det h2{margin:0;font-size:38px;line-height:1}
-.det-top small{display:block;margin-top:4px;color:#A9B5AA;font-size:13px}
-.det h3{margin:0 0 6px;font-size:14px;letter-spacing:.14em;color:#F2A541;font-family:'IBM Plex Sans',sans-serif;font-weight:700}
-.det p{margin:0;color:#D3DBD2;font-size:14px}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.facts div{padding:8px 10px;border-radius:12px;background:rgba(232,237,230,.04)}
-.facts small{display:block;font-size:11.5px;color:#7F8C80;text-transform:uppercase;letter-spacing:.08em}
-.facts b{display:block;font-size:14px;color:#FFF}
-.foods{display:flex;flex-wrap:wrap;gap:6px}
-.foods span{padding:4px 10px;border-radius:999px;background:rgba(242,165,65,.1);color:#F7D29C;font-size:13px}
-.maps{display:flex;flex-wrap:wrap;gap:6px}
-.maps span{padding:3px 9px;border-radius:8px;border:1px solid rgba(232,237,230,.12);font-size:12.5px;color:#D3DBD2}
-.maps span.ex1{border-color:#46C2B0;color:#7FE0D2}
-.how{margin:0;padding-left:18px;color:#D3DBD2;font-size:14px}
-.how li{margin:2px 0}
-.cr-empty{padding:30px;border-radius:16px;border:1px dashed rgba(232,237,230,.2);color:#A9B5AA;text-align:center}
-@media (max-width:1100px){.mp-grid,.tools{grid-template-columns:repeat(3,minmax(0,1fr))}.cr-main{grid-template-columns:1fr}.det{position:static}}
-@media (max-width:860px){.mp-grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}.mp-det{grid-template-columns:1fr}.ark-hero h1{font-size:64px}.cr-head h1{font-size:52px}.ark-ed{display:none}.hist li{border-radius:12px!important;margin:0 6px 6px 0}}
-@media (max-width:560px){.mp-grid,.tools{grid-template-columns:1fr}.ark-hero h1{font-size:50px}.cr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F5C02A;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#F5C02A 38%,transparent);color:#fff}
 a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style>
-</helmet>
 
-<div class="ap ark {{motionClass}}">
+/* portada · diario */
+.fern{position:absolute;z-index:2;pointer-events:none;width:220px;height:190px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 190'%3E%3Cg fill='none' stroke='%233F5F18' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M20 190C40 120 80 70 150 30'/%3E%3Cpath d='M60 190C70 140 110 110 200 96'/%3E%3Cpath d='M4 190C6 150 20 110 40 80'/%3E%3C/g%3E%3Cg fill='%235E8F24'%3E%3Cpath d='M44 140c-16-6-30 0-34 10c14 4 26 0 34-10zM62 108c-14-10-30-8-36 0c12 8 26 8 36 0zM86 82c-10-14-26-16-34-10c8 12 22 16 34 10zM112 60c-8-14-22-20-30-14c6 12 18 18 30 14zM138 40c-4-14-16-22-26-18c4 12 14 20 26 18z'/%3E%3Cpath d='M52 148c14-10 16-26 10-34c-12 8-14 22-10 34zM76 116c16-6 22-20 18-30c-14 4-20 18-18 30zM100 92c16-4 24-16 22-26c-14 2-22 14-22 26zM126 68c14-2 22-14 20-22c-12 0-20 10-20 22z'/%3E%3C/g%3E%3Cg fill='%2382B835'%3E%3Cpath d='M96 150c-6-14 0-28 10-30c4 14-2 26-10 30zM130 128c-2-14 8-26 18-24c0 14-8 24-18 24zM164 110c2-12 14-20 22-16c-2 12-12 18-22 16zM190 100c4-8 14-12 20-8c-4 8-12 12-20 8z'/%3E%3Cpath d='M26 120c-12-8-12-24-4-30c10 8 10 22 4 30zM36 92c-8-10-6-22 2-26c6 10 4 20-2 26z'/%3E%3C/g%3E%3C/svg%3E") 0 100%/contain no-repeat}
+.fern.r{transform:scaleX(-1)}
+.leaf-div{display:flex;align-items:center;gap:12px;margin:60px auto 0;max-width:1280px;padding:0 32px;color:#6C9A33}
+.leaf-div::before,.leaf-div::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,transparent,rgba(108,154,51,.6),transparent)}
+.hist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;counter-reset:h}
+.hist li{list-style:none;position:relative;padding:12px 12px 14px;background:var(--pp);color:var(--ink);border-radius:3px;box-shadow:0 10px 22px rgba(0,0,0,.4);counter-increment:h}
+.hist li:nth-child(odd){transform:rotate(-1deg)}.hist li:nth-child(even){transform:rotate(1deg)}
+.hist li::before{content:counter(h);position:absolute;top:-12px;left:-8px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ob,#62B43C);color:#fff;font:700 16px/1 'Kalam',cursive;box-shadow:0 3px 8px rgba(0,0,0,.4)}
+.hist b{display:block;font:700 20px/1.05 'Kalam',cursive}.hist small{display:block;margin-top:4px;color:#5B5A45;font-size:12.5px;line-height:1.35}
+.hist-nota{margin:14px 0 0;color:var(--mu);font-size:14px}
+@media (max-width:1100px){.hist{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:720px){.hist{grid-template-columns:repeat(2,minmax(0,1fr))}.fern{width:130px;height:112px}}
 
-  <!-- NAV -->
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.ark-ed{margin-left:auto;padding:4px 10px;border-radius:99px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ln)}
+.ark{position:relative;min-height:100vh;color:var(--tx);background:var(--bg);font:15px/1.55 'IBM Plex Sans',sans-serif;overflow-x:clip}
+.ark *{box-sizing:border-box}
+.blk{position:relative;z-index:1;margin-top:56px}
+.bh{margin-bottom:18px}.bh h2{margin:4px 0 6px}.bh p{margin:0;max-width:70ch;color:var(--mu)}
+.sxs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.sx{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:230px;padding:16px;overflow:hidden;text-decoration:none;color:#fff;isolation:isolate}
+.sx img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s}
+.sx::after{content:"";position:absolute;inset:0;z-index:-1}
+.sx:hover img{transform:scale(1.06)}
+.sx b{font-size:22px;line-height:1.1}.sx small{color:rgba(255,255,255,.8);font-size:13px;line-height:1.35;margin-top:4px}
+.flt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px}
+.fb{cursor:pointer;font:600 14px/1 'IBM Plex Sans',sans-serif;padding:10px 16px}
+.cnt{margin-left:auto;color:var(--mu);font-size:13px}
+.cri{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:22px;align-items:start}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cc{position:relative;display:flex;flex-direction:column;text-align:left;cursor:pointer;padding:0;overflow:hidden;font:inherit;color:inherit}
+.cc img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 40%}
+.det{position:sticky;top:130px}
+.det img{display:block;width:100%}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:14px 0 0;font-size:14px}.dl dt{color:var(--mu)}.dl dd{margin:0}
+.sts{display:grid;gap:8px;margin-top:14px}.sr2{display:grid;grid-template-columns:64px 1fr 48px;align-items:center;gap:10px;font-size:13px}.sr2 i{display:block;height:8px;border-radius:99px;background:var(--trk)}.sr2 i b{display:block;height:100%;border-radius:inherit;background:var(--ac)}.sr2 span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.mps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.mp{display:flex;flex-direction:column;gap:8px;padding:8px;cursor:pointer;font:600 13px/1.2 'IBM Plex Sans',sans-serif;color:inherit;text-align:left}
+.mp i{display:block;aspect-ratio:1;background-image:url(../assets/ark/mapas.webp);background-size:400% 300%;background-repeat:no-repeat}
+.mpd{margin:14px 0 0;color:var(--mu)}.mpd b{color:var(--tx)}
+.foot{position:relative;z-index:1;margin-top:80px;padding:36px 0 110px;border-top:1px solid var(--ln);color:var(--mu);font-size:13px}.foot p{max-width:80ch}
+.fb:focus-visible,.cc:focus-visible,.mp:focus-visible,.sx:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+@media (max-width:1100px){.sxs{grid-template-columns:repeat(3,minmax(0,1fr))}.cri{grid-template-columns:1fr}.det{position:static}.mps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:720px){.wrap{padding:0 16px}.sxs{grid-template-columns:repeat(2,minmax(0,1fr))}.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.mps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.sx img{transition:none}}
+
+.ark.dosier{--bg:#16200F;--tx:#F1EBDC;--mu:#BFC6A8;--ac:#D9A441;--ln:rgba(233,223,200,.18);--pp:#EAE0C8;--ink:#2B2A1E;--trk:rgba(43,42,30,.14)}
+.dosier::before{content:"";position:fixed;inset:0;z-index:0;background:radial-gradient(120% 80% at 50% 0%,rgba(40,70,20,.35),rgba(10,16,8,.94) 70%),url(../assets/ark/fondos/raptores.webp) center/cover no-repeat}
+.dosier .kk{font:700 13px/1 'Kalam',cursive;letter-spacing:.06em;color:var(--ac)}
+.dosier h1,.dosier h2,.dosier h3{font-family:'Kalam',cursive;font-weight:700}
+.dosier .bh h2{font-size:40px;line-height:1}
+.hero-b{position:relative;z-index:1;padding:70px 0 20px}
+.hero-b .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:30px;align-items:center}
+.hero-b h1{margin:8px 0 12px;font-size:clamp(56px,7vw,100px);line-height:.9;color:var(--pp);text-shadow:0 3px 0 rgba(0,0,0,.4)}
+.hero-b p{font-size:18px;color:#E2DCC9;max-width:52ch}
+.hero-b .note{display:inline-block;margin-top:16px;padding:10px 14px;background:var(--pp);color:var(--ink);font:700 17px/1.3 'Kalam',cursive;transform:rotate(-2deg);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.book{position:relative;transform:rotate(2deg);filter:drop-shadow(0 24px 40px rgba(0,0,0,.6))}
+.book img{display:block;width:100%}
+.book::before{content:"";position:absolute;top:-10px;left:42%;width:110px;height:28px;background:rgba(230,215,170,.75);transform:rotate(-4deg);z-index:2}
+.dosier .sx{border-radius:4px;color:var(--ink);background:var(--pp);padding:10px 10px 14px;min-height:0;justify-content:flex-start;box-shadow:0 12px 26px rgba(0,0,0,.45)}
+.dosier .sx:nth-child(odd){transform:rotate(-1.2deg)}.dosier .sx:nth-child(even){transform:rotate(1deg)}
+.dosier .sx img{position:static;height:120px;z-index:auto;filter:sepia(.35) saturate(1.1);margin-bottom:10px}
+.dosier .sx::after{display:none}
+.dosier .sx b{font:700 24px/1 'Kalam',cursive}.dosier .sx small{color:#5B5A45}
+.dosier .sx-n{order:3;margin-top:8px;font:700 14px/1 'Kalam',cursive;color:#7A5A16}
+.dosier .fb{border:2px solid var(--pp);border-radius:4px;background:transparent;color:var(--pp);font-family:'Kalam',cursive;font-size:17px;padding:6px 14px}
+.dosier .fb[aria-pressed="true"]{background:var(--pp);color:var(--ink)}
+.dosier .cc{background:var(--pp);color:var(--ink);border:0;border-radius:3px;padding:8px 8px 10px;box-shadow:0 10px 22px rgba(0,0,0,.4);transition:transform .2s}
+.dosier .cc:hover{transform:translateY(-3px) rotate(-.6deg)}
+.dosier .cc img{object-fit:contain;background:transparent}
+.dosier .cc b{display:block;font:700 20px/1 'Kalam',cursive;margin-top:4px}.dosier .cc small{color:#5B5A45;font-size:12px}
+.dosier .cc[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ac),0 12px 26px rgba(0,0,0,.5)}
+.dosier .det{background:var(--pp);color:var(--ink);padding:16px 18px 20px;border-radius:3px;box-shadow:0 24px 50px rgba(0,0,0,.55);--mu:#6A6852;--ac:#4E7A1E}
+.dosier .det h3{margin:6px 0 0;font-size:40px;line-height:1}.dosier .det em{font-style:italic;color:#6A6852}
+.dosier .det .uso{font:700 18px/1.3 'Kalam',cursive;color:#7A3B16;margin:8px 0 0}
+.dosier .mp{background:var(--pp);color:var(--ink);border:0;border-radius:3px;box-shadow:0 8px 18px rgba(0,0,0,.4)}
+.dosier .mp i{filter:sepia(.5)}.dosier .mp[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ac)}
+.dosier .mpd{font:700 18px/1.4 'Kalam',cursive;color:var(--pp)}
+
+/* gm-diario: tema de ARK (diario del explorador, plantas y obeliscos) */
+:root{--ob-r:#E0493A;--ob-b:#3E92E0;--ob-g:#62B43C;--pp:#EAE0C8;--pp2:#DDD0B0;--ink:#2B2A1E;--jg:#0F170C}
+.nav{background:linear-gradient(180deg,rgba(14,22,11,.97),rgba(10,16,8,.97));border-bottom:0}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--ob-r) 0 33.3%,var(--ob-b) 33.3% 66.6%,var(--ob-g) 66.6%);box-shadow:0 0 14px rgba(98,180,60,.35)}
+.nav .brand-name span{color:#9BD15E}
+.nav .search input{background:rgba(234,224,200,.06);border-color:rgba(234,224,200,.14)}
+.nav .search input:focus{border-color:rgba(98,180,60,.7);box-shadow:0 0 0 4px rgba(98,180,60,.16)}
+.sub{position:relative;border-top:0;background:linear-gradient(180deg,#1B2614,#141D0F);box-shadow:inset 0 1px 0 rgba(234,224,200,.06)}
+.sub::before,.sub::after{content:"";position:absolute;top:100%;width:170px;height:120px;pointer-events:none;z-index:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 120'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M14 0c4 30-6 52 2 86' stroke='%23476A1C' stroke-width='2.4'/%3E%3Cpath d='M58 0c-3 22 5 38 1 58' stroke='%23476A1C' stroke-width='2.2'/%3E%3Cpath d='M104 0c3 34-4 64 3 104' stroke='%23476A1C' stroke-width='2.4'/%3E%3Cpath d='M146 0c-2 18 3 30 0 44' stroke='%23476A1C' stroke-width='2'/%3E%3C/g%3E%3Cg fill='%2372A82C'%3E%3Cpath d='M16 18c-11 1-15 9-13 16c8-1 13-7 13-16zM15 46c11 1 15 9 13 16c-8-1-13-7-13-16zM16 74c-10 2-13 10-10 16c8-2 11-8 10-16z'/%3E%3Cpath d='M59 14c10 2 13 10 11 16c-8-2-12-8-11-16zM60 40c-10 2-13 10-11 16c8-2 12-8 11-16z'/%3E%3Cpath d='M105 20c-11 1-15 9-13 16c8-1 13-7 13-16zM106 50c11 1 15 9 13 16c-8-1-13-7-13-16zM105 80c-11 1-15 9-13 16c8-1 13-7 13-16z'/%3E%3Cpath d='M147 14c9 2 12 9 10 14c-7-1-11-7-10-14z'/%3E%3C/g%3E%3Cg fill='%2399CF4E'%3E%3Ccircle cx='16' cy='88' r='3'/%3E%3Ccircle cx='107' cy='106' r='3.4'/%3E%3Ccircle cx='59' cy='59' r='2.6'/%3E%3C/g%3E%3C/svg%3E") 0 0/contain no-repeat}
+.sub::before{left:0}.sub::after{right:0;transform:scaleX(-1)}
+.gchip{font-family:'Kalam',cursive;font-weight:700;font-size:21px;letter-spacing:.02em;text-transform:none;color:var(--pp);border-right-color:rgba(234,224,200,.14)}
+.gchip img{border-radius:8px;box-shadow:0 0 0 2px rgba(234,224,200,.25)}
+.slink{gap:8px;height:50px;padding:0 14px;color:#C9C2A8;font-family:'Kalam',cursive;font-size:17px;font-weight:700}
+.slink::before{content:"";width:8px;height:14px;clip-path:polygon(50% 0,100% 30%,80% 100%,20% 100%,0 30%);background:var(--oc,var(--ob-g));box-shadow:0 0 8px var(--oc,var(--ob-g));opacity:.85}
+.slink:hover{color:var(--pp)}
+.sub .slink.on{color:#2B2A1E!important;background:none!important}
+.sub .slink.on::after{left:4px!important;right:4px!important;bottom:6px!important;top:6px!important;height:auto!important;z-index:-1;background:#EAE0C8!important;border-radius:4px 4px 2px 2px;box-shadow:0 3px 0 var(--oc,var(--ob-g)),0 6px 16px rgba(0,0,0,.4);transform:rotate(-1deg)}
+.sub .slink.on{z-index:0}
+.slink.o-r{--oc:var(--ob-r)}.slink.o-b{--oc:var(--ob-b)}.slink.o-g{--oc:var(--ob-g)}.slink.o-a{--oc:#E2B13C}
+.ark-ed{margin-left:auto;padding:5px 12px;border-radius:3px;background:transparent;border:2px solid rgba(224,73,58,.75);color:#F08A7C;font:700 13px/1 'Kalam',cursive;letter-spacing:.06em;text-transform:uppercase;transform:rotate(-3deg);box-shadow:none}
+.ark-obs{display:flex;gap:5px;margin-left:12px}.ark-obs i{width:7px;height:20px;clip-path:polygon(50% 0,100% 25%,85% 100%,15% 100%,0 25%);background:var(--c);box-shadow:0 0 10px var(--c)}
+@media (max-width:860px){.sub::before,.sub::after{width:110px;height:80px}.ark-obs{display:none}}
+</style></helmet>
+<div class="ark dosier">
   <header class="nav">
     <div class="wrap nav-in">
       <div class="nav-l">
@@ -457,71 +294,57 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
     <nav class="sub" aria-label="Secciones de ARK">
       <div class="wrap sub-in">
         <a class="gchip" href="Ark.dc.html"><img src="../assets/juegos/logo-ark.webp" alt="">ARK</a>
-        <a class="slink on" href="Ark.dc.html">Portada</a>
-        <a class="slink" href="ArkCriaturas.dc.html">Criaturas</a>
-        <a class="slink" href="ArkEngramas.dc.html">Engramas</a>
-        <a class="slink" href="ArkRecursos.dc.html">Recursos</a>
-        <a class="slink" href="ArkGuias.dc.html">Guías</a>
-        <span class="ark-ed">Survival Evolved</span>
+        <a class="slink o-g on" href="Ark.dc.html" aria-current="page">Portada</a>
+        <a class="slink o-g" href="ArkCriaturas.dc.html">Criaturas</a>
+        <a class="slink o-b" href="ArkEngramas.dc.html">Engramas</a>
+        <a class="slink o-r" href="ArkRecursos.dc.html">Recursos</a>
+        <a class="slink o-a" href="ArkGuias.dc.html">Guías</a>
+        <span class="ark-ed">Survival Evolved</span><span class="ark-obs" aria-hidden="true"><i style="--c: #E0493A"></i><i style="--c: #3E92E0"></i><i style="--c: #62B43C"></i></span>
       </div>
     </nav>
   </header>
-
-  <section class="ark-hero">
-    <img class="bg" src="../assets/juegos/hero-ark.webp" alt="">
-    <div class="wrap">
-      <span class="kk">ARK: Survival Evolved</span>
-      <h1>Sobrevive, doma y <em>construye</em>.</h1>
-      <p class="lead">Las 132 criaturas que se pueden domar, qué comen y en qué mapa salen; los engramas que merecen la pena, dónde sacar cada recurso y guías para montar tu base y tus granjas.</p>
-      <div class="ark-cta"><a class="ark-btn" href="ArkCriaturas.dc.html">Ver las criaturas →</a><a class="ark-btn o" href="ArkGuias.dc.html">Empieza por las guías</a></div>
-      <dl class="ark-stats"><div><dt>12</dt><dd>mapas oficiales</dd></div><div><dt>{{nCr}}</dt><dd>criaturas domables</dd></div><div><dt>6</dt><dd>mapas de la historia</dd></div><div><dt>{{nEx}}</dt><dd>criaturas exclusivas de un mapa</dd></div></dl>
+  <section class="hero-b"><i class="fern" style="left:-10px;bottom:-40px" aria-hidden="true"></i><i class="fern r" style="right:-10px;bottom:-40px" aria-hidden="true"></i><div class="wrap"><div><span class="kk">Notas de un superviviente</span><h1>El diario<br>del ARK</h1>
+      <p>Cada criatura con su dosier: qué come, cómo se doma y para qué sirve. Apuntes de campo para no morir la primera noche.</p>
+      <span class="note">835 criaturas · 12 mapas · 1 objetivo: sobrevivir</span></div>
+      <div class="book"><img src="../assets/ark/dosieres/rex.webp" alt="Dosier del Rex"></div></div></section>
+  <section class="wrap blk" aria-labelledby="h-sec">
+    <header class="bh"><span class="kk">Explora</span><h2 id="h-sec">Todo ARK en un sitio</h2></header>
+    <div class="sxs"><a class="sx" href="ArkCriaturas.dc.html"><img src="../assets/ark/fondos/raptores.webp" alt="" loading="lazy"><span class="sx-n">835 en la wiki</span><b>Criaturas</b><small>Doma, comida, montura y en qué mapa vive cada una</small></a><a class="sx" href="#mapas"><img src="../assets/ark/fondos/secuoyas.webp" alt="" loading="lazy"><span class="sx-n">12 mapas</span><b>Mapas</b><small>Biomas, cuevas, recursos y criaturas exclusivas</small></a><a class="sx" href="ArkEngramas.dc.html"><img src="../assets/ark/fondos/superviviente.webp" alt="" loading="lazy"><span class="sx-n">Por nivel</span><b>Engramas</b><small>Qué aprender primero y qué cuesta fabricarlo</small></a><a class="sx" href="ArkRecursos.dc.html"><img src="../assets/ark/fondos/pradera.webp" alt="" loading="lazy"><span class="sx-n">Dónde farmear</span><b>Recursos</b><small>Metal, cristal, perla, aceite… y con qué criatura</small></a><a class="sx" href="ArkGuias.dc.html"><img src="../assets/ark/fondos/jinetes.webp" alt="" loading="lazy"><span class="sx-n">Bases y granjas</span><b>Guías</b><small>Cría, granjas automáticas y sistemas útiles</small></a></div>
+  </section>
+  <div class="leaf-div" aria-hidden="true">❦</div>
+  <section class="wrap blk" aria-labelledby="h-cri">
+    <header class="bh"><span class="kk">Criaturas destacadas</span><h2 id="h-cri">Elige tu próxima doma</h2>
+      <p>Algunas de las más útiles, con su dosier. En la página de criaturas están todas, con sus variantes y filtros por mapa.</p></header>
+    <div class="flt" role="group" aria-label="Filtrar criaturas"><sc-for list="{{filters}}" as="x" hint-placeholder-count="4"><button type="button" class="fb" aria-pressed="{{x.pressed}}" onClick="{{x.pick}}">{{x.n}}</button></sc-for><span class="cnt">{{count}} criaturas</span></div>
+    <div class="cri">
+      <div class="cgrid"><sc-for list="{{cards}}" as="c" hint-placeholder-count="12"><button type="button" class="cc" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}"><img src="{{c.img}}" alt="" loading="lazy"><b>{{c.n}}</b><small>{{c.diet}} · {{c.mont}}</small></button></sc-for></div>
+      <aside class="det" aria-live="polite"><img src="{{sel.img}}" alt="Dosier de {{sel.n}}"><em>{{sel.sp}}</em><h3>{{sel.n}}</h3><p class="uso">{{sel.uso}}</p>
+        <dl class="dl"><dt>Dieta</dt><dd>{{sel.diet}}</dd><dt>Carácter</dt><dd>{{sel.temp}}</dd><dt>Doma</dt><dd>{{sel.met}}</dd><dt>Comida</dt><dd>{{sel.fav}}</dd><dt>Montura</dt><dd>{{sel.mont}}</dd><dt>Mapas</dt><dd>{{sel.nmaps}} · {{sel.mapsTxt}}</dd></dl>
+        <div class="sts"><sc-for list="{{sel.stats}}" as="s" hint-placeholder-count="4"><div class="sr2"><span>{{s.n}}</span><i><b style="{{s.w}}"></b></i><span>{{s.v}}</span></div></sc-for></div>
+      </aside>
     </div>
   </section>
-
-  <section class="ark-sec" id="mapas">
-    <div class="wrap">
-      <header><div><span class="kk">Los mapas</span><h2>Doce mundos, doce ARK</h2><p>Seis cuentan la historia (el mapa base y sus expansiones) y seis son mapas gratuitos hechos por la comunidad que Studio Wildcard incluyó en el juego. Pulsa uno para ver qué tiene de especial.</p></div></header>
-      <div class="mp-grid"><sc-for list="{{maps}}" as="m" hint-placeholder-count="12"><button type="button" class="mp" aria-pressed="{{m.pr}}" onClick="{{m.pick}}"><span class="mp-img" style="background-position: {{m.bp}}" role="img" aria-label="Mapa de {{m.n}}"></span><b>{{m.n}}</b><small><span class="tag {{m.tc}}">{{m.t}}</span><span class="tag">{{m.y}}</span><span class="tag">{{m.nct}}</span></small></button></sc-for></div>
-      <div class="mp-det" aria-live="polite">
-        <span class="mp-img" style="background-position: {{sel.bp}}" role="img" aria-label="Mapa de {{sel.n}}"></span>
-        <div>
-          <span class="kk">{{sel.t}} · {{sel.y}}</span>
-          <h3>{{sel.n}}</h3>
-          <p>{{sel.d}}</p>
-          <p><b>{{sel.nc}}</b> criaturas domables aparecen aquí{{sel.histTxt}}.</p>
-          <sc-if value="{{sel.hasEx}}" hint-placeholder-val="{{ true }}"><h4 class="kk" style="margin-top: 16px">Solo en este mapa</h4><div class="ex"><sc-for list="{{sel.ex}}" as="e" hint-placeholder-count="3"><a href="ArkCriaturas.dc.html"><span class="ico" style="--bs: {{ics}}; background-position: {{e.bp}}" aria-hidden="true"></span>{{e.n}}</a></sc-for></div></sc-if>
-          <sc-if value="{{sel.noEx}}" hint-placeholder-val="{{ false }}"><p class="ark-note">No tiene criaturas domables exclusivas: comparte todas con otros mapas.</p></sc-if>
-        </div>
-      </div>
-    </div>
+  <div class="leaf-div" aria-hidden="true">❦</div>
+  <section class="wrap blk" id="mapas" aria-labelledby="h-map">
+    <header class="bh"><span class="kk">Los mapas</span><h2 id="h-map">Doce ARK para sobrevivir</h2></header>
+    <div class="mps"><sc-for list="{{maps}}" as="m" hint-placeholder-count="12"><button type="button" class="mp" aria-pressed="{{m.on}}" onClick="{{m.pick}}"><i style="background-position: {{m.bp}}"></i><b>{{m.n}}</b></button></sc-for></div>
+    <p class="mpd"><b>{{mapSel.n}}</b> · {{mapSel.d}}</p>
   </section>
 
-  <section class="ark-sec" id="historia">
-    <div class="wrap">
-      <header><div><span class="kk">Por dónde empezar</span><h2>El orden de la historia</h2><p>Si quieres seguir la historia de los supervivientes, juega los mapas en este orden. Los gratuitos se pueden jugar cuando quieras.</p></div></header>
-      <ol class="hist"><sc-for list="{{hist}}" as="h" hint-placeholder-count="6"><li><b>{{h.n}}</b><small>{{h.y}}</small></li></sc-for></ol>
-    </div>
+  <div class="leaf-div" aria-hidden="true">❦</div>
+  <section class="wrap blk" aria-labelledby="h-his">
+    <header class="bh"><span class="kk">Por dónde empezar</span><h2 id="h-his">El orden de la historia</h2></header>
+    <ol class="hist">
+      <li style="--ob: #62B43C"><b>The Island</b><small>Despiertas en la playa. Los tres obeliscos y los primeros jefes.</small></li>
+      <li style="--ob: #E2B13C"><b>Scorched Earth</b><small>El desierto, las wyverns y el Manticore.</small></li>
+      <li style="--ob: #3E92E0"><b>Aberration</b><small>Un ARK roto bajo tierra y Rockwell.</small></li>
+      <li style="--ob: #E0493A"><b>Extinction</b><small>La Tierra corrompida y los titanes.</small></li>
+      <li style="--ob: #3E92E0"><b>Genesis: Part 1</b><small>La simulación de HLN-A y sus misiones.</small></li>
+      <li style="--ob: #E0493A"><b>Genesis: Part 2</b><small>La nave colonia y el final de la historia.</small></li>
+    </ol>
+    <p class="hist-nota">The Center, Ragnarok, Valguero, Crystal Isles, Lost Island y Fjordur son mapas gratuitos: juégalos cuando quieras.</p>
   </section>
-
-  <section class="ark-sec" id="herramientas">
-    <div class="wrap">
-      <header><div><span class="kk">Herramientas</span><h2>Todo lo que necesitas</h2></div></header>
-      <div class="tools">
-        <a class="tool" href="ArkCriaturas.dc.html"><b>Criaturas</b><span>Cómo domar cada una, qué come y en qué mapas sale.</span></a>
-        <a class="tool" href="ArkEngramas.dc.html"><b>Engramas</b><span>Qué desbloquear en cada nivel y qué puedes saltarte.</span></a>
-        <a class="tool" href="ArkRecursos.dc.html"><b>Recursos</b><span>Dónde sacar cada material y con qué criatura.</span></a>
-        <a class="tool" href="ArkGuias.dc.html"><b>Guías</b><span>Bases, granjas, cría y sistemas útiles.</span></a>
-      </div>
-      <p class="ark-note">ARK: Survival Ascended (la versión nueva con Unreal Engine 5) llegará más adelante con su propia sección.</p>
-    </div>
-  </section>
-
-  <footer class="foot">
-    <div class="wrap">
-      <span class="brand-name">GRIETA<span>META</span></span>
-      <p>ARK: Survival Evolved y sus criaturas pertenecen a Studio Wildcard y sus licenciantes. GrietaMeta es un sitio de fans y no está afiliado a Studio Wildcard ni a Snail Games. Datos e imágenes: ARK Official Community Wiki (ark.wiki.gg).</p>
-    </div>
-  </footer>
+  <footer class="foot"><div class="wrap"><span class="brand-name">GRIETA<span>META</span></span><p>GrietaMeta es un sitio de fans y no está afiliado a Studio Wildcard. ARK: Survival Evolved y sus imágenes son material de Studio Wildcard. Datos y dosieres: ARK Official Community Wiki (ark.wiki.gg); capturas oficiales de Steam.</p></div></footer>
   <nav class="tabbar" aria-label="Navegación principal">
     <a class="tb" href="Main.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>Inicio</a>
     <a class="tb" href="Lol.dc.html"><img src="../assets/games/logo-lol.png" alt="">LoL</a>
@@ -531,31 +354,30 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
     <a class="tb" href="Login.dc.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Cuenta</a>
   </nav>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3000}}'>
-const MAPAS = [["The Island", "Base", 2015, "El mapa original: selvas, montañas nevadas, un volcán, cuevas de artefactos y los primeros jefes (Broodmother, Megapithecus y Dragon)."], ["The Center", "Gratuito", 2016, "Una isla gigante con una plataforma flotante en el centro, cascadas enormes y un mundo subterráneo."], ["Scorched Earth", "Expansión", 2016, "Desierto abrasador: calor extremo, tormentas de arena, agua escasa y wyverns."], ["Ragnarok", "Gratuito", 2017, "Mapa enorme de inspiración nórdica y celta: volcán, nieve, desierto, un castillo y el laberinto."], ["Aberration", "Expansión", 2017, "Un ARK roto bajo tierra: radiación, setas luminosas, Rock Drakes y los Sin Nombre."], ["Extinction", "Expansión", 2018, "La Tierra arrasada por el Element: la ciudad Santuario, los Titanes y la lluvia de suministros (OSD)."], ["Valguero", "Gratuito", 2019, "Valles verdes, un cañón inspirado en Aberration y el Deinonychus."], ["Genesis: Part 1", "Expansión", 2020, "Una simulación con cinco biomas y misiones guiadas por HLN-A."], ["Crystal Isles", "Gratuito", 2020, "Islas de cristal y las wyverns de cristal, que se doman sin huevo."], ["Genesis: Part 2", "Expansión", 2021, "La nave Génesis de Rockwell: el final de la historia de ARK: Survival Evolved."], ["Lost Island", "Gratuito", 2021, "Selvas, ruinas y criaturas nuevas como el Amargasaurus o el Sinomacrops."], ["Fjordur", "Gratuito", 2022, "Mapa vikingo con cuatro reinos (Midgard, Asgard, Vanaheim y Jotunheim) y Fenrir."]];
-const CR = [["Achatina", 0, "Invertebrados", "Herbívoro", "Pasivo", "Noqueo", "", ["Pastel dulce de verduras"], 0, 0, "", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Produce pasta de cemento sola si le das azúcar.", ""], ["Allosaurus", 1, "Dinosaurios", "Carnívoro", "Social y agresivo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "Allosaurus Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Combate en manada: tres o más se potencian.", ""], ["Anglerfish", 2, "Peces", "Carnívoro", "Agresivo con los pequeños, asustadizo con el resto", "Noqueo", "Kibble normal", ["Cordero crudo"], 0, 0, "Angler Egg", [0, 1, 3, 6, 7, 8, 9, 10, 11], "", ""], ["Ankylosaurus", 3, "Dinosaurios", "Herbívoro", "Dócil", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Ankylo Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "El mejor para metal, pedernal y cristal.", ""], ["Araneo", 4, "Invertebrados", "Carnívoro", "Agresivo", "Pasiva", "", ["Carne podrida"], 1, 1, "Araneo Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Trepa paredes y suelta tela que ralentiza.", ""], ["Archaeopteryx", 5, "Aves", "Carnívoro", "Miedoso", "Noqueo", "Kibble simple", ["Quitina"], 0, 0, "Archaeopteryx Egg", [0, 1, 2, 3, 5, 6, 7, 8, 10, 11], "", ""], ["Argentavis", 6, "Aves", "Carroñero", "Irascible", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "Argentavis Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Transporte aéreo: lleva criaturas medianas y mucha carga.", ""], ["Arthropluera", 7, "Invertebrados", "Carroñero", "Agresivo", "Pasiva", "", ["Broth of Enlightenment"], 1, 1, "Arthropluera Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta petróleo; su ácido daña estructuras.", ""], ["Astrocetus", 8, "Mamíferos", "Carnívoro", "Dócil", "Noqueo", "Kibble extraordinario", ["Cordero crudo"], 1, 1, "", [7, 9], "Nave de combate de Genesis.", ""], ["Astrodelphis", 9, "", "Carnívoro", "Curioso", "Pasiva", "", [], 1, 0, "", [9], "", ""], ["Baryonyx", 10, "Dinosaurios", "Piscívoro", "Territorial", "Noqueo", "Kibble normal", ["Pescado de primera crudo"], 1, 1, "Baryonyx Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Caza en agua y tierra y aturde a otras criaturas.", ""], ["Basilisk", 11, "Reptiles", "Carnívoro", "Agresivo", "Pasiva", "", ["Fertilized Rock Drake Egg", "Fertilized Magmasaur Egg", "Fertilized Wyvern Egg", "Fertilized Voidwyrm Egg"], 1, 1, "Basilisk Egg", [4, 7, 8, 9, 10, 11], "", ""], ["Basilosaurus", 12, "Mamíferos", "Piscívoro", "Pasivo", "Pasiva", "Kibble excepcional", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 8, 9, 10, 11], "Montura marina inmune a sanguijuelas y al frío.", ""], ["Beelzebufo", 13, "Anfibios", "Carnívoro", "Lánguido", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Beelzebufo Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Caza insectos y los convierte en pasta de cemento.", ""], ["Bloodstalker", 14, "Invertebrados", "Hematófago", "Agresivo", "Pasiva", "", [], 1, 0, "Bloodstalker Egg", [7, 9], "", ""], ["Brontosaurus", 15, "Dinosaurios", "Herbívoro", "Dócil", "Noqueo", "Kibble excepcional", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Bronto Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Plataforma enorme; recolecta bayas y paja.", ""], ["Bulbdog", 16, "Mamíferos", "Omnívoro", "Pasivo", "Pasiva", "", ["Semilla de planta Z"], 0, 0, "", [4, 6, 7, 9, 11], "", ""], ["Carbonemys", 17, "Reptiles", "Herbívoro", "Defensivo", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Turtle Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Tanque para los primeros niveles.", ""], ["Carnotaurus", 18, "Dinosaurios", "Carnívoro", "Agresivo", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Carno Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Castoroides", 19, "Mamíferos", "Herbívoro", "Amistoso", "Noqueo", "Kibble superior", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta madera y paja; su silla funciona como herrería.", ""], ["Chalicotherium", 20, "Mamíferos", "Herbívoro", "Territorial", "Pasiva", "", ["Jarra de cerveza"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Chalk Golem", 21, "", "", "", "Especial", "", [], 0, 0, "", [6], "", ""], ["Compy", 22, "Dinosaurios", "Carnívoro", "Curioso", "Noqueo", "", ["Cordero crudo"], 0, 0, "Compy Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Mascota pequeña que se potencia en grupo.", ""], ["Crystal Wyvern", 23, "Reptiles", "Carnívoro", "Dócil", "Pasiva", "", ["Cristal primordial"], 1, 0, "Blood Crystal Wyvern Egg, Ember Crystal Wyvern Egg, Tropical Crystal Wyvern Egg", [8], "Volador de combate de Crystal Isles.", ""], ["Daeodon", 24, "Mamíferos", "Carnívoro", "Agresivo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Cura a las criaturas cercanas a cambio de comida.", ""], ["Deinonychus", 25, "Dinosaurios", "Carnívoro", "Agresivo", "Especial", "", [], 1, 1, "Deinonychus Egg", [6, 11], "Se lanza sobre las presas y se agarra a ellas.", "Se cría desde un huevo robado de su nido."], ["Desert Titan", 26, "Titans", "", "Muy agresivo", "Especial", "", [], 0, 0, "", [5], "", "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar."], ["Dilophosaur", 27, "Dinosaurios", "Carnívoro", "Territorial", "Noqueo", "Kibble básico", ["Cordero crudo"], 0, 0, "Dilo Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Dimetrodon", 28, "Sinápsidos", "Carnívoro", "Reactivo", "Noqueo", "Kibble normal", ["Cordero crudo"], 0, 0, "Dimetrodon Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Da calor a los huevos para incubarlos.", ""], ["Dimorphodon", 29, "Reptiles", "Carnívoro", "Reactivo", "Noqueo", "", ["Cordero crudo"], 0, 0, "Dimorph Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Diplocaulus", 30, "Anfibios", "Piscívoro", "Asustadizo", "Noqueo", "Kibble simple", ["Cordero crudo"], 0, 0, "Diplocaulus Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Da oxígeno bajo el agua.", ""], ["Diplodocus", 31, "Dinosaurios", "Herbívoro", "Ingenuo", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Diplo Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Plataforma para llevar pasajeros.", ""], ["Dire Bear", 32, "Mamíferos", "Omnívoro", "Territorial", "Noqueo", "Kibble superior", ["Miel de abeja gigante"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta miel y bayas; buen luchador.", ""], ["Dire Polar Bear", 33, "", "", "", "Especial", "", [], 0, 0, "", [3, 6], "", ""], ["Direwolf", 34, "Mamíferos", "Carnívoro", "Agresivo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 0, "", [0, 1, 2, 3, 5, 6, 7, 8, 10, 11], "Combate en manada y detecta criaturas.", ""], ["Dodo", 35, "Aves", "Herbívoro", "Despistado", "Noqueo", "Kibble básico", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 0, 0, "Dodo Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Sus huevos sirven para el kibble básico.", ""], ["Doedicurus", 36, "Mamíferos", "Herbívoro", "Dócil", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "El mejor para piedra.", ""], ["Dung Beetle", 37, "Invertebrados", "Coprófago", "Neutral", "Pasiva", "", ["Heces grandes"], 0, 0, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Convierte heces en fertilizante y petróleo.", ""], ["Dunkleosteus", 38, "Peces", "Carnívoro", "Dócil", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 8, 9, 10, 11], "Recolecta metal, petróleo y perlas en el mar.", ""], ["Electrophorus", 39, "Peces", "Carnívoro", "Muy territorial", "Pasiva", "", ["Biotoxina"], 0, 0, "Eel Egg", [0, 1, 3, 6, 7, 8, 9, 10, 11], "", ""], ["Equus", 40, "Mamíferos", "Herbívoro", "Leal", "Pasiva", "Kibble simple", ["Rocazanahoria"], 1, 1, "", [0, 1, 2, 3, 5, 6, 7, 8, 10, 11], "Montura rápida; recolecta paja.", ""], ["Featherlight", 41, "Aves", "Herbívoro", "Pasivo", "Pasiva", "", ["Semilla de planta Z"], 0, 0, "Featherlight Egg", [4, 6, 7, 8, 9, 11], "", ""], ["Ferox", 42, "Mamíferos", "Omnívoro", "Reactivo", "Pasiva", "", ["Elemento"], 1, 0, "", [7, 9, 10, 11], "", ""], ["Forest Titan", 43, "Titans", "", "Muy agresivo", "Especial", "", [], 1, 0, "", [5], "", "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar."], ["Gacha", 44, "Mamíferos", "Omnívoro", "Dócil", "Pasiva", "", ["Bola de búho nival"], 1, 1, "", [5, 9, 11], "Fabrica objetos con lo que come.", ""], ["Gallimimus", 45, "Dinosaurios", "Herbívoro", "Asustadizo", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Gallimimus Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Montura muy rápida para tres jugadores.", ""], ["Gasbags", 46, "Invertebrados", "Omnívoro", "Dócil", "Noqueo", "Kibble superior", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [5, 7, 11], "Transporte ligero que flota.", ""], ["Giant Queen Bee", 47, "Invertebrados", "Herbívoro", "Territorial", "Pasiva", "Kibble simple", ["Flor rara"], 0, 0, "", [7, 8], "", ""], ["Giganotosaurus", 48, "Dinosaurios", "Carnívoro", "Furioso", "Noqueo", "Kibble excepcional", ["Cordero crudo"], 1, 1, "Giganotosaurus Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "El depredador terrestre más fuerte, pero se enfurece.", ""], ["Glowtail", 49, "Reptiles", "Herbívoro", "Pasivo", "Pasiva", "", ["Semilla de planta Z"], 0, 0, "Glowtail Egg", [4, 6, 8, 9, 10, 11], "", ""], ["Griffin", 50, "Birds, Mammals", "Carnívoro", "Agresivo", "Noqueo", "Kibble extraordinario", ["Cordero crudo"], 0, 0, "", [3, 8, 10, 11], "", ""], ["Hesperornis", 51, "Aves", "Piscívoro", "Insolente", "Pasiva", "", ["Pez muerto"], 0, 0, "Hesperornis Egg, Golden Hesperornis Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Hyaenodon", 52, "Mamíferos", "Carnívoro", "Oportunista", "Pasiva", "", [], 0, 0, "", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "", ""], ["Ice Golem", 53, "", "", "", "Especial", "", [], 0, 0, "", [6, 7], "", ""], ["Ice Titan", 54, "Titans", "", "Muy agresivo", "Especial", "", [], 1, 0, "", [5], "", "Se doma en Extinction destruyendo los nódulos de corrupción de su cuerpo; no se puede criar."], ["Ichthyornis", 55, "Aves", "Piscívoro", "Asustadizo", "Noqueo", "Kibble normal", ["Pescado de primera crudo"], 0, 0, "Ichthyornis Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Ichthyosaurus", 56, "Reptiles", "Carnívoro", "Curioso", "Pasiva", "Kibble simple", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 8, 9, 10, 11], "Montura marina rápida para explorar.", ""], ["Iguanodon", 57, "Dinosaurios", "Herbívoro", "Reactivo", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Iguanodon Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Convierte bayas en semillas.", ""], ["Jerboa", 58, "Mamíferos", "Herbívoro", "Cobarde", "Noqueo", "", ["Semilla de planta Y"], 0, 0, "", [2, 3, 6, 8, 9, 10], "Avisa del clima.", ""], ["Kairuku", 59, "Aves", "Piscívoro", "Amistoso", "Noqueo", "Kibble básico", ["Cordero crudo"], 0, 0, "Kairuku Egg", [0, 1, 3, 5, 6, 7, 8, 10, 11], "Da calor en zonas frías.", ""], ["Kaprosuchus", 60, "Reptiles", "Carnívoro", "Paciente", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Kaprosuchus Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Agarra criaturas y derriba jinetes.", ""], ["Karkinos", 61, "Invertebrados", "Omnívoro", "Agresivo", "Noqueo", "Kibble excepcional", [], 1, 1, "", [4, 6, 7, 8, 9, 11], "Agarra y lanza criaturas.", ""], ["Kentrosaurus", 62, "Dinosaurios", "Herbívoro", "Irascible", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 0, 0, "Kentro Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Lamprey", 63, "Peces", "Carnívoro", "Agresivo", "Pasiva", "", [], 0, 0, "", [4, 6, 7, 8, 9, 11], "", ""], ["Liopleurodon", 64, "Reptiles", "Goloso", "Esquivo", "Pasiva", "", ["Miel de abeja gigante"], 1, 0, "", [0, 1, 3, 6, 8, 9, 10, 11], "", ""], ["Lymantria", 65, "Invertebrados", "Herbívoro", "Esquivo", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Moth Egg", [2, 3, 5, 6, 8, 9, 10], "", ""], ["Lystrosaurus", 66, "Sinápsidos", "Herbívoro", "Leal", "Pasiva", "", ["Flor rara"], 0, 0, "Lystro Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Aumenta la experiencia de quien lo acaricia.", ""], ["Maewing", 67, "", "", "", "Noqueo", "", [], 1, 1, "Maewing Egg", [9, 10, 11], "Amamanta a las crías.", ""], ["Magmasaur", 68, "Reptiles", "Omnívoro", "Territorial", "Especial", "", [], 1, 1, "Magmasaur Egg", [7, 10, 11], "Funde metal y aguanta la lava.", "Se cría desde un huevo."], ["Mammoth", 69, "Mamíferos", "Herbívoro", "Dócil", "Noqueo", "Kibble superior", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta madera y paja y da calor.", ""], ["Managarmr", 70, "", "Carnívoro", "Agresivo", "Noqueo", "Kibble excepcional", ["Cordero crudo"], 1, 1, "", [5, 9, 10], "Volador de hielo muy rápido.", ""], ["Manta", 71, "Peces", "Carnívoro", "Agresivo", "Pasiva", "", ["Gel de rape"], 1, 1, "", [0, 1, 3, 6, 7, 8, 9, 10, 11], "Montura marina muy rápida.", ""], ["Mantis", 72, "Invertebrados", "Carnívoro", "Agresivo", "Pasiva", "", ["Cuerno de gusano de la muerte"], 1, 1, "Mantis Egg", [2, 3, 5, 6, 8, 9, 10, 11], "", ""], ["Megalania", 73, "Reptiles", "Carnívoro", "Territorial", "Noqueo", "Kibble extraordinario", ["Cordero crudo"], 1, 1, "Megalania Egg", [0, 1, 2, 3, 5, 7, 8, 10, 11], "", ""], ["Megaloceros", 74, "Mamíferos", "Herbívoro", "Asustadizo", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Megalodon", 75, "Peces", "Carnívoro", "Agresivo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 8, 9, 10, 11], "Combate en el mar; recolecta pescado.", ""], ["Megalosaurus", 76, "Dinosaurios", "Carnívoro", "Agresivo de noche", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "Megalosaurus Egg", [0, 1, 2, 3, 5, 8, 10, 11], "", ""], ["Megatherium", 77, "Mamíferos", "Omnívoro", "Neutral", "Noqueo", "Kibble superior", ["Miel de abeja gigante"], 1, 1, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Mesopithecus", 78, "Mamíferos", "Omnívoro", "Curioso", "Pasiva", "Kibble básico", ["Mejobaya"], 0, 0, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Mascota de hombro que recoge objetos.", ""], ["Microraptor", 79, "Dinosaurios", "Carnívoro", "Agresivo", "Noqueo", "", ["Flor rara"], 0, 0, "Microraptor Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Derriba a los jinetes.", ""], ["Morellatops", 80, "Dinosaurios", "Herbívoro", "Defensivo", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Morellatops Egg", [2, 3, 5, 8, 10], "Guarda agua; ideal en el desierto.", ""], ["Mosasaurus", 81, "Reptiles", "Carnívoro", "Agresivo", "Noqueo", "Kibble excepcional", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 8, 9, 10, 11], "Plataforma marina y combate.", ""], ["Moschops", 82, "Sinápsidos", "Omnívoro", "Cobarde", "Pasiva", "", ["Sap", "Leech Blood", "Organic Polymer"], 1, 0, "Moschops Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta un recurso según cómo lo domes.", ""], ["Noglin", 83, "", "", "Agresivo", "Pasiva", "", ["Live Creatures (Noglin)"], 0, 0, "", [9], "Controla a otras criaturas.", ""], ["Onyc", 84, "Mamíferos", "Omnívoro", "Agresivo", "Pasiva", "", ["Cordero crudo"], 0, 0, "", [0, 1, 2, 3, 5, 6, 7, 8, 10, 11], "", ""], ["Otter", 85, "Mamíferos", "Piscívoro", "Amistoso", "Pasiva", "", ["Pez muerto"], 0, 0, "", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Pesca perlas y da aislamiento.", ""], ["Oviraptor", 86, "Dinosaurios", "Carnívoro", "Asustadizo", "Noqueo", "", ["Giganotosaurus Egg"], 0, 0, "Oviraptor Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Hace que las criaturas cercanas pongan más huevos.", ""], ["Ovis", 87, "Mamíferos", "Herbívoro", "Torpe", "Pasiva", "", ["Pastel dulce de verduras"], 1, 0, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Da lana y cordero crudo.", ""], ["Pachy", 88, "Dinosaurios", "Herbívoro", "Pasivo", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Pachy Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "", ""], ["Pachyrhinosaurus", 89, "Dinosaurios", "Herbívoro", "Neutral", "Noqueo", "", ["Repelente de insectos"], 1, 1, "Pachyrhino Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Sus feromonas calman o enfurecen.", ""], ["Paraceratherium", 90, "Mamíferos", "Herbívoro", "Dócil", "Noqueo", "Kibble superior", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Plataforma grande para transportar.", ""], ["Parasaur", 91, "Dinosaurios", "Herbívoro", "Asustadizo", "Noqueo", "Kibble básico", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Parasaur Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Montura temprana que avisa de enemigos.", ""], ["Pegomastax", 92, "Dinosaurios", "Herbívoro", "Agresivo", "Pasiva", "", ["Mejobaya"], 0, 0, "Pegomastax Egg", [0, 1, 2, 3, 6, 7, 8, 9, 10, 11], "", ""], ["Pelagornis", 93, "Aves", "Piscívoro", "Asustadizo", "Noqueo", "Kibble normal", ["Pescado de primera crudo"], 1, 1, "Pelagornis Egg", [0, 1, 3, 6, 7, 8, 10, 11], "Vuela, nada y pesca.", ""], ["Phiomia", 94, "Mamíferos", "Herbívoro", "Asustadizo", "Noqueo", "Kibble básico", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Produce heces para el fertilizante.", ""], ["Phoenix", 95, "Aves", "Come fuego", "Esquivo", "Pasiva", "", [], 0, 0, "", [2], "Funde metal mientras vuela.", ""], ["Plesiosaur", 96, "Reptiles", "Carnívoro", "Dócil", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "", [0, 1, 3, 6, 7, 8, 9, 10, 11], "Plataforma marina.", ""], ["Procoptodon", 97, "Mamíferos", "Herbívoro", "Reactivo", "Noqueo", "", ["Seta rara"], 1, 1, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Lleva a un jugador en la bolsa y salta muy alto.", ""], ["Pteranodon", 98, "Reptiles", "Carnívoro", "Asustadizo", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Pteranodon Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Volador rápido para explorar.", ""], ["Pulmonoscorpius", 99, "Invertebrados", "Carnívoro", "Agresivo", "Noqueo", "Kibble normal", ["Carne podrida"], 1, 1, "Pulmonoscorpius Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Su aguijón narcotiza.", ""], ["Purlovia", 100, "Sinápsidos", "Carnívoro", "Paciente", "Noqueo", "Kibble normal", ["Cordero crudo"], 0, 0, "", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "", ""], ["Quetzal", 101, "Reptiles", "Carnívoro", "Asustadizo", "Noqueo", "Kibble excepcional", ["Cordero crudo"], 1, 1, "Quetzal Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Volador gigante y plataforma para construir.", ""], ["Raptor", 102, "Dinosaurios", "Carnívoro", "Agresivo", "Noqueo", "Kibble simple", ["Cordero crudo"], 1, 1, "Raptor Egg", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Montura rápida de los primeros niveles.", ""], ["Ravager", 103, "Mamíferos", "Carnívoro", "Agresivo", "Noqueo", "", ["Cordero crudo"], 1, 1, "", [4, 6, 7, 8, 9, 10, 11], "", ""], ["Reaper", 104, "", "Carnívoro", "Agresivo", "Especial", "", [], 1, 0, "", [4], "", "La reina segadora te implanta una cría, que nace de ti."], ["Rex", 105, "Dinosaurios", "Carnívoro", "Agresivo", "Noqueo", "Kibble excepcional", ["Cordero crudo"], 1, 1, "Rex Egg", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Combate y jefes.", ""], ["Rock Drake", 106, "Reptiles", "Carnívoro", "Territorial", "Especial", "", [], 1, 1, "Rock Drake Egg", [4, 11], "Trepa y planea en Aberration.", "Se cría desde un huevo robado en Aberration; la cría come veneno de los Sin Nombre."], ["Rock Elemental", 107, "", "", "", "Especial", "", [], 0, 0, "", [2, 3, 5, 8, 9, 10], "", ""], ["Roll Rat", 108, "Mamíferos", "Herbívoro", "Neutral", "Pasiva", "", ["Miel de abeja gigante"], 1, 1, "", [4, 6, 7, 9, 11], "", ""], ["Sabertooth", 109, "Mamíferos", "Carnívoro", "Agresivo", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Recolecta pieles y cuero.", ""], ["Sarco", 110, "Reptiles", "Carnívoro", "Paciente", "Noqueo", "Kibble normal", ["Pescado de primera crudo"], 1, 1, "Sarco Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Combate en ríos y recolecta pescado.", ""], ["Shadowmane", 111, "", "Carnívoro", "Agresivo", "Pasiva", "", ["Pescado"], 1, 0, "", [9, 11], "", ""], ["Shinehorn", 112, "Mamíferos", "Herbívoro", "Pasivo", "Pasiva", "", ["Semilla de planta Z"], 0, 0, "", [4, 7, 9, 11], "", ""], ["Snow Owl", 113, "Aves", "Carnívoro", "Agresivo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "Snow Owl Egg", [5, 10, 11], "Cura, congela y ve el calor.", ""], ["Spino", 114, "Dinosaurios", "Carnívoro", "Territorial", "Noqueo", "Kibble excepcional", ["Pescado de primera crudo"], 1, 1, "Spino Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Combate en agua y tierra.", ""], ["Stegosaurus", 115, "Dinosaurios", "Herbívoro", "Dócil", "Noqueo", "Kibble normal", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Stego Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta bayas; sus placas cambian de modo.", ""], ["Tapejara", 116, "Reptiles", "Carnívoro", "Asustadizo", "Noqueo", "Kibble superior", ["Cordero crudo"], 1, 1, "Tapejara Egg", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Vuela con tres jugadores y se pega a las paredes.", ""], ["Terror Bird", 117, "Aves", "Carnívoro", "Agresivo", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Terror Bird Egg", [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11], "Montura rápida que planea.", ""], ["Therizinosaur", 118, "Dinosaurios", "Herbívoro", "Territorial", "Noqueo", "Kibble excepcional", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Therizino Egg", [0, 1, 3, 5, 6, 7, 8, 9, 10, 11], "Recolecta de todo: madera, fibra, paja y bayas.", ""], ["Thorny Dragon", 119, "Reptiles", "Carnívoro", "Territorial", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Thorny Dragon Egg", [2, 3, 5, 7, 8, 9, 10, 11], "", ""], ["Thylacoleo", 120, "Mamíferos", "Carnívoro", "Agresivo", "Noqueo", "Kibble extraordinario", ["Chuleta de cordero cocinada"], 1, 1, "", [0, 1, 2, 3, 5, 6, 8, 10, 11], "Trepa árboles y embosca.", ""], ["Titanosaur", 121, "Dinosaurios", "Herbívoro", "Dócil", "Noqueo", "", [], 1, 1, "", [0, 1, 2, 3, 8, 10, 11], "Base móvil; no se puede criar.", ""], ["Triceratops", 122, "Dinosaurios", "Herbívoro", "Dócil", "Noqueo", "Kibble simple", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "Trike Egg", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Recolecta bayas y combate al principio.", ""], ["Troodon", 123, "Dinosaurios", "Carnívoro", "Agresivo de noche", "Pasiva", "", ["Criaturas vivas"], 0, 0, "Troodon Egg", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Caza de noche con veneno.", ""], ["Tropeognathus", 124, "Reptiles", "Piscívoro", "Neutral", "Pasiva", "Kibble excepcional", ["Cordero crudo"], 1, 1, "Tropeognathus Egg", [8, 11], "Volador a reacción.", ""], ["Tusoteuthis", 125, "Invertebrados", "Carnívoro", "Agresivo", "Pasiva", "", ["Perla negra"], 1, 1, "Tusoteuthis Egg", [0, 1, 3, 6, 7, 8, 9, 10, 11], "Agarra presas en el mar; da petróleo.", ""], ["Velonasaur", 126, "Dinosaurios", "Carnívoro", "Territorial", "Noqueo", "Kibble normal", ["Cordero crudo"], 1, 1, "Velonasaur Egg", [5, 11], "Dispara púas como una torreta.", ""], ["Voidwyrm", 127, "", "", "", "Pasiva", "", [], 1, 0, "Tek Wyvern Egg", [9], "", ""], ["Vulture", 128, "Aves", "Carroñero", "Neutral", "Pasiva", "", ["Carne podrida"], 0, 0, "Vulture Egg", [2, 3, 8, 9, 10, 11], "", ""], ["Woolly Rhino", 129, "Mamíferos", "Herbívoro", "Amistoso", "Noqueo", "Kibble superior", ["Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)"], 1, 1, "", [0, 1, 3, 5, 6, 8, 9, 10, 11], "Embiste y recolecta paja.", ""], ["Wyvern", 130, "Reptiles", "Carnívoro", "Agresivo", "Especial", "", [], 0, 0, "Fire Wyvern Egg, Ice Wyvern Egg, Lightning Wyvern Egg, Poison Wyvern Egg", [2, 3, 6, 10, 11], "Volador de combate con aliento.", "Se cría desde un huevo robado de su nido; la cría bebe leche de wyvern."], ["Yutyrannus", 131, "Dinosaurios", "Carnívoro", "Agresivo", "Noqueo", "Kibble extraordinario", ["Cordero crudo"], 1, 1, "Yutyrannus Egg", [0, 1, 2, 3, 5, 6, 8, 9, 10, 11], "Su rugido potencia a los aliados.", ""]];
-const icp = (i) => i < 0 ? '0 0' : ((i % 12) / 11 * 100).toFixed(3) + '% ' + (Math.floor(i / 12) / 10 * 100).toFixed(3) + '%';
-const ICS = '1200% 1100%';
-const mpp = (i) => ((i % 4) / 3 * 100).toFixed(3) + '% ' + (Math.floor(i / 4) / 2 * 100).toFixed(3) + '%';
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+const FEAT = [{"k": "rex", "n": "Rex", "img": "../assets/ark/dosieres/rex.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate y jefes.", "sp": "Tyrannosaurus dominum", "time": "Late Cretaceous", "st": [1100.0, 420.0, 500.0, 60.0]}, {"k": "raptor", "n": "Raptor", "img": "../assets/ark/dosieres/raptor.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Montura rápida de los primeros niveles.", "sp": "Utahraptor prime", "time": "Early Cretaceous", "st": [200.0, 150.0, 140.0, 15.0]}, {"k": "argentavis", "n": "Argentavis", "img": "../assets/ark/dosieres/argentavis.webp", "g": "Aves", "diet": "Carroñero", "temp": "Irascible", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Transporte aéreo: lleva criaturas medianas y mucha carga.", "sp": "Argentavis atrocollum", "time": "Late Miocene", "st": [365.0, 750.0, 350.0, 20.0]}, {"k": "ankylosaurus", "n": "Ankylosaurus", "img": "../assets/ark/dosieres/ankylosaurus.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "El mejor para metal, pedernal y cristal.", "sp": "Ankylosaurus crassacutis", "time": "Late Cretaceous", "st": [700.0, 175.0, 250.0, 50.0]}, {"k": "doedicurus", "n": "Doedicurus", "img": "../assets/ark/dosieres/doedicurus.webp", "g": "Mamíferos", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "El mejor para piedra.", "sp": "Doedicurus custosaxum", "time": "Pleistocene - Holocene", "st": [850.0, 300.0, 250.0, 32.0]}, {"k": "pteranodon", "n": "Pteranodon", "img": "../assets/ark/dosieres/pteranodon.webp", "g": "Reptiles", "diet": "Carnívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Volador rápido para explorar.", "sp": "Pteranodon wyvernus", "time": "Late Cretaceous", "st": [210.0, 300.0, 150.0, 15.0]}, {"k": "triceratops", "n": "Triceratops", "img": "../assets/ark/dosieres/triceratops.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta bayas y combate al principio.", "sp": "Triceratops styrax", "time": "Late Cretaceous", "st": [375.0, 150.0, 365.0, 32.0]}, {"k": "spinosaurus", "n": "Spino", "img": "../assets/ark/dosieres/spinosaurus.webp", "g": "Dinosaurios", "diet": "Carnívoro", "temp": "Territorial", "met": "Noqueo", "fav": "Pescado de primera crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate en agua y tierra.", "sp": "Spinosaurus aquareliga", "time": "Early-Late Cretaceous", "st": [700.0, 350.0, 350.0, 50.0]}, {"k": "quetzalcoatlus", "n": "Quetzal", "img": "../assets/ark/dosieres/quetzal.webp", "g": "Reptiles", "diet": "Carnívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Volador gigante y plataforma para construir.", "sp": "Quetzalcoatlus conchapicem", "time": "Late Cretaceous", "st": [1200.0, 750.0, 780.0, 32.0]}, {"k": "therizinosaurus", "n": "Therizinosaur", "img": "../assets/ark/dosieres/therizinosaur.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Territorial", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta de todo: madera, fibra, paja y bayas.", "sp": "", "time": "", "st": [870.0, 300.0, 365.0, 52.0]}, {"k": "megalodon", "n": "Megalodon", "img": "../assets/ark/dosieres/megalodon.webp", "g": "Peces", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Valguero", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Combate en el mar; recolecta pescado.", "sp": "Carcharodon ultramegalodon", "time": "Miocene - Pliocene", "st": [600.0, 320.0, 250.0, 40.0]}, {"k": "thylacoleo", "n": "Thylacoleo", "img": "../assets/ark/dosieres/thylacoleo.webp", "g": "Mamíferos", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Chuleta de cordero cocinada", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Crystal Isles", "Lost Island", "Fjordur"], "uso": "Trepa árboles y embosca.", "sp": "Thylacoleo furtimorsus", "time": "Late Pliocene - Late Pleistocene", "st": [700.0, 400.0, 400.0, 0.0]}, {"k": "direwolf", "n": "Direwolf", "img": "../assets/ark/dosieres/direwolf.webp", "g": "Mamíferos", "diet": "Carnívoro", "temp": "Agresivo", "met": "Noqueo", "fav": "Cordero crudo", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Lost Island", "Fjordur"], "uso": "Combate en manada y detecta criaturas.", "sp": "Canis maxdirus", "time": "Pleistocene", "st": [330.0, 260.0, 170.0, 33.0]}, {"k": "stegosaurus", "n": "Stegosaurus", "img": "../assets/ark/dosieres/stegosaurus.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta bayas; sus placas cambian de modo.", "sp": "Stegosaurus regium", "time": "Late Jurassic", "st": [650.0, 300.0, 500.0, 42.0]}, {"k": "parasaurolophus", "n": "Parasaur", "img": "../assets/ark/dosieres/parasaur.webp", "g": "Dinosaurios", "diet": "Herbívoro", "temp": "Asustadizo", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Scorched Earth", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Montura temprana que avisa de enemigos.", "sp": "Parasaurolophus amphibio", "time": "Late Cretaceous", "st": [200.0, 200.0, 280.0, 12.0]}, {"k": "woollymammoth", "n": "Mammoth", "img": "../assets/ark/dosieres/mammoth.webp", "g": "Mamíferos", "diet": "Herbívoro", "temp": "Dócil", "met": "Noqueo", "fav": "Cultivos (Mejobayas, Rocazanahoria, Hierbalarga, Sabroraíz, Citronal)", "ride": true, "maps": ["The Island", "The Center", "Ragnarok", "Extinction", "Valguero", "Genesis: Part 1", "Crystal Isles", "Genesis: Part 2", "Lost Island", "Fjordur"], "uso": "Recolecta madera y paja y da calor.", "sp": "Mammuthus steincaput", "time": "Early Pliocene", "st": [850.0, 330.0, 500.0, 42.0]}];
+const MAPS = [{"n": "The Island", "d": "El mapa original: selva, nieve y tres cuevas de artefactos", "bp": "0.0% 0%"}, {"n": "The Center", "d": "Una isla flotante con un mundo bajo tierra", "bp": "33.333% 0%"}, {"n": "Scorched Earth", "d": "Desierto abrasador con wyverns y tormentas", "bp": "66.667% 0%"}, {"n": "Ragnarok", "d": "Volcán, castillos y la mayor de las comunidades", "bp": "100.0% 0%"}, {"n": "Aberration", "d": "Un ARK roto: cavernas luminosas y radiación", "bp": "0.0% 50%"}, {"n": "Extinction", "d": "La Tierra en ruinas tras la corrupción", "bp": "33.333% 50%"}, {"n": "Valguero", "d": "Cañones profundos y la Zona Profunda", "bp": "66.667% 50%"}, {"n": "Genesis: Part 1", "d": "Una simulación con cinco biomas y misiones", "bp": "100.0% 50%"}, {"n": "Crystal Isles", "d": "Islas de cristal y wyverns de cristal", "bp": "0.0% 100%"}, {"n": "Genesis: Part 2", "d": "La nave colonia Rockwell y el final", "bp": "33.333% 100%"}, {"n": "Lost Island", "d": "Selva enorme con Dinopithecus y Amargasaurus", "bp": "66.667% 100%"}, {"n": "Fjordur", "d": "Fiordos nórdicos y cuatro reinos", "bp": "100.0% 100%"}];
+const MX = [1200.0, 750.0, 780.0, 60.0];
 class Component extends DCLogic {
   renderVals() {
-    const S = this.state || {};
-    const motion = this.props.animaciones ?? true;
-    const si = S.m == null ? 0 : S.m;
-    const nc = MAPAS.map((m, i) => CR.filter((c) => c[11].indexOf(i) >= 0).length);
-    const ex = MAPAS.map((m, i) => CR.filter((c) => c[11].length === 1 && c[11][0] === i));
-    const TC = { 'Base': 'base', 'Expansión': 'dlc', 'Gratuito': 'free' };
-    const maps = MAPAS.map((m, i) => ({ n: m[0], t: m[1], tc: TC[m[1]], y: m[2], nc: nc[i], nct: nc[i] + ' criaturas', bp: mpp(i), pr: i === si ? 'true' : 'false', pick: () => this.setState({ m: i }) }));
-    const H = ["The Island", "Scorched Earth", "Aberration", "Extinction", "Genesis: Part 1", "Genesis: Part 2"];
-    const m = MAPAS[si];
-    const hp = H.indexOf(m[0]);
-    const sel = { n: m[0], t: m[1], y: m[2], d: m[3], nc: nc[si], bp: mpp(si), ex: ex[si].map((c) => ({ n: c[0], bp: icp(c[1]) })), hasEx: ex[si].length > 0, noEx: ex[si].length === 0,
-      histTxt: hp >= 0 ? ' · es el capítulo ' + (hp + 1) + ' de la historia' : '' };
-    return { motionClass: motion ? '' : 'still', maps, sel, ics: ICS, nCr: CR.length, nEx: CR.filter((c) => c[11].length === 1).length,
-      hist: H.map((n) => ({ n, y: MAPAS[MAPAS.findIndex((x) => x[0] === n)][2] })) };
+    const S = this.state || {}; const set = (o) => this.setState(o);
+    const F = [['all', 'Todas'], ['car', 'Carnívoras'], ['her', 'Herbívoras'], ['ride', 'Se montan']];
+    const f = S.f || 'all';
+    const ok = (c) => f === 'all' || (f === 'car' && c.diet === 'Carnívoro') || (f === 'her' && c.diet === 'Herbívoro') || (f === 'ride' && c.ride);
+    const list = FEAT.filter(ok);
+    const sel = list.find((c) => c.k === S.sel) || list[0] || FEAT[0];
+    const pct = (v, i) => Math.max(4, Math.round(v / MX[i] * 100));
+    const SN = ['Vida', 'Energía', 'Peso', 'Ataque'];
+    return {
+      filters: F.map(([k, n]) => ({ n, pressed: k === f ? 'true' : 'false', pick: () => set({ f: k, sel: null }) })),
+      cards: list.map((c) => ({ ...c, pressed: c.k === sel.k ? 'true' : 'false', mont: c.ride ? 'Montura' : 'Sin silla', pick: () => set({ sel: c.k }) })),
+      count: String(list.length),
+      sel: { ...sel, mont: sel.ride ? 'Sí, con silla' : 'No se monta', nmaps: String(sel.maps.length), mapsTxt: sel.maps.join(' · '),
+        stats: sel.st.map((v, i) => ({ n: SN[i], v: String(Math.round(v)), w: 'width:' + pct(v, i) + '%' })) },
+      maps: MAPS.map((m, i) => ({ ...m, on: (S.map || 0) === i ? 'true' : 'false', pick: () => set({ map: i }) })),
+      mapSel: MAPS[S.map || 0],
+    };
   }
 }
 </script>
-</body>
-</html>
+</x-dc></body></html>

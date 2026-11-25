@@ -10,6 +10,7 @@
 <x-dc>
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
 @view-transition{navigation:auto}
 html{background:#0B0F0C;scroll-behavior:smooth;scroll-padding-top:130px}
@@ -79,6 +80,91 @@ body{margin:0;background:#0B0F0C}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ark *, .ark *::before,.ark *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 @media(max-width:860px){.wrap{width:min(100% - 36px,740px)}.nav-in{grid-template-columns:1fr auto;gap:14px}.search{display:none}.sub-in{width:100%;padding:0 18px}.content{grid-template-columns:minmax(0,1fr);gap:15px}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.side-card:first-child{grid-row:span 2}.hero-bg{width:70%;opacity:.48}.cat-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:560px){html{scroll-padding-top:112px}.wrap{width:calc(100% - 28px)}.nav-in{height:56px}.brand-mark{width:27px;height:30px}.brand-name{font-size:15px}.nav-actions a{height:34px;padding:0 9px;font-size:11px}.nav-actions .premium{display:none}.sub-in{height:46px;padding:0 14px;gap:0}.gchip{padding-right:10px;margin-right:2px}.gchip img{width:23px;height:23px}.gchip b{font-size:15px}.slink{height:46px;padding:0 9px;font-size:11px}.slink.on::after{left:8px;right:8px}.hero{min-height:0}.hero-bg{width:100%;opacity:.34}.hero::before{background:linear-gradient(90deg,rgba(11,15,12,.95),rgba(11,15,12,.62))}.hero-in{padding:35px 0 30px}.hero h1{font-size:46px;margin-top:15px}.hero p{font-size:14px;margin-top:12px}.hero-meta{margin-top:15px}.index{padding:22px 0}.index-head{display:block}.index h2{font-size:25px}.index-head p{margin-top:5px}.cat-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.cat{min-height:82px;padding:11px}.cat b{font-size:17px}.cat small{font-size:11px}.content{padding-top:23px;padding-bottom:40px}.section-head h2{font-size:27px}.guide summary{grid-template-columns:34px 1fr 20px;gap:9px;padding:12px 11px;min-height:70px}.g-num{width:32px;height:32px;font-size:16px}.g-title b{font-size:19px}.g-title small{font-size:11px}.g-facts{grid-column:2;justify-content:flex-start;grid-row:2;margin-top:-2px}.g-facts i{font-size:11px;padding:3px 6px}.chev{grid-column:3;grid-row:1}.guide-body{padding:0 12px 14px}.guide-grid{grid-template-columns:1fr;gap:13px}.steps li{font-size:12px}.need{padding:12px}.side{grid-template-columns:1fr}.side-card:first-child{grid-row:auto}.foot-in{align-items:flex-start;flex-direction:column;gap:10px}.foot{padding-bottom:84px}.tabbar{position:fixed;z-index:30;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;height:62px;padding-bottom:env(safe-area-inset-bottom);background:rgba(11,15,12,.98);border-top:1px solid var(--line)}.tb{min-width:56px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted);font-size:11px;text-decoration:none}.tb img{width:21px;height:21px;object-fit:contain}.tb.on{color:var(--amber);font-weight:700}.tb svg{width:21px;height:21px}}
+/* gm-diario: tema de ARK (diario del explorador, plantas y obeliscos) */
+:root{--ob-r:#E0493A;--ob-b:#3E92E0;--ob-g:#62B43C;--pp:#EAE0C8;--pp2:#DDD0B0;--ink:#2B2A1E;--jg:#0F170C}
+.nav{background:linear-gradient(180deg,rgba(14,22,11,.97),rgba(10,16,8,.97));border-bottom:0}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--ob-r) 0 33.3%,var(--ob-b) 33.3% 66.6%,var(--ob-g) 66.6%);box-shadow:0 0 14px rgba(98,180,60,.35)}
+.nav .brand-name span{color:#9BD15E}
+.nav .search input{background:rgba(234,224,200,.06);border-color:rgba(234,224,200,.14)}
+.nav .search input:focus{border-color:rgba(98,180,60,.7);box-shadow:0 0 0 4px rgba(98,180,60,.16)}
+.sub{position:relative;border-top:0;background:linear-gradient(180deg,#1B2614,#141D0F);box-shadow:inset 0 1px 0 rgba(234,224,200,.06)}
+.sub::before,.sub::after{content:"";position:absolute;top:100%;width:170px;height:120px;pointer-events:none;z-index:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 120'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M14 0c4 30-6 52 2 86' stroke='%23476A1C' stroke-width='2.4'/%3E%3Cpath d='M58 0c-3 22 5 38 1 58' stroke='%23476A1C' stroke-width='2.2'/%3E%3Cpath d='M104 0c3 34-4 64 3 104' stroke='%23476A1C' stroke-width='2.4'/%3E%3Cpath d='M146 0c-2 18 3 30 0 44' stroke='%23476A1C' stroke-width='2'/%3E%3C/g%3E%3Cg fill='%2372A82C'%3E%3Cpath d='M16 18c-11 1-15 9-13 16c8-1 13-7 13-16zM15 46c11 1 15 9 13 16c-8-1-13-7-13-16zM16 74c-10 2-13 10-10 16c8-2 11-8 10-16z'/%3E%3Cpath d='M59 14c10 2 13 10 11 16c-8-2-12-8-11-16zM60 40c-10 2-13 10-11 16c8-2 12-8 11-16z'/%3E%3Cpath d='M105 20c-11 1-15 9-13 16c8-1 13-7 13-16zM106 50c11 1 15 9 13 16c-8-1-13-7-13-16zM105 80c-11 1-15 9-13 16c8-1 13-7 13-16z'/%3E%3Cpath d='M147 14c9 2 12 9 10 14c-7-1-11-7-10-14z'/%3E%3C/g%3E%3Cg fill='%2399CF4E'%3E%3Ccircle cx='16' cy='88' r='3'/%3E%3Ccircle cx='107' cy='106' r='3.4'/%3E%3Ccircle cx='59' cy='59' r='2.6'/%3E%3C/g%3E%3C/svg%3E") 0 0/contain no-repeat}
+.sub::before{left:0}.sub::after{right:0;transform:scaleX(-1)}
+.gchip{font-family:'Kalam',cursive;font-weight:700;font-size:21px;letter-spacing:.02em;text-transform:none;color:var(--pp);border-right-color:rgba(234,224,200,.14)}
+.gchip img{border-radius:8px;box-shadow:0 0 0 2px rgba(234,224,200,.25)}
+.slink{gap:8px;height:50px;padding:0 14px;color:#C9C2A8;font-family:'Kalam',cursive;font-size:17px;font-weight:700}
+.slink::before{content:"";width:8px;height:14px;clip-path:polygon(50% 0,100% 30%,80% 100%,20% 100%,0 30%);background:var(--oc,var(--ob-g));box-shadow:0 0 8px var(--oc,var(--ob-g));opacity:.85}
+.slink:hover{color:var(--pp)}
+.sub .slink.on{color:#2B2A1E!important;background:none!important}
+.sub .slink.on::after{left:4px!important;right:4px!important;bottom:6px!important;top:6px!important;height:auto!important;z-index:-1;background:#EAE0C8!important;border-radius:4px 4px 2px 2px;box-shadow:0 3px 0 var(--oc,var(--ob-g)),0 6px 16px rgba(0,0,0,.4);transform:rotate(-1deg)}
+.sub .slink.on{z-index:0}
+.slink.o-r{--oc:var(--ob-r)}.slink.o-b{--oc:var(--ob-b)}.slink.o-g{--oc:var(--ob-g)}.slink.o-a{--oc:#E2B13C}
+.ark-ed{margin-left:auto;padding:5px 12px;border-radius:3px;background:transparent;border:2px solid rgba(224,73,58,.75);color:#F08A7C;font:700 13px/1 'Kalam',cursive;letter-spacing:.06em;text-transform:uppercase;transform:rotate(-3deg);box-shadow:none}
+.ark-obs{display:flex;gap:5px;margin-left:12px}.ark-obs i{width:7px;height:20px;clip-path:polygon(50% 0,100% 25%,85% 100%,15% 100%,0 25%);background:var(--c);box-shadow:0 0 10px var(--c)}
+@media (max-width:860px){.sub::before,.sub::after{width:110px;height:80px}.ark-obs{display:none}}
+
+/* gm-diario-cuerpo */
+html,body{background:#0A1008;color:#EAE0C8}
+.ark{position:relative;isolation:isolate;overflow-x:clip;background:transparent;color:#EAE0C8;font-family:'IBM Plex Sans',sans-serif}
+.ark::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(10,16,8,.16),rgba(10,16,8,.2)),radial-gradient(120% 80% at 50% 0%,rgba(40,70,20,.35),rgba(10,16,8,.94) 70%),url('../assets/ark/fondos/jinetes.webp') center/cover no-repeat}
+.ark>*{position:relative;z-index:1}
+.ark h1,.ark h2,.ark h3{font-family:'Kalam',cursive;font-style:italic;font-weight:700;text-transform:none;letter-spacing:0;color:#2B2A1E}
+.ark .hero{min-height:0;padding:58px 0 42px;border-bottom:1px solid rgba(234,224,200,.28);background:transparent}
+.ark .hero::before,.ark .hero-bg{display:none!important;content:none!important}
+.ark .hero h1,.ark .hero h1.cond{max-width:100%;white-space:normal;overflow-wrap:anywhere;font-family:'Kalam',cursive;font-style:italic;font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(42px,6vw,68px);line-height:1.02;color:#EAE0C8;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.ark .crumb,.ark .hero-meta{color:#C9C2A8;font:700 17px/1.3 'Kalam',cursive;letter-spacing:.02em}
+.ark .hero p,.ark .hero .lead{max-width:68ch;color:#EAE0C8}
+.ark .index{border:1px solid rgba(43,42,30,.35);border-radius:4px;background:#EAE0C8;color:#2B2A1E;box-shadow:0 10px 22px rgba(0,0,0,.4)}
+.ark .index-head,.ark .cat-list{color:#2B2A1E}.ark .index h2.cond,.ark .section-head h2{font:700 26px/1.2 'Kalam',cursive;font-style:italic;text-transform:none;letter-spacing:0;color:#2B2A1E}.ark .section-head h2{color:#EAE0C8}.ark .index-head p{color:#5B5A45}
+.ark .cat{border:2px solid #EAE0C8;border-radius:3px;background:transparent;color:#5B5A45;font:700 17px/1.25 'Kalam',cursive}
+.ark .cat b{display:block;color:#2B2A1E;font:700 18px/1.2 'Kalam',cursive;text-transform:none}.ark .cat small{display:block;margin-top:6px;color:#5B5A45;font:400 12px/1.45 'IBM Plex Sans',sans-serif}.ark .cat:hover,.ark .cat.on,.ark .cat[aria-pressed="true"]{background:#EAE0C8;color:#2B2A1E;border-color:#62B43C}
+.ark .content{color:#EAE0C8}
+.ark .guide{margin:0 0 12px;border:1px solid #B8AD8E;border-radius:4px;background:#EAE0C8;color:#2B2A1E;box-shadow:0 10px 22px rgba(0,0,0,.32)}
+.ark .guide[open]{box-shadow:0 10px 22px rgba(0,0,0,.38),inset 0 0 0 2px rgba(98,180,60,.65)}
+.ark .guide-list{border:0}
+.ark .section-head{color:#EAE0C8}
+.ark .guide-section{margin-top:24px}
+.ark .guide summary{color:#2B2A1E;min-width:0}.ark .guide summary>*{min-width:0}.ark .guide .g-title b{display:block;color:#2B2A1E;font:700 21px/1.2 'Kalam',cursive;font-style:italic;text-transform:none;letter-spacing:0}.ark .guide .g-title small{display:block;margin-top:5px;color:#5B5A45;font:400 12px/1.45 'IBM Plex Sans',sans-serif;font-style:normal}.ark .guide .g-facts i{color:#5B5A45;font-style:normal}
+.ark .g-num{color:#1D5C8C;font:700 19px 'Kalam',cursive}
+.ark .g-title{color:#2B2A1E;font:700 21px/1.2 'Kalam',cursive;font-style:italic}
+.ark .g-facts{color:#5B5A45}
+.ark .chev{color:#32661E}
+.ark .guide-body{border-top:1px solid #B8AD8E;color:#2B2A1E}
+.ark .guide-desc,.ark .need,.ark .note{color:#5B5A45}
+.ark .steps{color:#2B2A1E}.ark .steps li{color:#5B5A45}
+.ark .steps li::marker{color:#3E92E0;font-weight:700}
+.ark .need b,.ark .note b{color:#32661E}
+.ark .side-card{margin-bottom:16px;padding:19px;border:1px solid rgba(43,42,30,.35);border-radius:4px;background:#EAE0C8;color:#2B2A1E;box-shadow:0 10px 22px rgba(0,0,0,.4)}
+.ark .side-card h2{font-size:24px}
+.ark .side-card p,.ark .side-list{color:#5B5A45}
+.ark .useful-row{border-top:1px solid #B8AD8E;color:#2B2A1E}
+.ark .useful-row p{color:#5B5A45}
+.ark .side-link,.ark .source a{color:#285B20;font-weight:700;text-underline-offset:3px}
+.ark .foot{border-top:1px solid rgba(234,224,200,.25);color:#C9C2A8}
+.ark .foot b{color:#EAE0C8}
+.ark :focus-visible{outline:3px solid #E2B13C;outline-offset:3px}
+@media(max-width:860px){.ark .side-card{margin-bottom:14px}}
+@media(max-width:560px){.ark .hero{padding:36px 0 30px}.ark .hero h1,.ark .hero h1.cond{max-width:100%;white-space:normal;overflow-wrap:anywhere;font-size:clamp(32px,8.7vw,36px)}.ark .hero h1 span{display:inline-block;white-space:normal}.ark .guide{margin-bottom:10px}.ark .side-card{padding:15px}.ark .index,.ark .content,.ark .guide,.ark .side,.ark .side-card,.ark .index .wrap,.ark .guide summary,.ark .guide-body,.ark .hero>.wrap{box-sizing:border-box;width:100%;min-width:0;max-width:100%}.ark .cat-list{grid-template-columns:minmax(0,1fr);gap:7px}.ark .cat{width:100%;min-width:0}.ark .guide summary{grid-template-columns:34px minmax(0,1fr) 20px}.ark .guide .g-title,.ark .guide .g-title b,.ark .guide .g-title small,.ark .guide .g-facts{min-width:0;overflow-wrap:anywhere;white-space:normal}.ark .guide-grid,.ark .guide-body,.ark .steps,.ark .need,.ark .note{width:100%;min-width:0;max-width:100%;overflow-wrap:anywhere}.ark .guide .g-facts{display:flex;flex-wrap:wrap;gap:5px}.ark .guide summary{grid-template-columns:34px minmax(0,1fr) 20px}.ark .guide .g-title b{font-size:19px}.ark .guide .g-facts i{color:#5B5A45}.ark .steps li{color:#5B5A45}}
+
+@media(max-width:560px){
+.ark .hero>.wrap{width:calc(100% - 28px);margin-inline:auto}
+.ark .hero h1,.ark .hero h1.cond{font-size:34px;overflow-wrap:anywhere}
+.ark .hero p{max-width:100%;overflow-wrap:anywhere}
+.ark .index .wrap{box-sizing:border-box;width:calc(100% - 28px);margin-inline:auto;padding-left:0;padding-right:0}
+.ark .content{display:block;box-sizing:border-box;width:calc(100% - 28px);margin-inline:auto;padding-left:0;padding-right:0}
+.ark .guide-section,.ark .guide-list,.ark .guide,.ark .guide summary,.ark .guide-body,.ark .guide-grid,.ark .steps,.ark .need{box-sizing:border-box;width:100%;min-width:0;max-width:100%}
+.ark .guide summary{grid-template-columns:32px minmax(0,1fr) 18px;gap:8px;padding:12px 10px}
+.ark .guide .g-title,.ark .guide .g-title b,.ark .guide .g-title small{min-width:0;overflow-wrap:anywhere;white-space:normal}
+.ark .section-head{min-width:0;max-width:100%}
+.ark .side{display:block;width:100%;min-width:0}
+.ark .side-card{box-sizing:border-box;width:100%;min-width:0;overflow-wrap:anywhere}
+}
+
+.ark .side-list li{color:#5B5A45}
+.ark .side-list li::before{background:#62B43C}
+.ark .useful-row{padding:10px;border:1px solid #B8AD8E;border-radius:3px;background:#DDD0B0;color:#2B2A1E}
+.ark .useful-row b{color:#2B2A1E}
+.ark .useful-row p{color:#5B5A45}
 </style>
 </helmet>
 <div class="ark">
@@ -89,12 +175,17 @@ body{margin:0;background:#0B0F0C}
       <div class="nav-actions"><a class="premium" href="Premium.dc.html">Hazte Premium</a><a href="Login.dc.html">Iniciar sesión</a></div>
     </div>
   </header>
-  <nav class="sub" aria-label="Secciones de ARK: Survival Evolved">
-    <div class="wrap sub-in">
-      <a class="gchip" href="Ark.dc.html"><img src="../assets/juegos/logo-ark.webp" alt=""><b>ARK</b></a>
-      <a class="slink" href="Ark.dc.html">Portada</a><a class="slink" href="ArkCriaturas.dc.html">Criaturas</a><a class="slink" href="ArkEngramas.dc.html">Engramas</a><a class="slink" href="ArkRecursos.dc.html">Recursos</a><a class="slink on" href="ArkGuias.dc.html" aria-current="page">Guías</a>
-    </div>
-  </nav>
+  <nav class="sub" aria-label="Secciones de ARK">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Ark.dc.html"><img src="../assets/juegos/logo-ark.webp" alt="">ARK</a>
+        <a class="slink o-g" href="Ark.dc.html">Portada</a>
+        <a class="slink o-g" href="ArkCriaturas.dc.html">Criaturas</a>
+        <a class="slink o-b" href="ArkEngramas.dc.html">Engramas</a>
+        <a class="slink o-r" href="ArkRecursos.dc.html">Recursos</a>
+        <a class="slink o-a on" href="ArkGuias.dc.html" aria-current="page">Guías</a>
+        <span class="ark-ed">Survival Evolved</span><span class="ark-obs" aria-hidden="true"><i style="--c: #E0493A"></i><i style="--c: #3E92E0"></i><i style="--c: #62B43C"></i></span>
+      </div>
+    </nav>
   <section class="hero">
     <img class="hero-bg" src="../assets/juegos/hero-ark-se.webp" alt="">
     <div class="wrap hero-in">
