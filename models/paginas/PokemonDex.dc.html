@@ -496,6 +496,45 @@ body{margin:0;background:#07090D}
 }
 
 
+
+/* pk-color: menú a color, fondo con más color y pantalla de carga */
+.pk{background:radial-gradient(1200px 700px at 8% -5%,rgba(255,92,80,.16),transparent 60%),radial-gradient(1000px 700px at 100% 10%,rgba(91,140,255,.18),transparent 60%),radial-gradient(900px 600px at 50% 110%,rgba(255,203,61,.10),transparent 60%),#0B0E1A}
+body{background:#0B0E1A}
+.sub{background:linear-gradient(90deg,rgba(227,53,13,.28),rgba(255,183,3,.20) 22%,rgba(99,188,90,.18) 44%,rgba(77,144,213,.24) 66%,rgba(181,103,206,.26) 88%),rgba(14,17,30,.92)!important;border-top-color:rgba(255,255,255,.08)}
+.sub .slink{color:#F1F3F8}
+.sub .slink:hover{color:#FFF;background:rgba(255,255,255,.08);border-radius:10px}
+.sub .slink.on{color:#FFF}
+.sub .slink::before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--dot,#FFCB3D);box-shadow:0 0 8px var(--dot,#FFCB3D)}
+.sub .sub-in>a.slink:nth-of-type(2){--dot:#FF5A4E}
+.sub .sub-in>.dd:nth-of-type(1) .slink{--dot:#FFB703}
+.sub .sub-in>a.slink[href="PokemonDex.dc.html"]{--dot:#63BC5A}
+.sub .sub-in>a.slink[href="PokemonTipos.dc.html"]{--dot:#4D90D5}
+.sub .sub-in>a.slink[href="PokemonHabilidades.dc.html"]{--dot:#B567CE}
+.sub .dd .slink[href="PokemonCompetitivo.dc.html"]{--dot:#FA7179}
+.sub .slink.sl-mec{--dot:#73CEC0}
+.mci{display:grid;place-items:center;width:38px;height:38px;flex-shrink:0;border-radius:12px;font:800 17px/1 'Bricolage Grotesque','IBM Plex Sans',sans-serif;color:#0B0E1A}
+.mc-mega{background:conic-gradient(from 200deg,#FFCB3D,#FF5AA5,#5B8CFF,#73CEC0,#FFCB3D)}
+.mc-z{background:linear-gradient(135deg,#FFE36B,#F2A93B)}
+.mc-dx{background:linear-gradient(135deg,#FF4D6D,#B5179E)}
+.mc-tera{background:linear-gradient(135deg,#9BE7FF,#7C5CFF,#FF9DE2)}
+.pk-load{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(600px 400px at 50% 45%,rgba(255,90,78,.18),transparent 70%),#0B0E1A;color:#F1F3F8;font:600 14px 'IBM Plex Sans',sans-serif;letter-spacing:.06em;animation:pkOut .45s ease 1.25s forwards;pointer-events:none}
+.pk-ball{position:relative;width:84px;height:84px;border-radius:50%;background:linear-gradient(#EE3B36 0 46%,#151820 46% 54%,#F4F4F6 54%);box-shadow:inset -8px -10px 0 rgba(0,0,0,.18),0 18px 40px -12px rgba(238,59,54,.6);animation:pkWobble 1.1s ease-in-out infinite}
+.pk-ball i{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:#F4F4F6;border:5px solid #151820;box-sizing:border-box;animation:pkBlink 1.1s ease-in-out infinite}
+@keyframes pkWobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-18deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+@keyframes pkBlink{0%,60%{background:#F4F4F6}70%,90%{background:#FFE36B;box-shadow:0 0 14px #FFE36B}}
+@keyframes pkOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.pk-load{display:none}}
+.still .pk-load{display:none}
+
+.pf-scr .mgs.big{position:relative;z-index:1;width:250px;height:250px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:megaIn .7s cubic-bezier(.2,.9,.2,1)}
+.md-scr .mgs.big{width:240px;height:240px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:megaIn .7s cubic-bezier(.2,.9,.2,1)}
+.md-scr.is-mega::before{content:"";position:absolute;left:50%;top:50%;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:50%;background:conic-gradient(from 0deg,#FFCB3D,#FF5AA5,#5B8CFF,#73CEC0,#FFCB3D);filter:blur(26px);opacity:.45;animation:megaSpin 6s linear infinite}
+@keyframes megaIn{0%{transform:scale(.6);filter:brightness(4) drop-shadow(0 0 30px #fff)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes megaSpin{to{transform:rotate(360deg)}}
+.fsw{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:4px 0 10px}
+.fsw-b{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#DDE3EE;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.fsw-b.on{border-color:transparent;background:linear-gradient(90deg,#FFCB3D,#FF5AA5,#5B8CFF);color:#0B0E1A}
+@media (prefers-reduced-motion:reduce){.md-scr .mgs.big,.md-scr.is-mega::before{animation:none}}
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #FFCB3D;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#FFCB3D 38%,transparent);color:#fff}
@@ -505,6 +544,8 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 </helmet>
 
 <div class="pk {{motionClass}}">
+<div class="pk-load" aria-hidden="true"><div class="pk-ball"><i></i></div><span>Atrapando datos…</span></div>
+
   <header class="nav">
     <div class="wrap nav-in">
       <div class="nav-l">
@@ -582,13 +623,13 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
           </div>
         </div>
         <div class="dd">
-          <a class="slink" href="PokemonKanto.dc.html" aria-haspopup="true">Guías <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <a class="slink sl-mec" href="PokemonMecanicas.dc.html" aria-haspopup="true">Mecánicas <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
           <div class="menu">
             <div class="gl">
-              <a class="gi" href="PokemonKanto.dc.html"><span class="g1s" style="background-position: 33.333% 0.000%"></span><span><b>Historia de Kanto paso a paso</b><span>Rojo, Azul y Amarillo, de Paleta a la Liga</span></span></a>
-              <a class="gi" href="PokemonKantoMapa.dc.html"><span class="g1s" style="background-position: 53.333% 11.111%"></span><span><b>Mapa interactivo de Kanto</b><span>Pokémon por zona, MT, MO y objetos clave</span></span></a>
-              <a class="gi" href="PokemonKanto100.dc.html"><span class="g1s" style="background-position: 40.000% 100.000%"></span><span><b>Kanto al 100 %</b><span>Los 151, medallas, MT y legendarios</span></span></a>
-              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="g1s" style="background-position: 26.667% 100.000%"></span><span><b>Arquetipos del meta</b><span>Lluvia, sol, Espacio Raro y Viento Afín</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#mega"><span class="mci mc-mega" aria-hidden="true">M</span><span><b>Megaevolución</b><span>Las megapiedras y qué Pokémon pueden megaevolucionar</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#z"><span class="mci mc-z" aria-hidden="true">Z</span><span><b>Movimientos Z</b><span>Los cristales Z de cada tipo y los exclusivos</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#dinamax"><span class="mci mc-dx" aria-hidden="true">G</span><span><b>Dinamax y Gigamax</b><span>Los movimientos Max y las formas Gigamax</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#tera"><span class="mci mc-tera" aria-hidden="true">T</span><span><b>Teracristalización</b><span>Los teratipos y cómo cambian un combate</span></span></a>
             </div>
           </div>
         </div>
@@ -667,6 +708,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             <span class="{{p.artCls}}" style="background-position: {{p.ap}}"></span>
             <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><span class="pf-mega">{{p.megaN}}</span></sc-if>
           </div>
+          <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if>
           <div class="pf-b">
             <div class="pf-h">
               <div><h2 class="fd">{{p.n}}</h2><span class="genus">{{p.genus}}</span></div>
@@ -692,7 +734,8 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
           <button type="button" class="mdl-bg" onClick="{{closeM}}" aria-label="Cerrar"></button>
           <div class="mdl-d">
             <div class="md-l">
-              <div class="md-scr"><span class="{{p.artCls}}" style="background-position: {{p.ap}}"></span><span class="pf-num fd">#{{p.num}}</span></div>
+              <div class="md-scr {{p.scrCls}}"><span class="{{p.artCls}}" style="background-position: {{p.ap}}"></span><span class="pf-num fd">#{{p.num}}</span></div>
+              <sc-if value="{{p.hasMega}}" hint-placeholder-val="true"><div class="fsw" role="group" aria-label="Forma del Pokémon"><sc-for list="{{forms}}" as="f" hint-placeholder-count="2"><button type="button" class="fsw-b {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.n}}</button></sc-for></div></sc-if>
               <h2 class="fd">{{p.n}}</h2><span class="genus">{{p.genus}} · Gen {{p.gen}}</span>
               <div class="tys"><sc-for list="{{p.t}}" as="t" hint-placeholder-count="2"><span class="ty t-{{t.k}}"><i></i>{{t.n}}</span></sc-for></div>
               <div class="facts"><span><small>Altura</small><b>{{p.h}}</b></span><span><small>Peso</small><b>{{p.w}}</b></span><span><small>Categoría</small><b>{{p.cat}}</b></span></div>
@@ -887,7 +930,7 @@ class Component extends DCLogic {
     this.setState({ sel: id });
     if (typeof window !== 'undefined' && window.innerWidth < 860) { const el = document.getElementById('ficha'); if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
-  renderVals() {
+  baseVals() {
     const S = this.state; const g = S.g;
     const on = this.props.animaciones ?? true;
     const nt = nTypes(g);
@@ -1000,8 +1043,28 @@ class Component extends DCLogic {
       vers: [['r', 'Rojo', 'vr'], ['b', 'Azul', 'va'], ['y', 'Amarillo', 'vy']].map((v) => ({ n: v[1], cls: v[2], on: ver === v[0] ? 'on' : '', pick: () => this.setState({ ver: v[0] }) })),
     };
   }
+  // Megaevolución como forma: al elegirla, la ficha entera pasa a la mega (imagen, tipos, estadísticas, debilidades y habilidad)
+  renderVals() {
+    const v = this.baseVals(); const S = this.state; const p = v.p;
+    if (!p || !p.hasMega) return { ...v, forms: [] };
+    const id = parseInt(p.num, 10);
+    const fi = S.form && S.form.id === id ? S.form.i : -1;
+    const forms = [{ n: 'Normal', i: -1 }].concat(p.megas.map((m, i) => ({ n: m.n, i }))).map((f) => ({ n: f.n, cls: f.i === fi ? 'on' : '', pressed: f.i === fi ? 'true' : 'false', pick: () => this.setState({ form: f.i < 0 ? null : { id, i: f.i } }) }));
+    if (fi < 0 || !p.megas[fi]) return { ...v, forms };
+    const m = p.megas[fi]; const g = S.g; const nt = nTypes(g);
+    const ti = m.t.map((x) => TK.indexOf(x.k) + 1);
+    const sv = m.st.map((x) => x.v);
+    const groups = { 4: [], 2: [], 0.5: [], 0.25: [], 0: [] };
+    for (let a = 1; a <= nt; a++) { const k = ti.reduce((x, dt) => x * eff(a, dt, g), 1); if (groups[k]) groups[k].push(a); }
+    const wk = [[4, '×4', 'x4'], [2, '×2', 'x2'], [0.5, '×½', 'x05'], [0.25, '×¼', 'x025'], [0, '×0', 'x0']].filter((x) => groups[x[0]].length).map((x) => ({ m: x[1], cls: x[2], t: groups[x[0]].map(ty) }));
+    const weak = [4, 2].flatMap((k) => groups[k].map((a) => ({ k: TK[a - 1], n: TN[a - 1], m: k === 4 ? '×4' : '×2' }))).slice(0, 7);
+    const mp = { ...p, n: m.n, t: m.t, c: m.c1, c2: m.c2, artCls: 'mgs big', ap: m.bp, scrCls: 'is-mega',
+      st: SN.map((n, i) => ({ n, v: sv[i], w: Math.min(100, sv[i] / 180 * 100).toFixed(1) + '%', c: SC[i] })), tot: m.tot, stNote: 'Estadísticas de ' + m.n + '.',
+      weak, wk, ab: [{ n: m.ab, k: 'Mega', cls: 'rec', rec: '★ Habilidad de la mega', d: 'La megaevolución cambia la habilidad por esta durante el combate.' }], recAb: m.ab, abWhy: 'Al megaevolucionar, el Pokémon pasa a tener siempre esta habilidad.',
+      nat: natFor(sv).map((x) => ({ n: x[0], k: x[1] })) };
+    return { ...v, p: mp, forms };
+  }
 }
-
 </script>
 </body>
 </html>

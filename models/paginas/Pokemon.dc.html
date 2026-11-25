@@ -538,6 +538,36 @@ body{margin:0;background:#07090D}
 }
 
 
+
+/* pk-color: menú a color, fondo con más color y pantalla de carga */
+.pk{background:radial-gradient(1200px 700px at 8% -5%,rgba(255,92,80,.16),transparent 60%),radial-gradient(1000px 700px at 100% 10%,rgba(91,140,255,.18),transparent 60%),radial-gradient(900px 600px at 50% 110%,rgba(255,203,61,.10),transparent 60%),#0B0E1A}
+body{background:#0B0E1A}
+.sub{background:linear-gradient(90deg,rgba(227,53,13,.28),rgba(255,183,3,.20) 22%,rgba(99,188,90,.18) 44%,rgba(77,144,213,.24) 66%,rgba(181,103,206,.26) 88%),rgba(14,17,30,.92)!important;border-top-color:rgba(255,255,255,.08)}
+.sub .slink{color:#F1F3F8}
+.sub .slink:hover{color:#FFF;background:rgba(255,255,255,.08);border-radius:10px}
+.sub .slink.on{color:#FFF}
+.sub .slink::before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--dot,#FFCB3D);box-shadow:0 0 8px var(--dot,#FFCB3D)}
+.sub .sub-in>a.slink:nth-of-type(2){--dot:#FF5A4E}
+.sub .sub-in>.dd:nth-of-type(1) .slink{--dot:#FFB703}
+.sub .sub-in>a.slink[href="PokemonDex.dc.html"]{--dot:#63BC5A}
+.sub .sub-in>a.slink[href="PokemonTipos.dc.html"]{--dot:#4D90D5}
+.sub .sub-in>a.slink[href="PokemonHabilidades.dc.html"]{--dot:#B567CE}
+.sub .dd .slink[href="PokemonCompetitivo.dc.html"]{--dot:#FA7179}
+.sub .slink.sl-mec{--dot:#73CEC0}
+.mci{display:grid;place-items:center;width:38px;height:38px;flex-shrink:0;border-radius:12px;font:800 17px/1 'Bricolage Grotesque','IBM Plex Sans',sans-serif;color:#0B0E1A}
+.mc-mega{background:conic-gradient(from 200deg,#FFCB3D,#FF5AA5,#5B8CFF,#73CEC0,#FFCB3D)}
+.mc-z{background:linear-gradient(135deg,#FFE36B,#F2A93B)}
+.mc-dx{background:linear-gradient(135deg,#FF4D6D,#B5179E)}
+.mc-tera{background:linear-gradient(135deg,#9BE7FF,#7C5CFF,#FF9DE2)}
+.pk-load{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(600px 400px at 50% 45%,rgba(255,90,78,.18),transparent 70%),#0B0E1A;color:#F1F3F8;font:600 14px 'IBM Plex Sans',sans-serif;letter-spacing:.06em;animation:pkOut .45s ease 1.25s forwards;pointer-events:none}
+.pk-ball{position:relative;width:84px;height:84px;border-radius:50%;background:linear-gradient(#EE3B36 0 46%,#151820 46% 54%,#F4F4F6 54%);box-shadow:inset -8px -10px 0 rgba(0,0,0,.18),0 18px 40px -12px rgba(238,59,54,.6);animation:pkWobble 1.1s ease-in-out infinite}
+.pk-ball i{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:#F4F4F6;border:5px solid #151820;box-sizing:border-box;animation:pkBlink 1.1s ease-in-out infinite}
+@keyframes pkWobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-18deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+@keyframes pkBlink{0%,60%{background:#F4F4F6}70%,90%{background:#FFE36B;box-shadow:0 0 14px #FFE36B}}
+@keyframes pkOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.pk-load{display:none}}
+.still .pk-load{display:none}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #FFCB3D;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#FFCB3D 38%,transparent);color:#fff}
@@ -547,6 +577,8 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 </helmet>
 
 <div class="pk {{motionClass}}">
+<div class="pk-load" aria-hidden="true"><div class="pk-ball"><i></i></div><span>Atrapando datos…</span></div>
+
   <header class="nav">
     <div class="wrap nav-in">
       <div class="nav-l">
@@ -624,13 +656,13 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
           </div>
         </div>
         <div class="dd">
-          <a class="slink" href="PokemonKanto.dc.html" aria-haspopup="true">Guías <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <a class="slink sl-mec" href="PokemonMecanicas.dc.html" aria-haspopup="true">Mecánicas <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
           <div class="menu">
             <div class="gl">
-              <a class="gi" href="PokemonKanto.dc.html"><span class="g1s" style="background-position: 33.333% 0.000%"></span><span><b>Historia de Kanto paso a paso</b><span>Rojo, Azul y Amarillo, de Paleta a la Liga</span></span></a>
-              <a class="gi" href="PokemonKantoMapa.dc.html"><span class="g1s" style="background-position: 53.333% 11.111%"></span><span><b>Mapa interactivo de Kanto</b><span>Pokémon por zona, MT, MO y objetos clave</span></span></a>
-              <a class="gi" href="PokemonKanto100.dc.html"><span class="g1s" style="background-position: 40.000% 100.000%"></span><span><b>Kanto al 100 %</b><span>Los 151, medallas, MT y legendarios</span></span></a>
-              <a class="gi" href="PokemonCompetitivo.dc.html"><span class="g1s" style="background-position: 26.667% 100.000%"></span><span><b>Arquetipos del meta</b><span>Lluvia, sol, Espacio Raro y Viento Afín</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#mega"><span class="mci mc-mega" aria-hidden="true">M</span><span><b>Megaevolución</b><span>Las megapiedras y qué Pokémon pueden megaevolucionar</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#z"><span class="mci mc-z" aria-hidden="true">Z</span><span><b>Movimientos Z</b><span>Los cristales Z de cada tipo y los exclusivos</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#dinamax"><span class="mci mc-dx" aria-hidden="true">G</span><span><b>Dinamax y Gigamax</b><span>Los movimientos Max y las formas Gigamax</span></span></a>
+              <a class="gi" href="PokemonMecanicas.dc.html#tera"><span class="mci mc-tera" aria-hidden="true">T</span><span><b>Teracristalización</b><span>Los teratipos y cómo cambian un combate</span></span></a>
             </div>
           </div>
         </div>
