@@ -1,0 +1,44 @@
+{
+  "fuentes": "Sheep Esports y la sección «Desarrollo» de Riot",
+  "equipos": {
+    "G2": ["G2 Esports", "#E8E8E8", "#5b5b5b"],
+    "FNC": ["Fnatic", "#FF6B1A", "#7a2c00"],
+    "KC": ["Karmine Corp", "#3B7BFF", "#0f2a66"],
+    "MKOI": ["Movistar KOI", "#7B5CFF", "#2a1a66"],
+    "T1": ["T1", "#E2324A", "#6b0f1d"],
+    "GEN": ["Gen.G", "#C9A23B", "#5b4612"],
+    "HLE": ["Hanwha Life", "#FF8A1E", "#6b3300"],
+    "BLG": ["Bilibili Gaming", "#2FA8E6", "#0d3f5f"],
+    "TES": ["Top Esports", "#E0412B", "#5f1308"],
+    "FLY": ["FlyQuest", "#2FBF71", "#0d4f2c"],
+    "C9": ["Cloud9", "#3FA9F5", "#0d3a5f"],
+    "SIN": ["Sin equipo", "#5E6673", "#2a2f38"]
+  },
+  "estados": { "of": "Oficial", "ac": "Acuerdo", "ru": "Rumor" },
+  "mercado": [
+    { "nick": "Kairo", "pos": "MID", "liga": "LEC", "de": "FNC", "a": "KC", "estado": "of", "fiabilidad": 3, "fecha": "20 nov", "fuente": "Club" },
+    { "nick": "Velin", "pos": "JGL", "liga": "LEC", "de": "SIN", "a": "G2", "estado": "ac", "fiabilidad": 3, "fecha": "19 nov", "fuente": "Sheep Esports" },
+    { "nick": "Hwarang", "pos": "ADC", "liga": "LCK", "de": "HLE", "a": "GEN", "estado": "ac", "fiabilidad": 2, "fecha": "18 nov", "fuente": "Sheep Esports" },
+    { "nick": "Doryu", "pos": "TOP", "liga": "LCK", "de": "T1", "a": "SIN", "estado": "of", "fiabilidad": 3, "fecha": "17 nov", "fuente": "Club" },
+    { "nick": "Lumen", "pos": "SUP", "liga": "LEC", "de": "MKOI", "a": "FNC", "estado": "ru", "fiabilidad": 1, "fecha": "16 nov", "fuente": "Sheep Esports" },
+    { "nick": "Xiaofeng", "pos": "MID", "liga": "LPL", "de": "TES", "a": "BLG", "estado": "ru", "fiabilidad": 2, "fecha": "15 nov", "fuente": "Sheep Esports" },
+    { "nick": "Rook", "pos": "JGL", "liga": "LTA", "de": "C9", "a": "FLY", "estado": "ac", "fiabilidad": 2, "fecha": "14 nov", "fuente": "Sheep Esports" }
+  ],
+  "esports": [
+    { "liga": "LEC", "tipo": "Formato", "titulo": "La LEC confirma el calendario de 2027 con tres splits", "resumen": "Las fechas de inicio y el formato de cada split, y cómo se reparten las plazas para el MSI.", "fecha": "21 nov", "fuente": "Sheep Esports", "url": "https://www.sheepesports.com" },
+    { "liga": "LCK", "tipo": "Entrevista", "titulo": "Hablamos con el entrenador campeón del Mundial", "resumen": "Qué cambió en la preparación de la final y qué espera de la nueva temporada.", "fecha": "20 nov", "fuente": "Sheep Esports", "url": "https://www.sheepesports.com" },
+    { "liga": "LPL", "tipo": "Mercado", "titulo": "Los equipos de la LPL cierran sus plantillas antes de Navidad", "resumen": "Resumen de los movimientos más importantes de la semana en China.", "fecha": "18 nov", "fuente": "Sheep Esports", "url": "https://www.sheepesports.com" },
+    { "liga": "LTA", "tipo": "Liga", "titulo": "La LTA estrena cambios en su fase regular", "resumen": "Menos semanas, más series al mejor de 3 y un play-in nuevo.", "fecha": "15 nov", "fuente": "Sheep Esports", "url": "https://www.sheepesports.com" }
+  ],
+  "desarrollo": [
+    { "titulo": "Actualización de desarrollo: plan para la temporada 2027", "resumen": "Objetivos de equilibrio, objetos y modos de juego para el año que viene.", "fecha": "16 nov", "tipo": "Vídeo", "icono": "▶" },
+    { "titulo": "Resumen de la actualización de desarrollo", "resumen": "Lo más importante del vídeo, por escrito y en cinco minutos.", "fecha": "16 nov", "tipo": "Artículo", "icono": "¶" },
+    { "titulo": "Cambios en la jungla para la pretemporada", "resumen": "Por qué cambian los campamentos y qué buscan con la nueva ruta.", "fecha": "4 nov", "tipo": "Artículo", "icono": "¶" },
+    { "titulo": "Novedades del cliente y de la tienda", "resumen": "Mejoras de rendimiento y cómo funcionará el nuevo sistema de recompensas.", "fecha": "22 oct", "tipo": "Vídeo", "icono": "▶" }
+  ],
+  "formato2027": [
+    ["Calendario", "Tres splits regionales y dos torneos internacionales (First Stand y MSI) antes del Mundial."],
+    ["Fearless draft", "Se mantiene en todas las series al mejor de 3 y de 5."],
+    ["Plazas internacionales", "Reparto por rendimiento en la temporada anterior."]
+  ]
+}

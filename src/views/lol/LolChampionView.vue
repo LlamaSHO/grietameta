@@ -14,7 +14,7 @@
       </section>
 
       <template v-else>
-        <ChampionHeader v-model:tab="tab" :champ="champ" :entry="entry" :detail="detail" :version="state.version" :patch-label="patch.label" />
+        <ChampionHeader v-model:tab="tab" :champ="champ" :entry="entry" :detail="detail" :version="state.version" :patch-label="patch.label" :quick="quick" :sample="!!raw" :mu-count="raw ? raw.MU.length : 0" />
 
         <!-- Filtros -->
         <div class="fbar">
@@ -27,6 +27,7 @@
         <!-- Estadísticas del rango elegido -->
         <div class="stats">
           <template v-if="entry">
+            <div class="st"><div class="v"><span class="tier big" :class="entry.tc">{{ entry.tier }}</span></div><div class="k">Tier</div></div>
             <div class="st"><div class="v" :class="wrClass(entry.wr)">{{ pct(entry.wr) }}</div><div class="k">Winrate</div></div>
             <div class="st"><div class="v">{{ fmtInt(entry.games) }}</div><div class="k">Partidas</div></div>
             <div class="st"><div class="v">{{ pct(entry.pr) }}</div><div class="k">Pickrate</div></div>
@@ -41,18 +42,25 @@
 
         <div class="layout champ-layout">
           <div class="main">
-            <div v-if="tab === 'build'" class="bgrid">
-              <ChampionRunes :runes="build?.runes || null" :trees="runeTrees" />
-              <ChampionItems :build="build" />
-            </div>
+            <template v-if="tab === 'build'">
+              <div class="bgrid">
+                <ChampionRunes :runes="build?.runes || null" :trees="runeTrees" />
+                <ChampionItems :build="build" />
+              </div>
+              <SampleBuild v-if="raw" class="sample-gap" :raw="raw" :rank="filters.rank" :rank-label="rankBtn" @matchups="tab = 'mu'" />
+            </template>
 
             <ChampionByRank v-else-if="tab === 'rank'" v-model="filters.rank" :name="champ.name" :role="champ.role" :rows="byRank" />
+
+            <SampleMatchups v-else-if="tab === 'mu' && raw" :raw="raw" :rank="filters.rank" />
+            <SampleStats v-else-if="tab === 'stats' && raw" :raw="raw" :rank="filters.rank" :rank-label="rankBtn" :patch-label="patch.label" />
 
             <section v-else class="card">
               <div class="empty">
                 <span class="ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5" /><path d="M13 19l6-6" /><path d="M9.5 17.5L21 6V3h-3L6.5 14.5" /><path d="M11 19l-6-6" /></svg></span>
-                <h3 class="disp">Matchups de {{ champ.name }}, muy pronto</h3>
-                <p>Estamos preparando sus enfrentamientos en línea: contra quién gana y contra quién sufre, con el winrate de cada duelo.</p>
+                <h3 class="disp">{{ tab === "stats" ? "Estadísticas" : "Matchups" }} de {{ champ.name }}, muy pronto</h3>
+                <p v-if="tab === 'stats'">Estamos preparando su evolución de los últimos 30 días, el winrate según la duración de la partida, la fase de líneas y sus medias por partida.</p>
+                <p v-else>Estamos preparando sus enfrentamientos en línea: contra quién gana y contra quién sufre, con el winrate de cada duelo.</p>
               </div>
             </section>
           </div>
@@ -91,6 +99,11 @@ import ChampionRunes from "@/components/lol/champion/ChampionRunes.vue";
 import ChampionItems from "@/components/lol/champion/ChampionItems.vue";
 import ChampionByRank from "@/components/lol/champion/ChampionByRank.vue";
 import RankDropdown from "@/components/lol/RankDropdown.vue";
+import SampleBuild from "@/components/lol/champion/SampleBuild.vue";
+import SampleMatchups from "@/components/lol/champion/SampleMatchups.vue";
+import SampleStats from "@/components/lol/champion/SampleStats.vue";
+import { useGameData } from "@/composables/useGameData";
+import { SAMPLE_CHAMPIONS, matchups as sampleMatchups } from "@/services/lol/sample";
 import PremiumMini from "@/components/lol/PremiumMini.vue";
 import AdSlot from "@/components/lol/AdSlot.vue";
 import "@/components/lol/lol.css";
@@ -117,6 +130,28 @@ watch(() => route.params.id, () => (tab.value = "build"));
 
 const entry = computed(() => (champ.value ? entryFor(champ.value.id, filters.rank) : null));
 const build = computed(() => (champ.value ? buildFor(champ.value.id) : null));
+// Datos de ejemplo (hoy solo Yasuo): matchups, variantes de build y estadísticas.
+const rankBtn = computed(() => (filters.rank === "ALL" ? "Todos" : rankInfo(filters.rank).label));
+const raw = computed(() => {
+  const c = champ.value;
+  if (!c || !SAMPLE_CHAMPIONS.includes(c.ddId)) return null;
+  const f = useGameData("/data/lol/campeon-ejemplo.json");
+  return f.status === "ready" ? f.data : null;
+});
+// Datos rápidos de la cabecera: duelos (ejemplo) y pico de poder (los dos primeros objetos del núcleo real).
+const quick = computed(() => {
+  const q = {};
+  if (raw.value) {
+    const l = sampleMatchups(raw.value, filters.rank, { big: true }).list;
+    if (l.length) {
+      q.best = { n: l[0].n, pos: l[0].pos, wr: l[0].wrText };
+      q.worst = { n: l[l.length - 1].n, pos: l[l.length - 1].pos, wr: l[l.length - 1].wrText };
+    }
+  }
+  const core = (build.value?.core || []).filter((i) => i.icon).slice(0, 2);
+  if (core.length) q.power = { items: core };
+  return Object.keys(q).length ? q : null;
+});
 const rankLabel = computed(() => (filters.rank === "ALL" ? "Todos los rangos" : rankInfo(filters.rank).label));
 
 const byRank = computed(() =>
@@ -275,10 +310,12 @@ watch([ready, champ, () => route.fullPath], () => {
 .st .v.hi { color: #62D99C; }
 .st .v.lo { color: #F08A7A; }
 .st .k { margin-top: 4px; font-size: 12px; color: var(--ink-mute); }
+.st .tier.big { min-width: 54px; height: 40px; font-size: 20px; border-radius: 11px; }
 .st-empty .k { font-size: 14px; color: var(--ink-dim); margin: 0; }
 .illus { margin: 10px 0 0; font-size: 13px; color: #F0B0A6; }
 
 .champ-layout { padding: 20px 0 48px; }
+.sample-gap { margin-top: 20px; }
 .bgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; }
 
 /* Matchups (sin datos aún) */
@@ -299,7 +336,7 @@ watch([ready, champ, () => route.fullPath], () => {
 
 @media (max-width: 860px) {
   /* Tablet: las cinco cifras en una fila (antes quedaba 4 + 1). */
-  .stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .st { padding: 18px 8px 20px; }
   .st .v { font-size: 26px; }
   .st .v small { font-size: 15px; }

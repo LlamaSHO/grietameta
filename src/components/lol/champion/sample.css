@@ -1,0 +1,325 @@
+/* Estilos de las secciones de ejemplo de la ficha de campeón (matchups, builds
+   por variante, estadísticas…). Generados a partir de models/paginas/LolCampeon.dc.html
+   y acotados a .lol-sample para no tocar el resto de la ficha. */
+.lol-sample .tier.big{min-width:54px;height:40px;font-size:20px;border-radius:11px}
+/* build */
+.lol-sample .bcard .card-h .meta{font-size:12.5px}
+.lol-sample .bc{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.95fr);gap:0;border-top:1px solid rgba(255,255,255,.05)}
+.lol-sample .bc > div{padding:18px 20px 20px;border-right:1px solid rgba(255,255,255,.05)}
+.lol-sample .bc > div:last-child{border-right:0}
+.lol-sample .bc-runes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lol-sample .tree{display:flex;flex-direction:column;gap:10px;padding:0}
+.lol-sample .tr-h{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.lol-sample .tr-h .sp{width:clamp(26px,2.2vw,34px);height:auto;aspect-ratio:1}
+.lol-sample .tr-r{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);justify-items:center;align-items:center;gap:clamp(4px,.8vw,12px)}
+.lol-sample .tr-r.kst{padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+.lol-sample .rn{width:min(100%,54px);height:auto;aspect-ratio:1;border-radius:50%;cursor:help}
+.lol-sample .rn > .sp{border-radius:50%;filter:grayscale(1) brightness(.5);opacity:.75;transition:filter .2s,opacity .2s}
+.lol-sample .rn:hover > .sp,.lol-sample .rn:focus > .sp{filter:grayscale(.2) brightness(.9);opacity:1}
+.lol-sample .rn.on > .sp{filter:none;opacity:1;box-shadow:0 0 0 2px rgba(226,181,102,.85),0 0 18px -2px rgba(226,181,102,.8)}
+.lol-sample .rn.big{width:min(100%,58px)}
+.lol-sample .tr-r.kst{gap:clamp(2px,.5vw,8px)}
+.lol-sample .rn.sm{width:min(100%,34px)}
+.lol-sample .rn.sm > .sp{background-color:#11151D}
+.lol-sample .t2 .tr-h{margin-bottom:2px}
+.lol-sample .shards{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)}
+.lol-sample .blk{margin-bottom:16px}
+.lol-sample .blk:last-child{margin-bottom:0}
+.lol-sample .blk h4{margin:0 0 8px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8F98A5}
+.lol-sample .blk .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lol-sample .sq{width:42px;height:42px;border-radius:10px;cursor:help}
+.lol-sample .sq > .sp{border:1px solid rgba(255,255,255,.14)}
+.lol-sample .sk > b{position:absolute;right:-4px;bottom:-4px;width:18px;height:18px;display:grid;place-items:center;border-radius:5px;background:#0D1017;border:1px solid rgba(226,181,102,.55);font-size:11px;color:#F3C878}
+.lol-sample .arw{color:#7C8592;flex-shrink:0}
+.lol-sample .it{border-radius:10px;cursor:help}
+.lol-sample .it > .sp{border:1px solid rgba(226,181,102,.42);transition:transform .2s}
+.lol-sample .it:hover > .sp,.lol-sample .it:focus > .sp{transform:translateY(-2px)}
+.lol-sample .it.xs{width:30px;height:30px;border-radius:8px}
+.lol-sample .it.md{width:42px;height:42px}
+.lol-sample .it.lg{width:52px;height:52px;border-radius:12px}
+.lol-sample .it > i{position:absolute;top:-7px;left:-7px;z-index:2;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#E2B566;color:#17120A;font-style:normal;font-size:11px;font-weight:800}
+.lol-sample .mini{margin:8px 0 0;font-size:12px;color:#8F98A5}
+/* orden de habilidades */
+.lol-sample .sgrid{padding:0 20px 20px;overflow-x:auto}
+.lol-sample .sg-head,.lol-sample .sg-row{display:grid;grid-template-columns:190px repeat(18,minmax(28px,1fr));gap:4px;align-items:center;min-width:760px}
+.lol-sample .sg-head{margin-bottom:6px;font-size:11px;color:#7C8592;text-align:center}
+.lol-sample .sg-row{margin-bottom:4px}
+.lol-sample .sg-row > span:not(.sg-k){height:30px;display:grid;place-items:center;border-radius:7px;background:rgba(255,255,255,.035);font:700 12.5px/1 'Bricolage Grotesque',sans-serif}
+.lol-sample .sg-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lol-sample .sg-k .sp{width:28px;height:28px;border-radius:7px;flex-shrink:0}
+.lol-sample .sg-row.kQ > span.on{background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A}
+.lol-sample .sg-row.kW > span.on{background:rgba(10,200,185,.28);color:#BFF5EE}
+.lol-sample .sg-row.kE > span.on{background:rgba(141,179,238,.3);color:#DCE7FB}
+.lol-sample .sg-row.kR > span.on{background:linear-gradient(180deg,#F08A7A,#C9573F);color:#1B0A06}
+/* qué comprar después */
+.lol-sample .slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 20px 20px}
+.lol-sample .slt{padding:10px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.lol-sample .slt h4{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5;text-align:center}
+.lol-sample .opt{display:flex;align-items:center;gap:8px;padding:5px 0}
+.lol-sample .ow b{display:block;font-size:13.5px;font-weight:700;color:#C6CBD2}
+.lol-sample .ow b.hi{color:#62D99C}
+.lol-sample .ow small{font-size:11px;color:#7C8592}
+.lol-sample .stack2{display:flex;flex-direction:column;gap:20px}
+.lol-sample .reco .tips{list-style:none;margin:0;padding:0 20px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lol-sample .tips li{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.lol-sample .tn{display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border-radius:9px;background:rgba(226,181,102,.16);color:#F3C878;font-weight:700}
+.lol-sample .tips b{font-size:14px}
+.lol-sample .tips p{margin:3px 0 0;font-size:13px;color:#B4BBC5}
+.lol-sample .tips p b{font-size:13px;color:#ECE9E1}
+/* winrate por objeto */
+.lol-sample .iw{padding:0 20px 8px}
+.lol-sample .iw-r{display:grid;grid-template-columns:42px minmax(0,1.4fr) minmax(0,1.3fr) 90px 130px;gap:14px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.lol-sample .iw-r.th{padding:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7C8592}
+.lol-sample .iw-n b{display:block;font-size:14px}
+.lol-sample .iw-n small{font-size:12px;color:#8F98A5}
+.lol-sample .iw-w{display:flex;align-items:center;gap:10px}
+.lol-sample .iw-w b{min-width:58px;font-size:14px;color:#C6CBD2}
+.lol-sample .iw-w b.hi{color:#62D99C}
+.lol-sample .wbar{flex:1;height:7px;border-radius:7px;background:rgba(255,255,255,.06);overflow:hidden}
+.lol-sample .wbar i{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#2FA36C,#62D99C)}
+.lol-sample .iw-g{font-size:13.5px;color:#C6CBD2}
+.lol-sample .tg2{justify-self:start;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.lol-sample .tg2.most{background:rgba(226,181,102,.15);color:#F3C878}
+.lol-sample .tg2.late{background:rgba(141,179,238,.12);color:#AFC6EE}
+.lol-sample .hint{margin:6px 20px 18px;padding:10px 14px;border-radius:12px;background:rgba(141,179,238,.07);border:1px solid rgba(141,179,238,.2);font-size:13px;color:#C6CBD2}
+.lol-sample .hint b{color:#AFC6EE}
+/* matchups resumen */
+.lol-sample .mu-w{display:grid;grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr);gap:16px;padding:0 20px 20px;align-items:stretch}
+.lol-sample .mu-g h4{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lol-sample .mu-g.good h4{color:#7DA6FF}
+.lol-sample .mu-g.bad h4{color:#F08A7A;text-align:right}
+.lol-sample .mu-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.lol-sample .mc2{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 0 10px;border-radius:14px;background:#11151D;border:1px solid rgba(255,255,255,.07);overflow:hidden;text-align:center;transition:transform .2s,border-color .2s}
+.lol-sample .mc2:hover{transform:translateY(-3px)}
+.lol-sample .mc2 > .sp{width:100%;aspect-ratio:1;border-radius:0;margin-bottom:4px}
+.lol-sample .mc2 .nm{max-width:92%;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lol-sample .mc2 .dl{font-size:19px;font-weight:700;line-height:1.1}
+.lol-sample .mc2.g .dl{color:#7DA6FF}
+.lol-sample .mc2.b .dl{color:#F08A7A}
+.lol-sample .mc2.g:hover{border-color:rgba(125,166,255,.5)}
+.lol-sample .mc2.b:hover{border-color:rgba(240,138,122,.5)}
+.lol-sample .wr2{font-size:12px;font-weight:600;color:#C6CBD2}
+.lol-sample .mc2 small{font-size:11px;color:#7C8592}
+.lol-sample .mu-all{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin-top:28px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#ECE9E1;font:inherit;cursor:pointer;transition:background .2s}
+.lol-sample .mu-all:hover{background:rgba(255,255,255,.07)}
+.lol-sample .mu-all b{font-size:14px}
+.lol-sample .mu-all small{font-size:12px;color:#8F98A5}
+/* matchups lista */
+.lol-sample .mu-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 20px 14px}
+.lol-sample .msrch{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#8A93A0;min-width:240px}
+.lol-sample .msrch input{flex:1;min-width:0;border:0;background:transparent;color:#ECE9E1;font:inherit;font-size:14px;outline:none}
+.lol-sample .seg2{display:flex;gap:3px;padding:3px;border-radius:11px;background:rgba(255,255,255,.04)}
+.lol-sample .seg2 button{height:34px;padding:0 12px;border-radius:8px;border:0;background:transparent;color:#A0A8B4;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.lol-sample .seg2 button.on{background:rgba(226,181,102,.16);color:#F3C878}
+.lol-sample .chip2{height:40px;padding:0 14px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#A0A8B4;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.lol-sample .chip2.on{border-color:rgba(10,200,185,.5);background:rgba(10,200,185,.1);color:#7FE9DE}
+.lol-sample .ml{padding:0 20px 16px}
+.lol-sample .ml-r{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) 110px 100px;gap:14px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.lol-sample .ml-r.th{padding:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7C8592}
+.lol-sample .ml-n{display:flex;align-items:center;gap:10px;min-width:0}
+.lol-sample .ml-n .sp{width:36px;height:36px;border-radius:9px;flex-shrink:0}
+.lol-sample .ml-n b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lol-sample .ml-w{display:flex;align-items:center;gap:10px}
+.lol-sample .ml-w b{min-width:60px;font-size:14px}
+.lol-sample .cbar{position:relative;flex:1;height:8px;border-radius:8px;background:rgba(255,255,255,.06)}
+.lol-sample .cbar i{position:absolute;top:0;bottom:0;border-radius:8px}
+.lol-sample .cbar em{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:rgba(255,255,255,.3)}
+.lol-sample .ml-r.g .cbar i{background:linear-gradient(90deg,#3D6BD6,#7DA6FF)}
+.lol-sample .ml-r.b .cbar i{background:linear-gradient(90deg,#F08A7A,#B4554A)}
+.lol-sample .ml-r.g .ml-w b,.lol-sample .ml-r.g .ml-d{color:#7DA6FF}
+.lol-sample .ml-r.b .ml-w b,.lol-sample .ml-r.b .ml-d{color:#F08A7A}
+.lol-sample .ml-d{font-weight:700;font-size:14px}
+.lol-sample .ml-g{font-size:13.5px;color:#C6CBD2}
+.lol-sample .srcnote{margin:0;padding:12px 16px;border-radius:14px;border:1px dashed rgba(255,255,255,.12);font-size:12.5px;color:#8F98A5;line-height:1.6}
+.lol-sample .srcnote b{color:#C6CBD2}
+.lol-sample .wl .wimg{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1);flex-shrink:0}
+@media (max-width:1100px){.lol-sample .bc{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.lol-sample .bc-runes{grid-column:1 / -1}
+.lol-sample .qf{margin-left:0}
+.lol-sample .mu-w{grid-template-columns:minmax(0,1fr)}
+.lol-sample .mu-all{margin-top:0;flex-direction:row;padding:12px}
+.lol-sample .mu-g.bad h4{text-align:left}
+}
+@media (max-width:860px){.lol-sample .reco .tips{grid-template-columns:minmax(0,1fr)}
+.lol-sample .bc{grid-template-columns:minmax(0,1fr)}
+.lol-sample .bc > div{border-right:0;border-bottom:1px solid rgba(255,255,255,.05)}
+.lol-sample .slots{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lol-sample .iw-r{grid-template-columns:42px minmax(0,1fr) 110px}
+.lol-sample .iw-g,.lol-sample .tg2,.lol-sample .iw-r.th span:nth-child(4),.lol-sample .iw-r.th span:nth-child(5){display:none}
+.lol-sample .mu-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.lol-sample .ml-r{grid-template-columns:minmax(0,1fr) 120px 70px}
+.lol-sample .ml-g,.lol-sample .ml-r.th span:nth-child(4){display:none}
+.lol-sample .ml-w .cbar{display:none}
+}
+/* === LF1: estadísticas, sinergias y animaciones === */
+.lol-sample .chg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 20px 20px}
+.lol-sample .chs{background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 14px 10px}
+.lol-sample .chs-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.lol-sample .chs-h small{color:#8F98A5;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.lol-sample .chs-h b{font-family:'Chakra Petch',sans-serif;font-size:22px}
+.lol-sample .chs-h em{font-style:normal;font-size:12.5px;margin-left:6px}
+.lol-sample .chs-h em.up,.lol-sample .sg-i em.up,.lol-sample .l15 b.up{color:#62D99C}
+.lol-sample .chs-h em.dn,.lol-sample .sg-i em.dn,.lol-sample .l15 b.dn{color:#F08A7A}
+.lol-sample .chs svg{display:block;width:100%;height:86px;overflow:visible}
+.lol-sample .chs .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lol-sample .chs .ar{opacity:.16}
+.lol-sample .chs .gl{stroke:rgba(255,255,255,.06);stroke-width:1}
+.lol-sample .chs .ax{display:flex;justify-content:space-between;color:#5E6673;font-size:11.5px;margin-top:4px}
+.lol-sample .dur{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end;height:180px;padding:8px 20px 0}
+.lol-sample .dur-c{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.lol-sample .dur-c b{font-family:'Chakra Petch',sans-serif;font-size:14px}
+.lol-sample .dur-c b.hi{color:#62D99C}
+.lol-sample .dur-c b.lo{color:#F08A7A}
+.lol-sample .dur-c i{display:block;width:100%;max-width:56px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#E2B566,#8A6A33);transform-origin:bottom}
+.lol-sample .dur-c i.lo{background:linear-gradient(180deg,#F08A7A,#7A3B33)}
+.lol-sample .dur-c i.hi{background:linear-gradient(180deg,#62D99C,#2C6B4C)}
+.lol-sample .dur-x{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:8px 20px 18px;color:#8F98A5;font-size:12.5px;text-align:center}
+.lol-sample .sg,.lol-sample .l15{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 20px 20px}
+.lol-sample .sg-i{background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
+.lol-sample .sg-i small{display:block;color:#8F98A5;font-size:12px;margin-bottom:4px}
+.lol-sample .sg-i b{font-family:'Chakra Petch',sans-serif;font-size:20px}
+.lol-sample .sg-i em{font-style:normal;font-size:12px;color:#8F98A5;margin-left:6px}
+.lol-sample .syn{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0 20px 20px}
+.lol-sample .syn-c{display:flex;flex-direction:column;align-items:center;gap:6px;background:#0A0D13;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 8px;color:#ECE9E1;text-decoration:none;transition:transform .2s ease,border-color .2s ease}
+.lol-sample .syn-c:hover{transform:translateY(-3px);border-color:rgba(226,181,102,.45);color:#ECE9E1}
+.lol-sample .syn-c img{width:52px;height:52px;border-radius:12px}
+.lol-sample .syn-c b{font-size:14px}
+.lol-sample .syn-c .w{font-family:'Chakra Petch',sans-serif;color:#62D99C;font-size:15px}
+.lol-sample .syn-c small{color:#8F98A5;font-size:11.5px;text-align:center}
+.lol-sample .syn-c .rl{font-size:11px;color:#E2B566;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:900px){.lol-sample .chg{grid-template-columns:1fr}
+.lol-sample .sg,.lol-sample .l15{grid-template-columns:repeat(2,1fr)}
+.lol-sample .syn{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:520px){.lol-sample .dur{gap:6px;height:150px;padding:8px 12px 0}
+.lol-sample .dur-x{gap:6px;padding:8px 12px 16px;font-size:11px}
+.lol-sample .syn{grid-template-columns:repeat(2,1fr)}
+}
+
+/* === LF1 ronda 2 === */
+.lol-sample .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.lol-sample .demo{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;border:1px dashed rgba(226,181,102,.55);color:#E2B566;font-size:11px;font-weight:600;letter-spacing:.04em;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.lol-sample .card-h .meta .demo{margin-left:0}
+.lol-sample .chs .ax{position:relative;height:16px;color:#8F98A5}
+.lol-sample .chs .ax span{position:absolute;top:0}
+.lol-sample .chs .ax .a0{left:0}
+.lol-sample .chs .ax .a2{right:0}
+.lol-sample .chs .ax .a1{transform:translateX(-50%)}
+.lol-sample .chs .rng{display:flex;justify-content:space-between;color:#8F98A5;font-size:11.5px;margin:-2px 0 4px}
+.lol-sample .dur-wrap{position:relative;padding:8px 20px 0}
+.lol-sample .dur{padding:0;height:190px}
+.lol-sample .dur-ref{position:absolute;left:20px;right:20px;border-top:1px dashed rgba(255,255,255,.28);pointer-events:none}
+.lol-sample .dur-ref span{position:absolute;right:0;top:-17px;font-size:11.5px;color:#A0A8B4}
+.lol-sample .dur-c small{color:#8F98A5;font-size:11px}
+.lol-sample .dur-x span small{display:block;color:#7C8592;font-size:11px}
+.lol-sample .ml-r{width:100%;font:inherit;color:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;border-radius:8px}
+.lol-sample .ml-r.th{cursor:default}
+.lol-sample .ml-r:not(.th):hover,.lol-sample .ml-r:not(.th):focus-visible{background:rgba(255,255,255,.04)}
+.lol-sample .ml-r.sel{background:rgba(226,181,102,.10);box-shadow:inset 0 0 0 1px rgba(226,181,102,.45)}
+.lol-sample .mud{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;margin:0 20px 16px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(226,181,102,.10),rgba(13,16,23,.6));border:1px solid rgba(226,181,102,.28)}
+.lol-sample .mud .vs{display:flex;align-items:center;gap:10px;font-weight:700}
+.lol-sample .mud .vs .sp{width:48px;height:48px;border-radius:12px}
+.lol-sample .mud .vs em{font-style:normal;color:#8F98A5;font-size:12px;font-weight:600}
+.lol-sample .mud-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.lol-sample .mud-k div{background:rgba(7,9,13,.55);border-radius:12px;padding:8px 10px}
+.lol-sample .mud-k small{display:block;color:#8F98A5;font-size:11.5px}
+.lol-sample .mud-k b{font-family:'Chakra Petch',sans-serif;font-size:18px}
+.lol-sample .mud-k b.up{color:#62D99C}
+.lol-sample .mud-k b.dn{color:#F08A7A}
+.lol-sample .mud p{grid-column:1 / -1;margin:0;color:#C6CBD2;font-size:13.5px}
+.lol-sample .mud .x{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#ECE9E1;cursor:pointer}
+.lol-sample .nodata{margin:0 20px 20px;padding:18px;border-radius:14px;border:1px dashed rgba(255,255,255,.14);color:#A0A8B4;font-size:14px}
+.lol-sample .syn-c{cursor:default}
+.lol-sample .syn-c .sp{width:52px;height:52px;border-radius:12px}
+.lol-sample .syn-c .w small{color:#62D99C;font-size:12px}
+.lol-sample .sg-i em.nt{color:#8F98A5}
+.lol-sample .bv{display:grid;gap:10px;padding:0 20px 20px}
+.lol-sample .bv-r{display:grid;grid-template-columns:28px minmax(0,1.3fr) minmax(0,1.6fr) 120px 96px;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:#0A0D13;border:1px solid rgba(255,255,255,.06)}
+.lol-sample .bv-r.top{border-color:rgba(226,181,102,.45);background:linear-gradient(135deg,rgba(226,181,102,.10),#0A0D13 60%)}
+.lol-sample .bv-r .n{font-family:'Chakra Petch',sans-serif;color:#8F98A5;font-size:15px}
+.lol-sample .bv-r .t b{display:block}
+.lol-sample .bv-r .t small{color:#8F98A5;font-size:12px}
+.lol-sample .bv-its{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.lol-sample .bv-its img{width:38px;height:38px;border-radius:9px;border:1px solid rgba(255,255,255,.12)}
+.lol-sample .bv-its .bt{opacity:.85}
+.lol-sample .bv-its .ks{width:34px;height:34px;border-radius:50%;background-color:#07090D}
+.lol-sample .bv-its svg{color:#5E6673}
+.lol-sample .bv-w b{font-family:'Chakra Petch',sans-serif;font-size:20px;color:#62D99C}
+.lol-sample .bv-w .wbar{display:block;height:5px;border-radius:3px;background:rgba(255,255,255,.08);margin-top:5px;overflow:hidden}
+.lol-sample .bv-w .wbar i{display:block;height:100%;background:linear-gradient(90deg,#3D8F6A,#62D99C)}
+.lol-sample .bv-g{color:#A0A8B4;font-size:13px;text-align:right}
+.lol-sample .bv-g small{display:block;color:#7C8592;font-size:11.5px}
+@media (max-width:860px){
+  .lol-sample .ml-r{grid-template-columns:minmax(0,1.3fr) minmax(0,1.6fr) 84px 72px;gap:10px}
+  .lol-sample .ml-r .ml-g{display:block}
+  .lol-sample .qf{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  .lol-sample .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .lol-sample .tabs::-webkit-scrollbar{display:none}
+  .lol-sample .tab{flex:none}
+  .lol-sample .mud{grid-template-columns:auto minmax(0,1fr)}
+  .lol-sample .mud .x{grid-column:2;justify-self:end;grid-row:1}
+  .lol-sample .mud-k{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lol-sample .bv-r{grid-template-columns:28px minmax(0,1fr) 96px;row-gap:10px}
+  .lol-sample .bv-its{grid-column:2 / -1}
+  .lol-sample .bv-g{grid-column:3;grid-row:1}
+  .lol-sample .bv-w{grid-column:2}
+}
+@media (max-width:560px){
+  .lol-sample .ml-r:not(.th){grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n n" "w d";row-gap:6px;padding:10px 8px}
+  .lol-sample .ml-r:not(.th) .ml-n{grid-area:n}
+  .lol-sample .ml-r:not(.th) .ml-w{grid-area:w}
+  .lol-sample .ml-r:not(.th) .ml-d{grid-area:d;text-align:right}
+  .lol-sample .ml-r:not(.th) .ml-g{grid-area:n;justify-self:end;align-self:center;color:#8F98A5;font-size:12px}
+  .lol-sample .ml-r.th{display:none}
+  .lol-sample .qf-i{padding:8px 4px}
+  .lol-sample .qf-i small{font-size:11px}
+  .lol-sample .mud-k b{font-size:16px}
+}
+
+/* === LF1 ronda 3 === */
+.lol-sample .ml-gl{display:none}
+.lol-sample .tp:focus-visible{outline:2px solid #E2B566;outline-offset:6px;border-radius:12px}
+.lol-sample .l15-sub{margin:0 20px 8px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.lol-sample .l15.one{grid-template-columns:minmax(0,1fr)}
+@media (max-width:860px){.lol-sample .ml-r.th .ml-g,.lol-sample .ml-r.th span:last-child{display:block}
+}
+@media (max-width:560px){.lol-sample .ml-gl{display:inline;margin-left:3px}
+}
+/* === Builds en pestañas (una por variante) === */
+.lol-sample .bchips{display:flex;flex-wrap:wrap;gap:8px;padding:2px 20px 16px}
+.lol-sample .bchip{flex:none;display:flex;align-items:center;gap:10px;min-height:52px;padding:7px 12px 7px 8px;border-radius:12px;background:#0A0D13;border:1px solid rgba(255,255,255,.08);color:#C9CED6;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.lol-sample .bchip:hover{border-color:rgba(226,181,102,.38);color:#ECE9E1}
+.lol-sample .bchip.on{border-color:rgba(226,181,102,.75);background:linear-gradient(135deg,rgba(226,181,102,.16),#0A0D13 70%);color:#ECE9E1}
+.lol-sample .bchip:focus-visible{outline:2px solid #E2B566;outline-offset:2px}
+.lol-sample .bchip .ks{width:30px;height:30px;border-radius:50%;flex:none;background-color:#07090D}
+.lol-sample .bchip .bt-t b{display:block;font-size:13.5px;white-space:nowrap}
+.lol-sample .bchip .bt-t small{display:block;font-size:11.5px;color:#8F98A5;white-space:nowrap}
+.lol-sample .bchip .bt-w{margin-left:6px;font:600 15px 'Chakra Petch',sans-serif;color:#62D99C;text-align:right;white-space:nowrap}
+.lol-sample .bchip .bt-w small{display:block;font:400 11px 'IBM Plex Sans',sans-serif;color:#7C8592}
+.lol-sample #bpanel:focus-visible{outline:2px solid #E2B566;outline-offset:-2px}
+.lol-sample .bsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 20px;border-top:1px solid rgba(255,255,255,.05)}
+.lol-sample .bsum .nm{font-size:16px}
+.lol-sample .bsum .sub{font-size:13px;color:#8F98A5}
+.lol-sample .bsum .st{margin-left:auto;font-size:13px;color:#A0A8B4}
+.lol-sample .bsum .st b{color:#62D99C}
+.lol-sample .spl{display:grid;gap:6px}
+.lol-sample .spl-r{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto auto;align-items:center;gap:4px 6px;padding:5px 7px;border-radius:10px;background:#0A0D13;border:1px solid rgba(255,255,255,.05)}
+.lol-sample .spl-r.top{border-color:rgba(226,181,102,.45)}
+.lol-sample .spl-r .sq{width:26px;height:26px;border-radius:7px}
+.lol-sample .spl-n{min-width:0;margin-left:2px;font-size:12.5px;color:#C9CED6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lol-sample .spl-w{font:600 13px 'Chakra Petch',sans-serif;color:#62D99C}
+.lol-sample .spl-u{min-width:32px;text-align:right;font-size:12px;color:#8F98A5}
+.lol-sample .ci{display:inline-flex;align-items:center;gap:6px}
+.lol-sample .it > img.sp{object-fit:cover;border-radius:inherit}
+@media (max-width:560px){.lol-sample .bchips{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin}
+.lol-sample .bchip{scroll-snap-align:start}
+.lol-sample .bsum .st{margin-left:0}
+.lol-sample .spl-r{grid-template-columns:auto auto minmax(0,1fr) auto}
+.lol-sample .spl-u{grid-column:3 / -1;text-align:left}
+}
+
+.lol-sample .sp{display:block;background-repeat:no-repeat}
+.lol-sample .cs{background-image:url(/images/lol/campeones.webp);background-size:1400% 1300%}
+.lol-sample .ms{background-image:url(/images/lol/iconos.webp);background-size:1000% 700%}
+.lol-sample .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
