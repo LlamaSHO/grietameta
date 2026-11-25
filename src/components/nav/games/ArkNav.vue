@@ -1,8 +1,22 @@
+<script setup>
+import '@/assets/styles/games/ark.css';
+
+const sections = [
+  ['/ark', 'Portada', 'o-g'],
+  ['/ark/criaturas', 'Criaturas', 'o-g'],
+  ['/ark/engramas', 'Engramas', 'o-b'],
+  ['/ark/recursos', 'Recursos', 'o-r'],
+  ['/ark/guias', 'Guías', 'o-a'],
+];
+</script>
+
 <template>
-  <!-- PROVISIONAL: lo sustituye el agente de este juego con la barra de su diseño. -->
-  <RouterLink class="slink" exact-active-class="on" to="/ark">Portada</RouterLink>
-  <RouterLink class="slink" exact-active-class="on" to="/ark/criaturas">Criaturas</RouterLink>
-  <RouterLink class="slink" exact-active-class="on" to="/ark/engramas">Engramas</RouterLink>
-  <RouterLink class="slink" exact-active-class="on" to="/ark/recursos">Recursos</RouterLink>
-  <RouterLink class="slink" exact-active-class="on" to="/ark/guias">Guías</RouterLink>
+  <RouterLink v-for="[to, label, crystal] in sections" :key="to" :to="to" class="slink" :class="crystal" exact-active-class="on">
+    {{ label }}
+  </RouterLink>
+  <span class="ark-status">
+    <span class="ark-ed">Survival Evolved</span>
+    <span class="ark-wip" title="Esta sección aún se está completando">En progreso</span>
+    <span class="ark-obs" aria-hidden="true"><i></i><i></i><i></i></span>
+  </span>
 </template>

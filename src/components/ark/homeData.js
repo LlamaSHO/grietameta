@@ -1,0 +1,33 @@
+export const featured = [
+  ["rex","rex.webp","Tyrannosaurus dominum",[1100,420,500,60],"Combate y jefes."],
+  ["raptor","raptor.webp","Utahraptor prime",[200,150,140,15],"Montura rápida de los primeros niveles."],
+  ["argentavis","argentavis.webp","Argentavis atrocollum",[365,750,350,20],"Transporte aéreo: lleva criaturas medianas y mucha carga."],
+  ["ankylosaurus","ankylosaurus.webp","Ankylosaurus crassacutis",[700,175,250,50],"El mejor para metal, pedernal y cristal."],
+  ["doedicurus","doedicurus.webp","Doedicurus custosaxum",[850,300,250,32],"El mejor para piedra."],
+  ["pteranodon","pteranodon.webp","Pteranodon wyvernus",[210,300,150,15],"Volador rápido para explorar."],
+  ["triceratops","triceratops.webp","Triceratops styrax",[375,150,365,32],"Recolecta bayas y combate al principio."],
+  ["spinosaurus","spinosaurus.webp","Spinosaurus aquareliga",[700,350,350,50],"Combate en agua y tierra."],
+  ["quetzalcoatlus","quetzal.webp","Quetzalcoatlus conchapicem",[1200,750,780,32],"Volador gigante y plataforma para construir."],
+  ["therizinosaurus","therizinosaur.webp","",[870,300,365,52],"Recolecta de todo: madera, fibra, paja y bayas."],
+  ["megalodon","megalodon.webp","Carcharodon ultramegalodon",[600,320,250,40],"Combate en el mar; recolecta pescado."],
+  ["thylacoleo","thylacoleo.webp","Thylacoleo furtimorsus",[700,400,400,0],"Trepa árboles y embosca."],
+  ["direwolf","direwolf.webp","Canis maxdirus",[330,260,170,33],"Combate en manada y detecta criaturas."],
+  ["stegosaurus","stegosaurus.webp","Stegosaurus regium",[650,300,500,42],"Recolecta bayas; sus placas cambian de modo."],
+  ["parasaurolophus","parasaur.webp","Parasaurolophus amphibio",[200,200,280,12],"Montura temprana que avisa de enemigos."],
+  ["woollymammoth","mammoth.webp","Mammuthus steincaput",[850,330,500,42],"Recolecta madera y paja y da calor."],
+];
+
+export const maps = [
+  {"name":"The Island","description":"El mapa original: selva, nieve y tres cuevas de artefactos","position":"0.0% 0%"},
+  {"name":"The Center","description":"Una isla flotante con un mundo bajo tierra","position":"33.333% 0%"},
+  {"name":"Scorched Earth","description":"Desierto abrasador con wyverns y tormentas","position":"66.667% 0%"},
+  {"name":"Ragnarok","description":"Volcán, castillos y la mayor de las comunidades","position":"100.0% 0%"},
+  {"name":"Aberration","description":"Un ARK roto: cavernas luminosas y radiación","position":"0.0% 50%"},
+  {"name":"Extinction","description":"La Tierra en ruinas tras la corrupción","position":"33.333% 50%"},
+  {"name":"Valguero","description":"Cañones profundos y la Zona Profunda","position":"66.667% 50%"},
+  {"name":"Genesis: Part 1","description":"Una simulación con cinco biomas y misiones","position":"100.0% 50%"},
+  {"name":"Crystal Isles","description":"Islas de cristal y wyverns de cristal","position":"0.0% 100%"},
+  {"name":"Genesis: Part 2","description":"La nave colonia Rockwell y el final","position":"33.333% 100%"},
+  {"name":"Lost Island","description":"Selva enorme con Dinopithecus y Amargasaurus","position":"66.667% 100%"},
+  {"name":"Fjordur","description":"Fiordos nórdicos y cuatro reinos","position":"100.0% 100%"},
+];

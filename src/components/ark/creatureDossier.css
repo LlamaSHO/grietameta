@@ -1,0 +1,132 @@
+.dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  font-size: 14px;
+}
+
+.dl dt {
+  color: var(--mu);
+}
+
+.dl dd {
+  margin: 0;
+}
+
+.ico {
+  display: block;
+  width: 64px;
+  height: 64px;
+  background: url(/images/ark/bestiario/iconos.webp) no-repeat;
+  background-size: 3200% 2200%;
+}
+
+.ico.big {
+  width: 128px;
+  height: 128px;
+}
+
+.dos {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/2;
+  background-repeat: no-repeat;
+  background-size: 800% 500%;
+}
+
+.dt .dimg {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  background: radial-gradient(circle at 50% 55%,#F3EBD6,#DDD0B0);
+  border-radius: 2px;
+}
+
+.dt em {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font: 700 15px Kalam,"Segoe Print",cursive;
+  color: #7A5A16;
+}
+
+.dt h2 {
+  margin: 2px 0 0;
+  font: 700 38px/1 Kalam,"Segoe Print",cursive;
+}
+
+.dt .uso {
+  margin: 8px 0 0;
+  font: 700 18px/1.3 Kalam,"Segoe Print",cursive;
+  color: #7A3B16;
+}
+
+.dt .dl {
+  --mu: #6A6852;
+}
+
+.dt .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.dt .tags span {
+  padding: 4px 8px;
+  border-radius: 2px;
+  font: 600 12px/1.2 'IBM Plex Sans',sans-serif;
+  background: #DDD0B0;
+}
+
+.dt .tags span.ok {
+  background: #386a24;
+  color: #fff;
+}
+
+.dt .tags span.no {
+  background: #CFC2A0;
+  color: #6A6852;
+  text-decoration: line-through;
+}
+
+.dt h3 {
+  margin: 16px 0 6px;
+  font: 700 20px Kalam,"Segoe Print",cursive;
+}
+
+.dt .mps2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.dt .mps2 span {
+  padding: 3px 7px;
+  border: 1px solid rgba(43,42,30,.3);
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.dt a.wk {
+  display: inline-block;
+  margin-top: 14px;
+  color: #2E6A9E;
+  font-weight: 600;
+}
+
+.dt .src {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: #6A6852;
+}
+
+.dimg .fallback {
+  font: 700 40px Kalam,"Segoe Print",cursive;
+}
+
+.dl {
+  grid-template-columns: auto minmax(0, 1fr);
+  overflow-wrap: anywhere;
+}

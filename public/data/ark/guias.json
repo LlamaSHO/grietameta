@@ -1,0 +1,474 @@
+{
+    "juego":  "ARK: Survival Evolved",
+    "mapa":  "The Island",
+    "fuente":  "https://ark.wiki.gg/wiki/ARK_Survival_Evolved_Wiki",
+    "categorias":  [
+                       {
+                           "id":  "inicio",
+                           "nombre":  "Primeros pasos",
+                           "nota":  "Sobrevive al día uno y levanta un refugio que puedas ampliar."
+                       },
+                       {
+                           "id":  "doma",
+                           "nombre":  "Doma",
+                           "nota":  "Elige el método, la comida y el momento adecuados."
+                       },
+                       {
+                           "id":  "bases",
+                           "nombre":  "Bases",
+                           "nota":  "Ubicación, defensa y materiales para crecer con seguridad."
+                       },
+                       {
+                           "id":  "granjas",
+                           "nombre":  "Granjas y sistemas",
+                           "nota":  "Automatiza recursos, cultivos, energía y reproducción."
+                       },
+                       {
+                           "id":  "merece",
+                           "nombre":  "¿Merece la pena?",
+                           "nota":  "Invierte tiempo en lo que te da una ventaja real."
+                       }
+                   ],
+    "guias":  [
+                  {
+                      "id":  "primer-dia",
+                      "categoria":  "inicio",
+                      "titulo":  "Tu primer día en The Island",
+                      "resumen":  "Consigue agua, comida y una cama antes de que caiga la noche.",
+                      "nivel":  1,
+                      "dificultad":  "Fácil",
+                      "tiempo":  "15–25 min",
+                      "materiales":  [
+                                         "Piedra y madera",
+                                         "Fibra y paja",
+                                         "Bayas rojas",
+                                         "Piel (para odre)"
+                                     ],
+                      "criaturas":  [
+                                        "Dodo (opcional, carne y cuero)"
+                                    ],
+                      "engramas":  [
+                                       "Hacha de piedra",
+                                       "Pico de piedra",
+                                       "Hoguera",
+                                       "Lanza",
+                                       "Cama sencilla",
+                                       "Odre de agua"
+                                   ],
+                      "pasos":  [
+                                    "Recoge piedra del suelo; golpea árboles con el puño para obtener madera y paja, y arbustos para fibra y bayas.",
+                                    "Desbloquea pico y hacha. Usa el pico en rocas y árboles; cambia al hacha cuando necesites más madera o piedra.",
+                                    "Crea una lanza y una hoguera. Cocina la carne cruda para reducir el riesgo de pasar hambre.",
+                                    "Llena el odre en una fuente de agua y fabrica una cama sencilla dentro de un refugio cerrado.",
+                                    "Guarda materiales de sobra en cajas y evita alejarte de la costa de noche hasta tener armadura."
+                                ],
+                      "utilidad":  "Esencial",
+                      "utilidadNota":  "Una cama fija el punto de reaparición y la hoguera estabiliza comida y temperatura."
+                  },
+                  {
+                      "id":  "base-paja-madera",
+                      "categoria":  "inicio",
+                      "titulo":  "De refugio de paja a base de madera",
+                      "resumen":  "Construye primero una caja segura y mejora por piezas sin perder la cama.",
+                      "nivel":  5,
+                      "dificultad":  "Fácil",
+                      "tiempo":  "20–35 min",
+                      "materiales":  [
+                                         "Paja, madera y fibra",
+                                         "Piedra para herramientas",
+                                         "Piel para dormir"
+                                     ],
+                      "criaturas":  [
+                                        "Parasaur (carga y aviso temprano)"
+                                    ],
+                      "engramas":  [
+                                       "Cimientos y paredes de paja",
+                                       "Puerta y marco de paja",
+                                       "Cimientos y paredes de madera",
+                                       "Caja de almacenamiento",
+                                       "Cama sencilla"
+                                   ],
+                      "pasos":  [
+                                    "Elige terreno llano cerca de agua y recursos, sin bloquear una ruta ni construir dentro de una cueva.",
+                                    "Coloca 2×2 cimientos, cuatro paredes, techo, marco y puerta. Deja espacio para una hoguera y cajas.",
+                                    "Fabrica la cama y varias cajas; guarda recursos en la base y conserva una caja de repuesto para el traslado.",
+                                    "Recolecta madera con hacha y fibra con la mano; reemplaza paredes y techo de una en una por madera.",
+                                    "Cuando amplíes, separa almacén, taller y salida. La paja sirve de emergencia; no resiste bien ataques ni clima."
+                                ],
+                      "utilidad":  "Esencial",
+                      "utilidadNota":  "La madera dura más que la paja frente a depredadores pequeños, pero no es una defensa PvP."
+                  },
+                  {
+                      "id":  "doma-ko-pasiva",
+                      "categoria":  "doma",
+                      "titulo":  "Doma por KO o doma pasiva",
+                      "resumen":  "Identifica la criatura antes de golpear: el método incorrecto puede arruinar la doma.",
+                      "nivel":  21,
+                      "dificultad":  "Media",
+                      "tiempo":  "10–40 min",
+                      "materiales":  [
+                                         "Boleadoras",
+                                         "Arco y flechas tranquilizantes",
+                                         "Narcobayas o narcóticos",
+                                         "Comida preferida de la especie"
+                                     ],
+                      "criaturas":  [
+                                        "Parasaur (primer transporte)",
+                                        "Pteranodon (vuelo temprano)"
+                                    ],
+                      "engramas":  [
+                                       "Boleadora",
+                                       "Arco",
+                                       "Flecha tranquilizante",
+                                       "Mortero y maja",
+                                       "Narcótico"
+                                   ],
+                      "pasos":  [
+                                    "Consulta la ficha de la especie en la wiki: algunas se duermen con torpor y otras solo aceptan comida acercándose con sigilo.",
+                                    "Para KO, inmoviliza especies pequeñas con boleadora si funciona y dispara flechas tranquilizantes; deja pausas para que suba el torpor.",
+                                    "Abre el inventario del animal inconsciente y coloca su comida preferida. Vigila el torpor y usa narcobayas o narcóticos si baja.",
+                                    "Para doma pasiva, lleva la comida indicada en la última casilla y acércate sin atacar; alimenta cuando aparezca la interacción.",
+                                    "Protege al animal y espera a que la barra de doma termine. No lo golpees ni dejes que reciba daño."
+                                ],
+                      "utilidad":  "Esencial",
+                      "utilidadNota":  "La ficha de cada especie manda: la comida y el método cambian mucho entre criaturas."
+                  },
+                  {
+                      "id":  "narcoticos-kibble",
+                      "categoria":  "doma",
+                      "titulo":  "Narcóticos, tranquilizantes y kibble",
+                      "resumen":  "Prepara la sedación y la comida antes de disparar para no improvisar con la criatura dormida.",
+                      "nivel":  15,
+                      "dificultad":  "Media",
+                      "tiempo":  "15–30 min preparación",
+                      "materiales":  [
+                                         "Narcobayas",
+                                         "Carne podrida",
+                                         "Bayas y agua",
+                                         "Huevos del tamaño requerido",
+                                         "Fibra y carne cocinada"
+                                     ],
+                      "criaturas":  [
+                                        "Dodo (huevos pequeños)",
+                                        "Gallimimus (huevos especiales, según receta)"
+                                    ],
+                      "engramas":  [
+                                       "Mortero y maja",
+                                       "Narcótico",
+                                       "Olla de cocina",
+                                       "Flecha tranquilizante",
+                                       "Arco"
+                                   ],
+                      "pasos":  [
+                                    "Fabrica narcótico en mortero con narcobayas y carne podrida; revisa la receta vigente antes de producir en masa.",
+                                    "Usa flechas tranquilizantes en arco para el KO temprano; ballesta con dardos requiere más nivel y recursos, y puede causar daño distinto.",
+                                    "Lleva narcóticos en el inventario de la criatura inconsciente y administra cuando el torpor lo necesite.",
+                                    "Prepara kibble de la categoría que acepta esa especie: receta, huevo y olla deben corresponder al sistema de ARK: Survival Evolved.",
+                                    "Si no tienes kibble, usa la comida preferida disponible. Acepta una doma más lenta y protégela hasta terminar."
+                                ],
+                      "utilidad":  "Muy útil",
+                      "utilidadNota":  "El kibble adecuado acelera la doma y conserva efectividad; no todas las criaturas comparten receta."
+                  },
+                  {
+                      "id":  "ubicacion-island",
+                      "categoria":  "bases",
+                      "titulo":  "Dónde construir en The Island",
+                      "resumen":  "Equilibra agua, acceso a metal, espacio y riesgo antes de fijar tu hogar.",
+                      "nivel":  10,
+                      "dificultad":  "Media",
+                      "tiempo":  "10 min de exploración",
+                      "materiales":  [
+                                         "Cama temporal",
+                                         "Herramientas de piedra",
+                                         "Montura si ya tienes una"
+                                     ],
+                      "criaturas":  [
+                                        "Parasaur o Iguanodon para recorrer terreno"
+                                    ],
+                      "engramas":  [
+                                       "Cama sencilla",
+                                       "Caja de almacenamiento",
+                                       "Tienda de campaña (opcional)"
+                                   ],
+                      "pasos":  [
+                                    "Para empezar, busca una llanura costera tranquila: agua y madera cerca, con espacio para ampliar.",
+                                    "Explora ríos y laderas interiores para acercarte a metal y piedra, pero comprueba depredadores y rutas de regreso.",
+                                    "Las playas del sur son cómodas para empezar; las zonas altas y el norte ofrecen recursos, con más peligro y clima duro.",
+                                    "Evita entradas de cuevas, obeliscos, nodos de recursos y pasos estrechos: la construcción puede estar bloqueada o interferir con reapariciones.",
+                                    "Coloca una cama provisional y marca mentalmente el trayecto a agua, metal y una ruta segura antes de mover el almacén."
+                                ],
+                      "utilidad":  "Esencial",
+                      "utilidadNota":  "Una base bien situada reduce viajes y pérdidas; el mapa y las reglas del servidor pueden variar."
+                  },
+                  {
+                      "id":  "base-defendible",
+                      "categoria":  "bases",
+                      "titulo":  "Diseña una base defendible",
+                      "resumen":  "Ordena puertas, perímetro y almacén para que un ataque no alcance todo de una vez.",
+                      "nivel":  68,
+                      "dificultad":  "Media",
+                      "tiempo":  "45–90 min",
+                      "materiales":  [
+                                         "Piedra y madera",
+                                         "Metal para puntos críticos",
+                                         "Puertas y marcos reforzados",
+                                         "Generador y combustible (más adelante)"
+                                     ],
+                      "criaturas":  [
+                                        "Dinosaurio de carga para transportar piedra"
+                                    ],
+                      "engramas":  [
+                                       "Muros de piedra y puerta grande",
+                                       "Muros de metal y puerta grande",
+                                       "Torreta automática",
+                                       "Generador eléctrico",
+                                       "Cable y toma eléctrica"
+                                   ],
+                      "pasos":  [
+                                    "Separa el taller, el almacén valioso y el corral; evita una sola sala que concentre todos los recursos.",
+                                    "Construye un perímetro de piedra temprano, con accesos controlados y una segunda puerta detrás de la entrada principal.",
+                                    "Protege cimientos y puntos de acceso. La piedra resiste criaturas salvajes comunes, pero explosivos y armas de asedio la superan.",
+                                    "Mejora a metal las piezas expuestas y las zonas que quieras proteger; puertas grandes facilitan el paso de monturas.",
+                                    "En PvP coloca torretas con línea de visión y munición, conectadas a una fuente estable. En PvE prioriza iluminación, vallado y seguridad contra fauna."
+                                ],
+                      "utilidad":  "Útil",
+                      "utilidadNota":  "La defensa depende del modo PvE/PvP y de las reglas del servidor; ninguna estructura es invulnerable."
+                  },
+                  {
+                      "id":  "cultivos-fertilizante",
+                      "categoria":  "granjas",
+                      "titulo":  "Bayas, cultivos e invernadero",
+                      "resumen":  "Empieza con parcelas pequeñas; amplía a invernadero cuando ya puedas producir fertilizante.",
+                      "nivel":  50,
+                      "dificultad":  "Media",
+                      "tiempo":  "30–50 min montaje",
+                      "materiales":  [
+                                         "Parcelas de cultivo",
+                                         "Semillas de cultivos",
+                                         "Agua y tuberías",
+                                         "Fertilizante",
+                                         "Cristal para invernadero"
+                                     ],
+                      "criaturas":  [
+                                        "Triceratops (recolecta bayas)",
+                                        "Phiomia (produce estiércol al alimentarla)"
+                                    ],
+                      "engramas":  [
+                                       "Parcela pequeña, mediana y grande",
+                                       "Tubería de agua",
+                                       "Compostera",
+                                       "Invernadero",
+                                       "Aspersor"
+                                   ],
+                      "pasos":  [
+                                    "Recoge semillas de arbustos y bayas; planta las semillas de cultivo en parcelas adecuadas para su tamaño.",
+                                    "Conecta las parcelas a agua mediante tuberías y un aspersor, o colócalas al alcance de una fuente válida.",
+                                    "Llena una compostera con paja y estiércol para crear fertilizante; vigila el inventario y repón cuando se consuma.",
+                                    "Cultiva verduras necesarias para recetas y kibble, además de narcobayas para narcóticos.",
+                                    "Construye techo y paredes de invernadero alrededor de las parcelas: el efecto mejora su crecimiento si la estructura está bien colocada."
+                                ],
+                      "utilidad":  "Muy útil",
+                      "utilidadNota":  "El invernadero aumenta producción; no hace falta antes de tener parcelas, agua y fertilizante constantes."
+                  },
+                  {
+                      "id":  "granja-metal",
+                      "categoria":  "granjas",
+                      "titulo":  "Ruta eficiente para farmear metal",
+                      "resumen":  "Prepara carga y recorrido antes de salir; transportarlo suele ser el cuello de botella.",
+                      "nivel":  62,
+                      "dificultad":  "Media",
+                      "tiempo":  "20–40 min por ruta",
+                      "materiales":  [
+                                         "Pico de metal",
+                                         "Silla de montura",
+                                         "Cajas para excedente"
+                                     ],
+                      "criaturas":  [
+                                        "Ankylosaurus (extrae metal y reduce peso)",
+                                        "Argentavis (carga y transporte aéreo)"
+                                    ],
+                      "engramas":  [
+                                       "Pico de metal",
+                                       "Montura de Ankylosaurus",
+                                       "Montura de Argentavis"
+                                   ],
+                      "pasos":  [
+                                    "Localiza vetas de metal en laderas y montañas de The Island; lleva cama o punto de retorno cerca si el servidor lo permite.",
+                                    "Mina con pico de metal al inicio; al desbloquearlo, el Ankylosaurus recoge más eficientemente y reduce el peso del metal.",
+                                    "Usa Argentavis para llevar al Ankylosaurus a la ruta y transportar la carga; ambos tienen límites de peso y pueden ser atacados.",
+                                    "Prioriza nodos ricos en metal y vuelve antes de sobrecargar a la criatura.",
+                                    "Refina el mineral en una forja y guarda el metal en lingotes; calcula combustible y espacio de almacenamiento."
+                                ],
+                      "utilidad":  "Esencial",
+                      "utilidadNota":  "El metal desbloquea herramientas, estructuras y tecnología; Anky + Argentavis es una combinación clásica."
+                  },
+                  {
+                      "id":  "cristal-obsidiana-petroleo",
+                      "categoria":  "granjas",
+                      "titulo":  "Cristal, obsidiana y petróleo",
+                      "resumen":  "Haz expediciones cortas a zonas peligrosas y organiza el retorno antes de picar.",
+                      "nivel":  28,
+                      "dificultad":  "Alta",
+                      "tiempo":  "25–50 min por expedición",
+                      "materiales":  [
+                                         "Pico de metal",
+                                         "Armadura y comida",
+                                         "Cama portátil o montura",
+                                         "Recipiente para petróleo (opcional)"
+                                     ],
+                      "criaturas":  [
+                                        "Argentavis (transporte)",
+                                        "Ankylosaurus (cristal y obsidiana)"
+                                    ],
+                      "engramas":  [
+                                       "Pico de metal",
+                                       "Monturas de transporte",
+                                       "Refinadora (para convertir petróleo en gasolina)"
+                                   ],
+                      "pasos":  [
+                                    "Busca cristal en cumbres y zonas elevadas; obsidiana aparece en áreas rocosas y peligrosas. Comprueba el mapa concreto.",
+                                    "Recolecta con pico de metal; un Ankylosaurus ayuda con carga, pero compara rendimiento por recurso y versión.",
+                                    "El petróleo se encuentra en el mar, playas del norte y zonas heladas de The Island; lleva protección y plan de regreso.",
+                                    "Transporta solo lo que puedas proteger. Una montura cargada se mueve más despacio y puede quedar expuesta.",
+                                    "Refina petróleo con piel en la refinadora para producir gasolina cuando la necesites para generadores y fabricación."
+                                ],
+                      "utilidad":  "Útil",
+                      "utilidadNota":  "Son recursos clave para avanzar, pero no hace falta recolectar enormes reservas antes de tener una receta que las consuma."
+                  },
+                  {
+                      "id":  "agua-electricidad",
+                      "categoria":  "granjas",
+                      "titulo":  "Agua y electricidad en la base",
+                      "resumen":  "Lleva agua hasta parcelas y conecta el generador solo a los aparatos que lo necesitan.",
+                      "nivel":  49,
+                      "dificultad":  "Media",
+                      "tiempo":  "25–45 min",
+                      "materiales":  [
+                                         "Tuberías rectas, inclinadas y grifo",
+                                         "Generador eléctrico",
+                                         "Gasolina",
+                                         "Cable y toma eléctrica"
+                                     ],
+                      "criaturas":  [
+                                        "Argentavis (transporta metal y componentes)"
+                                    ],
+                      "engramas":  [
+                                       "Tubería de agua",
+                                       "Grifo",
+                                       "Generador eléctrico",
+                                       "Cable eléctrico",
+                                       "Toma eléctrica",
+                                       "Refrigerador (opcional)"
+                                   ],
+                      "pasos":  [
+                                    "Para agua, conecta una toma a un río u océano y extiende tubería hasta grifos o aspersores; revisa la conexión si no fluye.",
+                                    "Mantén tuberías y tomas accesibles. Las tuberías flexibles permiten salvar desniveles cuando la ruta recta no encaja.",
+                                    "Fabrica gasolina en la refinadora con petróleo y piel; coloca el combustible en el generador.",
+                                    "Conecta generador, cable y toma eléctrica cerca de los aparatos. Comprueba que el cable se ilumina y el aparato recibe energía.",
+                                    "Enciende el generador solo cuando haga falta: consume gasolina incluso sin uso activo de todos los dispositivos."
+                                ],
+                      "utilidad":  "Muy útil",
+                      "utilidadNota":  "Agua es fundamental para cultivos; electricidad abre refrigeración y torretas, a cambio de gasolina recurrente."
+                  },
+                  {
+                      "id":  "cria-impronta",
+                      "categoria":  "granjas",
+                      "titulo":  "Cría: apareamiento, incubación e impronta",
+                      "resumen":  "Empieza con una pareja de la misma especie y espacio controlado para las crías.",
+                      "nivel":  61,
+                      "dificultad":  "Alta",
+                      "tiempo":  "30 min montaje + incubación",
+                      "materiales":  [
+                                         "Pareja de la misma especie",
+                                         "Carne o bayas según dieta",
+                                         "Acondicionadores de temperatura",
+                                         "Comida en cantidad"
+                                     ],
+                      "criaturas":  [
+                                        "Dos criaturas compatibles de la misma especie"
+                                    ],
+                      "engramas":  [
+                                       "Aire acondicionado",
+                                       "Huevo fertilizado (mecánica)",
+                                       "Comedero"
+                                   ],
+                      "pasos":  [
+                                    "Activa el apareamiento en dos criaturas compatibles y mantenlas cerca hasta que aparezca un huevo fertilizado o embarazo, según la especie.",
+                                    "Recoge el huevo fertilizado y controla temperatura con fogatas, antorchas o aire acondicionado; cada especie necesita un rango distinto.",
+                                    "Al nacer, reclama la cría de inmediato y pon comida adecuada en su inventario. Las crías consumen alimento con rapidez.",
+                                    "Sigue la solicitud de impronta cuando aparezca: puede pedir paseo, mimo o comida específica. Cumplirla mejora el vínculo.",
+                                    "Mantén la cría dentro del alcance del comedero cuando pueda alimentarse allí y vigila crecimiento, hambre y temperatura."
+                                ],
+                      "utilidad":  "Muy útil",
+                      "utilidadNota":  "La impronta aumenta el rendimiento del vínculo y las estadísticas efectivas con su cuidador; es exigente y sensible al tiempo."
+                  },
+                  {
+                      "id":  "merece-torretas",
+                      "categoria":  "merece",
+                      "titulo":  "¿Merecen la pena las torretas automáticas?",
+                      "resumen":  "Sí en defensa PvP planificada; poco útiles si aún faltan energía y munición.",
+                      "nivel":  68,
+                      "dificultad":  "Alta",
+                      "tiempo":  "1–2 h de preparación",
+                      "materiales":  [
+                                         "Metal y electrónica",
+                                         "Gasolina",
+                                         "Munición de torreta",
+                                         "Cable y generador"
+                                     ],
+                      "criaturas":  [
+                                        "Ankylosaurus para metal",
+                                        "Argentavis para transporte"
+                                    ],
+                      "engramas":  [
+                                       "Torreta automática",
+                                       "Generador eléctrico",
+                                       "Cable eléctrico",
+                                       "Toma eléctrica"
+                                   ],
+                      "pasos":  [
+                                    "Desbloquea y fabrica la torreta; calcula electrónica, polímero y metal para el número que puedes mantener.",
+                                    "Colócala con visión de los accesos, fuera de alcance fácil y protegida por varias capas de estructura.",
+                                    "Conecta a electricidad, asigna objetivo y rango según el propósito, e introduce munición.",
+                                    "Revisa combustible y balas: sin suministro, una torreta instalada es solo un coste hundido.",
+                                    "En PvE contra fauna suele rendir más una buena empalizada y una montura defensiva; reserva torretas para necesidades concretas."
+                                ],
+                      "utilidad":  "Situacional",
+                      "utilidadNota":  "Potentes pero caras y dependientes de energía, munición y reglas PvP del servidor."
+                  },
+                  {
+                      "id":  "merece-fabricante",
+                      "categoria":  "merece",
+                      "titulo":  "Qué automatizar y qué puedes aplazar",
+                      "resumen":  "Prioriza cultivos, forja y almacenamiento; evita montar una megabase antes de tener una ruta de recursos.",
+                      "nivel":  20,
+                      "dificultad":  "Fácil",
+                      "tiempo":  "Lectura: 5 min",
+                      "materiales":  [
+                                         "Parcelas",
+                                         "Compostera",
+                                         "Forja",
+                                         "Cajas de almacenamiento"
+                                     ],
+                      "criaturas":  [
+                                        "Triceratops para bayas",
+                                        "Ankylosaurus para metal"
+                                    ],
+                      "engramas":  [
+                                       "Compostera",
+                                       "Parcela mediana",
+                                       "Forja",
+                                       "Caja de almacenamiento"
+                                   ],
+                      "pasos":  [
+                                    "Prioriza pronto cama, cajas, mortero y forja: sostienen la reaparición, el crafteo y el metal.",
+                                    "Monta parcelas y compostera cuando ya uses narcóticos, kibble o recetas de cocina con regularidad.",
+                                    "Aplaza grandes invernaderos hasta reunir cristal, agua y fertilizante; unas pocas parcelas cubren las primeras necesidades.",
+                                    "Aplaza torretas, generadores y frigoríficos si no puedes producir gasolina y componentes de forma estable.",
+                                    "Aplaza construir enorme: una base compacta cuesta menos recursos, es más fácil de defender y se amplía cuando el inventario lo pide."
+                                ],
+                      "utilidad":  "Muy útil",
+                      "utilidadNota":  "Automatiza un cuello de botella real; no mantengas sistemas que consumen materiales y no usas."
+                  }
+              ]
+}
