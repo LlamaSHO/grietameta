@@ -94,9 +94,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(5, 4, 8, 0.78);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(5, 4, 8, 0.9);
 }
 .sheet {
   position: relative;

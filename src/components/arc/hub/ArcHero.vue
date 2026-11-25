@@ -4,7 +4,7 @@
     <div class="wrap hero-in">
       <div class="htx">
         <span class="kick"><i></i>ARC Raiders · Guía en español</span>
-        <h1 class="h1 cond">Sube a la superficie<span>y vuelve con botín</span></h1>
+        <h1 class="h1 cond">Sube a la superficie <span>y vuelve con botín</span></h1>
         <p class="lead">Mapas, objetos, misiones y enemigos con datos reales: qué reciclar, qué guardar y en qué mapa está cada misión.</p>
         <div class="ctas">
           <RouterLink class="btn-y" :to="{ name: 'arc-map' }">
@@ -47,7 +47,8 @@ defineProps({
 // Ancla dentro de la misma página sin pasar por el router (el nav es fijo:
 // scroll-padding-top de base.css deja su hueco).
 function goTo(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById(id)?.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
   history.replaceState(history.state, "", "#" + id);
 }
 </script>
@@ -73,6 +74,9 @@ function goTo(id) {
   flex-wrap: wrap;
   padding-top: 56px;
   padding-bottom: 48px;
+}
+@media (min-width: 1160px) {
+  .hero-in { padding-inline: 0; }
 }
 .htx {
   flex: 1 1 480px;
@@ -122,7 +126,7 @@ function goTo(id) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.05) contrast(1.05);
+
   transition: transform 1.2s var(--ease-out);
 }
 .shot .frame:hover img { transform: scale(1.04); }
@@ -130,9 +134,10 @@ function goTo(id) {
   position: absolute;
   left: 0;
   right: 0;
+  top: -80px;
   height: 80px;
   background: linear-gradient(180deg, transparent, rgba(242, 138, 30, 0.16), transparent);
-  animation: arc-scan 4s linear infinite;
+  animation: arc-scan 4s linear both;
 }
 .shot .hud { position: absolute; inset: 14px; pointer-events: none; }
 .shot .hud i { position: absolute; width: 22px; height: 22px; border: 0 solid var(--arc-yellow); }
@@ -151,11 +156,9 @@ function goTo(id) {
   padding: 12px 14px;
   border-radius: 12px;
   background: rgba(11, 10, 14, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(242, 235, 221, 0.12);
 }
-.shot .tagx b { font-size: 24px; font-weight: 800; line-height: 1; }
+.shot .tagx b { font-family: var(--font-brand); font-size: 24px; font-weight: 800; line-height: 1; }
 .shot .tagx > span { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font-size: 12.5px; color: #C8C1B6; }
 
 .kpis {
@@ -191,6 +194,6 @@ function goTo(id) {
   .lead { font-size: 15.5px; }
   .ctas a { flex: 1 1 100%; }
   .shot .tagx { left: 14px; bottom: 14px; max-width: calc(100% - 28px); padding: 10px 12px; }
-  .shot .tagx b { font-size: 20px; }
+  .shot .tagx b { font-family: var(--font-brand); font-size: 20px; }
 }
 </style>

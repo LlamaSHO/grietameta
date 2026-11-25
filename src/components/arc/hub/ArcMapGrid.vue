@@ -76,11 +76,11 @@ defineProps({
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: saturate(0.8) brightness(0.75);
+
   transform: scale(1.15);
-  transition: transform 1.2s var(--ease-out), filter 0.6s;
+  transition: transform 1.2s var(--ease-out);
 }
-.mc:hover img { transform: scale(1.32); filter: saturate(1) brightness(0.95); }
+.mc:hover img { transform: scale(1.32); }
 .mc::before {
   content: "";
   position: absolute;
@@ -97,7 +97,7 @@ defineProps({
   background: linear-gradient(180deg, transparent, rgba(59, 201, 232, 0.14), transparent);
   opacity: 0;
 }
-.mc:hover .sl { opacity: 1; animation: arc-scan 2.4s linear infinite; }
+.mc:hover .sl { opacity: 1; animation: arc-scan 2.4s linear both; }
 .chips { position: absolute; top: 14px; left: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
 .chip {
   display: inline-flex;
@@ -110,8 +110,6 @@ defineProps({
   font-size: 12px;
   font-weight: 600;
   color: var(--arc-ink-2);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 .bot {
   position: absolute;

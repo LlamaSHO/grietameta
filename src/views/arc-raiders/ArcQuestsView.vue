@@ -1,26 +1,20 @@
 <template>
-  <!-- Seguimiento de misiones de ARC Raiders (/arc-raiders/misiones). Sin
-       diseño propio: sigue el estilo del hub (components/arc). Progreso por
-       comerciante, filtros, objetos a guardar, copia de seguridad y la lista
-       de misiones. Los mapas se ven en el visor (/arc-raiders/mapas/:mapa).
-       Admite ?comerciante=Shani y ?mapa=<id> para entrar ya filtrado, y
-       ?mision=<id> para abrir y resaltar una misión (desde el visor de mapas). -->
   <div class="view-arc-quests arc-ui">
-    <ArcListHeader
-      crumb="Misiones"
-      title="Misiones"
-      accent="Sigue tu progreso"
-      lead="Marca las misiones que vas completando, sigue las que tienes en curso y mira qué objetos debes guardar."
-      img="/images/arc-raiders/comerciantes/shani.webp"
-    >
-      <template v-if="model">
-        <span class="pill"><b>{{ model.quests.length }}</b>misiones</span>
-        <span class="pill"><b>{{ onMapCount }}</b>en un mapa concreto</span>
-        <span class="pill"><b>{{ traderCount }}</b>comerciantes</span>
-      </template>
-    </ArcListHeader>
-
-    <div class="wrap body">
+    <div class="wrap cm">
+      <div class="cm-head">
+        <div>
+          <p class="cm-kick">Encargos de Speranza</p>
+          <h1>Misiones de ARC</h1>
+          <p class="cm-lede">Cada comerciante te da sus misiones en orden. Marca las que termines para saber qué te queda y qué objetos tienes que guardar.</p>
+        </div>
+        <div v-if="model" class="cm-total">
+          <div class="cm-total-n"><b>{{ doneCount }}</b><span>de {{ model.quests.length }} completadas</span></div>
+          <div class="cm-bar" role="progressbar" aria-label="Misiones completadas" :aria-valuenow="doneCount" :aria-valuemax="model.quests.length">
+            <i :style="{ width: (model.quests.length ? doneCount / model.quests.length * 100 : 0) + '%' }"></i>
+          </div>
+          <small>El progreso se guarda en este navegador.</small>
+        </div>
+      </div>
       <p v-if="!progress.saveOk.value" class="notice" role="status">
         Este navegador no permite guardar el progreso (por ejemplo, en modo privado). Puedes seguir marcando misiones, pero se perderán al cerrar la página. Usa «Copia de seguridad» para guardar un código.
       </p>
@@ -28,22 +22,58 @@
       <template v-if="model">
         <ArcQuestProgress v-model:trader="f.trader" :quests="model.quests" :progress="progress" />
 
-        <div class="tools">
-          <div class="search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            <label class="sr-only" for="arc-quests-q">Buscar misión</label>
-            <input id="arc-quests-q" v-model="searchInput" type="search" placeholder="Buscar misión, comerciante u objeto…" autocomplete="off">
-          </div>
-          <div class="filters">
+        <div class="cm-tools">
+          <label class="fld">Buscar misión, objetivo u objeto
+            <input v-model="searchInput" type="search" placeholder="Cables, presa, botiquín…" autocomplete="off">
+          </label>
+          <button type="button" class="tog" :aria-pressed="f.status === 'pending'" @click="f.status = f.status === 'pending' ? '' : 'pending'">
+            <i aria-hidden="true"></i>Ocultar completadas
+          </button>
+        </div>
+        <details class="panel extra-filters">
+          <summary>Filtros por estado y mapa</summary>
+          <div class="in filters">
             <ArcFilterRow v-model="f.status" label="Estado" :options="statusOptions" :all="false" :toggle="false" />
             <ArcFilterRow v-model="f.map" label="Mapa" :options="mapOptions" />
-            <p v-if="f.trader" class="tfilter">
-              Comerciante: <b>{{ f.trader }}</b>
-              <button type="button" class="linkbtn" @click="f.trader = ''">Quitar</button>
-            </p>
           </div>
-        </div>
+        </details>
 
+        <div class="cm-layout">
+          <section aria-label="Misiones por comerciante">
+            <p class="count" aria-live="polite">{{ visible.length }} de {{ model.quests.length }} misiones</p>
+            <section v-for="g in groups" :key="g.name" class="grp">
+              <h2 class="grp-h">
+                <img v-if="g.img" :src="g.img" alt="" width="28" height="28" loading="lazy" decoding="async">
+                {{ g.name || 'Sin comerciante' }}<small>{{ g.done }} de {{ g.total }} hechas</small>
+              </h2>
+              <ol class="chain">
+                <li v-for="q in g.rows" :key="q.id" class="qi" :data-id="q.id">
+                  <button type="button" class="qchk" :aria-pressed="!!progress.done[q.id]" :aria-label="`Completada · ${q.name}`" @click="progress.setDone(q.id, !progress.done[q.id])">
+                    <span class="qn">{{ q.traderNumber }}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                  </button>
+                  <button type="button" class="qbody" :class="{ done: progress.done[q.id] }" :aria-pressed="current?.id === q.id" @click="pick(q.id)">
+                    <span class="q-text">
+                      <span class="qname">{{ q.name }}</span>
+                      <span v-if="q.objectives[0]" class="qobj">{{ q.objectives[0] }}</span>
+                    </span>
+                    <span v-if="q.previewRewards.length" class="qrw" aria-hidden="true">
+                      <ArcItemArt v-for="reward in q.previewRewards" :key="reward.id" :item="{ ...reward, hasImage: true }" />
+                    </span>
+                  </button>
+                </li>
+              </ol>
+            </section>
+            <div v-if="!visible.length" class="cm-empty" role="status">
+              <h2>No hay misiones que mostrar</h2>
+              <p>{{ emptyText }}</p>
+              <button type="button" class="tog" @click="resetFilters">Restablecer filtros</button>
+            </div>
+          </section>
+          <aside v-if="current" class="cm-panel" aria-label="Detalle de la misión">
+            <ArcQuestRow :quest="current" :progress="progress" :by-id="model.byId" :map-names="model.mapNames" title-id="arc-quest-side-title" @go="goTo" />
+          </aside>
+        </div>
         <div class="panels">
           <details class="panel">
             <summary>Mapas <small>{{ model.maps.length }}</small></summary>
@@ -88,48 +118,34 @@
           </details>
         </div>
 
-        <div class="count" aria-live="polite">
-          {{ visible.length === model.quests.length ? `${visible.length} misiones` : `${visible.length} de ${model.quests.length} misiones` }}
-        </div>
-        <div class="list">
-          <ArcQuestRow
-            v-for="q in visible"
-            :key="q.id"
-            :class="{ hl: highlightId === q.id }"
-            :quest="q"
-            :open="!!openIds[q.id]"
-            :progress="progress"
-            :by-id="model.byId"
-            :map-names="model.mapNames"
-            @toggle="toggleOpen(q.id)"
-            @go="goTo"
-          />
-        </div>
-        <p v-if="!visible.length" class="status">{{ emptyText }}</p>
       </template>
 
-      <p v-else-if="data.status === 'error'" class="status err">
+      <p v-else-if="data.status === 'error'" class="status err" role="alert">
         No se pudieron cargar las misiones. Inténtalo de nuevo en unos minutos.
         <button type="button" class="btn-s" @click="data.reload()">Reintentar</button>
       </p>
-      <p v-else class="status">Cargando misiones…</p>
+      <p v-else class="status" role="status">Cargando misiones…</p>
     </div>
 
+    <ArcDialog :open="dialogOpen && !!current" labelledby="arc-quest-dialog-title" @close="dialogOpen = false">
+      <ArcQuestRow v-if="dialogOpen && current" :quest="current" :progress="progress" :by-id="model.byId" :map-names="model.mapNames" title-id="arc-quest-dialog-title" @go="goTo" />
+    </ArcDialog>
     <ArcCredits :note="dataNote" meta-forge />
   </div>
 </template>
 
 <script setup>
-import { computed, nextTick, reactive, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import ArcListHeader from "@/components/arc/lists/ArcListHeader.vue";
+import ArcDialog from "@/components/arc/lists/ArcDialog.vue";
+import ArcItemArt from "@/components/arc/lists/ArcItemArt.vue";
 import ArcFilterRow from "@/components/arc/lists/ArcFilterRow.vue";
 import ArcQuestProgress from "@/components/arc/lists/ArcQuestProgress.vue";
 import ArcQuestRow from "@/components/arc/lists/ArcQuestRow.vue";
 import ArcCredits from "@/components/arc/hub/ArcCredits.vue";
 import { loadArcQuests, useArcJson } from "@/components/arc/hub/arcData";
 import { useQuestProgress } from "@/components/arc/lists/useQuestProgress";
-import { fmt, fmtDate, mapRoute, norm } from "@/components/arc/lists/arcLabels";
+import { fmt, fmtDate, mapRoute, norm, traderInfo } from "@/components/arc/lists/arcLabels";
 import "@/components/arc/hub/arc-ui.css";
 import "@/assets/styles/views/arc-quests.css";
 
@@ -145,9 +161,14 @@ const model = computed(() => {
   const mapNames = {};
   maps.forEach((m) => (mapNames[m.id] = m.name));
   const byId = Object.create(null);
-  const quests = (Array.isArray(json.quests) ? json.quests : []).map((q0) => {
+  const traderSizes = new Map();
+  const quests = [...(json.quests || [])].sort((a, b) => a.order - b.order).map((q0) => {
+    const traderNumber = (traderSizes.get(q0.trader) || 0) + 1;
+    traderSizes.set(q0.trader, traderNumber);
     const q = {
       ...q0,
+      traderNumber,
+      previewRewards: (q0.rewards || []).filter((reward) => reward.isItem).slice(0, 2),
       mapIds: (q0.mapIds || []).filter((id) => mapNames[id]),
       prev: q0.prev || [],
       next: q0.next || [],
@@ -171,8 +192,7 @@ const model = computed(() => {
 });
 watch(model, (m) => m && progress.init(m.byId), { immediate: true });
 
-const onMapCount = computed(() => model.value.quests.filter((q) => q.mapIds.length).length);
-const traderCount = computed(() => new Set(model.value.quests.map((q) => q.trader)).size);
+const doneCount = computed(() => (model.value?.quests || []).filter((q) => progress.done[q.id]).length);
 
 // ---- Filtros ----
 const fromQuery = (v) => (typeof v === "string" ? v : "");
@@ -196,6 +216,7 @@ watch(
 );
 const searchInput = ref("");
 let timer = null;
+onBeforeUnmount(() => clearTimeout(timer));
 watch(searchInput, (v) => {
   clearTimeout(timer);
   timer = setTimeout(() => (f.q = v), 150);
@@ -273,40 +294,46 @@ const guard = computed(() => {
   return Object.values(agg).sort((a, b) => a.name.localeCompare(b.name, "es"));
 });
 
-// ---- Desplegar y saltar a una misión ----
-const openIds = reactive({});
-const highlightId = ref("");
-function toggleOpen(id) {
-  if (openIds[id]) delete openIds[id];
-  else openIds[id] = 1;
+const groups = computed(() => {
+  const traders = new Map();
+  for (const q of model.value?.quests || []) {
+    const g = traders.get(q.trader) || { name: q.trader, ...traderInfo(q.trader), done: 0, total: 0, rows: [] };
+    g.total++;
+    if (progress.done[q.id]) g.done++;
+    traders.set(q.trader, g);
+  }
+  for (const q of visible.value) traders.get(q.trader).rows.push(q);
+  return [...traders.values()].filter((g) => g.rows.length);
+});
+
+const selected = ref("");
+const dialogOpen = ref(false);
+const current = computed(() => visible.value.find((q) => q.id === selected.value) || groups.value[0]?.rows[0] || null);
+watch(current, (q) => { if (!q) dialogOpen.value = false; });
+
+function resetFilters() {
+  clearTimeout(timer);
+  searchInput.value = f.q = f.status = f.trader = f.map = "";
 }
-function scrollToQuest(id, behavior = "smooth") {
-  nextTick(() => document.querySelector(`.view-arc-quests .q[data-id="${CSS.escape(id)}"]`)?.scrollIntoView({ behavior, block: "center" }));
+function pick(id) {
+  selected.value = id;
+  dialogOpen.value = matchMedia("(max-width: 860px)").matches;
+}
+function scrollToQuest(id) {
+  nextTick(() => document.querySelector(`.view-arc-quests .qi[data-id="${CSS.escape(id)}"]`)?.scrollIntoView({ block: "center" }));
 }
 function goTo(id) {
-  Object.assign(f, { status: "", trader: "", map: "", q: "" });
-  searchInput.value = "";
-  clearTimeout(timer);
-  openIds[id] = 1;
-  highlightId.value = id;
-  scrollToQuest(id);
+  if (!visible.value.some((q) => q.id === id)) resetFilters();
+  pick(id);
+  if (!dialogOpen.value) scrollToQuest(id);
 }
-// ?mision=<id> (p. ej. desde el visor de mapas): abre y resalta esa misión.
-// Se respetan los demás filtros de la URL salvo que la oculten.
 watch(
   [model, () => route.query.mision],
   ([m, id]) => {
-    if (!m || typeof id !== "string" || !m.byId[id]) return;
-    openIds[id] = 1;
-    highlightId.value = id;
-    nextTick(() => {
-      if (!visible.value.some((q) => q.id === id)) Object.assign(f, { status: "", trader: "", map: "", q: "" });
-      scrollToQuest(id, "instant");
-    });
+    if (route.name === "arc-quests" && typeof id === "string" && m?.byId[id]) goTo(id);
   },
-  { immediate: true }
+  { immediate: true, flush: "post" }
 );
-
 // ---- Copia de seguridad ----
 const code = ref("");
 const codeEl = ref(null);

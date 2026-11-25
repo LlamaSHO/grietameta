@@ -1,8 +1,8 @@
 <template>
-  <!-- Visor del mapa: PanZoomMap + capas de ARC (mapa de calor de zonas,
+  <!-- Visor del mapa: ArcPanZoom + capas de ARC (mapa de calor de zonas,
        retratos/puntos de misiones) y la información superpuesta. -->
   <div class="am-viewer" :style="{ '--ar': view.aspect }">
-    <PanZoomMap
+    <ArcPanZoom
       ref="pz"
       class="arc-vp"
       :src="view.img"
@@ -67,13 +67,13 @@
         </p>
         <span v-else class="vhint">{{ hint }} · <span class="num">×{{ String(zoom).replace(".", ",") }}</span></span>
       </template>
-    </PanZoomMap>
+    </ArcPanZoom>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
-import PanZoomMap from "@/components/maps/PanZoomMap.vue";
+import ArcPanZoom from "./ArcPanZoom.vue";
 import ArcQuestPin from "./ArcQuestPin.vue";
 
 // Niveles de zoom del diseño y tamaño de los marcadores en cada uno.
@@ -171,7 +171,7 @@ defineExpose({
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 92, 48, 0.62) 0%, rgba(255, 92, 48, 0.26) 38%, rgba(255, 92, 48, 0) 70%);
   mix-blend-mode: screen;
-  animation: heatp 3.2s ease-in-out infinite;
+  animation: heatp 3.2s ease-in-out 1;
 }
 .heat:nth-child(3n) {
   animation-delay: -1s;
@@ -270,8 +270,6 @@ defineExpose({
   border: 1px solid rgba(242, 235, 221, 0.18);
   font-size: 13px;
   color: var(--am-ink);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   cursor: default;
 }
 .mchip img {
@@ -292,9 +290,7 @@ defineExpose({
 }
 .mchip span {
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .mchip button {
   flex-shrink: 0;

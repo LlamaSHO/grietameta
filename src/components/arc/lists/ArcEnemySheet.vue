@@ -2,31 +2,26 @@
   <!-- Contenido de la ficha de un ARC: imagen, amenaza, punto débil, datos,
        mejores armas y balas, y botín. -->
   <div class="esheet">
-    <div v-if="enemy.hasImage && !imgFailed" class="hero">
-      <img :src="arcBotImageUrl(enemy.id)" :alt="`Imagen de ${enemy.name}`" @error="imgFailed = true">
+    <div class="hero">
+      <img v-if="enemy.hasImage && !imgFailed" :src="arcBotImageUrl(enemy.id)" alt="" decoding="async" @error="imgFailed = true">
+      <div class="heading">
+        <span class="thr" :class="threatClass(enemy.threat)">{{ enemy.threatEs || threatLabel(enemy.threat) }}</span>
+        <h2 :id="titleId" class="cond">{{ enemy.name }}</h2>
+        <span class="type">{{ enemy.type }}</span>
+      </div>
     </div>
     <div class="in">
-      <h2 :id="titleId" class="cond">{{ enemy.name }}</h2>
-      <div class="sub">
-        <span>{{ enemy.type }}</span>
-        <span class="thr" :class="threatClass(enemy.threat)">Amenaza {{ enemy.threatEs || threatLabel(enemy.threat) }}</span>
-      </div>
-      <p v-if="enemy.description" class="desc">{{ enemy.description }}</p>
-
-      <div v-if="enemy.weakness" class="weak"><b>Punto débil:</b> {{ enemy.weakness }}</div>
-
-      <dl class="facts">
-        <div><dt>Dónde aparece</dt><dd>{{ (enemy.maps || []).join(", ") || "—" }}</dd></div>
-        <div><dt>XP al destruirlo</dt><dd>{{ fmtN(enemy.destroyXp) }}</dd></div>
-        <div><dt>XP al saquearlo</dt><dd>{{ fmtN(enemy.lootXp) }}</dd></div>
-      </dl>
-      <div v-if="mapLinks.length" class="maplinks">
-        <RouterLink v-for="m in mapLinks" :key="m.id" class="maplink" :to="mapRoute(m.id)">Zonas en {{ m.name }} →</RouterLink>
-      </div>
-
+      <template v-if="enemy.armor">
+        <h3 class="cond">Blindaje</h3>
+        <div class="armor-label"><ArcArmorMeter :level="enemy.armorLevel" /><b>{{ enemy.armorLabel }}</b></div>
+        <p class="armor">{{ enemy.armorNote }}</p>
+      </template>
+      <template v-if="enemy.weakness">
+        <h3 class="cond">Dónde darle</h3>
+        <p class="weak">{{ enemy.weakness }}</p>
+      </template>
       <template v-if="(enemy.weapons || []).length">
-        <h3 class="cond">Mejores armas</h3>
-        <p v-if="enemy.armor" class="armor">{{ enemy.armor }}. {{ enemy.armorNote }}</p>
+        <h3 class="cond">Armas que funcionan</h3>
         <ul class="rows">
           <li v-for="(w, i) in enemy.weapons" :key="w.id" class="row" :class="[rarityClass(w.rarity), { best: i === 0 }]">
             <ArcItemArt :item="{ id: w.icon, name: w.name, hasImage: !!w.icon, rarity: w.rarity }" class="ic" />
@@ -35,6 +30,28 @@
           </li>
         </ul>
       </template>
+
+      <template v-if="(enemy.drops || []).length">
+        <h3 class="cond">Botín ({{ enemy.drops.length }})</h3>
+        <ul class="drops">
+          <li v-for="d in enemy.drops" :key="d.id" class="row" :class="rarityClass(d.rarity)">
+            <ArcItemArt :item="d" class="ic" />
+            <span class="t">
+              {{ d.name }}
+              <small><span class="rar">{{ rarityLabel(d.rarity) }}</span> · {{ fmtN(d.value) }} · <span class="ac" :class="actionClass(d.action)">{{ d.action }}</span></small>
+            </span>
+          </li>
+        </ul>
+        <p class="note">El botín listado es el de la lista de datos del juego: no todos los objetos caen siempre. La acción (Guardar, Reciclar, Vender o Usar) es la misma recomendación de la página de Objetos.</p>
+      </template>
+      <dl class="facts">
+        <div><dt>Dónde aparece</dt><dd>{{ (enemy.maps || []).join(", ") || "—" }}</dd></div>
+        <div><dt>XP al destruirlo</dt><dd>{{ fmtN(enemy.destroyXp) }}</dd></div>
+        <div><dt>XP al saquearlo</dt><dd>{{ fmtN(enemy.lootXp) }}</dd></div>
+      </dl>
+      <div v-if="mapLinks.length" class="maplinks">
+        <RouterLink v-for="m in mapLinks" :key="m.id" class="maplink" :to="{ ...mapRoute(m.id), query: { enemigo: enemy.id } }">{{ m.name }} →</RouterLink>
+      </div>
 
       <template v-if="(enemy.ammo || []).length">
         <h3 class="cond">Mejores balas</h3>
@@ -46,25 +63,14 @@
         </ul>
       </template>
 
-      <template v-if="(enemy.drops || []).length">
-        <h3 class="cond">Qué suelta ({{ enemy.drops.length }})</h3>
-        <ul class="rows">
-          <li v-for="d in enemy.drops" :key="d.id" class="row" :class="rarityClass(d.rarity)">
-            <ArcItemArt :item="d" class="ic" />
-            <span class="t">
-              {{ d.name }}
-              <small><span class="rar">{{ rarityLabel(d.rarity) }}</span> · {{ fmtN(d.value) }} · <span class="ac" :class="actionClass(d.action)">{{ d.action }}</span></small>
-            </span>
-          </li>
-        </ul>
-        <p class="note">El botín listado es el de la lista de datos del juego: no todos los objetos caen siempre. La acción (Guardar, Reciclar, Vender o Usar) es la misma recomendación de la página de Objetos.</p>
-      </template>
+      <p v-if="enemy.description" class="desc">{{ enemy.description }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed, ref, watch } from "vue";
+import ArcArmorMeter from "./ArcArmorMeter.vue";
 import ArcItemArt from "./ArcItemArt.vue";
 import { arcBotImageUrl } from "@/services/arcRaiders";
 import { MAP_INFO, actionClass, mapRoute, rarityClass, rarityLabel, threatClass, threatLabel } from "./arcLabels";
@@ -83,16 +89,21 @@ const mapLinks = computed(() => MAP_INFO.filter((m) => (props.enemy.maps || []).
 </script>
 
 <style scoped>
-.hero { position: relative; height: 230px; overflow: hidden; background: #100E14; }
+.hero { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #100E14; }
 .hero img { width: 100%; height: 100%; object-fit: cover; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, var(--arc-panel)); }
-.in { padding: 18px 24px 26px; }
+.heading { position: absolute; z-index: 1; left: 18px; right: 48px; bottom: 12px; }
+.heading .thr { background: #100e14; }
+.heading h2 { margin-top: 6px; color: #fff; }
+.type { color: var(--arc-ink-2); font-size: 13px; }
+.armor-label { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px; }
+.in { padding: 4px 18px 20px; }
+.in > h3:first-child { margin-top: 0; }
 .esheet:not(:has(.hero)) .in { padding-top: 26px; }
-h2 { margin: 0; padding-right: 44px; font-size: 36px; font-weight: 800; line-height: 0.95; }
-.sub { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 8px; font-size: 13.5px; color: var(--arc-mute); }
+h2 { margin: 0; font-size: 36px; font-weight: 800; line-height: 0.95; }
 .desc { margin: 14px 0 0; font-size: 14px; color: var(--arc-dim); }
 .weak {
-  margin-top: 14px;
+  margin: 0;
   padding: 12px 14px;
   border-radius: 12px;
   background: rgba(245, 192, 42, 0.06);
@@ -120,13 +131,17 @@ h2 { margin: 0; padding-right: 44px; font-size: 36px; font-weight: 800; line-hei
   text-decoration: none;
 }
 .esheet .maplink:hover { color: #BDEBF7; border-color: var(--arc-cyan); }
-h3 { margin: 22px 0 8px; font-size: 19px; font-weight: 800; color: var(--arc-yellow); }
+h3 { margin: 15px 0 8px; font: 700 12px var(--font-body); letter-spacing: .1em; color: var(--arc-mute); }
 .armor { margin: 0 0 8px; font-size: 13.5px; color: var(--arc-dim); }
 .rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .row { display: flex; align-items: center; gap: 12px; padding: 7px 8px; border-radius: 12px; background: rgba(242, 235, 221, 0.03); }
 .row.best { background: rgba(47, 180, 90, 0.1); box-shadow: inset 0 0 0 1px rgba(47, 180, 90, 0.4); }
 .row .ic { width: 44px; flex-shrink: 0; border-radius: 10px; }
 .row .ic :deep(.ph) { font-size: 20px; }
+.drops { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(67px, 100%), 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.drops .row { flex-direction: column; align-items: center; gap: 4px; padding: 6px; text-align: center; }
+.drops .t { font-size: 12px; overflow-wrap: anywhere; }
+.drops .t small { font-size: 10px; }
 .t { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; color: var(--arc-ink); }
 .t small { display: block; font-size: 12px; font-weight: 500; color: var(--arc-faint); }
 .rar { color: var(--rt); }
@@ -134,8 +149,13 @@ h3 { margin: 22px 0 8px; font-size: 19px; font-weight: 800; color: var(--arc-yel
 .tag { flex: none; padding: 2px 8px; border-radius: 6px; background: rgba(47, 180, 90, 0.18); color: #7FD9A0; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 .note { margin: 12px 0 0; font-size: 12.5px; color: var(--arc-faint); }
 @media (max-width: 560px) {
-  .hero { height: 190px; }
-  .in { padding: 16px 16px 28px; }
+  .hero { min-height: 170px; }
+  .heading { position: absolute; z-index: 1; left: 18px; right: 48px; bottom: 12px; }
+.heading .thr { background: #100e14; }
+.heading h2 { margin-top: 6px; color: #fff; }
+.type { color: var(--arc-ink-2); font-size: 13px; }
+.armor-label { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px; }
+.in { padding: 16px 16px 28px; }
   h2 { font-size: 30px; }
 }
 </style>

@@ -552,6 +552,14 @@ watch(
   cursor: pointer;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .view-arc-map :deep(*) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Panel debajo del mapa cuando no caben los dos (mismo corte que ArcMapSidePanel). */
 @media (max-width: 1040px) {
   .board {

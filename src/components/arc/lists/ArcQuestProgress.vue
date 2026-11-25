@@ -1,35 +1,28 @@
 <template>
   <!-- Progreso total y por comerciante. Cada comerciante es un filtro:
        pulsarlo enseña solo sus misiones (y otra vez, todas). -->
-  <section class="prog" aria-label="Progreso">
-    <div class="p-top">
-      <div>
-        <span class="p-num"><b>{{ doneCount }}</b> / {{ quests.length }}</span>
-        <span class="p-txt">misiones completadas</span>
-      </div>
-      <span class="p-pct">{{ pct }} %</span>
-    </div>
-    <div class="bar" role="progressbar" aria-label="Misiones completadas" aria-valuemin="0" aria-valuemax="100" :aria-valuenow="pct"><i :style="{ width: pct + '%' }"></i></div>
-
-    <div class="tiles" role="group" aria-label="Progreso por comerciante (pulsa para filtrar)">
-      <button
-        v-for="t in tiles"
-        :key="t.name"
-        type="button"
-        class="tile"
-        :class="t.cls"
-        :aria-pressed="String(trader === t.name)"
-        @click="emit('update:trader', trader === t.name ? '' : t.name)"
-      >
-        <span class="av" aria-hidden="true"><img v-if="t.img" :src="t.img" alt="" width="40" height="40"></span>
-        <span class="tx">
-          <b class="cond">{{ t.name || "Sin comerciante" }}</b>
-          <span>{{ t.done }}/{{ t.total }}<template v-if="t.role"> · {{ t.role }}</template></span>
-          <span class="tb" aria-hidden="true"><i :style="{ width: t.pct + '%' }"></i></span>
-        </span>
-      </button>
-    </div>
-  </section>
+  <div class="tiles" role="group" aria-label="Filtrar por comerciante">
+    <button type="button" class="tile" :aria-pressed="trader === ''" @click="emit('update:trader', '')">
+      <span class="av all">{{ quests.length }}</span>
+      <span class="tx"><b class="cond">Todos</b><span>{{ doneCount }} de {{ quests.length }} hechas</span></span>
+    </button>
+    <button
+      v-for="t in tiles"
+      :key="t.name"
+      type="button"
+      class="tile"
+      :class="t.cls"
+      :aria-pressed="String(trader === t.name)"
+      @click="emit('update:trader', trader === t.name ? '' : t.name)"
+    >
+      <span class="av" aria-hidden="true"><img v-if="t.img" :src="t.img" alt="" width="40" height="40"></span>
+      <span class="tx">
+        <b class="cond">{{ t.name || "Sin comerciante" }}</b>
+        <span>{{ t.done }} de {{ t.total }} hechas</span>
+        <span class="tb" aria-hidden="true"><i :style="{ width: t.pct + '%' }"></i></span>
+      </span>
+    </button>
+  </div>
 </template>
 
 <script setup>
@@ -44,7 +37,6 @@ const props = defineProps({
 const emit = defineEmits(["update:trader"]);
 
 const doneCount = computed(() => props.quests.filter((q) => props.progress.done[q.id]).length);
-const pct = computed(() => (props.quests.length ? Math.round((doneCount.value * 100) / props.quests.length) : 0));
 
 // Comerciantes de más a menos misiones (como en el hub).
 const tiles = computed(() => {
@@ -61,21 +53,8 @@ const tiles = computed(() => {
 </script>
 
 <style scoped>
-.prog {
-  padding: 18px;
-  border-radius: 18px;
-  background: var(--arc-panel);
-  border: 1px solid var(--arc-line);
-}
-.p-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.p-num { font-family: var(--font-brand); font-size: 20px; color: var(--arc-mute); }
-.p-num b { font-size: 34px; color: var(--arc-ink); }
-.p-txt { display: block; font-size: 13.5px; color: var(--arc-mute); }
-.p-pct { font-family: var(--font-brand); font-size: 26px; font-weight: 700; color: var(--arc-yellow); }
-.bar { height: 10px; border-radius: 999px; background: rgba(242, 235, 221, 0.08); overflow: hidden; }
-.bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--arc-orange), var(--arc-yellow) 55%, var(--arc-green)); border-radius: 999px; transition: width 0.3s var(--ease-out); }
-
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 10px; margin-top: 16px; }
+.tiles { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.all { display: grid; place-items: center; color: var(--arc-yellow); font: 800 24px var(--font-arc); }
 .c-y { --tc: #F5C02A; }
 .c-c { --tc: #3BC9E8; }
 .c-r { --tc: #E5372B; }
@@ -86,15 +65,15 @@ const tiles = computed(() => {
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border-radius: 14px;
+  border-radius: 10px;
   border: 1px solid var(--arc-line);
-  background: rgba(242, 235, 221, 0.03);
+  background: var(--arc-panel);
   text-align: left;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
 }
 .tile:hover { border-color: rgba(242, 235, 221, 0.2); }
-.tile[aria-pressed="true"] { border-color: var(--tc); background: color-mix(in srgb, var(--tc) 10%, transparent); }
+.tile[aria-pressed="true"] { border-color: var(--tc, var(--arc-yellow)); background: color-mix(in srgb, var(--tc) 10%, transparent); }
 .av { flex: none; width: 44px; height: 44px; padding: 2px; border-radius: 12px; background: var(--tc, var(--arc-line-2)); overflow: hidden; }
 .av img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
 .tx { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -103,8 +82,10 @@ const tiles = computed(() => {
 .tb { display: block; height: 5px; margin-top: 4px; border-radius: 5px; background: rgba(242, 235, 221, 0.08); overflow: hidden; }
 .tb i { display: block; height: 100%; background: var(--tc); }
 
-@media (max-width: 640px) {
-  .prog { padding: 14px; }
+@media (max-width: 1100px) {
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .tile { padding: 8px; gap: 8px; }
   .av { width: 36px; height: 36px; border-radius: 10px; }

@@ -101,6 +101,7 @@ function scrollToHash() {
   nextTick(() => document.getElementById(id)?.scrollIntoView({ behavior: "instant", block: "start" }));
 }
 onMounted(scrollToHash);
+watch(() => route.hash, scrollToHash);
 watch(
   () => [items.status, quests.status, enemies.status].join(),
   (v) => {

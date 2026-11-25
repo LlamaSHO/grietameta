@@ -1,91 +1,99 @@
 <template>
-  <!-- Lista completa de objetos de ARC Raiders (/arc-raiders/objetos). Sin
-       diseño propio: sigue el estilo del hub (components/arc). Filtros por
-       acción, rareza y categoría, buscador, paginación y ficha de cada objeto.
-       Admite ?q=texto y ?accion=guardar|reciclar|vender|usar (desde el hub). -->
   <div class="view-arc-items arc-ui">
-    <ArcListHeader
-      crumb="Objetos y reciclaje"
-      title="Objetos"
-      accent="¿Qué hago con esto?"
-      lead="Busca un objeto y mira si te conviene guardarlo, reciclarlo, venderlo o usarlo, y por qué."
-      img="/images/arc-raiders/items/queen_reactor.webp"
-    >
-      <template v-if="data.status === 'ready'">
-        <span class="pill"><b>{{ fmt(items.length) }}</b>objetos</span>
-        <span v-for="g in actionCounts" :key="g.action" class="pill" :class="actionClass(g.action)"><b class="ac">{{ fmt(g.count) }}</b>{{ g.action.toLowerCase() }}</span>
-      </template>
-    </ArcListHeader>
-
-    <div class="wrap body">
-      <div class="tools">
-        <div class="search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <label class="sr-only" for="arc-items-q">Buscar objeto</label>
-          <input id="arc-items-q" v-model="searchInput" type="search" placeholder="Buscar objeto (Ferro, cables, reactor…)" autocomplete="off">
-        </div>
-        <div class="filters">
-          <ArcFilterRow v-model="f.action" label="Qué hacer" :options="actionOptions" />
-          <ArcFilterRow v-model="f.rarity" label="Rareza" :options="rarityOptions" />
-          <ArcFilterRow v-model="f.group" label="Categoría" :options="groupOptions" />
+    <section class="items-head">
+      <div class="wrap">
+        <nav class="items-crumb" aria-label="Migas de pan">
+          <RouterLink :to="{ name: 'arc' }">ARC Raiders</RouterLink>
+          <span aria-hidden="true">/</span><span aria-current="page">Objetos y reciclaje</span>
+        </nav>
+        <div class="items-intro">
+          <div>
+            <h1 class="cond">Objetos <span>¿qué hago con esto?</span></h1>
+            <p>Los {{ data.status === 'ready' ? fmt(items.length) : '' }} objetos del juego con una recomendación para cada uno: guardarlo, reciclarlo, venderlo o usarlo, y el porqué. Toca una acción para ver solo esos.</p>
+          </div>
+          <div v-if="data.status === 'ready'" class="actions" role="group" aria-label="Filtrar por recomendación">
+            <button v-for="g in actionCounts" :key="g.action" type="button" :class="actionClass(g.action)" :aria-pressed="f.action === g.action" @click="f.action = f.action === g.action ? '' : g.action">
+              <b>{{ g.action }}</b><strong>{{ fmt(g.count) }}</strong><span>{{ actionHints[g.action] }}</span>
+            </button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <details class="panel how">
-        <summary>¿Cómo se calcula la recomendación?</summary>
-        <div class="in">
-          <ul class="rules">
-            <li v-for="r in ACTION_RULES" :key="r.a" :class="actionClass(r.a)"><b class="cond">{{ r.a }}</b>{{ r.t }}</li>
-          </ul>
-          <p class="fine">{{ ACTION_DISCLAIMER }}</p>
+    <div class="wrap items-body">
+      <div class="results">
+        <div class="tools">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.35-4.35" /></svg>
+            <label class="sr-only" for="arc-items-q">Buscar objeto</label>
+            <input id="arc-items-q" v-model="searchInput" type="search" placeholder="Busca un objeto o material (Ferro, cables, reactor…)" autocomplete="off">
+          </div>
+          <label>
+            <span class="sr-only">Ordenar objetos</span>
+            <select v-model="sort">
+              <option value="value">Más valiosos primero</option>
+              <option value="rarity">Por rareza</option>
+              <option value="name">Por nombre (A–Z)</option>
+            </select>
+          </label>
         </div>
-      </details>
+        <div v-if="data.status === 'ready'" class="filters">
+          <ArcFilterRow v-model="f.rarity" label="Rareza" all-label="Todas" :options="rarityOptions" />
+          <ArcFilterRow v-model="f.group" label="Categoría" all-label="Todas" :options="groupOptions" />
+        </div>
+        <div v-if="data.status === 'ready'" class="count" aria-live="polite">
+          <span><b>{{ fmt(filtered.length) }}</b> de {{ fmt(items.length) }} objetos</span>
+          <button v-if="hasFilters" class="clear" type="button" @click="reset">Quitar filtros</button>
+        </div>
 
-      <div ref="gridTop" class="count" aria-live="polite">
-        <template v-if="data.status === 'ready'">{{ fmt(filtered.length) }} {{ filtered.length === 1 ? "objeto" : "objetos" }}</template>
+        <div v-if="visibleItems.length" class="grid">
+          <button v-for="it in visibleItems" :key="it.id" type="button" class="card" :class="rarityClass(it.rarity)" :aria-pressed="current?.id === it.id" @click="open(it)">
+            <span class="card-art">
+              <ArcItemArt :item="it" />
+              <span class="badge" :class="actionClass(it.action)">{{ it.action }}</span>
+            </span>
+            <span class="name">{{ it.name }}</span>
+            <span class="meta"><span class="rar">{{ rarityLabel(it.rarity) }}</span><span>{{ fmt(it.value) }}</span></span>
+          </button>
+        </div>
+        <button v-if="visibleItems.length < filtered.length" type="button" class="more-items" @click="limit += PAGE_SIZE">Ver {{ Math.min(PAGE_SIZE, filtered.length - limit) }} más</button>
+
+        <p v-if="data.status === 'loading'" class="status" role="status">Cargando objetos…</p>
+        <p v-else-if="data.status === 'error'" class="status err" role="alert">
+          No se pudieron cargar los objetos.
+          <button type="button" class="btn-s" @click="data.reload()">Reintentar</button>
+        </p>
+        <div v-else-if="!filtered.length" class="empty" role="status">
+          <b>Ningún objeto con esos filtros</b>
+          <span>Prueba otra rareza o categoría, o busca por otro nombre.</span>
+          <button class="more-items" type="button" @click="reset">Quitar filtros</button>
+        </div>
+
+        <details class="panel how">
+          <summary>¿Cómo se calcula la recomendación?</summary>
+          <div class="in">
+            <ul class="rules">
+              <li v-for="r in ACTION_RULES" :key="r.a" :class="actionClass(r.a)"><b class="cond">{{ r.a }}</b>{{ r.t }}</li>
+            </ul>
+            <p class="fine">{{ ACTION_DISCLAIMER }}</p>
+          </div>
+        </details>
       </div>
 
-      <div v-if="data.status === 'ready' && pageItems.length" class="grid">
-        <button v-for="it in pageItems" :key="it.id" type="button" class="card" :class="rarityClass(it.rarity)" @click="open(it)">
-          <ArcItemArt :item="it" />
-          <span class="name">{{ it.name }}</span>
-          <span class="meta"><span class="rar">{{ rarityLabel(it.rarity) }}</span><span class="val">{{ fmt(it.value) }}</span></span>
-          <span class="badge" :class="actionClass(it.action)">{{ it.action }}</span>
-        </button>
-      </div>
-
-      <p v-if="data.status === 'loading'" class="status">Cargando…</p>
-      <p v-else-if="data.status === 'error'" class="status err">
-        No se pudieron cargar los objetos. Inténtalo de nuevo en unos minutos.
-        <button type="button" class="btn-s" @click="data.reload()">Reintentar</button>
-      </p>
-      <p v-else-if="!filtered.length" class="status">Ningún objeto coincide con la búsqueda o los filtros.</p>
-
-      <nav v-if="pages > 1" class="pager" aria-label="Paginación">
-        <button type="button" class="btn-s" :disabled="page <= 1" @click="goToPage(page - 1)">‹ Anterior</button>
-        <label class="psel">
-          Página
-          <select :value="page" aria-label="Elegir página" @change="goToPage(+$event.target.value)">
-            <option v-for="n in pages" :key="n" :value="n">{{ n }}</option>
-          </select>
-          <span>de {{ pages }}</span>
-        </label>
-        <button type="button" class="btn-s" :disabled="page >= pages" @click="goToPage(page + 1)">Siguiente ›</button>
-      </nav>
+      <aside v-if="current" class="item-detail" aria-label="Ficha del objeto">
+        <ArcItemSheet :item="current" title-id="arc-item-side-title" />
+      </aside>
     </div>
 
-    <ArcDialog :open="!!current" labelledby="arc-item-title" @close="current = null">
-      <ArcItemSheet v-if="current" :item="current" title-id="arc-item-title" />
+    <ArcDialog :open="dialogOpen && !!current" labelledby="arc-item-dialog-title" @close="dialogOpen = false">
+      <ArcItemSheet v-if="dialogOpen && current" :item="current" title-id="arc-item-dialog-title" />
     </ArcDialog>
-
     <ArcCredits :note="dataNote" arc-tracker />
   </div>
 </template>
-
 <script setup>
-import { computed, reactive, ref, watch } from "vue";
+import { computed, onBeforeUnmount, reactive, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import ArcListHeader from "@/components/arc/lists/ArcListHeader.vue";
 import ArcFilterRow from "@/components/arc/lists/ArcFilterRow.vue";
 import ArcItemArt from "@/components/arc/lists/ArcItemArt.vue";
 import ArcItemSheet from "@/components/arc/lists/ArcItemSheet.vue";
@@ -99,20 +107,26 @@ import {
 import "@/components/arc/hub/arc-ui.css";
 import "@/assets/styles/views/arc-items.css";
 
-const PER_PAGE = 48;
+const PAGE_SIZE = 36;
 const route = useRoute();
 const router = useRouter();
 
 const data = useArcJson(loadArcItems);
 // Copia con el nombre normalizado para buscar sin tildes (el JSON es compartido).
-const items = computed(() => (data.data?.items || []).map((it) => ({ ...it, _n: norm(it.name) })));
+const items = computed(() => (data.data?.items || []).map((it) => ({
+  ...it,
+  searchText: norm([it.name, ...(it.recyclesInto || []).map((material) => material.name)].join(" ")),
+})));
 
 // ---- Filtros (los de la URL se aplican al entrar) ----
 const fromQuery = (v) => (typeof v === "string" ? v : "");
 const actionFromQuery = (v) => ACTIONS.find((a) => a.toLowerCase() === fromQuery(v).toLowerCase()) || "";
 const f = reactive({ search: fromQuery(route.query.q), action: actionFromQuery(route.query.accion), rarity: "", group: "" });
 const searchInput = ref(f.search);
-const page = ref(1);
+const sort = ref("value");
+const limit = ref(PAGE_SIZE);
+const selected = ref("");
+const dialogOpen = ref(false);
 // Si se vuelve a entrar en la lista con otra URL (p. ej. desde la barra de
 // ARC), se aplican sus filtros.
 watch(
@@ -129,6 +143,7 @@ watch(
 );
 
 let timer = null;
+onBeforeUnmount(() => clearTimeout(timer));
 watch(searchInput, (v) => {
   clearTimeout(timer);
   timer = setTimeout(() => (f.search = v), 150);
@@ -146,39 +161,50 @@ function filterQuery() {
 watch(
   () => [f.search, f.action, f.rarity, f.group],
   () => {
-    page.value = 1;
+    limit.value = PAGE_SIZE;
+    selected.value = "";
+    dialogOpen.value = false;
     if (route.name === "arc-items") router.replace({ name: "arc-items", query: filterQuery() });
   }
 );
 
 const filtered = computed(() => {
   const q = norm(f.search.trim());
-  return items.value.filter(
-    (it) =>
-      (!f.action || it.action === f.action) &&
-      (!f.rarity || rarityKey(it.rarity) === f.rarity) &&
-      (!f.group || groupOf(it.type) === f.group) &&
-      (!q || it._n.includes(q))
-  );
+  const byValue = (a, b) => b.value - a.value;
+  const order = {
+    value: byValue,
+    rarity: (a, b) => RARITY_ORDER.indexOf(rarityKey(b.rarity)) - RARITY_ORDER.indexOf(rarityKey(a.rarity)) || byValue(a, b),
+    name: (a, b) => a.name.localeCompare(b.name, "es"),
+  };
+  return items.value.filter((it) =>
+    (!f.action || it.action === f.action) &&
+    (!f.rarity || rarityKey(it.rarity) === f.rarity) &&
+    (!f.group || groupOf(it.type) === f.group) &&
+    (!q || it.searchText.includes(q))
+  ).sort(order[sort.value]);
 });
-const pages = computed(() => Math.max(1, Math.ceil(filtered.value.length / PER_PAGE)));
-const pageItems = computed(() => {
-  const p = Math.min(page.value, pages.value);
-  return filtered.value.slice((p - 1) * PER_PAGE, p * PER_PAGE);
+const visibleItems = computed(() => filtered.value.slice(0, limit.value));
+// Orden y fichas conservan el filtro activo.
+watch(sort, () => {
+  limit.value = PAGE_SIZE;
+  selected.value = "";
 });
 
-const gridTop = ref(null);
-function goToPage(n) {
-  page.value = Math.max(1, Math.min(pages.value, n || 1));
-  gridTop.value?.scrollIntoView({ behavior: "smooth", block: "start" });
+const hasFilters = computed(() => !!(searchInput.value || f.action || f.rarity || f.group));
+function reset() {
+  searchInput.value = f.search = f.action = f.rarity = f.group = "";
 }
+const actionHints = {
+  Guardar: "Te lo piden en misiones, el taller o proyectos",
+  Reciclar: "Da materiales para el taller, proyectos o misiones",
+  Vender: "Véndelo por su valor",
+  Usar: "Armas, equipo y consumibles",
+};
 
-// ---- Chips ----
 const actionCounts = computed(() => ACTIONS.map((a) => ({ action: a, count: items.value.filter((it) => it.action === a).length })));
-const actionOptions = computed(() => actionCounts.value.map((g) => ({ value: g.action, label: g.action, cls: actionClass(g.action), dot: true, count: g.count })));
 const rarityOptions = computed(() => {
   const present = new Set(items.value.map((it) => rarityKey(it.rarity)));
-  return RARITY_ORDER.filter((r) => present.has(r)).map((r) => ({ value: r, label: rarityLabel(r) }));
+  return RARITY_ORDER.filter((r) => present.has(r)).map((r) => ({ value: r, label: rarityLabel(r), cls: rarityClass(r), dot: true }));
 });
 const groupOptions = computed(() => {
   const present = new Set(items.value.map((it) => groupOf(it.type)));
@@ -186,9 +212,10 @@ const groupOptions = computed(() => {
 });
 
 // ---- Ficha ----
-const current = ref(null);
+const current = computed(() => filtered.value.find((it) => it.id === selected.value) || filtered.value[0] || null);
 function open(it) {
-  current.value = it;
+  selected.value = it.id;
+  dialogOpen.value = matchMedia("(max-width: 860px)").matches;
 }
 
 const dataNote = computed(() => {

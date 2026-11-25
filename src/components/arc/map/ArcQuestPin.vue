@@ -150,7 +150,7 @@ const place = computed(() => {
   border-radius: 50%;
   border: 2px solid var(--tc);
   opacity: 0;
-  animation: qpulse 2.4s ease-out infinite;
+  animation: qpulse 2.4s ease-out 1;
   pointer-events: none;
 }
 @keyframes qpulse {

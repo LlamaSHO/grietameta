@@ -34,6 +34,7 @@
   overflow-x: clip;
   padding-bottom: 72px;
 }
+.arc-ui .wrap { max-width: 1320px; }
 .arc-ui a { color: var(--arc-yellow); }
 .arc-ui a:hover { color: #FFD45A; }
 .arc-ui button { font: inherit; color: inherit; }
@@ -293,5 +294,17 @@
 .arc-ui .status .btn-s { margin-left: 8px; }
 
 @keyframes arc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-@keyframes arc-scan { 0% { top: -10%; } 100% { top: 110%; } }
+@keyframes arc-scan {
+  0% { transform: translateY(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateY(540px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arc-ui *, .arc-ui *::before, .arc-ui *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 @keyframes arc-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
