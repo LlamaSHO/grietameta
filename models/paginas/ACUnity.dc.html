@@ -9,6 +9,7 @@
 <x-dc>
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Cormorant+SC:wght@600;700&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 /* gm-transiciones */
 @view-transition{navigation:auto}
@@ -513,6 +514,79 @@ a{color:#F0D8A8}a:hover{color:#FFF1D6}
 .mgrid{grid-template-columns:minmax(0,1fr)}.deck{grid-template-columns:minmax(0,1fr);min-height:0}.dk-side{border-right:0;border-bottom:1px solid rgba(232,226,208,.12)}.dk-big{font-size:180px}
 .tl{grid-template-columns:repeat(13,44px);overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.acts,.chars{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.acts,.chars,.tips ol,.dcol{grid-template-columns:minmax(0,1fr)}.dk-nav button{padding:12px 14px}}
+
+/* === Animus: estética de interfaz de memoria genética === */
+.acp{--an:#8FE3FF;--an2:#E9F8FF;--anr:#E0353D;background:radial-gradient(1200px 700px at 80% -10%,rgba(143,227,255,.10),transparent 60%),radial-gradient(900px 600px at -10% 30%,rgba(224,53,61,.08),transparent 60%),#05080C!important;color:#E6F1F7}
+body{background:#05080C}
+.an-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(143,227,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(143,227,255,.045) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000,transparent 85%);mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000,transparent 85%)}
+.acp>section,.acp>footer{position:relative;z-index:1}
+.acp::after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);mix-blend-mode:screen}
+.kick,.kicker,.gc-e,.hud,.seg button,.ec{font-family:'Rajdhani','IBM Plex Sans',sans-serif!important;letter-spacing:.22em}
+.kick,.kicker{color:var(--an)!important}
+.kicker::before{background:var(--an)!important;box-shadow:0 0 8px var(--an)}
+.h2,.sh h1,.uh h1{text-shadow:0 0 28px rgba(143,227,255,.18)}
+/* arranque del Animus */
+.an-boot{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(500px 360px at 50% 45%,rgba(143,227,255,.16),transparent 70%),#03060A;color:#E9F8FF;font:600 13px 'Rajdhani',sans-serif;letter-spacing:.3em;animation:anOut .6s ease 2.1s forwards;pointer-events:none}
+.an-ring{position:relative;width:120px;height:120px}
+.an-ring i{position:absolute;inset:0;border-radius:50%;border:2px solid transparent;border-top-color:#8FE3FF;border-left-color:rgba(143,227,255,.4);animation:anSpin 1.4s linear infinite}
+.an-ring i:nth-child(2){inset:16px;border-top-color:#E9F8FF;animation-duration:2.1s;animation-direction:reverse}
+.an-ring i:nth-child(3){inset:34px;border-top-color:#E0353D;animation-duration:1s}
+.an-lines{display:flex;flex-direction:column;align-items:center;gap:6px}
+.an-lines span{opacity:0;animation:anType .35s steps(14) forwards}
+.an-lines span:nth-child(1){animation-delay:.2s}.an-lines span:nth-child(2){animation-delay:.75s}.an-lines span:nth-child(3){animation-delay:1.3s;color:#8FE3FF}
+.an-bar{width:260px;height:3px;background:rgba(143,227,255,.15);overflow:hidden}
+.an-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8FE3FF,#E9F8FF);box-shadow:0 0 12px #8FE3FF;animation:anLoad 1.9s cubic-bezier(.6,.1,.3,1) forwards}
+@keyframes anSpin{to{transform:rotate(360deg)}}
+@keyframes anType{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes anLoad{to{width:100%}}
+@keyframes anOut{to{opacity:0;visibility:hidden}}
+/* hélice de ADN */
+.an-dna{position:absolute;left:clamp(4px,1vw,14px);top:50%;z-index:0;display:flex;flex-direction:column;gap:9px;transform:translateY(-50%);pointer-events:none;opacity:.75}
+.an-dna i{position:relative;display:block;width:40px;height:6px}
+.an-dna i::before,.an-dna i::after{content:"";position:absolute;top:0;width:6px;height:6px;border-radius:50%;background:#8FE3FF;box-shadow:0 0 8px #8FE3FF;animation:anHelix 2.8s ease-in-out infinite;animation-delay:calc(var(--k) * -.16s)}
+.an-dna i::after{background:#E9F8FF;animation-name:anHelix2}
+.an-dna b{position:absolute;left:3px;right:3px;top:2px;height:2px;background:linear-gradient(90deg,rgba(143,227,255,.5),rgba(233,248,255,.2));animation:anRung 2.8s ease-in-out infinite;animation-delay:calc(var(--k) * -.16s)}
+@keyframes anHelix{0%,100%{left:0}50%{left:34px}}
+@keyframes anHelix2{0%,100%{left:34px}50%{left:0}}
+@keyframes anRung{0%,100%,50%{transform:scaleX(1);opacity:.7}25%,75%{transform:scaleX(.05);opacity:.2}}
+/* HUD de la cabecera */
+.hud{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;padding:6px 12px;border:1px solid rgba(143,227,255,.3);background:rgba(143,227,255,.06);color:#BFEFFF;font-size:12px;font-weight:600;text-transform:uppercase}
+.hud i{width:7px;height:7px;border-radius:50%;background:#8FE3FF;box-shadow:0 0 10px #8FE3FF;animation:anBlink 1.6s ease-in-out infinite}
+.hud b{color:#FFF}
+@keyframes anBlink{50%{opacity:.25}}
+.sh h1,.uh h1{position:relative;animation:anGlitch 7s steps(1) infinite}
+@keyframes anGlitch{0%,93%,100%{text-shadow:0 0 28px rgba(143,227,255,.18);transform:none}94%{text-shadow:-3px 0 #E0353D,3px 0 #8FE3FF;transform:translateX(2px) skewX(-4deg)}96%{text-shadow:2px 0 #E0353D,-2px 0 #8FE3FF;transform:translateX(-2px)}98%{text-shadow:0 0 28px rgba(143,227,255,.18);transform:none}}
+.sh-art .fr,.uh .fr{position:relative;border:1px solid rgba(143,227,255,.35)!important;box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 60px -10px rgba(143,227,255,.35)!important}
+.sh-art .fr::before,.sh-art .fr::after{content:"";position:absolute;z-index:3;width:26px;height:26px;border:2px solid #8FE3FF;pointer-events:none}
+.sh-art .fr::before{left:-6px;top:-6px;border-right:0;border-bottom:0}
+.sh-art .fr::after{right:-6px;bottom:-6px;border-left:0;border-top:0}
+.sh-art img{filter:saturate(.75) contrast(1.05) hue-rotate(-8deg)}
+.sh-art .scan{background:linear-gradient(180deg,transparent,rgba(143,227,255,.35),transparent)!important}
+/* tarjetas como secuencias de memoria */
+.gc{background:linear-gradient(160deg,rgba(143,227,255,.06),rgba(8,14,20,.92) 45%)!important;border:1px solid rgba(143,227,255,.16)!important;border-radius:6px!important;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.gc::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(233,248,255,.14) 48%,transparent 62%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.gc:hover::after{transform:translateX(120%)}
+.gc:hover{border-color:rgba(143,227,255,.6)!important;box-shadow:0 0 0 1px rgba(143,227,255,.25),0 24px 60px -24px rgba(143,227,255,.45)!important}
+.gc:hover h3{animation:anGlitch2 .45s steps(2) 1}
+@keyframes anGlitch2{0%{text-shadow:-2px 0 #E0353D,2px 0 #8FE3FF;transform:translateX(1px)}50%{text-shadow:2px 0 #E0353D,-2px 0 #8FE3FF;transform:translateX(-1px)}100%{text-shadow:none;transform:none}}
+.gc-n{font-family:'Rajdhani',sans-serif!important;color:rgba(143,227,255,.35)!important}
+.gc-n::before{content:"SEC ";font-size:.4em;letter-spacing:.2em;vertical-align:middle}
+.gc-img{filter:saturate(.8) contrast(1.05)}
+.gc .gc-s,.gc .gc-go{border-radius:3px!important}
+.gc::before{content:"";position:absolute;left:18px;right:18px;bottom:10px;z-index:3;height:2px;background:linear-gradient(90deg,#8FE3FF,#E9F8FF);box-shadow:0 0 10px #8FE3FF;transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.gc:hover::before{transform:scaleX(1)}
+.ec{border-radius:3px!important}
+.seg{border-radius:4px!important;border-color:rgba(143,227,255,.2)!important}
+.seg button{border-radius:3px!important}
+.seg button.on{background:rgba(143,227,255,.16)!important;color:#E9F8FF!important;box-shadow:inset 0 0 0 1px rgba(143,227,255,.5)}
+.sec{animation:anMem .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes anMem{from{clip-path:inset(0 0 100% 0);opacity:.2}to{clip-path:inset(0 0 0 0);opacity:1}}
+.btn-r{border-radius:4px!important;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.foot{border-top-color:rgba(143,227,255,.15)!important}
+@media (max-width:860px){.an-dna{display:none}}
+@media (prefers-reduced-motion:reduce){.an-boot{display:none}.an-dna i::before,.an-dna i::after,.an-dna b,.sh h1,.uh h1,.sec,.hud i{animation:none!important}.gc::after,.gc::before{transition:none}}
+.still .an-boot{display:none}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #EFE9DD;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#EFE9DD 38%,transparent);color:#fff}
@@ -522,6 +596,13 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 </helmet>
 
 <div class="acp {{motionClass}}">
+<div class="an-boot" aria-hidden="true">
+  <div class="an-ring"><i></i><i></i><i></i></div>
+  <div class="an-lines"><span>ANIMUS · INICIANDO</span><span>CARGANDO MEMORIA GENÉTICA</span><span>SINCRONIZANDO CON EL ANCESTRO…</span></div>
+  <div class="an-bar"><i></i></div>
+</div>
+<div class="an-grid" aria-hidden="true"></div>
+
 
   <!-- NAV -->
   <header class="nav">
@@ -586,11 +667,13 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 
   <!-- HERO -->
   <section class="uh" id="inicio">
+    <div class="an-dna" aria-hidden="true"><i style="--k: 0"><b></b></i><i style="--k: 1"><b></b></i><i style="--k: 2"><b></b></i><i style="--k: 3"><b></b></i><i style="--k: 4"><b></b></i><i style="--k: 5"><b></b></i><i style="--k: 6"><b></b></i><i style="--k: 7"><b></b></i><i style="--k: 8"><b></b></i><i style="--k: 9"><b></b></i><i style="--k: 10"><b></b></i><i style="--k: 11"><b></b></i><i style="--k: 12"><b></b></i><i style="--k: 13"><b></b></i><i style="--k: 14"><b></b></i><i style="--k: 15"><b></b></i><i style="--k: 16"><b></b></i><i style="--k: 17"><b></b></i></div>
     <img class="uh-bg" src="../assets/juegos/hero-ac.webp" alt="">
     <div class="uh-sh"></div>
     <div class="wrap uh-in">
       <div class="uh-t">
         <a class="crumb" href="AssassinsCreed.dc.html">Assassin's Creed <span>›</span> Unity</a>
+        <span class="hud"><i></i>Animus · memoria genética · sincronización <b>100 %</b></span>
         <span class="kick">Guía completa · París, 1789–1794</span>
         <h1 class="cg">Assassin's Creed <em>Unity</em></h1>
         <p class="lead">El París de la Revolución barrio a barrio, la historia de Arno memoria a memoria y todo lo que hay que hacer para completar la ciudad.</p>
