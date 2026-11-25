@@ -228,6 +228,12 @@ Rutas de imágenes ya convertidas:
 - **Objetos** (Claude): las cuatro acciones (guardar, reciclar, vender, usar) son a la vez resumen y filtro; buscador que también busca por material de reciclaje, rareza, categoría, orden y ficha con la recomendación y su motivo, lo que da al reciclarlo, quién lo pide, receta y efectos. Datos: `public/data/arc-raiders/items.json` (los 581).
 - **Enemigos** y **Misiones** (Codex, revisadas por Claude): filtros de amenaza/tipo/mapa, punto débil, botín y armas; progreso por comerciante, objetivos paso a paso y recompensas.
 
+### CoD Zombis · Planos de los mapas (2026-11-25)
+
+`CodMapas.dc.html` (`/cod-zombies/planos`, enlazada como «Planos» en el menú de CoD): esquemas propios, no a escala, de Kino der Toten, «Five», TranZit y Nuketown Zombies. Para cada mapa muestra las zonas, las puertas, las ventajas, las armas de pared, la corriente, el teletransporte y la Pack-a-Punch, con capas que se pueden activar y desactivar, la ficha de cada zona y los pasos para abrir el mapa. Los datos de ventajas y armas salen de las páginas de cada Black Ops. Los demás mapas salen como «plano en preparación». La wiki de Fandom no deja leer sus páginas de forma automática (HTTP 402), así que la forma de cada plano la ha dibujado Claude y hay que comprobarla en partida.
+
+En el mapa de Zelda, las semillas kolog salen ocultas al abrir para que se lea mejor; se activan con su interruptor.
+
 ### Diseños de Codex sustituidos (2026-11-25)
 
 Jorge eligió las versiones de Claude: Enemigos, Misiones, Builds, eSports y la tier list por niveles (con la tabla como segunda vista) sustituyen a las de Codex con el mismo nombre de archivo. En la ficha del campeón, los matchups van antes de las builds y solo se muestran las 3 builds más usadas.

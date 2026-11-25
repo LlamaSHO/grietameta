@@ -680,7 +680,7 @@ class Component extends DCLogic {
     const S = this.state || {};
     const layer = S.layer || 'surf';
     const L = layer === 'sky' ? 'k' : 's';
-    const cats = Object.assign({ sh: true, tw: true, cv: true, sd: true }, S.cats || {});
+    const cats = Object.assign({ sh: true, tw: true, cv: true, sd: false }, S.cats || {}); // semillas ocultas al abrir: el mapa se lee mejor
     const zi = S.zi || 0;
     const px = S.px || 0;
     const py = S.py || 0;
