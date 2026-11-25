@@ -166,7 +166,7 @@ a{color:#7FEBCB}a:hover{color:#A8F5DE}
 .prog p{margin:8px 0 0;font-size:12px;color:#93AAA3}
 .selc{padding:16px;border-radius:16px;background:linear-gradient(180deg,rgba(79,224,182,.12),rgba(79,224,182,.03));border:1px solid rgba(79,224,182,.35);animation:pop .25s ease-out}
 .selc .t{font-family:'Cinzel',serif;font-size:19px;font-weight:700}
-.selc .m{margin-top:2px;font-size:12.5px;color:#A9BDB6}
+.selc .mt{margin-top:2px;font-size:12.5px;color:#A9BDB6}
 .coords{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
 .coords span{padding:8px;border-radius:9px;background:rgba(5,12,11,.6);text-align:center;font-size:11px;color:#93AAA3}
 .coords b{display:block;font-size:15px;color:#E6EEEA}
@@ -189,6 +189,8 @@ a{color:#7FEBCB}a:hover{color:#A8F5DE}
 .zl2 .m{--s:.45}
 .zl3 .m{--s:.32}
 .zl4 .m{--s:.24}
+.zl5 .m{--s:.18}
+.zl6 .m{--s:.13}
 .zl0 .m{--s:.85}
 .zl0 .m.p-sd,.zl0 .m.p-sd2{--s:.6}
 .zl1 .m.p-sd,.zl1 .m.p-sd2{--s:.5}
@@ -219,6 +221,15 @@ a{color:#7FEBCB}a:hover{color:#A8F5DE}
 .p-sd{--pc:#B5E86E;--ic:url(../assets/zelda/iconos/semilla.svg);width:16px;height:16px;border-width:1.5px;box-shadow:0 1px 4px rgba(0,0,0,.6);z-index:1}
 .p-sd2{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/semilla.svg);width:18px;height:18px;border-width:1.5px;z-index:1}
 .p-fr{width:11px;height:11px;border-radius:50%;border:2px dashed #F1E7C8;background:rgba(5,12,11,.5);pointer-events:none;z-index:1}
+.p-qs{--pc:#F2C36B}
+.pin.p-qs::after{content:"!";-webkit-mask:none;mask:none;background:none;width:auto;height:auto;display:grid;place-items:center;font:800 13px/1 'IBM Plex Sans',sans-serif;color:#2A1A04}
+.pin.p-qs:not(.lg){width:30px;height:30px;border-radius:9px;transform:translate(-50%,-50%) scale(var(--s,1)) rotate(45deg)}
+.pin.p-qs:not(.lg)::after{transform:rotate(-45deg)}
+.qlist{display:grid;gap:4px;max-height:190px;overflow:auto;margin:10px 0 0;padding:0;list-style:none}
+.qlist li{display:flex;justify-content:space-between;gap:10px;padding:7px 9px;border-radius:9px;background:rgba(4,19,15,.6);font-size:12.5px}
+.qlist li b{font-weight:600;color:#E6EEEA}
+.qlist li small{flex-shrink:0;color:#F2C36B}
+.qlink{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;color:#7FEBCB}
 .pin.done{--pc:#F1E7C8;--ic:url(../assets/zelda/iconos/hecho.svg)}
 .pin.lg::after{width:62%;height:62%}
 .pin.lg{position:static;width:20px;height:20px;transform:none;cursor:default;pointer-events:none;box-shadow:none;animation:none;flex-shrink:0}
@@ -335,6 +346,20 @@ a{color:#7FEBCB}a:hover{color:#A8F5DE}
 .vp-pad{height:3000px}
 
 .mapo .th-deep img{filter:grayscale(1) invert(1) brightness(.32) contrast(1.6) sepia(.35)}
+
+/* cabecera viva: motas de luz que suben y un planeador que cruza Hyrule */
+.motes{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.motes i{position:absolute;bottom:-10px;width:5px;height:5px;border-radius:50%;background:#9FF5DA;box-shadow:0 0 10px 3px rgba(79,224,182,.55);opacity:0;animation:mote linear infinite}
+@keyframes mote{0%{transform:translateY(0) scale(.6);opacity:0}12%{opacity:.9}80%{opacity:.5}100%{transform:translateY(-520px) translateX(24px) scale(1.1);opacity:0}}
+.glide{position:absolute;top:16%;left:-140px;z-index:-1;pointer-events:none;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5));animation:glide 26s linear infinite}
+.glide svg{display:block;animation:sway 3.2s ease-in-out infinite}
+@keyframes glide{0%{transform:translate(0,0)}100%{transform:translate(calc(100vw + 280px),90px)}}
+@keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(3deg) translateY(8px)}}
+.hero .h1 em{background:linear-gradient(100deg,#4FE0B6 20%,#E8FFF6 45%,#4FE0B6 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+@media (prefers-reduced-motion:reduce){.motes,.glide{display:none}.hero .h1 em{animation:none}}
+.still .motes,.still .glide{display:none}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #4FE0B6;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#4FE0B6 38%,transparent);color:#fff}
@@ -446,6 +471,8 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
   <section class="hero" id="inicio">
     <img class="hero-bg" src="/images/zelda/hyrule.jpg" alt="">
     <div class="rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="motes" aria-hidden="true"><i style="left: 8%; animation-delay: -1s; animation-duration: 9s"></i><i style="left: 17%; animation-delay: -6s; animation-duration: 11s"></i><i style="left: 26%; animation-delay: -3s; animation-duration: 8s"></i><i style="left: 34%; animation-delay: -9s; animation-duration: 12s"></i><i style="left: 43%; animation-delay: -2s; animation-duration: 10s"></i><i style="left: 52%; animation-delay: -7s; animation-duration: 9s"></i><i style="left: 61%; animation-delay: -4s; animation-duration: 13s"></i><i style="left: 70%; animation-delay: -10s; animation-duration: 10s"></i><i style="left: 78%; animation-delay: -5s; animation-duration: 8s"></i><i style="left: 86%; animation-delay: -8s; animation-duration: 11s"></i><i style="left: 93%; animation-delay: -3s; animation-duration: 12s"></i><i style="left: 48%; animation-delay: -11s; animation-duration: 14s"></i></div>
+    <div class="glide" aria-hidden="true"><svg viewBox="0 0 120 80" width="120" height="80"><path d="M6 22 Q60 -4 114 22 Q60 12 6 22Z" fill="#E8D9A8" opacity=".9"></path><path d="M6 22 Q60 6 114 22" stroke="#8A6A2E" stroke-width="2" fill="none"></path><line x1="38" y1="20" x2="56" y2="44" stroke="#C9B37A" stroke-width="1.6"></line><line x1="82" y1="20" x2="64" y2="44" stroke="#C9B37A" stroke-width="1.6"></line><circle cx="60" cy="46" r="5" fill="#F0D28A"></circle><path d="M54 50 L66 50 L68 66 L52 66Z" fill="#3E7FB8"></path><path d="M55 66 L53 76 M65 66 L67 76" stroke="#5A3E22" stroke-width="3" stroke-linecap="round"></path></svg></div>
     <div class="wrap hero-in">
       <div class="htx">
         <span class="kick">Guía en español · versión 1.2.1</span>
@@ -537,6 +564,10 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             <span class="pin lg p-sd" aria-hidden="true"></span>
             <span class="nm">Semillas kolog</span><span class="ct">{{cnt.sd}}</span><span class="tg" aria-hidden="true"></span>
           </button>
+          <button type="button" class="cat {{cat.qs}}" onClick="{{tog.qs}}" aria-pressed="{{pr.qs}}">
+            <span class="pin lg p-qs" aria-hidden="true"></span>
+            <span class="nm">Misiones por región</span><span class="ct">{{cnt.qs}}</span><span class="tg" aria-hidden="true"></span>
+          </button>
           <div class="allrow">
             <button type="button" onClick="{{showAll}}">Mostrar todo</button>
             <button type="button" onClick="{{hideAll}}">Ocultar todo</button>
@@ -562,12 +593,13 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
           <sc-if value="{{hasSel}}" hint-placeholder-val="{{ false }}">
             <div class="selc">
               <div class="t">{{selN}}</div>
-              <div class="m">{{selC}} · {{selL}} · zona {{selZ}}</div>
-              <div class="coords">
+              <div class="mt">{{selC}} · {{selL}} · zona {{selZ}}</div>
+              <sc-if value="{{selIsQs}}" hint-placeholder-val="{{ false }}"><ul class="qlist"><sc-for list="{{selQs}}" as="q" hint-placeholder-count="3"><li><b>{{q.n}}</b><small>{{q.k}}</small></li></sc-for></ul><a class="qlink" href="ZeldaGuia.dc.html#misiones">Ver las guías de estas misiones →</a></sc-if>
+              <sc-if value="{{selNoQs}}" hint-placeholder-val="{{ true }}"><div class="coords">
                 <span><b>{{selX}}</b>x</span>
                 <span><b>{{selY}}</b>y</span>
                 <span><b>{{selA}}</b>altitud</span>
-              </div>
+              </div></sc-if>
               <button type="button" class="btn-done {{selDoneCls}}" onClick="{{toggleDone}}">{{selDoneTxt}}</button>
             </div>
           </sc-if>
@@ -600,6 +632,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             <span><i class="pin lg p-cv"></i>Cueva o túnel</span>
             <span><i class="pin lg p-sd"></i>Semilla kolog</span>
             <span><i class="pin lg p-sd2"></i>Kolog con amigo</span>
+            <span><i class="pin lg p-qs"></i>Misiones</span>
             <span><i class="pin lg done"></i>Hecho</span>
           </div>
           <span class="coordtag">Zoom ×{{zoomTxt}}</span>
@@ -680,11 +713,11 @@ class Component extends DCLogic {
     const S = this.state || {};
     const layer = S.layer || 'surf';
     const L = layer === 'sky' ? 'k' : 's';
-    const cats = Object.assign({ sh: true, tw: true, cv: true, sd: false }, S.cats || {}); // semillas ocultas al abrir: el mapa se lee mejor
-    const zi = S.zi || 0;
+    const cats = Object.assign({ sh: true, tw: true, cv: true, sd: false, qs: true }, S.cats || {}); // semillas ocultas al abrir: el mapa se lee mejor
+    const zi = S.zi ?? (layer === 'sky' ? 2 : 0); // el cielo abre ya acercado: sus islas ocupan poco del lienzo
     const px = S.px || 0;
     const py = S.py || 0;
-    const ZS = [1, 1.6, 2.4, 3.4, 4.6];
+    const ZS = [1, 1.6, 2.4, 3.4, 4.6, 6.4, 8.8];
     const sel = S.sel || null;
     const found = S.found || {};
     const q = (S.q || '').trim();
@@ -704,11 +737,15 @@ class Component extends DCLogic {
     // Torres de vigilancia y cuevas: [nombre, x%, y%, x, y, altitud]
     const X = {"TW":{"s":[["Lookout Landing",47.51,48.57,-299,143,30],["Lindor's Brow",34.08,37.55,-1910,1245,297],["Pikida Stonegrove",30.74,19.38,-2311,3062,441],["Eldin Canyon",63.68,38.09,1642,1191,227],["Ulri Mountain",79.16,29.74,3499,2026,190],["Sahasra Slope",61.17,61.78,1341,-1178,169],["Upland Zorana",73.88,44.19,2866,581,379],["Hyrule Field",43.66,60.19,-761,-1019,69],["Gerudo Canyon",29.68,71.83,-2439,-2183,307],["Gerudo Highlands",16.99,63.06,-3961,-1306,421],["Rabella Wetlands",70.17,77.55,2420,-2755,224],["Thyphlo Ruins",52.87,18.58,344,3142,182],["Popla Foothills",55.04,71.27,605,-2127,103],["Mount Lanayru",82.07,63.15,3848,-1315,535],["Rospro Pass",19.33,26.54,-3680,2346,235]],"k":[]},"CV":{"s":[["Ulria Grotto South Cave",84.35,43.38,4122,662,197],["Ulria Grotto East Cave",87.54,42.95,4505,705,107],["Ulria Grotto East Cave",85.61,42.26,4273,774,154],["Tarrey Town Tunnel",82.72,34.24,3926,1576,117],["Construction Site Cave",80.66,34.62,3679,1538,85],["Construction Site Cave",81.12,34.66,3735,1534,92],["Akkala Citadel Ruins Cave",77.03,35.43,3244,1457,301],["Skull Lake Cave",77.68,15.76,3322,3424,180],["North Akkala Beach Cave",88.76,14.15,4651,3585,-38],["North Akkala Beach Cave",88.72,17.93,4646,3207,19],["Akkala Citadel Ruins Summit Cave",77.44,35.08,3293,1492,400],["Ranch Ruins Cave",50.31,51.99,37,-199,31],["Ranch Ruins Cave",50.05,51.58,6,-158,42],["Great Plateau Foothill Cave",43.07,64.88,-832,-1488,39],["Royal Hidden Passage",47.28,41.97,-326,803,65],["Royal Hidden Passage",47.88,48.71,-254,129,20],["Royal Hidden Passage",47.88,42.33,-254,767,39],["Ancient Tree Stump Cave",40.73,54.32,-1112,-432,35],["Whistling Hill Cave",49.4,60.46,-72,-1046,29],["Passeri Greenbelt Cave",45.73,48.72,-512,128,32],["Coliseum Ruins Cave",40.27,63.11,-1167,-1311,34],["Sage Temple Cave",38.29,52.57,-1405,-257,8],["Death Mountain East Tunnel",73.07,22.22,2768,2778,524],["Death Mountain West Tunnel",68.66,23.18,2239,2682,524],["Lake Darman Monster Den",69.78,19.48,2373,3052,450],["Isle of Rabac Gallery",62.96,18.97,1555,3103,398],["Goronbi River Cave",61.86,28.97,1423,2103,292],["Southern Mine",65.01,30.17,1801,1983,327],["Gorko Tunnel",66.8,29.61,2016,2039,426],["West Restaurant Cave",63.69,32.7,1643,1730,286],["East Restaurant Cave",65.45,32.8,1854,1720,299],["Lizard's Burrow",68.38,19.25,2206,3075,411],["Lake Intenoch Cave",70.71,32.07,2485,1793,167],["YunoboCo HQ East Cave",64.71,21.63,1765,2837,405],["YunoboCo HQ South Cave",64.28,22.81,1714,2719,406],["Death Mountain Foothill Cave",66.25,23.13,1950,2687,431],["Lake Ferona Cave",66.08,37.28,1930,1272,132],["Lake Ferona Cave",66.1,36.95,1932,1305,177],["Cephla Lake Cave",71.62,36.7,2594,1330,161],["Foothill Monster Den",68.96,34.8,2275,1520,167],["Floria River Upstream Excavation",56.75,79.72,810,-2972,23],["Pagos Woods Excavation Site",55.6,81.09,672,-3109,36],["Tobio's Hollow Cave",59.75,74.44,1170,-2444,186],["Cora Lakefront Cave",47.87,79.4,-256,-2940,-6],["Cora Lakefront Cave",48.58,80.67,-171,-3067,-1],["Finra Woods Excavation Site",54.74,79.82,569,-2982,25],["Sarjon Woods Cave",60.02,81.71,1203,-3171,37],["Lake Hylia Whirlpool Cave",51.05,75.01,126,-2501,-76],["Popla Foothills Excavation Site",55.08,72.1,609,-2210,62],["Puffer Beach Overhead Cave",52.37,88.51,284,-3851,45],["River of the Dead Waterfall Cave",40.9,71.63,-1092,-2163,153],["Shrine of Resurrection",41.15,68.3,-1062,-1830,152],["Gerudo Sanctuary",18.64,76.99,-3763,-2699,27],["Gerudo Sanctuary",18.64,74.21,-3763,-2421,27],["Valley of Silent Statues",18.11,76.5,-3827,-2650,47],["Quicksand Lake Cave",23.01,79.4,-3239,-2940,-52],["Mount Nabooru Cave",33.61,70.6,-1967,-2060,42],["Mount Nabooru Cave",35.03,69.61,-1796,-1961,43],["Stalry Plateau Cave",37.27,72.23,-1528,-2223,-8],["East Gerudo Ruins Cave",27.53,78.09,-2696,-2809,-54],["Central Gerudo Cave",19.34,82.55,-3679,-3255,-6],["Mount Nabooru South Cave",35.61,71.83,-1727,-2183,17],["Lower Spectacle Rock Cave",35.47,73.94,-1744,-2394,1],["Spectacle Rock Cave",31.53,73.95,-2216,-2395,255],["Ancient Prison Ruins",24.18,80.64,-3099,-3064,-38],["South Gerudo Cave",25.51,88.58,-2939,-3858,-24],["Koukot Plateau Cave",31.18,67.59,-2259,-1759,68],["Koukot Plateau Cave",31.88,68.42,-2174,-1842,137],["Ancient Altar Ruins",28.87,86.26,-2536,-3626,-35],["Oasis Source",22.04,76.94,-3355,-2694,8],["Gerudo Great Skeleton",9.88,88.75,-4814,-3875,11],["West Gerudo Underground Ruins",11.06,69.86,-4673,-1986,21],["Yiga Blademaster Station",29.72,68.2,-2434,-1820,155],["Gerudo Canyon Mine",28.24,76.05,-2611,-2605,123],["Gerudo Canyon Mine",27.69,74.03,-2677,-2403,90],["Taafei Hill Cave",29.52,67.99,-2457,-1799,185],["Statue of the Eighth Heroine Cave",13.46,55.37,-4385,-537,478],["Meadela's Mantle Cave",16.81,62.45,-3983,-1245,431],["Mystathi's Shelf Cave",17.65,57.27,-3882,-727,572],["Mount Dunsel Cave",76.87,80.18,3224,-3018,71],["Mount Dunsel Cave",77.42,82.96,3291,-3296,76],["Mount Floria Cave",66.33,76.12,1960,-2612,82],["Mount Floria Cave",64.92,79.86,1790,-2986,91],["Corta Lake Cave",63.98,80.39,1677,-3039,174],["Rodai Lakefront Tunnel",65.8,81.11,1896,-3111,142],["Calora Lake Cave",66.33,80.33,1959,-3033,202]],"k":[["Bottomless Cave",55.93,64.49,712,-1449,1472],["Bottomless Cave",56.16,63.58,739,-1358,1527],["Pit Cave",55.27,66.39,632,-1639,1469],["Pit Cave",54.89,66.25,587,-1625,1429],["Pondside Cave",51.42,66.34,171,-1634,1365],["Pondside Cave",52.17,65.58,260,-1558,1349],["Mining Cave",53.17,66.32,380,-1632,1398],["Mining Cave",54.08,66.26,490,-1626,1356]]}};
 
+    // Misiones agrupadas por región: [región, x, y, capa, [[nombre, tipo], …]] (centro aproximado de la región)
+    const QR = [["Hyrule Central", -360, 600, "s", [["Bring Peace to Hyrule Field", "Aventura"], ["Bring Peace to Necluda!", "Aventura"], ["A Call from the Depths", "Aventura"], ["The Beast and the Princess", "Aventura"], ["Serenade to Kaysa", "Aventura"], ["The Beckoning Woman", "Aventura"], ["Gourmets Gone Missing", "Aventura"], ["The Incomplete Stable", "Secundaria"], ["Spotting Spot", "Secundaria"], ["President Hudson's Sign", "Secundaria"], ["President Hudson's Sign: Road to Rito", "Secundaria"], ["The Treasure Hunters", "Secundaria"], ["WANTED: Hinox", "Secundaria"], ["WANTED: Stone Talus", "Secundaria"], ["WANTED: Molduga", "Secundaria"], ["Unknown Sky Giant", "Secundaria"], ["Village Attacked by Pirates", "Secundaria"], ["The Horse Guard's Request", "Secundaria"], ["Fell into a Well!", "Secundaria"]]], ["Lookout Landing", -300, 140, "s", [["Crisis at Hyrule Castle", "Principal 3"], ["Regional Phenomena", "Principal 4"], ["Camera Work in the Depths", "Principal 5"], ["Find the Fifth Sage", "Principal 14"], ["A Mystery in the Depths", "Principal 19"], ["Destroy Ganondorf", "Principal 23"], ["Hateno Village Research Lab", "Aventura"], ["Who Goes There?", "Aventura"], ["A Deal with the Statue", "Aventura"]]], ["Gerudo", -3600, -2400, "s", [["Riju of Gerudo Town", "Principal 13"], ["Infiltrating the Yiga Clan", "Aventura"], ["The Yiga Clan Exam", "Aventura"], ["The Blocked Well", "Aventura"], ["The South Lomei Prophecy", "Secundaria"], ["The Heroines' Secret", "Secundaria"], ["The Mysterious Eighth", "Secundaria"], ["Dalia's Game", "Secundaria"], ["Lost in the Dunes", "Secundaria"], ["The Iceless Icehouse", "Secundaria"], ["Decorate with Passion", "Secundaria"], ["The Missing Owner", "Secundaria"], ["Pride of the Gerudo", "Secundaria"], ["To the Ruins!", "Secundaria"], ["Piaffe, Packed Away", "Secundaria"], ["A Picture for the Closed Stable I", "Secundaria"], ["A Picture for the Closed Stable II", "Secundaria"], ["Gerudo's Colossal Fossil", "Secundaria"], ["Disaster in Gerudo Canyon", "Secundaria"], ["The Great Tumbleweed Purge", "Secundaria"], ["Heat and Cold Endurance Tests", "Secundaria"], ["Gleeok Guts", "Secundaria"]]], ["Hebra", -3120, 2800, "s", [["Tulin of Rito Village", "Principal 6"], ["Serenade to Mija", "Aventura"], ["Zelda's Golden Horse", "Aventura"], ["The Blocked Cave", "Secundaria"], ["Crossing the Cold Pool", "Secundaria"], ["The North Lomei Prophecy", "Secundaria"], ["Open the Door", "Secundaria"], ["The Duchess Who Disappeared", "Secundaria"], ["Genli's Home Cooking", "Secundaria"], ["Legacy of the Rito", "Secundaria"], ["Molli the Fletcher's Quest", "Secundaria"], ["Treasure of the Secret Springs", "Secundaria"], ["The Rito Rope Bridge", "Secundaria"], ["Fish for Fletching", "Secundaria"], ["Cave Mushrooms That Glow", "Secundaria"], ["The Captured Tent", "Secundaria"], ["Who Finds the Haven?", "Secundaria"], ["Hebra's Colossal Fossil", "Secundaria"], ["Supply-Eyeing Fliers", "Secundaria"], ["Kaneli's Flight Training", "Secundaria"]]], ["Eldin", 2160, 2400, "s", [["Yunobo of Goron City", "Principal 7"], ["The Hunt for Bubbul Gems!", "Aventura"], ["The Search for Koltin", "Aventura"], ["Serenade to a Great Fairy", "Aventura"], ["For Our Princess", "Aventura"], ["Misko's Cave of Chests", "Secundaria"], ["Meat for Meat", "Secundaria"], ["Rock, Roast or Dust", "Secundaria"], ["Cash in on Ripened Flint", "Secundaria"], ["Amber Dealer", "Secundaria"], ["The Ancient City Gorondia", "Secundaria"], ["Simmerstone Springs", "Secundaria"], ["Mine-Cart Land Courses", "Secundaria"], ["Moon-Gazing Gorons", "Secundaria"], ["Soul of the Gorons", "Secundaria"], ["The Hidden Treasure at Lizard Lakes", "Secundaria"], ["Eldin's Colossal Fossil", "Secundaria"], ["The Abandoned Laborer", "Secundaria"], ["A Picture for Foothill Stable", "Secundaria"], ["A Picture for Woodland Stable", "Secundaria"]]], ["Akkala", 4320, 2600, "s", [["Mattison's Independence", "Aventura"], ["The All-Clucking Cucco", "Aventura"], ["Presenting: The Travel Medallion", "Aventura"], ["Presenting: Hero's Path Mode", "Aventura"], ["Presenting: Sensor +!", "Aventura"], ["A Monstrous Collection (I a V)", "Aventura"], ["Home on Arrange", "Secundaria"], ["The Lomei Labyrinth Island Prophecy", "Secundaria"], ["Master the Vehicle Prototype", "Secundaria"], ["The Tarrey Town Race Is On!", "Secundaria"], ["Secrets Within", "Secundaria"], ["The Gathering Pirates", "Secundaria"], ["One-Hit Wonder!", "Secundaria"], ["Strongest in the World", "Secundaria"]]], ["Necluda Este", 3840, -1600, "s", [["Homegrown in Hateno", "Secundaria"], ["A Bottled Cry for Help", "Secundaria"], ["Photographing a Chuchu", "Secundaria"], ["Teach Me a Lesson", "Secundaria"], ["Uma's Garden", "Secundaria"], ["Manny's Beloved", "Secundaria"], ["Dantz's Prize Cows", "Secundaria"], ["A New Champion's Tunic", "Secundaria"], ["Lurelin Resort Project", "Secundaria"], ["Dad's Blue Shirt", "Secundaria"], ["A Way to Trade, Washed Away", "Secundaria"], ["Rattled Ralera", "Secundaria"], ["Seeking the Pirate Hideout", "Secundaria"]]], ["Necluda Oeste", 960, -1600, "s", [["Gloom-Borne Illness", "Secundaria"], ["Codgers' Quarrel", "Secundaria"], ["Follow the Cuccos", "Secundaria"], ["Out of the Inn", "Secundaria"], ["A Trip Through History", "Secundaria"]]], ["Necluda", 2400, -1600, "s", [["Team Cece or Team Reede?", "Aventura"], ["A Letter to Koyin", "Aventura"], ["A New Signature Food", "Aventura"], ["Reede's Secret", "Aventura"], ["Cece's Secret", "Aventura"], ["The Mayoral Election", "Aventura"], ["Serenade to Cotera", "Aventura"], ["Princess Zelda Kidnapped?!", "Aventura"]]], ["Lanayru", 3360, 0, "s", [["Mired in Muck (rescue Bazz)", "Secundaria"], ["The Never-Ending Lecture", "Secundaria"], ["A Token of Friendship", "Secundaria"], ["A Crabulous Deal", "Secundaria"], ["A Wife Wafted Away", "Secundaria"], ["The Moonlit Princess", "Secundaria"], ["The Fort at Ja'Abu Ridge", "Secundaria"], ["The Blue Stone", "Secundaria"], ["Glory of the Zora", "Secundaria"], ["True Treasure", "Secundaria"], ["Secret Treasure Under the Great Fish", "Secundaria"]]], ["Dominio Zora", 3120, 1000, "s", [["The Sludge-Covered Statue", "Principal 8"], ["Restoring the Zora Armor", "Principal 10"], ["Sidon of the Zora", "Principal 12"]]], ["Humedales de Lanayru", 1680, 200, "s", [["Honey, Bee Mine", "Aventura"], ["The Missing Farm Tools", "Aventura"], ["The Ultimate Dish", "Secundaria"], ["An Uninvited Guest", "Secundaria"]]], ["Cresta de Hyrule", -2160, 1000, "s", [["Impa and the Geoglyphs", "Principal 20"], ["Hestu's Concerns", "Aventura"], ["The Hornist's Dramatic Escape", "Aventura"], ["White Goats Gone Missing", "Aventura"], ["A Picture for Tabantha Bridge Stable", "Secundaria"], ["Horse-Drawn Dreams", "Secundaria"]]], ["Faron", 1440, -3600, "s", [["The Flute Player's Plan", "Aventura"], ["An Eerie Voice", "Aventura"], ["Ruffian-Infested Village", "Aventura"], ["Lurelin Village Restoration Project", "Aventura"], ["Ousting the Giants", "Secundaria"]]], ["Gran Bosque de Hyrule", 240, 2800, "s", [["Investigate the Thyphlo Ruins", "Aventura"], ["The Owl Protected by Dragons", "Aventura"], ["The Corridor Between the Two Dragons", "Aventura"], ["The Six Dragons", "Aventura"], ["The Long Dragon", "Aventura"]]], ["Bosque Kolog", 240, 2600, "s", [["Recovering the Hero's Sword", "Principal 16"]]], ["Lago Toto", -3960, -1000, "s", [["The Broken Slate", "Principal 9"], ["Clues to the Sky", "Principal 11"]]], ["Ring Ruins", -600, -200, "s", [["Secret of the Ring Ruins", "Principal 17"]]], ["Dragonhead Island", 5160, -2400, "s", [["Guidance from Ages Past", "Principal 18"]]], ["Gran Isla del Cielo", 275, -913, "k", [["The Closed Door", "Principal 1"], ["To the Kingdom of Hyrule", "Principal 2"], ["Find Princess Zelda", "Principal 22"], ["Legend of the Great Sky Island", "Aventura"]]]];
+
     const CAT = {
       sh: { n: 'Santuario', done: 'Completado ✓', mark: 'Marcar como completado', ok: 'Completado', todo: 'Pendiente' },
       tw: { n: 'Torre de vigilancia', done: 'Activada ✓', mark: 'Marcar como activada', ok: 'Activada', todo: 'Pendiente' },
       cv: { n: 'Cueva o túnel', done: 'Explorada ✓', mark: 'Marcar como explorada', ok: 'Explorada', todo: 'Pendiente' },
-      sd: { n: 'Semilla kolog', done: 'Recogida ✓', mark: 'Marcar como recogida', ok: 'Recogida', todo: 'Pendiente' }
+      sd: { n: 'Semilla kolog', done: 'Recogida ✓', mark: 'Marcar como recogida', ok: 'Recogida', todo: 'Pendiente' },
+      qs: { n: 'Misiones de la región', done: 'Hechas ✓', mark: 'Marcar como hechas', ok: 'Hechas', todo: 'Pendientes' }
     };
     // lista normalizada por categoría y capa: { n, raw, x%, y%, gx, gy, alt, two, fx%, fy% }
     const NORM = {
@@ -716,7 +753,8 @@ class Component extends DCLogic {
       tw: (l) => X.TW[l].map((a) => ({ n: a[0] + ' Skyview Tower', raw: a[0], x: a[1], y: a[2], gx: a[3], gy: a[4], alt: a[5] })),
       cv: (l) => X.CV[l].map((a) => ({ n: a[0], raw: a[0], x: a[1], y: a[2], gx: a[3], gy: a[4], alt: a[5] })),
       sd: (l) => D.SD[l + '1'].map((a) => ({ n: 'Semilla kolog', raw: '', x: a[0], y: a[1], gx: a[2], gy: a[3], alt: null }))
-        .concat(D.SD[l + '2'].map((a) => ({ n: 'Kolog con amigo', raw: '', x: a[0], y: a[1], fx: a[2], fy: a[3], gx: a[4], gy: a[5], alt: null, two: true })))
+        .concat(D.SD[l + '2'].map((a) => ({ n: 'Kolog con amigo', raw: '', x: a[0], y: a[1], fx: a[2], fy: a[3], gx: a[4], gy: a[5], alt: null, two: true }))),
+      qs: (l) => QR.filter((r) => r[3] === l).map((r) => ({ n: r[0], raw: r[0], x: r[1] / 120 + 50, y: 50 - r[2] / 100, gx: r[1], gy: r[2], alt: null, qs: r[4] }))
     };
     const NL = {};
     const get = (c, l) => NL[c + l] || (NL[c + l] = NORM[c](l));
@@ -733,7 +771,7 @@ class Component extends DCLogic {
     const pins = [];
     const fr = [];
     let nAll = 0, nDone = 0;
-    ['sd', 'cv', 'tw', 'sh'].forEach((c) => {
+    ['sd', 'cv', 'tw', 'sh', 'qs'].forEach((c) => {
       if (!cats[c]) return;
       get(c, L).forEach((it, i) => {
         const key = keyOf(c, L, i);
@@ -742,7 +780,7 @@ class Component extends DCLogic {
         if (!pass(key)) return;
         pins.push({
           x: it.x + '%', y: it.y + '%', lbl: it.n, aria: it.n + (done ? ', hecho' : ''),
-          sub: (c === 'sd' ? (it.two ? 'Lleva al kolog hasta su amigo' : 'Recógela al resolver el puzle') : CAT[c].n) + ' · zona ' + zone(it.gx, it.gy),
+          sub: c === 'qs' ? it.qs.length + (it.qs.length === 1 ? ' misión' : ' misiones') + ' · zona aproximada' : (c === 'sd' ? (it.two ? 'Lleva al kolog hasta su amigo' : 'Recógela al resolver el puzle') : CAT[c].n) + ' · zona ' + zone(it.gx, it.gy),
           st: done ? CAT[c].ok : CAT[c].todo, stc: done ? 'ok' : '',
           cls: 'pin ' + (c === 'sd' ? (it.two ? 'p-sd2' : 'p-sd') : 'p-' + c) + (done ? ' done' : '') + (sel === key ? ' sel' : ''),
           pick: pickKey(key)
@@ -757,10 +795,13 @@ class Component extends DCLogic {
       const it = NORM[p.c] && get(p.c, p.l)[p.i];
       if (it) {
         const ent = p.c === 'cv' ? get('cv', p.l).filter((b) => b.raw === it.raw).length : 0;
-        selObj = { it, p, layer: p.l === 'k' ? 'Cielo' : 'Superficie', cat: CAT[p.c].n + (ent > 1 ? ' · ' + ent + ' entradas' : '') + (it.two ? ' · con amigo' : '') };
+        selObj = { it, p, layer: p.l === 'k' ? 'Cielo' : 'Superficie', cat: (p.c === 'qs' ? it.qs.length + ' misiones' : CAT[p.c].n) + (ent > 1 ? ' · ' + ent + ' entradas' : '') + (it.two ? ' · con amigo' : '') };
       }
     }
     const selHere = selObj && selObj.p.l === L;
+    // Centro de las islas del cielo, para abrir esa capa centrada en ellas
+    const skyPts = layer === 'sky' ? ['sh', 'tw', 'cv'].reduce((a, c) => a.concat(get(c, 'k')), []) : [];
+    const skyC = skyPts.length ? { x: skyPts.reduce((s, b) => s + b.x, 0) / skyPts.length, y: skyPts.reduce((s, b) => s + b.y, 0) / skyPts.length } : null;
     const zoom = ZS[zi];
 
     const all = [];
@@ -773,11 +814,11 @@ class Component extends DCLogic {
     const doneSd = Object.keys(found).filter((k) => found[k] && k.indexOf('sd:') === 0).reduce((n, k) => { const p = parse(k); const it = get('sd', p.l)[p.i]; return n + (it && it.two ? 2 : 1); }, 0);
     const doneSh = doneOf('sh');
     const doneTw = doneOf('tw');
-    const setLayer = (l) => () => this.setState({ layer: l, px: 0, py: 0 });
+    const setLayer = (l) => () => this.setState({ layer: l, px: 0, py: 0, zi: null });
     const uniq = (arr) => Object.keys(arr.reduce((o, a) => { o[a[0]] = 1; return o; }, {})).length;
 
     const cat = {}, pr = {}, tog = {};
-    ['sh', 'tw', 'cv', 'sd'].forEach((c) => {
+    ['sh', 'tw', 'cv', 'sd', 'qs'].forEach((c) => {
       cat[c] = cats[c] ? 'onc' : 'offc';
       pr[c] = cats[c] ? 'true' : 'false';
       tog[c] = () => this.setState({ cats: Object.assign({}, cats, { [c]: !cats[c] }) });
@@ -794,14 +835,14 @@ class Component extends DCLogic {
       setSurf: setLayer('surf'), setSky: setLayer('sky'),
       pins,
       zi, zoom, zoomTxt: String(zoom).replace('.', ','),
-      tx: selHere && zi > 0 ? (-zoom * (selObj.it.x - 50)).toFixed(2) + '%' : '0%',
-      ty: selHere && zi > 0 ? (-zoom * (selObj.it.y - 50)).toFixed(2) + '%' : '0%',
+      tx: selHere && zi > 0 ? (-zoom * (selObj.it.x - 50)).toFixed(2) + '%' : (skyC && zi > 0 ? (-zoom * (skyC.x - 50)).toFixed(2) + '%' : '0%'),
+      ty: selHere && zi > 0 ? (-zoom * (selObj.it.y - 50)).toFixed(2) + '%' : (skyC && zi > 0 ? (-zoom * (skyC.y - 50)).toFixed(2) + '%' : '0%'),
       px, py, dragCls: S.drag ? 'drag' : '',
       vpArm: (e) => { const el = e.currentTarget; this._trapEl = el; el.scrollTop = 1500; },
-      vpWheel: (e) => { const el = e.currentTarget; if (!el.isConnected) return; if (this._trapEl !== el) { this._trapEl = el; el.scrollTop = 1500; return; } const d = el.scrollTop - 1500; if (!d) return; el.scrollTop = 1500; this._wacc = (this._wacc || 0) + d; const now = Date.now(); if (Math.abs(this._wacc) < 60 || now - (this._wt || 0) < 140) return; const dir = this._wacc < 0 ? 1 : -1; this._wacc = 0; this._wt = now; const z0 = (this.state || {}).zi || 0; const z1 = Math.max(0, Math.min(4, z0 + dir)); if (z1 !== z0) this.setState(z1 === 0 ? { zi: 0, px: 0, py: 0 } : { zi: z1 }); },
-      zoomIn: () => this.setState({ zi: Math.min(4, zi + 1) }),
+      vpWheel: (e) => { const el = e.currentTarget; if (!el.isConnected) return; if (this._trapEl !== el) { this._trapEl = el; el.scrollTop = 1500; return; } const d = el.scrollTop - 1500; if (!d) return; el.scrollTop = 1500; this._wacc = (this._wacc || 0) + d; const now = Date.now(); if (Math.abs(this._wacc) < 60 || now - (this._wt || 0) < 140) return; const dir = this._wacc < 0 ? 1 : -1; this._wacc = 0; this._wt = now; const z0 = (this.state || {}).zi || 0; const z1 = Math.max(0, Math.min(ZS.length - 1, z0 + dir)); if (z1 !== z0) this.setState(z1 === 0 ? { zi: 0, px: 0, py: 0 } : { zi: z1 }); },
+      zoomIn: () => this.setState({ zi: Math.min(ZS.length - 1, zi + 1) }),
       zoomOut: () => this.setState({ zi: Math.max(0, zi - 1) }),
-      zoomReset: () => this.setState({ zi: 0, sel: null, px: 0, py: 0 }),
+      zoomReset: () => this.setState({ zi: null, sel: null, px: 0, py: 0 }),
       vpDown: (e) => {
         if ((e.button !== undefined && e.button !== 0) || onTarget(e)) return;
         this._drag = { x: e.clientX, y: e.clientY, px, py };
@@ -816,9 +857,9 @@ class Component extends DCLogic {
         }
       },
       vpUp: () => { if (!this._drag) return; this._drag = null; this.setState({ drag: false }); },
-      vpDbl: (e) => { if (onTarget(e)) return; this.setState({ zi: Math.min(4, zi + 1) }); },
+      vpDbl: (e) => { if (onTarget(e)) return; this.setState({ zi: Math.min(ZS.length - 1, zi + 1) }); },
       cat, pr, tog,
-      cnt: { sh: D.SH[L].length, tw: X.TW[L].length, cv: uniq(X.CV[L]), sd: D.SD[L + '1'].length + 2 * D.SD[L + '2'].length },
+      cnt: { sh: D.SH[L].length, tw: X.TW[L].length, cv: uniq(X.CV[L]), sd: D.SD[L + '1'].length + 2 * D.SD[L + '2'].length, qs: QR.filter((r) => r[3] === L).reduce((n, r) => n + r[4].length, 0) },
       fr, doneSd, pctSd: (doneSd / 875 * 100).toFixed(1) + '%',
       nAll, nDone, nTodo: nAll - nDone,
       stAll: st === 'all' ? 'on' : '', stTodo: st === 'todo' ? 'on' : '', stDone: st === 'done' ? 'on' : '',
@@ -831,6 +872,8 @@ class Component extends DCLogic {
       doneSh, doneTw,
       pctSh: (doneSh / 152 * 100).toFixed(1) + '%', pctTw: (doneTw / 15 * 100).toFixed(1) + '%',
       hasSel: !!selObj, noSel: !selObj,
+      selIsQs: !!(selObj && selObj.p.c === 'qs'), selNoQs: !(selObj && selObj.p.c === 'qs'),
+      selQs: selObj && selObj.p.c === 'qs' ? selObj.it.qs.map((q) => ({ n: q[0], k: q[1] })) : [],
       selN: selObj ? (selObj.it.raw || selObj.it.n) : '', selL: selObj ? selObj.layer : '', selC: selObj ? selObj.cat : '',
       selZ: selObj ? zone(selObj.it.gx, selObj.it.gy) : '',
       selX: selObj ? fmt(selObj.it.gx) : '', selY: selObj ? fmt(selObj.it.gy) : '', selA: selObj ? (selObj.it.alt === null ? '—' : fmt(selObj.it.alt)) : '',
