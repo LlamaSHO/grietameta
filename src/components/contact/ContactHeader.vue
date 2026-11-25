@@ -41,7 +41,7 @@
   color: var(--gm-gold);
 }
 .plane svg.p {
-  animation: fly 3.6s ease-in-out infinite;
+  animation: fly 3.6s ease-in-out 3;
 }
 .plane svg.t {
   position: absolute;
@@ -86,7 +86,7 @@ h1 span {
   place-items: center;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: bob var(--t, 7s) ease-in-out infinite;
+  animation: bob var(--t, 7s) ease-in-out 3;
   animation-delay: var(--dl, 0s);
 }
 .fl img {

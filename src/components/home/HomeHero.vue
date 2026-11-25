@@ -22,7 +22,7 @@
       <p class="lead">Builds, tier lists y guías con datos reales. Escoge un juego o búscalo por nombre; si todavía no lo tenemos, pídelo.</p>
 
       <div class="search-wrap">
-        <GameSearch big :shortcut="false" placeholder="Busca un juego… (LoL, ARC, Zelda)" />
+        <GameSearch big :shortcut="false" placeholder="Busca un juego o una guía… (LoL, Pokémon, Rust)" />
       </div>
 
       <div class="quick">
@@ -46,6 +46,8 @@ const QUICK = [
   { label: "Tier list de LoL", to: "/lol#tierlist", icon: "/images/games/logo-lol.png" },
   { label: "Enemigos de ARC", to: "/arc-raiders/enemigos", icon: "/images/games/logo-arc.png" },
   { label: "Semillas kolog", to: "/zelda/semillas", icon: "/images/games/logo-zelda.png" },
+  { label: "Pokédex", to: "/pokemon/pokedex", icon: "/images/home/art-25.webp" },
+  { label: "Meta Pokémon", to: "/pokemon/competitivo", icon: "/images/home/art-903.webp" },
 ];
 </script>
 
@@ -74,10 +76,11 @@ const QUICK = [
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  filter: blur(90px);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 0%, transparent 68%);
   opacity: 0.38;
   pointer-events: none;
-  animation: drift 16s ease-in-out infinite alternate;
+  animation: drift 16s ease-in-out 1 both;
 }
 .glow.g1 {
   top: -180px;
@@ -225,7 +228,8 @@ const QUICK = [
   .glow {
     width: 340px;
     height: 340px;
-    filter: blur(70px);
+    -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 68%);
+    mask-image: radial-gradient(circle, #000 0%, transparent 68%);
   }
   .search-wrap {
     margin-top: 30px;

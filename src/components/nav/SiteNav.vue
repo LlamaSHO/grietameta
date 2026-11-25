@@ -4,12 +4,15 @@
        (ver components/nav/games). Estilos en assets/styles/nav.css. -->
   <header class="site-nav" :class="{ 'menus-closed': menusClosed }" @mouseenter="menusClosed = false" @mouseleave="menusClosed = false">
     <div class="wrap bar-in">
-      <RouterLink class="brand" to="/" aria-label="GrietaMeta, inicio">
-        <GmMark :size="26" />
-        <span class="brand-name">GRIETA<span>META</span></span>
-      </RouterLink>
+      <div class="nav-l">
+        <RouterLink class="brand" to="/" aria-label="GrietaMeta, inicio">
+          <GmMark :size="26" />
+          <span class="brand-name">GRIETA<span>META</span></span>
+        </RouterLink>
+        <GamesMenu />
+      </div>
 
-      <div class="search-slot">
+      <div id="gm-search-slot" class="search-slot">
         <GameSearch />
       </div>
 
@@ -32,6 +35,7 @@
 import { computed, ref, watch, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import GmMark from "@/components/brand/GmMark.vue";
+import GamesMenu from "@/components/nav/GamesMenu.vue";
 import GameSearch from "@/components/GameSearch.vue";
 import NavAccount from "@/components/nav/NavAccount.vue";
 import { GAME_NAVS } from "@/components/nav/games";

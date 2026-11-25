@@ -26,6 +26,14 @@
         <span class="m">y los 152 santuarios</span>
       </span>
     </RouterLink>
+    <RouterLink class="feat ft4" to="/pokemon/competitivo">
+      <span class="th th-pk"><img src="/images/home/art-903.webp" alt="" width="54" height="54"></span>
+      <span class="tx">
+        <span class="k">Pokémon · Meta VGC</span>
+        <span class="t">Sneasler</span>
+        <span class="m"><span class="tier">Nº1</span>50 % de uso</span>
+      </span>
+    </RouterLink>
   </div>
 </template>
 
@@ -83,15 +91,13 @@ function onChampImgError(e) {
   background: linear-gradient(180deg, rgba(22, 27, 37, 0.82), rgba(12, 15, 21, 0.82));
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 26px 50px -24px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   color: var(--ink);
   text-align: left;
   pointer-events: auto;
   /* La aparición va primero para que el balanceo (bob) mande en el transform
      una vez terminada; si no, el "both" de gm-rise lo dejaría quieto. */
-  animation: gm-rise 0.9s var(--ease-out) both, bob var(--t, 7s) ease-in-out infinite;
+  animation: gm-rise 0.9s var(--ease-out) both, bob var(--t, 7s) ease-in-out 3;
   animation-delay: var(--ri, 0.5s), var(--dl, 0s);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -176,6 +182,8 @@ function onChampImgError(e) {
 .ft1 { left: 4.5%; top: 36%; --fc: #E2C27E; --fg: rgba(226, 194, 126, 0.55); --t: 7s; --r0: -2deg; --r1: 1deg; --ri: 0.55s; }
 .ft2 { right: 4.5%; top: 20%; --fc: #FF8A5F; --fg: rgba(255, 106, 61, 0.5); --t: 8s; --dl: -2s; --r0: 2deg; --r1: -1deg; --ri: 0.7s; }
 .ft3 { right: 7%; top: 62%; --fc: var(--gm-teal); --fg: rgba(79, 224, 182, 0.45); --t: 7.5s; --dl: -4s; --r0: -1deg; --r1: 2deg; --ri: 0.85s; }
+.ft4 { left: 2.5%; top: 57%; --fc: #FFCB3D; --fg: rgba(255, 203, 61, 0.5); --t: 8.5s; --dl: -3s; --r0: 1deg; --r1: -2deg; --ri: 1s; }
+.th-pk img { object-fit: contain; background: radial-gradient(circle, #3A2A55, #14101F); }
 
 @keyframes bob {
   0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--r0)); }

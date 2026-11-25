@@ -14,7 +14,10 @@
         <div class="foot-cols">
           <nav class="foot-col" aria-label="Juegos">
             <h4>Juegos</h4>
-            <RouterLink v-for="g in games" :key="g.slug" :to="g.url">{{ g.name }}</RouterLink>
+            <template v-for="g in games" :key="g.slug">
+              <RouterLink v-if="g.url" :to="g.url">{{ g.name }}</RouterLink>
+              <span v-else class="soon">{{ g.name }} · Próximamente</span>
+            </template>
           </nav>
           <nav class="foot-col" aria-label="Ayuda">
             <h4>Ayuda</h4>
@@ -36,9 +39,9 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import GmMark from "@/components/brand/GmMark.vue";
-import { fetchGames } from "@/services/games";
+import { useCatalog } from "@/components/nav/gamesCatalog";
 
 const props = defineProps({ gameSlug: { type: String, default: null } });
 
@@ -55,8 +58,7 @@ const NOTICES = {
 const DEFAULT_NOTICE = "GrietaMeta es un sitio de fans, no está afiliado a los estudios de los juegos mencionados. Las marcas pertenecen a sus propietarios.";
 const notice = computed(() => NOTICES[props.gameSlug] || DEFAULT_NOTICE);
 
-const games = ref([]);
-fetchGames().then((g) => (games.value = g));
+const { games } = useCatalog();
 </script>
 
 <style scoped>
@@ -110,6 +112,9 @@ fetchGames().then((g) => (games.value = g));
   color: #A0A8B4;
   text-decoration: none;
   transition: color 0.2s;
+}
+.foot-col .soon {
+  color: #6F7885;
 }
 .foot-col a:hover {
   color: var(--gold-hi);

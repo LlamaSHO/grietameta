@@ -310,9 +310,10 @@ async function onLogout() {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  filter: blur(100px);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 0%, transparent 68%);
   opacity: 0.3;
-  animation: drift 16s ease-in-out infinite alternate;
+  animation: drift 16s ease-in-out 1 both;
   pointer-events: none;
 }
 .glow.g1 {

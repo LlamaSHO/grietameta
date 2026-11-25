@@ -23,7 +23,7 @@
   position: absolute;
   display: grid;
   place-items: center;
-  animation: bob var(--t, 7s) ease-in-out infinite;
+  animation: bob var(--t, 7s) ease-in-out 3;
   animation-delay: var(--dl, 0s);
 }
 .fl.tile {
@@ -33,8 +33,6 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 .fl.bare {
   opacity: 0.55;

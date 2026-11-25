@@ -227,3 +227,8 @@
     display: none;
   }
 }
+
+.game-results li a.g-off {
+  cursor: default;
+  opacity: 0.8;
+}

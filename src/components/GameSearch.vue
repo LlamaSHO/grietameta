@@ -32,14 +32,22 @@
         :class="{ 'is-active': i === active }"
         :aria-selected="i === active"
       >
-        <RouterLink :to="g.url" @click="close">
+        <RouterLink v-if="g.url" :to="g.url" @click="close">
           <GameIcon :game="g" />
           <span class="g-body">
             <span class="g-name">{{ g.name }}</span>
-            <span class="g-tag">{{ g.tagline }}</span>
+            <span class="g-tag">{{ g.tagline || g.small }}</span>
           </span>
           <GameBadge :status="g.status" />
         </RouterLink>
+        <a v-else class="g-off" aria-disabled="true" @click.prevent>
+          <GameIcon :game="g" />
+          <span class="g-body">
+            <span class="g-name">{{ g.name }}</span>
+            <span class="g-tag">{{ g.small }}</span>
+          </span>
+          <GameBadge :status="g.status" />
+        </a>
       </li>
     </ul>
   </div>
@@ -50,7 +58,8 @@ import { computed, onBeforeUnmount, onMounted, ref, useId, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import GameIcon from "@/components/GameIcon.vue";
 import GameBadge from "@/components/GameBadge.vue";
-import { fetchGames, matchGames } from "@/services/games";
+import { matchGames } from "@/services/games";
+import { useCatalog } from "@/components/nav/gamesCatalog";
 
 const props = defineProps({
   big: { type: Boolean, default: false },
@@ -59,6 +68,9 @@ const props = defineProps({
   shortcut: { type: Boolean, default: true },
 });
 
+const { games: catalogGames } = useCatalog();
+// Los 9 juegos del sitio; los que no tienen logo propio usan su imagen.
+const catalog = computed(() => catalogGames.value.map((g) => ({ ...g, icon: g.icon || g.img })));
 const route = useRoute();
 const router = useRouter();
 const listId = `gs-${useId()}`;
@@ -84,9 +96,8 @@ watch(
   }
 );
 
-async function show() {
-  const games = await fetchGames();
-  items.value = matchGames(games, query.value);
+function show() {
+  items.value = matchGames(catalog.value, query.value);
   active.value = items.value.length ? 0 : -1;
   open.value = true;
 }

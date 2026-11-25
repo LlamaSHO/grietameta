@@ -1,7 +1,7 @@
 <template>
-  <!-- "¿A qué juegas hoy?": paneles con splash que se expanden al pasar el
-       ratón (.panels de models/paginas/Main.dc.html). Los juegos salen de
-       public/data/games.json; el aspecto de cada uno, de LOOKS. -->
+  <!-- "¿A qué juegas hoy?": los 9 juegos en filas de 3, con paneles que se
+       expanden al pasar el ratón (.grid9 de models/paginas/Main.dc.html).
+       Orden, ruta y estado salen de nav/gamesCatalog.js (+ games.json). -->
   <section id="juegos" class="games">
     <div class="wrap">
       <div class="sec-head">
@@ -11,136 +11,153 @@
         </div>
         <div class="hint">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="6" /><line x1="12" y1="6.5" x2="12" y2="10" /></svg>
-          Pasa el ratón por una portada para ver qué incluye
+          Nueve juegos · pasa el ratón por una portada para ver qué incluye
         </div>
       </div>
 
-      <div class="panels">
-        <RouterLink
-          v-for="(p, i) in panels"
-          :key="p.slug"
-          class="panel"
-          :class="`p-${p.look.kind}`"
-          :to="p.url"
-        >
-          <template v-if="p.look.kind === 'zelda'">
-            <img class="p-bg z-surface" :src="p.look.bg" alt="" loading="lazy">
-            <img class="p-bg z-sky" :src="p.look.bgAlt" alt="" loading="lazy">
-          </template>
-          <img v-else-if="p.look.bg" class="p-bg" :src="p.look.bg" alt="" loading="lazy">
-          <div class="p-shade"></div>
-          <div class="p-tint"></div>
-
-          <!-- Efectos al pasar el ratón -->
-          <div v-if="p.look.kind === 'lol'" class="fx" aria-hidden="true">
-            <div class="ring">
-              <svg viewBox="0 0 200 200">
-                <g class="r-a">
-                  <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(10,200,185,.55)" stroke-width=".8" stroke-dasharray="1.5 5" />
-                  <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(217,181,110,.7)" stroke-width="1.2" stroke-dasharray="46 10 6 10" />
-                </g>
-                <g class="r-b">
-                  <polygon points="100,30 160.6,65 160.6,135 100,170 39.4,135 39.4,65" fill="none" stroke="rgba(10,200,185,.6)" stroke-width="1" />
-                  <circle cx="100" cy="30" r="3" fill="#0AC8B9" />
-                  <circle cx="100" cy="170" r="3" fill="#D9B56E" />
-                </g>
-              </svg>
+      <div class="grid9">
+        <div v-for="(row, r) in rows" :key="r" class="panels">
+          <component
+            :is="p.url ? 'RouterLink' : 'div'"
+            v-for="(p, c) in row"
+            :key="p.slug"
+            class="panel"
+            :class="`p-${p.look.kind}`"
+            v-bind="p.url ? { to: p.url } : { 'aria-disabled': 'true' }"
+          >
+            <template v-if="p.look.kind === 'zelda'">
+              <img class="p-bg z-surface" :src="p.look.bg" alt="" loading="lazy" decoding="async">
+              <img class="p-bg z-sky" :src="p.look.bgAlt" alt="" loading="lazy" decoding="async">
+            </template>
+            <div v-else-if="p.look.kind === 'pk'" class="pk-bg">
+              <img class="a1" src="/images/home/art-10035.webp" alt="" loading="lazy" decoding="async">
+              <img class="a2" src="/images/home/art-25.webp" alt="" loading="lazy" decoding="async">
             </div>
-            <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>
-          </div>
-          <div v-else-if="p.look.kind === 'arc'" class="fx" aria-hidden="true">
-            <div class="hud"><i></i><i></i><i></i><i></i></div>
-            <div class="reticle">
-              <svg viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="18 10" />
-                <circle cx="60" cy="60" r="4" fill="currentColor" />
-                <line x1="60" y1="4" x2="60" y2="22" stroke="currentColor" stroke-width="2" />
-                <line x1="60" y1="98" x2="60" y2="116" stroke="currentColor" stroke-width="2" />
-                <line x1="4" y1="60" x2="22" y2="60" stroke="currentColor" stroke-width="2" />
-                <line x1="98" y1="60" x2="116" y2="60" stroke="currentColor" stroke-width="2" />
-              </svg>
+            <img v-else class="p-bg" :src="p.img" alt="" loading="lazy" decoding="async">
+            <div class="p-shade"></div>
+            <div class="p-tint"></div>
+
+            <!-- Efectos al pasar el ratón -->
+            <div v-if="p.look.kind === 'lol'" class="fx" aria-hidden="true">
+              <div class="ring">
+                <svg viewBox="0 0 200 200">
+                  <g class="r-a">
+                    <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(10,200,185,.55)" stroke-width=".8" stroke-dasharray="1.5 5" />
+                    <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(217,181,110,.7)" stroke-width="1.2" stroke-dasharray="46 10 6 10" />
+                  </g>
+                  <g class="r-b">
+                    <polygon points="100,30 160.6,65 160.6,135 100,170 39.4,135 39.4,65" fill="none" stroke="rgba(10,200,185,.6)" stroke-width="1" />
+                    <circle cx="100" cy="30" r="3" fill="#0AC8B9" />
+                    <circle cx="100" cy="170" r="3" fill="#D9B56E" />
+                  </g>
+                </svg>
+              </div>
+              <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>
             </div>
-            <span class="reticle-label">ARC DETECTADO</span>
-            <div class="scan"></div>
-          </div>
-          <div v-else-if="p.look.kind === 'zelda'" class="fx" aria-hidden="true">
-            <div class="halo"></div>
-            <span class="mote m1"></span><span class="mote m2"></span><span class="mote m3"></span>
-            <span class="mote m4"></span><span class="mote m5"></span><span class="mote m6"></span>
-          </div>
-          <div class="p-sheen" aria-hidden="true"></div>
+            <div v-else-if="p.look.kind === 'arc'" class="fx" aria-hidden="true">
+              <div class="hud"><i></i><i></i><i></i><i></i></div>
+              <div class="reticle">
+                <svg viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="18 10" />
+                  <circle cx="60" cy="60" r="4" fill="currentColor" />
+                  <line x1="60" y1="4" x2="60" y2="22" stroke="currentColor" stroke-width="2" />
+                  <line x1="60" y1="98" x2="60" y2="116" stroke="currentColor" stroke-width="2" />
+                  <line x1="4" y1="60" x2="22" y2="60" stroke="currentColor" stroke-width="2" />
+                  <line x1="98" y1="60" x2="116" y2="60" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <span class="reticle-label">ARC DETECTADO</span>
+              <div class="scan"></div>
+            </div>
+            <div v-else-if="p.look.kind === 'zelda'" class="fx" aria-hidden="true">
+              <div class="halo"></div>
+              <span class="mote m1"></span><span class="mote m2"></span><span class="mote m3"></span>
+              <span class="mote m4"></span><span class="mote m5"></span><span class="mote m6"></span>
+            </div>
+            <div v-else-if="p.look.kind === 'ac'" class="fx" aria-hidden="true">
+              <svg class="ac-eagle" viewBox="0 0 120 120"><path d="M60 10 L74 52 L60 44 L46 52 Z" fill="currentColor" /><path d="M60 50 L82 104 L60 92 L38 104 Z" fill="currentColor" opacity=".85" /></svg>
+              <span class="ac-line l1"></span><span class="ac-line l2"></span>
+            </div>
+            <div class="p-sheen" aria-hidden="true"></div>
 
-          <div class="p-top">
-            <span class="badge" :class="p.status === 'live' ? 'live' : 'soon'">
-              <span class="dot"></span>{{ p.status === "live" ? "Disponible" : p.status === "progress" ? "En progreso" : "En construcción" }}
-            </span>
-            <span class="p-num">{{ String(i + 1).padStart(2, "0") }}</span>
-          </div>
+            <div class="p-top">
+              <span class="badge" :class="badgeClass(p)"><span class="dot"></span>{{ statusLabel(p) }}</span>
+              <span class="p-num">{{ String(r * 3 + c + 1).padStart(2, "0") }}</span>
+            </div>
 
-          <div class="p-body">
-            <img v-if="p.icon" class="p-logo" :src="p.icon" alt="" loading="lazy">
-            <h3 class="p-name">{{ p.name }}</h3>
-            <p class="p-tag">{{ p.tagline }}</p>
-            <div class="p-more">
-              <div class="p-more-in">
-                <div v-if="p.look.chips.length" class="chips">
-                  <span v-for="c in p.look.chips" :key="c" class="chip">{{ c }}</span>
-                </div>
-                <div class="p-cta">
-                  <span>{{ p.look.cta }}</span>
-                  <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg></span>
+            <div class="p-body">
+              <img v-if="p.look.logo" class="p-logo" :src="p.look.logo" alt="" loading="lazy" decoding="async">
+              <span v-else-if="p.look.txtlogo" class="p-txtlogo">{{ p.look.txtlogo }}</span>
+              <h3 class="p-name">{{ p.name }}</h3>
+              <p class="p-tag">{{ p.look.tag || p.tagline || p.small }}</p>
+              <div class="p-more">
+                <div class="p-more-in">
+                  <div v-if="p.look.chips.length" class="chips">
+                    <span v-for="ch in p.look.chips" :key="ch" class="chip">{{ ch }}</span>
+                  </div>
+                  <div class="p-cta">
+                    <span>{{ p.url ? p.look.cta : "Próximamente en GrietaMeta" }}</span>
+                    <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg></span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <span class="p-bar" aria-hidden="true"></span>
-        </RouterLink>
+            <span class="p-bar" aria-hidden="true"></span>
+          </component>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-import { fetchGames } from "@/services/games";
+import { computed } from "vue";
+import { statusLabel, useCatalog } from "@/components/nav/gamesCatalog";
 
-// Aspecto de cada juego en la portada (lo que no está en games.json):
-// tipo de efecto, fondo, chips y texto del botón.
+// Aspecto de cada juego en la portada (lo que no está en el catálogo):
+// tipo de efecto, logo, chips y texto del botón.
 const LOOKS = {
-  lol: {
-    kind: "lol",
-    bg: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
-    chips: ["Tier list", "Campeones", "Premium"],
-    cta: "Entrar en LoL",
-  },
-  "arc-raiders": {
-    kind: "arc",
-    bg: "/images/arc-raiders/bots/arc_the_queen.webp",
-    chips: ["Objetos", "Misiones", "Enemigos"],
-    cta: "Entrar en ARC Raiders",
-  },
+  lol: { kind: "lol", logo: "/images/games/logo-lol.png", tag: "Tier list, winrates y builds de todos los campeones", chips: ["Tier list", "Campeones", "Premium"], cta: "Entrar en LoL" },
+  "arc-raiders": { kind: "arc", logo: "/images/games/logo-arc.png", tag: "Objetos, misiones, enemigos y mapas", chips: ["Objetos", "Misiones", "Enemigos"], cta: "Entrar en ARC Raiders" },
   "zelda-totk": {
     kind: "zelda",
+    logo: "/images/games/logo-zelda.png",
     bg: "/images/zelda/hyrule.jpg",
     bgAlt: "/images/zelda/hyrule-cielo.jpg",
+    tag: "Mapa de semillas kolog y santuarios, misiones y armaduras",
     chips: ["Semillas", "Santuarios", "Misiones", "Armaduras", "Conjuntos"],
     cta: "Entrar en Zelda",
   },
+  pokemon: { kind: "pk", tag: "Pokédex, tabla de tipos, meta competitivo y Kanto al 100 %", chips: ["Pokédex", "Tipos", "Competitivo", "Kanto"], cta: "Entrar en Pokémon" },
+  ark: { kind: "ark", logo: "/images/games/logo-ark.webp", tag: "Criaturas, engramas, recursos y guías de supervivencia", chips: ["Criaturas", "Engramas", "Recursos", "Guías"], cta: "Entrar en ARK" },
+  "assassins-creed": {
+    kind: "ac",
+    txtlogo: "Saga + Unity",
+    tag: "De Altaïr a Naoe: la saga en orden y la guía completa de Unity",
+    chips: ["Saga", "Unity", "Mapa de París", "Historia"],
+    cta: "Entrar en Assassin's Creed",
+  },
+  "cod-zombis": { kind: "cod", logo: "/images/home/logo-cod.png", tag: "Zombis de Black Ops 1 a 4: Pack-a-Punch, armas y Easter eggs paso a paso", chips: ["26 mapas", "Easter eggs", "Historia del Aether"], cta: "Entrar en CoD Zombis" },
+  "resident-evil": { kind: "re", txtlogo: "Toda la saga", tag: "Mapas por planta, puzles resueltos y códigos de cajas fuertes", chips: ["Remakes", "Puzles", "Rangos"], cta: "" },
+  rust: { kind: "rust", logo: "/images/home/logo-rust.png", tag: "Monumentos, objetos y calculadora de raid", chips: ["Monumentos", "Raid", "Bases"], cta: "" },
 };
 
-const games = ref([]);
+const { games } = useCatalog();
 
-// Juegos nuevos sin entrada en LOOKS: panel sencillo con el acento dorado.
 const panels = computed(() =>
   games.value.map((g) => ({
     ...g,
-    look: LOOKS[g.slug] || { kind: "generic", chips: [], cta: `Entrar en ${g.short || g.name}` },
+    look: { chips: [], cta: `Entrar en ${g.short || g.name}`, ...(LOOKS[g.slug] || { kind: "generic" }) },
   }))
 );
+// Filas de tres, como en el diseño.
+const rows = computed(() => [0, 3, 6].map((i) => panels.value.slice(i, i + 3)));
 
-onMounted(async () => {
-  games.value = await fetchGames();
-});
+function badgeClass(p) {
+  if (p.status === "soon") return "next";
+  if (p.isNew && p.status === "live") return "new";
+  return p.status === "live" ? "live" : "soon";
+}
 </script>
 
 <style scoped>
@@ -361,8 +378,6 @@ onMounted(async () => {
   padding: 6px 12px 6px 10px;
   border-radius: 999px;
   background: rgba(7, 9, 13, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 11px;
   font-weight: 600;
@@ -743,5 +758,116 @@ onMounted(async () => {
   .hint {
     display: none;
   }
+}
+
+/* ---------- rejilla de 9 (3 filas de 3) ---------- */
+.grid9 {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.grid9 .panels {
+  height: 420px;
+  min-height: 420px;
+}
+.grid9 .p-logo { height: 72px; max-width: 170px; }
+.grid9 .p-name { font-size: 27px; }
+.grid9 .p-tag { font-size: 14px; }
+.grid9 .p-num { display: none; }
+.grid9 .panels:nth-child(2) .panel:nth-child(1) { animation-delay: 0.4s; }
+.grid9 .panels:nth-child(2) .panel:nth-child(2) { animation-delay: 0.48s; }
+.grid9 .panels:nth-child(2) .panel:nth-child(3) { animation-delay: 0.56s; }
+.grid9 .panels:nth-child(3) .panel:nth-child(1) { animation-delay: 0.64s; }
+.grid9 .panels:nth-child(3) .panel:nth-child(2) { animation-delay: 0.72s; }
+.grid9 .panels:nth-child(3) .panel:nth-child(3) { animation-delay: 0.8s; }
+div.panel[aria-disabled="true"] { cursor: default; }
+
+.p-pk { --acc: #FFCB3D; --acc2: #FF5A5F; --glow: rgba(255, 203, 61, 0.55); }
+.p-ark { --acc: #7ED957; --acc2: #2FA4D9; --glow: rgba(126, 217, 87, 0.5); }
+.p-ac { --acc: #E8E2D0; --acc2: #C8102E; --glow: rgba(232, 226, 208, 0.4); }
+.p-cod { --acc: #FF7A1A; --acc2: #9BE15D; --glow: rgba(255, 122, 26, 0.5); }
+.p-re { --acc: #E2364B; --acc2: #3FA7D6; --glow: rgba(226, 54, 75, 0.5); }
+.p-rust { --acc: #CE422B; --acc2: #F2A33A; --glow: rgba(206, 66, 43, 0.5); }
+.p-pk .p-bar { background: linear-gradient(90deg, #FF5A5F, #FFCB3D, #7AD27A, #5B8CFF, #EC8FE6); }
+.p-ark .p-bar { background: linear-gradient(90deg, #7ED957, #2FA4D9); }
+.p-ac .p-bar { background: linear-gradient(90deg, #C8102E, #E8E2D0); }
+.p-cod .p-bar { background: linear-gradient(90deg, #FF7A1A, #9BE15D); }
+.p-re .p-bar { background: linear-gradient(90deg, #8B0F1E, #E2364B); }
+.p-rust .p-bar { background: linear-gradient(90deg, #CE422B, #F2A33A); }
+.p-ark .p-bg { object-position: 60% 40%; }
+.p-ac .p-bg { object-position: 75% 30%; }
+.p-cod .p-bg { object-position: 40% 40%; }
+.p-re .p-bg { object-position: 30% 40%; }
+.p-rust .p-bg { object-position: 55% 50%; }
+.p-cod .p-shade { background: linear-gradient(180deg, rgba(7, 9, 13, 0.55) 0%, rgba(7, 9, 13, 0.05) 24%, rgba(7, 9, 13, 0.4) 48%, rgba(7, 9, 13, 0.9) 68%, rgba(7, 9, 13, 0.98) 100%); }
+.p-ac .p-shade { background: linear-gradient(180deg, rgba(7, 9, 13, 0.6) 0%, rgba(7, 9, 13, 0.1) 22%, rgba(7, 9, 13, 0.45) 46%, rgba(7, 9, 13, 0.9) 66%, rgba(7, 9, 13, 0.98) 100%); }
+.p-ac .p-tag { color: #D9DCE1; }
+.badge.new { color: #FFCB3D; }
+.badge.next { color: #C6CBD2; }
+.p-txtlogo {
+  align-self: flex-start;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font: 800 15px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(7, 9, 13, 0.6);
+  border: 1px solid var(--acc);
+  color: var(--acc);
+}
+/* Pokémon: arte oficial sobre degradado */
+.pk-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: radial-gradient(120% 80% at 70% 10%, #FFCB3D 0%, #FF7A59 30%, #7C3AED 70%, #1E1B4B 100%);
+}
+.pk-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(rgba(255, 255, 255, 0.08) 0 10deg, transparent 10deg 20deg);
+  -webkit-mask: radial-gradient(circle at 60% 30%, #000 10%, transparent 60%);
+  mask: radial-gradient(circle at 60% 30%, #000 10%, transparent 60%);
+}
+.pk-bg img {
+  position: absolute;
+  object-fit: contain;
+  transition: transform 1s var(--ease-out);
+}
+.pk-bg .a1 { width: 78%; right: -14%; top: -2%; }
+.pk-bg .a2 { width: 46%; left: -6%; top: 20%; transform: rotate(-8deg); }
+.p-pk:hover .pk-bg .a1 { transform: scale(1.08) translateY(-4px); }
+.p-pk:hover .pk-bg .a2 { transform: rotate(-14deg) scale(1.1); }
+/* Assassin's Creed: águila y líneas al entrar el ratón */
+.ac-eagle {
+  position: absolute;
+  right: 22px;
+  top: 58px;
+  width: 64px;
+  height: 64px;
+  color: rgba(232, 226, 208, 0.9);
+  transform: translateY(-8px) scale(0.85);
+  opacity: 0;
+  transition: transform 0.7s var(--ease-out), opacity 0.4s;
+}
+.panel:hover .ac-eagle { transform: none; opacity: 1; }
+.ac-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 16, 46, 0.75), transparent);
+  transform: scaleX(0);
+  transition: transform 0.9s var(--ease-out);
+}
+.ac-line.l1 { top: 34%; }
+.ac-line.l2 { top: 36%; transition-delay: 0.12s; background: linear-gradient(90deg, transparent, rgba(232, 226, 208, 0.55), transparent); }
+.panel:hover .ac-line { transform: scaleX(1); }
+@media (max-width: 860px) {
+  .grid9 .panels { height: auto; min-height: 0; }
+  .pk-bg .a1 { width: 56%; right: -4%; }
+  .pk-bg .a2 { width: 30%; }
 }
 </style>
