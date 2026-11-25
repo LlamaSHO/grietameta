@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>(Propuesta de Claude) Builds de campeones · League of Legends · GrietaMeta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Chakra+Petch:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+
+@view-transition{navigation:auto}
+:root{color-scheme:dark}
+html,body{margin:0;background:#07090D}
+.builds{--bg:#07090D;--panel:#0D1017;--raised:#141922;--line:#282D35;--muted:#A3ACBA;--gold:#F3C878;--green:#75DDA9;color:#ECE9E1;background:var(--bg);font:15px/1.45 'IBM Plex Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+.builds *{box-sizing:border-box}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:clamp(16px,2.5vw,32px)}
+.builds :is(h1,h2,h3,p,ol){margin:0}
+.builds :is(h1,h2,h3,.item-title strong){font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.builds :is(button,input,select){font:inherit}
+.builds button,.builds select{cursor:pointer}
+.builds a{color:inherit;text-decoration:none}
+.builds :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.builds ::selection{background:#705730;color:white}
+.builds sc-for,.builds sc-if{display:contents}
+.topbar{background:#0B0E14;border-bottom:1px solid var(--line)}
+.nav-in,.brand,.game,.topbar nav{display:flex;align-items:center}
+.nav-in{min-height:62px;gap:24px}
+.brand{font:700 19px 'Chakra Petch',sans-serif;letter-spacing:.06em}
+.brand img{width:32px;height:34px;object-fit:contain;margin-right:7px}
+.brand span{color:var(--gold)}
+.game{border-left:1px solid var(--line);padding-left:24px;gap:8px;font-weight:600}
+.game img{width:23px;height:25px;object-fit:contain}
+.topbar nav{align-self:stretch;margin-left:auto;gap:24px}
+.topbar nav a{position:relative;display:grid;align-items:center;font-size:14px;color:var(--muted)}
+.topbar nav a[aria-current],.topbar nav a:hover{color:#F4EDE0}
+.topbar nav a[aria-current]::after{content:"";position:absolute;inset:auto 0 0;height:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+.mast{position:relative;isolation:isolate;border-bottom:1px solid #292A29;background:#10151A;overflow:hidden}
+.mast-in{padding-block:24px 28px}
+.crumb,.scope{display:flex;gap:10px;align-items:center;font-size:12px;color:#B9BFCA}
+.crumb a:hover{text-decoration:underline}
+.mast h1{margin-top:12px;font-size:clamp(36px,4vw,52px);letter-spacing:-.04em;line-height:1.07}
+.mast em{font-style:normal;color:#E2B566}
+.mast p{max-width:53ch;margin-top:8px;color:#C1C7CF}
+.scope{margin-top:18px;flex-wrap:wrap;gap:8px 14px;font-size:12px}
+.mast{background:repeating-linear-gradient(128deg,transparent 0 70px,#d9b56e0a 71px,transparent 72px 100px),radial-gradient(ellipse at 85% 115%,#463924,transparent 58%),#101419}
+.mast .patch{color:var(--gold);font-weight:700}.mast-in{padding-block:24px 30px}
+.b-work{padding-block:28px 60px}.section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 14px;margin-bottom:12px}
+.section-head h2{font-size:clamp(21px,2.3vw,30px);letter-spacing:-.035em}.section-head p,.muted,.role-name{color:var(--muted);font-size:13px}
+.podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:32px}
+.riser{--tint:#ccb07a;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:60px 1fr;gap:15px;align-items:center;padding:18px;border:1px solid color-mix(in srgb,var(--tint) 35%,#20242b);border-radius:15px;background:linear-gradient(112deg,color-mix(in srgb,var(--tint) 14%,#11151b),#10151b 86%)}
+.riser::after{content:"";position:absolute;z-index:-1;width:100px;height:160%;right:0;top:-30%;transform:skew(-18deg);border-inline:1px solid #ffffff0c;background:linear-gradient(90deg,transparent,#ffffff06)}
+.riser:hover,.build-row:hover{border-color:var(--gold);background-color:#202029}.riser strong{display:block;font:700 22px 'Bricolage Grotesque',sans-serif}.riser small{color:#c9c6c2;font-size:12px}.riser .trend{display:block;color:var(--green);font:700 18px 'Chakra Petch',sans-serif}
+.portrait,.keystone{display:inline-block;flex:none;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%;background-repeat:no-repeat;width:44px;height:44px;border-radius:10px;box-shadow:inset 0 0 0 1px #ffffff25}
+.riser .portrait{width:60px;height:60px;border:1px solid var(--tint);border-radius:15px}
+.controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:12px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}
+.controls label,.mob-label{display:grid;gap:5px;color:var(--muted);font-size:12px;font-weight:600}.controls :is(input,select),.empty button{min-width:0;width:100%;height:42px;padding-inline:11px;color:#f2efeb;background:#191e26;border:1px solid #383e49;border-radius:8px;font:500 14px 'IBM Plex Sans',sans-serif;color-scheme:dark}
+.build-list{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.build-row,.column-head{display:grid;grid-template-columns:minmax(138px,1.35fr) minmax(132px,1.1fr) minmax(46px,.5fr) minmax(120px,1fr) minmax(62px,.6fr) minmax(64px,.6fr) 16px;align-items:center;gap:12px;padding:11px 18px}
+.column-head{color:#b1bac6;background:#181d24;font-size:12px;font-weight:600}.build-row{border-top:1px solid var(--line);transition:background .18s}.build-row:focus-visible{outline-offset:-3px}
+.identity,.core,.rune{display:flex;align-items:center;gap:10px}.identity strong{font-family:'Bricolage Grotesque',sans-serif;font-size:17px}.role-name{display:block}.core{gap:4px}
+.slot{display:inline-flex;align-items:center;gap:4px}.slot+.slot::before{content:"›";color:#858d99}.gear{display:block;width:34px;height:34px;border:1px solid #514b40;border-radius:6px}
+.keystone{width:30px;height:30px;border-radius:50%;background-image:url(../assets/lol/iconos.webp);background-size:1000% 700%}.rune{gap:6px;font-size:13px;color:#d1d4d8}
+.win,.games{font:600 18px 'Chakra Petch',sans-serif}.win{color:var(--green)}.to-file{color:var(--gold);font-size:19px}.mob-label{display:none}
+.empty{text-align:center;padding:24px}.empty p{color:var(--muted);margin:4px 0 12px}.empty button{width:auto;cursor:pointer}
+@media(max-width:900px){.riser{padding:12px;grid-template-columns:44px 1fr;gap:9px}.riser .portrait{width:44px;height:44px}.riser strong{font-size:19px}.build-row,.column-head{padding-inline:12px;gap:8px;grid-template-columns:minmax(116px,1.2fr) 124px 36px minmax(98px,1fr) 61px 58px 12px}.gear{width:31px;height:31px}}
+@media(max-width:680px){.nav-in{gap:12px;min-height:54px}.game{display:none}.topbar nav{gap:12px}.topbar nav a{font-size:12px}.brand{font-size:14px}.brand img{width:22px;margin-right:4px}
+.podium{grid-template-columns:1fr;gap:6px;margin-bottom:24px}.riser{grid-template-columns:44px 1fr auto}.riser .trend{font-size:17px}.riser-info{display:contents}.riser-info>span{grid-column:2}.riser-info .trend{grid-column:3;grid-row:1}
+.controls{grid-template-columns:1fr 1fr;gap:10px;padding:10px}.column-head{display:none}.build-list{border:0;background:transparent;display:grid;gap:9px}.build-row{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) 64px;grid-template-areas:"identity identity win" "core boots games" "rune rune link";align-items:start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.identity{grid-area:identity}.core-cell{grid-area:core}.boot-cell{grid-area:boots}.rune{grid-area:rune}.win{grid-area:win}.games{grid-area:games}.to-file{grid-area:link;justify-self:end}.mob-label{display:block;margin-bottom:4px;font:500 11px 'IBM Plex Sans',sans-serif}.win,.games{text-align:right}.gear{width:30px;height:30px}.keystone{width:23px;height:23px}.riser .trend{align-self:center}.mast-in{padding-block:18px}.b-work{padding-block:20px 36px}}
+.mast .criterion{color:var(--gold);font-size:13px;font-weight:600}
+.build-name{display:block;color:#e2dfd8;font-size:12px;font-weight:600}.build-name:not(:empty){margin-bottom:4px}
+.sample-note{grid-column:2/-2;color:var(--muted);font-size:14px}
+@media(max-width:680px){.build-row:has(.sample-note){grid-template-areas:"identity identity link" "note note note"}.sample-note{grid-area:note}}
+@media(prefers-reduced-motion:reduce){.builds *{transition:none!important;animation:none!important}}
+
+.mast::after{content:"";position:absolute;z-index:-1;inset:8% 9% 0 auto;aspect-ratio:1;background:url(../assets/games/logo-lol.png) center/contain no-repeat;opacity:.23;transform:rotate(-8deg)}
+.riser{grid-template-columns:auto minmax(0,1fr) auto}.riser-core{display:flex;gap:3px}.riser-core .gear{width:28px;height:28px}
+.use{display:block;color:#aeb6c0;font:500 11px 'IBM Plex Sans',sans-serif}
+@media(min-width:681px) and (max-width:1000px){.riser-core{grid-column:1/-1}.riser{grid-template-columns:auto 1fr}}
+@media(max-width:680px){.riser-info{display:block}.riser .trend{font-size:14px}.mast::after{opacity:.08}.riser-core .gear{width:28px;height:28px}}
+@media(max-width:420px){.topbar nav{gap:9px}.nav-in{gap:6px}.topbar nav a{white-space:nowrap}.brand{letter-spacing:0}.brand img{width:20px}}
+
+/* === Cabecera común de LoL (copiada de Lol.dc.html) === */
+/* ---- marca GM mini ---- */
+.mk{position:relative;aspect-ratio:240/280;flex-shrink:0}
+.mk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px var(--g))}
+.mk .face{fill:var(--f);stroke:var(--c);stroke-width:7;stroke-linejoin:miter}
+.mk .l-g{--c:#F3C878;--g:rgba(243,200,120,.6);--f:#231B0E}
+.mk .l-ml{--c:#FF6A3D;--g:rgba(255,106,61,.6);--f:#25110A}
+.mk .l-mr{--c:#4FE0B6;--g:rgba(79,224,182,.55);--f:#08221C}
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.8);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ECE9E1;justify-self:start}
+.brand:hover{color:#ECE9E1}
+.brand-name{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em}
+.brand-name span{color:#F3C878}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:#8A93A0;pointer-events:none}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:#ECE9E1;font:inherit;font-size:14px;padding:0 44px 0 40px;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7C8592}
+.search input:focus{border-color:rgba(226,181,102,.6);box-shadow:0 0 0 4px rgba(226,181,102,.14)}
+.search kbd{position:absolute;right:10px;font:600 11px/1 'IBM Plex Sans',sans-serif;color:#8A93A0;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.1)}
+.nav-actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.btn-prem{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:11px;background:linear-gradient(180deg,#E0AE58,#C8913A);color:#17120A;font-weight:600;font-size:14px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-prem:hover{color:#17120A}
+.btn-ghost{display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:11px;border:1px solid rgba(255,255,255,.12);color:#ECE9E1;font-size:14px;font-weight:500;text-decoration:none}
+.btn-ghost:hover{color:#ECE9E1;background:rgba(255,255,255,.06)}
+.sub{border-top:1px solid rgba(255,255,255,.05);background:rgba(13,16,23,.6)}
+.sub-in{display:flex;align-items:center;gap:6px;height:48px}
+.gchip{display:flex;align-items:center;gap:9px;padding-right:16px;margin-right:8px;border-right:1px solid rgba(255,255,255,.08);color:#ECE9E1;text-decoration:none;font-weight:600;font-size:14px;flex-shrink:0}
+.gchip img{width:24px;height:24px;object-fit:contain}
+.slink{position:relative;flex-shrink:0;display:flex;align-items:center;height:48px;padding:0 12px;color:#A0A8B4;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.slink:hover{color:#ECE9E1}
+.slink.on{color:#ECE9E1}
+.slink.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,#C8AA6E,#0AC8B9)}
+/* submenú Campeones */
+.dd{position:relative;display:flex;align-items:center;height:48px}
+.dd>.slink{gap:6px}
+.dd>.slink svg{transition:transform .25s}
+.dd:hover>.slink,.dd:focus-within>.slink{color:#ECE9E1}
+.dd:hover>.slink svg,.dd:focus-within>.slink svg{transform:rotate(180deg)}
+.mega{position:absolute;top:100%;left:-12px;z-index:60;width:640px;padding:18px;border-radius:18px;background:#0F131B;border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px -20px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.dd:hover .mega,.dd:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mega-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.mega-h b{font-family:'Bricolage Grotesque',sans-serif;font-size:17px}
+.mega-roles{display:flex;gap:6px}
+.mega-roles span.r{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.04);color:#A0A8B4}
+.mega-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.mc{display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 2px;border-radius:10px;text-decoration:none;color:#C6CBD2;font-size:11.5px;transition:background .2s}
+.mc:hover{background:rgba(255,255,255,.06);color:#ECE9E1}
+.mc img{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.1);transition:transform .2s}
+.mc:hover img{transform:scale(1.08)}
+.mc span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mega-f{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8F98A5}
+.mega-f a{color:#F3C878;text-decoration:none;font-weight:600}
+/* iconos oficiales de posición (máscara: toman el color del texto) */
+.pi{display:inline-block;width:18px;height:18px;flex-shrink:0;background:currentColor;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.pi-top{-webkit-mask-image:url(../assets/lol/posiciones/top.png);mask-image:url(../assets/lol/posiciones/top.png)}
+.pi-jungle{-webkit-mask-image:url(../assets/lol/posiciones/jungle.png);mask-image:url(../assets/lol/posiciones/jungle.png)}
+.pi-mid{-webkit-mask-image:url(../assets/lol/posiciones/middle.png);mask-image:url(../assets/lol/posiciones/middle.png)}
+.pi-bot{-webkit-mask-image:url(../assets/lol/posiciones/bottom.png);mask-image:url(../assets/lol/posiciones/bottom.png)}
+.pi-sup{-webkit-mask-image:url(../assets/lol/posiciones/utility.png);mask-image:url(../assets/lol/posiciones/utility.png)}
+.ddb .chev{color:#8A93A0;transition:transform .2s}
+.ddb.on .chev{transform:rotate(180deg)}
+.lane .pi{width:20px;height:20px}
+.sel .chev{position:absolute;right:12px;color:#8A93A0;pointer-events:none}
+@media (max-width:860px){
+  .nav-in{grid-template-columns:auto 1fr;grid-template-rows:60px auto;height:auto;padding-bottom:10px}
+  .nav .search{grid-column:1 / -1;grid-row:2}
+  .nav .search kbd,.btn-ghost{display:none}
+  .sub-in{overflow-x:auto;scrollbar-width:none}
+  .mega{display:none}}
+@media (max-width:480px){
+  .brand-name{display:none}}
+/* menú global de juegos */
+.nav-l{display:flex;align-items:center;gap:14px;justify-self:start;min-width:0}
+.gdd{position:relative}
+.gdd-b{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#D8DCE3;font:600 13.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.gdd-b svg.chev{transition:transform .25s}
+.gdd:hover .gdd-b,.gdd:focus-within .gdd-b{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#FFF}
+.gdd:hover .gdd-b svg.chev,.gdd:focus-within .gdd-b svg.chev{transform:rotate(180deg)}
+.gmenu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:80;width:760px;padding:16px;border-radius:20px;background:#0E121A;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -24px rgba(0,0,0,.95);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s}
+.gmenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.gdd:hover .gmenu,.gdd:focus-within .gmenu{opacity:1;visibility:visible;transform:none}
+.gm-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 12px;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8696}
+.gm-h b{font:700 16px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em;text-transform:none;color:#ECE9E1}
+.gm-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:96px;padding:10px 12px;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3F1EC;border:1px solid rgba(255,255,255,.08);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s}
+.gm-t img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.9) brightness(.6);transition:transform .6s,filter .4s}
+.gm-t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,13,.05),rgba(7,9,13,.88))}
+.gm-t:hover{color:#FFF;transform:translateY(-2px);border-color:var(--ga)}
+.gm-t:hover img.bg{transform:scale(1.08);filter:saturate(1.1) brightness(.8)}
+.gm-t b{font:700 15px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em}
+.gm-t small{font-size:11.5px;color:#C2C8D0}
+.gm-t .st{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;font:700 11px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;background:rgba(7,9,13,.7);color:var(--ga);border:1px solid rgba(255,255,255,.12)}
+.gm-t.off{cursor:default}
+.gm-t.pkt{background:radial-gradient(120% 120% at 100% 0%,#FFCB3D 0%,#FF7A59 38%,#5B6CFF 78%,#2A2F6B 100%)}
+.gm-t.pkt img.mon{position:absolute;right:-6px;top:-10px;width:92px;height:92px;object-fit:contain;z-index:-1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4));transition:transform .5s}
+.gm-t.pkt:hover img.mon{transform:scale(1.1) rotate(-6deg)}
+.gm-f{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12.5px;color:#8F98A5}
+.gm-f a{font-weight:600;text-decoration:none;color:#F3C878}
+@media (max-width:860px){.gdd{display:none}}
+.slink .nw{padding:2px 6px;border-radius:5px;background:rgba(10,200,185,.16);color:#7FE9DE;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.lf-portrait{display:block;flex:none;width:42px;height:42px;border-radius:11px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%;overflow:hidden}
+.lf-tier .lf-portrait img{display:block;width:100%;height:100%}
+@media(max-width:680px){
+ .lf-portrait{width:36px;height:36px}}
+.menu-champ{position:absolute;inset:0 0 0 auto;width:96px;z-index:-2;background:url(../assets/lol/campeones.webp) 7.6923% 0/1400% 1300% no-repeat;opacity:.65}
+.mc .lf-portrait{width:44px;height:44px;border-radius:10px;background-image:url(../assets/lol/campeones.webp);background-size:1400% 1300%}
+.spot-top .lf-portrait{width:72px;height:72px;border:2px solid #BA9755;border-radius:18px}
+.gc .lf-portrait{width:52px;height:52px}
+.wl .lf-portrait{width:38px;height:38px}
+.ban .lf-portrait{width:32px;height:32px}
+
+/* === Transición de página de LoL: barrido dorado === */
+.gm-wipe{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;overflow:hidden}
+.gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
+.gm-wipe b{position:absolute;inset:0;background:#07090D}
+
+
+/* propuesta Claude: fichas de build */
+.cb{padding-block:28px 72px}
+.cb-bar{display:grid;grid-template-columns:auto minmax(150px,200px) minmax(150px,200px) minmax(180px,1fr);gap:10px;align-items:end;margin-bottom:18px}
+.cb-roles{display:flex;gap:4px;padding:4px;border:1px solid #292A29;border-radius:12px;background:#0E1217}
+.cb-role{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:#AEB6C0;font-family:inherit;font-size:14px;font-weight:600;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.cb-role:hover{color:#F3F1EC}
+.cb-role[aria-pressed="true"]{background:#2A2418;color:#F1D8A0;box-shadow:inset 0 0 0 1px #6B5530}
+.cb-f{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:#AEB6C0}
+.cb-f select,.cb-f input{height:48px;padding:0 12px;border:1px solid #2E3238;border-radius:10px;background:#12171D;color:#F3F1EC;font-family:inherit;font-size:14px;font-weight:500}
+.cb-rise{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:22px;padding:12px 14px;border:1px solid #2B2A22;border-radius:12px;background:linear-gradient(90deg,#1A1810,#101419)}
+.cb-rise>b{margin-right:6px;font-size:13px;color:#F1D8A0}
+.rchip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:4px 12px 4px 4px;border:1px solid #33362F;border-radius:999px;background:#12171D;color:#F3F1EC;text-decoration:none;font-size:13px;font-weight:600}
+.rchip .portrait{width:32px;height:32px;border-radius:50%}
+.rchip em{font-style:normal;color:#6FD39A}
+.rchip:hover{border-color:#BA9755}
+.cb-count{margin:0 0 12px;font-size:13px;color:#AEB6C0}
+.cb-count b{color:#F3F1EC}
+.cb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bcard{position:relative;display:flex;flex-direction:column;gap:14px;padding:18px;border:1px solid #262B31;border-radius:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--tint) 9%,#12171D),#0F1318 60%);color:#F3F1EC;text-decoration:none;overflow:hidden;transition:border-color .2s,transform .2s}
+.bcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--tint);opacity:.8}
+.bcard:hover{border-color:color-mix(in srgb,var(--tint) 55%,#262B31);transform:translateY(-2px)}
+.bc-top{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px;align-items:center}
+.bc-top .portrait{width:56px;height:56px;border-radius:14px}
+.bc-id strong{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.bc-id small{display:block;margin-top:3px;font-size:13px;color:#AEB6C0}
+.bc-wr{text-align:right}
+.bc-wr b{display:block;font-size:28px;line-height:1;letter-spacing:-.03em;color:#6FD39A}
+.bc-wr small{font-size:12px;color:#AEB6C0}
+.bc-lbl{display:block;margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.bc-lbl em{font-style:normal;text-transform:none;letter-spacing:0;color:#F1D8A0}
+.bc-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none;counter-reset:it}
+.bc-path li{counter-increment:it;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:10px;border-radius:12px;background:#0B0F13;border:1px solid #20252B;font-size:12.5px;line-height:1.3;color:#D8DCE3}
+.bc-path li::after{content:counter(it);position:absolute;top:8px;right:10px;font-size:12px;font-weight:700;color:#8F98A5}
+.bc-path img{width:44px;height:44px;border-radius:9px;box-shadow:0 0 0 1px #ffffff1f}
+.bc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bc-pill{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 10px;border-radius:12px;background:#0B0F13;border:1px solid #20252B;font-size:13px;line-height:1.25}
+.bc-pill img{width:34px;height:34px;border-radius:8px}
+.bc-pill small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.bc-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:12px;border-top:1px solid #20252B;font-size:12.5px;color:#AEB6C0}
+.bc-foot b{color:#F3F1EC;font-weight:600}
+.bc-go{color:#F1D8A0;font-weight:600}
+.bc-none{padding:14px;border-radius:12px;border:1px dashed #3A3F46;font-size:13px;color:#C1C7CF}
+@media (max-width:1100px){.cb-bar{grid-template-columns:1fr 1fr}.cb-roles{grid-column:1/-1;overflow-x:auto}}
+@media (max-width:860px){.cb-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.cb-bar{grid-template-columns:1fr}.cb-role{padding:0 11px}.bc-top{grid-template-columns:48px minmax(0,1fr) auto}.bc-top .portrait{width:48px;height:48px}.bc-path li{padding:8px}.bc-path img{width:38px;height:38px}.bc-row{grid-template-columns:1fr}.bc-wr b{font-size:24px}}
+@media (prefers-reduced-motion:reduce){.bcard,.bcard:hover{transition:none;transform:none}}
+
+/* gm-a11y */
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
+::selection{background:color-mix(in srgb,#F3C878 38%,transparent);color:#fff}
+a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+<div class="gm-wipe" aria-hidden="true"><b></b><i></i></div>
+  
+<div class="builds {{motionClass}}">
+  <header class="nav">
+    <div class="wrap nav-in">
+      <div class="nav-l">
+      <a class="brand" href="https://grietameta.vercel.app/" aria-label="GrietaMeta, inicio">
+        <span class="mk" style="width: 26px" aria-hidden="true">
+          <svg class="l-ml" viewBox="0 0 240 280"><polygon class="face" points="36.9,88 120,136 120,256 109,152.7 58.9,123.8 58.9,196.7 36.9,184"></polygon></svg>
+          <svg class="l-mr" viewBox="0 0 240 280"><polygon class="face" points="203.1,88 120,136 120,256 131,152.7 181.1,123.8 181.1,196.7 203.1,184"></polygon></svg>
+          <svg class="l-g" viewBox="0 0 240 280"><polygon class="face" points="150.7,66.3 120,48.6 51.8,88 120,127.4 181,92.2 181,84 128,84 122,90.2 128,96.5 143.5,96.5 120,110.1 81.8,88 120,65.9 143.2,79.3"></polygon></svg>
+        </span>
+        <span class="brand-name">GRIETA<span>META</span></span>
+      </a>
+      <div class="gdd">
+<button type="button" class="gdd-b" aria-haspopup="true">Juegos <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="gmenu" role="menu">
+<div class="gm-h"><b>Todos los juegos</b><span>9 juegos · 5 disponibles</span></div>
+<div class="gm-g">
+<a class="gm-t" href="Lol.dc.html" style="--ga: #D9B56E"><span class="bg menu-champ" aria-hidden="true"></span><span class="st">Disponible</span><b>League of Legends</b><small>Tier list y builds</small></a>
+<a class="gm-t" href="Arc.dc.html" style="--ga: #FF6A3D"><img class="bg" src="../assets/games/logo-arc.png" alt=""><span class="st">Disponible</span><b>ARC Raiders</b><small>Objetos, misiones y mapas</small></a>
+<a class="gm-t" href="Zelda.dc.html" style="--ga: #4FE0B6"><img class="bg" src="../assets/games/logo-zelda.png" alt=""><span class="st">En construcción</span><b>Zelda: Tears of the Kingdom</b><small>Mapa, semillas y santuarios</small></a>
+<a class="gm-t pkt" href="Pokemon.dc.html" style="--ga: #FFCB3D"><img class="mon" src="../assets/pokemon/art-25.webp" alt=""><span class="st">Nuevo</span><b>Pokémon</b><small>Pokédex, tipos y meta</small></a>
+<span class="gm-t off" style="--ga: #7ED957" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-ark.webp" alt=""><span class="st">Próximamente</span><b>ARK</b><small>Dinos, mapas y bases</small></span>
+<a class="gm-t" href="AssassinsCreed.dc.html" style="--ga: #E8E2D0"><img class="bg" src="../assets/juegos/ac-saga.webp" alt=""><span class="st">Nuevo</span><b>Assassin's Creed</b><small>La saga y la guía de Unity</small></a>
+<a class="gm-t" href="CodZombies.dc.html" style="--ga: #FF7A1A"><img class="bg" src="../assets/call-of-duty/cod-bo1.webp" alt=""><span class="st">Nuevo</span><b>Call of Duty</b><small>Zombis de Black Ops 1 a 4</small></a>
+<span class="gm-t off" style="--ga: #E2364B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-re.webp" alt=""><span class="st">Próximamente</span><b>Resident Evil</b><small>Mapas, puzles y cajas fuertes</small></span>
+<span class="gm-t off" style="--ga: #CE422B" aria-disabled="true"><img class="bg" src="../assets/juegos/hero-rust.webp" alt=""><span class="st">Próximamente</span><b>Rust</b><small>Monumentos y calculadora de raid</small></span>
+</div>
+<div class="gm-f"><span>¿Falta tu juego?</span><a href="Contacto.dc.html">Pídelo →</a></div>
+</div>
+</div>
+      </div>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <label class="sr" for="q-nav">Buscar juego</label>
+        <input id="q-nav" type="search" placeholder="Busca un juego…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-prem" href="Premium.dc.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7z"></path></svg>
+          Hazte Premium
+        </a>
+        <a class="btn-ghost" href="Login.dc.html">Iniciar sesión</a>
+      </div>
+    </div>
+    <nav class="sub" aria-label="Secciones de League of Legends">
+      <div class="wrap sub-in">
+        <a class="gchip" href="Lol.dc.html#tierlist"><img src="../assets/games/logo-lol.png" alt="">League of Legends</a>
+        <a class="slink" href="Lol.dc.html#tierlist">Tier list</a>
+        <div class="dd">
+          <a class="slink" href="LolCampeon.dc.html" aria-haspopup="true">Campeones
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="mega">
+            <div class="mega-h">
+              <b>Campeones</b>
+              <div class="mega-roles" aria-hidden="true">
+                <span class="r"><span class="pi pi-top"></span></span>
+                <span class="r"><span class="pi pi-jungle"></span></span>
+                <span class="r"><span class="pi pi-mid"></span></span>
+                <span class="r"><span class="pi pi-bot"></span></span>
+                <span class="r"><span class="pi pi-sup"></span></span>
+              </div>
+            </div>
+            <div class="mega-grid">
+              <sc-for list="{{megaNav}}" as="m" hint-placeholder-count="24">
+                <a class="mc" href="LolCampeon.dc.html"><i class="lf-portrait" style="{{m.portrait}}" aria-hidden="true"></i><span>{{m.n}}</span></a>
+              </sc-for>
+            </div>
+            <div class="mega-f"><span>Build, runas y estadísticas por rango de cada campeón</span><a href="LolBuilds.dc.html">Builds</a><a href="Lol.dc.html#campeones">Ver campeones →</a></div>
+          </div>
+        </div>
+        <a class="slink on" href="LolBuilds.dc.html" aria-current="page">Builds</a>
+        <a class="slink" href="LolEsports.dc.html">eSports <span class="nw">Mundial</span></a>
+        <a class="slink" href="LolNoticias.dc.html">Noticias</a>
+        <a class="slink" href="Premium.dc.html">Premium</a>
+      </div>
+    </nav>
+  </header>
+<main>
+    <header class="mast"><div class="wrap mast-in">
+      <div class="crumb"><a href="Lol.dc.html">League of Legends</a><span aria-hidden="true">/</span> Builds</div>
+      <h1>Builds de <em>campeones</em></h1>
+      <p>La build que más gana de cada campeón, objeto a objeto, con sus botas y su runa. Cambia el rango para ver la de tu liga.</p>
+      <div class="scope"><span class="patch">Parche 16.23</span><span>EUW · Solo/dúo · Datos de ejemplo</span></div>
+    </div></header>
+    <div class="wrap cb">
+      <div class="cb-bar">
+        <div class="cb-roles" role="group" aria-label="Filtrar por rol"><sc-for list="{{roleTabs}}" as="r" hint-placeholder-count="6"><button type="button" class="cb-role" aria-pressed="{{r.pressed}}" onClick="{{r.pick}}">{{r.label}}</button></sc-for></div>
+        <label class="cb-f">Rango<select value="{{rank}}" onChange="{{onRank}}"><option value="all">Todos los rangos</option><option value="Hierro">Hierro</option><option value="Bronce">Bronce</option><option value="Plata">Plata</option><option value="Oro">Oro</option><option value="Platino">Platino</option><option value="Esmeralda">Esmeralda</option><option value="Diamante">Diamante</option><option value="Master+">Master+</option></select></label>
+        <label class="cb-f">Ordenar por<select value="{{sort}}" onChange="{{onSort}}"><option value="wr">Más victorias</option><option value="pick">Más jugada</option><option value="name">Nombre (A–Z)</option></select></label>
+        <label class="cb-f">Buscar campeón<input type="search" placeholder="Yasuo, Jinx…" value="{{query}}" onChange="{{onQuery}}"></label>
+      </div>
+      <sc-if value="{{hasRisers}}" hint-placeholder-val="{{ true }}"><div class="cb-rise"><b>Suben este parche</b><sc-for list="{{risers}}" as="b" hint-placeholder-count="3"><a class="rchip" href="LolCampeon.dc.html"><i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i>{{b.name}} <em>+{{b.changeNum}} pp</em></a></sc-for></div></sc-if>
+      <p class="cb-count" aria-live="polite"><b>{{countLabel}}</b> · {{rankLabel}} · solo builds con 1.000 partidas o más</p>
+      <div class="cb-grid">
+        <sc-for list="{{rows}}" as="b" hint-placeholder-count="6"><a class="bcard" href="LolCampeon.dc.html" style="{{b.theme}}" data-entry="{{b.key}}">
+          <span class="bc-top"><i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i><span class="bc-id"><strong>{{b.name}}</strong><small>{{b.role}}</small></span><sc-if value="{{b.hasBuild}}" hint-placeholder-val="{{ true }}"><span class="bc-wr"><b>{{b.percent}}</b><small>de victorias</small></span></sc-if></span>
+          <sc-if value="{{b.hasBuild}}" hint-placeholder-val="{{ true }}">
+            <span><span class="bc-lbl">Objetos en orden <em>{{b.buildName}}</em></span><ol class="bc-path"><sc-for list="{{b.core}}" as="item" hint-placeholder-count="3"><li><img src="{{item.src}}" alt="">{{item.name}}</li></sc-for></ol></span>
+            <span class="bc-row"><span class="bc-pill"><img src="{{b.boot.src}}" alt=""><span><small>Botas</small>{{b.boot.name}}</span></span><span class="bc-pill"><i class="keystone" style="{{b.runeStyle}}" aria-hidden="true"></i><span><small>Runa clave</small>{{b.rune}}</span></span></span>
+            <span class="bc-foot"><span><b>{{b.gamesLabel}}</b> partidas · {{b.useLabel}} de uso</span><span class="bc-go">Ver ficha →</span></span>
+          </sc-if>
+          <sc-if value="{{b.insufficient}}" hint-placeholder-val="{{ false }}"><span class="bc-none">Sin partidas suficientes en este rango para recomendar una build.</span></sc-if>
+        </a></sc-for>
+      </div>
+      <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div class="empty"><strong>Ningún campeón coincide</strong><p>Prueba con otro nombre o cambia los filtros.</p><button type="button" onClick="{{reset}}">Restablecer filtros</button></div></sc-if>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1800}}'>
+const GM_OBJ = {"1054": "../assets/lol/objetos/1054.png", "1055": "../assets/lol/objetos/1055.png", "1056": "../assets/lol/objetos/1056.png", "1082": "../assets/lol/objetos/1082.png", "2065": "../assets/lol/objetos/2065.png", "2503": "../assets/lol/objetos/2503.png", "3001": "../assets/lol/objetos/3001.png", "3006": "../assets/lol/objetos/3006.png", "3009": "../assets/lol/objetos/3009.png", "3020": "../assets/lol/objetos/3020.png", "3026": "../assets/lol/objetos/3026.png", "3031": "../assets/lol/objetos/3031.png", "3033": "../assets/lol/objetos/3033.png", "3036": "../assets/lol/objetos/3036.png", "3046": "../assets/lol/objetos/3046.png", "3047": "../assets/lol/objetos/3047.png", "3050": "../assets/lol/objetos/3050.png", "3065": "../assets/lol/objetos/3065.png", "3068": "../assets/lol/objetos/3068.png", "3071": "../assets/lol/objetos/3071.png", "3072": "../assets/lol/objetos/3072.png", "3074": "../assets/lol/objetos/3074.png", "3075": "../assets/lol/objetos/3075.png", "3076": "../assets/lol/objetos/3076.png", "3078": "../assets/lol/objetos/3078.png", "3083": "../assets/lol/objetos/3083.png", "3085": "../assets/lol/objetos/3085.png", "3089": "../assets/lol/objetos/3089.png", "3091": "../assets/lol/objetos/3091.png", "3094": "../assets/lol/objetos/3094.png", "3100": "../assets/lol/objetos/3100.png", "3102": "../assets/lol/objetos/3102.png", "3107": "../assets/lol/objetos/3107.png", "3109": "../assets/lol/objetos/3109.png", "3110": "../assets/lol/objetos/3110.png", "3111": "../assets/lol/objetos/3111.png", "3115": "../assets/lol/objetos/3115.png", "3116": "../assets/lol/objetos/3116.png", "3118": "../assets/lol/objetos/3118.png", "3124": "../assets/lol/objetos/3124.png", "3135": "../assets/lol/objetos/3135.png", "3142": "../assets/lol/objetos/3142.png", "3143": "../assets/lol/objetos/3143.png", "3153": "../assets/lol/objetos/3153.png", "3156": "../assets/lol/objetos/3156.png", "3157": "../assets/lol/objetos/3157.png", "3158": "../assets/lol/objetos/3158.png", "3161": "../assets/lol/objetos/3161.png", "3165": "../assets/lol/objetos/3165.png", "3179": "../assets/lol/objetos/3179.png", "3190": "../assets/lol/objetos/3190.png", "3222": "../assets/lol/objetos/3222.png", "3302": "../assets/lol/objetos/3302.png", "3504": "../assets/lol/objetos/3504.png", "3742": "../assets/lol/objetos/3742.png", "3814": "../assets/lol/objetos/3814.png", "4645": "../assets/lol/objetos/4645.png", "4646": "../assets/lol/objetos/4646.png", "6333": "../assets/lol/objetos/6333.png", "6610": "../assets/lol/objetos/6610.png", "6631": "../assets/lol/objetos/6631.png", "6653": "../assets/lol/objetos/6653.png", "6655": "../assets/lol/objetos/6655.png", "6662": "../assets/lol/objetos/6662.png", "6672": "../assets/lol/objetos/6672.png", "6673": "../assets/lol/objetos/6673.png", "6675": "../assets/lol/objetos/6675.png", "6676": "../assets/lol/objetos/6676.png", "6692": "../assets/lol/objetos/6692.png", "6694": "../assets/lol/objetos/6694.png", "6697": "../assets/lol/objetos/6697.png", "6698": "../assets/lol/objetos/6698.png"};
+class Component extends DCLogic {
+  // Entrada de página propia de LoL: una hoja dorada barre la pantalla y el contenido sube detrás.
+  entradaPagina(enabled) {
+    if (this.entradaHecha || !enabled || typeof window === 'undefined') return;
+    this.entradaHecha = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        const w = document.querySelector('.gm-wipe');
+        if (!w || document.querySelector('.still')) return;
+        const blade = w.querySelector('i'), veil = w.querySelector('b');
+        w.style.opacity = '1';
+        lib.animate(veil, { opacity: [1, 0], duration: 520, delay: 160, ease: 'outQuad' });
+        lib.animate(blade, { left: ['-40%', '120%'], duration: 760, ease: 'inOutCubic', onComplete: () => { w.style.opacity = '0'; } });
+        const body = document.querySelectorAll('main, .layout, .wrap > .hero, .stats');
+        if (body.length) lib.animate(body, { opacity: [0, 1], y: [14, 0], duration: 560, delay: 200, ease: 'outQuart' });
+      });
+    });
+  }
+
+  // Aparición de cada parte de la página al entrar en pantalla (anime.js). Una sola vez por bloque.
+  revelarSecciones(selector, enabled) {
+    if (!enabled || typeof window === 'undefined' || !window.IntersectionObserver) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.revealLib ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.revealLib.then((lib) => {
+      if (!lib) return;
+      requestAnimationFrame(() => {
+        this.revealSeen ??= new WeakSet();
+        this.revealObs ??= new IntersectionObserver((entries) => {
+          const vis = entries.filter((e) => e.isIntersecting).map((e) => e.target);
+          vis.forEach((n) => this.revealObs.unobserve(n));
+          if (!vis.length || document.querySelector('.still')) return;
+          lib.animate(vis, { opacity: [0, 1], y: [28, 0], scale: [0.985, 1], duration: 620, delay: lib.stagger(90), ease: 'outQuart' });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        document.querySelectorAll(selector).forEach((n) => {
+          if (this.revealSeen.has(n)) return;
+          this.revealSeen.add(n);
+          const r = n.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92) return; // lo que ya se ve al cargar no se esconde
+          n.style.opacity = '0';
+          this.revealObs.observe(n);
+        });
+      });
+    });
+  }
+
+  // Los valores finales también se leen con movimiento reducido o sin conexión al CDN.
+  prepareMotion(rootSelector, entrySelector, enabled) {
+    if (!enabled || typeof window === 'undefined' || !window.IntersectionObserver) return;
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (preference.matches) return;
+    this.motionLibrary ??= import('https://cdn.jsdelivr.net/npm/animejs@4/+esm').catch(() => null);
+    this.motionLibrary.then(lib => {
+      if (!lib || preference.matches) return;
+      requestAnimationFrame(() => {
+        const root = document.querySelector(rootSelector);
+        if (!root || root.closest('.still')) return;
+        if (!this.entryObserver) {
+          this.seenEntries = new WeakMap();
+          this.entryObserver = new IntersectionObserver(entries => {
+            const visible = entries.filter(entry => entry.isIntersecting).map(entry => entry.target);
+            visible.forEach(node => this.entryObserver.unobserve(node));
+            if (!visible.length || preference.matches || root.closest('.still')) return;
+            lib.animate(visible, { opacity: [.65, 1], y: [7, 0], duration: 260, delay: lib.stagger(24), ease: 'outCubic' });
+            visible.forEach(node => {
+              const number = node.querySelector('[data-count]');
+              if (!number) return;
+              const target = Number(number.dataset.count);
+              const progress = { value: 0 };
+              lib.animate(progress, { value: target, duration: 410, ease: 'outCubic',
+                onUpdate: () => {
+                  if (number.isConnected && Number(number.dataset.count) === target)
+                    number.textContent = progress.value.toFixed(1).replace('.', ',') + ' %';
+                }
+              });
+            });
+          });
+        }
+        root.querySelectorAll(entrySelector).forEach(node => {
+          const key = node.dataset.entry;
+          if (this.seenEntries.get(node) !== key) {
+            this.seenEntries.set(node, key);
+            this.entryObserver.observe(node);
+          }
+        });
+      });
+    });
+  }
+  codexVals() {
+    this.entradaPagina((this.props && this.props.animaciones) ?? true);
+    const megaNav = [{"n": "Aatrox", "portrait": "background-position:0.000% 0.000%"}, {"n": "Ahri", "portrait": "background-position:7.692% 0.000%"}, {"n": "Akali", "portrait": "background-position:15.385% 0.000%"}, {"n": "Alistar", "portrait": "background-position:30.769% 0.000%"}, {"n": "Ashe", "portrait": "background-position:76.923% 0.000%"}, {"n": "Caitlyn", "portrait": "background-position:46.154% 8.333%"}, {"n": "Darius", "portrait": "background-position:84.615% 8.333%"}, {"n": "Diana", "portrait": "background-position:92.308% 8.333%"}, {"n": "Ezreal", "portrait": "background-position:30.769% 16.667%"}, {"n": "Fiora", "portrait": "background-position:46.154% 16.667%"}, {"n": "Garen", "portrait": "background-position:76.923% 16.667%"}, {"n": "Jinx", "portrait": "background-position:92.308% 25.000%"}, {"n": "Kai'Sa", "portrait": "background-position:0.000% 33.333%"}, {"n": "Katarina", "portrait": "background-position:38.462% 33.333%"}, {"n": "Lee Sin", "portrait": "background-position:0.000% 41.667%"}, {"n": "Leona", "portrait": "background-position:7.692% 41.667%"}, {"n": "Lux", "portrait": "background-position:53.846% 41.667%"}, {"n": "Malphite", "portrait": "background-position:61.538% 41.667%"}, {"n": "Nautilus", "portrait": "background-position:53.846% 50.000%"}, {"n": "Shen", "portrait": "background-position:69.231% 66.667%"}, {"n": "Thresh", "portrait": "background-position:92.308% 75.000%"}, {"n": "Viego", "portrait": "background-position:92.308% 83.333%"}, {"n": "Yasuo", "portrait": "background-position:46.154% 91.667%"}, {"n": "Yone", "portrait": "background-position:53.846% 91.667%"}];
+    this.revelarSecciones('main > section, .builds, footer', (this.props && this.props.animaciones) ?? true);
+    const { role = 'all', rank = 'all', sort = 'wr', query = '' } = this.state || {};
+    const motion = this.props.animaciones ?? true;
+    this.prepareMotion('.builds', '[data-entry]', motion);
+
+    // Cada variante guarda el núcleo en orden, las botas y la runa (celda en misc.ids).
+    // Las dos muestras son [partidas, victorias, WR anterior] en Hierro–Platino y Esmeralda+.
+    const champions = [
+      ['Jinx',54,'Inferior','#79b9ed', [
+        [[6672,3085,3031],3006,20,[960,530,53.4],[370,202,53.1]],
+        [[6672,3031,3046],3006,20,[448,242,52.8],[226,128,54.5]]]],
+      ['Shen',121,'Superior','#97b4ef', [
+        [[3068,3075,3065],3047,31,[730,408,54.2],[362,204,55.0]],
+        [[3068,3065,3075],3111,31,[301,160,52.8],[75,47,53.4]]]],
+      ['Vi',151,'Jungla','#d98aa7', [
+        [[3078,3071,6610],3111,22,[534,295,52.7],[320,181,53.1]],
+        [[6610,3071,6333],3047,22,[301,157,51.9],[175,94,53.6]]]],
+      ['Leona',71,'Apoyo','#d5b26c', [
+        [[3190,3050,3109],3111,32,[560,304,53.1],[298,163,54.0]],
+        [[3050,3190,3075],3047,32,[282,148,52.2],[122,64,52.3]]]],
+      ['Fiora',34,'Superior','#d98aa7', [
+        [[3074,3078,6333],3047,22,[490,266,53.7],[412,231,54.1]],
+        [[3078,3074,3156],3111,31,[240,128,53.2],[205,111,53.8]]]],
+      ['Viego',152,'Jungla','#65cfb3', [
+        [[6672,3078,6333],3111,22,[680,367,53.1],[364,202,54.4]],
+        [[3153,3078,6333],3047,22,[318,169,52.9],[195,107,53.6]]]],
+      ['Yone',161,'Central','#caa6ee', [
+        [[3153,6673,3031],3006,20,[510,276,52.9],[284,154,53.7]],
+        [[6673,3031,3072],3006,20,[343,182,52.2],[149,78,52.6]]]],
+      ['Caitlyn',20,'Inferior','#a79be1', [
+        [[6676,3031,3094],3006,25,[610,326,52.4],[261,143,53.7]],
+        [[6676,3094,3031],3006,25,[276,145,52.2],[141,73,52.0]]]],
+      ['Nautilus',91,'Apoyo','#90b5cb', [
+        [[3190,3109,3075],3047,32,[416,221,52.8],[250,134,53.0]],
+        [[3050,3190,3109],3111,32,[267,138,51.1],[197,104,51.9]]]]
+    ];
+    const items = {3036:'Recuerdos de lord Dominik',3006:'Grebas de berserker',3031:'Filo infinito',3046:'Bailarín espectral',3047:'Botas blindadas',3050:'Convergencia de Zeke',3065:'Rostro espiritual',3068:'Égida de fuego solar',3071:'Cuchilla negra',3072:'Sanguinaria',3074:'Hidra voraz',3075:'Malla de espinas',3078:'Fuerza de trinidad',3085:'Huracán de Runaan',3094:'Cañón de fuego rápido',3109:'Promesa de caballero',3111:'Botas de mercurio',3153:'Hoja del rey arruinado',3156:'Fauces de Malmortius',3190:'Medallón de los Solari de Hierro',6333:'Baile de la muerte',6610:'Firmamento desgarrado',6672:'Verdugo de krakens',6673:'Arcoescudo inmortal',6676:'Recaudadora'};
+    const runes = {20:'Compás letal',22:'Conquistador',25:'Pies veloces',31:'Garras del inmortal',32:'Reverberacción'};
+    const item = id => ({src:GM_OBJ[id], name:items[id]});
+    const position = (cell, cols, rows) => 'background-position:' + cell % cols / (cols-1)*100 + '% ' + Math.floor(cell/cols)/(rows-1)*100 + '%';
+    const number = new Intl.NumberFormat('es-ES',{useGrouping:'always'});
+    const decimal = n => n.toFixed(1).replace('.',',');
+    // Muestras de ejemplo en dos grupos (Hierro–Platino y Esmeralda+), escaladas a un
+    // volumen parecido al de Yasuo (SCALE). En un rango concreto, cada grupo se reparte
+    // con el mismo peso de partidas por rango que tiene Yasuo; el mínimo sigue en 1.000.
+    const SCALE = 8;
+    const LOW = ['Hierro','Bronce','Plata','Oro','Platino'], HIGH = ['Esmeralda','Diamante','Master+'];
+    const RG = {Hierro:391,Bronce:286,Plata:301,Oro:320,Platino:375,Esmeralda:422,Diamante:508,'Master+':1457};
+    const share = (r) => RG[r] / (LOW.includes(r) ? LOW : HIGH).reduce((t, k) => t + RG[k], 0);
+    const entries = champions.map(([name,cell,role,tint,variants]) => {
+      const builds = variants.map(([core,boot,rune,base,elite]) => {
+        let games, wins, previous;
+        if (rank === 'all') {
+          games = (base[0]+elite[0])*SCALE; wins = (base[1]+elite[1])*SCALE;
+          previous = (base[2]*base[0]+elite[2]*elite[0])/(base[0]+elite[0]);
+        } else {
+          const g = LOW.includes(rank) ? base : elite;
+          games = Math.round(g[0]*SCALE*share(rank)); wins = g[1]*SCALE*share(rank); previous = g[2];
+        }
+        const wr = 100*wins/Math.max(1, games);
+        return {core,boot,rune,games,wr,delta:wr-previous};
+      });
+      return {name,cell,role,tint,builds};
+    });
+    // Mismas variantes y ajuste de rango que en la ficha de Yasuo (Mid).
+    const yasuoRanks = {all:[4060,52.5],Hierro:[391,49.4],Bronce:[286,53.8],Plata:[301,47.2],
+      Oro:[320,53.1],Platino:[375,53.6],Esmeralda:[422,53.1],Diamante:[508,53.0],'Master+':[1457,53.3]};
+    const [rankGames,rankWR] = yasuoRanks[rank];
+    const yasuoVariants = [
+      ['Crítico clásico',[6673,3031,6333],3006,20,9812,55.4],
+      ['Al golpe',[3153,6672,6333],3047,22,3420,54.6],
+      ['Crítico con penetración',[6673,3031,3036],3006,20,6105,53.9],
+      ['Aguante contra AP',[6673,3156,3031],3111,22,1388,53.1]
+    ];
+    entries.push({name:'Yasuo',cell:160,role:'Central',tint:'#d8ab60',
+      builds:yasuoVariants.map(([buildName,core,boot,rune,games,wr]) => ({
+        buildName,core,boot,rune,games:Math.round(games*rankGames/4060),wr:wr+(rankWR-52.5)
+      }))});
+    const selected = entries.map(({name,cell,role,tint,builds}) => {
+      const best = builds.filter(b => b.games >= 1000).sort((a,b) => b.wr-a.wr || b.games-a.games)[0];
+      const identity = {name,role,key:name+'-'+rank,portrait:position(cell,14,13),theme:'--tint:'+tint,
+        hasBuild:!!best,insufficient:!best};
+      if (!best) return identity;
+      const total = builds.reduce((sum,b) => sum+b.games,0);
+      return {...identity,buildName:best.buildName || '',
+        core:best.core.map(item), boot:item(best.boot), rune:runes[best.rune], runeStyle:position(best.rune,10,7),
+        wr:best.wr, percent:decimal(best.wr)+' %', gamesLabel:number.format(best.games),
+        popularity:best.games/total, useLabel:decimal(best.games/total*100)+' %', delta:best.delta,
+        change:best.delta>0 ? '+'+decimal(best.delta) : ''};
+    });
+    const risers = selected.filter(b => b.delta>0).sort((a,b) => b.delta-a.delta).slice(0,3);
+    const rows = selected.filter(b => (role === 'all' || b.role === role) && b.name.toLowerCase().includes(query.trim().toLowerCase()));
+    rows.sort((a,b) => {
+      const byName = a.name.localeCompare(b.name,'es');
+      if (sort === 'name') return byName;
+      const metric = sort === 'pick' ? 'popularity' : 'wr';
+      return Number(b.hasBuild)-Number(a.hasBuild) || (b[metric] || 0)-(a[metric] || 0) || byName;
+    });
+    return { megaNav, role, rank, sort, query, rows, risers, empty:!rows.length, motionClass:motion?'':'still',
+      hasRisers:risers.length>0, rankLabel:rank === 'all' ? 'Todos los rangos' : rank,
+      countLabel:rows.length + (rows.length===1?' campeón':' campeones'),
+      onRole:e=>this.setState({role:e.target.value}), onRank:e=>this.setState({rank:e.target.value}),
+      onQuery:e=>this.setState({query:e.target.value}), onSort:e=>this.setState({sort:e.target.value}),
+      reset:()=>this.setState({role:'all',rank:'all',sort:'wr',query:''}) };
+  }
+  renderVals() {
+    const v = this.codexVals();
+    const roles = [['all', 'Todos'], ['Superior', 'Superior'], ['Jungla', 'Jungla'], ['Central', 'Central'], ['Inferior', 'Inferior'], ['Apoyo', 'Apoyo']];
+    return { ...v,
+      roleTabs: roles.map(([val, label]) => ({ label, pressed: v.role === val ? 'true' : 'false', pick: () => this.setState({ role: val }) })),
+      risers: v.risers.map((b) => ({ ...b, changeNum: (b.change || '').replace('+', '') })) };
+  }
+}
+</script>
+</body>
+</html>
