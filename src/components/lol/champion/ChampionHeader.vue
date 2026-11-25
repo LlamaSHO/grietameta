@@ -143,6 +143,8 @@ const abilities = computed(() => {
 .portrait .tier { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); isolation: isolate; }
 /* Fondo opaco bajo la insignia para que se lea encima del retrato. */
 .portrait .tier::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; background: #0D1017; }
+/* El S+ ya tiene fondo dorado opaco: sin la capa oscura, que lo taparía. */
+.portrait .tier.t-sp::before { display: none; }
 .ch-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1; }
 .crumbs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--ink-mute); }
 .lol-page .crumbs a { color: #A0A8B4; text-decoration: none; }

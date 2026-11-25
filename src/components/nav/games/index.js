@@ -5,13 +5,16 @@
    componente aquí al lado (enlaces con la clase .slink, desplegables con
    .dd + .mega; estilos en assets/styles/nav.css) y añádelo. */
 
-import LolNav from "./LolNav.vue";
-import ArcRaidersNav from "./ArcRaidersNav.vue";
-import ZeldaNav from "./ZeldaNav.vue";
-import PokemonNav from "./PokemonNav.vue";
-import AssassinsCreedNav from "./AssassinsCreedNav.vue";
-import CodZombiesNav from "./CodZombiesNav.vue";
-import ArkNav from "./ArkNav.vue";
+import { defineAsyncComponent } from "vue";
+
+// Cada barra (y su CSS) se descarga solo al entrar en su juego.
+const LolNav = defineAsyncComponent(() => import("./LolNav.vue"));
+const ArcRaidersNav = defineAsyncComponent(() => import("./ArcRaidersNav.vue"));
+const ZeldaNav = defineAsyncComponent(() => import("./ZeldaNav.vue"));
+const PokemonNav = defineAsyncComponent(() => import("./PokemonNav.vue"));
+const AssassinsCreedNav = defineAsyncComponent(() => import("./AssassinsCreedNav.vue"));
+const CodZombiesNav = defineAsyncComponent(() => import("./CodZombiesNav.vue"));
+const ArkNav = defineAsyncComponent(() => import("./ArkNav.vue"));
 
 export const GAME_NAVS = {
   lol: { name: "League of Legends", home: "/lol", zone: "lol", logo: "/images/games/logo-lol.png", component: LolNav },

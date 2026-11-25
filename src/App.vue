@@ -6,6 +6,7 @@
     </main>
     <SiteFooter :game-slug="gameSlug" />
     <MobileTabBar />
+    <GameLoaderHost />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import { useRoute, useRouter } from "vue-router";
 import SiteNav from "@/components/nav/SiteNav.vue";
 import SiteFooter from "@/components/SiteFooter.vue";
 import MobileTabBar from "@/components/nav/MobileTabBar.vue";
+import GameLoaderHost from "@/components/loaders/GameLoaderHost.vue";
 import { GAME_NAVS } from "@/components/nav/games";
 
 const route = useRoute();

@@ -137,3 +137,11 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Mientras sale la pantalla de carga inicial (index.html), las animaciones de
+   la página esperan en pausa y arrancan desde el principio al quitarse. */
+html.booting .app-main *,
+html.booting .app-main *::before,
+html.booting .app-main *::after {
+  animation-play-state: paused !important;
+}

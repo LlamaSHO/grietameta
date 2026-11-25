@@ -38,12 +38,19 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useLolData } from "@/composables/useLolData";
+import { computed, shallowRef, watchEffect } from "vue";
 
 // "Campeón del parche": el mismo que destaca el hub de LoL (spotlight de
 // useLolData), para que la portada y /lol no digan cosas distintas.
-const { spotlight } = useLolData();
+// Regla «cargar solo lo que se usa»: la portada sale con el de ejemplo y el
+// código y los datos de LoL se piden cuando el navegador queda libre.
+const spotlight = shallowRef(null);
+const idle = window.requestIdleCallback || ((f) => setTimeout(f, 3000));
+idle(async () => {
+  const { useLolData } = await import("@/composables/useLolData");
+  const lol = useLolData();
+  watchEffect(() => (spotlight.value = lol.spotlight.value));
+}, { timeout: 6000 });
 
 const fmtPct = (n) => `${n.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
 

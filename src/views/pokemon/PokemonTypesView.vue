@@ -1,6 +1,5 @@
 <template>
   <div class="pk pk-types">
-    <PokeLoader />
     <PokeStatus v-if="status !== 'ready'" :status="status" :retry="retry" />
     <template v-if="v">
 
@@ -130,7 +129,6 @@
 <script setup>
 import { computed, reactive, toRaw } from "vue";
 import { useGameData } from "@/composables/useGameData";
-import PokeLoader from "@/components/pokemon/comun/PokeLoader.vue";
 import PokeStatus from "@/components/pokemon/comun/PokeStatus.vue";
 import { createTypesEngine } from "@/components/pokemon/a/typesEngine";
 
