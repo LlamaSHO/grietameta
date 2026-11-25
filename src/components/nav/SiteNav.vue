@@ -56,7 +56,7 @@ watch(
 // La barra del juego cambia el alto del nav; las anclas lo tienen en cuenta.
 // En el diseño la de LoL mide 48 px y las de ARC y Zelda 50.
 watchEffect(() => {
-  const h = !gameNav.value ? 0 : gameNav.value.zone === "lol" ? 48 : 50;
+  const h = !gameNav.value ? 0 : gameNav.value.subH ?? (gameNav.value.zone === "lol" ? 48 : 50);
   document.documentElement.style.setProperty("--subnav-h", `${h}px`);
 });
 </script>

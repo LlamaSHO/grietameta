@@ -47,6 +47,10 @@ const NOTICES = {
   lol: "GrietaMeta no está afiliado a Riot Games. League of Legends y Riot Games son marcas registradas o marcas comerciales de Riot Games, Inc. GrietaMeta se avala en los \"Legal Jibber Jabber\" de Riot Games con contenido creado bajo la política de terceros.",
   "arc-raiders": "El contenido de ARC Raiders pertenece a Embark Studios AB y sus licenciantes. GrietaMeta no está afiliado ni respaldado por Embark Studios.",
   "zelda-totk": "GrietaMeta es un sitio de fans y no está afiliado a Nintendo. The Legend of Zelda y Tears of the Kingdom son marcas de Nintendo. Todo el contenido es texto e iconos propios, sin material oficial.",
+  pokemon: "GrietaMeta es un sitio de fans y no está afiliado a Nintendo, Game Freak ni The Pokémon Company. Pokémon y sus nombres son marcas de sus propietarios.",
+  "assassins-creed": "GrietaMeta es un sitio de fans y no está afiliado a Ubisoft. Assassin's Creed y sus imágenes son marcas y material de Ubisoft Entertainment.",
+  "cod-zombis": "GrietaMeta es un sitio de fans y no está afiliado a Activision ni a Treyarch. Call of Duty, Black Ops y sus imágenes son marcas y material de Activision.",
+  ark: "GrietaMeta es un sitio de fans y no está afiliado a Studio Wildcard. ARK: Survival Evolved y sus imágenes son material de Studio Wildcard. Datos y dosieres: ARK Official Community Wiki (ark.wiki.gg).",
 };
 const DEFAULT_NOTICE = "GrietaMeta es un sitio de fans, no está afiliado a los estudios de los juegos mencionados. Las marcas pertenecen a sus propietarios.";
 const notice = computed(() => NOTICES[props.gameSlug] || DEFAULT_NOTICE);

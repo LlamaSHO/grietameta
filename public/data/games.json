@@ -58,6 +58,80 @@
       "tagline": "Mapa de semillas kolog y santuarios, misiones y armaduras",
       "status": "building",
       "icon": "/images/games/logo-zelda.png"
+    },
+    {
+      "slug": "pokemon",
+      "name": "Pokémon",
+      "short": "Pokémon",
+      "url": "/pokemon",
+      "aliases": [
+        "pokemon",
+        "pokémon",
+        "pokedex",
+        "pokédex",
+        "kanto",
+        "pikachu",
+        "showdown",
+        "champions"
+      ],
+      "tagline": "Pokédex, tipos, Kanto al 100 % y competitivo",
+      "status": "live",
+      "icon": "/images/games/logo-pokemon.webp"
+    },
+    {
+      "slug": "assassins-creed",
+      "name": "Assassin's Creed",
+      "short": "AC",
+      "url": "/assassins-creed",
+      "aliases": [
+        "assassins creed",
+        "assassin",
+        "ac",
+        "unity",
+        "arno",
+        "animus",
+        "ubisoft"
+      ],
+      "tagline": "La saga entera y la guía de Unity",
+      "status": "live",
+      "icon": "/images/games/logo-ac.webp"
+    },
+    {
+      "slug": "cod-zombis",
+      "name": "Call of Duty: Zombis",
+      "short": "CoD",
+      "url": "/cod-zombis",
+      "aliases": [
+        "cod",
+        "call of duty",
+        "zombis",
+        "zombies",
+        "black ops",
+        "treyarch",
+        "aether",
+        "pack a punch"
+      ],
+      "tagline": "Zombis de Black Ops 1 a 4, planos y la saga del Aether",
+      "status": "live",
+      "icon": "/images/games/logo-cod.webp"
+    },
+    {
+      "slug": "ark",
+      "name": "ARK: Survival Evolved",
+      "short": "ARK",
+      "url": "/ark",
+      "aliases": [
+        "ark",
+        "survival evolved",
+        "dinos",
+        "dinosaurios",
+        "domar",
+        "engramas",
+        "rex"
+      ],
+      "tagline": "Criaturas, engramas, recursos y guías",
+      "status": "progress",
+      "icon": "/images/games/logo-ark.webp"
     }
   ]
 }

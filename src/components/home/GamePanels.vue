@@ -72,7 +72,7 @@
 
           <div class="p-top">
             <span class="badge" :class="p.status === 'live' ? 'live' : 'soon'">
-              <span class="dot"></span>{{ p.status === "live" ? "Disponible" : "En construcción" }}
+              <span class="dot"></span>{{ p.status === "live" ? "Disponible" : p.status === "progress" ? "En progreso" : "En construcción" }}
             </span>
             <span class="p-num">{{ String(i + 1).padStart(2, "0") }}</span>
           </div>
