@@ -228,6 +228,17 @@ Rutas de imágenes ya convertidas:
 - **Objetos** (Claude): las cuatro acciones (guardar, reciclar, vender, usar) son a la vez resumen y filtro; buscador que también busca por material de reciclaje, rareza, categoría, orden y ficha con la recomendación y su motivo, lo que da al reciclarlo, quién lo pide, receta y efectos. Datos: `public/data/arc-raiders/items.json` (los 581).
 - **Enemigos** y **Misiones** (Codex, revisadas por Claude): filtros de amenaza/tipo/mapa, punto débil, botín y armas; progreso por comerciante, objetivos paso a paso y recompensas.
 
+### Ronda del 2026-11-25 (tarde): Zelda, Pokémon y Assassin's Creed
+
+- **Zelda:** zoom hasta ×8,8; la capa del cielo abre ya acercada y centrada en las islas. Nueva capa «Misiones por región» (centro aproximado de cada región). En las guías, cada misión muestra su zona en el mapa pequeño. Cabecera con motas de luz y un planeador que cruza Hyrule. Arreglada la ficha de cuevas: la línea «Cueva o túnel · 2 entradas · …» compartía la clase `.m` de los iconos del mapa y salía descolocada.
+- **Pokémon (todas las páginas):** menú a color, fondo con más color, pantalla de carga con una Poké Ball que se agita, y «Guías» del menú sustituido por «Mecánicas».
+- **Pokédex:** las formas mega se eligen como una forma más: cambian la imagen, los tipos, las estadísticas, las debilidades, la habilidad y las naturalezas.
+- **Mapa de Kanto:** al tocar una zona de la lista, la página sube al mapa, la selecciona y lo resalta.
+- **Kanto al 100 %:** buscador de Pokémon, gimnasios, MO/MT, objetos clave, retos y únicos, con filtro por tipo y marcado con animación.
+- **`PokemonMecanicas.dc.html` (nueva):** megaevoluciones con su megapiedra (datos de la Pokédex), movimientos Z (nombres en inglés), las 32 especies Gigamax y los 19 teratipos.
+- **Assassin's Creed (saga y Unity):** estética Animus con arranque animado, hélice de ADN, rótulo de sincronización, títulos con efecto de interferencia y tarjetas como secuencias de memoria.
+- **Pendiente:** los planos de CoD con datos de la wiki. Fandom no deja leer sus páginas de forma automática, no se pudo conectar con Chrome y el sistema de permisos bloqueó la lectura a través de un espejo.
+
 ### CoD Zombis · Planos de los mapas (2026-11-25)
 
 `CodMapas.dc.html` (`/cod-zombies/planos`, enlazada como «Planos» en el menú de CoD): esquemas propios, no a escala, de Kino der Toten, «Five», TranZit y Nuketown Zombies. Para cada mapa muestra las zonas, las puertas, las ventajas, las armas de pared, la corriente, el teletransporte y la Pack-a-Punch, con capas que se pueden activar y desactivar, la ficha de cada zona y los pasos para abrir el mapa. Los datos de ventajas y armas salen de las páginas de cada Black Ops. Los demás mapas salen como «plano en preparación». La wiki de Fandom no deja leer sus páginas de forma automática (HTTP 402), así que la forma de cada plano la ha dibujado Claude y hay que comprobarla en partida.
