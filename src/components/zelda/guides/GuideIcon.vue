@@ -14,6 +14,12 @@
     <template v-if="name === 'santuario'">
       <path d="M5 21V10a7 7 0 0 1 14 0v11" /><path d="M9 21v-6a3 3 0 0 1 6 0v6" /><path d="M3 21h18" />
     </template>
+    <template v-else-if="name === 'raiz'">
+      <path d="M12 21V9m0 8-5-3-3 1m8 1 5-4 3 1M8 7l1-3 3-2 3 2 1 3-4 4z" />
+    </template>
+    <template v-else-if="name === 'libro'">
+      <path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5zM8 7h6m-6 4h6" />
+    </template>
     <template v-else-if="name === 'semilla'">
       <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
     </template>

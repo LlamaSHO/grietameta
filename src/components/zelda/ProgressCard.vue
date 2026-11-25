@@ -52,7 +52,6 @@ const pct = (r) => `${r.total ? Math.min(100, (r.done / r.total) * 100).toFixed(
   height: 100%;
   border-radius: 8px;
   background: linear-gradient(90deg, #D8C27A, #F1E7C8);
-  transition: width 0.5s var(--ease-out);
 }
 .pb.tw i {
   background: linear-gradient(90deg, #8B6CF0, #C7B5FF);

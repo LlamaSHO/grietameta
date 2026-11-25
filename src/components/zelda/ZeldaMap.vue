@@ -1,7 +1,7 @@
 <template>
   <!-- Mapa interactivo del hub de Zelda (#mapa). Diseño: sección «MAPA» de
        models/paginas/Zelda.dc.html. El visor (arrastre y zoom) es el común
-       components/maps/PanZoomMap.vue; aquí van los puntos, filtros y progreso. -->
+       components/maps/ZeldaPanZoom.vue; aquí van los puntos, filtros y progreso. -->
   <section id="mapa" class="zh-sec">
     <div class="wrap">
       <div class="zh-sec-h">
@@ -10,28 +10,30 @@
           <h2 class="zh-h2">Mapa interactivo</h2>
           <p>Elige capa, filtra lo que quieres ver y toca un santuario para ver su ficha y marcarlo como completado.</p>
         </div>
-        <div class="layers" role="tablist" aria-label="Capa del mapa">
-          <button type="button" class="ly" :class="{ on: layer === 'surf' }" role="tab" :aria-selected="layer === 'surf' ? 'true' : 'false'" @click="setLayer('surf')">
+        <div class="layers" role="group" aria-label="Capa del mapa">
+          <button type="button" class="ly" :class="{ on: layer === 'surf' }" :aria-pressed="layer === 'surf' ? 'true' : 'false'" @click="setLayer('surf')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z" /><circle cx="17" cy="6" r="2" /></svg>
             Superficie
           </button>
-          <button type="button" class="ly" :class="{ on: layer === 'sky' }" role="tab" :aria-selected="layer === 'sky' ? 'true' : 'false'" @click="setLayer('sky')">
+          <button type="button" class="ly" :class="{ on: layer === 'sky' }" :aria-pressed="layer === 'sky' ? 'true' : 'false'" @click="setLayer('sky')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9z" /></svg>
             Cielo
           </button>
-          <button type="button" class="ly off" role="tab" aria-selected="false" aria-disabled="true" title="Próximamente">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18" /><path d="M12 11v9" /><path d="M8 16l4 4 4-4" /></svg>
-            Subsuelo <small>Pronto</small>
-          </button>
+          <RouterLink class="ly ly-depth" to="/zelda/raices">Profundidades</RouterLink>
         </div>
       </div>
 
-      <div class="mapcard">
+      <div v-if="mapData.status !== 'ready'" class="map-state" role="status">
+        <template v-if="mapData.status === 'loading'">Cargando mapa…</template>
+        <template v-else>No se pudo cargar el mapa. <button type="button" @click="mapData.reload()">Reintentar</button></template>
+      </div>
+      <div v-else class="mapcard">
         <MapSidebar
           v-model:query="query"
           v-model:cats="cats"
           v-model:status="status"
           :results="results"
+          :searching="otherData?.status === 'loading'"
           :counts="counts"
           :state-counts="stateCounts"
           :progress="progressRows"
@@ -41,7 +43,7 @@
           @toggle-done="selected && toggle(selected.key)"
         />
 
-        <PanZoomMap
+        <ZeldaPanZoom
           ref="map"
           class="vp"
           :class="layer"
@@ -77,26 +79,26 @@
             <MapLegend data-no-pan />
             <span class="coordtag">Zoom ×{{ String(LEVELS[level]).replace(".", ",") }}</span>
           </template>
-        </PanZoomMap>
+        </ZeldaPanZoom>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed, nextTick, ref } from "vue";
-import PanZoomMap from "@/components/maps/PanZoomMap.vue";
+import { computed, nextTick, ref, watch } from "vue";
+import ZeldaPanZoom from "./ZeldaPanZoom.vue";
 import MapPin from "./MapPin.vue";
 import MapLegend from "./MapLegend.vue";
 import MapSidebar from "./MapSidebar.vue";
 import { mapLayer } from "./mapLayer";
-import { toPct } from "@/data/zelda-map";
+import { useGameData } from "@/composables/useGameData";
 import { useZeldaProgress } from "@/composables/useZeldaProgress";
-import { CAT, CATS, LAYER_NAME, POINTS, TOTALS, byKey, fmt, layerCount, searchPoints, seedWeight, zone } from "./mapPoints";
+import { CAT, CATS, LAYER_NAME, TOTALS, fmt, layerCount, searchPoints, seedCountForKey, toPct, zone } from "./mapPoints";
 
-const LEVELS = [1, 1.6, 2.4, 3.4, 4.6];
+const LEVELS = [1, 1.6, 2.25, 3];
 // Versión media (2000 px, ~360 KB) para ver el mapa entero; la HD (6000 px,
-// ~2 MB) solo se descarga al acercar (PanZoomMap → srcHd).
+// ~2 MB) solo se descarga al acercar (ZeldaPanZoom → srcHd).
 const LAYER_IMG = {
   surf: "/images/zelda/mapas/superficie-md.jpg",
   sky: "/images/zelda/mapas/cielo-md.jpg",
@@ -117,11 +119,19 @@ const cats = ref({ sh: true, tw: true, cv: true, sd: true });
 const status = ref("all"); // all · todo · done
 const query = ref("");
 const sel = ref(null); // clave del punto elegido
-const setLayer = (l) => (layer.value = l);
+const setLayer = (next) => {
+  if (layer.value !== next) sel.value = null;
+  layer.value = next;
+};
+const mapData = computed(() => useGameData("/data/zelda/mapa-" + layer.value + ".json"));
+const points = computed(() => mapData.value.data || []);
+const otherLayer = computed(() => layer.value === "surf" ? "sky" : "surf");
+const otherData = computed(() => query.value.trim() ? useGameData("/data/zelda/mapa-" + otherLayer.value + ".json") : null);
+const searchable = computed(() => [...points.value, ...(otherData.value?.data || [])]);
+const byKey = computed(() => new Map(searchable.value.map((p) => [p.key, p])));
 
 // Puntos visibles en la capa actual (con los filtros) y recuentos de «Estado».
 const view = computed(() => {
-  const L = layer.value;
   const st = status.value;
   const pins = [];
   const fr = [];
@@ -129,7 +139,7 @@ const view = computed(() => {
   let nDone = 0;
   for (const c of DRAW_ORDER) {
     if (!cats.value[c]) continue;
-    for (const p of POINTS[c][L]) {
+    for (const p of points.value.filter((p) => p.cat === c)) {
       const d = !!done[p.key];
       all++;
       if (d) nDone++;
@@ -142,19 +152,17 @@ const view = computed(() => {
 });
 
 const stateCounts = computed(() => ({ all: view.value.all, todo: view.value.all - view.value.done, done: view.value.done }));
-const counts = computed(() => Object.fromEntries(CATS.map((c) => [c, layerCount(c, layer.value)])));
-const results = computed(() => searchPoints(query.value));
+const counts = computed(() => Object.fromEntries(CATS.map((c) => [c, layerCount(c, points.value)])));
+const results = computed(() => searchPoints(query.value, searchable.value));
 
 const progressRows = computed(() => {
   let sh = 0;
   let tw = 0;
   let sd = 0;
   for (const k of Object.keys(done)) {
-    const p = byKey.get(k);
-    if (!p) continue;
-    if (p.cat === "sh") sh++;
-    else if (p.cat === "tw") tw++;
-    else if (p.cat === "sd") sd += seedWeight(p);
+    if (k.startsWith("sh:")) sh++;
+    else if (k.startsWith("tw:")) tw++;
+    else if (k.startsWith("sd:")) sd += seedCountForKey(k);
   }
   return [
     { id: "sh", label: "Santuarios completados", done: sh, total: TOTALS.sh },
@@ -164,7 +172,7 @@ const progressRows = computed(() => {
 });
 
 // Ficha del punto elegido.
-const selected = computed(() => (sel.value ? byKey.get(sel.value) || null : null));
+const selected = computed(() => (sel.value ? byKey.value.get(sel.value) || null : null));
 const selection = computed(() => {
   const p = selected.value;
   if (!p) return null;
@@ -184,7 +192,7 @@ const selection = computed(() => {
 
 // Elegir un punto: cambia de capa si hace falta y centra el mapa en él.
 async function select(key) {
-  const p = byKey.get(key);
+  const p = byKey.value.get(key);
   if (!p) return;
   sel.value = key;
   if (layer.value !== p.layer) {
@@ -205,8 +213,18 @@ function pickFromSearch(key) {
 // Abre un punto que llega desde fuera (botones «Ver en el mapa» de las guías:
 // /zelda?capa=…&punto=<clave>&x=<x>&y=<y>#mapa). Si la clave no existe,
 // centra el mapa en las coordenadas del juego (x, y).
-function openPoint({ key, x, y } = {}) {
-  if (key && byKey.has(key)) return select(key);
+const requestedPoint = ref(null);
+function openPoint(point) {
+  requestedPoint.value = point;
+}
+watch([requestedPoint, map], ([point, viewport]) => {
+  if (!point || !viewport) return;
+  requestedPoint.value = null;
+  focusRequested(point);
+}, { flush: "post" });
+
+function focusRequested({ key, x, y }) {
+  if (key && byKey.value.has(key)) return select(key);
   const gx = Number(x);
   const gy = Number(y);
   if (x === undefined || y === undefined || !Number.isFinite(gx) || !Number.isFinite(gy)) return;
@@ -295,7 +313,7 @@ defineExpose({ select, openPoint });
   --map-h: min(720px, calc((100cqw - 300px) / 1.2));
 }
 /* Si el panel es más alto que el mapa (p. ej. con la ficha abierta), el
-   visor se estira y el mapa (que PanZoomMap encaja sin deformarlo) queda
+   visor se estira y el mapa (que ZeldaPanZoom encaja sin deformarlo) queda
    centrado sobre la cuadrícula. */
 .vp {
   flex: 1 1 auto;
@@ -313,16 +331,8 @@ defineExpose({ select, openPoint });
   background-size: 40px 40px;
   pointer-events: none;
 }
-.vp :deep(.pz-zoom button) {
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
 .vp :deep(.pz-img) {
-  filter: saturate(0.9) brightness(0.9);
   border-radius: 6px;
-}
-.vp.sky :deep(.pz-img) {
-  filter: saturate(0.8) brightness(1);
 }
 
 .vtag {
@@ -399,8 +409,8 @@ defineExpose({ select, openPoint });
     right: 10px;
   }
   .vp :deep(.pz-zoom button) {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
   }
   .vtag {
@@ -410,4 +420,6 @@ defineExpose({ select, openPoint });
     font-size: 12px;
   }
 }
+.layers .ly-depth { color: #f1d397; text-decoration: none; }
+.map-state { display: grid; place-content: center; justify-items: center; min-height: 320px; background: #081412; border: 1px solid rgba(127, 235, 203, 0.14); border-radius: 22px; }
 </style>

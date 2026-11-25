@@ -1,0 +1,111 @@
+[data-zone="zelda"] .site-nav .mega.zelda-menu {
+  display: block;
+  left: -8px;
+  width: auto;
+  max-width: calc(100vw - 24px);
+  padding: 10px;
+  background: #0a1816;
+  border-color: rgba(127, 235, 203, 0.16);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+[data-zone="zelda"] .site-nav .mega.zelda-menu.shown {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+[data-zone="zelda"] .zelda-dd [aria-expanded="true"] .chev { transform: rotate(180deg); }
+[data-zone="zelda"] .zelda-map-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 540px;
+}
+[data-zone="zelda"] .zelda-map-links a,
+[data-zone="zelda"] .zelda-guide-links a {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 12px;
+  color: #e6eeea;
+  text-decoration: none;
+}
+[data-zone="zelda"] .zelda-map-links a { flex-direction: column; }
+[data-zone="zelda"] .zelda-map-links b { font-family: var(--font-zelda); }
+[data-zone="zelda"] .zelda-guide-links a { align-items: center; gap: 12px; padding: 10px; }
+[data-zone="zelda"] .zelda-map-links a:hover,
+[data-zone="zelda"] .zelda-guide-links a:hover,
+[data-zone="zelda"] .zelda-guide-links .current { background: rgba(127, 235, 203, 0.08); }
+[data-zone="zelda"] .zelda-menu small { display: block; color: #a9bdb6; font-size: 12px; }
+[data-zone="zelda"] .zelda-guide-links { width: 340px; }
+[data-zone="zelda"] .zelda-guide-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  color: #7febcb;
+  background: #12322a;
+}
+[data-zone="zelda"] .zelda-map-thumb {
+  position: relative;
+  display: block;
+  height: 84px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+[data-zone="zelda"] .zelda-map-thumb img { width: 100%; height: 100%; object-fit: cover; }
+[data-zone="zelda"] .zelda-map-thumb.deep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 12, 32, 0.7);
+}
+[data-zone="zelda"] .zelda-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 5px 10px;
+  background: #241d13;
+  border: 1px solid #615033;
+  border-radius: 999px;
+  color: #f2c36b;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+[data-zone="zelda"] .zelda-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 50%;
+}
+@media (max-width: 920px) {
+  [data-zone="zelda"] .site-nav .sub-in { position: relative; overflow: visible; }
+  [data-zone="zelda"] .site-nav .zelda-dd { position: static; }
+  [data-zone="zelda"] .site-nav .mega.zelda-menu { inset: 100% 12px auto; max-height: 65dvh; overflow-y: auto; }
+  [data-zone="zelda"] .zelda-menu .zelda-guide-links,
+  [data-zone="zelda"] .zelda-menu .zelda-map-links { width: 100%; }
+  [data-zone="zelda"] .zelda-status { display: none; }
+}
+@media (max-width: 540px) {
+  [data-zone="zelda"] .site-nav .gchip span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  [data-zone="zelda"] .site-nav .slink { padding-inline: 8px; }
+  [data-zone="zelda"] .zelda-map-links { grid-template-columns: 1fr; }
+  [data-zone="zelda"] .zelda-map-links a { display: grid; grid-template-columns: 80px 1fr; gap: 1px 10px; }
+  [data-zone="zelda"] .zelda-map-thumb { height: 52px; grid-row: span 2; }
+}

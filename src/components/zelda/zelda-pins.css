@@ -77,7 +77,6 @@
 .zpin.m.sel {
   z-index: 7;
   border-color: #F1E7C8;
-  animation: zh-pulse 1.6s infinite;
 }
 
 /* Círculo de destino de los kologs con amigo */

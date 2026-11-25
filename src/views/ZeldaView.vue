@@ -24,7 +24,7 @@ const router = useRouter();
 const mapSection = ref(null);
 
 // Direcciones antiguas: /zelda#semillas, #santuarios… → /zelda/<guía>.
-const OLD_GUIDES = ["santuarios", "semillas", "misiones", "armaduras", "conjuntos"];
+const OLD_GUIDES = ["santuarios", "semillas", "raices", "misiones", "armaduras", "conjuntos"];
 watch(
   () => route.hash,
   (hash) => {

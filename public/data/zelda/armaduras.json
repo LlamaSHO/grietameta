@@ -1,0 +1,11 @@
+[
+  {"id":0,"es":"Aspecto del Héroe Antiguo","en":"Ancient Hero's Aspect","def":84,"text":"Recompensa final por completar los 152 santuarios. Defensa por nivel con el set: 24, 36, 54 y 84. Mejora el rayo de la Espada Maestra.","note":"Set completo","url":"","scope":"set","pieces":3,"perPiece":null},
+  {"id":1,"es":"Set de soldado","en":"Soldier's Armor","def":84,"text":"28 por pieza al máximo. No tiene bonus de set, pero es de lo más defensivo del juego.","note":"Set completo (3 × 28)","url":"","scope":"set","pieces":3,"perPiece":28},
+  {"id":2,"es":"Set Zonaite","en":"Zonaite Armor","def":84,"text":"28 por pieza al máximo. Reduce el gasto de energía de los aparatos Zonai, ideal si construyes mucho.","note":"Set completo (3 × 28)","url":"","scope":"set","pieces":3,"perPiece":28},
+  {"id":3,"es":"Armadura de lo Salvaje","en":"Armor of the Wild","def":84,"text":"El aspecto clásico de Link, con bonus de ataque. Según las guías llega a 84 con todo mejorado.","note":"Set completo","url":"","scope":"set","pieces":3,"perPiece":null},
+  {"id":4,"es":"Guardia Real","en":"Royal Guard","def":72,"text":"Tres piezas de 24 cada una al máximo. Se consigue dentro del castillo de Hyrule.","note":"Set completo (3 × 24)","url":"","scope":"set","pieces":3,"perPiece":24},
+  {"id":5,"es":"Bárbaro, Deidad feroz y Despertar","en":"Barbarian, Fierce Deity, Awakening","def":60,"text":"Tres piezas de 20 cada una al máximo. Su fuerte es la bonificación de ataque, no la defensa.","note":"Set completo (3 × 20)","url":"","scope":"set","pieces":3,"perPiece":20},
+  {"id":6,"es":"Set de escarcha","en":"Frostbite","def":48,"text":"16 por pieza al máximo. Aumenta el daño con frío y es de las mejores para zonas heladas.","note":"Set completo (3 × 16)","url":"","scope":"set","pieces":3,"perPiece":16},
+  {"id":7,"es":"Cuero de campeón","en":"Champion's Leathers","def":32,"text":"La pieza suelta con más defensa de las que hemos contrastado. Muy fácil de encontrar.","note":"Pieza única","url":"","scope":"pieza","pieces":1,"perPiece":32},
+  {"id":8,"es":"Túnica de los recuerdos","en":"Tunic of Memories","def":28,"text":"Recompensa por encontrar todas las estatuas de Barganier. Sube de 4 a 28 con las mejoras.","note":"Pieza única","url":"","scope":"pieza","pieces":1,"perPiece":28}
+]

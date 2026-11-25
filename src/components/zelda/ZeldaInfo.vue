@@ -40,23 +40,15 @@
 
 <script setup>
 import GuideIcon from "@/components/zelda/guides/GuideIcon.vue";
-import { GUIDES, SHRINES, STATS, QUESTS, ARMORS, SETS, fmt } from "@/components/zelda/guides/guides.js";
-
-// Ejemplos de cada guía (los mismos que el diseño, sacados de los datos reales).
-const shrine = (name, where) => {
-  const s = SHRINES.find((r) => r.name === name);
-  return s ? [s.name, where || (s.layer === "cielo" ? "Cielo" : "Superficie")] : null;
-};
+import { GUIDES } from "./guides/catalog";
 
 const PREVIEW = {
-  santuarios: [shrine("Ukouh", "Gran Isla del Cielo"), shrine("In-isa", "Gran Isla del Cielo"), shrine("Tajikats")].filter(Boolean),
-  semillas: [
-    ["Superficie", `${fmt(STATS.surfSeeds)} semillas`],
-    ["Cielo", `${fmt(STATS.skySeeds)} semillas`],
-  ],
-  misiones: QUESTS.filter((q) => q.kind === "p").slice(0, 3).map((q) => [q.name, q.tag]),
-  armaduras: ARMORS.slice(0, 3).map((a) => [a.es, String(a.def)]),
-  conjuntos: SETS.slice(0, 2).map((s) => [s.name, s.bonus]),
+  santuarios: [["Ukouh","Gran Isla del Cielo"],["In-isa","Gran Isla del Cielo"],["Tajikats","Superficie"]],
+  raices: [["Stakijat","Bajo Tajikats"],["Ui-ihcoj","Bajo Jochi-iu"]],
+  semillas: [["Superficie","838 semillas"],["Cielo","37 semillas"]],
+  misiones: [["The Closed Door","Principal 1"],["To the Kingdom of Hyrule","Principal 2"],["Crisis at Hyrule Castle","Principal 3"]],
+  armaduras: [["Aspecto del Héroe Antiguo","84"],["Set de soldado","84"],["Set Zonaite","84"]],
+  conjuntos: [["Hylian","Solo defensa"],["Armor of the Wild","Bonus de ataque"]],
 };
 
 const cards = GUIDES.map((g) => ({ ...g, preview: PREVIEW[g.key] || [] }));
@@ -65,7 +57,6 @@ const cards = GUIDES.map((g) => ({ ...g, preview: PREVIEW[g.key] || [] }));
 <style scoped>
 .zi-sec {
   padding: 52px 0 0;
-  scroll-margin-top: calc(var(--nav-h) + var(--subnav-h) + 16px);
 }
 .zi-head {
   margin-bottom: 20px;
@@ -103,8 +94,7 @@ const cards = GUIDES.map((g) => ({ ...g, preview: PREVIEW[g.key] || [] }));
 
 .zi-grid {
   display: grid;
-  /* 220 px (el diseño usa 240 con un contenedor de 1320): así caben las 5 en una fila. */
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 .zi-card {
@@ -201,9 +191,11 @@ const cards = GUIDES.map((g) => ({ ...g, preview: PREVIEW[g.key] || [] }));
   font-size: 14px;
   font-weight: 600;
   color: #7febcb;
-  transition: gap 0.2s;
 }
-.zi-card:hover .zi-go {
-  gap: 12px;
+@media (max-width: 920px) {
+  .zi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .zi-grid { grid-template-columns: 1fr; }
 }
 </style>

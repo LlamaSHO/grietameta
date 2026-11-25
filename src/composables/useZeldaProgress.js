@@ -15,11 +15,11 @@
      const { done, count, isDone, toggle, setDone, isShrineDone, storage } = useZeldaProgress();
 
      zeldaKey(cat, capa, id) → clave "<cat>:<capa>:<id>"
-        cat:  "sh" santuario · "tw" torre · "cv" cueva · "sd" semilla kolog
-        capa: "surf" superficie · "sky" cielo
+        cat:  "sh" santuario · "tw" torre · "cv" cueva · "sd" semilla kolog · "lr" raíz de luz · "qu" misión
+        capa: "surf" superficie · "sky" cielo · "deep" Profundidades · "guide" misiones
         id:   el nombre en santuarios y torres (p. ej. "Tajikats", "Lookout Landing")
-              y la posición en la lista en cuevas y semillas (src/data/zelda-map.js
-              y src/data/zelda.js → semillas.surf1+surf2 / sky1+sky2, en ese orden).
+              y la posición original en cuevas y semillas (public/data/zelda/mapa-*.json).
+              Las raíces y misiones usan los ids de su fichero de guía.
      done            → objeto reactivo de solo lectura { [clave]: true }
      count           → computed con el nº de claves marcadas
      isDone(clave)   → boolean (reactivo si se usa en plantilla o computed)

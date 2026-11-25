@@ -2,6 +2,8 @@
   <!-- Cabecera del hub de Zelda (#inicio). Diseño: .hero de Zelda.dc.html. -->
   <section id="inicio" class="hero">
     <img class="hero-bg" src="/images/zelda/hyrule.jpg" alt="" fetchpriority="low">
+    <img class="hero-mark" src="/images/zelda/logo-zelda.png" alt="" width="230">
+    <img class="glider" src="/images/zelda/link-paravela.svg" alt="" width="150" height="124">
     <div class="rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="wrap hero-in">
       <div class="htx">
@@ -40,21 +42,17 @@
 
 <script setup>
 import { useRoute } from "vue-router";
-import { ZELDA_DATA } from "@/data/zelda";
-import { POINTS, TOTALS } from "./mapPoints";
 
 const route = useRoute();
-const M = ZELDA_DATA.misiones;
-
 const stats = {
-  shrines: TOTALS.sh,
-  shrinesSurf: POINTS.sh.surf.length,
-  shrinesSky: POINTS.sh.sky.length,
-  seeds: TOTALS.sd,
-  kologs: TOTALS.kologs,
-  questsMain: M.main.length,
-  quests: M.main.length + (M.adv?.length || 0) + (M.sq?.length || 0),
-  sets: ZELDA_DATA.conjuntos.sets.length,
+  shrines: 152,
+  shrinesSurf: 120,
+  shrinesSky: 32,
+  seeds: 875,
+  kologs: 775,
+  questsMain: 23,
+  quests: 178,
+  sets: 57,
 };
 
 // Si ya estamos en ese ancla, el router no navega: se baja a mano.
@@ -79,9 +77,34 @@ function sameHash(hash) {
   object-fit: cover;
   z-index: -3;
   opacity: 0.32;
-  filter: saturate(0.5) hue-rotate(95deg);
   -webkit-mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, #000 30%, transparent 75%);
   mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, #000 30%, transparent 75%);
+}
+.hero-mark {
+  position: absolute;
+  inset: 6% auto auto 1.5%;
+  z-index: -2;
+  height: auto;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.glider {
+  position: absolute;
+  top: 12%;
+  left: 24px;
+  z-index: -1;
+  pointer-events: none;
+  animation: zelda-glide 14s 0.4s ease-in-out both;
+}
+@keyframes zelda-glide {
+  0% { transform: translate(0, 0) scale(0.65); opacity: 0; }
+  10% { opacity: 0.85; }
+  86% { opacity: 0.85; }
+  100% { transform: translate(calc(100vw + 160px), 82px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glider { display: none; }
+  .htx, .hstats { animation: none !important; }
 }
 .hero::before {
   content: "";
@@ -110,18 +133,15 @@ function sameHash(hash) {
   inset: 44px;
   border-style: dashed;
   border-color: rgba(127, 235, 203, 0.24);
-  animation: zh-spin 60s linear infinite;
 }
 .rings span:nth-child(3) {
   inset: 96px;
   border-color: rgba(216, 194, 122, 0.22);
   border-top-color: rgba(216, 194, 122, 0.6);
-  animation: zh-spinr 40s linear infinite;
 }
 .rings span:nth-child(4) {
   inset: 150px;
   border: 2px dotted rgba(127, 235, 203, 0.35);
-  animation: zh-spin 24s linear infinite;
 }
 .hero-in {
   display: flex;
@@ -214,16 +234,7 @@ function sameHash(hash) {
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(12, 30, 27, 0.85), rgba(7, 18, 16, 0.85));
   border: 1px solid rgba(127, 235, 203, 0.14);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   overflow: hidden;
-}
-.hs:nth-child(2),
-.hs:nth-child(3) {
-  animation: zh-drift 7s ease-in-out infinite;
-}
-.hs:nth-child(3) {
-  animation-delay: -3.5s;
 }
 .hs .ic {
   color: #7FEBCB;

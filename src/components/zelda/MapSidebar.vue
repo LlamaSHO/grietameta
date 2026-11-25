@@ -5,13 +5,14 @@
     <div class="fld">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
       <label class="sr-only" for="zh-q">Buscar santuario, torre o cueva</label>
-      <input id="zh-q" v-model="query" type="search" placeholder="Busca un santuario (Ukouh, Tajikats…)" autocomplete="off" @keydown.enter.prevent="results[0] && $emit('pick', results[0].key)">
+      <input id="zh-q" v-model="query" type="search" placeholder="Busca un punto (Tajikats…)" autocomplete="off" @keydown.enter.prevent="results[0] && $emit('pick', results[0].key)">
     </div>
     <div v-if="results.length" class="res">
       <button v-for="r in results" :key="r.key" type="button" class="rs" @click="$emit('pick', r.key)">
         {{ r.name }} <small>{{ r.ln }}</small>
       </button>
     </div>
+    <p v-else-if="searching" class="nores" role="status">Buscando en ambas capas…</p>
     <p v-else-if="query.trim()" class="nores">Nada con «{{ query.trim() }}».</p>
 
     <span class="gl">Mostrar en el mapa</span>
@@ -80,6 +81,7 @@ const status = defineModel("status", { type: String, default: "all" });
 
 defineProps({
   results: { type: Array, default: () => [] }, // [{ key, name, ln }]
+  searching: Boolean,
   counts: { type: Object, required: true }, // { sh, tw, cv, sd } de la capa visible
   stateCounts: { type: Object, required: true }, // { all, todo, done }
   progress: { type: Array, required: true }, // filas de ProgressCard
