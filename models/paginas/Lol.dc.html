@@ -491,6 +491,28 @@ a.spot:hover .spot-cta{background:rgba(242,169,59,.24);gap:12px}
 .gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
 .gm-wipe b{position:absolute;inset:0;background:#07090D}
 
+
+/* propuesta Claude: tier list por niveles */
+.cl-view{display:inline-flex;gap:4px;padding:4px;border:1px solid #2A2F36;border-radius:11px;background:#0E1217}
+.cl-view button{min-height:36px;padding:0 14px;border:0;border-radius:8px;background:transparent;color:#AEB6C0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cl-view button[aria-pressed="true"]{background:#2A2418;color:#F1D8A0;box-shadow:inset 0 0 0 1px #6B5530}
+.cl-tiers{display:grid;gap:8px;padding:6px 18px 18px}
+.cl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:stretch;padding:10px;border-radius:14px;background:#0C1014;border:1px solid #1E232A}
+.cl-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:10px;background:#12171D}
+.cl-badge .tier{position:static;min-width:44px;height:34px;font-size:17px}
+.cl-badge small{font-size:11px;color:#8F98A5}
+.cl-champs{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.cl-c{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px 9px;border-radius:12px;background:#12171D;border:1px solid transparent;color:#F3F1EC;text-decoration:none;text-align:center;transition:border-color .2s,transform .2s}
+.cl-c:hover{border-color:#BA9755;transform:translateY(-2px)}
+.cl-c .lf-portrait{width:52px;height:52px;border-radius:12px}
+.cl-c b{font-size:13.5px;line-height:1.15}
+.cl-c small{font-size:11.5px;color:#8F98A5;line-height:1.2}
+.cl-wr{display:inline-flex;align-items:baseline;gap:4px;font-size:13px;font-weight:700;color:#6FD39A}
+.cl-wr i{font-style:normal;font-size:11px;font-weight:600}
+.cl-wr i.up{color:#6FD39A}.cl-wr i.down{color:#FF8A7A}
+@media (max-width:640px){.cl-tiers{padding:4px 12px 14px}.cl-row{grid-template-columns:1fr;gap:8px}.cl-badge{flex-direction:row;justify-content:flex-start;padding:6px 10px}.cl-champs{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}}
+@media (prefers-reduced-motion:reduce){.cl-c,.cl-c:hover{transition:none;transform:none}}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#F3C878 38%,transparent);color:#fff}
@@ -680,11 +702,15 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
         <div class="card-h">
           <h2 id="tl-h" class="disp">Tier list del parche</h2>
           <span class="meta">{{metaLine}}</span>
+          <div class="cl-view" role="group" aria-label="Vista de la tier list"><button type="button" aria-pressed="{{viewTiersPressed}}" onClick="{{showTiers}}">Por niveles</button><button type="button" aria-pressed="{{viewTablePressed}}" onClick="{{showTable}}">Tabla</button></div>
         </div>
         <sc-if value="{{hasNote}}" hint-placeholder-val="{{ false }}">
           <p class="note">{{noteText}}</p>
         </sc-if>
-        <div class="lf-mobile-sort"><label>Ordenar por <select value="{{sortKey}}" onChange="{{selectSort}}"><option value="idx">Puesto</option><option value="n">Campeón</option><option value="o">Tier</option><option value="wrN">WR</option><option value="prN">PR</option><option value="brN">BR</option><option value="gN">Partidas</option><option value="lane">% en línea</option></select></label><button type="button" onClick="{{reverseSort}}">{{directionLabel}}</button></div>
+        <sc-if value="{{viewTiers}}" hint-placeholder-val="{{ true }}"><div class="cl-tiers">
+          <sc-for list="{{tierGroups}}" as="g" hint-placeholder-count="4"><div class="cl-row"><div class="cl-badge"><span class="tier {{g.tc}}">{{g.t}}</span><small>{{g.count}}</small></div><div class="cl-champs"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="6"><a class="cl-c" href="LolCampeon.dc.html"><span class="lf-portrait" style="{{r.portrait}}"></span><b>{{r.n}}</b><span class="cl-wr">{{r.wr}}<i class="{{r.changeClass}}">{{r.change}}</i></span><small>{{r.sub}}</small></a></sc-for></div></div></sc-for>
+        </div></sc-if>
+        <sc-if value="{{viewTable}}" hint-placeholder-val="{{ false }}"><div class="lf-mobile-sort"><label>Ordenar por <select value="{{sortKey}}" onChange="{{selectSort}}"><option value="idx">Puesto</option><option value="n">Campeón</option><option value="o">Tier</option><option value="wrN">WR</option><option value="prN">PR</option><option value="brN">BR</option><option value="gN">Partidas</option><option value="lane">% en línea</option></select></label><button type="button" onClick="{{reverseSort}}">{{directionLabel}}</button></div>
         <div class="tscroll">
           <div class="tl" role="table" aria-label="Tier list de campeones">
             <div class="tr th" role="row">
@@ -719,6 +745,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             </sc-for>
           </div>
         </div>
+        </sc-if>
         <sc-if value="{{noRows}}" hint-placeholder-val="{{ false }}">
           <p class="empty">No hay ningún campeón que coincida con tu búsqueda en este rol.</p>
         </sc-if>
@@ -1026,7 +1053,7 @@ class Component extends DCLogic {
     });
   }
 
-  renderVals() {
+  codexVals() {
     this.entradaPagina((this.props && this.props.animaciones) ?? true);
     this.revelarSecciones('main section, aside section, .card, footer', (this.props && this.props.animaciones) ?? true);
     const S = this.state || {};
@@ -1179,6 +1206,19 @@ class Component extends DCLogic {
       onRank: (e) => this.setState({ rank: e.target.value }),
       onQuery: (e) => this.setState({ q: e.target.value })
     };
+  }
+  renderVals() {
+    const v = this.codexVals();
+    const view = (this.state && this.state.clView) || 'tiers';
+    const order = ['S+', 'S', 'A', 'B', 'C', 'D'];
+    const TC = { 'S+': 't-sp', 'S': 't-s', 'A': 't-a', 'B': 't-b', 'C': 't-c', 'D': 't-d' };
+    const groups = order.map((t) => {
+      const rows = (v.rows || []).filter((r) => r.t === t).slice().sort((a, b) => (b.value || 0) - (a.value || 0));
+      return { t, tc: TC[t], rows, count: rows.length === 1 ? '1 campeón' : rows.length + ' campeones' };
+    }).filter((g) => g.rows.length);
+    return { ...v, tierGroups: groups, viewTiers: view === 'tiers', viewTable: view === 'table',
+      viewTiersPressed: view === 'tiers' ? 'true' : 'false', viewTablePressed: view === 'table' ? 'true' : 'false',
+      showTiers: () => this.setState({ clView: 'tiers' }), showTable: () => this.setState({ clView: 'table' }) };
   }
 }
 </script>

@@ -202,6 +202,54 @@ html,body{margin:0;background:#07090D}
 .gm-wipe i{position:absolute;top:-20%;bottom:-20%;left:-40%;width:40%;transform:skewX(-14deg);background:linear-gradient(90deg,rgba(7,9,13,0),rgba(200,150,62,.55) 42%,#F3D08A 50%,rgba(95,196,184,.45) 58%,rgba(7,9,13,0))}
 .gm-wipe b{position:absolute;inset:0;background:#07090D}
 
+
+/* propuesta Claude: fichas de build */
+.cb{padding-block:28px 72px}
+.cb-bar{display:grid;grid-template-columns:auto minmax(150px,200px) minmax(150px,200px) minmax(180px,1fr);gap:10px;align-items:end;margin-bottom:18px}
+.cb-roles{display:flex;gap:4px;padding:4px;border:1px solid #292A29;border-radius:12px;background:#0E1217}
+.cb-role{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:#AEB6C0;font-family:inherit;font-size:14px;font-weight:600;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.cb-role:hover{color:#F3F1EC}
+.cb-role[aria-pressed="true"]{background:#2A2418;color:#F1D8A0;box-shadow:inset 0 0 0 1px #6B5530}
+.cb-f{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:#AEB6C0}
+.cb-f select,.cb-f input{height:48px;padding:0 12px;border:1px solid #2E3238;border-radius:10px;background:#12171D;color:#F3F1EC;font-family:inherit;font-size:14px;font-weight:500}
+.cb-rise{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:22px;padding:12px 14px;border:1px solid #2B2A22;border-radius:12px;background:linear-gradient(90deg,#1A1810,#101419)}
+.cb-rise>b{margin-right:6px;font-size:13px;color:#F1D8A0}
+.rchip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:4px 12px 4px 4px;border:1px solid #33362F;border-radius:999px;background:#12171D;color:#F3F1EC;text-decoration:none;font-size:13px;font-weight:600}
+.rchip .portrait{width:32px;height:32px;border-radius:50%}
+.rchip em{font-style:normal;color:#6FD39A}
+.rchip:hover{border-color:#BA9755}
+.cb-count{margin:0 0 12px;font-size:13px;color:#AEB6C0}
+.cb-count b{color:#F3F1EC}
+.cb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bcard{position:relative;display:flex;flex-direction:column;gap:14px;padding:18px;border:1px solid #262B31;border-radius:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--tint) 9%,#12171D),#0F1318 60%);color:#F3F1EC;text-decoration:none;overflow:hidden;transition:border-color .2s,transform .2s}
+.bcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--tint);opacity:.8}
+.bcard:hover{border-color:color-mix(in srgb,var(--tint) 55%,#262B31);transform:translateY(-2px)}
+.bc-top{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px;align-items:center}
+.bc-top .portrait{width:56px;height:56px;border-radius:14px}
+.bc-id strong{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.bc-id small{display:block;margin-top:3px;font-size:13px;color:#AEB6C0}
+.bc-wr{text-align:right}
+.bc-wr b{display:block;font-size:28px;line-height:1;letter-spacing:-.03em;color:#6FD39A}
+.bc-wr small{font-size:12px;color:#AEB6C0}
+.bc-lbl{display:block;margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.bc-lbl em{font-style:normal;text-transform:none;letter-spacing:0;color:#F1D8A0}
+.bc-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none;counter-reset:it}
+.bc-path li{counter-increment:it;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:10px;border-radius:12px;background:#0B0F13;border:1px solid #20252B;font-size:12.5px;line-height:1.3;color:#D8DCE3}
+.bc-path li::after{content:counter(it);position:absolute;top:8px;right:10px;font-size:12px;font-weight:700;color:#8F98A5}
+.bc-path img{width:44px;height:44px;border-radius:9px;box-shadow:0 0 0 1px #ffffff1f}
+.bc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bc-pill{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 10px;border-radius:12px;background:#0B0F13;border:1px solid #20252B;font-size:13px;line-height:1.25}
+.bc-pill img{width:34px;height:34px;border-radius:8px}
+.bc-pill small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8F98A5}
+.bc-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:12px;border-top:1px solid #20252B;font-size:12.5px;color:#AEB6C0}
+.bc-foot b{color:#F3F1EC;font-weight:600}
+.bc-go{color:#F1D8A0;font-weight:600}
+.bc-none{padding:14px;border-radius:12px;border:1px dashed #3A3F46;font-size:13px;color:#C1C7CF}
+@media (max-width:1100px){.cb-bar{grid-template-columns:1fr 1fr}.cb-roles{grid-column:1/-1;overflow-x:auto}}
+@media (max-width:860px){.cb-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.cb-bar{grid-template-columns:1fr}.cb-role{padding:0 11px}.bc-top{grid-template-columns:48px minmax(0,1fr) auto}.bc-top .portrait{width:48px;height:48px}.bc-path li{padding:8px}.bc-path img{width:38px;height:38px}.bc-row{grid-template-columns:1fr}.bc-wr b{font-size:24px}}
+@media (prefers-reduced-motion:reduce){.bcard,.bcard:hover{transition:none;transform:none}}
+
 /* gm-a11y */
 .sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
@@ -291,57 +339,39 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
       </div>
     </nav>
   </header>
-  <main>
+<main>
     <header class="mast"><div class="wrap mast-in">
       <div class="crumb"><a href="Lol.dc.html">League of Legends</a><span aria-hidden="true">/</span> Builds</div>
       <h1>Builds de <em>campeones</em></h1>
-      <p>La build con mayor porcentaje de victorias de cada campeón en el rango elegido.</p>
-      <p class="criterion">Builds con 1.000 partidas o más · Datos de ejemplo</p>
-      <div class="scope"><span class="patch">Parche 16.23</span><span>EUW · Solo/dúo</span></div>
+      <p>La build que más gana de cada campeón, objeto a objeto, con sus botas y su runa. Cambia el rango para ver la de tu liga.</p>
+      <div class="scope"><span class="patch">Parche 16.23</span><span>EUW · Solo/dúo · Datos de ejemplo</span></div>
     </div></header>
-
-    <div class="wrap b-work">
-      <sc-if value="{{hasRisers}}" hint-placeholder-val="{{ true }}"><section aria-labelledby="rising-title">
-        <header class="section-head"><h2 id="rising-title">Builds del parche</h2><p>Las mayores subidas de WR frente al 16.22 · {{rankLabel}}</p></header>
-        <div class="podium"><sc-for list="{{risers}}" as="b" hint-placeholder-count="3">
-          <a class="riser" href="LolCampeon.dc.html" style="{{b.theme}}" data-entry="{{b.key}}">
-            <i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i>
-            <span class="riser-info"><small>{{b.role}}</small><strong>{{b.name}}</strong><b class="trend">↗ {{b.change}} pp</b></span>
-            <span class="riser-core"><sc-for list="{{b.core}}" as="item"><img class="gear" src="{{item.src}}" alt="{{item.name}}" title="{{item.name}}"></sc-for></span>
-          </a>
-        </sc-for></div>
-      </section></sc-if>
-      <section aria-labelledby="list-title">
-        <header class="section-head"><h2 id="list-title">Builds por campeón</h2><p aria-live="polite">{{countLabel}}</p></header>
-        <div class="controls">
-          <label>Buscar campeón<input type="search" placeholder="Nombre del campeón…" value="{{query}}" onChange="{{onQuery}}"></label>
-          <label>Rol<select aria-label="Rol" value="{{role}}" onChange="{{onRole}}"><option value="all">Todos los roles</option><option>Superior</option><option>Jungla</option><option>Central</option><option>Inferior</option><option>Apoyo</option></select></label>
-          <label>Rango<select aria-label="Rango" value="{{rank}}" onChange="{{onRank}}"><option value="all">Todos los rangos</option><option value="Hierro">Hierro</option><option value="Bronce">Bronce</option><option value="Plata">Plata</option><option value="Oro">Oro</option><option value="Platino">Platino</option><option value="Esmeralda">Esmeralda</option><option value="Diamante">Diamante</option><option value="Master+">Master+</option></select></label>
-          <label>Ordenar por<select aria-label="Ordenar por" value="{{sort}}" onChange="{{onSort}}"><option value="wr">Mayor WR</option><option value="pick">Popularidad</option><option value="name">Nombre (A–Z)</option></select></label>
-        </div>
-        <div class="build-list">
-          <div class="column-head" aria-hidden="true"><span>Campeón / rol</span><span>Núcleo en orden</span><span>Botas</span><span>Runa principal</span><span>WR</span><span>Partidas / uso</span></div>
-          <sc-for list="{{rows}}" as="b" hint-placeholder-count="10">
-            <a class="build-row" href="LolCampeon.dc.html" data-entry="{{b.key}}">
-              <span class="identity"><i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i><span><strong>{{b.name}}</strong><small class="role-name">{{b.role}}</small></span></span>
-              <sc-if value="{{b.insufficient}}" hint-placeholder-val="{{ false }}"><span class="sample-note">Sin muestra suficiente en este rango</span></sc-if>
-              <sc-if value="{{b.hasBuild}}" hint-placeholder-val="{{ true }}">
-              <span class="core-cell"><span class="build-name">{{b.buildName}}</span><small class="mob-label">Núcleo en orden</small><span class="core"><sc-for list="{{b.core}}" as="item"><span class="slot"><img class="gear" src="{{item.src}}" alt="{{item.name}}" title="{{item.name}}"></span></sc-for></span></span>
-              <span class="boot-cell"><small class="mob-label">Botas</small><img class="gear" src="{{b.boot.src}}" alt="{{b.boot.name}}" title="{{b.boot.name}}"></span>
-              <span class="rune"><i class="keystone" style="{{b.runeStyle}}" aria-hidden="true"></i>{{b.rune}}</span>
-              <strong class="win"><small class="mob-label">WR</small><span data-count="{{b.wr}}">{{b.percent}}</span></strong>
-              <span class="games"><small class="mob-label">Partidas</small>{{b.gamesLabel}}<small class="use" title="Popularidad entre las variantes del campeón">{{b.useLabel}} de uso</small></span>
-              </sc-if><span class="to-file" aria-hidden="true">›</span>
-            </a>
-          </sc-for>
-          <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div class="empty"><strong>Ningún campeón coincide</strong><p>Prueba con otro nombre o cambia los filtros.</p><button type="button" onClick="{{reset}}">Restablecer filtros</button></div></sc-if>
-        </div>
-      </section>
+    <div class="wrap cb">
+      <div class="cb-bar">
+        <div class="cb-roles" role="group" aria-label="Filtrar por rol"><sc-for list="{{roleTabs}}" as="r" hint-placeholder-count="6"><button type="button" class="cb-role" aria-pressed="{{r.pressed}}" onClick="{{r.pick}}">{{r.label}}</button></sc-for></div>
+        <label class="cb-f">Rango<select value="{{rank}}" onChange="{{onRank}}"><option value="all">Todos los rangos</option><option value="Hierro">Hierro</option><option value="Bronce">Bronce</option><option value="Plata">Plata</option><option value="Oro">Oro</option><option value="Platino">Platino</option><option value="Esmeralda">Esmeralda</option><option value="Diamante">Diamante</option><option value="Master+">Master+</option></select></label>
+        <label class="cb-f">Ordenar por<select value="{{sort}}" onChange="{{onSort}}"><option value="wr">Más victorias</option><option value="pick">Más jugada</option><option value="name">Nombre (A–Z)</option></select></label>
+        <label class="cb-f">Buscar campeón<input type="search" placeholder="Yasuo, Jinx…" value="{{query}}" onChange="{{onQuery}}"></label>
+      </div>
+      <sc-if value="{{hasRisers}}" hint-placeholder-val="{{ true }}"><div class="cb-rise"><b>Suben este parche</b><sc-for list="{{risers}}" as="b" hint-placeholder-count="3"><a class="rchip" href="LolCampeon.dc.html"><i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i>{{b.name}} <em>+{{b.changeNum}} pp</em></a></sc-for></div></sc-if>
+      <p class="cb-count" aria-live="polite"><b>{{countLabel}}</b> · {{rankLabel}} · solo builds con 1.000 partidas o más</p>
+      <div class="cb-grid">
+        <sc-for list="{{rows}}" as="b" hint-placeholder-count="6"><a class="bcard" href="LolCampeon.dc.html" style="{{b.theme}}" data-entry="{{b.key}}">
+          <span class="bc-top"><i class="portrait" style="{{b.portrait}}" aria-hidden="true"></i><span class="bc-id"><strong>{{b.name}}</strong><small>{{b.role}}</small></span><sc-if value="{{b.hasBuild}}" hint-placeholder-val="{{ true }}"><span class="bc-wr"><b>{{b.percent}}</b><small>de victorias</small></span></sc-if></span>
+          <sc-if value="{{b.hasBuild}}" hint-placeholder-val="{{ true }}">
+            <span><span class="bc-lbl">Objetos en orden <em>{{b.buildName}}</em></span><ol class="bc-path"><sc-for list="{{b.core}}" as="item" hint-placeholder-count="3"><li><img src="{{item.src}}" alt="">{{item.name}}</li></sc-for></ol></span>
+            <span class="bc-row"><span class="bc-pill"><img src="{{b.boot.src}}" alt=""><span><small>Botas</small>{{b.boot.name}}</span></span><span class="bc-pill"><i class="keystone" style="{{b.runeStyle}}" aria-hidden="true"></i><span><small>Runa clave</small>{{b.rune}}</span></span></span>
+            <span class="bc-foot"><span><b>{{b.gamesLabel}}</b> partidas · {{b.useLabel}} de uso</span><span class="bc-go">Ver ficha →</span></span>
+          </sc-if>
+          <sc-if value="{{b.insufficient}}" hint-placeholder-val="{{ false }}"><span class="bc-none">Sin partidas suficientes en este rango para recomendar una build.</span></sc-if>
+        </a></sc-for>
+      </div>
+      <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div class="empty"><strong>Ningún campeón coincide</strong><p>Prueba con otro nombre o cambia los filtros.</p><button type="button" onClick="{{reset}}">Restablecer filtros</button></div></sc-if>
     </div>
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1900}}'>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1800}}'>
 const GM_OBJ = {"1054": "../assets/lol/objetos/1054.png", "1055": "../assets/lol/objetos/1055.png", "1056": "../assets/lol/objetos/1056.png", "1082": "../assets/lol/objetos/1082.png", "2065": "../assets/lol/objetos/2065.png", "2503": "../assets/lol/objetos/2503.png", "3001": "../assets/lol/objetos/3001.png", "3006": "../assets/lol/objetos/3006.png", "3009": "../assets/lol/objetos/3009.png", "3020": "../assets/lol/objetos/3020.png", "3026": "../assets/lol/objetos/3026.png", "3031": "../assets/lol/objetos/3031.png", "3033": "../assets/lol/objetos/3033.png", "3036": "../assets/lol/objetos/3036.png", "3046": "../assets/lol/objetos/3046.png", "3047": "../assets/lol/objetos/3047.png", "3050": "../assets/lol/objetos/3050.png", "3065": "../assets/lol/objetos/3065.png", "3068": "../assets/lol/objetos/3068.png", "3071": "../assets/lol/objetos/3071.png", "3072": "../assets/lol/objetos/3072.png", "3074": "../assets/lol/objetos/3074.png", "3075": "../assets/lol/objetos/3075.png", "3076": "../assets/lol/objetos/3076.png", "3078": "../assets/lol/objetos/3078.png", "3083": "../assets/lol/objetos/3083.png", "3085": "../assets/lol/objetos/3085.png", "3089": "../assets/lol/objetos/3089.png", "3091": "../assets/lol/objetos/3091.png", "3094": "../assets/lol/objetos/3094.png", "3100": "../assets/lol/objetos/3100.png", "3102": "../assets/lol/objetos/3102.png", "3107": "../assets/lol/objetos/3107.png", "3109": "../assets/lol/objetos/3109.png", "3110": "../assets/lol/objetos/3110.png", "3111": "../assets/lol/objetos/3111.png", "3115": "../assets/lol/objetos/3115.png", "3116": "../assets/lol/objetos/3116.png", "3118": "../assets/lol/objetos/3118.png", "3124": "../assets/lol/objetos/3124.png", "3135": "../assets/lol/objetos/3135.png", "3142": "../assets/lol/objetos/3142.png", "3143": "../assets/lol/objetos/3143.png", "3153": "../assets/lol/objetos/3153.png", "3156": "../assets/lol/objetos/3156.png", "3157": "../assets/lol/objetos/3157.png", "3158": "../assets/lol/objetos/3158.png", "3161": "../assets/lol/objetos/3161.png", "3165": "../assets/lol/objetos/3165.png", "3179": "../assets/lol/objetos/3179.png", "3190": "../assets/lol/objetos/3190.png", "3222": "../assets/lol/objetos/3222.png", "3302": "../assets/lol/objetos/3302.png", "3504": "../assets/lol/objetos/3504.png", "3742": "../assets/lol/objetos/3742.png", "3814": "../assets/lol/objetos/3814.png", "4645": "../assets/lol/objetos/4645.png", "4646": "../assets/lol/objetos/4646.png", "6333": "../assets/lol/objetos/6333.png", "6610": "../assets/lol/objetos/6610.png", "6631": "../assets/lol/objetos/6631.png", "6653": "../assets/lol/objetos/6653.png", "6655": "../assets/lol/objetos/6655.png", "6662": "../assets/lol/objetos/6662.png", "6672": "../assets/lol/objetos/6672.png", "6673": "../assets/lol/objetos/6673.png", "6675": "../assets/lol/objetos/6675.png", "6676": "../assets/lol/objetos/6676.png", "6692": "../assets/lol/objetos/6692.png", "6694": "../assets/lol/objetos/6694.png", "6697": "../assets/lol/objetos/6697.png", "6698": "../assets/lol/objetos/6698.png"};
 class Component extends DCLogic {
   // Entrada de página propia de LoL: una hoja dorada barre la pantalla y el contenido sube detrás.
@@ -434,7 +464,7 @@ class Component extends DCLogic {
       });
     });
   }
-  renderVals() {
+  codexVals() {
     this.entradaPagina((this.props && this.props.animaciones) ?? true);
     const megaNav = [{"n": "Aatrox", "portrait": "background-position:0.000% 0.000%"}, {"n": "Ahri", "portrait": "background-position:7.692% 0.000%"}, {"n": "Akali", "portrait": "background-position:15.385% 0.000%"}, {"n": "Alistar", "portrait": "background-position:30.769% 0.000%"}, {"n": "Ashe", "portrait": "background-position:76.923% 0.000%"}, {"n": "Caitlyn", "portrait": "background-position:46.154% 8.333%"}, {"n": "Darius", "portrait": "background-position:84.615% 8.333%"}, {"n": "Diana", "portrait": "background-position:92.308% 8.333%"}, {"n": "Ezreal", "portrait": "background-position:30.769% 16.667%"}, {"n": "Fiora", "portrait": "background-position:46.154% 16.667%"}, {"n": "Garen", "portrait": "background-position:76.923% 16.667%"}, {"n": "Jinx", "portrait": "background-position:92.308% 25.000%"}, {"n": "Kai'Sa", "portrait": "background-position:0.000% 33.333%"}, {"n": "Katarina", "portrait": "background-position:38.462% 33.333%"}, {"n": "Lee Sin", "portrait": "background-position:0.000% 41.667%"}, {"n": "Leona", "portrait": "background-position:7.692% 41.667%"}, {"n": "Lux", "portrait": "background-position:53.846% 41.667%"}, {"n": "Malphite", "portrait": "background-position:61.538% 41.667%"}, {"n": "Nautilus", "portrait": "background-position:53.846% 50.000%"}, {"n": "Shen", "portrait": "background-position:69.231% 66.667%"}, {"n": "Thresh", "portrait": "background-position:92.308% 75.000%"}, {"n": "Viego", "portrait": "background-position:92.308% 83.333%"}, {"n": "Yasuo", "portrait": "background-position:46.154% 91.667%"}, {"n": "Yone", "portrait": "background-position:53.846% 91.667%"}];
     this.revelarSecciones('main > section, .builds, footer', (this.props && this.props.animaciones) ?? true);
@@ -541,6 +571,13 @@ class Component extends DCLogic {
       onRole:e=>this.setState({role:e.target.value}), onRank:e=>this.setState({rank:e.target.value}),
       onQuery:e=>this.setState({query:e.target.value}), onSort:e=>this.setState({sort:e.target.value}),
       reset:()=>this.setState({role:'all',rank:'all',sort:'wr',query:''}) };
+  }
+  renderVals() {
+    const v = this.codexVals();
+    const roles = [['all', 'Todos'], ['Superior', 'Superior'], ['Jungla', 'Jungla'], ['Central', 'Central'], ['Inferior', 'Inferior'], ['Apoyo', 'Apoyo']];
+    return { ...v,
+      roleTabs: roles.map(([val, label]) => ({ label, pressed: v.role === val ? 'true' : 'false', pick: () => this.setState({ role: val }) })),
+      risers: v.risers.map((b) => ({ ...b, changeNum: (b.change || '').replace('+', '') })) };
   }
 }
 </script>

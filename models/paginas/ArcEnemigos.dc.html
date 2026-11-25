@@ -340,6 +340,102 @@ a{color:#F5C02A}a:hover{color:#FFD45A}
 @media(max-width:560px){.ap .wrap{padding-left:14px;padding-right:14px}.ap .guide-head h1{font-size:44px}.ap .enemy-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}.ap .enemy-art{height:96px}.ap .enemy-art img{height:88px}.ap .filter-group{width:100%}.ap .filter-label{width:100%}.ap .filter-btn{min-height:36px}.ap .total-tag{font-size:13px}.ap .detail-panel{padding:14px}.ap .quest-tools{gap:8px}.ap .quest-row{padding:10px}.ap .quest-name{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.ap .enemy-card,.ap .enemy-card:hover{transition:none;transform:none}}
 
+
+/* propuesta Claude: bestiario */
+.ce{padding-top:40px;padding-bottom:80px}
+.ce-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:26px}
+.ce-kick{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF8A66}
+.ce-head h1{margin:0;font:800 clamp(44px,5.4vw,76px)/.92 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.005em}
+.ce-lede{margin:12px 0 0;max-width:620px;font-size:16px;color:#C4BDB2}
+.ce-legend{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#ABA49A;text-align:right}
+.ce-legend b{color:#F2EBDD;font-weight:600}
+.ladder{display:grid;grid-template-columns:1.1fr repeat(5,minmax(0,1fr));gap:6px;margin-bottom:14px}
+.rung{position:relative;display:flex;align-items:baseline;gap:10px;min-height:64px;padding:12px 14px 10px;border:1px solid rgba(242,235,221,.12);border-radius:8px;background:#121117;text-align:left;overflow:hidden;transition:border-color .2s,background .2s}
+.rung::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--rc,#F2EBDD);opacity:.55;transition:opacity .2s}
+.rung:hover{border-color:rgba(242,235,221,.3)}
+.rung[aria-pressed="true"]{border-color:var(--rc,#F2EBDD);background:color-mix(in srgb,var(--rc,#F2EBDD) 10%,#121117)}
+.rung[aria-pressed="true"]::before{opacity:1}
+.rung-n{font:800 34px/1 'Barlow Condensed',sans-serif;color:var(--rc,#F2EBDD)}
+.rung-l{font-size:13px;font-weight:600;color:#D8D1C5}
+.r-all{--rc:#F2EBDD}.r-ext{--rc:#FF6B5B}.r-cri{--rc:#FFA24A}.r-alt{--rc:#F5C02A}.r-mod{--rc:#7FD9A0}.r-baj{--rc:#7FD6F0}
+.ce-tools{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:end;padding:14px;border:1px solid rgba(242,235,221,.1);border-radius:10px;background:#0F0E13;margin-bottom:22px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label{font-size:12px;font-weight:600;color:#ABA49A}
+.fld input,.fld select{height:44px;padding:0 12px;border:1px solid rgba(242,235,221,.16);border-radius:7px;background:#16151B;color:#F2EBDD;font-size:14px;min-width:0}
+.fld select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#ABA49A 50%),linear-gradient(135deg,#ABA49A 50%,transparent 50%);background-position:calc(100% - 18px) 19px,calc(100% - 13px) 19px;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+.ce-reset{height:44px;padding:0 16px;border:1px solid rgba(242,235,221,.16);border-radius:7px;background:transparent;color:#D8D1C5;font-size:13px;font-weight:600}
+.ce-reset:hover{border-color:rgba(242,235,221,.4);color:#FFF}
+.ce-count{display:flex;justify-content:space-between;gap:16px;margin:0 0 12px;font-size:13px;color:#ABA49A}
+.ce-count b{color:#F2EBDD}
+.ce-count a{color:#FF8A66}
+.ce-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:24px;align-items:start}
+.ce-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bc{display:flex;flex-direction:column;padding:0;border:1px solid rgba(242,235,221,.1);border-radius:10px;background:#121117;text-align:left;overflow:hidden;transition:border-color .2s,transform .2s}
+.bc:hover{border-color:rgba(242,235,221,.32);transform:translateY(-2px)}
+.bc[aria-pressed="true"]{border-color:var(--rc);box-shadow:0 0 0 1px var(--rc) inset}
+.bc-art{position:relative;display:block;aspect-ratio:16/9;background:#0B0A0E;overflow:hidden}
+.bc-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.bc:hover .bc-art img{transform:scale(1.05)}
+.bc-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,14,0) 45%,rgba(11,10,14,.92))}
+.bc-art .thr{position:absolute;top:10px;left:10px;z-index:1;background:rgba(11,10,14,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.bc-name{position:absolute;left:12px;right:12px;bottom:8px;z-index:1;font:800 26px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:#FFF;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.bc-body{display:flex;flex-direction:column;gap:9px;padding:11px 12px 13px}
+.bc-type{font-size:12px;color:#ABA49A}
+.armor{display:flex;align-items:center;gap:8px}
+.armor-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;width:84px;flex-shrink:0}
+.armor-bar i{height:6px;border-radius:2px;background:rgba(242,235,221,.12)}
+.armor-bar i.on{background:var(--ac)}
+.a1{--ac:#7FD6F0}.a2{--ac:#F5C02A}.a3{--ac:#FFA24A}.a4{--ac:#FF6B5B}
+.armor-t{font-size:12px;font-weight:600;color:#D8D1C5;line-height:1.25}
+.armor-t>span{display:block;font-weight:500;color:#ABA49A}
+.ce-panel{position:sticky;top:128px;border:1px solid rgba(242,235,221,.12);border-radius:12px;background:#121117;overflow:hidden}
+.cp-art{position:relative;aspect-ratio:16/9;background:#0B0A0E}
+.cp-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cp-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,17,23,0) 40%,#121117)}
+.cp-head{position:absolute;left:18px;right:18px;bottom:12px;z-index:1}
+.cp-head .thr{background:rgba(11,10,14,.86)}
+.cp-head h2{margin:6px 0 0;font:800 42px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.cp-head .cp-type{display:block;margin-top:4px;font-size:13px;color:#D8D1C5}
+.cp-body{padding:4px 18px 20px}
+.cp-sec{padding:14px 0;border-top:1px solid rgba(242,235,221,.08)}
+.cp-sec:first-child{border-top:0}
+.cp-sec h3{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ABA49A}
+.cp-sec p{margin:0;font-size:14px;line-height:1.55;color:#DED8CE}
+.cp-armor{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.cp-armor .armor-bar{width:120px}
+.cp-armor b{font:700 20px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.weak{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:12px;border-radius:8px;background:rgba(255,92,48,.08);border:1px solid rgba(255,92,48,.28)}
+.weak svg{width:28px;height:28px;color:#FF8A66}
+.weak p{color:#F2EBDD}
+.guns{display:grid;gap:6px}
+.gun{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 11px;border-radius:7px;background:#18171D}
+.gun b{font:700 18px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.gun>span{font-size:12px;color:#ABA49A;text-align:right}
+.drops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.drop{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:11.5px;line-height:1.3;color:#D0C9BE}
+.drop img{width:100%;max-width:72px;aspect-ratio:1/1;height:auto;object-fit:contain;padding:6px;box-sizing:border-box;border-radius:8px;background:radial-gradient(circle at 50% 40%,rgba(242,235,221,.08),transparent 70%),#0D0C11;border:1px solid rgba(242,235,221,.08)}
+.maps{display:flex;flex-wrap:wrap;gap:6px}
+.maps a{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;border-radius:6px;background:#18171D;border:1px solid rgba(242,235,221,.1);color:#F2EBDD;font-size:12.5px;text-decoration:none}
+.maps a:hover{border-color:#FF8A66}
+.ce-empty{grid-column:1/-1;padding:40px 20px;border:1px dashed rgba(242,235,221,.2);border-radius:10px;text-align:center;color:#D0C9BE}
+.ce-empty h2{margin:0 0 8px;font:800 26px 'Barlow Condensed',sans-serif;text-transform:uppercase;color:#F2EBDD}
+@media (max-width:1180px){.ce-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ce-layout{grid-template-columns:minmax(0,1fr) 360px}}
+@media (max-width:860px){
+  .ce-head{grid-template-columns:1fr}.ce-legend{text-align:left}
+  .ladder{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ce-tools{grid-template-columns:1fr 1fr}.ce-tools .grow{grid-column:1/-1}
+  .ce-layout{grid-template-columns:1fr}.ce-panel{position:static;order:-1}
+}
+@media (max-width:560px){
+  .ce{padding-top:28px}.ce-lede{font-size:14px}
+  .ladder{grid-template-columns:repeat(2,minmax(0,1fr))}.rung{min-height:54px}.rung-n{font-size:28px}
+  .ce-tools{grid-template-columns:1fr}.ce-reset{width:100%}
+  .ce-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.bc-name{font-size:21px}
+  .drops{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .armor{flex-direction:column;align-items:flex-start;gap:6px}.armor-bar{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.bc,.bc:hover,.bc-art img{transition:none;transform:none}}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F5C02A;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#F5C02A 38%,transparent);color:#fff}
@@ -399,26 +495,44 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
         <a class="gchip" href="Arc.dc.html"><img src="../assets/games/logo-arc.png" alt="">ARC Raiders</a>
         <a class="slink" href="Arc.dc.html">Inicio</a>
         <a class="slink" href="ArcMapa.dc.html">Mapas</a>
-        <a class="slink" href="Arc.dc.html#objetos">Objetos y reciclaje</a>
+        <a class="slink" href="ArcObjetos.dc.html">Objetos y reciclaje</a>
         <a class="slink" href="ArcMisiones.dc.html">Misiones</a>
         <a class="slink on" href="ArcEnemigos.dc.html" aria-current="page">Enemigos</a>
         <a class="slink" href="Arc.dc.html#objetos">Guías</a>
       </div>
     </nav>
   </header>
-<main class="wrap guide" id="contenido">
-  <div class="guide-head"><div><h1>Enemigos de ARC</h1><p>Identifica la amenaza, localiza su blindaje y prepara el equipo antes de salir a superficie. Selecciona un ARC para consultar sus puntos débiles, botín y mejores opciones de combate.</p></div><div class="total-tag">{{visibleCount}} de 17 ARC</div></div>
-  <div class="filter-panel" aria-label="Filtros de enemigos">
-    <div class="filter-group"><span class="filter-label">Amenaza</span><sc-for list="{{threatFilters}}" as="f" hint-placeholder-count="6"><button type="button" class="filter-btn" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
-    <div class="filter-group"><span class="filter-label">Tipo</span><sc-for list="{{typeFilters}}" as="f" hint-placeholder-count="6"><button type="button" class="filter-btn" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
-    <div class="filter-group"><span class="filter-label">Mapa</span><sc-for list="{{mapFilters}}" as="f" hint-placeholder-count="6"><button type="button" class="filter-btn" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
+<main class="wrap ce" id="contenido">
+  <div class="ce-head">
+    <div><p class="ce-kick">Bestiario de la superficie</p><h1>Enemigos de ARC</h1><p class="ce-lede">Qué blindaje tiene cada ARC, qué arma lo atraviesa y dónde darle. Elige uno para ver su ficha completa.</p></div>
+    <div class="ce-legend"><span><b>Blindaje</b>: la barra va de ligero a extremo</span><span><b>Penetración mínima</b>: la que necesita tu arma</span></div>
   </div>
-  <div class="result-line"><span>{{resultText}}</span><a href="ArcMapa.dc.html">Consultar mapas de aparición</a></div>
-  <sc-if value="{{hasResults}}" hint-placeholder-val="{{ true }}"><div class="enemy-layout">
-    <div class="enemy-grid"><sc-for list="{{visibleEnemies}}" as="e" hint-placeholder-count="6"><button type="button" class="enemy-card" aria-pressed="{{e.pressed}}" onClick="{{e.pick}}"><span class="enemy-art"><img src="{{e.image}}" alt=""></span><span class="enemy-card-body"><span class="thr {{e.threatClass}}">{{e.threat}}</span><h2>{{e.name}}</h2><span class="enemy-meta">{{e.type}} · {{e.armor}}</span><span class="enemy-mapline">{{e.mapSummary}}</span></span></button></sc-for></div>
-    <aside class="detail-panel" aria-label="Ficha del enemigo seleccionado"><sc-if value="{{hasSelected}}" hint-placeholder-val="{{ true }}"><div class="detail-top"><img src="{{selected.image}}" alt=""><div><h2>{{selected.name}}</h2><span class="thr {{selected.threatClass}}">{{selected.threat}}</span><p>{{selected.armor}}</p></div></div><p>{{selected.armorNote}}</p><h3>Punto débil</h3><p>{{selected.weakness}}</p><h3>Botín conocido</h3><div class="loot-row"><sc-for list="{{selected.drops}}" as="d" hint-placeholder-count="6"><figure class="loot-item"><img src="{{d.image}}" alt=""><figcaption>{{d.name}}</figcaption></figure></sc-for></div><h3>Armas y munición</h3><div class="weapon-list"><sc-for list="{{selected.weapons}}" as="w" hint-placeholder-count="6"><div class="weapon"><span>{{w.name}}</span><small>{{w.pen}} · {{w.ammo}}</small></div></sc-for></div><h3>Apariciones por mapa</h3><div class="map-links"><sc-for list="{{selected.maps}}" as="m" hint-placeholder-count="6"><a class="map-link" href="ArcMapa.dc.html">{{m}}</a></sc-for></div></sc-if></aside>
-  </div></sc-if>
-  <sc-if value="{{empty}}" hint-placeholder-val="{{ true }}"><div class="empty-state"><h2>No hay ARC con estos filtros</h2><p>Prueba otra amenaza, tipo o mapa para volver a ver enemigos.</p><button type="button" class="filter-btn" onClick="{{resetFilters}}">Limpiar filtros</button></div></sc-if>
+  <div class="ladder" role="group" aria-label="Filtrar por nivel de amenaza">
+    <sc-for list="{{ladder}}" as="l" hint-placeholder-count="6"><button type="button" class="rung {{l.cls}}" aria-pressed="{{l.pressed}}" onClick="{{l.pick}}"><span class="rung-n">{{l.count}}</span><span class="rung-l">{{l.label}}</span></button></sc-for>
+  </div>
+  <div class="ce-tools">
+    <div class="fld grow"><label for="ce-q">Buscar ARC</label><input id="ce-q" type="search" placeholder="Bastion, Leaper, Wasp…" value="{{q}}" onChange="{{onQ}}" autocomplete="off"></div>
+    <div class="fld"><label for="ce-t">Tipo</label><select id="ce-t" value="{{type}}" onChange="{{onType}}"><sc-for list="{{typeOpts}}" as="o" hint-placeholder-count="4"><option value="{{o.v}}">{{o.label}}</option></sc-for></select></div>
+    <div class="fld"><label for="ce-m">Mapa</label><select id="ce-m" value="{{map}}" onChange="{{onMap}}"><sc-for list="{{mapOpts}}" as="o" hint-placeholder-count="4"><option value="{{o.v}}">{{o.label}}</option></sc-for></select></div>
+    <button type="button" class="ce-reset" onClick="{{resetFilters}}">Limpiar filtros</button>
+  </div>
+  <p class="ce-count"><span><b>{{visibleCount}}</b> de 17 ARC</span><a href="ArcMapa.dc.html">Ver dónde aparecen en el mapa</a></p>
+  <div class="ce-layout">
+    <div class="ce-grid">
+      <sc-for list="{{visibleEnemies}}" as="e" hint-placeholder-count="6"><button type="button" class="bc {{e.rcls}}" aria-pressed="{{e.pressed}}" onClick="{{e.pick}}"><span class="bc-art"><img src="{{e.image}}" alt="" loading="lazy"><span class="thr {{e.threatClass}}">{{e.threat}}</span><span class="bc-name">{{e.name}}</span></span><span class="bc-body"><span class="bc-type">{{e.type}}</span><span class="armor"><span class="armor-bar {{e.acls}}" aria-hidden="true"><i class="{{e.a1}}"></i><i class="{{e.a2}}"></i><i class="{{e.a3}}"></i><i class="{{e.a4}}"></i></span><span class="armor-t">{{e.armorShort}}<span>Pen. mínima: {{e.pen}}</span></span></span></span></button></sc-for>
+      <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div class="ce-empty"><h2>Ningún ARC con estos filtros</h2><p>Prueba con otra amenaza, tipo o mapa.</p><button type="button" class="ce-reset" onClick="{{resetFilters}}">Limpiar filtros</button></div></sc-if>
+    </div>
+    <sc-if value="{{hasSelected}}" hint-placeholder-val="{{ true }}"><aside class="ce-panel" aria-label="Ficha del ARC seleccionado">
+      <div class="cp-art"><img src="{{selected.image}}" alt=""><div class="cp-head"><span class="thr {{selected.threatClass}}">{{selected.threat}}</span><h2>{{selected.name}}</h2><span class="cp-type">{{selected.type}}</span></div></div>
+      <div class="cp-body">
+        <div class="cp-sec"><h3>Blindaje</h3><div class="cp-armor"><span class="armor-bar {{selected.acls}}" aria-hidden="true"><i class="{{selected.a1}}"></i><i class="{{selected.a2}}"></i><i class="{{selected.a3}}"></i><i class="{{selected.a4}}"></i></span><b>{{selected.armorShort}}</b></div><p>{{selected.armorNote}}</p></div>
+        <div class="cp-sec"><h3>Dónde darle</h3><div class="weak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="1" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="23"></line><line x1="1" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="23" y2="12"></line></svg><p>{{selected.weakness}}</p></div></div>
+        <div class="cp-sec"><h3>Armas que funcionan</h3><div class="guns"><sc-for list="{{selected.weapons}}" as="w" hint-placeholder-count="3"><div class="gun"><b>{{w.name}}</b><span>Penetración {{w.pen}} · {{w.ammo}}</span></div></sc-for></div></div>
+        <div class="cp-sec"><h3>Botín</h3><div class="drops"><sc-for list="{{selected.drops}}" as="d" hint-placeholder-count="4"><figure class="drop"><img src="{{d.image}}" alt=""><figcaption>{{d.name}}</figcaption></figure></sc-for></div></div>
+        <div class="cp-sec"><h3>Dónde aparece</h3><div class="maps"><sc-for list="{{selected.mapList}}" as="m" hint-placeholder-count="4"><a href="ArcMapa.dc.html">{{m}}</a></sc-for></div></div>
+      </div>
+    </aside></sc-if>
+  </div>
 </main>
   <footer class="foot">
     <div class="wrap">
@@ -436,26 +550,44 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
   </nav>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1900}}'>
+<script type="text/x-dc" data-dc-script data-props='{"animaciones":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2000}}'>
 class Component extends DCLogic {
   renderVals() {
     const S = this.state || {};
     const enemies = [{"id":"arc_bastion","name":"Bastion","type":"Asalto pesado","threat":"Crítica","armor":"Blindaje pesado","armorNote":"Necesitas penetración «Fuerte» o mejor. Las armas de munición ligera casi no hacen nada contra el blindaje.","weakness":"Destruye el bidón de su parte trasera para dejar al descubierto su punto débil.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City","Stella Montis"],"weapons":[{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Yunque","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Bettina","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_motion_core","name":"Núcleo de movimiento ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"}]},{"id":"arc_bombardier","name":"Bombardier","type":"Artillería pesada","threat":"Crítica","armor":"Blindaje pesado","armorNote":"Necesitas penetración «Fuerte» o mejor. Las armas de munición ligera casi no hacen nada contra el blindaje.","weakness":"Dispara al bidón amarillo de la parte trasera: daña directamente su núcleo.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Yunque","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Bettina","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"advanced_arc_powercell","name":"Celda de energía ARC avanzada"},{"id":"bombardier_cell","name":"Célula de bombardero"},{"id":"launcher_ammo","name":"Munición de lanzador"}]},{"id":"arc_fireball","name":"Fireball","type":"Denegación de zona","threat":"Alta","armor":"Blindaje medio","armorNote":"Necesitas al menos penetración «Moderada». Con armas de penetración baja pierdes mucho daño en el blindaje.","weakness":"Su núcleo queda expuesto cuando usa el lanzallamas.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City","Stella Montis"],"weapons":[{"name":"Crótalo","pen":"Moderada","ammo":"Munición media"},{"name":"Arpegio","pen":"Moderada","ammo":"Munición media"},{"name":"Osprey","pen":"Moderada","ammo":"Munición media"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"fireball_burner","name":"Quemador de esferígneo"}]},{"id":"arc_hornet","name":"Hornet","type":"Dron medio","threat":"Alta","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Propulsores traseros sin blindaje.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"hornet_driver","name":"Controlador de Avispón"},{"id":"simple_gun_parts","name":"Piezas de arma básica"}]},{"id":"arc_leaper","name":"Leaper","type":"Máquina de asedio","threat":"Crítica","armor":"Blindaje pesado","armorNote":"Necesitas penetración «Fuerte» o mejor. Las armas de munición ligera casi no hacen nada contra el blindaje.","weakness":"El fuego es lo más eficaz. También puedes dispararle al ojo.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Yunque","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Bettina","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"advanced_arc_powercell","name":"Celda de energía ARC avanzada"},{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"},{"id":"arc_flex_rubber","name":"Goma Flexible Arc"}]},{"id":"arc_matriarch","name":"Matriarch","type":"Jefe","threat":"Extrema","armor":"Blindaje extremo","armorNote":"Lo mejor es la penetración «Muy fuerte» o «Fuerte» y mucha munición. Apunta solo a los puntos débiles.","weakness":"Núcleo central brillante, que queda expuesto cuando ataca. También son vulnerables las articulaciones de las patas y las zonas rojas de la corona.","maps":["Dam Battlegrounds"],"weapons":[{"name":"Ecualizador","pen":"Muy fuerte","ammo":"Clip de energía"},{"name":"Júpiter","pen":"Muy fuerte","ammo":"Clip de energía"},{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"},{"id":"arc_performance_steel","name":"Acero Resistente Arc"},{"id":"advanced_arc_powercell","name":"Celda de energía ARC avanzada"}]},{"id":"arc_pop","name":"Pop","type":"Explosivo","threat":"Moderada","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Simplemente dispárale.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City","Stella Montis"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_thermo_lining","name":"Revestimiento térmico ARC"},{"id":"crude_explosives","name":"Explosivos rudimentarios"}]},{"id":"arc_rocketeer","name":"Rocketeer","type":"Artillería voladora","threat":"Crítica","armor":"Blindaje pesado","armorNote":"Necesitas penetración «Fuerte» o mejor. Las armas de munición ligera casi no hacen nada contra el blindaje.","weakness":"Destruye dos propulsores o dispara a su núcleo, que está en la parte inferior.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Yunque","pen":"Fuerte","ammo":"Munición pesada"},{"name":"Bettina","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_motion_core","name":"Núcleo de movimiento ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"}]},{"id":"arc_sentinel","name":"Sentinel","type":"Torreta francotiradora","threat":"Alta","armor":"Blindaje medio","armorNote":"Necesitas al menos penetración «Moderada». Con armas de penetración baja pierdes mucho daño en el blindaje.","weakness":"El bidón amarillo sin blindaje será tu objetivo principal.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Crótalo","pen":"Moderada","ammo":"Munición media"},{"name":"Arpegio","pen":"Moderada","ammo":"Munición media"},{"name":"Osprey","pen":"Moderada","ammo":"Munición media"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_coolant","name":"Refrigerante ARC"},{"id":"arc_synthetic_resin","name":"Resina sintética ARC"}]},{"id":"arc_shredder","name":"Shredder","type":"Denegación de zona","threat":"Alta","armor":"Blindaje medio","armorNote":"Necesitas al menos penetración «Moderada». Con armas de penetración baja pierdes mucho daño en el blindaje.","weakness":"Su punto débil principal es la «barra-ojo» de la cabeza. También puedes disparar al núcleo naranja que se ve entre sus placas.","maps":["Stella Montis"],"weapons":[{"name":"Crótalo","pen":"Moderada","ammo":"Munición media"},{"name":"Arpegio","pen":"Moderada","ammo":"Munición media"},{"name":"Osprey","pen":"Moderada","ammo":"Munición media"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"shredder_gyro","name":"Giroscopio de Triturador"},{"id":"shotgun_ammo","name":"Munición de escopeta"}]},{"id":"arc_snitch","name":"Snitch","type":"Dron explorador","threat":"Moderada","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Propulsores o placa inferior.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_synthetic_resin","name":"Resina sintética ARC"},{"id":"sensors","name":"Sensores"}]},{"id":"arc_spotter","name":"Spotter","type":"Dron explorador","threat":"Alta","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Propulsores sin blindaje.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"spotter_relay","name":"Repetidor de Vigía"},{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"sensors","name":"Sensores"}]},{"id":"arc_surveyor","name":"Surveyor","type":"Reconocimiento","threat":"Baja","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Expone su núcleo de energía cuando dispara su rayo azul al cielo.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"arc_motion_core","name":"Núcleo de movimiento ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"}]},{"id":"arc_the_queen","name":"The Queen","type":"Jefe","threat":"Extrema","armor":"Blindaje extremo","armorNote":"Lo mejor es la penetración «Muy fuerte» o «Fuerte» y mucha munición. Apunta solo a los puntos débiles.","weakness":"Las articulaciones amarillas de las patas. Expone su núcleo cuando dispara el láser.","maps":["Dam Battlegrounds","Spaceport","Blue Gate"],"weapons":[{"name":"Ecualizador","pen":"Muy fuerte","ammo":"Clip de energía"},{"name":"Júpiter","pen":"Muy fuerte","ammo":"Clip de energía"},{"name":"Ferro","pen":"Fuerte","ammo":"Munición pesada"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"advanced_arc_powercell","name":"Celda de energía ARC avanzada"},{"id":"arc_motion_core","name":"Núcleo de movimiento ARC"},{"id":"arc_circuitry","name":"Sistema De Circuitos Arc"}]},{"id":"arc_tick","name":"Tick","type":"Depredador de emboscada","threat":"Moderada","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Simplemente dispárale. También cae de un golpe cuerpo a cuerpo.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City","Stella Montis"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"tick_pod","name":"Cápsula de garrapata"}]},{"id":"arc_turret","name":"Turret","type":"Sistema de defensa","threat":"Moderada","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Sin blindaje: con dispararle basta.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City","Stella Montis"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"light_ammo","name":"Munición ligera"},{"id":"simple_gun_parts","name":"Piezas de arma básica"}]},{"id":"arc_wasp","name":"Wasp","type":"Dron volador","threat":"Moderada","armor":"Sin blindaje o ligero","armorNote":"Aquí no hace falta penetración: cualquier arma vale. Elige las que gastan munición barata.","weakness":"Propulsores sin blindaje.","maps":["Dam Battlegrounds","Spaceport","Blue Gate","Buried City"],"weapons":[{"name":"Caldero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Costurero","pen":"Muy baja","ammo":"Munición ligera"},{"name":"Horquilla","pen":"Muy baja","ammo":"Munición ligera"}],"drops":[{"id":"arc_alloy","name":"Aleación ARC"},{"id":"arc_powercell","name":"Celda de energía ARC"},{"id":"wasp_driver","name":"Controlador de Avispa"},{"id":"light_ammo","name":"Munición ligera"}]}];
-    const threatNames = ['Todas', 'Extrema', 'Crítica', 'Alta', 'Moderada', 'Baja'];
-    const typeNames = ['Todos', ...new Set(enemies.map((e) => e.type))];
-    const mapNames = ['Todos', ...new Set(enemies.flatMap((e) => e.maps))];
+
+    const order = { 'Extrema': 0, 'Crítica': 1, 'Alta': 2, 'Moderada': 3, 'Baja': 4 };
     const threatClass = { 'Extrema': 't-ext', 'Crítica': 't-cri', 'Alta': 't-alt', 'Moderada': 't-mod', 'Baja': 't-baj' };
-    const mapShort = { 'Dam Battlegrounds': 'Presas', 'Buried City': 'Ciudad enterrada', 'Spaceport': 'Puerto espacial', 'Blue Gate': 'Puerta Azul', 'Stella Montis': 'Stella Montis', 'Riven Tides': 'Mareas divididas' };
-    const threat = S.threat || 'Todas', type = S.type || 'Todos', map = S.map || 'Todos';
-    const filtered = enemies.filter((e) => (threat === 'Todas' || e.threat === threat) && (type === 'Todos' || e.type === type) && (map === 'Todos' || e.maps.indexOf(map) >= 0));
+    const rungClass = { 'Extrema': 'r-ext', 'Crítica': 'r-cri', 'Alta': 'r-alt', 'Moderada': 'r-mod', 'Baja': 'r-baj' };
+    const armorLv = { 'Sin blindaje o ligero': 1, 'Blindaje medio': 2, 'Blindaje pesado': 3, 'Blindaje extremo': 4 };
+    const armorShort = { 1: 'Ligero o ninguno', 2: 'Medio', 3: 'Pesado', 4: 'Extremo' };
+    const mapEs = { 'Dam Battlegrounds': 'Presas', 'Buried City': 'Ciudad enterrada', 'Spaceport': 'Puerto espacial', 'Blue Gate': 'Puerta Azul', 'Stella Montis': 'Stella Montis', 'Riven Tides': 'Mareas divididas' };
+    const set = (o) => this.setState(o);
+    const threat = S.threat || 'Todas', type = S.type || 'Todos', map = S.map || 'Todos', q = S.q || '';
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const base = enemies.filter((e) => (type === 'Todos' || e.type === type) && (map === 'Todos' || e.maps.indexOf(map) >= 0) && (!q || norm(e.name).indexOf(norm(q)) >= 0));
+    const filtered = base.filter((e) => threat === 'Todas' || e.threat === threat).sort((a, b) => order[a.threat] - order[b.threat] || a.name.localeCompare(b.name));
     const selId = filtered.some((e) => e.id === S.sel) ? S.sel : (filtered[0] ? filtered[0].id : null);
-    const selectedRaw = enemies.find((e) => e.id === selId);
-    const makeEnemy = (e) => ({...e,image:'/images/arc-raiders/bots/'+e.id+'.webp',threatClass:threatClass[e.threat],mapSummary:e.maps.map((m)=>mapShort[m]||m).join(' · '),pressed:e.id===selId?'true':'false',drops:e.drops.map((d)=>({...d,image:'/images/arc-raiders/items/'+d.id+'.webp'})),weapons:e.weapons,pick:()=>this.setState({sel:e.id})});
-    const visibleEnemies = filtered.map(makeEnemy);
-    const selected = selectedRaw ? makeEnemy(selectedRaw) : null;
-    const makeFilters = (names, current, key) => names.map((label) => ({label,pressed:label===current?'true':'false',pick:()=>this.setState({[key]:label,sel:null})}));
+    const make = (e) => {
+      const lv = armorLv[e.armor] || 1;
+      return { ...e, image: '/images/arc-raiders/bots/' + e.id + '.webp', threatClass: threatClass[e.threat], rcls: rungClass[e.threat], acls: 'a' + lv,
+        a1: 'on', a2: lv >= 2 ? 'on' : '', a3: lv >= 3 ? 'on' : '', a4: lv >= 4 ? 'on' : '', armorShort: armorShort[lv],
+        pen: (e.weapons[0] && e.weapons[0].pen) || '—', mapList: e.maps.map((m) => mapEs[m] || m),
+        pressed: e.id === selId ? 'true' : 'false', drops: e.drops.map((d) => ({ ...d, image: '/images/arc-raiders/items/' + d.id + '.webp' })),
+        pick: () => set({ sel: e.id }) };
+    };
+    const visibleEnemies = filtered.map(make);
+    const selRaw = enemies.find((e) => e.id === selId);
+    const ladder = [{ label: 'Todas', t: 'Todas', cls: 'r-all', count: base.length }].concat(['Extrema', 'Crítica', 'Alta', 'Moderada', 'Baja'].map((t) => ({ label: t, t, cls: rungClass[t], count: base.filter((e) => e.threat === t).length })))
+      .map((l) => ({ ...l, pressed: l.t === threat ? 'true' : 'false', pick: () => set({ threat: l.t, sel: null }) }));
+    const typeOpts = ['Todos', ...[...new Set(enemies.map((e) => e.type))].sort()].map((v) => ({ v, label: v === 'Todos' ? 'Todos los tipos' : v }));
+    const mapOpts = ['Todos', ...new Set(enemies.flatMap((e) => e.maps))].map((v) => ({ v, label: v === 'Todos' ? 'Todos los mapas' : (mapEs[v] || v) }));
     const motion = this.props.animaciones ?? true;
-    return {motionClass:motion?'':'still',threatFilters:makeFilters(threatNames,threat,'threat'),typeFilters:makeFilters(typeNames,type,'type'),mapFilters:makeFilters(mapNames,map,'map'),visibleEnemies,selected,hasSelected:!!selected,hasResults:visibleEnemies.length>0,empty:visibleEnemies.length===0,visibleCount:visibleEnemies.length,resultText:visibleEnemies.length+' resultados · catálogo completo de 17 ARC',resetFilters:()=>this.setState({threat:'Todas',type:'Todos',map:'Todos',sel:null})};
+    return { motionClass: motion ? '' : 'still', ladder, typeOpts, mapOpts, type, map, q,
+      onQ: (ev) => set({ q: ev.target.value, sel: null }), onType: (ev) => set({ type: ev.target.value, sel: null }), onMap: (ev) => set({ map: ev.target.value, sel: null }),
+      visibleEnemies, visibleCount: visibleEnemies.length, empty: visibleEnemies.length === 0,
+      selected: selRaw ? make(selRaw) : null, hasSelected: !!selRaw,
+      resetFilters: () => set({ threat: 'Todas', type: 'Todos', map: 'Todos', q: '', sel: null }) };
   }
 }
 </script>

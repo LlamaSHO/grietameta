@@ -228,15 +228,9 @@ Rutas de imágenes ya convertidas:
 - **Objetos** (Claude): las cuatro acciones (guardar, reciclar, vender, usar) son a la vez resumen y filtro; buscador que también busca por material de reciclaje, rareza, categoría, orden y ficha con la recomendación y su motivo, lo que da al reciclarlo, quién lo pide, receta y efectos. Datos: `public/data/arc-raiders/items.json` (los 581).
 - **Enemigos** y **Misiones** (Codex, revisadas por Claude): filtros de amenaza/tipo/mapa, punto débil, botín y armas; progreso por comerciante, objetivos paso a paso y recompensas.
 
-### Propuestas alternativas de Claude a los diseños de Codex (2026-11-25, pendientes de que Jorge elija)
+### Diseños de Codex sustituidos (2026-11-25)
 
-Las versiones de Codex se conservan tal cual. Las de Claude usan los mismos datos y están en el lienzo debajo de cada una de Codex:
-
-- `ArcEnemigos-claude.dc.html`: bestiario con imagen a sangre, escala de amenaza con recuento como filtro, tipo y mapa en desplegables, barra de blindaje con la penetración mínima y una ficha con «Dónde darle».
-- `ArcMisiones-claude.dc.html`: misiones en cadena por comerciante, que se marcan como hechas desde la propia lista, progreso total y por comerciante, recompensas en miniatura y «Guarda esto para la misión».
-- `LolBuilds-claude.dc.html`: fichas por campeón con los tres objetos en orden (con nombre), las botas y la runa clave, pestañas de rol y las subidas del parche en una franja.
-- `LolEsports-claude.dc.html`: el partido destacado como marcador simétrico (equipo · hora · equipo) con los dos caminos alineados debajo.
-- `Lol-tier-claude.dc.html`: la tier list con una vista «Por niveles» (filas S+, S, A…) por defecto; la tabla de Codex queda como segunda vista.
+Jorge eligió las versiones de Claude: Enemigos, Misiones, Builds, eSports y la tier list por niveles (con la tabla como segunda vista) sustituyen a las de Codex con el mismo nombre de archivo. En la ficha del campeón, los matchups van antes de las builds y solo se muestran las 3 builds más usadas.
 
 En el lienzo, las imágenes de ARC que el lienzo no sirve (`/images/arc-raiders/...`) se sustituyen al publicar por recursos subidos: los ARC y los comerciantes uno a uno y los 556 objetos en un solo sprite. En el repo las páginas mantienen las rutas `/images/...`.
 - Imágenes de objetos y ARC con rutas `/images/arc-raiders/...` (en el lienzo habría que subirlas como recursos).

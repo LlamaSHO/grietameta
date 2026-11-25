@@ -263,6 +263,28 @@ a{color:#E2B566}a:hover{color:#F3C878}
 @media(max-width:1050px){.h-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"ta tb" "h2h h2h" "mid mid" "pa pb" "act act"}.h-grid .tm2.a,.h-grid .tm2.b{justify-self:center;align-self:center}.h-grid .pa,.h-grid .pb{justify-self:stretch;width:100%}}
 @media(max-width:640px){.h-grid{grid-template-areas:"ta tb" "h2h h2h" "mid mid" "pa pa" "pb pb" "act act";gap:14px}}
 
+
+/* propuesta Claude: marcador simétrico */
+.hero{padding:24px 28px 26px}
+.h-grid{grid-template-columns:minmax(0,1fr) minmax(280px,380px) minmax(0,1fr);grid-template-areas:"ta mid tb" "pa h2h pb" "act act act";gap:20px 28px;align-items:stretch;margin-top:20px}
+.h-grid .tm2.a{grid-area:ta;align-self:center;justify-self:start}
+.h-grid .tm2.b{grid-area:tb;align-self:center;justify-self:end}
+.h-grid .mid{grid-area:mid;align-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:18px 12px;border-radius:16px;background:#07090d99;border:1px solid #ffffff17;text-align:center}
+.h-grid .mid::before{content:"VS";display:block;margin-bottom:6px;font:800 13px/1 'Chakra Petch',sans-serif;letter-spacing:.3em;color:#ffffff66}
+.h-grid .h-corner,.h-grid .pa,.h-grid .pb,.h-grid .h2hc{width:100%;justify-self:stretch;align-self:stretch}
+.h-grid .pa{grid-area:pa;border-color:color-mix(in srgb,var(--left) 45%,#ffffff17)}
+.h-grid .pb{grid-area:pb;border-color:color-mix(in srgb,var(--right) 45%,#ffffff17)}
+.h-grid .h2hc{grid-area:h2h}
+.h-grid .h-act{grid-area:act;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:4px 0 0;padding-top:18px;border-top:1px solid #ffffff1a}
+.h-grid .h-act .hero-spoiler{margin-left:0}
+.hero .tm2 .tb2{width:104px;height:112px;font-size:30px}
+@media(max-width:1050px){.h-grid{grid-template-columns:minmax(0,1fr) minmax(220px,300px) minmax(0,1fr)}.hero .tm2 .tb2{width:76px;height:82px;font-size:22px}}
+@media(max-width:860px){
+  .h-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"ta tb" "mid mid" "pa pb" "h2h h2h" "act act"}
+  .h-grid .tm2.a,.h-grid .tm2.b{justify-self:center}
+}
+@media(max-width:640px){.h-grid{grid-template-areas:"ta tb" "mid mid" "pa pa" "pb pb" "h2h h2h" "act act";gap:14px}}
+
 /* gm-a11y */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #F3C878;outline-offset:2px}
 ::selection{background:color-mix(in srgb,#F3C878 38%,transparent);color:#fff}

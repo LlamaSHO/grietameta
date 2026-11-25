@@ -823,6 +823,22 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
 
         <sc-if value="{{showBuild}}" hint-placeholder-val="{{ true }}">
         <div role="tabpanel" id="panel-build" aria-labelledby="tab-build" class="tp" tabindex="0">
+          <!-- MATCHUPS (RESUMEN) -->
+          <section class="card mu">
+            <div class="card-h"><h2 class="disp">Matchups de Yasuo</h2><span class="meta">Duelos con 1.000 partidas o más</span></div>
+            <div class="mu-w">
+              <div class="mu-g good">
+                <h4 aria-level="3">Fuerte contra</h4>
+                <div class="mu-cards"><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 41.667%"></span><b class="nm">Mel</b><span class="dl disp">+7,1 pp</span><span class="wr2">57,8 %</span><small>1.086 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 30.769% 41.667%"></span><b class="nm">Locke</b><span class="dl disp">+6,1 pp</span><span class="wr2">56,1 %</span><small>3.824 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 38.462% 75.000%"></span><b class="nm">Sylas</b><span class="dl disp">+5,3 pp</span><span class="wr2">55,2 %</span><small>4.407 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 53.846% 41.667%"></span><b class="nm">Lux</b><span class="dl disp">+7,3 pp</span><span class="wr2">54,9 %</span><small>2.379 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 8.333%"></span><b class="nm">Diana</b><span class="dl disp">+7,7 pp</span><span class="wr2">54,8 %</span><small>2.213 partidas</small></div></div>
+              </div>
+              <button type="button" class="mu-all" onClick="{{goMu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><b>Lista completa</b><small>90 rivales</small></button>
+              <div class="mu-g bad">
+                <h4 aria-level="3">Débil contra</h4>
+                <div class="mu-cards"><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 75.000%"></span><b class="nm">Taliyah</b><span class="dl disp">-3,1 pp</span><span class="wr2">45,5 %</span><small>2.196 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 0.000% 91.667%"></span><b class="nm">Vladimir</b><span class="dl disp">-1,1 pp</span><span class="wr2">45,6 %</span><small>3.919 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 0.000%"></span><b class="nm">Annie</b><span class="dl disp">-1,2 pp</span><span class="wr2">46,0 %</span><small>1.905 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 23.077% 41.667%"></span><b class="nm">Lissandra</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>5.352 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 84.615% 0.000%"></span><b class="nm">Aurelion Sol</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>1.594 partidas</small></div></div>
+              </div>
+            </div>
+          </section>
+
           <!-- BUILDS: una pestaña por variante (estilo dpm.lol) -->
           <section data-pane class="card bcard">
             <div class="card-h"><h2 class="disp">Builds de Yasuo</h2><span class="meta">{{roleName}} · {{rankBtn}} · <span class="demo">Datos de ejemplo</span></span></div>
@@ -862,21 +878,7 @@ a.btn-prem:hover,a.btn-prem:focus-visible{color:#17120A}
             <div class="sgrid"><div class="sg-head"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div><div class="sg-row kQ"><span class="sg-k"><span class="sp ms" style="background-position: 88.889% 83.333%"></span>Tempestad de acero</span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class="on">Q</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div><div class="sg-row kW"><span class="sg-k"><span class="sp ms" style="background-position: 0.000% 100.000%"></span>Muro de viento</span><span class=""></span><span class=""></span><span class=""></span><span class="on">W</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">W</span><span class="on">W</span><span class=""></span><span class="on">W</span><span class="on">W</span></div><div class="sg-row kE"><span class="sg-k"><span class="sp ms" style="background-position: 66.667% 83.333%"></span>Hoja cortante</span><span class=""></span><span class="on">E</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">E</span><span class=""></span><span class="on">E</span><span class=""></span><span class="on">E</span><span class="on">E</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div><div class="sg-row kR"><span class="sg-k"><span class="sp ms" style="background-position: 100.000% 83.333%"></span>Último aliento</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">R</span><span class=""></span><span class=""></span></div></div>
           </section>
 
-          <!-- MATCHUPS (RESUMEN) -->
-          <section class="card mu">
-            <div class="card-h"><h2 class="disp">Matchups de Yasuo</h2><span class="meta">Duelos con 1.000 partidas o más</span></div>
-            <div class="mu-w">
-              <div class="mu-g good">
-                <h4 aria-level="3">Fuerte contra</h4>
-                <div class="mu-cards"><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 41.667%"></span><b class="nm">Mel</b><span class="dl disp">+7,1 pp</span><span class="wr2">57,8 %</span><small>1.086 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 30.769% 41.667%"></span><b class="nm">Locke</b><span class="dl disp">+6,1 pp</span><span class="wr2">56,1 %</span><small>3.824 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 38.462% 75.000%"></span><b class="nm">Sylas</b><span class="dl disp">+5,3 pp</span><span class="wr2">55,2 %</span><small>4.407 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 53.846% 41.667%"></span><b class="nm">Lux</b><span class="dl disp">+7,3 pp</span><span class="wr2">54,9 %</span><small>2.379 partidas</small></div><div class="mc2 g"><span class="sp cs" style="background-position: 92.308% 8.333%"></span><b class="nm">Diana</b><span class="dl disp">+7,7 pp</span><span class="wr2">54,8 %</span><small>2.213 partidas</small></div></div>
-              </div>
-              <button type="button" class="mu-all" onClick="{{goMu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><b>Lista completa</b><small>90 rivales</small></button>
-              <div class="mu-g bad">
-                <h4 aria-level="3">Débil contra</h4>
-                <div class="mu-cards"><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 75.000%"></span><b class="nm">Taliyah</b><span class="dl disp">-3,1 pp</span><span class="wr2">45,5 %</span><small>2.196 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 0.000% 91.667%"></span><b class="nm">Vladimir</b><span class="dl disp">-1,1 pp</span><span class="wr2">45,6 %</span><small>3.919 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 61.538% 0.000%"></span><b class="nm">Annie</b><span class="dl disp">-1,2 pp</span><span class="wr2">46,0 %</span><small>1.905 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 23.077% 41.667%"></span><b class="nm">Lissandra</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>5.352 partidas</small></div><div class="mc2 b"><span class="sp cs" style="background-position: 84.615% 0.000%"></span><b class="nm">Aurelion Sol</b><span class="dl disp">-1,4 pp</span><span class="wr2">46,1 %</span><small>1.594 partidas</small></div></div>
-              </div>
-            </div>
-          </section>
+
           
 
           <div class="stack2">
@@ -1356,7 +1358,7 @@ class Component extends DCLogic {
         note: 'Runas, hechizos y objetos de las ' + fmt(gn) + ' partidas de Yasuo con esta build.'
       };
     });
-    const bvars = role === 'mid' ? bvAll.filter((b) => b.gn >= 1000) : [];
+    const bvars = role === 'mid' ? bvAll.filter((b) => b.gn >= 1000).sort((a, b) => b.gn - a.gn).slice(0, 3) : []; // las 3 builds más usadas
     const bvList = bvars.length ? bvars : [bvAll[0]];
     const bv = bvList.find((b) => b.key === S.bv) || bvList[0];
     const bchips = bvList.map((b) => ({ ...b, on: b === bv ? 'on' : '', sel: b === bv ? 'true' : 'false', ti: b === bv ? '0' : '-1', pick: () => this.pickBuild(b.key) }));
