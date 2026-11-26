@@ -1,5 +1,5 @@
 /* Lógica de «Tabla de tipos» portada del diseño (models/paginas/PokemonTipos.dc.html):
-   las tablas viven en public/data/pokemon/ y llegan por parámetro; el estado
+   las tablas viven en datos/pokemon/ y llegan por parámetro; el estado
    es el reactive de la vista. renderVals() devuelve lo que pinta la plantilla. */
 
 export function createTypesEngine(DATA, st) {

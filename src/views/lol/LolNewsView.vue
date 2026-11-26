@@ -1,6 +1,6 @@
 <template>
   <!-- Noticias de LoL (/lol/noticias). Diseño: models/paginas/LolNoticias.dc.html.
-       Datos de ejemplo en public/data/lol/noticias.json. -->
+       Datos de ejemplo en datos/lol/noticias.json. -->
   <div class="news lol-page">
     <LolPageHead crumb="Noticias" lede="Mercado de fichajes, rumores, cambios de formato y lo que cuenta Riot sobre el juego, en un solo sitio.">
       <template #title>Noticias de <em>League of Legends</em></template>

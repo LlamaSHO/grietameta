@@ -18,7 +18,7 @@
         cat:  "sh" santuario · "tw" torre · "cv" cueva · "sd" semilla kolog · "lr" raíz de luz · "qu" misión
         capa: "surf" superficie · "sky" cielo · "deep" Profundidades · "guide" misiones
         id:   el nombre en santuarios y torres (p. ej. "Tajikats", "Lookout Landing")
-              y la posición original en cuevas y semillas (public/data/zelda/mapa-*.json).
+              y la posición original en cuevas y semillas (datos/zelda/mapa-*.json).
               Las raíces y misiones usan los ids de su fichero de guía.
      done            → objeto reactivo de solo lectura { [clave]: true }
      count           → computed con el nº de claves marcadas

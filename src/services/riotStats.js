@@ -1,12 +1,14 @@
 /* League of Legends: estadísticas reales y recursos de Riot.
    champion-stats.json lo genera tools/fetch-riot-stats.mjs (GitHub Action
-   "Actualizar estadísticas de Riot") a partir de la API de Riot y se sirve
-   desde public/data. Forma del archivo:
+   "Actualizar estadísticas de Riot") a partir de la API de Riot y se sube a
+   Firestore (datos/champion-stats; services/datos.js). Forma del archivo:
      { patch, region, generatedAt, ddragonVersion, totalGamesSample,
        matchesByRank: { IRON: n, … },
        champions: { [idSitio]: { games, winrate, pickrate, banrate, build } },
        ranks: { [RANGO]: { matches, champions: { [idSitio]: { games, winrate, pickrate, banrate } } } } }
    Los iconos vienen de Data Dragon (ver services/lol/ddragon.js). */
+
+import { loadDataset } from "@/services/datos";
 
 const STATS_URL = "/data/champion-stats.json";
 
@@ -14,9 +16,7 @@ const STATS_URL = "/data/champion-stats.json";
 // funcionando con los datos ilustrativos.
 export async function fetchChampionStats() {
   try {
-    const res = await fetch(STATS_URL, { cache: "no-store" });
-    if (!res.ok) return null;
-    return await res.json();
+    return await loadDataset(STATS_URL);
   } catch {
     return null;
   }

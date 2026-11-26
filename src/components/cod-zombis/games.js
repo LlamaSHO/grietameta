@@ -1,7 +1,7 @@
 /* Catálogo de los juegos de la saga de zombis de Call of Duty.
    Lo usan la barra del juego (menú «Juegos»), las tarjetas de la portada y el
    bloque «Los otros Black Ops» de cada página de juego. Los datos de cada
-   juego (mapas, Easter eggs…) están en public/data/cod-zombis/bo*.json. */
+   juego (mapas, Easter eggs…) están en datos/cod-zombis/bo*.json. */
 
 const IMG = "/images/cod-zombis/";
 

@@ -1,6 +1,6 @@
 <template>
   <!-- Hub de ARC Raiders (diseño: models/paginas/Arc.dc.html). Las piezas
-       están en components/arc/hub; los datos, en public/data/arc-raiders. -->
+       están en components/arc/hub; los datos, en datos/arc-raiders. -->
   <div class="arc-ui arc-hub">
     <ArcHero :kpis="kpis" :boss="foes[0] || null" />
 

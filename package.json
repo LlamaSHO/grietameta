@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "stats:riot": "node tools/fetch-riot-stats.mjs",
-    "seed:users": "node --env-file=.env tools/seed-firebase-users.mjs"
+    "seed:users": "node --env-file=.env tools/seed-firebase-users.mjs",
+    "datos:subir": "node --env-file-if-exists=.env tools/subir-datos.mjs"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.10",
+    "firebase-admin": "^13.10.0",
     "postcss-prefix-selector": "^2.2.1",
     "vite": "^8.3.5"
   }

@@ -1,4 +1,4 @@
-/* Datos derivados de un plano (public/data/cod-zombis/planos.json): iconos y
+/* Datos derivados de un plano (datos/cod-zombis/planos.json): iconos y
    ventajas de cada zona, puertas entre zonas y capas. Funciones puras. */
 import { perkBp } from "./sprites.js";
 

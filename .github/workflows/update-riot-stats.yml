@@ -52,10 +52,22 @@ jobs:
         with:
           name: stats-backup
           path: |
-            public/data/champion-stats.json
+            datos/champion-stats.json
             data/raw-stats.json.gz
           if-no-files-found: ignore
           retention-days: 14
+
+      # La web lee las estadísticas de Firestore (src/services/datos.js): se
+      # suben con la cuenta de servicio guardada en el secreto
+      # FIREBASE_SERVICE_ACCOUNT. Sin el secreto, este paso se salta.
+      - name: Subir las estadísticas a Firestore
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+        run: |
+          if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then echo "Sin FIREBASE_SERVICE_ACCOUNT: no se sube."; exit 0; fi
+          npm ci --no-audit --no-fund
+          node tools/subir-datos.mjs champion-stats
 
       # Los dos archivos generados SIEMPRE ganan: se parte de la última versión
       # del repositorio (por si has subido cambios mientras corría) y se
@@ -65,16 +77,16 @@ jobs:
           git config user.name "LlamaSHO"
           git config user.email "241094598+LlamaSHO@users.noreply.github.com"
           mkdir -p /tmp/stats-out/data
-          cp public/data/champion-stats.json /tmp/stats-out/champion-stats.json
+          cp datos/champion-stats.json /tmp/stats-out/champion-stats.json
           cp data/raw-stats.json.gz /tmp/stats-out/data/raw-stats.json.gz
           for intento in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
-            mkdir -p data public/data
-            cp /tmp/stats-out/champion-stats.json public/data/champion-stats.json
+            mkdir -p data datos
+            cp /tmp/stats-out/champion-stats.json datos/champion-stats.json
             cp /tmp/stats-out/data/raw-stats.json.gz data/raw-stats.json.gz
             git rm --ignore-unmatch --quiet riot-stats-state.json
-            git add public/data/champion-stats.json data/raw-stats.json.gz
+            git add datos/champion-stats.json data/raw-stats.json.gz
             if git diff --cached --quiet; then
               echo "Sin cambios, nada que publicar."
               exit 0

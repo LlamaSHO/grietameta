@@ -1,5 +1,5 @@
 /* Lógica de «Habilidades, movimientos y naturalezas» portada del diseño (models/paginas/PokemonHabilidades.dc.html):
-   las tablas viven en public/data/pokemon/ y llegan por parámetro; el estado
+   las tablas viven en datos/pokemon/ y llegan por parámetro; el estado
    es el reactive de la vista. renderVals() devuelve lo que pinta la plantilla. */
 
 export function createAbilitiesEngine(DATA, st) {

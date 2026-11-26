@@ -89,6 +89,14 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // Datos de los juegos (los sube tools/subir-datos.mjs con una cuenta de
+    // servicio, que no pasa por estas reglas). Cualquiera puede leerlos; nadie
+    // puede escribirlos desde la web.
+    match /datos/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Todo lo demás, cerrado hasta que se añada.
     match /{document=**} {
       allow read, write: if false;

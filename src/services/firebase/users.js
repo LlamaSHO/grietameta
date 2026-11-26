@@ -5,7 +5,7 @@
      email, displayName,
      role: "user" | "admin",
      "is-premium": [...],         // suscripciones activas; lo escribe el servidor (Stripe)
-     favoriteGames: [],           // slugs de public/data/games.json
+     favoriteGames: [],           // slugs de src/data/games.json
      alerts: { lol, arc, zelda }, // avisos por juego (booleanos; opcional)
      alertChannels: { email, browser }, // canal de los avisos (booleanos; opcional)
      createdAt, updatedAt         // marcas de tiempo del servidor

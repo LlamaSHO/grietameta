@@ -1,5 +1,7 @@
 /* Carga de datos de un juego bajo demanda (regla «cargar solo lo que se usa»).
-   Cada vista pide sus JSON de public/data/<juego>/ al entrar; se guardan en
+   Cada vista pide sus conjuntos al entrar (services/datos.js: Firestore con
+   caché del navegador; en desarrollo, la carpeta datos/). La ruta sigue la
+   forma "/data/<juego>/<archivo>.json"; se guardan en
    memoria mientras dure la visita, así que volver a la página no repite la
    descarga. Uso:
      const dex = useGameData("/data/pokemon/pokedex.json");
@@ -8,6 +10,7 @@
      dex.reload()
 */
 import { reactive } from "vue";
+import { loadDataset } from "@/services/datos";
 
 const cache = new Map();
 
@@ -17,9 +20,7 @@ export function useGameData(url) {
   async function load() {
     state.status = "loading";
     try {
-      const r = await fetch(url);
-      if (!r.ok) throw new Error(r.status + " " + url);
-      state.data = await r.json();
+      state.data = await loadDataset(url);
       state.status = "ready";
     } catch (e) {
       state.error = e;

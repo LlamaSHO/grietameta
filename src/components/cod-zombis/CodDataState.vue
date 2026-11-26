@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-/* Estado de carga o de error de un JSON de public/data/cod-zombis/ (useGameData). */
+/* Estado de carga o de error de un JSON de datos/cod-zombis/ (useGameData). */
 defineProps({ state: { type: Object, required: true } });
 </script>
 

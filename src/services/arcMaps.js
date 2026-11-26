@@ -1,6 +1,6 @@
 /* ARC Raiders · visor de mapas: carga y prepara los datos de /arc-raiders/mapas.
 
-   Fuentes (public/data/arc-raiders):
+   Fuentes (datos/arc-raiders, servidas desde Firestore):
    - quests.json            → mapas (maps[] con sus vistas/plantas) y misiones (RaidTheory/arcraiders-data, MIT).
    - enemies.json           → ARC con amenaza, tipo, punto débil y mapas (RaidTheory/arcraiders-data, MIT).
    - calibracion-mapas.json → qué vistas de mapa están calibradas con MetaForge.
@@ -13,13 +13,12 @@
 
 import { fetchArcEnemies, fetchArcQuests, arcBotImageUrl, arcMapImageUrl, arcMapThumbUrl } from "@/services/arcRaiders";
 
+import { loadDataset } from "@/services/datos";
+
 const DATA_DIR = "/data/arc-raiders";
 
-async function getJson(url) {
-  const res = await fetch(url, { headers: { Accept: "application/json" } });
-  if (!res.ok) throw new Error("HTTP " + res.status);
-  return res.json();
-}
+// Los datos salen de Firestore (en desarrollo, de la carpeta datos/): services/datos.js.
+const getJson = (url) => loadDataset(url);
 
 // Caché por archivo: la promesa se guarda y, si falla, se borra para poder reintentar.
 const cache = new Map();

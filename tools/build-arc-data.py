@@ -8,8 +8,8 @@ Uso:
     python3 -I tools/build-arc-data.py /ruta/arcraiders-data .
 
 Crea (dentro de la carpeta de salida):
-    public/data/arc-raiders/items.json, quests.json, enemies.json
-    public/data/arc-raiders/LICENSE-arcraiders-data.txt
+    datos/arc-raiders/items.json, quests.json, enemies.json
+    public/licencias/arcraiders-data.txt
     public/images/arc-raiders/items/<id>.webp  -> iconos reducidos a 160 px
     public/images/arc-raiders/maps/<id>.webp   -> mapas de las misiones
     public/images/arc-raiders/bots/<id>.webp   -> imágenes de los enemigos
@@ -31,8 +31,8 @@ from PIL import Image
 if len(sys.argv) != 3:
     sys.exit(__doc__)
 REPO, OUT = sys.argv[1], sys.argv[2]
-# Rutas de la web Vue: todo lo que se sirve tal cual va en public/.
-DATA_OUT = os.path.join(OUT, 'public', 'data', 'arc-raiders')
+# Datos en datos/ (se suben a Firestore con npm run datos:subir); imágenes en public/.
+DATA_OUT = os.path.join(OUT, 'datos', 'arc-raiders')
 IMG_OUT = os.path.join(OUT, 'public', 'images', 'arc-raiders')
 
 WEAPONS = {'Assault Rifle', 'SMG', 'Pistol', 'Battle Rifle', 'Shotgun', 'LMG', 'Sniper Rifle', 'Hand Cannon'}
@@ -245,7 +245,8 @@ meta = {
 os.makedirs(DATA_OUT, exist_ok=True)
 with open(os.path.join(DATA_OUT, 'items.json'), 'w', encoding='utf-8') as f:
     json.dump({'meta': meta, 'items': result}, f, ensure_ascii=False, separators=(',', ':'))
-shutil.copyfile(os.path.join(REPO, 'LICENSE'), os.path.join(DATA_OUT, 'LICENSE-arcraiders-data.txt'))
+os.makedirs(os.path.join(OUT, 'public', 'licencias'), exist_ok=True)
+shutil.copyfile(os.path.join(REPO, 'LICENSE'), os.path.join(OUT, 'public', 'licencias', 'arcraiders-data.txt'))
 
 counts = {}
 for r in result:
@@ -256,7 +257,7 @@ print('Sin imagen:', sum(1 for r in result if not r['hasImage']))
 
 
 # --- Misiones -----------------------------------------------------------------------
-# Crea public/data/arc-raiders/quests.json para la página de seguimiento de misiones.
+# Crea datos/arc-raiders/quests.json para la página de seguimiento de misiones.
 # Los nombres de mapa en español de la fuente son claves rotas, así que se usan los nombres del juego.
 MAP_NAMES = {
     'dam_battlegrounds': 'Dam Battlegrounds',
@@ -384,7 +385,7 @@ print('Mapas:', sum(len(m['views']) for m in map_registry), 'imágenes en public
 
 
 # --- Enemigos -----------------------------------------------------------------------
-# Crea public/data/arc-raiders/enemies.json y public/images/arc-raiders/bots/*.webp para la página de enemigos.
+# Crea datos/arc-raiders/enemies.json y public/images/arc-raiders/bots/*.webp para la página de enemigos.
 # Los datos de origen NO traen vida, daño por bala ni blindaje de cada ARC. Por eso las armas y
 # balas recomendadas son una heurística: se compara la "Penetración de armadura ARC" de cada arma
 # con el blindaje estimado del enemigo (según su nivel de amenaza) y se prefiere la munición barata.

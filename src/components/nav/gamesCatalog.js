@@ -1,7 +1,7 @@
 /* Los 9 juegos del sitio tal y como salen en el menú «Juegos», en la barra
    inferior del móvil y en la portada (diseño: Main.dc.html).
    El orden, las imágenes y los textos cortos están aquí; la ruta, el estado y el
-   nombre salen de public/data/games.json cuando el juego existe allí. Los juegos
+   nombre salen de src/data/games.json cuando el juego existe allí. Los juegos
    que no están en games.json (Resident Evil, Rust) son «Próximamente» y no
    tienen enlace. */
 

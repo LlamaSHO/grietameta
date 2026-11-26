@@ -1,5 +1,5 @@
 /* Barra de navegación de cada juego, debajo del nav central.
-   La clave es el slug de public/data/games.json, y cada ruta indica el suyo
+   La clave es el slug de src/data/games.json, y cada ruta indica el suyo
    en meta.game (src/router/index.js). `subH` (opcional) es el alto de la barra en px (50 por defecto). `zone` es el data-zone que App.vue pone
    en .app-shell (acento y estilo de la barra). Para un juego nuevo: crea su
    componente aquí al lado (enlaces con la clase .slink, desplegables con

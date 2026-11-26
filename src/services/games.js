@@ -1,16 +1,11 @@
-/* Catálogo de juegos del sitio (public/data/games.json).
+/* Catálogo de juegos del sitio (src/data/games.json). Es configuración del
+   sitio, no datos de un juego: va dentro del código, sin petición.
    Para añadir un juego basta con añadirlo a ese archivo. */
 
-let gamesPromise = null;
+import catalog from "@/data/games.json";
 
 export function fetchGames() {
-  if (!gamesPromise) {
-    gamesPromise = fetch("/data/games.json")
-      .then((r) => (r.ok ? r.json() : { games: [] }))
-      .then((d) => d.games || [])
-      .catch(() => []);
-  }
-  return gamesPromise;
+  return Promise.resolve(catalog.games || []);
 }
 
 export function normalize(s) {

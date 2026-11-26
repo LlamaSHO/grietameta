@@ -10,7 +10,7 @@
        situacionales), usando el Timeline de cada partida (eventos de compra
        con marca de tiempo)
      - runas reales más usadas (keystone + árbol principal + árbol secundario)
-   El resultado se guarda en public/data/champion-stats.json, que
+   El resultado se guarda en datos/champion-stats.json, que
    la sección de LoL (src/composables/useLolData.js) carga para sustituir los datos simulados.
 
    CÓMO SE ANALIZAN "LA MAYOR CANTIDAD DE PARTIDAS POSIBLE"
@@ -92,7 +92,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUTPUT_PATH = path.join(__dirname, "..", "public", "data", "champion-stats.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "datos", "champion-stats.json");
 const STATE_PATH = path.join(__dirname, "..", "data", "raw-stats.json.gz");
 
 const RIOT_API_KEY = process.env.RIOT_API_KEY;

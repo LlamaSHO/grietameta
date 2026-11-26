@@ -1,5 +1,5 @@
 /* Datos de ejemplo de la ficha de campeón (hoy solo Yasuo, en Mid).
-   Vienen de public/data/lol/campeon-ejemplo.json (lo que el diseño
+   Vienen de datos/lol/campeon-ejemplo.json (lo que el diseño
    LolCampeon.dc.html lleva dentro del script) y aquí se adaptan al rango
    elegido con las mismas fórmulas que el diseño. Todo lo que sale de aquí se
    marca «Datos de ejemplo» en la interfaz: matchups, compañeros, variantes de

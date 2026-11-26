@@ -1,6 +1,6 @@
 <template>
   <!-- eSports de LoL (/lol/esports). Diseño: models/paginas/LolEsports.dc.html.
-       Todo es de ejemplo y sale de public/data/lol/esports.json (archivo del
+       Todo es de ejemplo y sale de datos/lol/esports.json (archivo del
        14 de noviembre de 2026). -->
   <div class="es lol-page">
     <main class="wrap es-main">

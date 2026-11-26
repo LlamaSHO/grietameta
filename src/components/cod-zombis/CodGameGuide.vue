@@ -1,6 +1,6 @@
 <template>
   <!-- Página de un juego de la saga (Black Ops 1 a 4). Los cuatro comparten esta
-       estructura: lo que cambia está en public/data/cod-zombis/<slug>.json.
+       estructura: lo que cambia está en datos/cod-zombis/<slug>.json.
        Diseño: models/paginas/CodBO1..4.dc.html -->
   <CodPage>
     <div v-if="state.status !== 'ready'" class="wrap cz-wait">
