@@ -1,0 +1,2727 @@
+{
+  "groups": [
+    [
+      "dcha",
+      "Orilla derecha"
+    ],
+    [
+      "isla",
+      "Islas"
+    ],
+    [
+      "izq",
+      "Orilla izquierda"
+    ],
+    [
+      "fuera",
+      "Fuera de París"
+    ]
+  ],
+  "dist": [
+    {
+      "id": "versalles",
+      "n": "Versalles",
+      "g": "fuera",
+      "desc": "Fuera de París, a unos 20 km al suroeste. Palacio real y jardines: aquí transcurren el prólogo de 1776, la secuencia 1 y el comienzo de la 11.",
+      "lx": 0,
+      "ly": 0,
+      "c": [
+        [
+          "cofres",
+          20
+        ],
+        [
+          "escarapelas",
+          8
+        ]
+      ],
+      "note": "2 cofres nómadas y 2 de novicio (nivel 4 y 11). 1 punto del Helix.",
+      "sm": []
+    },
+    {
+      "id": "tuileries",
+      "n": "Tullerías",
+      "g": "dcha",
+      "desc": "El palacio de las Tullerías, el Louvre y la plaza de la Revolución. Desde octubre de 1789, residencia del rey.",
+      "lx": 276,
+      "ly": 874,
+      "c": [
+        [
+          "cofres",
+          7
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          6
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "2 cofres nómadas y 1 punto nómada. Incluye los Campos Elíseos.",
+      "sm": [
+        [
+          "ps",
+          "Headlining the Guillotine",
+          "700 libras",
+          "Pon diarios falsos a tres vendedores de periódicos."
+        ],
+        [
+          "ps",
+          "Desiree Desired",
+          "5.000 libras",
+          "Sigue al oficial de Bernadotte y defiende a Désirée."
+        ],
+        [
+          "ps",
+          "Desiree Dismayed",
+          "5.000 libras",
+          "Tres pruebas en el piso de Bernadotte."
+        ],
+        [
+          "mm",
+          "Red Ghost of the Tuileries",
+          "Pistola de diseño",
+          "37 pistas: el caso más largo."
+        ],
+        [
+          "ne",
+          "Aries",
+          "—",
+          "Reloj del Louvre, jardines del Palais-Royal y Pont de la Concorde."
+        ],
+        [
+          "ne",
+          "Libra",
+          "—",
+          "Palacio de las Tullerías, la guillotina y la cripta del cementerio de la Madeleine."
+        ],
+        [
+          "co",
+          "Danton's Sacrifice",
+          "Puntos y equipo",
+          "Protege a tres aliados y recupera dos cartas."
+        ],
+        [
+          "co",
+          "The Infernal Machine",
+          "Puntos y equipo",
+          "Mata nueve francotiradores en la ruta de Napoleón."
+        ]
+      ],
+      "shape": "M128 1161 L121 1158 L118 1149 L110 1149 L90 1157 L80 1149 L66 1159 L63 1156 L111 688 L116 675 L230 677 L280 683 L328 697 L420 745 L470 761 L510 767 L584 771 L656 779 L742 795 L804 813 L904 859 L948 873 L955 878 L965 928 L989 1004 L982 1007 L974 995 L966 995 L965 1002 L960 1007 L946 1007 L938 997 L902 991 L894 979 L886 981 L878 991 L870 991 L860 981 L852 981 L847 990 L865 1004 L862 1009 L758 1011 L755 1006 L763 1000 L763 990 L756 983 L706 987 L700 983 L670 985 L594 979 L578 985 L566 985 L558 989 L556 987 L553 990 L556 993 L574 991 L578 995 L588 995 L596 989 L640 989 L649 994 L647 1002 L651 1006 L646 1011 L604 1007 L576 1013 L572 1009 L536 1011 L508 1023 L494 1023 L462 1035 L457 1030 L462 1025 L482 1019 L502 1007 L516 1005 L523 1000 L520 993 L488 995 L444 1011 L380 1027 L361 1038 L363 1046 L356 1053 L344 1043 L298 1063 L280 1067 L259 1080 L265 1092 L256 1099 L242 1085 L188 1109 L180 1109 L152 1125 L144 1125 L133 1134 L136 1135 L150 1127 L163 1142 L158 1147 L128 1161ZM809 994 L820 993 L821 990 L814 983 L806 981 L788 983 L781 990 L788 995 L809 994ZM845 992 L840 983 L831 984 L836 993 L845 992Z"
+    },
+    {
+      "id": "vendome",
+      "n": "Vendôme",
+      "g": "dcha",
+      "desc": "Plazas reales y mansiones al noroeste de la orilla derecha.",
+      "lx": 548,
+      "ly": 540,
+      "c": [
+        [
+          "cofres",
+          3
+        ],
+        [
+          "cerrados",
+          9
+        ],
+        [
+          "escarapelas",
+          4
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "2 cofres nómadas. El artefacto está cerca de la plaza Vendôme.",
+      "sm": [
+        [
+          "ps",
+          "French Crown Jewels",
+          "5.000 libras",
+          "Roba a un fugitivo y a dos extremistas vigilados."
+        ],
+        [
+          "ps",
+          "Desiree Delighted",
+          "2.500 libras",
+          "Escolta a Bernadotte y roba las cartas de Napoleón."
+        ],
+        [
+          "mm",
+          "The Body Politic",
+          "Claymore",
+          "24 pistas."
+        ],
+        [
+          "sc",
+          "Retribution for a Rabble-Rouser · The Black Office · Betrayer of the Queen",
+          "700–12.500 libras",
+          "Tres asesinatos del club social."
+        ],
+        [
+          "he",
+          "The Party Palace",
+          "5.000 + 10.000 libras",
+          "Francotirador a la ventana, limpia el edificio y saquea el cofre."
+        ]
+      ],
+      "shape": "M952 875 L904 859 L804 813 L742 795 L642 777 L510 767 L454 757 L420 745 L342 703 L298 687 L230 677 L116 675 L113 670 L119 620 L300 379 L646 267 L651 274 L659 300 L687 350 L761 436 L789 478 L821 542 L859 630 L903 712 L939 760 L975 800 L975 808 L961 854 L952 875Z"
+    },
+    {
+      "id": "feydeau",
+      "n": "Feydeau",
+      "g": "dcha",
+      "desc": "Teatros y el Palais-Royal: la zona de ocio y de debate político de la ciudad.",
+      "lx": 996,
+      "ly": 538,
+      "c": [
+        [
+          "cofres",
+          3
+        ],
+        [
+          "cerrados",
+          10
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "2 cofres nómadas. Casi todos los cerrados son de nivel 3.",
+      "sm": [
+        [
+          "ps",
+          "Constructing a Close Shave",
+          "25.000 libras",
+          "Recupera cuatro piezas de guillotina guardadas por extremistas."
+        ],
+        [
+          "ps",
+          "Marianne Returns Home",
+          "12.500 libras",
+          "Practica paradas y escolta a Marianne a casa."
+        ],
+        [
+          "ps",
+          "Up in Arms",
+          "5.000 libras",
+          "Sabotea tres cañones en una zona muy vigilada."
+        ],
+        [
+          "ne",
+          "Venus",
+          "—",
+          "Torre de una iglesia, la estatua de Vendôme, la plaza de la Revolución y el tejado de la Halle aux Blés."
+        ],
+        [
+          "he",
+          "Ancient History",
+          "25.000 + 45.000 libras",
+          "El cofre bueno está en el primer piso del edificio alargado."
+        ]
+      ],
+      "shape": "M978 801 L939 760 L903 712 L859 630 L821 542 L789 478 L761 436 L701 368 L675 332 L655 290 L649 272 L652 265 L700 249 L1004 231 L1075 338 L1103 388 L1193 572 L1157 608 L1053 726 L978 801Z"
+    },
+    {
+      "id": "halles",
+      "n": "Les Halles",
+      "g": "dcha",
+      "desc": "El vientre de París: mercados, la Halle aux Blés y el Cementerio de los Inocentes.",
+      "lx": 1224,
+      "ly": 802,
+      "c": [
+        [
+          "cofres",
+          6
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "2 cofres nómadas. Junto al Cementerio de los Inocentes.",
+      "sm": [
+        [
+          "ps",
+          "Sewer Rat",
+          "400 libras",
+          "Encuentra a Rotondo en las alcantarillas con la Vista de Águila."
+        ],
+        [
+          "mm",
+          "Bones of Contention",
+          "L'Étoile polaire",
+          "17 pistas por Les Halles."
+        ],
+        [
+          "mm",
+          "Death in Brothel",
+          "Alabarda",
+          "17 pistas por Porte-Saint-Denis."
+        ],
+        [
+          "sc",
+          "Hoarding Hostages · Let 'em Eat Hay · Cat Food on the Hot Tin Roof",
+          "700–800 libras",
+          "Liberar granjeros, eliminar acaparadores y tenientes."
+        ],
+        [
+          "co",
+          "Heads Will Roll",
+          "Puntos y equipo",
+          "Llaves del alcaide, la guillotina y liberar a Paton."
+        ]
+      ],
+      "shape": "M1184 1005 L1148 1005 L1143 1000 L1145 992 L1150 987 L1160 991 L1166 983 L1176 983 L1179 980 L1176 977 L1122 977 L1111 992 L1121 1000 L1116 1005 L1108 1005 L1100 999 L1092 1005 L1062 1005 L1057 1000 L1061 996 L1058 993 L1053 994 L1055 1000 L1050 1005 L1006 1005 L998 993 L994 993 L988 999 L975 964 L955 884 L955 868 L975 804 L1053 726 L1157 608 L1194 571 L1316 563 L1420 569 L1481 640 L1459 732 L1439 784 L1421 820 L1359 922 L1335 972 L1330 977 L1310 975 L1304 983 L1296 983 L1284 995 L1280 993 L1212 997 L1184 1005Z"
+    },
+    {
+      "id": "stdenis",
+      "n": "Porte-Saint-Denis",
+      "g": "dcha",
+      "desc": "El norte popular de la ciudad, junto a la Puerta de San Denis.",
+      "lx": 1292,
+      "ly": 384,
+      "c": [
+        [
+          "cofres",
+          4
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "2 cofres nómadas. Aquí vivía el marqués de Sade.",
+      "sm": [
+        [
+          "ps",
+          "My Kingdom for Some Whores",
+          "400 libras",
+          "Asesina a Grignon en una zona restringida."
+        ],
+        [
+          "ps",
+          "De Sade's Reprieve",
+          "1.200 libras",
+          "Roba la orden del Grand Châtelet por la ventana del río."
+        ],
+        [
+          "ps",
+          "Sadistic Blackmail",
+          "1.400 libras",
+          "Reúne cuatro objetos por el barrio para De Sade."
+        ],
+        [
+          "ps",
+          "La Bande Noire",
+          "700 libras",
+          "Sigue a Dossonville y defiéndelo de tres oleadas."
+        ],
+        [
+          "ps",
+          "Iscariotte the Giant",
+          "700 libras",
+          "Interroga a cinco testigos y busca al culpable en el desván."
+        ],
+        [
+          "ne",
+          "Virgo",
+          "—",
+          "Iglesia, la cama de De Sade, la cruz de la Corte de los Milagros y Les Halles."
+        ]
+      ],
+      "shape": "M1208 571 L1194 571 L1189 566 L1091 366 L1007 234 L1010 231 L1034 229 L1300 213 L1516 227 L1519 232 L1441 478 L1423 564 L1418 569 L1316 563 L1208 571Z"
+    },
+    {
+      "id": "temple",
+      "n": "Temple",
+      "g": "dcha",
+      "desc": "Antiguo recinto de los templarios. La familia real estuvo presa en su torre desde 1792.",
+      "lx": 1656,
+      "ly": 428,
+      "c": [
+        [
+          "cofres",
+          5
+        ],
+        [
+          "cerrados",
+          9
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          3
+        ]
+      ],
+      "note": "1 cofre de novicio y 1 punto nómada.",
+      "sm": [
+        [
+          "ps",
+          "Scene Stealer",
+          "5.000 libras",
+          "Roba el diario de un edificio cerrado del Arsenal."
+        ],
+        [
+          "mm",
+          "Barber of Seville",
+          "Espada ancha",
+          "15 pistas en el patio, el café y el teatro al aire libre."
+        ],
+        [
+          "ne",
+          "Aquarius",
+          "—",
+          "Un tejado junto al club social, la torre del Temple y el sarcófago bajo ella."
+        ],
+        [
+          "co",
+          "Political Persecution",
+          "Puntos y equipo",
+          "Incendia dos torres de la Bastilla y llega a la barca."
+        ],
+        [
+          "he",
+          "Royals, Guns and Money",
+          "5.000 + 10.000 libras",
+          "Roba el cofre correcto: planta baja, en la esquina."
+        ],
+        [
+          "sc",
+          "Artful Dodger · A Dramatic Exit · Breaking the Habit",
+          "700–2.500 libras",
+          "Tres misiones del club social del barrio."
+        ],
+        [
+          "hr",
+          "París ocupada (3 fallos)",
+          "Bonus de dinero",
+          "Bajo y dentro de la torre Eiffel; derribar dirigibles."
+        ]
+      ],
+      "shape": "M1584 673 L1482 641 L1421 570 L1431 518 L1453 436 L1505 278 L1513 246 L1522 227 L1900 249 L2161 370 L2143 402 L2114 421 L2072 441 L1984 473 L1928 497 L1744 599 L1584 673Z"
+    },
+    {
+      "id": "marais",
+      "n": "Marais",
+      "g": "dcha",
+      "desc": "Barrio de mansiones aristocráticas alrededor de la plaza Real.",
+      "lx": 1840,
+      "ly": 744,
+      "c": [
+        [
+          "cofres",
+          7
+        ],
+        [
+          "cerrados",
+          9
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "1 cofre nómada y 1 de novicio.",
+      "sm": [
+        [
+          "ps",
+          "A Fistful of Duelers",
+          "1.400 libras",
+          "Vence a cinco esgrimistas cada vez más fuertes (sin pistolas ni artilugios)."
+        ],
+        [
+          "ps",
+          "The Return of the Crimson Rose",
+          "700 libras",
+          "Entra por una ventana en el Arsenal y libera a De Choisy."
+        ],
+        [
+          "mm",
+          "Hot Chocolate to Die For",
+          "Espada de empuñadura pesada",
+          "18 pistas entre jardín, cocina, comedor, estudio y terraza."
+        ],
+        [
+          "ne",
+          "Scorpio",
+          "—",
+          "Muro y suelo de la iglesia, la torre del Hôtel de Sens y la estatua de la plaza Real."
+        ],
+        [
+          "co",
+          "The Austrian Conspiracy",
+          "Puntos y equipo",
+          "Derrota al espía, escolta a Danton y recupera dos cartas."
+        ]
+      ],
+      "shape": "M1910 1035 L1899 1026 L1901 1020 L1898 1017 L1878 1015 L1870 1027 L1838 1021 L1830 1009 L1814 1017 L1809 1012 L1808 1001 L1788 999 L1784 1003 L1779 998 L1755 940 L1719 874 L1681 818 L1621 740 L1595 700 L1583 674 L1744 599 L1928 497 L1984 473 L2072 441 L2114 421 L2136 407 L2139 410 L2139 428 L2135 458 L2117 530 L2103 564 L2055 658 L2031 716 L1981 878 L1955 952 L1927 1012 L1910 1035Z"
+    },
+    {
+      "id": "hdv",
+      "n": "Hôtel de Ville",
+      "g": "dcha",
+      "desc": "El ayuntamiento, la plaza de Grève y el Grand Châtelet, frente a la Cité.",
+      "lx": 1548,
+      "ly": 852,
+      "c": [
+        [
+          "cofres",
+          6
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada y 2 puntos nómadas.",
+      "sm": [
+        [
+          "ps",
+          "À la lanterne!",
+          "400 libras",
+          "Escolta a la condesa de Frémiet desde la guillotina al cementerio."
+        ],
+        [
+          "ne",
+          "Capricorn",
+          "—",
+          "Chimenea junto a Pont Notre-Dame; respuestas en el ayuntamiento, la guillotina y una torre."
+        ],
+        [
+          "ne",
+          "Leo",
+          "—",
+          "Grand Châtelet, los Inocentes y Saint-Eustache."
+        ],
+        [
+          "co",
+          "The Food Chain",
+          "Puntos y equipo",
+          "Libera a Théroigne, escóltala y elimina templarios en el mercado."
+        ]
+      ],
+      "shape": "M1782 1013 L1756 1009 L1753 1006 L1756 997 L1752 997 L1744 1009 L1712 1005 L1709 1002 L1711 996 L1704 991 L1697 996 L1694 1003 L1686 1003 L1674 1001 L1669 996 L1671 990 L1668 987 L1628 981 L1617 982 L1627 990 L1622 995 L1606 993 L1600 989 L1578 991 L1506 985 L1499 980 L1505 972 L1502 969 L1452 969 L1449 972 L1453 976 L1450 981 L1390 979 L1362 981 L1336 979 L1333 976 L1349 940 L1411 838 L1439 784 L1459 732 L1479 646 L1484 641 L1560 665 L1583 676 L1621 740 L1691 832 L1731 894 L1779 994 L1785 1008 L1782 1013Z"
+    },
+    {
+      "id": "arsenal",
+      "n": "Arsenal",
+      "g": "dcha",
+      "desc": "El extremo este de la orilla derecha: la Bastilla y el faubourg Saint-Antoine.",
+      "lx": 2200,
+      "ly": 954,
+      "c": [
+        [
+          "cofres",
+          6
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          5
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "1 cofre nómada y 1 de novicio. Junto a la Bastilla.",
+      "sm": [
+        [
+          "ps",
+          "Critical Comedown",
+          "400 libras",
+          "Roba una crítica sin que te vean y bátete con el censor."
+        ],
+        [
+          "ps",
+          "The League of the Crimson Rose",
+          "400 libras",
+          "Defiende a Rose de tres oleadas y mata a Chauvelin."
+        ],
+        [
+          "ps",
+          "Crimson Sunset",
+          "400 libras",
+          "Vence a tiradores y duelistas y bátete con Rose."
+        ],
+        [
+          "ps",
+          "The Great Escapist",
+          "800 libras",
+          "Saca la cuerda de la Bastilla por una ventana alta."
+        ],
+        [
+          "ne",
+          "Terra",
+          "—",
+          "Cúpula, estatua del jardín y torre del laberinto."
+        ]
+      ],
+      "shape": "M2342 1341 L2335 1336 L2332 1323 L2314 1317 L2302 1307 L2288 1305 L2245 1274 L2250 1269 L2270 1281 L2278 1281 L2292 1289 L2304 1291 L2328 1307 L2336 1305 L2337 1298 L2280 1257 L2234 1241 L2229 1234 L2233 1228 L2228 1221 L2221 1224 L2219 1232 L2214 1237 L2206 1237 L2196 1233 L2166 1211 L2148 1207 L2141 1200 L2141 1186 L2120 1173 L2112 1179 L2092 1177 L2089 1180 L2098 1191 L2111 1200 L2102 1205 L2086 1197 L2073 1184 L2070 1175 L2064 1179 L2048 1175 L2040 1177 L2006 1161 L1999 1152 L1989 1116 L1992 1109 L2001 1112 L1999 1102 L1954 1073 L1941 1060 L1949 1052 L1934 1039 L1931 1040 L1931 1044 L1939 1050 L1936 1055 L1932 1055 L1913 1038 L1921 1032 L1919 1024 L1941 984 L1965 926 L2013 768 L2047 676 L2103 564 L2117 530 L2133 470 L2139 410 L2162 371 L2172 373 L2253 412 L2421 700 L2441 1102 L2371 1334 L2368 1337 L2362 1331 L2354 1329 L2342 1341ZM2063 1166 L2063 1160 L2042 1139 L2029 1134 L2040 1153 L2046 1153 L2058 1165 L2063 1166Z"
+    },
+    {
+      "id": "pdj",
+      "n": "Palais de Justice",
+      "g": "isla",
+      "desc": "Oeste de la isla de la Cité: el Palacio de Justicia, la Conciergerie y la Sainte-Chapelle.",
+      "lx": 1380,
+      "ly": 1044,
+      "c": [
+        [
+          "cofres",
+          7
+        ],
+        [
+          "cerrados",
+          3
+        ],
+        [
+          "escarapelas",
+          4
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "2 cofres nómadas.",
+      "sm": [
+        [
+          "ps",
+          "Riddle",
+          "750 libras",
+          "Habla con tres ayudantes y recupera tres cabezas con sus objetos."
+        ],
+        [
+          "ps",
+          "Tall, Dark Strangers",
+          "500 libras",
+          "Sigue a Lenormand y asesina a sus cuatro objetivos."
+        ],
+        [
+          "ps",
+          "Flamel's Secret (3 partes)",
+          "400–1.200 libras",
+          "Monjes de Notre-Dame, el cofre de Molinier y el elixir bajo la catedral."
+        ],
+        [
+          "sc",
+          "Bridge Brigands",
+          "500 libras",
+          "Elimina a cuatro extremistas que vigilan los puentes."
+        ],
+        [
+          "sc",
+          "Marat's Missive",
+          "400 libras",
+          "Consigue una carta de un hombre en el cementerio del norte."
+        ],
+        [
+          "ne",
+          "Saturnus",
+          "—",
+          "Pont Notre-Dame, el reloj del Palais de Justice y la fachada y el tejado de Notre-Dame."
+        ],
+        [
+          "hr",
+          "Belle Époque (3 fallos)",
+          "Bonus de dinero",
+          "Tutorial y dos fallos de 1.500 puntos."
+        ]
+      ],
+      "shape": "M1460 1087 L1453 1082 L1457 1076 L1452 1071 L1438 1069 L1435 1072 L1437 1080 L1434 1083 L1424 1083 L1416 1075 L1410 1079 L1384 1079 L1368 1075 L1354 1077 L1350 1073 L1306 1073 L1295 1058 L1301 1032 L1298 1029 L1292 1031 L1285 1022 L1302 1003 L1307 1006 L1309 1016 L1312 1017 L1316 1013 L1414 1011 L1422 997 L1432 1005 L1436 1001 L1440 1005 L1446 999 L1450 999 L1458 1013 L1478 1013 L1475 1004 L1482 1001 L1485 1004 L1485 1016 L1475 1072 L1472 1075 L1461 1074 L1459 1078 L1463 1084 L1460 1087Z"
+    },
+    {
+      "id": "cite",
+      "n": "La Cité",
+      "g": "isla",
+      "desc": "Este de la isla de la Cité: Notre-Dame y sus calles medievales.",
+      "lx": 1626,
+      "ly": 1068,
+      "c": [
+        [
+          "cofres",
+          2
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          4
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "2 cofres nómadas y 1 punto nómada. Un cofre en el taller subterráneo de Flamel.",
+      "sm": [
+        [
+          "ps",
+          "Devilishly Tricky",
+          "1.200 libras",
+          "Bebe de tres fuentes sospechosas y vence al grupo de cada zona."
+        ],
+        [
+          "ps",
+          "Cult of Baphomet",
+          "400 libras",
+          "Roba vasos litúrgicos de Notre-Dame."
+        ],
+        [
+          "ps",
+          "Ritual of Baphomet",
+          "400 libras",
+          "Mata a tres templarios en un laberinto subterráneo."
+        ],
+        [
+          "ps",
+          "Waxworks",
+          "400 libras",
+          "Roba a tres rivales en el taller y elimina a Jean Lessard."
+        ],
+        [
+          "mm",
+          "Murder Foretold",
+          "Martillo de madera",
+          "Asesinato en el monasterio: 13 pistas."
+        ],
+        [
+          "mm",
+          "Ancestral Vengeance",
+          "Maza larga",
+          "Varios asesinatos en casas: 17 pistas."
+        ],
+        [
+          "ne",
+          "Mars",
+          "—",
+          "Símbolos alrededor del cementerio y del Palais de Justice."
+        ],
+        [
+          "he",
+          "Tithing Templars",
+          "250 + 500 libras",
+          "Roba lo que los templarios sacan del subsuelo de la catedral."
+        ]
+      ],
+      "shape": "M1664 1125 L1652 1125 L1646 1121 L1620 1121 L1615 1116 L1613 1108 L1606 1103 L1594 1103 L1584 1099 L1578 1101 L1574 1097 L1558 1095 L1552 1091 L1548 1093 L1536 1087 L1533 1092 L1537 1096 L1532 1101 L1527 1096 L1528 1091 L1520 1091 L1510 1079 L1500 1089 L1495 1084 L1497 1080 L1492 1077 L1488 1085 L1480 1089 L1475 1084 L1481 1078 L1475 1072 L1475 1066 L1485 1004 L1488 1001 L1516 1003 L1519 1006 L1519 1014 L1524 1017 L1572 1019 L1662 1029 L1665 1032 L1669 1104 L1669 1118 L1664 1125Z"
+    },
+    {
+      "id": "stlouis",
+      "n": "Île Saint-Louis",
+      "g": "isla",
+      "desc": "Isla residencial y tranquila al este de la Cité.",
+      "lx": 1726,
+      "ly": 1084,
+      "c": [
+        [
+          "cofres",
+          7
+        ],
+        [
+          "cerrados",
+          3
+        ],
+        [
+          "escarapelas",
+          4
+        ]
+      ],
+      "note": "Cofre de novicio en la entrada del Café Théâtre (traje de Edward).",
+      "sm": [
+        [
+          "ct",
+          "Auto-da-fé",
+          "500 libras",
+          "Recupera tres manuscritos antes de que los hebertistas los quemen."
+        ],
+        [
+          "ct",
+          "Colette",
+          "400 libras",
+          "Escóndete durante una discusión, elimina al posadero y habla con Colette arriba."
+        ],
+        [
+          "ct",
+          "Damsel in Seamstress",
+          "1.400 libras",
+          "Habla con Rose y recupera tres alijos de vestuario vigilados."
+        ],
+        [
+          "ct",
+          "The Queen's Necklace",
+          "2.500 libras",
+          "Quítale el collar al comandante y llévaselo al contrabandista."
+        ],
+        [
+          "ct",
+          "Foxy Renard",
+          "25.000 libras",
+          "Roba la llave del cura, persigue al hombre marcado y elimina a Renard."
+        ],
+        [
+          "ne",
+          "Mercurius",
+          "—",
+          "Tres respuestas en el Café Théâtre: junto a la armadura de Thomas de Carneillon, un retrato del primer piso y el tejado."
+        ]
+      ],
+      "shape": "M1976 1171 L1960 1167 L1928 1139 L1904 1129 L1897 1132 L1903 1140 L1894 1145 L1828 1137 L1823 1132 L1825 1128 L1822 1125 L1812 1125 L1808 1133 L1796 1133 L1790 1125 L1784 1133 L1700 1129 L1690 1115 L1672 1113 L1669 1110 L1665 1034 L1668 1031 L1678 1031 L1764 1041 L1772 1029 L1788 1029 L1800 1031 L1805 1036 L1805 1044 L1808 1047 L1832 1049 L1838 1045 L1862 1045 L1870 1051 L1880 1049 L1885 1054 L1883 1058 L1886 1061 L1892 1061 L1908 1075 L1914 1063 L1969 1108 L1983 1158 L1983 1164 L1976 1171Z"
+    },
+    {
+      "id": "invalides",
+      "n": "Invalides",
+      "g": "izq",
+      "desc": "Los Inválidos, la Escuela Militar y el Campo de Marte.",
+      "lx": 360,
+      "ly": 1484,
+      "c": [
+        [
+          "cofres",
+          6
+        ],
+        [
+          "cerrados",
+          10
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada y 1 punto nómada.",
+      "sm": [
+        [
+          "ps",
+          "A Romantic Stroll",
+          "25.000 libras",
+          "Elimina a diez extremistas para que Napoleón pasee tranquilo."
+        ],
+        [
+          "ps",
+          "Signaling Officer Murat",
+          "10.000 libras",
+          "Francotiradores, guardias y dos cañones."
+        ],
+        [
+          "ps",
+          "A Nine Chappe",
+          "25.000 libras",
+          "Destruye cuatro torres del telégrafo Chappe."
+        ],
+        [
+          "ps",
+          "Precious Correspondence",
+          "37.500 libras",
+          "Recupera tres cartas."
+        ],
+        [
+          "mm",
+          "A Dash of Poison",
+          "Corseca",
+          "19 pistas."
+        ],
+        [
+          "ne",
+          "Taurus",
+          "—",
+          "El símbolo está bajo el puente de piedra."
+        ],
+        [
+          "co",
+          "The Tournament",
+          "Puntos y equipo",
+          "Carrera de 32 banderas y cuatro conspiradores."
+        ]
+      ],
+      "shape": "M482 1861 L149 1620 L69 1250 L74 1243 L94 1233 L99 1242 L85 1252 L88 1255 L138 1235 L154 1223 L168 1223 L214 1205 L224 1197 L238 1195 L304 1165 L338 1153 L345 1148 L341 1142 L347 1136 L339 1128 L339 1124 L354 1115 L366 1111 L369 1114 L351 1130 L358 1143 L365 1140 L361 1130 L366 1125 L378 1125 L382 1133 L388 1133 L393 1128 L389 1120 L399 1112 L397 1104 L400 1101 L413 1116 L405 1122 L408 1125 L416 1121 L419 1124 L449 1170 L515 1296 L551 1348 L647 1466 L679 1516 L709 1572 L683 1616 L635 1684 L527 1802 L482 1861Z"
+    },
+    {
+      "id": "stthomas",
+      "n": "Saint-Thomas-d'Aquin",
+      "g": "izq",
+      "desc": "Orilla izquierda frente a las Tullerías: conventos y mansiones.",
+      "lx": 782,
+      "ly": 1292,
+      "c": [
+        [
+          "cofres",
+          2
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          3
+        ]
+      ],
+      "note": "4 cofres nómadas.",
+      "sm": [
+        [
+          "ne",
+          "Jupiter",
+          "—",
+          "Entrada del Palais Bourbon, una roca junto a la rueda del molino y un puente."
+        ]
+      ],
+      "shape": "M980 1583 L834 1575 L710 1573 L679 1516 L647 1466 L551 1348 L515 1296 L449 1170 L419 1126 L419 1122 L442 1113 L456 1103 L462 1103 L466 1107 L474 1105 L477 1102 L475 1090 L490 1075 L514 1071 L522 1075 L544 1075 L556 1061 L564 1059 L570 1063 L586 1063 L602 1053 L630 1063 L635 1068 L635 1078 L638 1081 L645 1080 L645 1068 L648 1065 L678 1059 L700 1061 L706 1065 L720 1061 L750 1065 L760 1063 L774 1079 L780 1077 L790 1065 L812 1065 L828 1081 L840 1081 L860 1067 L870 1067 L876 1063 L882 1067 L890 1067 L898 1075 L910 1079 L930 1079 L935 1072 L920 1057 L916 1061 L910 1061 L907 1056 L912 1051 L920 1055 L924 1051 L934 1051 L939 1056 L939 1068 L944 1073 L948 1073 L956 1065 L962 1065 L972 1073 L984 1065 L1000 1067 L1003 1070 L1003 1080 L995 1138 L993 1246 L1001 1398 L1001 1462 L991 1550 L985 1578 L980 1583Z"
+    },
+    {
+      "id": "fsg",
+      "n": "Faubourg Saint-Germain",
+      "g": "izq",
+      "desc": "El barrio aristocrático de la orilla izquierda, con la abadía de Saint-Germain-des-Prés.",
+      "lx": 1166,
+      "ly": 1248,
+      "c": [
+        [
+          "cofres",
+          5
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre de novicio. Junto al Institut de France.",
+      "sm": [
+        [
+          "ps",
+          "Flying Boy",
+          "700 libras",
+          "Sabotea un aparato en el piso de Laplace sin que te vean."
+        ],
+        [
+          "ps",
+          "Diderot's Encyclopedia",
+          "700 libras",
+          "Atrapa al ladrón y vence a los extremistas."
+        ],
+        [
+          "ne",
+          "Sagittarius",
+          "—",
+          "Por el barrio, la Sorbona y el observatorio."
+        ],
+        [
+          "ne",
+          "Cancer",
+          "—",
+          "Jardines del Luxemburgo y un túnel de las catacumbas."
+        ],
+        [
+          "he",
+          "Catacomb Raider",
+          "1.000 + 2.000 libras",
+          "El cofre está en las catacumbas."
+        ],
+        [
+          "sc",
+          "An Engaging Egyptologist · Café Théâtre Procope · Roux's Remains",
+          "700–2.500 libras",
+          "Tres misiones del club social."
+        ]
+      ],
+      "shape": "M1026 1613 L983 1582 L995 1526 L1001 1462 L993 1178 L997 1114 L1003 1074 L1012 1071 L1018 1077 L1026 1077 L1038 1067 L1046 1073 L1068 1067 L1084 1071 L1088 1075 L1130 1075 L1129 1068 L1138 1061 L1148 1061 L1154 1065 L1178 1061 L1187 1066 L1183 1074 L1186 1077 L1212 1077 L1220 1069 L1230 1077 L1274 1081 L1282 1071 L1298 1089 L1305 1092 L1310 1103 L1330 1103 L1335 1108 L1337 1354 L1331 1424 L1294 1447 L1188 1497 L1126 1531 L1080 1565 L1026 1613ZM1295 1100 L1288 1089 L1281 1092 L1290 1101 L1295 1100Z"
+    },
+    {
+      "id": "stlambert",
+      "n": "Saint-Lambert",
+      "g": "izq",
+      "desc": "Suroeste casi rural: huertos, canteras y pueblos como Vaugirard.",
+      "lx": 898,
+      "ly": 1758,
+      "c": [
+        [
+          "cofres",
+          3
+        ],
+        [
+          "cerrados",
+          11
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada y 1 de novicio.",
+      "sm": [
+        [
+          "ps",
+          "Cartouche's Memoirs",
+          "25.000 libras",
+          "Recupera dos diarios de cofres vigilados."
+        ],
+        [
+          "ps",
+          "Turtle, Snake, Bear, Paper, Scissors",
+          "25.000 libras",
+          "Tres objetivos: que sus guardias se maten entre ellos."
+        ],
+        [
+          "ps",
+          "Vicious Verses",
+          "25.000 libras",
+          "Tres libros en una zona restringida."
+        ],
+        [
+          "mm",
+          "The Death of Philibert Aspairt",
+          "Flamberge",
+          "Pistas por todo el barrio."
+        ],
+        [
+          "co",
+          "Women's March",
+          "Puntos y equipo",
+          "Escolta a Théroigne y sabotea tres cañones."
+        ],
+        [
+          "sc",
+          "Smoky, Yet Robust · Spiked Bourbon · Special Delivery",
+          "12.500–37.500 libras",
+          "Viñedo, Palais Bourbon y la Escuela Militar."
+        ],
+        [
+          "hr",
+          "Medieval (2 fallos)",
+          "Bonus de dinero",
+          "Campo de batalla y cantera, con catapultas."
+        ]
+      ],
+      "shape": "M1000 1961 L500 1865 L490 1863 L485 1858 L527 1802 L635 1684 L710 1573 L834 1575 L984 1583 L1027 1616 L1061 1684 L1125 1794 L1161 1866 L1197 1952 L1194 1957 L1000 1961Z"
+    },
+    {
+      "id": "sorbonne",
+      "n": "Sorbonne",
+      "g": "izq",
+      "desc": "El Barrio Latino: la universidad, colegios y librerías.",
+      "lx": 1492,
+      "ly": 1278,
+      "c": [
+        [
+          "cofres",
+          4
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada, 1 de novicio y 1 punto nómada. La torre de la Sorbona sirve para un salto de fe.",
+      "sm": [
+        [
+          "ps",
+          "The Condorcet Method",
+          "2.500 libras",
+          "Dos documentos en zonas vigiladas; no hieras al civil cautivo."
+        ],
+        [
+          "ps",
+          "Carmelite Nuns",
+          "700 libras",
+          "Protege la marcha de las monjas."
+        ],
+        [
+          "mm",
+          "Hand of Science",
+          "Arcabuz",
+          "18 pistas."
+        ],
+        [
+          "mm",
+          "The Assassination of Jean-Paul Marat",
+          "Messer",
+          "22 pistas."
+        ],
+        [
+          "he",
+          "It Belongs in a Museum",
+          "25.000 + 45.000 libras",
+          "La obra maestra está en el salón de baile del primer piso."
+        ]
+      ],
+      "shape": "M1528 1481 L1410 1453 L1344 1431 L1331 1422 L1337 1354 L1335 1108 L1345 1102 L1337 1096 L1340 1091 L1360 1091 L1366 1097 L1372 1093 L1388 1093 L1392 1097 L1404 1095 L1407 1098 L1404 1109 L1408 1109 L1420 1097 L1454 1101 L1462 1103 L1467 1108 L1465 1116 L1468 1119 L1482 1119 L1479 1110 L1484 1105 L1493 1110 L1485 1118 L1496 1123 L1514 1125 L1524 1123 L1530 1117 L1536 1117 L1594 1133 L1622 1135 L1632 1143 L1668 1143 L1673 1148 L1669 1154 L1672 1157 L1730 1159 L1735 1164 L1681 1272 L1661 1306 L1603 1388 L1528 1481Z"
+    },
+    {
+      "id": "luxembourg",
+      "n": "Luxembourg",
+      "g": "izq",
+      "desc": "Palacio y jardines del Luxemburgo, usado como prisión durante el Terror.",
+      "lx": 1300,
+      "ly": 1678,
+      "c": [
+        [
+          "cofres",
+          6
+        ],
+        [
+          "cerrados",
+          9
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          1
+        ]
+      ],
+      "note": "1 cofre nómada y 1 de novicio (nivel 5).",
+      "sm": [
+        [
+          "ps",
+          "Cassini's Constellations",
+          "5.000 libras",
+          "Tres notas en el Observatorio de París."
+        ],
+        [
+          "co",
+          "Jacobin Raid",
+          "Puntos y equipo",
+          "Jacobinos en la iglesia y sus líderes en las catacumbas."
+        ]
+      ],
+      "shape": "M1240 1957 L1200 1957 L1197 1954 L1161 1866 L1125 1794 L1061 1684 L1025 1614 L1080 1565 L1126 1531 L1168 1507 L1294 1447 L1330 1425 L1410 1453 L1528 1481 L1571 1550 L1605 1624 L1573 1664 L1537 1718 L1483 1790 L1453 1824 L1349 1926 L1326 1955 L1240 1957Z"
+    },
+    {
+      "id": "pantheon",
+      "n": "Panthéon",
+      "g": "izq",
+      "desc": "La colina de Santa Genoveva, coronada por el Panteón.",
+      "lx": 1734,
+      "ly": 1488,
+      "c": [
+        [
+          "cofres",
+          3
+        ],
+        [
+          "cerrados",
+          8
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada, 1 de novicio y 1 punto nómada.",
+      "sm": [
+        [
+          "ps",
+          "Swiss Stash",
+          "7.500 libras",
+          "Roba una carta y saquea cuatro cofres."
+        ],
+        [
+          "ps",
+          "Coat of Arms",
+          "7.500 libras",
+          "Asalta la curtiduría y vence a los guardias del curtidor."
+        ],
+        [
+          "co",
+          "Moving Mirabeau",
+          "Puntos y equipo",
+          "Entra en el Panteón, alinea los anillos del zodiaco de la cripta y llévate el artefacto de Mirabeau."
+        ]
+      ],
+      "shape": "M1846 1681 L1770 1669 L1606 1625 L1571 1550 L1529 1482 L1603 1388 L1661 1306 L1681 1272 L1733 1166 L1738 1161 L1744 1161 L1752 1147 L1780 1147 L1785 1152 L1783 1158 L1796 1163 L1896 1175 L1906 1163 L1910 1163 L1952 1181 L1958 1181 L1969 1188 L1973 1202 L1968 1207 L1953 1198 L1952 1189 L1944 1195 L1938 1193 L1935 1196 L1941 1218 L1949 1230 L1972 1249 L1986 1253 L1994 1245 L1998 1245 L2007 1252 L1987 1308 L1945 1394 L1919 1456 L1895 1526 L1859 1652 L1846 1681Z"
+    },
+    {
+      "id": "stjacques",
+      "n": "Saint-Jacques",
+      "g": "izq",
+      "desc": "El sur de la orilla izquierda: la calle Saint-Jacques y el Val-de-Grâce.",
+      "lx": 1662,
+      "ly": 1786,
+      "c": [
+        [
+          "cofres",
+          2
+        ],
+        [
+          "cerrados",
+          11
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "2 cofres nómadas. Algunos están en las alcantarillas.",
+      "sm": [
+        [
+          "ps",
+          "The Little Prince",
+          "25.000 libras",
+          "Rescata al príncipe y despeja su ruta de escape."
+        ],
+        [
+          "sc",
+          "Chouan Riddles · Bara's Funeral · With Forced Smile",
+          "2.500–5.000 libras",
+          "Un acertijo con reloj, un cortejo al Panteón y un jefe de banda."
+        ],
+        [
+          "ne",
+          "Pisces",
+          "—",
+          "Símbolo en un callejón; respuestas en el Panteón."
+        ]
+      ],
+      "shape": "M1360 1955 L1332 1955 L1329 1952 L1349 1926 L1453 1824 L1483 1790 L1604 1625 L1636 1631 L1770 1669 L1846 1681 L1939 1790 L1975 1840 L1968 1845 L1600 1951 L1360 1955Z"
+    },
+    {
+      "id": "stmarcel",
+      "n": "Saint-Marcel",
+      "g": "izq",
+      "desc": "Faubourg obrero del sureste: los Gobelinos y el Jardín del Rey.",
+      "lx": 2096,
+      "ly": 1508,
+      "c": [
+        [
+          "cofres",
+          7
+        ],
+        [
+          "cerrados",
+          9
+        ],
+        [
+          "escarapelas",
+          7
+        ],
+        [
+          "artefactos",
+          2
+        ]
+      ],
+      "note": "1 cofre nómada y 1 de novicio.",
+      "sm": [
+        [
+          "ps",
+          "Tapestry Thief",
+          "37.500 libras",
+          "Sigue a los testigos y mata al líder extremista desde un tejado."
+        ],
+        [
+          "ps",
+          "Arm the People",
+          "10.000 libras",
+          "Un documento y cuatro cofres en la armería municipal."
+        ],
+        [
+          "ps",
+          "Assassin to Keep You Company",
+          "50.000 libras",
+          "Libera a tres grupos de mujeres."
+        ],
+        [
+          "mm",
+          "The Decapitated Warden",
+          "Gladius",
+          "16 pistas."
+        ],
+        [
+          "mm",
+          "Cut the Middle Man",
+          "Hacha de oficial",
+          "25 pistas."
+        ],
+        [
+          "ne",
+          "Gemini",
+          "—",
+          "Cuatro símbolos; la tercera respuesta está en Saint-Jacques."
+        ],
+        [
+          "co",
+          "Les Enragés",
+          "Puntos y equipo",
+          "Roba el registro, rescata a tres asesinos del hospital y mata a Roux."
+        ],
+        [
+          "he",
+          "Smuggler's Paradise",
+          "5.000 + 10.000 libras",
+          "El cofre más lejano del almacén subterráneo."
+        ]
+      ],
+      "shape": "M1982 1841 L1973 1838 L1939 1790 L1871 1712 L1849 1684 L1849 1676 L1859 1652 L1895 1526 L1919 1456 L1945 1394 L1987 1308 L2008 1253 L2030 1267 L2036 1267 L2054 1285 L2162 1333 L2180 1327 L2192 1317 L2197 1322 L2185 1334 L2181 1342 L2184 1347 L2194 1353 L2198 1351 L2204 1361 L2212 1353 L2222 1353 L2231 1364 L2227 1376 L2236 1383 L2248 1371 L2258 1371 L2286 1385 L2298 1385 L2307 1394 L2302 1399 L2294 1405 L2274 1403 L2271 1406 L2332 1449 L2335 1456 L2319 1504 L2123 1798 L2114 1803 L1982 1841Z"
+    }
+  ],
+  "lms": [
+    {
+      "id": "versailles",
+      "n": "Palacio de Versalles",
+      "d": "versalles",
+      "x": 0,
+      "y": 0,
+      "desc": "La corte de Luis XVI hasta octubre de 1789. Aquí crece Arno, adoptado por la familia De la Serre.",
+      "aprox": false,
+      "ins": true,
+      "mems": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "11.1"
+      ]
+    },
+    {
+      "id": "notredame",
+      "n": "Notre-Dame",
+      "d": "cite",
+      "x": 1582,
+      "y": 1086,
+      "desc": "La catedral gótica de la isla de la Cité. En Unity puedes recorrerla por dentro y escalarla entera.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "3.2"
+      ]
+    },
+    {
+      "id": "chapelle",
+      "n": "Sainte-Chapelle",
+      "d": "pdj",
+      "x": 1418,
+      "y": 1077,
+      "desc": "Capilla gótica del siglo XIII dentro del Palacio de Justicia. Bajo ella está el cuartel de la Hermandad de los Asesinos.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "2.2",
+        "3.1",
+        "10.3"
+      ]
+    },
+    {
+      "id": "bastille",
+      "n": "La Bastilla",
+      "d": "arsenal",
+      "x": 2077,
+      "y": 860,
+      "desc": "Fortaleza-prisión tomada el 14 de julio de 1789. Empezó a demolerse ese mismo verano.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "2.1",
+        "11.3"
+      ]
+    },
+    {
+      "id": "hoteldeville",
+      "n": "Hôtel de Ville",
+      "d": "hdv",
+      "x": 1590,
+      "y": 945,
+      "desc": "El ayuntamiento de París, frente a la plaza de Grève.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "chatelet",
+      "n": "Grand Châtelet",
+      "d": "hdv",
+      "x": 1395,
+      "y": 962,
+      "desc": "Fortaleza y tribunal de la orilla derecha, frente a la Cité. Escenario de las masacres de septiembre de 1792.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "8.2"
+      ]
+    },
+    {
+      "id": "halleble",
+      "n": "Halle aux Blés",
+      "d": "halles",
+      "x": 1222,
+      "y": 800,
+      "desc": "El mercado de grano circular de Les Halles, con su gran cúpula.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "5.2"
+      ]
+    },
+    {
+      "id": "innocents",
+      "n": "Cementerio de los Inocentes",
+      "d": "halles",
+      "x": 1389,
+      "y": 817,
+      "desc": "Antiguo cementerio junto a Les Halles. Se clausuró en 1780 y sus huesos acabaron en las catacumbas.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "5.3"
+      ]
+    },
+    {
+      "id": "palaisroyal",
+      "n": "Palais-Royal",
+      "d": "feydeau",
+      "x": 1050,
+      "y": 772,
+      "desc": "Jardines, cafés y galerías donde se debatía la Revolución.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "louvre",
+      "n": "Louvre y Tullerías",
+      "d": "tuileries",
+      "x": 933,
+      "y": 917,
+      "desc": "El viejo palacio real y el de las Tullerías, residencia de Luis XVI desde 1789.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "8.1"
+      ]
+    },
+    {
+      "id": "placerev",
+      "n": "Plaza de la Revolución",
+      "d": "tuileries",
+      "x": 590,
+      "y": 925,
+      "desc": "La actual plaza de la Concordia. Aquí fue guillotinado Luis XVI el 21 de enero de 1793.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "10.2"
+      ]
+    },
+    {
+      "id": "vendomep",
+      "n": "Plaza Vendôme",
+      "d": "vendome",
+      "x": 768,
+      "y": 756,
+      "desc": "Plaza real de Luis XIV. En 1792 pasó a llamarse plaza de las Picas.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "templetower",
+      "n": "Torre del Temple",
+      "d": "temple",
+      "x": 1643,
+      "y": 452,
+      "desc": "La antigua fortaleza de los templarios. Aquí empieza el juego, en 1307, y aquí termina la historia de Arno. La familia real estuvo presa en su torre desde 1792.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "p1",
+        "12.3"
+      ]
+    },
+    {
+      "id": "portestdenis",
+      "n": "Puerta de San Denis",
+      "d": "stdenis",
+      "x": 1366,
+      "y": 350,
+      "desc": "Arco triunfal levantado en 1672 en honor de Luis XIV.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "miracles",
+      "n": "Corte de los Milagros",
+      "d": "stdenis",
+      "x": 1263,
+      "y": 497,
+      "desc": "El reino de mendigos y ladrones de la orilla derecha. Posición aproximada.",
+      "aprox": true,
+      "ins": false,
+      "mems": [
+        "4.1",
+        "4.2"
+      ]
+    },
+    {
+      "id": "placeroyale",
+      "n": "Plaza Real",
+      "d": "marais",
+      "x": 1970,
+      "y": 815,
+      "desc": "La plaza más antigua de París (hoy plaza de los Vosgos), en el corazón del Marais.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "invalidesb",
+      "n": "Los Inválidos",
+      "d": "invalides",
+      "x": 500,
+      "y": 1450,
+      "desc": "Hospital de veteranos con su gran cúpula dorada. El 14 de julio de 1789 la multitud se llevó de aquí miles de fusiles.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "champmars",
+      "n": "Campo de Marte",
+      "d": "invalides",
+      "x": 178,
+      "y": 1527,
+      "desc": "La explanada de la Escuela Militar, escenario de la Fiesta de la Federación de 1790.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "12.1"
+      ]
+    },
+    {
+      "id": "stgermain",
+      "n": "Saint-Germain-des-Prés",
+      "d": "fsg",
+      "x": 1150,
+      "y": 1283,
+      "desc": "La abadía medieval del barrio aristocrático de la orilla izquierda.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "stthomasc",
+      "n": "Iglesia de Saint-Thomas-d'Aquin",
+      "d": "stthomas",
+      "x": 935,
+      "y": 1304,
+      "desc": "Iglesia de los dominicos que da nombre al barrio.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "sorbonneb",
+      "n": "La Sorbona",
+      "d": "sorbonne",
+      "x": 1493,
+      "y": 1389,
+      "desc": "La universidad, corazón del Barrio Latino.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "luxpal",
+      "n": "Palacio del Luxemburgo",
+      "d": "luxembourg",
+      "x": 1262,
+      "y": 1495,
+      "desc": "Palacio y jardines. Durante el Terror sirvió de prisión.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "pantheonb",
+      "n": "Panteón",
+      "d": "pantheon",
+      "x": 1634,
+      "y": 1458,
+      "desc": "La iglesia de Santa Genoveva, convertida en 1791 en panteón de grandes hombres. Mirabeau fue el primero en entrar.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "valdegrace",
+      "n": "Val-de-Grâce",
+      "d": "stjacques",
+      "x": 1637,
+      "y": 1769,
+      "desc": "Abadía con cúpula barroca. Con la Revolución pasó a ser hospital militar.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "gobelins",
+      "n": "Manufactura de los Gobelinos",
+      "d": "stmarcel",
+      "x": 2001,
+      "y": 1871,
+      "desc": "Talleres reales de tapices en el faubourg obrero de Saint-Marcel.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "jardinroi",
+      "n": "Jardín del Rey",
+      "d": "stmarcel",
+      "x": 2040,
+      "y": 1330,
+      "desc": "El jardín botánico de París. En 1793 nació aquí el Museo de Historia Natural.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "beauvais",
+      "n": "Hôtel de Beauvais",
+      "d": "marais",
+      "x": 1748,
+      "y": 920,
+      "desc": "Mansión del siglo XVII en el Marais. En Unity acoge la reunión de los jacobinos de la secuencia 6.",
+      "aprox": false,
+      "ins": false,
+      "mems": [
+        "6.1"
+      ]
+    },
+    {
+      "id": "cafe",
+      "n": "Café Théâtre",
+      "d": "stlouis",
+      "x": 1770,
+      "y": 1062,
+      "desc": "La base de Arno en la Île Saint-Louis: renuévala para ganar dinero. Bajo ella está la sala con la armadura de Thomas de Carneillon. Posición aproximada.",
+      "aprox": true,
+      "ins": false,
+      "mems": [
+        "7.1"
+      ]
+    },
+    {
+      "id": "steustache",
+      "n": "Saint-Eustache",
+      "d": "halles",
+      "x": 1266,
+      "y": 728,
+      "desc": "La gran iglesia gótica de Les Halles.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "palaisbourbon",
+      "n": "Palais Bourbon",
+      "d": "stthomas",
+      "x": 530,
+      "y": 1085,
+      "desc": "Palacio a orillas del Sena, frente a la plaza de la Revolución.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "stsulpice",
+      "n": "Saint-Sulpice",
+      "d": "fsg",
+      "x": 1276,
+      "y": 1415,
+      "desc": "Gran iglesia del faubourg Saint-Germain, con dos torres desiguales.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "salpetriere",
+      "n": "La Salpêtrière",
+      "d": "stmarcel",
+      "x": 2250,
+      "y": 1550,
+      "desc": "Enorme hospital-asilo del sureste de París.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    },
+    {
+      "id": "ecolemil",
+      "n": "Escuela Militar",
+      "d": "invalides",
+      "x": 425,
+      "y": 1799,
+      "desc": "Academia militar junto al Campo de Marte, donde estudió Napoleón.",
+      "aprox": false,
+      "ins": false,
+      "mems": []
+    }
+  ],
+  "seqs": [
+    {
+      "id": "p",
+      "num": "P",
+      "t": "El último Gran Maestre",
+      "yr": "1307",
+      "mems": [
+        {
+          "id": "p1",
+          "t": "Jacques de Molay",
+          "en": "Prologue",
+          "pl": "templetower",
+          "obj": "Tutorial como templario junto a Jacques de Molay durante la caída de la Orden: esconde una espada y un libro antes de que lleguen los asesinos.",
+          "steps": [
+            "Sigue a De Molay por la fortaleza tras la escena inicial.",
+            "Esconde la espada y el libro y corre hacia el marcador, evitando o enfrentándote a los enemigos.",
+            "Cruza el patio y trepa por la escalera y los muros hasta el edificio.",
+            "Persigue por tejados y escaleras al asesino que roba el libro.",
+            "Derrótalo: para sus golpes y esquiva los ataques pesados del bruto (esos no se pueden parar)."
+          ],
+          "opt": [],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «A Long Time Ago»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "num": "1",
+      "t": "Versalles",
+      "yr": "1776 y 1789",
+      "mems": [
+        {
+          "id": "1.1",
+          "t": "Recuerdos de Versalles",
+          "en": "Memories of Versailles",
+          "pl": "versailles",
+          "obj": "Arno, de niño, sigue a una chica misteriosa por Versalles. Años después, ya adulto, persigue a Hugo por las calles.",
+          "steps": [
+            "Sigue a la chica por las salas de Versalles hasta el patio del jardín.",
+            "Coge la manzana de la mesa del guardia dormido y rompe su línea de visión para despistarlo.",
+            "Atrae al guardia lejos de la salida para poder salir del jardín.",
+            "Tras la escena, persigue a Hugo pasando por encima y por debajo de obstáculos y derríbalo.",
+            "Ve al norte por la izquierda del Cafés et Épices, escóndete entre la gente y llega a la finca De la Serre."
+          ],
+          "opt": [
+            "Pasa por encima o por debajo de 5 obstáculos",
+            "Que no te derriben"
+          ],
+          "opp": [
+            "El guardia del patio es el tutorial de la «última posición conocida»: más adelante sirve para atraer objetivos a una emboscada."
+          ],
+          "uk": "",
+          "unlock": "",
+          "sp": "La chica es Élise de la Serre. Ese mismo día, el padre de Arno muere asesinado.",
+          "rift": false
+        },
+        {
+          "id": "1.2",
+          "t": "Los Estados Generales",
+          "en": "The Estates General",
+          "pl": "versailles",
+          "obj": "Entrega una carta alcanzando el carruaje de los De la Serre y escapa de la policía.",
+          "steps": [
+            "Habla con Olivier dentro de la finca De la Serre.",
+            "Sigue el carruaje por los tejados y sincroniza el punto de observación de la catedral, en la plaza del mercado.",
+            "Salto de fe hasta las puertas; mézclate con la multitud y usa las coberturas para pasar a los guardias.",
+            "Sube al piso principal y cruza al balcón del marcador.",
+            "Pelea con Hugo (para sus golpes) y con Victor (esquiva sus golpes pesados).",
+            "Huye de la policía y sal de la zona."
+          ],
+          "opt": [
+            "Para 2 ataques",
+            "Esquiva 2 ataques"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "1.3",
+          "t": "Alta sociedad",
+          "en": "High Society",
+          "pl": "versailles",
+          "obj": "Deja la carta en el despacho de De la Serre y cuélate en la gala de palacio para ver a Élise.",
+          "steps": [
+            "Recorre la residencia, examina los objetos brillantes y desliza la carta bajo la puerta del despacho.",
+            "Cámbiate de ropa y entra en la gala usando la multitud para evitar a los guardias.",
+            "Entra en el edificio por el lado iluminado con dos estandartes rojos.",
+            "Avanza a cubierto entre salas y mesas; muévete solo cuando los guardias miren a otro lado.",
+            "Sigue a Élise por el salón de baile y las salas de muebles tapados.",
+            "Sal del palacio tras la escena del comedor."
+          ],
+          "opt": [
+            "No entres en conflicto"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «Youth in Versailles»",
+          "sp": "Esa noche asesinan a François de la Serre y culpan a Arno.",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "num": "2",
+      "t": "La Bastilla",
+      "yr": "1789",
+      "mems": [
+        {
+          "id": "2.1",
+          "t": "Encarcelado",
+          "en": "Imprisoned",
+          "pl": "bastille",
+          "obj": "Sobrevive en la Bastilla y escapa junto a un preso veterano.",
+          "steps": [
+            "Explora la celda y habla con todos.",
+            "Gana el duelo de la mañana con paradas perfectas y lee con la Vista de Águila lo escrito en la pared.",
+            "Cuando entren los guardias en la celda, elimina en sigilo al del fondo.",
+            "Sigue a Bellec: paradas perfectas contra la primera oleada y bombas de humo contra la segunda.",
+            "Escapa por la ventana, cruza tejados y vigas y acaba con los guardias de fuera.",
+            "Sube al tejado con Bellec y haz un salto de fe."
+          ],
+          "opt": [
+            "2 evasiones con bomba de humo",
+            "3 paradas perfectas"
+          ],
+          "opp": [
+            "El duelo de la mañana es el tutorial de la parada perfecta.",
+            "La Vista de Águila revela la escritura de la pared.",
+            "Puedes matar en sigilo a los guardias que entran en la celda."
+          ],
+          "uk": "",
+          "unlock": "",
+          "sp": "Pierre Bellec te habla del pasado de tu padre, te recluta para la Hermandad y escapáis durante la toma de la Bastilla.",
+          "rift": false
+        },
+        {
+          "id": "2.2",
+          "t": "Renacimiento",
+          "en": "Rebirth",
+          "pl": "chapelle",
+          "obj": "Sigue a Bellec hasta el refugio de la Hermandad, bajo la Sainte-Chapelle.",
+          "steps": [
+            "Trepa por los pilares hasta el segundo piso y entra en la nave.",
+            "Coloca el talismán para mover las lámparas y cruza por ellas hasta el marcador.",
+            "Desde la cornisa, haz un salto de fe a la oscuridad cuando se revele el camino.",
+            "Sigue a Bellec al refugio y bebe del cáliz cuando recuperes el control.",
+            "En la visión de Versalles, corre por el camino que se derrumba saltando de plataforma en plataforma.",
+            "Cruza la sala abarrotada, colócate detrás del objetivo y asesínalo."
+          ],
+          "opt": [],
+          "opp": [],
+          "uk": "El objetivo de la sala abarrotada, dentro de la visión.",
+          "unlock": "Trofeo «Rebirth»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "num": "3",
+      "t": "Iniciación",
+      "yr": "",
+      "mems": [
+        {
+          "id": "3.1",
+          "t": "Graduación",
+          "en": "Graduation",
+          "pl": "chapelle",
+          "obj": "Primera misión con Bellec por los tejados de París, hasta la sala del Consejo de la Hermandad.",
+          "steps": [
+            "Habla con Bellec en el tejado y cruza ventanas y gárgolas hasta las dos tiendas.",
+            "Mata a los tres guardias desde cobertura (cajas y el pilar junto al último).",
+            "Sabotea la campana de alarma, asesina al matón que queda y registra el cadáver marcado.",
+            "Usa una bomba de humo y sigue a Bellec por los tejados y una cuerda.",
+            "Abre paso por las calles hasta el cuartel de la Hermandad y entra en la sala del Consejo."
+          ],
+          "opt": [
+            "3 muertes desde cobertura",
+            "No te quedes atrás respecto a Bellec"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "3.2",
+          "t": "Confesión",
+          "en": "Confession",
+          "pl": "notredame",
+          "obj": "Tu primer gran asesinato de caja negra: elimina a Sivert dentro de Notre-Dame.",
+          "steps": [
+            "Por los tejados al norte de la catedral, alcanza a los dos matones que robaron las llaves de un cura.",
+            "Vuelve a la fachada y sube al punto marcado para localizar a Duchesneau.",
+            "Escóndete en el carro de heno del nivel inferior y asesínalo cuando pase.",
+            "Por el sureste, baja por el pozo y sigue las alcantarillas hasta una escalera oculta que entra en la catedral.",
+            "Avanza tras las cortinas rojas y atrae a los guardias de uno en uno.",
+            "Desde el carro de heno del centro, localiza a Sivert con la Vista de Águila y entra en el confesionario antes de que se vaya.",
+            "Sal por el segundo piso usando las llaves."
+          ],
+          "opt": [
+            "2 muertes desde un escondite",
+            "No hagas saltar ninguna alarma"
+          ],
+          "opp": [
+            "Infiltración: quítales las llaves a los dos matones que se las robaron al cura.",
+            "Asesinato: mata a Duchesneau, socio de Sivert, para desbloquear el asesinato único."
+          ],
+          "uk": "Sivert, desde el confesionario. Hay que actuar rápido: si sale, pierdes el asesinato único.",
+          "unlock": "Trofeo «First Blood»",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "3.3",
+          "t": "Fallo del Helix: París, 1898",
+          "en": "Server bridge · Paris 1898",
+          "pl": "",
+          "obj": "Abstergo está barriendo el servidor: encuentra el portal y sal antes de que te alcance. Las barras rojas del cielo te desincronizan.",
+          "steps": [
+            "Cruza la ciudad hasta el portal y salta a 1898.",
+            "Ve hacia el Café Terminus, baja al metro y cruza las vías.",
+            "Sigue los túneles y trepa por tuberías y cuerdas hasta otro túnel.",
+            "Cuando Arno cae a las vías, huye corriendo del tren deslizándote bajo los obstáculos.",
+            "Esquiva los escombros del vórtice a cubierto y trepa por la grúa.",
+            "Trepa alrededor de la Estatua de la Libertad hasta la salida."
+          ],
+          "opt": [],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": true
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "num": "4",
+      "t": "Los bajos fondos",
+      "yr": "",
+      "mems": [
+        {
+          "id": "4.1",
+          "t": "El reino de los mendigos",
+          "en": "The Kingdom of Beggars",
+          "pl": "miracles",
+          "obj": "Busca al templario La Touche en la Corte de los Milagros y síguelo sin que te vea.",
+          "steps": [
+            "Rodea la zona de búsqueda en vez de cruzarla y encuentra a La Touche en un cuartucho.",
+            "Tras la escena, sigue el rastro de sangre con la Vista de Águila en sigilo.",
+            "Síguelo a distancia por el laberinto de edificios, trepando por las estructuras de madera.",
+            "Por los tejados, elimina guardias con la Hoja Fantasma y asesinatos aéreos (primero el que te puede ver).",
+            "Entra en el edificio, distrae o elimina al guardia de la ventana y baja hasta La Touche.",
+            "Sal por donde entraste lanzando un petardo al patio."
+          ],
+          "opt": [
+            "2 muertes con la Hoja Fantasma",
+            "2 señuelos con petardos"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "La Hoja Fantasma (se encarga en el cuartel de la Hermandad) y mejoras de armas.",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "4.2",
+          "t": "Le roi est mort",
+          "en": "Le Roi Est Mort",
+          "pl": "miracles",
+          "obj": "Da caza al Rey de los Mendigos (Roi des Thunes) en las alcantarillas.",
+          "steps": [
+            "Asesina desde el aire al guardia de abajo y tapa las dos chimeneas.",
+            "Salva con una bomba de humo a los rebeldes atacados y síguelos hasta el callejón.",
+            "Entra en las alcantarillas por el mausoleo y avanza por los túneles.",
+            "Sube a la sala principal, deslízate bajo las rejas y mata al francotirador de la puerta cerrada.",
+            "Fuerza la cerradura y ve a por el Rey de los Mendigos.",
+            "Consigue otra muerte con la Hoja Fantasma y escapa por los túneles llenos de humo."
+          ],
+          "opt": [
+            "3 asesinatos aéreos",
+            "2 muertes con la Hoja Fantasma"
+          ],
+          "opp": [
+            "Tapa las dos chimeneas con tablas para que el humo no alerte a los guardias.",
+            "Salva a los rebeldes con una bomba de humo.",
+            "Doble asesinato a los dos guardias del callejón (si tienes la habilidad).",
+            "En las alcantarillas, cuélate cuando la patrulla se aleje."
+          ],
+          "uk": "El Rey de los Mendigos: disparo a la cabeza con la Hoja Fantasma por la espalda y remate con la hoja oculta.",
+          "unlock": "Trofeo «La Cour des Miracles»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "num": "5",
+      "t": "La pista del platero",
+      "yr": "",
+      "mems": [
+        {
+          "id": "5.1",
+          "t": "El platero",
+          "en": "The Silversmith",
+          "pl": "",
+          "obj": "El arma que mató a De la Serre lleva la marca de un platero. Sigue la pista hasta él.",
+          "steps": [
+            "Rodea el edificio por la derecha y entra por una ventana de la esquina noreste.",
+            "Limpia la sala de guardia contigua forzando las puertas.",
+            "Separa a los dos brutos de la sala siguiente con la línea de visión y mátalos.",
+            "Usa la Cuchilla Berserker con el bruto de abajo tras limpiar el piso de arriba.",
+            "Sube en el elevador al tejado para eliminar a los francotiradores.",
+            "Desde la última puerta, usa la Vista de Águila y dispara a los enemigos mientras Germain pide ayuda."
+          ],
+          "opt": [
+            "Fuerza 4 cerraduras",
+            "Enloquece a 2 brutos"
+          ],
+          "opp": [
+            "Usa la línea de visión y la última posición conocida para separar a los brutos.",
+            "Muertes desde cobertura con guardias y brutos.",
+            "Los francotiradores del tejado se pueden matar por la espalda tras subir en el elevador."
+          ],
+          "uk": "",
+          "unlock": "Pistolas y fusiles, y la siguiente pista sobre el verdadero culpable.",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "5.2",
+          "t": "La Halle aux Blés",
+          "en": "La Halle aux Blés",
+          "pl": "halleble",
+          "obj": "Infíltrate en el mercado de grano y sigue la pista hasta el corazón del edificio.",
+          "steps": [
+            "Dispara a la cabeza con la pistola a los dos guardias de la línea de la zona restringida.",
+            "Rodea en sentido antihorario hasta la siguiente pareja y completa las muertes con pistola.",
+            "Vuelve a la entrada principal y cruza el centro escondido entre el heno cuando los guardias miren a otro lado.",
+            "Mata en silencio al bruto del otro lado, trepa por las tablas, asesina al francotirador y cruza por la cuerda.",
+            "Cruza la puerta, deslízate sobre los barriles y bajo la pared y salta bajo las vigas que caen.",
+            "Trepa por la columna central y sal por la plataforma exterior y la cuerda."
+          ],
+          "opt": [
+            "3 muertes con pistola (antes de entrar en la zona restringida)",
+            "Desliza por encima o por debajo de 4 objetos"
+          ],
+          "opp": [
+            "Mata desde cobertura al bruto que revisa los barriles.",
+            "Al guardia apoyado en la pared, desde el otro lado de los toneles."
+          ],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "5.3",
+          "t": "El profeta",
+          "en": "The Prophet",
+          "pl": "innocents",
+          "obj": "Elimina a Lafrenière en el Cementerio de los Inocentes.",
+          "steps": [
+            "Baja al cementerio y sigue el muro hacia el sur hasta una entrada en la esquina.",
+            "Sabotea la primera campana junto a la pila de calaveras y baja a los túneles.",
+            "Salva con una bomba de humo a los rebeldes acosados y sabotea el resto de campanas.",
+            "Escóndete en el carro de heno hasta que anochezca y mata desde cobertura a los guardias de la primera campana.",
+            "Atrae a los guardias del mausoleo a muertes desde cobertura.",
+            "Escóndete en la letrina junto a los huesos y mata a Lafrenière cuando pase."
+          ],
+          "opt": [
+            "Sabotea 4 campanas de alarma",
+            "3 muertes desde cobertura"
+          ],
+          "opp": [
+            "Hay dos eventos de oportunidad en la zona."
+          ],
+          "uk": "Lafrenière: muerte silenciosa desde el escondite de la letrina, junto a los huesos.",
+          "unlock": "Trofeo «The Root of Evil»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "num": "6",
+      "t": "Política y emboscadas",
+      "yr": "",
+      "mems": [
+        {
+          "id": "6.1",
+          "t": "El club de los jacobinos",
+          "en": "The Jacobin Club",
+          "pl": "beauvais",
+          "obj": "Sigue a La Touche dentro del Hôtel de Beauvais, donde se reúnen los jacobinos.",
+          "steps": [
+            "Localiza a La Touche en el marcador del hotel y cruza los tejados enloqueciendo al primer francotirador.",
+            "Dispara a la cabeza al guardia que patrulla, enloquece a un segundo francotirador y entra por el balcón.",
+            "A cubierto, busca a La Touche entre el público con la Vista de Águila.",
+            "Sigue a un guardia hasta un escondite para matarlo.",
+            "Cuando La Touche suba, sigue a los hombres que bajan corriendo al sótano.",
+            "Usa el armario de la sala principal para llegar al balcón y sal por donde entraste."
+          ],
+          "opt": [
+            "Enloquece a 2 francotiradores",
+            "2 muertes desde un escondite"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "6.2",
+          "t": "Emboscada templaria",
+          "en": "Templar Ambush",
+          "pl": "",
+          "obj": "Los templarios van a por Élise: defiéndela y escapad juntos.",
+          "steps": [
+            "Ve a casa de Élise y luego al marcador de los jardines.",
+            "Defiende a Élise de los templarios y síguela por un balcón y bajo un seto.",
+            "Limpia el laberinto de setos y sube a la torre central para disparar a los guardias cercanos.",
+            "En el laberinto, haz dos dobles asesinatos; en el cruce en T, ve por la derecha.",
+            "En la persecución, sigue a Élise, trepa por una farola y salta por los toldos para abatir a los francotiradores.",
+            "Tras la escena, suelta una bomba de humo y huye de las colinas."
+          ],
+          "opt": [
+            "4 disparos a la cabeza",
+            "2 dobles asesinatos"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «Secret Meeting»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "num": "7",
+      "t": "Alianzas y traiciones",
+      "yr": "1791",
+      "mems": [
+        {
+          "id": "7.1",
+          "t": "Una alianza prudente",
+          "en": "A Cautious Alliance",
+          "pl": "cafe",
+          "obj": "Reúnete con Élise en el Café Théâtre y acompáñala por París.",
+          "steps": [
+            "Reúnete con Élise en el Café Théâtre y escóltala hasta el cuartel de la Hermandad.",
+            "Síguela escaleras arriba hasta el despacho de Germain.",
+            "Cuando entren los tres guardias, suelta bombas aturdidoras y remátalos.",
+            "Equipa la Hoja Fantasma y apunta a los cuatro francotiradores de fuera.",
+            "Acierta al menos tres disparos a la cabeza (si se acaban las hojas, usa la pistola)."
+          ],
+          "opt": [
+            "Aturde a 3 enemigos con bombas aturdidoras",
+            "3 disparos a la cabeza"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "Una escena revela de qué lado está realmente Germain.",
+          "rift": false
+        },
+        {
+          "id": "7.2",
+          "t": "Reunión con Mirabeau",
+          "en": "Meeting with Mirabeau",
+          "pl": "",
+          "obj": "Ve a casa de Mirabeau para avisar al Maestro Asesino de lo que has descubierto.",
+          "steps": [
+            "Examina el cuerpo en el dormitorio del tercer piso: hay un alfiler igual al que mató a De la Serre y un pañuelo junto a la cama.",
+            "Revisa el libro del escritorio y el armario en busca de la última pista.",
+            "Habla con el maestro Quemar en el cuartel; te manda a por un boticario.",
+            "Persigue al boticario por los túneles deslizándote bajo las vigas.",
+            "Síguelo por el parque, atraviesa su bomba de humo en el patio de arcos y usa el elevador junto a la fuente.",
+            "Salta los bancos del parque y derríbalo."
+          ],
+          "opt": [
+            "Desliza por encima o por debajo de 5 objetos",
+            "Usa un elevador"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "Mirabeau ha muerto envenenado, y las sospechas apuntan a Élise.",
+          "rift": false
+        },
+        {
+          "id": "7.3",
+          "t": "Enfrentamiento",
+          "en": "Confrontation",
+          "pl": "",
+          "obj": "Sigue el rastro del asesino de Mirabeau hasta el tejado de una iglesia.",
+          "steps": [
+            "Ve al último alijo del boticario y sigue el rastro con la Vista de Águila hasta la iglesia.",
+            "Trepa por el pilar izquierdo hasta el tejado.",
+            "Combate en cuatro fases: golpes normales, después pesados y por último bombas.",
+            "Encadena combos con bombas de humo y aturdidoras y usa el golpe aturdidor para desequilibrarlo.",
+            "Si suelta la espada y grita, va a usar su golpe aturdidor: rueda o contrarresta con el tuyo.",
+            "Sigue la pelea del tejado al interior hasta asesinarlo."
+          ],
+          "opt": [
+            "Usa el golpe aturdidor 5 veces",
+            "Que no te derriben"
+          ],
+          "opp": [],
+          "uk": "Duelo final de cuatro fases que termina en un asesinato obligatorio.",
+          "unlock": "Trofeo «Mystery Solved»",
+          "sp": "El asesino es Bellec, que mató a Mirabeau para impedir la paz con los templarios.",
+          "rift": false
+        },
+        {
+          "id": "7.4",
+          "t": "Fallo del Helix: París, 1944",
+          "en": "Server bridge · Paris 1944",
+          "pl": "",
+          "obj": "Atraviesa la París ocupada hasta la torre Eiffel y salta al portal desde lo más alto.",
+          "steps": [
+            "Sal de las alcantarillas junto a la torre Eiffel sin pisar la luz de los focos.",
+            "Cruza el tanque, cuélate por un hueco de la valla y empieza a trepar.",
+            "Cruza la estructura metálica y sube por el hueco del ascensor.",
+            "Derriba aviones con las ametralladoras de la torre mientras esquivas su fuego.",
+            "Trepa por una cuerda hasta el zepelín y cruza su cola hasta un elevador.",
+            "Llega a la cima y salta al portal cuando cambie de sitio."
+          ],
+          "opt": [],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": true
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "num": "8",
+      "t": "El Terror se acerca",
+      "yr": "1792",
+      "mems": [
+        {
+          "id": "8.1",
+          "t": "La correspondencia del rey",
+          "en": "The King's Correspondence",
+          "pl": "louvre",
+          "obj": "Recupera las cartas de Mirabeau al rey antes de que caigan en manos templarias.",
+          "steps": [
+            "Baja del tejado, cruza la multitud y trepa por el muro del fondo (cuidado con el francotirador y el bruto).",
+            "Doble asesinato aéreo a la patrulla y sabotea la primera campana.",
+            "Disparos a la cabeza y una muerte sigilosa para sabotear la segunda.",
+            "Escóndete en el carro de heno, sabotea la tercera campana y asesina al francotirador de la escalera.",
+            "Limpia las salas del edificio a cubierto y entra en la cámara del rey.",
+            "Aguanta dos minutos las oleadas de rebeldes con bombas y sigue a Napoleón."
+          ],
+          "opt": [
+            "Sabotea 3 campanas de alarma",
+            "3 muertes desde cobertura"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "8.2",
+          "t": "Masacres de septiembre",
+          "en": "September Massacres",
+          "pl": "chatelet",
+          "obj": "Elimina a Rouillé, que está asaltando la prisión del Grand Châtelet.",
+          "steps": [
+            "Habla con Napoleón y salta desde la atalaya al carro de heno.",
+            "Evita la entrada directa: cruza el puente y entra por las alcantarillas que llevan a una escalera dentro de la prisión.",
+            "Elimina a los guardias del interior, del comedor y de las celdas desde cobertura.",
+            "Sube al tejado y baja al muro inferior para asesinar desde la cornisa a dos francotiradores.",
+            "Quema la bandera de la torre principal y asesina a otro francotirador del muro.",
+            "Mata al último guardia y ve a por Rouillé en la plataforma."
+          ],
+          "opt": [
+            "3 muertes desde cobertura",
+            "3 asesinatos desde una cornisa"
+          ],
+          "opp": [
+            "Ruta por las alcantarillas: entras dentro de la prisión sin pasar por la puerta.",
+            "Quemar la bandera de la torre principal."
+          ],
+          "uk": "",
+          "unlock": "Trofeo «Bloody Trail»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "num": "9",
+      "t": "Hambre",
+      "yr": "",
+      "mems": [
+        {
+          "id": "9.1",
+          "t": "Tiempos de hambre",
+          "en": "Starving Times",
+          "pl": "",
+          "obj": "Falta el grano en París: recorre los muelles hasta el hombre de Marie Lévesque y quítale sus órdenes.",
+          "steps": [
+            "Sigue el barco por las cuerdas, sube a la casa del embarcadero y cruza los edificios.",
+            "Cruza muelles, pilotes y la playa esquivando la caja que cae; sube por el elevador y las vigas hasta el puente.",
+            "Esquiva el contenedor que cae, evita a los matones y salta al carro de heno desde el tejado.",
+            "Mata al guardia del heno y al bruto; nada hasta la plataforma y usa la Hoja Fantasma con la patrulla.",
+            "Elimina al objetivo, coge sus órdenes y sal de la zona por el carro de heno."
+          ],
+          "opt": [
+            "No toques el agua",
+            "No hagas saltar ninguna alarma"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "9.2",
+          "t": "Acaparadores",
+          "en": "Hoarders",
+          "pl": "",
+          "obj": "Asesina a Marie Lévesque, que acapara el grano mientras París pasa hambre.",
+          "steps": [
+            "Asesina desde el aire a los guardias que acosan al mercader y cubre su carro desde los tejados.",
+            "Defiende el carro a disparos y habla con el mercader.",
+            "En la zona restringida, limpia francotiradores y guardias y libera a los presos de las dos celdas con la cuerda del patio.",
+            "Entra por una ventana abierta, libera a Thomas Lévesque y acaba con el bruto y los guardias.",
+            "Espera a que Marie Lévesque cruce el salón del banquete y asesínala desde arriba.",
+            "Escapa por las salidas del edificio."
+          ],
+          "opt": [
+            "Rescata a Thomas Lévesque",
+            "No hagas saltar ninguna alarma"
+          ],
+          "opp": [
+            "Protege el carro del mercader de 6 atacantes.",
+            "Libera a los presos de las dos celdas sin dar la alarma.",
+            "Un mercader junto a los primeros guardias repone Hojas Fantasma."
+          ],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "9.3",
+          "t": "La huida",
+          "en": "The Escape",
+          "pl": "",
+          "obj": "El reparto de grano sale mal: alcanza a Élise y libera el globo cortando sus tres amarras.",
+          "steps": [
+            "Suelta bombas de humo para ignorar a los guardias.",
+            "Corta las cuerdas que sujetan el globo.",
+            "Sube en el elevador, cruza la cuerda y la rampa de madera y sigue al globo por los tejados.",
+            "Cerca del francotirador, cruza la plaza por la cuerda hasta el edificio del boticario y libera el globo.",
+            "Sube al tejado de la capilla para liberar a Élise.",
+            "Ya en el suelo, toma un elevador y cruza los edificios hasta la escena final."
+          ],
+          "opt": [
+            "No te quedes atrás del globo",
+            "No toques el suelo"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «Road to Starvation»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "num": "10",
+      "t": "La caída del rey",
+      "yr": "1793",
+      "mems": [
+        {
+          "id": "10.1",
+          "t": "Una cena comprometida",
+          "en": "A Dinner Engagement",
+          "pl": "",
+          "obj": "Elimina a Le Peletier durante una cena.",
+          "steps": [
+            "Salta al carro de heno y elimina a los guardias cercanos según su patrulla.",
+            "Limpia la entrada principal y enloquece a un bruto al este.",
+            "Ruta del veneno: sube al piso superior, pasa al guardia de la ventana y deja la botella en la mesa de Le Peletier.",
+            "Ruta del soborno: paga a la mujer del patio, entra y limpia los pasillos.",
+            "Espera junto a la puerta del comedor a que salga Le Peletier y mátalo desde cobertura.",
+            "Sal por donde entraste."
+          ],
+          "opt": [
+            "Enloquece a 2 brutos",
+            "2 dobles asesinatos"
+          ],
+          "opp": [
+            "Vino envenenado: exige sigilo total, un error puede hacer fracasar la misión.",
+            "Soborno por la ventana: cuesta 4.000 francos y te obliga a enfrentarte a más enemigos."
+          ],
+          "uk": "Le Peletier, con veneno o desde cobertura según la ruta.",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "10.2",
+          "t": "La ejecución",
+          "en": "The Execution",
+          "pl": "placerev",
+          "obj": "Sigue a Élise entre la multitud de la ejecución de Luis XVI y encuentra a Germain.",
+          "steps": [
+            "Tras la escena, salta al carro de heno y trepa por el poste hasta las cuerdas.",
+            "Sigue las cuerdas exteriores hasta la primera atalaya y mata al francotirador.",
+            "Cruza de poste en poste por encima de la multitud.",
+            "Salta a la atalaya de la derecha y mata al segundo francotirador.",
+            "Rodea el carruaje entre la gente hasta la tienda de Germain y acércate por detrás.",
+            "Lanza bombas aturdidoras hasta que se pierda el rastro de Germain."
+          ],
+          "opt": [
+            "Mata a 2 francotiradores",
+            "Aturde a 5 enemigos"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "10.3",
+          "t": "Reunión del Consejo",
+          "en": "Council Meeting",
+          "pl": "chapelle",
+          "obj": "Vuelve al cuartel de la Hermandad: el Consejo quiere hablar contigo.",
+          "steps": [],
+          "opt": [],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «Love and Duty»",
+          "sp": "El Consejo cree que Arno solo busca venganza y lo expulsa de la Hermandad.",
+          "rift": false
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "num": "11",
+      "t": "Tocar fondo",
+      "yr": "",
+      "mems": [
+        {
+          "id": "11.1",
+          "t": "Tocar fondo",
+          "en": "Bottom of the Barrel",
+          "pl": "versailles",
+          "obj": "Arno despierta con resaca en Versalles: averigua qué pasó anoche y dónde está el reloj de su padre.",
+          "steps": [
+            "En el recuerdo de la noche anterior, atrae a los guardias con petardos y trepa hasta la calle.",
+            "Sube al balcón, espera a que el bruto se mueva y usa el barril.",
+            "De vuelta en el bar, pelea con los matones y derriba al que huye para sacarle dónde está su jefe.",
+            "En Versalles, usa un dardo berserker en el bruto y una bomba de gas venenoso en su grupo.",
+            "Limpia el edificio (asesinato aéreo desde el balcón y la patrulla del piano).",
+            "Atrae al jefe con un petardo, dale con la cuchilla berserker y acaba con el resto."
+          ],
+          "opt": [
+            "4 señuelos con petardos",
+            "2 muertes con gas venenoso"
+          ],
+          "opp": [
+            "Dardo berserker al bruto para reunir guardias y rematarlos con gas.",
+            "Cuchilla berserker al jefe tras sacarlo de la puerta con un petardo."
+          ],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "11.2",
+          "t": "El ascenso del asesino",
+          "en": "Rise of the Assassin",
+          "pl": "",
+          "obj": "Libera a Victor y Hugo y llega hasta La Touche junto a la guillotina.",
+          "steps": [
+            "Cruza los tejados hasta el edificio del tejado marrón y limpia a los francotiradores.",
+            "Elimina patrullas y brutos en el suelo usando la multitud.",
+            "Limpia el lado sur y los francotiradores de la jaula, incluido el de la atalaya.",
+            "Roba la llave a un guardia del edificio de detrás de la jaula y libera a Victor y Hugo.",
+            "Sigue a los Defensores hasta la guillotina, coge la llave y llega a La Touche antes de que te reconozca.",
+            "Lanza una bomba de humo y escapa de la plaza."
+          ],
+          "opt": [
+            "3 disparos a la cabeza",
+            "4 muertes desde cobertura"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "Trofeo «Down But Not Out»",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "11.3",
+          "t": "Fallo del Helix: París, 1394",
+          "en": "Server bridge · Paris 1394",
+          "pl": "bastille",
+          "obj": "Último salto del servidor: llega al portal junto a la Bastilla y entra en la París medieval.",
+          "steps": [
+            "Cruza el cementerio hacia las catacumbas y deslízate por la rampa.",
+            "Trepa por una columna en la gran caverna y sal por una tumba.",
+            "Esquiva las rocas rodantes de los túneles usando los huecos y trepa por la pared de madera.",
+            "Escapa de la simulación que se derrumba cuesta arriba.",
+            "Sal de la cantera, cruza el puente y llega al campo de batalla.",
+            "Esquiva las bolas de fuego de la Bastilla tras vallas y barricadas hasta el portal."
+          ],
+          "opt": [],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": true
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "num": "12",
+      "t": "El Ser Supremo",
+      "yr": "1794",
+      "mems": [
+        {
+          "id": "12.1",
+          "t": "El Ser Supremo",
+          "en": "The Supreme Being",
+          "pl": "champmars",
+          "obj": "Durante la Fiesta del Ser Supremo, pon una lista de nombres a tres personas influyentes para volver a la multitud contra Robespierre.",
+          "steps": [
+            "Sigue a Élise entre la multitud y sube a la atalaya de las tiendas del este cuando nadie mire.",
+            "Asesina desde el aire al guardia de abajo y llega a la tienda de la campana.",
+            "Distrae a los dos guardias con un petardo, sabotea la campana y coge el libro de nombres.",
+            "Escóndete en los carros de heno y elimina patrullas sin que detecten a Élise.",
+            "Coloca la primera lista al hombre cercano cuando los matones miren a otro lado.",
+            "Coloca la segunda al objetivo del norte y la tercera al de la tienda."
+          ],
+          "opt": [
+            "Sabotea 1 campana de alarma",
+            "Que no detecten a Élise"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "12.2",
+          "t": "La caída de Robespierre",
+          "en": "The Fall of Robespierre",
+          "pl": "",
+          "obj": "Termidor: encuentra a los supervivientes y localiza a Robespierre, que ha sido detenido.",
+          "steps": [
+            "Habla con los guardias de los callejones y encuentra a los otros dos supervivientes.",
+            "Sigue a Robespierre por los tejados sin bajar al suelo (si lo pierdes, aparece una zona de búsqueda).",
+            "Tras la escena en su escondite, rodea el edificio y elimina a los francotiradores.",
+            "Fuerza la puerta cerrada y cuélate entre los guardias.",
+            "Acaba con el bruto con la Hoja Fantasma y elimina en silencio a los dos últimos guardias.",
+            "Abre la puerta para la escena final."
+          ],
+          "opt": [
+            "No entres en conflicto",
+            "Fuerza 1 cerradura"
+          ],
+          "opp": [],
+          "uk": "",
+          "unlock": "",
+          "sp": "",
+          "rift": false
+        },
+        {
+          "id": "12.3",
+          "t": "El Temple",
+          "en": "The Temple",
+          "pl": "templetower",
+          "obj": "Enfrentamiento final con Germain, que se esconde en las catacumbas del Temple con la Espada del Edén.",
+          "steps": [
+            "Baja al suelo, ve a la esquina derecha de la zona restringida y trepa.",
+            "Limpia francotiradores y guardias con la Hoja Fantasma y sabotea la primera campana.",
+            "Completa los tres dobles asesinatos aéreos sobre patrullas y guardias.",
+            "Repón Hojas Fantasma con el mercader de fuera y sabotea la segunda campana.",
+            "Sube a la torre, rodéala y apuñala a Germain por la espalda.",
+            "Usa la cuchilla berserker con el Defensor del granero, baja a las catacumbas y pelea con Germain usando coberturas y petardos."
+          ],
+          "opt": [
+            "3 dobles asesinatos aéreos",
+            "Sabotea 2 campanas de alarma"
+          ],
+          "opp": [
+            "Escóndete en los carros de heno para muertes desde escondite.",
+            "Las rutas por los tejados llevan a los francotiradores y a asesinatos aéreos.",
+            "Un mercader fuera de la fortaleza vende Hojas Fantasma.",
+            "Cuchilla berserker al Defensor del granero para despistar a los guardias antes de bajar."
+          ],
+          "uk": "Germain: tres puñaladas con la hoja oculta durante el combate final.",
+          "unlock": "Trofeos «Curtain Call» y, con todos los objetivos opcionales, «I Want It All»",
+          "sp": "",
+          "rift": false
+        }
+      ]
+    }
+  ],
+  "smt": {
+    "ps": [
+      "Historias de París",
+      "#E8C98A"
+    ],
+    "mm": [
+      "Misterios de asesinato",
+      "#B9A3E8"
+    ],
+    "ne": [
+      "Enigmas de Nostradamus",
+      "#7FD3E8"
+    ],
+    "co": [
+      "Cooperativo",
+      "#7FE0A3"
+    ],
+    "he": [
+      "Atracos",
+      "#F0B35A"
+    ],
+    "sc": [
+      "Club social",
+      "#F28FA0"
+    ],
+    "hr": [
+      "Fallos del Helix",
+      "#8FB2F2"
+    ],
+    "ct": [
+      "Café Théâtre",
+      "#F5D06B"
+    ]
+  },
+  "route": [
+    "bastille",
+    "chapelle",
+    "notredame",
+    "miracles",
+    "halleble",
+    "innocents",
+    "chatelet",
+    "placerev",
+    "templetower"
+  ],
+  "mw": 2928,
+  "mh": 2016
+}

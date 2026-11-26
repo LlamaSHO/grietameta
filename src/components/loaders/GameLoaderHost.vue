@@ -21,6 +21,7 @@ const importers = {
   "arc-raiders": () => import("./ArcLoader.vue"),
   "zelda-totk": () => import("./ZeldaLoader.vue"),
   pokemon: () => import("./PokemonLoader.vue"),
+  "assassins-creed": () => import("./AcLoader.vue"),
   "cod-zombis": () => import("./CodLoader.vue"),
   ark: () => import("./ArkLoader.vue"),
 };

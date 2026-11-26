@@ -1,0 +1,260 @@
+{
+  "games": [
+    {
+      "id": "ac1",
+      "t": "Assassin's Creed",
+      "y": 2007,
+      "date": "13 nov 2007",
+      "who": "Altaïr Ibn-La'Ahad",
+      "where": "Tierra Santa: Acre, Damasco y Jerusalén",
+      "per": "1191",
+      "hy": 1191,
+      "era": "med",
+      "note": "Tercera Cruzada. El origen de todo.",
+      "tag": "",
+      "bp": "0.000% 0.000%"
+    },
+    {
+      "id": "ac2",
+      "t": "Assassin's Creed II",
+      "y": 2009,
+      "date": "17 nov 2009",
+      "who": "Ezio Auditore",
+      "where": "Florencia, Venecia y la Toscana",
+      "per": "1476–1499",
+      "hy": 1476,
+      "era": "ren",
+      "note": "Empieza la trilogía de Ezio.",
+      "tag": "",
+      "bp": "33.333% 0.000%"
+    },
+    {
+      "id": "acb",
+      "t": "Brotherhood",
+      "y": 2010,
+      "date": "16 nov 2010",
+      "who": "Ezio Auditore",
+      "where": "Roma",
+      "per": "1499–1507",
+      "hy": 1499,
+      "era": "ren",
+      "note": "Ezio reconstruye la Hermandad.",
+      "tag": "",
+      "bp": "66.667% 0.000%"
+    },
+    {
+      "id": "acr",
+      "t": "Revelations",
+      "y": 2011,
+      "date": "15 nov 2011",
+      "who": "Ezio y Altaïr",
+      "where": "Constantinopla",
+      "per": "1511–1512",
+      "hy": 1511,
+      "era": "ren",
+      "note": "Cierra las historias de Ezio y Altaïr.",
+      "tag": "",
+      "bp": "100.000% 0.000%"
+    },
+    {
+      "id": "ac3",
+      "t": "Assassin's Creed III",
+      "y": 2012,
+      "date": "30 oct 2012",
+      "who": "Connor (Ratonhnhaké:ton)",
+      "where": "Boston, Nueva York y la frontera",
+      "per": "1754–1783",
+      "hy": 1754,
+      "era": "s18",
+      "note": "Revolución americana.",
+      "tag": "",
+      "bp": "0.000% 33.333%"
+    },
+    {
+      "id": "ac4",
+      "t": "IV Black Flag",
+      "y": 2013,
+      "date": "29 oct 2013",
+      "who": "Edward Kenway",
+      "where": "El Caribe",
+      "per": "1715–1722",
+      "hy": 1715,
+      "era": "s18",
+      "note": "Piratas y combate naval.",
+      "tag": "",
+      "bp": "33.333% 33.333%"
+    },
+    {
+      "id": "acrg",
+      "t": "Rogue",
+      "y": 2014,
+      "date": "11 nov 2014",
+      "who": "Shay Cormac",
+      "where": "Atlántico Norte y Nueva York",
+      "per": "1752–1776",
+      "hy": 1752,
+      "era": "s18",
+      "note": "La historia desde el lado templario.",
+      "tag": "",
+      "bp": "66.667% 33.333%"
+    },
+    {
+      "id": "acu",
+      "t": "Unity",
+      "y": 2014,
+      "date": "11 nov 2014",
+      "who": "Arno Dorian",
+      "where": "París y Versalles",
+      "per": "1789–1794",
+      "hy": 1789,
+      "era": "s18",
+      "note": "Revolución francesa. Guía completa aquí.",
+      "tag": "",
+      "bp": "100.000% 33.333%"
+    },
+    {
+      "id": "acs",
+      "t": "Syndicate",
+      "y": 2015,
+      "date": "23 oct 2015",
+      "who": "Jacob y Evie Frye",
+      "where": "Londres",
+      "per": "1868",
+      "hy": 1868,
+      "era": "s19",
+      "note": "Revolución industrial.",
+      "tag": "",
+      "bp": "0.000% 66.667%"
+    },
+    {
+      "id": "aco",
+      "t": "Origins",
+      "y": 2017,
+      "date": "27 oct 2017",
+      "who": "Bayek de Siwa",
+      "where": "Egipto ptolemaico",
+      "per": "49–43 a. C.",
+      "hy": -49,
+      "era": "ant",
+      "note": "El nacimiento de la Hermandad. Primer RPG.",
+      "tag": "",
+      "bp": "33.333% 66.667%"
+    },
+    {
+      "id": "acod",
+      "t": "Odyssey",
+      "y": 2018,
+      "date": "5 oct 2018",
+      "who": "Kassandra o Alexios",
+      "where": "Grecia y el Egeo",
+      "per": "431–422 a. C.",
+      "hy": -431,
+      "era": "ant",
+      "note": "Guerra del Peloponeso.",
+      "tag": "",
+      "bp": "66.667% 66.667%"
+    },
+    {
+      "id": "acv",
+      "t": "Valhalla",
+      "y": 2020,
+      "date": "10 nov 2020",
+      "who": "Eivor",
+      "where": "Noruega e Inglaterra",
+      "per": "873–878",
+      "hy": 873,
+      "era": "med",
+      "note": "Vikingos y asentamientos.",
+      "tag": "",
+      "bp": "100.000% 66.667%"
+    },
+    {
+      "id": "acm",
+      "t": "Mirage",
+      "y": 2023,
+      "date": "5 oct 2023",
+      "who": "Basim Ibn Ishaq",
+      "where": "Bagdad",
+      "per": "861",
+      "hy": 861,
+      "era": "med",
+      "note": "Vuelta al sigilo clásico.",
+      "tag": "",
+      "bp": "0.000% 100.000%"
+    },
+    {
+      "id": "acsh",
+      "t": "Shadows",
+      "y": 2025,
+      "date": "20 mar 2025",
+      "who": "Naoe y Yasuke",
+      "where": "Japón feudal",
+      "per": "1579–1580",
+      "hy": 1579,
+      "era": "ren",
+      "note": "Dos protagonistas: shinobi y samurái.",
+      "tag": "",
+      "bp": "33.333% 100.000%"
+    },
+    {
+      "id": "ac4r",
+      "t": "Black Flag Resynced",
+      "y": 2026,
+      "date": "9 jul 2026",
+      "who": "Edward Kenway",
+      "where": "El Caribe",
+      "per": "1715–1722",
+      "hy": 1715,
+      "era": "s18",
+      "note": "Remake de Black Flag rehecho desde cero.",
+      "tag": "Remake",
+      "bp": "66.667% 100.000%"
+    },
+    {
+      "id": "hexe",
+      "t": "Codename Hexe",
+      "y": 9999,
+      "date": "Sin fecha",
+      "who": "—",
+      "where": "Sin confirmar",
+      "per": "—",
+      "hy": 9999,
+      "era": "fut",
+      "note": "Anunciado en 2022. Sin fecha oficial; las filtraciones apuntan a 2027.",
+      "tag": "En desarrollo",
+      "bp": ""
+    }
+  ],
+  "eras": [
+    [
+      "ant",
+      "Antigüedad",
+      "#D9A55B"
+    ],
+    [
+      "med",
+      "Edad Media",
+      "#B9895A"
+    ],
+    [
+      "ren",
+      "Siglos XV–XVI",
+      "#C8102E"
+    ],
+    [
+      "s18",
+      "Siglo XVIII",
+      "#5E86C9"
+    ],
+    [
+      "s19",
+      "Siglo XIX",
+      "#9AA3AE"
+    ],
+    [
+      "fut",
+      "Próximamente",
+      "#8C857A"
+    ]
+  ]
+}
