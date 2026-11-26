@@ -11,7 +11,7 @@
     <FeaturedFloaters />
 
     <div class="wrap">
-      <HomeEmblem />
+      <HomeEmblem :animated="false" />
 
       <h1 class="h1">
         <span class="w">Elige</span>
@@ -46,8 +46,8 @@ const QUICK = [
   { label: "Tier list de LoL", to: "/lol#tierlist", icon: "/images/games/logo-lol.png" },
   { label: "Enemigos de ARC", to: "/arc-raiders/enemigos", icon: "/images/games/logo-arc.png" },
   { label: "Semillas kolog", to: "/zelda/semillas", icon: "/images/games/logo-zelda.png" },
-  { label: "Pokédex", to: "/pokemon/pokedex", icon: "/images/home/art-25.webp" },
-  { label: "Meta Pokémon", to: "/pokemon/competitivo", icon: "/images/home/art-903.webp" },
+  { label: "Pokédex", to: "/pokemon/pokedex", icon: "/images/home/pikachu-mini.webp" },
+  { label: "Meta Pokémon", to: "/pokemon/competitivo", icon: "/images/home/sneasler-mini.webp" },
 ];
 </script>
 
@@ -80,7 +80,6 @@ const QUICK = [
   mask-image: radial-gradient(circle, #000 0%, transparent 68%);
   opacity: 0.38;
   pointer-events: none;
-  animation: drift 16s ease-in-out 1 both;
 }
 .glow.g1 {
   top: -180px;
@@ -91,13 +90,8 @@ const QUICK = [
   top: -140px;
   right: 6%;
   background: #0F8F88;
-  animation-duration: 19s;
-  animation-direction: alternate-reverse;
 }
-@keyframes drift {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(60px, 30px, 0) scale(1.15); }
-}
+
 
 /* Título: las palabras suben una tras otra y el subrayado dorado se dibuja */
 .h1 {

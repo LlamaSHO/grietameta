@@ -48,7 +48,6 @@
   position: absolute;
   inset: -45%;
   background: conic-gradient(from 0deg, var(--gm-gold), var(--gm-orange), var(--gm-teal), var(--gm-gold));
-  animation: gm-spin 9s linear infinite;
 }
 .req-ico svg {
   position: relative;

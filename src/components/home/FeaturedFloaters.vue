@@ -2,16 +2,17 @@
   <!-- Tarjetas de "Juegos destacados" que flotan a los lados del hero
      (.floaters del diseño). Se ocultan por debajo de 1200 px. -->
   <div class="floaters">
-    <RouterLink class="feat ft1" :to="champ.to">
+    <RouterLink class="feat ft1" :to="champ.to" @pointerenter.once="loadSpotlight" @focus.once="loadSpotlight">
       <span class="th"><img :src="champ.img" alt="" width="54" height="54" @error="onChampImgError"></span>
       <span class="tx">
-        <span class="k">LoL · Campeón del parche</span>
+        <span class="k">LoL · {{ champ.tier ? "Campeón del parche" : "Guía de campeón" }}</span>
         <span class="t">{{ champ.name }}</span>
-        <span class="m"><span class="tier">{{ champ.tier }}</span>{{ champ.winrateText }} de victorias</span>
+        <span v-if="champ.tier" class="m"><span class="tier">{{ champ.tier }}</span>{{ champ.winrateText }} de victorias</span>
+        <span v-else class="m">Ver la ficha del campeón</span>
       </span>
     </RouterLink>
     <RouterLink class="feat ft2" to="/arc-raiders/enemigos">
-      <span class="th"><img src="/images/arc-raiders/bots/arc_the_queen.webp" alt="" width="54" height="54"></span>
+      <span class="th"><img src="/images/home/queen-mini.webp" alt="" width="54" height="54"></span>
       <span class="tx">
         <span class="k">ARC Raiders · Jefe</span>
         <span class="t">The Queen</span>
@@ -19,7 +20,7 @@
       </span>
     </RouterLink>
     <RouterLink class="feat ft3" to="/zelda/semillas">
-      <span class="th"><img src="/images/zelda/hyrule.jpg" alt="" width="54" height="54"></span>
+      <span class="th"><img src="/images/home/hyrule-mini.webp" alt="" width="54" height="54"></span>
       <span class="tx">
         <span class="k">Zelda TotK · Guía</span>
         <span class="t">Semillas kolog</span>
@@ -27,7 +28,7 @@
       </span>
     </RouterLink>
     <RouterLink class="feat ft4" to="/pokemon/competitivo">
-      <span class="th th-pk"><img src="/images/home/art-903.webp" alt="" width="54" height="54"></span>
+      <span class="th th-pk"><img src="/images/home/sneasler-mini.webp" alt="" width="54" height="54"></span>
       <span class="tx">
         <span class="k">Pokémon · Meta VGC</span>
         <span class="t">Sneasler</span>
@@ -38,33 +39,32 @@
 </template>
 
 <script setup>
-import { computed, shallowRef, watchEffect } from "vue";
+import { computed, shallowRef } from "vue";
 
 // "Campeón del parche": el mismo que destaca el hub de LoL (spotlight de
 // useLolData), para que la portada y /lol no digan cosas distintas.
-// Regla «cargar solo lo que se usa»: la portada sale con el de ejemplo y el
-// código y los datos de LoL se piden cuando el navegador queda libre.
+// El módulo del juego solo se solicita al explorar su tarjeta.
 const spotlight = shallowRef(null);
-const idle = window.requestIdleCallback || ((f) => setTimeout(f, 3000));
-idle(async () => {
-  const { useLolData } = await import("@/composables/useLolData");
-  const lol = useLolData();
-  watchEffect(() => (spotlight.value = lol.spotlight.value));
-}, { timeout: 6000 });
+async function loadSpotlight() {
+  try {
+    const { useLolData } = await import("@/composables/useLolData");
+    spotlight.value = useLolData().spotlight;
+  } catch {
+    // La tarjeta local sigue enlazando al juego si falla la conexión.
+  }
+}
 
 const fmtPct = (n) => `${n.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
 
 // Mientras cargan los datos (o si faltan): Yasuo, como en el diseño.
 const FALLBACK = {
   name: "Yasuo",
-  img: "https://ddragon.leagueoflegends.com/cdn/16.21.1/img/champion/Yasuo.png",
-  tier: "S+",
-  winrateText: fmtPct(52.5),
-  to: "/lol",
+  img: "/images/home/yasuo-mini.webp",
+  to: { name: "lol-champion", params: { id: "Yasuo" } },
 };
 
 const champ = computed(() => {
-  const s = spotlight.value;
+  const s = spotlight.value?.value;
   if (!s || typeof s.wr !== "number") return FALLBACK;
   return {
     name: s.c.name,
@@ -102,10 +102,7 @@ function onChampImgError(e) {
   color: var(--ink);
   text-align: left;
   pointer-events: auto;
-  /* La aparición va primero para que el balanceo (bob) mande en el transform
-     una vez terminada; si no, el "both" de gm-rise lo dejaría quieto. */
-  animation: gm-rise 0.9s var(--ease-out) both, bob var(--t, 7s) ease-in-out 3;
-  animation-delay: var(--ri, 0.5s), var(--dl, 0s);
+  transform: rotate(var(--r0));
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .feat:hover {

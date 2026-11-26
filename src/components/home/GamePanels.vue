@@ -33,7 +33,7 @@
               <img class="a1" src="/images/home/art-10035.webp" alt="" loading="lazy" decoding="async">
               <img class="a2" src="/images/home/art-25.webp" alt="" loading="lazy" decoding="async">
             </div>
-            <img v-else class="p-bg" :src="p.img" alt="" loading="lazy" decoding="async">
+            <img v-else class="p-bg" :src="p.slug === 'lol' ? '/images/lol/yasuo-splash.webp' : p.img" alt="" loading="lazy" decoding="async">
             <div class="p-shade"></div>
             <div class="p-tint"></div>
 
@@ -207,7 +207,6 @@ function badgeClass(p) {
 }
 .hint svg {
   color: var(--gold);
-  animation: bob 2.4s ease-in-out infinite;
 }
 @keyframes bob {
   0%, 100% { transform: translate3d(0, 0, 0); }
@@ -216,6 +215,8 @@ function badgeClass(p) {
 
 /* ---------- paneles ---------- */
 .panels {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 380px;
   display: flex;
   gap: 14px;
   height: 540px;
@@ -234,7 +235,6 @@ function badgeClass(p) {
   background: var(--bg-raised);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: flex-grow 0.75s var(--ease-out), border-color 0.5s, box-shadow 0.6s;
-  animation: gm-rise 1s var(--ease-out) both;
   outline: none;
   --acc: var(--gold);
   --acc2: var(--gold-hi);
@@ -273,37 +273,31 @@ function badgeClass(p) {
   object-fit: cover;
   z-index: -3;
   transform: scale(1.06);
-  filter: saturate(0.8) brightness(0.6);
-  transition: transform 1.6s var(--ease-out), filter 0.9s, opacity 0.9s;
+  transition: transform 1.6s var(--ease-out), opacity 0.9s;
 }
 .panel:hover .p-bg,
 .panel:focus-visible .p-bg {
   transform: scale(1.15);
-  filter: saturate(1.1) brightness(0.88);
 }
 .p-lol .p-bg { object-position: 58% 30%; }
 .p-arc .p-bg { object-position: 48% 50%; }
 .p-zelda .p-bg {
   object-position: 50% 55%;
-  filter: saturate(0.55) brightness(0.5) hue-rotate(95deg);
 }
 /* Zelda: al pasar el ratón la superficie se va y aparece el cielo */
 .p-zelda:hover .p-bg.z-surface,
 .p-zelda:focus-visible .p-bg.z-surface {
   opacity: 0;
   transform: scale(1.2) translateY(6%);
-  filter: saturate(0.55) brightness(0.5) hue-rotate(95deg);
 }
 .p-zelda .p-bg.z-sky {
   opacity: 0;
   transform: scale(1.25) translateY(-8%);
-  filter: saturate(0.7) brightness(0.62) hue-rotate(40deg);
 }
 .p-zelda:hover .p-bg.z-sky,
 .p-zelda:focus-visible .p-bg.z-sky {
   opacity: 1;
   transform: scale(1.08);
-  filter: saturate(0.95) brightness(0.85) hue-rotate(40deg);
 }
 
 .p-shade {
@@ -389,7 +383,6 @@ function badgeClass(p) {
   height: 7px;
   border-radius: 50%;
   background: currentColor;
-  animation: ping 2.2s infinite;
 }
 .badge.live { color: #5FE6DA; }
 .badge.soon { color: #F2C36B; }
@@ -423,7 +416,6 @@ function badgeClass(p) {
   object-fit: contain;
   align-self: flex-start;
   margin-bottom: 6px;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.65));
   transform-origin: left bottom;
   transition: transform 0.8s var(--ease-out);
 }
@@ -519,12 +511,11 @@ function badgeClass(p) {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.7s;
+  display: none;
 }
 .panel:hover .fx,
 .panel:focus-visible .fx {
-  opacity: 1;
+  display: block;
 }
 
 /* LoL: anillo hextech y chispas */
@@ -547,11 +538,11 @@ function badgeClass(p) {
   overflow: visible;
 }
 .r-a {
-  animation: gm-spin 24s linear infinite;
+  animation: gm-spin 24s linear 1;
   transform-origin: 50% 50%;
 }
 .r-b {
-  animation: spin-r 16s linear infinite;
+  animation: spin-r 16s linear 1;
   transform-origin: 50% 50%;
 }
 @keyframes spin-r {
@@ -564,7 +555,7 @@ function badgeClass(p) {
   background: #0AC8B9;
   transform: rotate(45deg);
   box-shadow: 0 0 12px 2px rgba(10, 200, 185, 0.8);
-  animation: mote 5s ease-out infinite;
+  animation: mote 5s ease-out 1;
 }
 .s1 { left: 24%; bottom: 30%; }
 .s2 { left: 70%; bottom: 22%; animation-delay: -1.6s; background: #E2C27E; box-shadow: 0 0 12px 2px rgba(226, 194, 126, 0.8); }
@@ -579,7 +570,7 @@ function badgeClass(p) {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--gm-orange) 30%, #FFB27A 50%, var(--gm-orange) 70%, transparent);
   box-shadow: 0 0 22px 3px rgba(255, 106, 61, 0.65);
-  animation: scan 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation: scan 2.6s cubic-bezier(0.45, 0, 0.55, 1) 1;
 }
 .scan::after {
   content: "";
@@ -628,7 +619,7 @@ function badgeClass(p) {
 .reticle svg {
   width: 100%;
   height: 100%;
-  animation: gm-spin 9s linear infinite;
+  animation: gm-spin 9s linear 1;
 }
 .reticle-label {
   position: absolute;
@@ -643,7 +634,7 @@ function badgeClass(p) {
   padding: 3px 8px;
   border-radius: 4px;
   background: rgba(7, 9, 13, 0.6);
-  animation: blink 1.4s steps(2) infinite;
+  animation: blink 1.4s steps(2) 1;
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -659,7 +650,7 @@ function badgeClass(p) {
   border-radius: 50%;
   background: #B8FBE6;
   box-shadow: 0 0 14px 3px rgba(79, 224, 182, 0.75);
-  animation: mote 6s ease-out infinite;
+  animation: mote 6s ease-out 1;
 }
 .m1 { left: 12%; }
 .m2 { left: 28%; animation-delay: -2s; animation-duration: 7s; width: 4px; height: 4px; }
@@ -691,7 +682,7 @@ function badgeClass(p) {
   inset: 26px;
   border-radius: 50%;
   border: 1px dashed rgba(241, 231, 200, 0.4);
-  animation: gm-spin 30s linear infinite;
+  animation: gm-spin 30s linear 1;
 }
 .panel:hover .halo {
   transform: scale(1);

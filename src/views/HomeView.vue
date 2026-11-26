@@ -1,7 +1,7 @@
 <template>
   <!-- Portada (/). Diseño: models/paginas/Main.dc.html.
        El nav, el footer y la barra inferior de móvil los pinta App.vue. -->
-  <div class="home">
+  <div class="home" data-screen-status="ready">
     <HomeHero />
     <GamePanels />
     <RequestGameCta />

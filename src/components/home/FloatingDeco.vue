@@ -23,8 +23,7 @@
   position: absolute;
   display: grid;
   place-items: center;
-  animation: bob var(--t, 7s) ease-in-out 3;
-  animation-delay: var(--dl, 0s);
+  transform: rotate(var(--r0));
 }
 .fl.tile {
   width: 60px;
@@ -46,10 +45,7 @@
 .f7 { top: 49%; right: 21%; color: var(--gold-hi); --t: 6.5s; --dl: -2.5s; --r0: 10deg; --r1: -6deg; }
 .f8 { top: 88%; right: 22%; color: #F5A524; --t: 9.5s; --dl: -5s; --r0: -12deg; --r1: -2deg; }
 
-@keyframes bob {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--r0)); }
-  50% { transform: translate3d(0, -18px, 0) rotate(var(--r1)); }
-}
+
 
 @media (max-width: 1200px) {
   .f3, .f7 { display: none; }
